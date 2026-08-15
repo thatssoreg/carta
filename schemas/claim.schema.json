@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://carta.local/schemas/claim.schema.json",
+  "title": "CARTA Claim v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "subject_ref", "statement", "layer", "status", "confidence", "source_refs"],
+  "properties": {
+    "id": {"type": "string", "pattern": "^claim:[a-z0-9][a-z0-9._-]*$"},
+    "subject_ref": {"type": "string", "pattern": "^(?:[a-z][a-z0-9_-]*|rel|claim):[a-z0-9][a-z0-9._-]*$"},
+    "statement": {"type": "string", "minLength": 1},
+    "layer": {"enum": ["reference", "frontier", "lens"]},
+    "status": {"enum": ["supported", "provisional", "contested", "rejected"]},
+    "confidence": {"enum": ["high", "medium", "low", "unknown"]},
+    "claim_type": {
+      "enum": [
+        "identity", "genetics", "naming", "history", "geography", "legal", "ownership",
+        "work_line", "mentorship", "influence", "farming", "cellar", "sensory", "viticulture",
+        "climate", "geology", "market", "availability", "price", "classification", "other"
+      ]
+    },
+    "source_refs": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["source_id", "role"],
+        "properties": {
+          "source_id": {"type": "string", "pattern": "^source:[a-z0-9][a-z0-9._-]*$"},
+          "role": {"enum": ["supports", "contradicts", "contextualizes"]},
+          "locator": {"type": "string"},
+          "notes": {"type": "string"}
+        }
+      }
+    },
+    "observed_at": {"type": ["string", "null"], "format": "date"},
+    "valid_from": {"type": ["string", "null"], "format": "date"},
+    "valid_to": {"type": ["string", "null"], "format": "date"},
+    "time_precision": {"enum": ["day", "month", "year", "range", "unknown"]},
+    "jurisdiction": {"type": "string"},
+    "scope_notes": {"type": "string"},
+    "resolution_needed": {"type": "string"},
+    "supersedes": {
+      "type": "array",
+      "items": {"type": "string", "pattern": "^claim:[a-z0-9][a-z0-9._-]*$"},
+      "uniqueItems": true
+    },
+    "created_at": {"type": "string", "format": "date-time"},
+    "updated_at": {"type": "string", "format": "date-time"}
+  }
+}
