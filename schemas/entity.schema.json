@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://carta.local/schemas/entity.schema.json",
+  "title": "CARTA Entity v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "type", "name", "layer", "status"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_-]*:[a-z0-9][a-z0-9._-]*$"
+    },
+    "type": {
+      "enum": [
+        "person", "producer", "project", "grape", "wine", "vineyard",
+        "place", "appellation", "geographic_feature", "geology", "practice",
+        "institution", "classification", "historical_event", "market_signal"
+      ]
+    },
+    "name": {"type": "string", "minLength": 1},
+    "display_name": {"type": "string", "minLength": 1},
+    "layer": {"enum": ["reference", "frontier", "lens"]},
+    "status": {"enum": ["active", "historical", "provisional", "contested", "deprecated"]},
+    "alternate_names": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name", "kind"],
+        "properties": {
+          "name": {"type": "string", "minLength": 1},
+          "kind": {"enum": ["synonym", "legal", "local", "historical", "trade", "translation", "other"]},
+          "language": {"type": "string"},
+          "jurisdiction": {"type": "string"},
+          "valid_from": {"type": ["string", "null"], "format": "date"},
+          "valid_to": {"type": ["string", "null"], "format": "date"},
+          "notes": {"type": "string"}
+        }
+      }
+    },
+    "summary": {"type": "string"},
+    "spatial_refs": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1},
+      "uniqueItems": true
+    },
+    "claim_ids": {
+      "type": "array",
+      "items": {"type": "string", "pattern": "^claim:[a-z0-9][a-z0-9._-]*$"},
+      "uniqueItems": true
+    },
+    "tags": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1},
+      "uniqueItems": true
+    },
+    "created_at": {"type": "string", "format": "date-time"},
+    "updated_at": {"type": "string", "format": "date-time"}
+  }
+}
