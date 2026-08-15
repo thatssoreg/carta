@@ -99,12 +99,10 @@ Genetic claims must not be inferred from naming similarity or geographic proximi
 
 - `OWNED_BY`
 - `ACQUIRED_BY`
-- `IMPORTed_BY`
+- `IMPORTED_BY`
 - `DISTRIBUTED_BY`
 - `BUYS_FRUIT_FROM`
 - `SOLD_TO`
-
-Canonical spelling for import relationship is `IMPORTED_BY`; capitalization errors should fail validation.
 
 ### Production and wine
 
