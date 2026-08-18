@@ -1,50 +1,49 @@
 # Gros Manseng
 
-**CARTA ID:** `grape:gros-manseng`  
-**Type:** grape  
-**Status:** active
+Gros Manseng is a white grape of the Pyrenean wine world and one of the principal local varieties of Jurançon. It shares a familiar family name and regional context with Petit Manseng, but the current CARTA evidence does not establish a parent-offspring relationship between them.
 
-## Why I should care
+## At a glance
 
-Gros Manseng sits beside Petit Manseng in the western-Pyrenean grape world but CARTA refuses to let the shared family name imply a pedigree that the retained evidence does not establish.
+- **Origin / long association:** Pyrenean vineyards in the retained Plantgrape evidence
+- **Vigor:** vigorous
+- **Fertility:** fertile
+- **Disease:** sensitive to powdery mildew and relatively resistant to grey rot
+- **Harvest behavior:** fruit can remain on the vine for sweet-wine production
 
-## Identity and naming
+## In the vineyard
 
-| Name | Kind | Jurisdiction | Status | Evidence |
-|---|---|---|---|---|
-| Izkiriot Haundi | `legal_name` | `appellation:bizkaiko-txakolina` | supported | claim:bizkaia-grape-list |
+The retained cultivar evidence describes Gros Manseng as vigorous and fertile, with relatively good grey-rot resistance. Its ability to remain on the vine makes it important to the region's sweet-wine traditions, but the next enrichment pass should clarify how growers manage it for dry versus sweet production and how its ripening/acid behavior compares with Petit Manseng.
 
-## Where it fits
+## Styles
 
-| Relationship | Direction | Connected entity | Status | Evidence |
-|---|---:|---|---|---|
-| `PERMITTED_IN` | → | `appellation:bizkaiko-txakolina` | supported | claim:bizkaia-grape-list |
-| `TRADITIONAL_IN` | → | `appellation:jurancon` | supported | claim:jurancon-manseng-core-grapes |
+Current CARTA evidence firmly places Gros Manseng in Jurançon's local grape set and supports its suitability for late-harvest/sweet production. A fuller account of dry styles, blends, contemporary cellar approaches, and representative wines remains to be researched.
 
-## Viticultural / biological structure
+## Where it matters
 
-Plantgrape describes a vigorous, fertile Pyrenean cultivar with relatively good grey-rot resistance and the ability to remain on the vine for sweet-wine production.
+- [Jurançon](../countries/france/appellations/jurancon.md)
+- [Bizkaiko Txakolina](../countries/spain/appellations/bizkaiko-txakolina.md), where it is authorized under the legal name **Izkiriot Haundi**
 
-## What CARTA is watching
+## Names & genetics
 
-No parent-offspring relationship with Petit Manseng is accepted in Run 01.
+- **Izkiriot Haundi** - legal name captured in the Bizkaiko context
+- No parent-offspring relationship with Petit Manseng is accepted in the current corpus
 
-## Claims and confidence
+## Producers & wines to know
 
-| Claim | Status | Confidence | Statement |
-|---|---|---|---|
-| `claim:gros-manseng-origin-traits` | supported | high | Plantgrape identifies Gros Manseng as originating in Pyrenean vineyards; it is vigorous and fertile, sensitive to powdery mildew, and relatively resistant to grey rot, with fruit able to remain on the vine for sweet-wine production. |
-| `claim:bizkaia-grape-list` | supported | high | The current Bizkaiko Txakolina specification lists Hondarrabi Zuri, Hondarrabi Beltza, and Hondarrabi Zuri Zerratia (Petit Courbu) as recommended/main varieties, while Gros Manseng under Izkiriot Haundi and Petit Manseng under Izkiriota Ttipia are authorized varieties subject to the specification's limits. |
-| `claim:jurancon-manseng-core-grapes` | supported | high | INAO describes Petit Manseng and Gros Manseng as the principal local grape varieties of Jurançon. |
+Baseline enrichment queued. The next research pass should add representative historic, benchmark, contemporary, and emerging examples rather than leaving the grape defined mainly by legal and viticultural facts.
+
+## Explore next
+
+[Petit Manseng](petit-manseng.md) · [Jurançon](../countries/france/appellations/jurancon.md) · [Pyrenean Atlantic](../ecosystems/pyrenean-atlantic.md)
 
 ## Sources
 
-- `source:plantgrape-gros-manseng` — [Gros Manseng](https://plantgrape.fr/en/varieties/fruit-varieties/124)
-- `source:euskadi-bizkaiko-pliego` — Bizkaiko Txakolina consolidated product specification (`source:euskadi-bizkaiko-pliego`)
-- `source:eurlex-bizkaiko-2025-amendment` — [Approved standard amendment: Bizkaiko Txakolina / Chacolí de Bizkaia / Txakoli de Bizkaia](https://eur-lex.europa.eu/eli/C/2025/6563/oj/eng)
-- `source:inao-jurancon` — [Jurançon](https://www.inao.gouv.fr/produit/jurancon-23319)
+- `source:plantgrape-gros-manseng`
+- `source:euskadi-bizkaiko-pliego`
+- `source:eurlex-bizkaiko-2025-amendment`
+- `source:inao-jurancon`
 
-## Revision history
+## Record & provenance
 
-- Run 01: candidate research.
-- STRATA v0.2 ingestion: accepted/normalized proof card.
+- Primary machine entity: `grape:gros-manseng`
+- Human Reference maturity: `node`; baseline enrichment queued
