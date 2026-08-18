@@ -56,9 +56,16 @@ None of those claims entered CARTA authority.
 
 Alenza vintage chronology · Maricalva parcel geometry and tenure · historical Grupo Pesquera naming versus current Familia Fernández Rivera presentation · Condado de Haza succession
 
+<!-- BEGIN GENERATED CARTA PROVENANCE -->
 ## Record & provenance
 
-This Human Reference profile is built from:
+This section is generated from CARTA machine authority. Edit the governed records, then run `python scripts/validate_data.py --write-human-reference`.
+
+- **Profile:** `profile:condado-de-haza`
+- **Maturity / publication:** `baseline` / `published`
+- **Primary entity:** `producer:condado-de-haza`
+
+**Component entities**
 
 - `producer:familia-fernandez-rivera`
 - `producer:condado-de-haza`
@@ -66,8 +73,41 @@ This Human Reference profile is built from:
 - `person:esperanza-rivera`
 - `vineyard:maricalva`
 - `wine:alenza-gran-reserva`
-- `grape:tempranillo`
-- `appellation:ribera-del-duero`
 - `classification:ribera-del-duero-gran-reserva`
 
-**Reference maturity:** baseline / published.
+**Representative anchors**
+
+- `wine:alenza-gran-reserva`
+- `vineyard:maricalva`
+- `grape:tempranillo`
+- `appellation:ribera-del-duero`
+
+<details>
+<summary>Machine claims and sources</summary>
+
+### Material claims
+
+| Claim | Layer / observed | Status | Confidence | Sources |
+|---|---|---|---|---|
+| `claim:alenza-2019-cellar` | `reference / —` | `supported` | `high` | `source:alenza-2019` |
+| `claim:alenza-wine-identity` | `reference / —` | `supported` | `high` | `source:alenza-2019`, `source:condado-de-haza` |
+| `claim:condado-de-haza-identity` | `reference / 2026-08-18` | `supported` | `high` | `source:condado-de-haza` |
+| `claim:ffr-family-history` | `reference / 2026-08-18` | `supported` | `high` | `source:ffr-history` |
+| `claim:maricalva-site` | `reference / —` | `supported` | `high` | `source:alenza-2019` |
+| `claim:ribera-gran-reserva-law` | `reference / 2026-08-18` | `supported` | `high` | `source:ribera-product-spec-2023` |
+
+### Sources
+
+- `source:alenza-2019` — Alenza Gran Reserva 2019
+- `source:condado-de-haza` — Condado de Haza
+- `source:ffr-history` — History | Familia Fernández Rivera
+- `source:ribera-product-spec-2023` — Ribera del Duero product specification amendment, 2023
+
+</details>
+
+### Open questions
+
+- Track Alenza composition and élevage by vintage rather than assuming 2019 is universal
+- Acquire authoritative Maricalva parcel geometry and tenure detail
+- Clarify historical Grupo Pesquera naming against the current Familia Fernández Rivera corporate/brand structure
+<!-- END GENERATED CARTA PROVENANCE -->

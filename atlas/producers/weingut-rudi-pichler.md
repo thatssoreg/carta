@@ -73,9 +73,16 @@ official Ried geometry · current Pichler leadership/personnel · wine-specific 
 
 Primary CARTA sources include Rudi Pichler's current estate, wine, vineyard, and wine-style pages; Vinea Wachau's Hochrain, wine-style, and DAC pages; and Austria's federal Wachau DAC regulation.
 
+<!-- BEGIN GENERATED CARTA PROVENANCE -->
 ## Record & provenance
 
-This composite Human Reference profile is built from:
+This section is generated from CARTA machine authority. Edit the governed records, then run `python scripts/validate_data.py --write-human-reference`.
+
+- **Profile:** `profile:weingut-rudi-pichler`
+- **Maturity / publication:** `baseline` / `published`
+- **Primary entity:** `producer:weingut-rudi-pichler`
+
+**Component entities**
 
 - `producer:weingut-rudi-pichler`
 - `person:rudi-pichler`
@@ -83,6 +90,43 @@ This composite Human Reference profile is built from:
 - `wine:rudi-pichler-riesling-hochrain-smaragd`
 - `classification:smaragd`
 - `institution:vinea-wachau`
-- `appellation:wachau-dac`
 
-**Reference maturity:** baseline / published.
+**Representative anchors**
+
+- `wine:rudi-pichler-riesling-hochrain-smaragd`
+- `vineyard:ried-hochrain`
+- `grape:riesling`
+- `appellation:wachau-dac`
+- `classification:smaragd`
+
+<details>
+<summary>Machine claims and sources</summary>
+
+### Material claims
+
+| Claim | Layer / observed | Status | Confidence | Sources |
+|---|---|---|---|---|
+| `claim:hochrain-loess` | `reference / —` | `supported` | `high` | `source:vinea-hochrain`, `source:rudi-pichler-vineyards` |
+| `claim:hochrain-site` | `reference / —` | `supported` | `high` | `source:vinea-hochrain`, `source:rudi-pichler-vineyards` |
+| `claim:pichler-hochrain-wine` | `reference / —` | `supported` | `high` | `source:rudi-pichler-hochrain-wine` |
+| `claim:rudi-pichler-estate` | `reference / 2026-08-18` | `supported` | `high` | `source:rudi-pichler-estate` |
+| `claim:smaragd-vinea-category` | `reference / 2026-08-18` | `supported` | `high` | `source:vinea-styles`, `source:rudi-pichler-wines`, `source:vinea-wachau-dac` |
+
+### Sources
+
+- `source:rudi-pichler-estate` — The Rudi Pichler Estate
+- `source:rudi-pichler-hochrain-wine` — Riesling Hochrain Smaragd
+- `source:rudi-pichler-vineyards` — Geology and Soils
+- `source:rudi-pichler-wines` — The Wines
+- `source:vinea-hochrain` — Hochrain
+- `source:vinea-styles` — Vinea wine styles
+- `source:vinea-wachau-dac` — Wachau DAC
+
+</details>
+
+### Open questions
+
+- Confirm current people/leadership beyond Rudi Pichler from first-party material
+- Acquire official Ried geometry rather than inferred coordinates
+- Deepen the interaction of Vinea trademarks and Wachau DAC labeling without collapsing association categories into government tiers
+<!-- END GENERATED CARTA PROVENANCE -->

@@ -79,14 +79,58 @@ Modern references commonly present Les Noëls de Montbenault and Les Rouliers as
 
 Primary CARTA source records include long-form Winedoctor reporting, Vine Trail, and La Revue du vin de France.
 
+<!-- BEGIN GENERATED CARTA PROVENANCE -->
 ## Record & provenance
 
-Composite profile:
+This section is generated from CARTA machine authority. Edit the governed records, then run `python scripts/validate_data.py --write-human-reference`.
+
+- **Profile:** `profile:richard-leroy`
+- **Maturity / publication:** `baseline` / `published`
+- **Primary entity:** `producer:richard-leroy`
+
+**Component entities**
 
 - `person:richard-leroy`
 - `producer:richard-leroy`
 - `wine:les-noels-de-montbenault`
 - `wine:les-rouliers`
-- `grape:chenin-blanc`
 
-**Reference maturity:** baseline / published.
+**Representative anchors**
+
+- `wine:les-noels-de-montbenault`
+- `wine:les-rouliers`
+- `grape:chenin-blanc`
+- `person:imanol-garay`
+
+<details>
+<summary>Machine claims and sources</summary>
+
+### Material claims
+
+| Claim | Layer / observed | Status | Confidence | Sources |
+|---|---|---|---|---|
+| `claim:imanol-richard-work` | `reference / —` | `supported` | `medium` | `source:buvons-imanol`, `source:beattie-imanol`, `source:sourceimports-alfredo-2022` |
+| `claim:richard-leroy-cellar` | `reference / —` | `supported` | `high` | `source:winedoctor-richard-wines`, `source:vinetrail-richard` |
+| `claim:richard-leroy-estate-history` | `reference / —` | `supported` | `high` | `source:winedoctor-richard-2013`, `source:vinetrail-richard`, `source:rvf-richard-2025` |
+| `claim:richard-leroy-two-cuvees` | `reference / —` | `supported` | `high` | `source:vinetrail-richard`, `source:rvf-richard-2025` |
+| `claim:richard-leroy-vineyards` | `reference / —` | `supported` | `high` | `source:winedoctor-richard-vineyards`, `source:vinetrail-richard` |
+
+### Sources
+
+- `source:beattie-imanol` — Imanol Garay, Maslacq, Pyrénées-Atlantiques
+- `source:buvons-imanol` — Imanol Garay Ixilune Blanc
+- `source:rvf-richard-2025` — Domaine Richard Leroy
+- `source:sourceimports-alfredo-2022` — Newsletter March 2022: Alfredo Egia and Imanol Garay
+- `source:vinetrail-richard` — Richard Leroy
+- `source:winedoctor-richard-2013` — Richard Leroy, 2013 Update
+- `source:winedoctor-richard-vineyards` — Richard Leroy: Vineyards
+- `source:winedoctor-richard-wines` — Richard Leroy: Wines
+
+</details>
+
+### Open questions
+
+- Parcel geometry and current access layer
+- Continue documenting influence edges only when transmission is evidenced
+- `claim:imanol-richard-work` — The exact arrangement remains unresolved: current evidence supports WORKED_WITH, but does not establish WORKED_FOR or MENTORED_BY.
+<!-- END GENERATED CARTA PROVENANCE -->

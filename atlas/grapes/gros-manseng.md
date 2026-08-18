@@ -84,7 +84,52 @@ Gros Manseng remains a working regional grape rather than a global trend object 
 
 Key sources include Plantgrape, INAO, Camin Larredya, and current producer/trade documentation.
 
+<!-- BEGIN GENERATED CARTA PROVENANCE -->
 ## Record & provenance
 
-**CARTA ID:** `grape:gros-manseng`  
-**Reference maturity:** baseline / published.
+This section is generated from CARTA machine authority. Edit the governed records, then run `python scripts/validate_data.py --write-human-reference`.
+
+- **Profile:** `profile:gros-manseng`
+- **Maturity / publication:** `baseline` / `published`
+- **Primary entity:** `grape:gros-manseng`
+
+**Component entities**
+
+- `grape:gros-manseng`
+
+**Representative anchors**
+
+- `appellation:jurancon`
+- `appellation:pacherenc-du-vic-bilh`
+- `appellation:bizkaiko-txakolina`
+- `producer:camin-larredya`
+- `producer:domaine-cauhape`
+- `producer:imanol-garay`
+
+<details>
+<summary>Machine claims and sources</summary>
+
+### Material claims
+
+| Claim | Layer / observed | Status | Confidence | Sources |
+|---|---|---|---|---|
+| `claim:bizkaia-grape-list` | `reference / 2026-08-18` | `supported` | `high` | `source:euskadi-bizkaiko-pliego`, `source:eurlex-bizkaiko-2025-amendment` |
+| `claim:camin-larredya-grapes` | `reference / —` | `supported` | `high` | `source:camin-larredya-cuvees` |
+| `claim:gros-manseng-origin-traits` | `reference / —` | `supported` | `high` | `source:plantgrape-gros-manseng` |
+| `claim:jurancon-manseng-core-grapes` | `reference / —` | `supported` | `high` | `source:inao-jurancon` |
+
+### Sources
+
+- `source:camin-larredya-cuvees` — De la Vigne aux Vins
+- `source:eurlex-bizkaiko-2025-amendment` — Approved standard amendment: Bizkaiko Txakolina / Chacolí de Bizkaia / Txakoli de Bizkaia
+- `source:euskadi-bizkaiko-pliego` — Bizkaiko Txakolina consolidated product specification
+- `source:inao-jurancon` — Jurançon
+- `source:plantgrape-gros-manseng` — Gros Manseng
+
+</details>
+
+### Open questions
+
+- Broaden contemporary single-varietal anchor set
+- Resolve genetic relationship to Petit Manseng only with stronger genetic authority
+<!-- END GENERATED CARTA PROVENANCE -->

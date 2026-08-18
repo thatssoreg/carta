@@ -1,21 +1,34 @@
-# Places, countries, landscapes, and appellations
+# Places, law, landscapes, and ecosystems
 
+Country-specific regions and appellations are nested beneath countries; landscapes remain geographic and ecosystems remain relationship-generated. See the [landscape reference model](../landscapes/README.md).
+
+<!-- BEGIN GENERATED CARTA INDEX -->
 ## Countries
 
-- [France](../countries/france/README.md)
-  - Region: [Béarn](../countries/france/regions/bearn.md)
-  - Appellations: [Jurançon](../countries/france/appellations/jurancon.md), [Irouléguy](../countries/france/appellations/irouleguy.md), [Pacherenc du Vic-Bilh](../countries/france/appellations/pacherenc-du-vic-bilh.md)
-- [Spain](../countries/spain/README.md)
-  - Region: [Bizkaia](../countries/spain/regions/bizkaia.md)
-  - Appellation: [Bizkaiko Txakolina](../countries/spain/appellations/bizkaiko-txakolina.md)
+- [France](../countries/france/README.md) — `baseline` / `published`
+- [Spain](../countries/spain/README.md) — `baseline` / `published`
+
+## Regions
+
+- [Bizkaia](../countries/spain/regions/bizkaia.md) — `baseline` / `published`
+- [Béarn](../countries/france/regions/bearn.md) — `baseline` / `published`
+
+## Appellations
+
+- [Bizkaiko Txakolina](../countries/spain/appellations/bizkaiko-txakolina.md) — `baseline` / `published`
+- [Irouléguy](../countries/france/appellations/irouleguy.md) — `baseline` / `published`
+- [Jurançon](../countries/france/appellations/jurancon.md) — `baseline` / `published`
+- [Pacherenc du Vic-Bilh](../countries/france/appellations/pacherenc-du-vic-bilh.md) — `baseline` / `published`
 
 ## Landscapes
 
-- [Landscape reference model](../landscapes/README.md)
-- Western Pyrenees - baseline landscape enrichment queued
+- [Western Pyrenees](../landscapes/western-pyrenees.md) — `node` / `queued`
 
 ## Ecosystems
 
-- [Pyrenean Atlantic](../ecosystems/pyrenean-atlantic.md)
+- [Gang of Four (Beaujolais)](../ecosystems/gang-of-four-beaujolais.md) — `baseline` / `published`
+- [Pyrenean Atlantic](../ecosystems/pyrenean-atlantic.md) — `baseline` / `published`
 
-Country-specific regions and appellations are now nested beneath countries for the Human Reference. Cross-border physical geography belongs under landscapes. Ecosystems remain analytical relationship fields rather than geographic catch-alls.
+<!-- END GENERATED CARTA INDEX -->
+
+This index is generated from `data/reference-profiles/`. Edit the governed profile record rather than this file.

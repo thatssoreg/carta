@@ -56,9 +56,16 @@ authoritative Clary Ranch geometry · vintage-specific Clary vinification · Pet
 
 Primary CARTA source records include Arnot-Roberts' first-party history and Clary Ranch pages plus TTB's Petaluma Gap establishment record.
 
+<!-- BEGIN GENERATED CARTA PROVENANCE -->
 ## Record & provenance
 
-This composite Human Reference profile is built from:
+This section is generated from CARTA machine authority. Edit the governed records, then run `python scripts/validate_data.py --write-human-reference`.
+
+- **Profile:** `profile:arnot-roberts`
+- **Maturity / publication:** `baseline` / `published`
+- **Primary entity:** `producer:arnot-roberts`
+
+**Component entities**
 
 - `producer:arnot-roberts`
 - `person:duncan-arnot-meyers`
@@ -69,4 +76,41 @@ This composite Human Reference profile is built from:
 - `vineyard:clary-ranch`
 - `wine:arnot-roberts-clary-ranch-syrah`
 
-**Reference maturity:** baseline / published.
+**Representative anchors**
+
+- `wine:arnot-roberts-clary-ranch-syrah`
+- `vineyard:clary-ranch`
+- `grape:syrah`
+- `appellation:petaluma-gap-ava`
+
+<details>
+<summary>Machine claims and sources</summary>
+
+### Material claims
+
+| Claim | Layer / observed | Status | Confidence | Sources |
+|---|---|---|---|---|
+| `claim:arnot-caitlin-quinn` | `reference / —` | `supported` | `high` | `source:arnot-roberts-history` |
+| `claim:arnot-clary-syrah-identity` | `reference / —` | `supported` | `high` | `source:arnot-roberts-clary` |
+| `claim:arnot-roberts-founded-2001` | `reference / —` | `supported` | `high` | `source:arnot-roberts-history` |
+| `claim:clary-current-owner` | `reference / 2026-08-18` | `supported` | `high` | `source:arnot-roberts-clary` |
+| `claim:clary-farming` | `reference / 2026-08-18` | `supported` | `high` | `source:arnot-roberts-clary` |
+| `claim:clary-planted-2000` | `reference / —` | `supported` | `high` | `source:arnot-roberts-clary` |
+| `claim:clary-site` | `reference / —` | `supported` | `high` | `source:arnot-roberts-clary` |
+| `claim:clary-soil-clone` | `reference / —` | `supported` | `high` | `source:arnot-roberts-clary` |
+| `claim:petaluma-gap-established` | `reference / —` | `supported` | `high` | `source:ttb-petaluma-gap` |
+
+### Sources
+
+- `source:arnot-roberts-clary` — Clary Ranch Syrah | Arnot-Roberts
+- `source:arnot-roberts-history` — History | Arnot-Roberts
+- `source:ttb-petaluma-gap` — TTB Establishes the Petaluma Gap Viticultural Area
+
+</details>
+
+### Open questions
+
+- Acquire authoritative Clary Ranch parcel geometry rather than inferred coordinates
+- Research vintage-specific Clary Ranch vinification only from wine-specific technical evidence
+- Deepen Petaluma Gap/Sonoma Coast legal overlap only from TTB boundary authority
+<!-- END GENERATED CARTA PROVENANCE -->

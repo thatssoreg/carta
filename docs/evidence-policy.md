@@ -149,6 +149,10 @@ When a trade source is the best publicly available source, CARTA should use it t
 
 Every time-sensitive claim should include `observed_at` and, where applicable, `valid_from` / `valid_to`.
 
+Every Frontier claim requires an observation date. `market`, `availability`, and `price` claims require `observed_at`; they attach to the stable wine, producer, institution, relationship, or other subject they describe rather than to a transient observation container. Retail stock and price observations belong in Frontier. A durable importer or distributor relationship may remain in Reference when evidence supports the relationship across time, but its time-sensitive market claim still carries an observation date and must not imply stock, territory, exclusivity, or an exact start date without evidence.
+
+An assertion framed with perishable temporal language such as `current`, `recent`, `continuing`, or `now` requires `observed_at`; supported validity intervals may additionally bound its temporal truth. A source access date may support that observation date when the claim records what the live source showed at access; it must not be repurposed as an unsupported historical effective date.
+
 A retailer listing proves that a listing existed when observed. It does not prove broad market availability.
 
 A producer portfolio proves representation at the relevant time. It does not prove current stock.
@@ -156,6 +160,8 @@ A producer portfolio proves representation at the relevant time. It does not pro
 A current appellation rule does not establish the historical rule.
 
 A current cellar location does not erase an earlier cellar location.
+
+Repeated observations remain observations. They do not become timeless Reference truth without a separate promotion decision and evidence appropriate to the durable claim.
 
 ## Claims versus hypotheses
 

@@ -74,9 +74,16 @@ official Morgon climat geometry · Lapierre parcel holdings by climat · vintage
 
 Primary CARTA sources are Domaine Marcel Lapierre's current estate and viticulture/vinification pages plus INAO's current Morgon AOP record. Kermit Lynch is used as a fit-for-purpose specialist trade source for the historically influential Gang of Four community-of-practice framing.
 
+<!-- BEGIN GENERATED CARTA PROVENANCE -->
 ## Record & provenance
 
-This composite Human Reference profile is built from:
+This section is generated from CARTA machine authority. Edit the governed records, then run `python scripts/validate_data.py --write-human-reference`.
+
+- **Profile:** `profile:domaine-marcel-lapierre`
+- **Maturity / publication:** `baseline` / `published`
+- **Primary entity:** `producer:domaine-marcel-lapierre`
+
+**Component entities**
 
 - `producer:domaine-marcel-lapierre`
 - `person:marcel-lapierre`
@@ -84,8 +91,43 @@ This composite Human Reference profile is built from:
 - `person:camille-lapierre`
 - `person:jules-chauvet`
 - `wine:lapierre-morgon`
+
+**Representative anchors**
+
+- `wine:lapierre-morgon`
 - `grape:gamay-noir-a-jus-blanc`
 - `appellation:morgon`
-- `ecosystem:gang-of-four-beaujolais`
+- `place:villie-morgon`
 
-**Reference maturity:** baseline / published.
+<details>
+<summary>Machine claims and sources</summary>
+
+### Material claims
+
+| Claim | Layer / observed | Status | Confidence | Sources |
+|---|---|---|---|---|
+| `claim:gang-of-four-beaujolais-community` | `reference / —` | `supported` | `high` | `source:kermit-gang-of-four` |
+| `claim:lapierre-cellar-current` | `reference / 2026-08-18` | `supported` | `high` | `source:lapierre-vinification` |
+| `claim:lapierre-chauvet-guidance` | `reference / —` | `supported` | `high` | `source:lapierre-domaine` |
+| `claim:lapierre-current-owners` | `reference / 2026-08-18` | `supported` | `high` | `source:lapierre-domaine` |
+| `claim:lapierre-estate-identity` | `reference / 2026-08-18` | `supported` | `high` | `source:lapierre-domaine` |
+| `claim:lapierre-morgon-wine` | `reference / —` | `supported` | `high` | `source:lapierre-domaine`, `source:inao-morgon` |
+| `claim:lapierre-organic-certification` | `reference / 2026-08-18` | `supported` | `high` | `source:lapierre-vinification` |
+| `claim:marcel-lapierre-1950-2010` | `reference / —` | `supported` | `high` | `source:lapierre-domaine` |
+| `claim:morgon-aop` | `reference / —` | `supported` | `high` | `source:inao-morgon` |
+
+### Sources
+
+- `source:inao-morgon` — Morgon ou Morgon cru du Beaujolais
+- `source:kermit-gang-of-four` — Jean Foillard — Côte du Py / Beaujolais context
+- `source:lapierre-domaine` — The Domaine Marcel Lapierre
+- `source:lapierre-vinification` — Viticulture and Vinification
+
+</details>
+
+### Open questions
+
+- Acquire authoritative parcel-level geometry and clarify Lapierre holdings by Morgon climat
+- Separate current wine-level cellar protocols from estate-wide practice by vintage where useful
+- Research Foillard/Breton/Thévenet relationships only from direct evidence rather than 'Gang of Four' shorthand
+<!-- END GENERATED CARTA PROVENANCE -->

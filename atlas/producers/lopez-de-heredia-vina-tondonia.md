@@ -53,12 +53,55 @@ Viura / Macabeo · Rioja DOCa · Rioja Alta · Haro · Viña Zaconia / Gravonia 
 
 Primary CARTA source records include R. López de Heredia's estate history, the Consejo Regulador DOCa Rioja, and recent Viña Gravonia technical sheets distributed by Pibernat.
 
+<!-- BEGIN GENERATED CARTA PROVENANCE -->
 ## Record & provenance
 
-This composite Human Reference profile is built from:
+This section is generated from CARTA machine authority. Edit the governed records, then run `python scripts/validate_data.py --write-human-reference`.
+
+- **Profile:** `profile:lopez-de-heredia-vina-tondonia`
+- **Maturity / publication:** `baseline` / `published`
+- **Primary entity:** `producer:lopez-de-heredia-vina-tondonia`
+
+**Component entities**
 
 - `producer:lopez-de-heredia-vina-tondonia`
 - `person:rafael-lopez-de-heredia-y-landeta`
 - `wine:vina-gravonia-blanco`
 
-**Reference maturity:** baseline / published.
+**Representative anchors**
+
+- `wine:vina-gravonia-blanco`
+- `grape:viura`
+- `place:haro`
+- `place:rioja-alta`
+- `appellation:rioja`
+
+<details>
+<summary>Machine claims and sources</summary>
+
+### Material claims
+
+| Claim | Layer / observed | Status | Confidence | Sources |
+|---|---|---|---|---|
+| `claim:gravonia-cellar` | `reference / 2026-08-18` | `supported` | `high` | `source:pibernat-gravonia-2015`, `source:pibernat-gravonia-2013` |
+| `claim:gravonia-composition` | `reference / 2026-08-18` | `supported` | `high` | `source:pibernat-gravonia-2015`, `source:pibernat-gravonia-2013` |
+| `claim:gravonia-zaconia-crosswalk` | `reference / 2026-08-18` | `provisional` | `medium` | `source:pibernat-gravonia-2013`, `source:lopez-heredia-home` |
+| `claim:lopez-heredia-founded-1877` | `reference / —` | `supported` | `high` | `source:lopez-heredia-home` |
+| `claim:lopez-heredia-haro` | `reference / —` | `supported` | `high` | `source:lopez-heredia-home` |
+| `claim:lopez-heredia-vineyards` | `reference / —` | `supported` | `high` | `source:lopez-heredia-home` |
+
+### Sources
+
+- `source:lopez-heredia-home` — R. López de Heredia Viña Tondonia
+- `source:pibernat-gravonia-2013` — Viña Gravonia Blanco 2013
+- `source:pibernat-gravonia-2015` — Viña Gravonia Blanco 2015
+
+</details>
+
+### Open questions
+
+- Resolve the Viña Gravonia / Viña Zaconia vineyard-name crosswalk from first-party records
+- Deepen family succession chronology without importing unsupported genealogy
+- Add current official Rioja aging/classification rules from regulatory authority before making legal-duration claims
+- `claim:gravonia-zaconia-crosswalk` — Confirm the formal historic/current naming relationship between Viña Gravonia and Viña Zaconia from first-party estate documentation before creating a vineyard identity or name assertion.
+<!-- END GENERATED CARTA PROVENANCE -->

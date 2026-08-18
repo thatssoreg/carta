@@ -62,12 +62,57 @@ official Vaudésir geometry · current people/leadership · parcel-level geology
 
 Primary CARTA source records include Louis Michel & Fils' current first-party site, INAO's current Chablis Grand Cru Vaudésir page, and the Chablis wine board's Vaudésir climat reference.
 
+<!-- BEGIN GENERATED CARTA PROVENANCE -->
 ## Record & provenance
 
-This composite Human Reference profile is built from:
+This section is generated from CARTA machine authority. Edit the governed records, then run `python scripts/validate_data.py --write-human-reference`.
+
+- **Profile:** `profile:domaine-louis-michel-fils`
+- **Maturity / publication:** `baseline` / `published`
+- **Primary entity:** `producer:domaine-louis-michel-fils`
+
+**Component entities**
 
 - `producer:domaine-louis-michel-fils`
 - `vineyard:vaudesir`
 - `wine:louis-michel-chablis-grand-cru-vaudesir`
 
-**Reference maturity:** baseline / published.
+**Representative anchors**
+
+- `wine:louis-michel-chablis-grand-cru-vaudesir`
+- `vineyard:vaudesir`
+- `grape:chardonnay`
+- `appellation:chablis-grand-cru`
+
+<details>
+<summary>Machine claims and sources</summary>
+
+### Material claims
+
+| Claim | Layer / observed | Status | Confidence | Sources |
+|---|---|---|---|---|
+| `claim:louis-michel-chablis-location` | `reference / —` | `supported` | `high` | `source:louis-michel-home`, `source:inao-chablis-grand-cru-vaudesir` |
+| `claim:louis-michel-since-1850` | `reference / —` | `supported` | `high` | `source:louis-michel-home` |
+| `claim:louis-michel-stainless` | `reference / 2026-08-18` | `supported` | `high` | `source:louis-michel-home`, `source:louis-michel-grand-cru` |
+| `claim:louis-michel-vaudesir-cellar` | `reference / 2026-08-18` | `supported` | `high` | `source:louis-michel-grand-cru` |
+| `claim:louis-michel-vaudesir-parcel` | `reference / —` | `supported` | `high` | `source:louis-michel-grand-cru` |
+| `claim:louis-michel-vaudesir-plantings` | `reference / —` | `supported` | `high` | `source:louis-michel-grand-cru` |
+| `claim:louis-michel-vaudesir-wine` | `reference / —` | `supported` | `high` | `source:louis-michel-grand-cru` |
+| `claim:vaudesir-chablis-grand-cru` | `reference / —` | `supported` | `high` | `source:inao-chablis-grand-cru-vaudesir`, `source:chablis-vaudesir` |
+| `claim:vaudesir-climat-context` | `reference / —` | `supported` | `high` | `source:chablis-vaudesir` |
+
+### Sources
+
+- `source:chablis-vaudesir` — Vaudésir | The Climats of Chablis
+- `source:inao-chablis-grand-cru-vaudesir` — Chablis Grand Cru Vaudésir
+- `source:louis-michel-grand-cru` — Chablis Grand Crus | Louis Michel & Fils
+- `source:louis-michel-home` — Louis Michel & Fils
+
+</details>
+
+### Open questions
+
+- Add current people only after a stronger first-party role source is recovered
+- Acquire official climat geometry from the governing boundary source rather than digitizing descriptive maps
+- Deepen Chablis geology at parcel resolution without projecting climat-wide descriptions onto a producer parcel
+<!-- END GENERATED CARTA PROVENANCE -->

@@ -48,16 +48,71 @@ The vineyard is anchored to Apalta Valley and the legal Apalta/Colchagua geograp
 
 legal-company/public-brand naming chronology · parcel-level Le Petit Clos sourcing · vintage élevage history · official Apalta geometry · Clos Apalta flagship-wine history
 
+<!-- BEGIN GENERATED CARTA PROVENANCE -->
 ## Record & provenance
 
-This Human Reference profile is built from:
+This section is generated from CARTA machine authority. Edit the governed records, then run `python scripts/validate_data.py --write-human-reference`.
+
+- **Profile:** `profile:clos-apalta`
+- **Maturity / publication:** `baseline` / `published`
+- **Primary entity:** `project:clos-apalta`
+
+**Component entities**
 
 - `producer:domaines-bournet-lapostolle-chile`
 - `project:clos-apalta`
 - `vineyard:clos-apalta-vineyard`
 - `wine:clos-apalta`
 - `wine:le-petit-clos`
+- `person:alexandra-marnier-lapostolle`
+- `person:cyril-de-bournet`
+- `person:charles-henri-de-bournet-marnier-lapostolle`
+- `person:andrea-leon`
+- `person:michel-rolland`
+
+**Representative anchors**
+
+- `wine:le-petit-clos`
+- `wine:clos-apalta`
+- `vineyard:clos-apalta-vineyard`
 - `appellation:apalta`
 - `place:apalta-valley`
 
-**Reference maturity:** baseline / published.
+<details>
+<summary>Machine claims and sources</summary>
+
+### Material claims
+
+| Claim | Layer / observed | Status | Confidence | Sources |
+|---|---|---|---|---|
+| `claim:apalta-legal-area-2018` | `reference / —` | `supported` | `high` | `source:sag-apalta-decree-56` |
+| `claim:clos-apalta-leadership` | `reference / 2026-08-18` | `supported` | `high` | `source:clos-apalta-history`, `source:clos-apalta-team` |
+| `claim:clos-apalta-organic-since-2009` | `reference / 2026-08-18` | `supported` | `high` | `source:clos-apalta-philosophy` |
+| `claim:clos-apalta-project-identity` | `reference / —` | `supported` | `high` | `source:clos-apalta-history`, `source:clos-apalta-winery` |
+| `claim:clos-apalta-vineyard-context` | `reference / —` | `supported` | `high` | `source:clos-apalta-vineyard` |
+| `claim:le-petit-clos-2020-blend` | `reference / —` | `supported` | `high` | `source:le-petit-clos-2020` |
+| `claim:le-petit-clos-2021-blend` | `reference / —` | `supported` | `high` | `source:le-petit-clos-2021` |
+| `claim:le-petit-clos-2022-blend` | `reference / —` | `supported` | `high` | `source:le-petit-clos-2022` |
+| `claim:le-petit-clos-identity` | `reference / —` | `supported` | `high` | `source:le-petit-clos`, `source:clos-apalta-history` |
+
+### Sources
+
+- `source:clos-apalta-history` — The Domaine — History
+- `source:clos-apalta-philosophy` — The Domaine — Philosophy
+- `source:clos-apalta-team` — The Domaine — Team
+- `source:clos-apalta-vineyard` — The Domaine — Vineyard
+- `source:clos-apalta-winery` — The Domaine — Winery
+- `source:le-petit-clos` — Le Petit Clos
+- `source:le-petit-clos-2020` — Le Petit Clos 2020
+- `source:le-petit-clos-2021` — Le Petit Clos 2021
+- `source:le-petit-clos-2022` — Le Petit Clos 2022
+- `source:sag-apalta-decree-56` — Decreto 56 — Modifica zonificación vitícola
+
+</details>
+
+### Open questions
+
+- Resolve legal-company versus public-facing Domaine Bournet-Lapostolle naming over time
+- Acquire authoritative geometry for Area Apalta and Clos Apalta parcels
+- Extend vintage-scoped Le Petit Clos blend and élevage history without universalizing percentages
+<!-- END GENERATED CARTA PROVENANCE -->

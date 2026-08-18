@@ -51,8 +51,45 @@ CARTA's interest is in keeping that familiar style visible while also showing th
 
 [Bizkaiko Txakolina](../appellations/bizkaiko-txakolina.md) · [Alfredo Egia](../../../producers/alfredo-egia.md) · [Petit Courbu](../../../grapes/petit-courbu.md) · [Western Pyrenees](../../../landscapes/western-pyrenees.md)
 
+<!-- BEGIN GENERATED CARTA PROVENANCE -->
 ## Record & provenance
 
-**CARTA ID:** `place:bizkaia`  
-**Place kind:** administrative region  
-**Reference maturity:** baseline / published.
+This section is generated from CARTA machine authority. Edit the governed records, then run `python scripts/validate_data.py --write-human-reference`.
+
+- **Profile:** `profile:bizkaia`
+- **Maturity / publication:** `baseline` / `published`
+- **Primary entity:** `place:bizkaia`
+
+**Component entities**
+
+- `place:bizkaia`
+
+**Representative anchors**
+
+- `appellation:bizkaiko-txakolina`
+- `producer:alfredo-egia-wine`
+- `project:hegan-egin`
+- `grape:petit-courbu`
+- `grape:petit-manseng`
+
+<details>
+<summary>Machine claims and sources</summary>
+
+### Material claims
+
+| Claim | Layer / observed | Status | Confidence | Sources |
+|---|---|---|---|---|
+| `claim:alfredo-balmaseda` | `reference / —` | `supported` | `high` | `source:sager-alfredo`, `source:sourceimports-alfredo-2022` |
+
+### Sources
+
+- `source:sager-alfredo` — Alfredo Egia
+- `source:sourceimports-alfredo-2022` — Newsletter March 2022: Alfredo Egia and Imanol Garay
+
+</details>
+
+### Open questions
+
+- Acquire municipal/topographic/hydrologic GIS layers
+- Broaden representative producer set beyond current pilot
+<!-- END GENERATED CARTA PROVENANCE -->

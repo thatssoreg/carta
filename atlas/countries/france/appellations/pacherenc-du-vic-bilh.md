@@ -61,9 +61,45 @@ Dry Pacherenc is increasingly relevant to drinkers interested in structured, hig
 
 Current authority: INAO. Producer orientation uses specialist references.
 
+<!-- BEGIN GENERATED CARTA PROVENANCE -->
 ## Record & provenance
 
-**CARTA ID:** `appellation:pacherenc-du-vic-bilh`  
-**Reference maturity:** baseline / published.
+This section is generated from CARTA machine authority. Edit the governed records, then run `python scripts/validate_data.py --write-human-reference`.
 
-Official geometry remains a GIS acquisition task.
+- **Profile:** `profile:pacherenc-du-vic-bilh`
+- **Maturity / publication:** `baseline` / `published`
+- **Primary entity:** `appellation:pacherenc-du-vic-bilh`
+
+**Component entities**
+
+- `appellation:pacherenc-du-vic-bilh`
+
+**Representative anchors**
+
+- `producer:chateau-bouscasse`
+- `grape:petit-manseng`
+- `grape:gros-manseng`
+- `grape:petit-courbu`
+
+<details>
+<summary>Machine claims and sources</summary>
+
+### Material claims
+
+| Claim | Layer / observed | Status | Confidence | Sources |
+|---|---|---|---|---|
+| `claim:pacherenc-bouscasse-anchor` | `reference / —` | `supported` | `medium` | `source:wsg-southwest-producer-guide` |
+| `claim:pacherenc-reference-summary` | `reference / —` | `supported` | `high` | `source:inao-pacherenc` |
+
+### Sources
+
+- `source:inao-pacherenc` — Pacherenc du Vic-Bilh
+- `source:wsg-southwest-producer-guide` — Producer Guide - South-West
+
+</details>
+
+### Open questions
+
+- Acquire official geometry
+- Broaden dry/sweet contemporary reference set
+<!-- END GENERATED CARTA PROVENANCE -->

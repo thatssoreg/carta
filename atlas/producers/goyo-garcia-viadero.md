@@ -67,9 +67,16 @@ Valle de Liébana · Vino de la Tierra de Liébana · Palomino Fino · Mencía �
 
 Primary CARTA source records include José Pastor Selections, Old World Wine Co., the Boletín Oficial del Estado, and the Government of Cantabria.
 
+<!-- BEGIN GENERATED CARTA PROVENANCE -->
 ## Record & provenance
 
-This is a composite Human Reference profile built from:
+This section is generated from CARTA machine authority. Edit the governed records, then run `python scripts/validate_data.py --write-human-reference`.
+
+- **Profile:** `profile:goyo-garcia-viadero`
+- **Maturity / publication:** `baseline` / `published`
+- **Primary entity:** `producer:goyo-garcia-viadero`
+
+**Component entities**
 
 - `person:goyo-garcia-viadero`
 - `producer:goyo-garcia-viadero`
@@ -77,4 +84,39 @@ This is a composite Human Reference profile built from:
 - `wine:beatum-blanco`
 - `wine:beatum-tinto`
 
-**Reference maturity:** baseline / published.
+**Representative anchors**
+
+- `project:beatum`
+- `wine:beatum-blanco`
+- `wine:beatum-tinto`
+- `appellation:vino-de-la-tierra-de-liebana`
+- `grape:palomino-fino`
+- `grape:mencia`
+
+<details>
+<summary>Machine claims and sources</summary>
+
+### Material claims
+
+| Claim | Layer / observed | Status | Confidence | Sources |
+|---|---|---|---|---|
+| `claim:beatum-blanco` | `reference / —` | `supported` | `high` | `source:jose-pastor-goyo` |
+| `claim:beatum-boundary` | `reference / —` | `supported` | `high` | `source:jose-pastor-goyo`, `source:old-world-goyo` |
+| `claim:beatum-geography` | `reference / —` | `supported` | `high` | `source:jose-pastor-goyo` |
+| `claim:beatum-tinto` | `reference / —` | `supported` | `high` | `source:jose-pastor-goyo` |
+| `claim:goyo-independent` | `reference / —` | `supported` | `medium` | `source:old-world-goyo` |
+| `claim:goyo-jose-pastor-importer` | `reference / 2026-08-18` | `supported` | `high` | `source:old-world-goyo`, `source:jose-pastor-goyo` |
+
+### Sources
+
+- `source:jose-pastor-goyo` — Goyo Garcia Viadero
+- `source:old-world-goyo` — The Devotion of Ribera del Duero’s Goyo Garcia Viadero
+
+</details>
+
+### Open questions
+
+- Clarify exact vineyard parcels, tenure and names in Liébana
+- Build a fuller Ribera del Duero portfolio before treating the producer profile as comprehensive
+- Track Beâtum blend and élevage changes as dated claims rather than a fixed recipe
+<!-- END GENERATED CARTA PROVENANCE -->

@@ -94,8 +94,8 @@ Virginia deserves its own verified producer-and-wine anchor set. Run 02 supplied
 
 Within the current CARTA graph:
 
-- [Rebel Rebel](../wines/rebel-rebel.md)
-- [Ixilune](../wines/ixilune.md)
+- [Rebel Rebel](../producers/alfredo-egia.md)
+- [Ixilune](../producers/imanol-garay.md)
 - Hegan Egin through the collaborative project
 
 The Jurançon and Virginia lists should grow as their own producer/wine records mature.
@@ -130,9 +130,74 @@ Those are research questions, not reference facts.
 
 Key machine sources include Plantgrape, INAO, the Virginia 2025 Commercial Wine Grape Report, Virginia Wine Board research, and producer/trade records for contemporary wines.
 
+<!-- BEGIN GENERATED CARTA PROVENANCE -->
 ## Record & provenance
 
-**CARTA ID:** `grape:petit-manseng`  
-**Reference maturity:** baseline / published.
+This section is generated from CARTA machine authority. Edit the governed records, then run `python scripts/validate_data.py --write-human-reference`.
 
-Current high-confidence genetic edge: `GENETICALLY_CLOSE_TO → grape:savagnin`.
+- **Profile:** `profile:petit-manseng`
+- **Maturity / publication:** `baseline` / `published`
+- **Primary entity:** `grape:petit-manseng`
+
+**Component entities**
+
+- `grape:petit-manseng`
+
+**Representative anchors**
+
+- `appellation:jurancon`
+- `appellation:pacherenc-du-vic-bilh`
+- `appellation:bizkaiko-txakolina`
+- `place:virginia`
+- `producer:domaine-cauhape`
+- `producer:clos-uroulat`
+- `producer:domaine-de-souch`
+- `producer:camin-larredya`
+- `producer:alfredo-egia-wine`
+- `producer:imanol-garay`
+- `wine:rebel-rebel`
+- `wine:ixilune`
+
+<details>
+<summary>Machine claims and sources</summary>
+
+### Material claims
+
+| Claim | Layer / observed | Status | Confidence | Sources |
+|---|---|---|---|---|
+| `claim:bizkaia-grape-list` | `reference / 2026-08-18` | `supported` | `high` | `source:euskadi-bizkaiko-pliego`, `source:eurlex-bizkaiko-2025-amendment` |
+| `claim:camin-larredya-grapes` | `reference / —` | `supported` | `high` | `source:camin-larredya-cuvees` |
+| `claim:ixilune-composition` | `reference / —` | `supported` | `medium` | `source:orange-imanol-2022`, `source:sourceimports-imanol-2022` |
+| `claim:jurancon-manseng-core-grapes` | `reference / —` | `supported` | `high` | `source:inao-jurancon` |
+| `claim:petit-manseng-origin-traits` | `reference / —` | `supported` | `high` | `source:plantgrape-petit-manseng` |
+| `claim:petit-manseng-savagnin` | `reference / —` | `supported` | `high` | `source:plantgrape-petit-manseng` |
+| `claim:rebel-rebel-style` | `reference / 2026-08-18` | `supported` | `medium` | `source:sager-alfredo`, `source:pellicle-alfredo-2025` |
+| `claim:virginia-dry-petit-manseng-research` | `reference / 2026-08-18` | `supported` | `high` | `source:virginia-dry-petit-manseng` |
+| `claim:virginia-petit-manseng-2025-acreage` | `reference / 2025-12-31` | `supported` | `high` | `source:virginia-cgr-2025` |
+| `claim:virginia-pm-performance` | `reference / —` | `supported` | `high` | `source:vt-viticulture-2004`, `source:vt-enology-123` |
+| `claim:virginia-pm-ripening-2025` | `reference / —` | `supported` | `high` | `source:vt-ripening-2025` |
+
+### Sources
+
+- `source:camin-larredya-cuvees` — De la Vigne aux Vins
+- `source:eurlex-bizkaiko-2025-amendment` — Approved standard amendment: Bizkaiko Txakolina / Chacolí de Bizkaia / Txakoli de Bizkaia
+- `source:euskadi-bizkaiko-pliego` — Bizkaiko Txakolina consolidated product specification
+- `source:inao-jurancon` — Jurançon
+- `source:orange-imanol-2022` — Imanol Garay, the emotions of a wine
+- `source:pellicle-alfredo-2025` — Txakolí, Creativity, and Subversion in Basque Country, Spain
+- `source:plantgrape-petit-manseng` — Petit Manseng
+- `source:sager-alfredo` — Alfredo Egia
+- `source:sourceimports-imanol-2022` — Newsletter June 2022: Imanol Garay
+- `source:virginia-cgr-2025` — 2025 Commercial Wine Grape Report
+- `source:virginia-dry-petit-manseng` — In Pursuit of Dry Petit Manseng
+- `source:vt-enology-123` — Enology Notes 123: Petit Manseng
+- `source:vt-ripening-2025` — Ripening Kinetics and Grape Chemistry of Virginia Petit Manseng and Chardonnay
+- `source:vt-viticulture-2004` — Viticulture Notes: Petit Manseng in Virginia
+
+</details>
+
+### Open questions
+
+- Current global planting comparison remains unresolved
+- Build verified Virginia producer/wine anchor set from producer-level evidence
+<!-- END GENERATED CARTA PROVENANCE -->

@@ -11,6 +11,7 @@
       "pattern": "^[a-z][a-z0-9_-]*:[a-z0-9][a-z0-9._-]*$"
     },
     "type": {
+      "description": "Entity family. market_signal is retained for STRATA v0.2 compatibility but is deprecated for authored core data; Frontier intelligence is represented as dated claims on stable subjects.",
       "enum": [
         "person", "producer", "project", "ecosystem", "grape", "wine", "vineyard",
         "place", "appellation", "geographic_feature", "geology", "practice",
@@ -44,23 +45,33 @@
         }
       }
     },
-    "summary": {"type": "string"},
+    "summary": {
+      "type": "string",
+      "description": "Non-authoritative display/search copy. Material facts require sourced claims."
+    },
     "spatial_refs": {
+      "deprecated": true,
+      "description": "Deprecated authored reverse index. Derive spatial assertions from spatial-assertion.entity_id.",
       "type": "array",
       "items": {"type": "string", "pattern": "^(?:geom|spatial):[a-z0-9][a-z0-9._-]*$"},
       "uniqueItems": true
     },
     "name_assertion_ids": {
+      "deprecated": true,
+      "description": "Deprecated authored reverse index. Derive name assertions from name-assertion.entity_id.",
       "type": "array",
       "items": {"type": "string", "pattern": "^name:[a-z0-9][a-z0-9._-]*$"},
       "uniqueItems": true
     },
     "claim_ids": {
+      "deprecated": true,
+      "description": "Deprecated authored reverse index. Derive claims from claim.subject_ref. This does not deprecate forward evidence links on other record types.",
       "type": "array",
       "items": {"type": "string", "pattern": "^claim:[a-z0-9][a-z0-9._-]*$"},
       "uniqueItems": true
     },
     "tags": {
+      "description": "Non-authoritative display, navigation, and search labels. Material facts require sourced claims.",
       "type": "array",
       "items": {"type": "string", "minLength": 1},
       "uniqueItems": true

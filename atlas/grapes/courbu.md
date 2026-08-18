@@ -85,7 +85,42 @@ Courbu's current story is continuity more than rediscovery. Txakoli's contempora
 
 Key sources include Plantgrape and official Basque wine regulations.
 
+<!-- BEGIN GENERATED CARTA PROVENANCE -->
 ## Record & provenance
 
-**CARTA ID:** `grape:courbu`  
-**Reference maturity:** baseline / published.
+This section is generated from CARTA machine authority. Edit the governed records, then run `python scripts/validate_data.py --write-human-reference`.
+
+- **Profile:** `profile:courbu`
+- **Maturity / publication:** `baseline` / `published`
+- **Primary entity:** `grape:courbu`
+
+**Component entities**
+
+- `grape:courbu`
+
+**Representative anchors**
+
+- `appellation:irouleguy`
+- `appellation:bizkaiko-txakolina`
+
+<details>
+<summary>Machine claims and sources</summary>
+
+### Material claims
+
+| Claim | Layer / observed | Status | Confidence | Sources |
+|---|---|---|---|---|
+| `claim:courbu-expanded-traits` | `reference / —` | `supported` | `high` | `source:plantgrape-courbu` |
+| `claim:courbu-hondarrabi-zuri` | `reference / —` | `supported` | `high` | `source:plantgrape-courbu` |
+
+### Sources
+
+- `source:plantgrape-courbu` — Courbu
+
+</details>
+
+### Open questions
+
+- Broaden producer and wine anchors
+- Keep Courbu, Petit Courbu and Courbu noir distinctions explicit
+<!-- END GENERATED CARTA PROVENANCE -->

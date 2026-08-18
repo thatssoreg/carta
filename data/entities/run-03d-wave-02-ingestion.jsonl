@@ -25,7 +25,7 @@
 {"id":"producer:lopez-de-heredia-vina-tondonia","layer":"reference","name":"R. López de Heredia Viña Tondonia","status":"active","tags":["rioja","haro"],"type":"producer"}
 {"id":"person:rafael-lopez-de-heredia-y-landeta","layer":"reference","name":"Rafael López de Heredia y Landeta","status":"historical","type":"person"}
 {"id":"wine:vina-gravonia-blanco","layer":"reference","name":"Viña Gravonia Blanco","status":"active","tags":["rioja","white","viura"],"type":"wine"}
-{"alternate_names":[{"kind":"synonym","language":"es","name":"Macabeo"}],"id":"grape:viura","layer":"reference","name":"Viura","name_assertion_ids":["name:viura-macabeo"],"status":"active","type":"grape"}
+{"alternate_names":[{"kind":"synonym","language":"es","name":"Macabeo"}],"id":"grape:viura","layer":"reference","name":"Viura","status":"active","type":"grape"}
 {"id":"place:germany","layer":"reference","name":"Germany","place_kind":"country","status":"active","type":"place"}
 {"id":"place:mosel","layer":"reference","name":"Mosel","place_kind":"wine_region","status":"active","type":"place"}
 {"id":"place:saar","layer":"reference","name":"Saar","place_kind":"wine_region","status":"active","summary":"CARTA models Saar as a wine-region place within the Mosel wine world rather than as a separate current appellation.","type":"place"}

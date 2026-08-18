@@ -61,13 +61,63 @@ Mondeuse · San Luis Obispo Coast · Raj Parr · cool-climate plant-material mov
 
 Primary CARTA source records include Phelan Farm's vineyard, viticulture and wine pages, Polaner Selections, Leon & Son, Sager + Wine, TTB, and the Run 03G Bassi reconciliation sources.
 
+<!-- BEGIN GENERATED CARTA PROVENANCE -->
 ## Record & provenance
 
-This composite Human Reference profile is built from:
+This section is generated from CARTA machine authority. Edit the governed records, then run `python scripts/validate_data.py --write-human-reference`.
+
+- **Profile:** `profile:phelan-farm`
+- **Maturity / publication:** `baseline` / `published`
+- **Primary entity:** `producer:phelan-farm`
+
+**Component entities**
 
 - `producer:phelan-farm`
 - `person:greg-phelan`
 - `person:rajat-parr`
 - `wine:phelan-farm-mondeuse`
 
-**Reference maturity:** baseline / published.
+**Representative anchors**
+
+- `wine:phelan-farm-mondeuse`
+- `grape:mondeuse`
+- `place:cambria-california`
+- `appellation:san-luis-obispo-coast-ava`
+
+<details>
+<summary>Machine claims and sources</summary>
+
+### Material claims
+
+| Claim | Layer / observed | Status | Confidence | Sources |
+|---|---|---|---|---|
+| `claim:phelan-2007-planting` | `reference / —` | `supported` | `high` | `source:phelan-vineyard`, `source:polaner-phelan` |
+| `claim:phelan-cellar` | `reference / 2026-08-18` | `supported` | `high` | `source:phelan-wines` |
+| `claim:phelan-farming` | `reference / 2026-08-18` | `supported` | `high` | `source:phelan-viticulture`, `source:polaner-phelan` |
+| `claim:phelan-location` | `reference / —` | `supported` | `high` | `source:polaner-phelan`, `source:phelan-vineyard` |
+| `claim:phelan-mondeuse-composition` | `reference / —` | `supported` | `high` | `source:sager-phelan`, `source:leon-phelan-mondeuse-2021` |
+| `claim:phelan-mondeuse-vinification-conflict` | `reference / 2026-08-18` | `contested` | `high` | `source:leon-phelan-mondeuse-2021`, `source:sager-phelan` |
+| `claim:phelan-parr-2017` | `reference / —` | `supported` | `high` | `source:polaner-phelan` |
+| `claim:phelan-polaner-distribution` | `frontier / 2026-08-18` | `supported` | `high` | `source:polaner-phelan`, `source:polaner-may-2026-ny-price-list` |
+| `claim:slo-coast-established` | `reference / —` | `supported` | `high` | `source:ttb-slo-coast` |
+
+### Sources
+
+- `source:leon-phelan-mondeuse-2021` — 2021 Phelan Farm Mondeuse, San Luis Obispo County, USA
+- `source:phelan-vineyard` — Vineyard | Phelan Farm
+- `source:phelan-viticulture` — Viticulture | Phelan Farm
+- `source:phelan-wines` — Phelan Farm Wines
+- `source:polaner-may-2026-ny-price-list` — New York Price List — May 2026
+- `source:polaner-phelan` — Phelan Farm
+- `source:sager-phelan` — Parr Wines
+- `source:ttb-slo-coast` — List of AVAs by Establishment Date
+
+</details>
+
+### Open questions
+
+- Resolve conflicting whole-cluster versus destemmed Mondeuse descriptions by vintage/source
+- Acquire parcel-level geometry and clarify land/producer tenure
+- Map Raj Parr's other projects only as evidence-backed relationships in later waves
+- `claim:phelan-mondeuse-vinification-conflict` — Resolve whether the apparent difference reflects vintage-specific practice, a source error, or a change in protocol; do not encode a universal whole-cluster or destemmed rule.
+<!-- END GENERATED CARTA PROVENANCE -->

@@ -57,9 +57,16 @@ authoritative Vigna La Casa geometry · Montosoli spatial definition · historic
 
 Primary CARTA source records include Caparzo's current first-party site and the Brunello di Montalcino Consorzio's producer and production-rule pages.
 
+<!-- BEGIN GENERATED CARTA PROVENANCE -->
 ## Record & provenance
 
-This composite Human Reference profile is built from:
+This section is generated from CARTA machine authority. Edit the governed records, then run `python scripts/validate_data.py --write-human-reference`.
+
+- **Profile:** `profile:caparzo`
+- **Maturity / publication:** `baseline` / `published`
+- **Primary entity:** `producer:caparzo`
+
+**Component entities**
 
 - `producer:caparzo`
 - `person:elisabetta-gnudi-angelini`
@@ -67,4 +74,44 @@ This composite Human Reference profile is built from:
 - `vineyard:vigna-la-casa`
 - `wine:caparzo-brunello-di-montalcino-vigna-la-casa`
 
-**Reference maturity:** baseline / published.
+**Representative anchors**
+
+- `wine:caparzo-brunello-di-montalcino-vigna-la-casa`
+- `vineyard:vigna-la-casa`
+- `grape:sangiovese`
+- `appellation:brunello-di-montalcino`
+- `geofeature:montosoli`
+
+<details>
+<summary>Machine claims and sources</summary>
+
+### Material claims
+
+| Claim | Layer / observed | Status | Confidence | Sources |
+|---|---|---|---|---|
+| `claim:brunello-current-rules` | `reference / 2026-08-18` | `supported` | `high` | `source:consorzio-brunello-rules` |
+| `claim:caparzo-acquired-1998` | `reference / —` | `supported` | `high` | `source:consorzio-caparzo` |
+| `claim:caparzo-founded-1970` | `reference / —` | `supported` | `high` | `source:consorzio-caparzo` |
+| `claim:caparzo-la-casa-1977` | `reference / —` | `supported` | `high` | `source:consorzio-caparzo`, `source:caparzo-official` |
+| `claim:caparzo-la-casa-cellar` | `reference / 2026-08-18` | `supported` | `high` | `source:caparzo-official` |
+| `claim:caparzo-massimo-bracalente` | `reference / 2026-08-18` | `supported` | `high` | `source:caparzo-official` |
+| `claim:caparzo-montalcino-location` | `reference / —` | `supported` | `high` | `source:caparzo-official`, `source:consorzio-brunello-rules` |
+| `claim:la-casa-montosoli-context` | `reference / —` | `provisional` | `medium` | `source:caparzo-official` |
+| `claim:la-casa-site` | `reference / 2026-08-18` | `supported` | `high` | `source:caparzo-official` |
+| `claim:sangiovese-brunello-montalcino` | `reference / —` | `supported` | `high` | `source:consorzio-brunello-rules` |
+
+### Sources
+
+- `source:caparzo-official` — Caparzo
+- `source:consorzio-brunello-rules` — Brunello di Montalcino | Production Rules
+- `source:consorzio-caparzo` — Caparzo S.r.l.
+
+</details>
+
+### Open questions
+
+- Acquire authoritative Vigna La Casa parcel geometry
+- Clarify the precise spatial relationship of Vigna La Casa to Montosoli before promoting the provisional hill edge
+- Track current La Casa cellar protocol as temporal practice rather than assuming historical continuity
+- `claim:la-casa-montosoli-context` — Caparzo places the La Casa property and its surrounding Brunello di Montalcino Vigna La Casa vineyard context on the Montosoli hill near Montalcino.
+<!-- END GENERATED CARTA PROVENANCE -->

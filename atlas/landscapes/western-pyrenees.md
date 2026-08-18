@@ -94,9 +94,35 @@ OpenStreetMap may support reference points, but it should not replace official a
 
 [Pyrenean Atlantic ecosystem](../ecosystems/pyrenean-atlantic.md) · [Bizkaia](../countries/spain/regions/bizkaia.md) · [Irouléguy](../countries/france/appellations/irouleguy.md) · [Jurançon](../countries/france/appellations/jurancon.md) · [Béarn](../countries/france/regions/bearn.md)
 
+<!-- BEGIN GENERATED CARTA PROVENANCE -->
 ## Record & provenance
 
-**CARTA ID:** `geofeature:western-pyrenees`  
-**Reference maturity:** node / queued.
+This section is generated from CARTA machine authority. Edit the governed records, then run `python scripts/validate_data.py --write-human-reference`.
 
-**Promotion gate:** a real GIS acquisition and landscape synthesis pass.
+- **Profile:** `profile:western-pyrenees`
+- **Maturity / publication:** `node` / `queued`
+- **Primary entity:** `geofeature:western-pyrenees`
+
+**Component entities**
+
+- `geofeature:western-pyrenees`
+
+<details>
+<summary>Machine claims and sources</summary>
+
+### Material claims
+
+No material machine claims are recorded for this profile yet.
+
+### Sources
+
+No source records are projected for this profile yet.
+
+</details>
+
+### Open questions
+
+- Define defensible scope from real terrain, watershed and cultural layers
+- Acquire authoritative DEM, hydrology, geology and administrative/appellation geometries
+- Do not use the Run 02 approximate rectangle as geometry
+<!-- END GENERATED CARTA PROVENANCE -->

@@ -48,6 +48,8 @@ The modern DO helped stabilize and renew a local wine culture that had contracte
 
 For CARTA, the denomination is especially important because the legal naming system creates direct bridges to French Pyrenean grape identities. Those bridges must remain jurisdiction-specific rather than becoming sloppy universal synonyms.
 
+The PDO protects **Bizkaiko Txakolina**, **Chacolí de Bizkaia**, and **Txakoli de Bizkaia**. A 2024 Basque Government order also reserves the traditional terms Chacolí, Txakolina, and Txakoli to wines entitled to use the named Bizkaia, Getaria, or Álava protected designations. This is legal naming scope, not a universal synonym rule.
+
 ## Producers and projects to know
 
 - [Alfredo Egia](../../../producers/alfredo-egia.md) — contemporary textural/experimental reference
@@ -67,9 +69,54 @@ The most useful current development is not simply “new grapes.” It is a wide
 
 Current legal authority: Gobierno Vasco / Eusko Jaurlaritza and the EU PDO record. Producer/style context uses Spanish Wine Lover, Pellicle, Sager + Wine, and other trade/specialist sources.
 
+<!-- BEGIN GENERATED CARTA PROVENANCE -->
 ## Record & provenance
 
-**CARTA ID:** `appellation:bizkaiko-txakolina`  
-**Reference maturity:** baseline / published.
+This section is generated from CARTA machine authority. Edit the governed records, then run `python scripts/validate_data.py --write-human-reference`.
 
-Official PDO geometry remains a GIS acquisition task.
+- **Profile:** `profile:bizkaiko-txakolina`
+- **Maturity / publication:** `baseline` / `published`
+- **Primary entity:** `appellation:bizkaiko-txakolina`
+
+**Component entities**
+
+- `appellation:bizkaiko-txakolina`
+
+**Representative anchors**
+
+- `producer:alfredo-egia-wine`
+- `project:hegan-egin`
+- `grape:courbu`
+- `grape:petit-courbu`
+- `grape:petit-manseng`
+- `grape:gros-manseng`
+
+<details>
+<summary>Machine claims and sources</summary>
+
+### Material claims
+
+| Claim | Layer / observed | Status | Confidence | Sources |
+|---|---|---|---|---|
+| `claim:bizkaia-grape-list` | `reference / 2026-08-18` | `supported` | `high` | `source:euskadi-bizkaiko-pliego`, `source:eurlex-bizkaiko-2025-amendment` |
+| `claim:bizkaiko-authorized-since-2008` | `reference / —` | `supported` | `high` | `source:euskadi-bizkaiko-2008`, `source:eurlex-bizkaiko-2025-amendment` |
+| `claim:bizkaiko-geographical-area` | `reference / 2026-08-18` | `supported` | `high` | `source:eurlex-bizkaiko-2025-amendment` |
+| `claim:bizkaiko-legal-names` | `reference / 2026-08-18` | `supported` | `high` | `source:eurlex-bizkaiko-2025-amendment` |
+| `claim:petit-courbu-bizkaia-name` | `reference / 2026-08-18` | `supported` | `high` | `source:euskadi-bizkaiko-pliego`, `source:plantgrape-petit-courbu`, `source:eurlex-bizkaiko-2025-amendment` |
+| `claim:txakoli-term` | `reference / —` | `supported` | `high` | `source:euskadi-txakoli-term` |
+
+### Sources
+
+- `source:eurlex-bizkaiko-2025-amendment` — Approved standard amendment: Bizkaiko Txakolina / Chacolí de Bizkaia / Txakoli de Bizkaia
+- `source:euskadi-bizkaiko-2008` — Bizkaiko Txakolina / Txakoli de Bizkaia / Chacolí de Bizkaia regulation, consolidated 2008
+- `source:euskadi-bizkaiko-pliego` — Bizkaiko Txakolina consolidated product specification
+- `source:euskadi-txakoli-term` — Conditions of use of the traditional term Chacolí / Txakolina / Txakoli
+- `source:plantgrape-petit-courbu` — Petit Courbu
+
+</details>
+
+### Open questions
+
+- Acquire official PDO geometry
+- Broaden representative producer set beyond pilot network
+<!-- END GENERATED CARTA PROVENANCE -->

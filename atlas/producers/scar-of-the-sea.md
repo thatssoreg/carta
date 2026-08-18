@@ -65,16 +65,63 @@ Bassi is spatially anchored to Avila Valley, Avila Beach, California and SLO Coa
 
 authoritative Bassi geometry · Bassi Chardonnay solera evolution · Pink Chardonnay propagation confirmation · Brij identity · ownership/tenure history before 2024
 
+<!-- BEGIN GENERATED CARTA PROVENANCE -->
 ## Record & provenance
 
-This Human Reference profile is built from:
+This section is generated from CARTA machine authority. Edit the governed records, then run `python scripts/validate_data.py --write-human-reference`.
+
+- **Profile:** `profile:scar-of-the-sea`
+- **Maturity / publication:** `baseline` / `published`
+- **Primary entity:** `producer:scar-of-the-sea`
+
+**Component entities**
 
 - `producer:scar-of-the-sea`
 - `person:mikey-giugni`
 - `person:gina-giugni`
 - `vineyard:bassi-vineyard`
 - `wine:scar-of-the-sea-bassi-vineyard-chardonnay`
+
+**Representative anchors**
+
+- `wine:scar-of-the-sea-bassi-vineyard-chardonnay`
+- `vineyard:bassi-vineyard`
 - `grape:chardonnay`
 - `appellation:san-luis-obispo-coast-ava`
 
-**Reference maturity:** baseline / published.
+<details>
+<summary>Machine claims and sources</summary>
+
+### Material claims
+
+| Claim | Layer / observed | Status | Confidence | Sources |
+|---|---|---|---|---|
+| `claim:bassi-acquisition-2024` | `reference / 2026-08-18` | `supported` | `high` | `source:scar-vineyards`, `source:sfchron-bassi-2024` |
+| `claim:bassi-chardonnay-2023-cellar` | `reference / 2026-08-18` | `supported` | `high` | `source:coeur-scar`, `source:scar-trade` |
+| `claim:bassi-chardonnay-wine` | `reference / 2026-08-18` | `supported` | `high` | `source:scar-trade`, `source:coeur-scar` |
+| `claim:bassi-demeter-2024` | `reference / 2026-08-18` | `supported` | `high` | `source:scar-vineyards` |
+| `claim:bassi-phelan-direct-leads` | `reference / —` | `provisional` | `medium` | `source:sfchron-bassi-2024`, `source:phelan-wines` |
+| `claim:bassi-site` | `reference / —` | `supported` | `high` | `source:scar-vineyards`, `source:sfchron-bassi-2024` |
+| `claim:scar-producer-identity` | `reference / 2026-08-18` | `supported` | `high` | `source:scar-home` |
+| `claim:tank-farm-shared-cellar` | `reference / 2026-08-18` | `supported` | `high` | `source:scar-winemaking`, `source:lady-of-the-sunshine-winemaking` |
+
+### Sources
+
+- `source:coeur-scar` — Producer Profile — Scar of the Sea
+- `source:lady-of-the-sunshine-winemaking` — Winemaking
+- `source:phelan-wines` — Phelan Farm Wines
+- `source:scar-home` — Scar of the Sea
+- `source:scar-trade` — Trade | Scar of the Sea
+- `source:scar-vineyards` — Vineyards | Scar of the Sea
+- `source:scar-winemaking` — Winemaking
+- `source:sfchron-bassi-2024` — This winemaking power couple just bought a remarkable California vineyard
+
+</details>
+
+### Open questions
+
+- Acquire authoritative Bassi vineyard geometry
+- Confirm current Bassi Chardonnay technical protocol by vintage as the solera component evolves
+- Resolve the announced Pink Chardonnay material transfer from Phelan Farm before encoding a propagation edge
+- `claim:bassi-phelan-direct-leads` — Confirm whether the announced Pink Chardonnay material transfer and planting occurred before creating a PROPAGATED_FROM edge; independently resolve Brij as a project before modeling its Bassi fruit-purchase edge.
+<!-- END GENERATED CARTA PROVENANCE -->

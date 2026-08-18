@@ -65,9 +65,49 @@ Dry wine, organic/biodynamic farming, and renewed attention to local grapes are 
 
 Current legal and historical authority: INAO. Producer anchors draw on specialist references and producer materials.
 
+<!-- BEGIN GENERATED CARTA PROVENANCE -->
 ## Record & provenance
 
-**CARTA ID:** `appellation:jurancon`  
-**Reference maturity:** baseline / published.
+This section is generated from CARTA machine authority. Edit the governed records, then run `python scripts/validate_data.py --write-human-reference`.
 
-Official geometry remains a GIS acquisition task.
+- **Profile:** `profile:jurancon`
+- **Maturity / publication:** `baseline` / `published`
+- **Primary entity:** `appellation:jurancon`
+
+**Component entities**
+
+- `appellation:jurancon`
+
+**Representative anchors**
+
+- `grape:petit-manseng`
+- `grape:gros-manseng`
+- `producer:domaine-cauhape`
+- `producer:clos-uroulat`
+- `producer:domaine-de-souch`
+- `producer:camin-larredya`
+
+<details>
+<summary>Machine claims and sources</summary>
+
+### Material claims
+
+| Claim | Layer / observed | Status | Confidence | Sources |
+|---|---|---|---|---|
+| `claim:jurancon-country` | `reference / —` | `supported` | `high` | `source:inao-jurancon` |
+| `claim:jurancon-manseng-core-grapes` | `reference / —` | `supported` | `high` | `source:inao-jurancon` |
+| `claim:jurancon-representative-producers` | `reference / —` | `supported` | `medium` | `source:wsg-southwest-producer-guide` |
+| `claim:jurancon-terrain-law` | `reference / —` | `supported` | `high` | `source:inao-jurancon` |
+
+### Sources
+
+- `source:inao-jurancon` — Jurançon
+- `source:wsg-southwest-producer-guide` — Producer Guide - South-West
+
+</details>
+
+### Open questions
+
+- Acquire official geometry
+- Deepen current stylistic producer anchors
+<!-- END GENERATED CARTA PROVENANCE -->
