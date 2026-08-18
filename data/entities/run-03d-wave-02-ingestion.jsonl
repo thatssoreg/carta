@@ -1,0 +1,60 @@
+{"id":"place:california","layer":"reference","name":"California","place_kind":"administrative_region","status":"active","type":"place"}
+{"id":"place:cambria-california","layer":"reference","name":"Cambria, California","place_kind":"locality","status":"active","type":"place"}
+{"alternate_names":[{"kind":"legal","language":"en","name":"SLO Coast AVA"}],"id":"appellation:san-luis-obispo-coast-ava","layer":"reference","name":"San Luis Obispo Coast AVA","status":"active","type":"appellation"}
+{"id":"producer:phelan-farm","layer":"reference","name":"Phelan Farm","status":"active","tags":["california","cambria","slo-coast"],"type":"producer"}
+{"id":"person:greg-phelan","layer":"reference","name":"Greg Phelan","status":"active","type":"person"}
+{"display_name":"Raj Parr","id":"person:rajat-parr","layer":"reference","name":"Rajat Parr","status":"active","type":"person"}
+{"id":"wine:phelan-farm-mondeuse","layer":"reference","name":"Phelan Farm Mondeuse","status":"active","tags":["california","red","mondeuse"],"type":"wine"}
+{"id":"grape:mondeuse","layer":"reference","name":"Mondeuse","status":"active","type":"grape"}
+{"id":"place:savoie","layer":"reference","name":"Savoie","place_kind":"wine_region","status":"active","type":"place"}
+{"id":"place:combe-de-savoie","layer":"reference","name":"Combe de Savoie","place_kind":"wine_region","status":"active","type":"place"}
+{"id":"place:saint-pierre-dalbigny","layer":"reference","name":"Saint-Pierre-d'Albigny","place_kind":"municipality","status":"active","type":"place"}
+{"id":"place:saint-jean-de-la-porte","layer":"reference","name":"Saint-Jean-de-la-Porte","place_kind":"municipality","status":"active","type":"place"}
+{"id":"producer:domaine-de-chevillard","layer":"reference","name":"Domaine de Chevillard","status":"active","tags":["savoie","combe-de-savoie"],"type":"producer"}
+{"id":"person:matthieu-goury","layer":"reference","name":"Matthieu Goury","status":"active","type":"person"}
+{"id":"person:guillemette-renard","layer":"reference","name":"Guillemette Renard","status":"active","type":"person"}
+{"id":"appellation:vin-de-savoie","layer":"reference","name":"Vin de Savoie / Savoie","status":"active","type":"appellation"}
+{"id":"appellation:vin-de-savoie-apremont","layer":"reference","name":"Vin de Savoie Apremont","status":"active","summary":"A geographic denomination/cru name used within the AOP Savoie / Vin de Savoie framework, represented as an appellation entity because INAO publishes it as a distinct AOP product surface.","type":"appellation"}
+{"id":"appellation:roussette-de-savoie","layer":"reference","name":"Roussette de Savoie","status":"active","type":"appellation"}
+{"id":"wine:chevillard-apremont","layer":"reference","name":"Domaine de Chevillard Apremont","status":"active","tags":["savoie","white","jacquere"],"type":"wine"}
+{"id":"grape:jacquere","layer":"reference","name":"Jacquère","status":"active","type":"grape"}
+{"id":"grape:altesse","layer":"reference","name":"Altesse","status":"active","type":"grape"}
+{"id":"place:rioja-alta","layer":"reference","name":"Rioja Alta","place_kind":"wine_region","status":"active","type":"place"}
+{"id":"place:haro","layer":"reference","name":"Haro","place_kind":"municipality","status":"active","type":"place"}
+{"id":"appellation:rioja","layer":"reference","name":"Rioja DOCa","status":"active","type":"appellation"}
+{"id":"producer:lopez-de-heredia-vina-tondonia","layer":"reference","name":"R. López de Heredia Viña Tondonia","status":"active","tags":["rioja","haro"],"type":"producer"}
+{"id":"person:rafael-lopez-de-heredia-y-landeta","layer":"reference","name":"Rafael López de Heredia y Landeta","status":"historical","type":"person"}
+{"id":"wine:vina-gravonia-blanco","layer":"reference","name":"Viña Gravonia Blanco","status":"active","tags":["rioja","white","viura"],"type":"wine"}
+{"alternate_names":[{"kind":"synonym","language":"es","name":"Macabeo"}],"id":"grape:viura","layer":"reference","name":"Viura","name_assertion_ids":["name:viura-macabeo"],"status":"active","type":"grape"}
+{"id":"place:germany","layer":"reference","name":"Germany","place_kind":"country","status":"active","type":"place"}
+{"id":"place:mosel","layer":"reference","name":"Mosel","place_kind":"wine_region","status":"active","type":"place"}
+{"id":"place:saar","layer":"reference","name":"Saar","place_kind":"wine_region","status":"active","summary":"CARTA models Saar as a wine-region place within the Mosel wine world rather than as a separate current appellation.","type":"place"}
+{"id":"place:niedermennig","layer":"reference","name":"Niedermennig","place_kind":"locality","status":"active","type":"place"}
+{"id":"producer:hofgut-falkenstein","layer":"reference","name":"Hofgut Falkenstein","status":"active","tags":["saar","mosel","niedermennig"],"type":"producer"}
+{"id":"person:erich-weber","layer":"reference","name":"Erich Weber","status":"active","type":"person"}
+{"id":"person:johannes-weber","layer":"reference","name":"Johannes Weber","status":"active","type":"person"}
+{"id":"vineyard:niedermenniger-sonnenberg","layer":"reference","name":"Niedermenniger Sonnenberg","status":"active","type":"vineyard"}
+{"id":"wine:hofgut-falkenstein-niedermenniger-sonnenberg-riesling-kabinett-trocken","layer":"reference","name":"Hofgut Falkenstein Niedermenniger Sonnenberg Riesling Kabinett trocken","status":"active","tags":["saar","riesling","kabinett","trocken"],"type":"wine"}
+{"id":"grape:riesling","layer":"reference","name":"Riesling","status":"active","type":"grape"}
+{"id":"classification:kabinett","layer":"reference","name":"Kabinett","status":"active","summary":"German Prädikat classification; current law requires an official quality-test number and forbids enrichment for the Kabinett Prädikat.","type":"classification"}
+{"id":"place:chile","layer":"reference","name":"Chile","place_kind":"country","status":"active","type":"place"}
+{"id":"place:colchagua-valley","layer":"reference","name":"Colchagua Valley","place_kind":"wine_region","status":"active","type":"place"}
+{"id":"place:lolol","layer":"reference","name":"Lolol","place_kind":"municipality","status":"active","type":"place"}
+{"id":"producer:villalobos","layer":"reference","name":"Villalobos","status":"active","tags":["chile","lolol","colchagua"],"type":"producer"}
+{"id":"person:enrique-villalobos","layer":"reference","name":"Enrique Villalobos","status":"active","type":"person"}
+{"id":"person:rita-encina","layer":"reference","name":"Rita Encina","status":"active","type":"person"}
+{"id":"person:mathieu-rousseau","layer":"reference","name":"Mathieu Rousseau","status":"historical","type":"person"}
+{"id":"vineyard:vinedo-silvestre","layer":"reference","name":"Viñedo Silvestre","status":"active","type":"vineyard"}
+{"id":"wine:vinedo-silvestre-carignan","layer":"reference","name":"Viñedo Silvestre Carignan","status":"active","tags":["chile","carignan","lolol"],"type":"wine"}
+{"id":"grape:carignan","layer":"reference","name":"Carignan","status":"active","type":"grape"}
+{"id":"place:meyreuil","layer":"reference","name":"Meyreuil","place_kind":"municipality","status":"active","type":"place"}
+{"id":"geofeature:massif-du-montaiguet","layer":"reference","name":"Massif du Montaiguet","status":"active","type":"geographic_feature"}
+{"id":"appellation:palette","layer":"reference","name":"Palette AOP","status":"active","type":"appellation"}
+{"id":"producer:chateau-simone","layer":"reference","name":"Château Simone","status":"active","tags":["palette","provence","meyreuil"],"type":"producer"}
+{"id":"person:jean-francois-rougier","layer":"reference","name":"Jean-François Rougier","status":"active","type":"person"}
+{"id":"wine:chateau-simone-blanc","layer":"reference","name":"Château Simone Blanc","status":"active","tags":["palette","white","clairette"],"type":"wine"}
+{"id":"grape:clairette","layer":"reference","name":"Clairette","status":"active","type":"grape"}
+{"id":"grape:grenache-blanc","layer":"reference","name":"Grenache Blanc","status":"active","type":"grape"}
+{"id":"grape:bourboulenc","layer":"reference","name":"Bourboulenc","status":"active","type":"grape"}
+{"id":"grape:ugni-blanc","layer":"reference","name":"Ugni Blanc","status":"active","type":"grape"}
+{"id":"grape:muscat-blanc","layer":"reference","name":"Muscat Blanc","status":"active","type":"grape"}
