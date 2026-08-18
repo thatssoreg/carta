@@ -1,6 +1,6 @@
 # Pyrenean Atlantic Vertical Slice — Pilot Specification v0.2
 
-**Pilot research status:** Deep Research Run 01 completed on 2026-08-18. Candidate ingestion is intentionally deferred until STRATA v0.2 is accepted. See [`../research/run-01-pyrenean-atlantic/README.md`](../research/run-01-pyrenean-atlantic/README.md).
+**Pilot status:** Deep Research Run 01 completed on 2026-08-18 and the normalized STRATA v0.2 ingestion passed. See [`../research/run-01-pyrenean-atlantic/README.md`](../research/run-01-pyrenean-atlantic/README.md) and [`../research/run-01-pyrenean-atlantic/ingestion-audit.md`](../research/run-01-pyrenean-atlantic/ingestion-audit.md).
 
 ## Purpose
 
@@ -104,5 +104,9 @@ The pilot succeeds after ingestion if:
 - the graph supports questions that a conventional country → region → appellation hierarchy cannot answer;
 - the data can plausibly drive a map and network interface without restructuring the whole repository;
 - the same accepted data can generate human-readable Atlas cards without factual drift.
+
+## Ingestion outcome
+
+**PASS.** The accepted normalized authority contains 39 entities, 31 relationships, 30 claims, 29 sources, 7 first-class name assertions, and 8 source-described spatial assertions. No geometry was fabricated. The first Human Atlas proof set is live under [`../atlas/`](../atlas/).
 
 STRATA is expected to keep changing after future pilots. That remains a feature, not a failure.
