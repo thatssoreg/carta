@@ -1,59 +1,64 @@
 # Petit Manseng
 
-**CARTA ID:** `grape:petit-manseng`  
-**Type:** grape  
-**Status:** active
+Petit Manseng is a white grape associated especially with the western Pyrenees and Jurançon. It is notable for very small berries and an unusual ripening pattern in which substantial sugar accumulation can coexist with very high retained acidity. That combination has made it important to concentrated sweet-wine traditions and also creates the raw material for a much broader range of dry expressions.
 
-## Why I should care
+## At a glance
 
-Petit Manseng is one of the best bridges in Run 01 between place, grape physiology, law, style, and the Virginia Lens. It can accumulate substantial sugar while retaining unusually high acidity, and the pilot places it across both Jurançon and Bizkaiko legal contexts without pretending those places are interchangeable.
+- **Origin / long association:** Pyrénées-Atlantiques in the retained Plantgrape evidence
+- **Berry size:** very small
+- **Ripening structure:** strong sugar accumulation with unusually persistent acidity
+- **Vigor:** vigorous enough to require thoughtful training and pruning
+- **Disease:** very strong grey-rot resistance in the retained cultivar evidence
 
-## Identity and naming
+## In the vineyard
 
-| Name | Kind | Jurisdiction | Status | Evidence |
-|---|---|---|---|---|
-| Izkiriota Ttipia | `legal_name` | `appellation:bizkaiko-txakolina` | supported | claim:bizkaia-grape-list |
+Petit Manseng's small berries, loose fruit structure, strong acid retention, and ability to reach high sugar make it particularly interesting in humid or disease-challenged conditions. Virginia research retained in CARTA also documents very low fruit-rot incidence in test years and unusually high Brix alongside substantial acidity.
 
-## Where it fits
+A 2025 Virginia Tech study followed fruit from 8.0 to 23.6 Brix while titratable acidity declined from 25 to 10.8 g/L, with acid depletion continuing after sugar accumulation had largely plateaued.
 
-| Relationship | Direction | Connected entity | Status | Evidence |
-|---|---:|---|---|---|
-| `MADE_FROM` | ← | `wine:ixilune` | supported | claim:ixilune-composition |
-| `TRADITIONAL_IN` | → | `appellation:jurancon` | supported | claim:jurancon-manseng-core-grapes |
-| `GENETICALLY_CLOSE_TO` | → | `grape:savagnin` | supported | claim:petit-manseng-savagnin |
-| `PERMITTED_IN` | → | `appellation:bizkaiko-txakolina` | supported | claim:bizkaia-grape-list |
-| `MADE_FROM` | ← | `wine:rebel-rebel` | supported | claim:rebel-rebel-style |
+## In the glass
 
-## Viticultural / biological structure
+The current evidence supports a structural description more confidently than a fixed aroma profile: Petit Manseng can combine high acidity with significant ripeness and concentration. The next enrichment pass should document the normal sensory range across sweet, dry, oxidative, skin-contact, barrel, amphora, sparkling, and other contemporary expressions rather than treating one regional tradition as the grape's only identity.
 
-Very small berries, strong sugar accumulation with high acid retention, vigor requiring thoughtful training, and strong grey-rot resistance in the retained Plantgrape evidence.
+## Where it matters
 
-## What CARTA is watching
+- [Jurançon](../countries/france/appellations/jurancon.md), where INAO describes Petit Manseng and Gros Manseng as principal local grapes
+- [Bizkaiko Txakolina](../countries/spain/appellations/bizkaiko-txakolina.md), where Petit Manseng is authorized under the legal name **Izkiriota Ttipia**
+- Virginia, where current research and producer activity make the grape a major enrichment priority
 
-The exact genetic relationship to Gros Manseng remains unresolved in this corpus. Virginia comparisons remain Lens material unless site-level evidence earns a stronger analogy.
+## Wines currently represented
 
-## Claims and confidence
+- [Rebel Rebel](../wines/rebel-rebel.md), Alfredo Egia
+- [Ixilune](../wines/ixilune.md), Imanol Garay
 
-| Claim | Status | Confidence | Statement |
-|---|---|---|---|
-| `claim:petit-manseng-origin-traits` | supported | high | Plantgrape places Petit Manseng's origin in Pyrénées-Atlantiques and describes very small berries, very high acid retention despite strong sugar concentration, vigor requiring trellising/long pruning, and very strong grey-rot resistance. |
-| `claim:petit-manseng-savagnin` | supported | high | Plantgrape reports published genetic analyses indicating Petit Manseng is closely related to Savagnin; this is a closeness claim, not a resolved parent-offspring statement in the evidence captured here. |
-| `claim:bizkaia-grape-list` | supported | high | The current Bizkaiko Txakolina specification lists Hondarrabi Zuri, Hondarrabi Beltza, and Hondarrabi Zuri Zerratia (Petit Courbu) as recommended/main varieties, while Gros Manseng under Izkiriot Haundi and Petit Manseng under Izkiriota Ttipia are authorized varieties subject to the specification's limits. |
-| `claim:jurancon-manseng-core-grapes` | supported | high | INAO describes Petit Manseng and Gros Manseng as the principal local grape varieties of Jurançon. |
-| `claim:virginia-pm-performance` | supported | high | Virginia Tech trials found Petit Manseng's loose clusters and very small berries associated with very low fruit-rot incidence in test years, while older Virginia trials documented high Brix alongside substantial retained acidity. |
-| `claim:virginia-pm-ripening-2025` | supported | high | A 2025 Virginia Tech study reported Petit Manseng total soluble solids increasing from 8.0 to 23.6 Brix while titratable acidity declined from 25 to 10.8 g/L, with acid depletion plateauing about two weeks after sugar accumulation plateaued in the studied fruit. |
+These are current CARTA connections, not a complete list of benchmark Petit Manseng wines.
+
+## Names & genetics
+
+- **Izkiriota Ttipia** - legal name in the Bizkaiko context captured in Run 01
+- Plantgrape reports published genetic analyses indicating Petit Manseng is closely related to Savagnin
+- No Petit Manseng / Gros Manseng parent-offspring relationship is accepted in the current corpus
+
+## Current developments
+
+The next enrichment pass will specifically investigate the user's observation that Petit Manseng is having a broader moment across Virginia, including current plantings, geographic spread, stylistic diversity, producers, and whether national trade discourse under-recognizes the state relative to the scale of its work with the grape.
+
+## Explore next
+
+[Gros Manseng](gros-manseng.md) · [Jurançon](../countries/france/appellations/jurancon.md) · [Petit Courbu](petit-courbu.md) · [Alfredo Egia](../producers/alfredo-egia.md) · [Imanol Garay](../producers/imanol-garay.md)
 
 ## Sources
 
-- `source:plantgrape-petit-manseng` — [Petit Manseng](https://www.plantgrape.fr/en/varieties/fruit-varieties/211)
-- `source:euskadi-bizkaiko-pliego` — Bizkaiko Txakolina consolidated product specification (`source:euskadi-bizkaiko-pliego`)
-- `source:eurlex-bizkaiko-2025-amendment` — [Approved standard amendment: Bizkaiko Txakolina / Chacolí de Bizkaia / Txakoli de Bizkaia](https://eur-lex.europa.eu/eli/C/2025/6563/oj/eng)
-- `source:inao-jurancon` — [Jurançon](https://www.inao.gouv.fr/produit/jurancon-23319)
-- `source:vt-viticulture-2004` — [Viticulture Notes: Petit Manseng in Virginia](https://www.sites.ext.vt.edu/newsletter-archive/viticulture/04december/04december.html)
-- `source:vt-enology-123` — [Enology Notes 123: Petit Manseng](https://enology.fst.vt.edu/EN/123.html)
-- `source:vt-ripening-2025` — [Ripening Kinetics and Grape Chemistry of Virginia Petit Manseng and Chardonnay](https://vtechworks.lib.vt.edu/items/4cb9fee2-f229-4f56-9c22-be1fb7f11001)
+- `source:plantgrape-petit-manseng`
+- `source:euskadi-bizkaiko-pliego`
+- `source:eurlex-bizkaiko-2025-amendment`
+- `source:inao-jurancon`
+- `source:vt-viticulture-2004`
+- `source:vt-enology-123`
+- `source:vt-ripening-2025`
 
-## Revision history
+## Record & provenance
 
-- Run 01: candidate research.
-- STRATA v0.2 ingestion: accepted/normalized proof card.
+- Primary machine entity: `grape:petit-manseng`
+- Human Reference maturity: `node`; baseline enrichment queued
+- Key accepted claims: origin/traits, Savagnin genetic closeness, Jurançon importance, Bizkaiko legal use, Virginia performance/ripening research
