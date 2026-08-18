@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://carta.local/schemas/relationship.schema.json",
+  "title": "CARTA Relationship v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "subject_id", "predicate", "object_id", "layer", "status"],
+  "properties": {
+    "id": {"type": "string", "pattern": "^rel:[a-z0-9][a-z0-9._-]*$"},
+    "subject_id": {"type": "string", "pattern": "^[a-z][a-z0-9_-]*:[a-z0-9][a-z0-9._-]*$"},
+    "predicate": {
+      "enum": [
+        "SYNONYM_OF", "LEGAL_ALIAS_OF", "HISTORIC_NAME_OF", "LOCAL_NAME_OF", "HISTORICALLY_CONFUSED_WITH",
+        "PARENT_OF", "OFFSPRING_OF", "PROPOSED_PARENT_OF", "MUTATION_OF", "CLONE_OF", "GENETICALLY_CLOSE_TO", "CROSSED_WITH",
+        "HISTORICALLY_COPLANTED_WITH", "TRADITIONAL_IN", "PLANTED_AT", "PROPAGATED_FROM", "GRAFTED_FROM", "PERMITTED_IN", "RECOMMENDED_IN", "PROHIBITED_IN", "USED_BY",
+        "MENTORED_BY", "TRAINED_AT", "WORKED_FOR", "WORKED_WITH", "COLLABORATED_WITH", "FAMILY_OF", "FOUNDED", "SUCCEEDED_BY", "MEMBER_OF", "INFLUENCED_BY",
+        "OWNED_BY", "ACQUIRED_BY", "IMPORTED_BY", "DISTRIBUTED_BY", "BUYS_FRUIT_FROM", "SOLD_TO",
+        "MADE_BY", "FARMED_BY", "FERMENTED_BY", "BOTTLED_BY", "MADE_FROM", "USES_PRACTICE", "AGED_IN",
+        "LOCATED_IN", "FARMS_IN", "FARMS_PARCEL", "CELLAR_IN", "WITHIN_APPELLATION", "WITHIN", "OVERLAPS", "ADJACENT_TO", "UPSTREAM_OF", "DOWNSTREAM_OF", "WITHIN_WATERSHED", "ON_SLOPE_OF", "SHARES_GEOLOGY_WITH", "CROSSED_BY_BORDER", "FORMERLY_WITHIN_TERRITORY",
+        "CREATED_BY", "REVISED_BY", "SUPERSEDED_BY", "CLASSIFIED_AS", "DECLASSIFIED_FROM", "BOUNDARY_CHANGED_BY", "RENAMED_AS", "LEGAL_AT_TIME", "OWNED_AT_TIME", "LOCATED_WITHIN_AT_TIME",
+        "STYLISTIC_NEIGHBOR_OF", "STRUCTURAL_ANALOGUE_OF", "CLIMATE_ANALOGUE_OF", "SITE_ANALOGUE_OF"
+      ]
+    },
+    "object_id": {"type": "string", "pattern": "^[a-z][a-z0-9_-]*:[a-z0-9][a-z0-9._-]*$"},
+    "layer": {"enum": ["reference", "frontier", "lens"]},
+    "status": {"enum": ["supported", "provisional", "contested", "rejected", "deprecated"]},
+    "claim_ids": {
+      "type": "array",
+      "items": {"type": "string", "pattern": "^claim:[a-z0-9][a-z0-9._-]*$"},
+      "uniqueItems": true
+    },
+    "valid_from": {"type": ["string", "null"], "format": "date"},
+    "valid_to": {"type": ["string", "null"], "format": "date"},
+    "time_precision": {"enum": ["day", "month", "year", "range", "unknown"]},
+    "basis": {"type": "string"},
+    "notes": {"type": "string"},
+    "created_at": {"type": "string", "format": "date-time"},
+    "updated_at": {"type": "string", "format": "date-time"}
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://carta.local/schemas/source.schema.json",
+  "title": "CARTA Source v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "title", "source_class", "accessed_at"],
+  "properties": {
+    "id": {"type": "string", "pattern": "^source:[a-z0-9][a-z0-9._-]*$"},
+    "title": {"type": "string", "minLength": 1},
+    "source_class": {
+      "enum": [
+        "primary_regulatory", "primary_producer", "primary_scientific", "primary_institutional",
+        "independent_reporting", "trade_source", "community_source", "secondary_reference", "owner_context"
+      ]
+    },
+    "publisher": {"type": "string"},
+    "author": {"type": "string"},
+    "url": {"type": "string", "format": "uri"},
+    "publication_date": {"type": ["string", "null"], "format": "date"},
+    "accessed_at": {"type": "string", "format": "date"},
+    "language": {"type": "string"},
+    "archive_url": {"type": "string", "format": "uri"},
+    "notes": {"type": "string"},
+    "created_at": {"type": "string", "format": "date-time"},
+    "updated_at": {"type": "string", "format": "date-time"}
+  }
+}
