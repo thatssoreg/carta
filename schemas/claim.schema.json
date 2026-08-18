@@ -9,7 +9,7 @@
     "id": {"type": "string", "pattern": "^claim:[a-z0-9][a-z0-9._-]*$"},
     "subject_ref": {"type": "string", "pattern": "^(?:[a-z][a-z0-9_-]*|rel|claim|name|spatial):[a-z0-9][a-z0-9._-]*$"},
     "statement": {"type": "string", "minLength": 1},
-    "layer": {"enum": ["reference", "frontier", "lens"]},
+    "layer": {"enum": ["reference", "frontier"]},
     "status": {"enum": ["supported", "provisional", "contested", "rejected"]},
     "confidence": {"enum": ["high", "medium", "low", "unknown"]},
     "claim_type": {

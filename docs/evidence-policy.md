@@ -48,7 +48,8 @@ Recommended source classes:
 - `trade_source` — importer, distributor, retailer, restaurant, auction, market-facing source.
 - `community_source` — forum, social-media, Reddit, tasting-group, or community discussion.
 - `secondary_reference` — encyclopedic or compiled reference work.
-- `owner_context` — explicit owner-supplied context or hypothesis, kept distinct from external evidence.
+
+Personal observations, holdings, taste preferences, acquisition history, private watchlists, and owner-specific hypotheses belong in an external/private Lens system rather than CARTA core source records. An external Lens may reference stable CARTA IDs without becoming evidence in CARTA authority.
 
 ## Claim-level fitness
 
@@ -158,13 +159,13 @@ A current cellar location does not erase an earlier cellar location.
 
 ## Claims versus hypotheses
 
-Personal and production-development questions are valuable, but they belong in Lens until tested.
+Personal and production-development questions are valuable, but they belong outside CARTA core in an external/private Lens until tested.
 
 Example:
 
 > Petit Manseng may offer a useful Virginia model for retaining both acidity and textural mass under warm-season conditions.
 
-That can be a Lens hypothesis. It should not become a universal Reference claim without evidence defining site, vintage, ripeness, farming, and winemaking scope.
+That can be a private Lens hypothesis. It should not become a universal Reference claim without evidence defining site, vintage, ripeness, farming, and winemaking scope. If later research earns a Reference claim, the accepted claim must be supported independently of the private Lens record.
 
 ## Contradiction handling
 

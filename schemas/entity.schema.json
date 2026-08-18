@@ -19,7 +19,7 @@
     },
     "name": {"type": "string", "minLength": 1},
     "display_name": {"type": "string", "minLength": 1},
-    "layer": {"enum": ["reference", "frontier", "lens"]},
+    "layer": {"enum": ["reference", "frontier"]},
     "status": {"enum": ["active", "historical", "provisional", "contested", "deprecated"]},
     "place_kind": {
       "enum": [
