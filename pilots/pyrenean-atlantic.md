@@ -1,12 +1,16 @@
-# Pyrenean Atlantic Vertical Slice — Pilot Specification v0.1
+# Pyrenean Atlantic Vertical Slice — Pilot Specification v0.2
+
+**Pilot research status:** Deep Research Run 01 completed on 2026-08-18. Candidate ingestion is intentionally deferred until STRATA v0.2 is accepted. See [`../research/run-01-pyrenean-atlantic/README.md`](../research/run-01-pyrenean-atlantic/README.md).
 
 ## Purpose
 
-The first CARTA pilot should test the ontology against a real ecosystem before the graph scales. The goal is not to produce a complete regional encyclopedia. The goal is to discover whether STRATA can represent the relationships that make this ecosystem intelligible.
+The first CARTA pilot tests the ontology against a real ecosystem before the graph scales. The goal is not to produce a complete regional encyclopedia. The goal is to discover whether STRATA can represent the relationships that make this ecosystem intelligible.
+
+The research phase succeeded in stress-testing the schema and directly produced the post-pilot revisions in STRATA v0.2.
 
 ## Seed, not scope
 
-Begin with these entry points:
+The original entry points were:
 
 - Alfredo Egia
 - Imanol Garay
@@ -18,7 +22,7 @@ Begin with these entry points:
 - Courbu Blanc / Hondarrabi Zuri
 - Raffiat de Moncade
 
-These are seeds. Research agents have explicit authority to add people, producers, grapes, wines, vineyards, places, appellations, institutions, practices, historical events, and geographic features when an evidence-backed relationship materially improves understanding of the ecosystem.
+These were seeds, not a closed list. The research run had explicit authority to add people, producers, grapes, wines, vineyards, places, appellations, institutions, practices, historical events, and geographic features when an evidence-backed relationship materially improved understanding of the ecosystem.
 
 ## Expansion rule
 
@@ -46,24 +50,26 @@ The pilot has no entity quota.
 
 ## Required proof surfaces
 
-The pilot should leave enough governed data to support at least four projections:
+The accepted pilot should ultimately leave enough governed data to support at least four machine/visual projections plus a human-readable Atlas:
 
-1. **Spatial view** — producer sites/cellars, relevant places, appellations, and physical geography.
+1. **Spatial view** — producer sites/cellars, relevant places, appellations, physical geography, and explicitly approximate/source-described spatial assertions where exact geometry is unavailable.
 2. **TRAMA network view** — mentorship, work, collaboration, ownership, grape use, and other typed relationships.
-3. **Ampelographic view** — synonyms, naming collisions, genetics, proposed genetics, traditional regions, and grape use.
+3. **Ampelographic view** — synonyms, jurisdictional names, naming collisions, genetics, proposed genetics, traditional regions, and grape use.
 4. **Temporal view** — historical/legal/ownership changes where evidence supports them.
+5. **Human Atlas** — readable Markdown cards and ecosystem synthesis driven by the accepted records.
 
-A fifth human-readable output should explain: **Why are all these things connected?**
+The ecosystem page must explain: **Why are all these things connected?**
 
-## Questions the pilot should be able to answer
+## Questions the accepted pilot should be able to answer
 
 - Trace Egia → Garay → Leroy and distinguish the evidence type for each edge.
-- Show where Petit Courbu / Hondarrabi Zuri Zerratia is used and distinguish identity from nearby or confused varieties.
+- Show where Petit Courbu / Hondarrabi Zuri Zerratia is used and distinguish biological identity from jurisdictional naming and nearby/confused varieties.
 - Show where Petit and Gros Manseng co-occur with Courbu-family material and distinguish documented genetics from geographic association.
 - Identify producers on opposite sides of the western Pyrenees working the same grape under different names.
-- Show which relevant geographic units overlap and which are merely adjacent: political border, appellation, watershed, mountain system, and cultural region.
-- Identify what is current reference knowledge versus a Frontier signal about emerging attention or U.S. access.
+- Show which relevant geographic units overlap and which are merely adjacent: political border, appellation, watershed, mountain system, cultural region, and analytical ecosystem.
+- Identify what is current Reference knowledge versus a Frontier signal about emerging attention or U.S. access.
 - Surface unresolved or contradictory claims instead of smoothing them over.
+- Remain readable in GitHub through grape, producer, region, appellation, country, and ecosystem Atlas pages.
 
 ## Additional Lens test
 
@@ -73,16 +79,30 @@ Use the pilot to test a personal/production-development question without promoti
 
 The pilot must separate cultivar physiology, site, climate, farming, harvest timing, and cellar choices when evidence permits, and must preserve uncertainty where causal attribution is not possible.
 
-## Success criteria
+## Research-phase findings that changed STRATA
 
-The pilot succeeds if:
+Deep Research Run 01 established that STRATA v0.1 needed:
+
+- claim-specific source fitness rather than a universal source hierarchy;
+- first-class jurisdictional name assertions;
+- place semantics through `place_kind`;
+- source-described spatial assertions that do not require fabricated geometry;
+- first-class `ecosystem` identity for relationship-generated analytical objects;
+- a required human-readable Atlas projection.
+
+These are now STRATA v0.2 design requirements.
+
+## Success criteria for ingestion
+
+The pilot succeeds after ingestion if:
 
 - no entity type feels obviously overloaded;
 - relationship predicates remain meaningfully distinct;
 - contradictory claims can coexist without corrupting identity;
 - spatial and temporal records can change independently of narrative;
-- the research agent discovers useful entities not present in the seed list without uncontrolled scope growth;
+- source fitness can represent wine-trade knowledge without automatically penalizing importer/distributor evidence;
 - the graph supports questions that a conventional country → region → appellation hierarchy cannot answer;
-- the data can plausibly drive a map and network interface without restructuring the whole repository.
+- the data can plausibly drive a map and network interface without restructuring the whole repository;
+- the same accepted data can generate human-readable Atlas cards without factual drift.
 
-STRATA v0.1 is expected to change after this pilot. That is a feature, not a failure.
+STRATA is expected to keep changing after future pilots. That remains a feature, not a failure.
