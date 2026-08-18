@@ -12,7 +12,7 @@
     },
     "type": {
       "enum": [
-        "person", "producer", "project", "grape", "wine", "vineyard",
+        "person", "producer", "project", "ecosystem", "grape", "wine", "vineyard",
         "place", "appellation", "geographic_feature", "geology", "practice",
         "institution", "classification", "historical_event", "market_signal"
       ]
