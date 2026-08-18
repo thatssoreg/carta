@@ -1,0 +1,31 @@
+{"id":"place:vouvray","layer":"reference","name":"Vouvray","place_kind":"municipality","status":"active","type":"place"}
+{"id":"appellation:vouvray","layer":"reference","name":"Vouvray AOP","status":"active","type":"appellation"}
+{"id":"producer:domaine-huet","layer":"reference","name":"Domaine Huet","status":"active","tags":["vouvray","loire","chenin-blanc"],"type":"producer"}
+{"id":"person:victor-huet","layer":"reference","name":"Victor Huet","status":"historical","type":"person"}
+{"id":"person:gaston-huet","layer":"reference","name":"Gaston Huet","status":"historical","type":"person"}
+{"id":"vineyard:le-haut-lieu","layer":"reference","name":"Le Haut-Lieu","status":"active","type":"vineyard"}
+{"id":"wine:domaine-huet-le-haut-lieu-sec","layer":"reference","name":"Domaine Huet Le Haut-Lieu Sec","status":"active","tags":["vouvray","chenin-blanc","sec"],"type":"wine"}
+{"id":"appellation:petaluma-gap-ava","layer":"reference","name":"Petaluma Gap AVA","status":"active","type":"appellation"}
+{"id":"producer:arnot-roberts","layer":"reference","name":"Arnot-Roberts","status":"active","tags":["california","petaluma-gap"],"type":"producer"}
+{"id":"person:duncan-arnot-meyers","layer":"reference","name":"Duncan Arnot Meyers","status":"active","type":"person"}
+{"id":"person:nathan-lee-roberts","layer":"reference","name":"Nathan Lee Roberts","status":"active","type":"person"}
+{"id":"person:caitlin-quinn","layer":"reference","name":"Caitlin Quinn","status":"active","type":"person"}
+{"id":"person:paul-clary","layer":"reference","name":"Paul Clary","status":"active","type":"person"}
+{"id":"person:drew-beuchley","layer":"reference","name":"Drew Beuchley","status":"active","type":"person"}
+{"id":"vineyard:clary-ranch","layer":"reference","name":"Clary Ranch","status":"active","type":"vineyard"}
+{"id":"wine:arnot-roberts-clary-ranch-syrah","layer":"reference","name":"Arnot-Roberts Clary Ranch Syrah","status":"active","tags":["california","petaluma-gap","syrah"],"type":"wine"}
+{"id":"place:chablis","layer":"reference","name":"Chablis","place_kind":"municipality","status":"active","type":"place"}
+{"id":"appellation:chablis-grand-cru","layer":"reference","name":"Chablis Grand Cru AOP","status":"active","type":"appellation"}
+{"id":"producer:domaine-louis-michel-fils","layer":"reference","name":"Louis Michel & Fils","status":"active","tags":["chablis","chardonnay"],"type":"producer"}
+{"id":"vineyard:vaudesir","layer":"reference","name":"Vaudésir","status":"active","summary":"One of the seven named climats authorized within the Chablis Grand Cru AOP; represented as a vineyard/climat identity, not as a separate appellation.","type":"vineyard"}
+{"id":"wine:louis-michel-chablis-grand-cru-vaudesir","layer":"reference","name":"Louis Michel & Fils Chablis Grand Cru Vaudésir","status":"active","tags":["chablis","grand-cru","vaudesir","chardonnay"],"type":"wine"}
+{"id":"place:italy","layer":"reference","name":"Italy","place_kind":"country","status":"active","type":"place"}
+{"id":"place:montalcino","layer":"reference","name":"Montalcino","place_kind":"municipality","status":"active","type":"place"}
+{"id":"geofeature:montosoli","layer":"reference","name":"Montosoli","status":"active","type":"geographic_feature"}
+{"id":"appellation:brunello-di-montalcino","layer":"reference","name":"Brunello di Montalcino DOCG","status":"active","type":"appellation"}
+{"id":"producer:caparzo","layer":"reference","name":"Caparzo","status":"active","tags":["montalcino","brunello"],"type":"producer"}
+{"id":"person:elisabetta-gnudi-angelini","layer":"reference","name":"Elisabetta Gnudi Angelini","status":"active","type":"person"}
+{"id":"person:massimo-bracalente","layer":"reference","name":"Massimo Bracalente","status":"active","type":"person"}
+{"id":"vineyard:vigna-la-casa","layer":"reference","name":"Vigna La Casa","status":"active","type":"vineyard"}
+{"alternate_names":[{"kind":"local","language":"it","name":"Brunello","jurisdiction":"Montalcino"}],"id":"grape:sangiovese","layer":"reference","name":"Sangiovese","name_assertion_ids":["name:sangiovese-brunello-montalcino"],"status":"active","type":"grape"}
+{"id":"wine:caparzo-brunello-di-montalcino-vigna-la-casa","layer":"reference","name":"Caparzo Brunello di Montalcino Vigna La Casa","status":"active","tags":["montalcino","brunello","sangiovese","single-vineyard"],"type":"wine"}
