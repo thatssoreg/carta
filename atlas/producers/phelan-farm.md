@@ -41,17 +41,25 @@ The Run 03D research report accidentally imported language from the earlier Hiyu
 
 Parr's relationships to Sandhi, Domaine de la Côte, Evening Land, and other projects are real research opportunities, but they should be modeled only when those worlds are independently reconciled.
 
+### Bassi Vineyard connection
+
+Run 03G's Scar of the Sea research initially treated Phelan Farm and Bassi Vineyard as sharing only SLO Coast geography. Reconciliation found more.
+
+Phelan Farm's own wines page lists **Brij Bassi Syrah 2021** among purchased-grape wines. Independent 2024 reporting also says Raj Parr agreed to provide **Pink Chardonnay cuttings from Phelan Farm** for Bassi replanting after Mikey and Gina Giugni acquired the vineyard.
+
+CARTA preserves these as direct research leads without over-modeling them. `Brij` still needs independent identity resolution, and an announced cutting transfer is not encoded as completed propagation until a later source confirms it occurred.
+
 ## Appellation context
 
 The [San Luis Obispo Coast AVA](../../data/entities/run-03d-wave-02-ingestion.jsonl) was established by TTB in March 2022. CARTA currently uses it as the legal geographic frame for Phelan's coastal setting while withholding parcel-level boundary claims until true geometry is acquired.
 
 ## Explore next
 
-Mondeuse · San Luis Obispo Coast · Raj Parr · cool-climate plant-material movement in coastal California
+Mondeuse · San Luis Obispo Coast · Raj Parr · cool-climate plant-material movement in coastal California · Bassi/Phelan plant-material connection
 
 ## Sources
 
-Primary CARTA source records include Phelan Farm's vineyard, viticulture and wine pages, Polaner Selections, Leon & Son, Sager + Wine, and TTB.
+Primary CARTA source records include Phelan Farm's vineyard, viticulture and wine pages, Polaner Selections, Leon & Son, Sager + Wine, TTB, and the Run 03G Bassi reconciliation sources.
 
 ## Record & provenance
 

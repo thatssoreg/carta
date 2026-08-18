@@ -1,0 +1,37 @@
+{"id":"place:ribera-del-duero","layer":"reference","name":"Ribera del Duero","place_kind":"wine_region","status":"active","type":"place"}
+{"id":"place:roa","layer":"reference","name":"Roa","place_kind":"municipality","status":"active","type":"place"}
+{"id":"place:la-horra","layer":"reference","name":"La Horra","place_kind":"municipality","status":"active","type":"place"}
+{"id":"appellation:ribera-del-duero","layer":"reference","name":"Ribera del Duero DOP","status":"active","type":"appellation"}
+{"id":"classification:ribera-del-duero-gran-reserva","layer":"reference","name":"Ribera del Duero Gran Reserva","status":"active","summary":"Traditional ageing indication within Ribera del Duero. Current product specifications require red Gran Reserva to age at least 60 months in total, including at least 24 months in oak barrels of no more than 330 litres, with the remainder in bottle.","type":"classification"}
+{"id":"producer:familia-fernandez-rivera","layer":"reference","name":"Familia Fernández Rivera","status":"active","summary":"Current family wine enterprise whose portfolio includes Tinto Pesquera, Condado de Haza, Dehesa La Granja and El Vínculo.","tags":["spain","ribera-del-duero"],"type":"producer"}
+{"id":"producer:condado-de-haza","layer":"reference","name":"Condado de Haza","status":"active","tags":["spain","ribera-del-duero","roa"],"type":"producer"}
+{"id":"person:alejandro-fernandez","layer":"reference","name":"Alejandro Fernández","status":"historical","type":"person"}
+{"id":"person:esperanza-rivera","layer":"reference","name":"Esperanza Rivera","status":"active","type":"person"}
+{"id":"vineyard:maricalva","layer":"reference","name":"Maricalva","status":"active","type":"vineyard"}
+{"id":"wine:alenza-gran-reserva","layer":"reference","name":"Alenza Gran Reserva","status":"active","tags":["ribera-del-duero","tempranillo","gran-reserva","red"],"type":"wine"}
+{"id":"place:avila-beach","layer":"reference","name":"Avila Beach","place_kind":"locality","status":"active","type":"place"}
+{"id":"geofeature:avila-valley","layer":"reference","name":"Avila Valley","status":"active","type":"geographic_feature"}
+{"id":"producer:scar-of-the-sea","layer":"reference","name":"Scar of the Sea","status":"active","tags":["california","slo-coast","avila-beach"],"type":"producer"}
+{"id":"person:mikey-giugni","layer":"reference","name":"Mikey Giugni","status":"active","type":"person"}
+{"id":"person:gina-giugni","layer":"reference","name":"Gina Giugni","status":"active","type":"person"}
+{"id":"person:will-frischkorn","layer":"reference","name":"Will Frischkorn","status":"active","type":"person"}
+{"id":"person:coral-frischkorn","layer":"reference","name":"Coral Frischkorn","status":"active","type":"person"}
+{"id":"vineyard:bassi-vineyard","layer":"reference","name":"Bassi Vineyard","status":"active","tags":["slo-coast","avila-valley","biodynamic"],"type":"vineyard"}
+{"id":"wine:scar-of-the-sea-bassi-vineyard-chardonnay","layer":"reference","name":"Scar of the Sea Bassi Vineyard Chardonnay","status":"active","tags":["california","slo-coast","bassi-vineyard","chardonnay","white"],"type":"wine"}
+{"id":"appellation:napa-valley-ava","layer":"reference","name":"Napa Valley AVA","status":"active","type":"appellation"}
+{"id":"appellation:oak-knoll-district-ava","layer":"reference","name":"Oak Knoll District of Napa Valley AVA","status":"active","type":"appellation"}
+{"id":"producer:ashes-and-diamonds","layer":"reference","name":"Ashes & Diamonds","status":"active","tags":["california","napa-valley"],"type":"producer"}
+{"id":"person:kashy-khaledi","layer":"reference","name":"Kashy Khaledi","status":"active","type":"person"}
+{"id":"person:steve-matthiasson","layer":"reference","name":"Steve Matthiasson","status":"active","type":"person"}
+{"id":"vineyard:ashes-and-diamonds-vineyard","layer":"reference","name":"Ashes & Diamonds Vineyard","status":"active","tags":["napa-valley","oak-knoll-district"],"type":"vineyard"}
+{"id":"wine:ashes-and-diamonds-cabernet-franc","layer":"reference","name":"Ashes & Diamonds Cabernet Franc","status":"active","tags":["napa-valley","cabernet-franc","red"],"type":"wine"}
+{"id":"place:cornas","layer":"reference","name":"Cornas","place_kind":"municipality","status":"active","type":"place"}
+{"id":"appellation:cornas","layer":"reference","name":"Cornas AOP","status":"active","type":"appellation"}
+{"id":"appellation:cotes-du-rhone","layer":"reference","name":"Côtes du Rhône AOP","status":"active","type":"appellation"}
+{"id":"producer:guillaume-gilles","layer":"reference","name":"Guillaume Gilles","display_name":"Domaine Guillaume Gilles","status":"active","tags":["northern-rhone","cornas"],"type":"producer"}
+{"id":"person:guillaume-gilles","layer":"reference","name":"Guillaume Gilles","status":"active","type":"person"}
+{"id":"person:robert-michel","layer":"reference","name":"Robert Michel","status":"active","type":"person"}
+{"id":"person:marcel-juge","layer":"reference","name":"Marcel Juge","status":"historical","type":"person"}
+{"id":"person:jean-louis-chave","layer":"reference","name":"Jean-Louis Chave","status":"active","type":"person"}
+{"id":"vineyard:les-peyrouses-cornas","layer":"reference","name":"Les Peyrouses","status":"active","summary":"Old-vine parcel on the flats in the commune of Cornas used for Guillaume Gilles's Côtes du Rhône Les Peyrouses wines; kept distinct from the Cornas AOP boundary and from the red/white wine identities.","type":"vineyard"}
+{"id":"wine:guillaume-gilles-les-peyrouses-rouge","layer":"reference","name":"Guillaume Gilles Les Peyrouses Côtes du Rhône Rouge","status":"active","tags":["northern-rhone","cotes-du-rhone","syrah","red"],"type":"wine"}
