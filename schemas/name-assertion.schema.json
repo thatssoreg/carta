@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://carta.local/schemas/name-assertion.schema.json",
+  "title": "CARTA Name Assertion v0.2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "entity_id", "name", "kind", "layer", "status", "claim_ids"],
+  "properties": {
+    "id": {"type": "string", "pattern": "^name:[a-z0-9][a-z0-9._-]*$"},
+    "entity_id": {"type": "string", "pattern": "^[a-z][a-z0-9_-]*:[a-z0-9][a-z0-9._-]*$"},
+    "name": {"type": "string", "minLength": 1},
+    "kind": {
+      "enum": [
+        "synonym", "legal_name", "local_name", "historical_name", "translation",
+        "trade_name", "label_name", "spelling_variant", "other"
+      ]
+    },
+    "layer": {"enum": ["reference", "frontier", "lens"]},
+    "status": {"enum": ["supported", "provisional", "contested", "rejected"]},
+    "language": {"type": "string"},
+    "jurisdiction_ref": {
+      "type": ["string", "null"],
+      "pattern": "^[a-z][a-z0-9_-]*:[a-z0-9][a-z0-9._-]*$"
+    },
+    "valid_from": {"type": ["string", "null"], "format": "date"},
+    "valid_to": {"type": ["string", "null"], "format": "date"},
+    "time_precision": {"enum": ["day", "month", "year", "range", "unknown"]},
+    "claim_ids": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"type": "string", "pattern": "^claim:[a-z0-9][a-z0-9._-]*$"},
+      "uniqueItems": true
+    },
+    "notes": {"type": "string"},
+    "created_at": {"type": "string", "format": "date-time"},
+    "updated_at": {"type": "string", "format": "date-time"}
+  }
+}

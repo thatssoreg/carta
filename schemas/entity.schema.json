@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://carta.local/schemas/entity.schema.json",
-  "title": "CARTA Entity v0.1",
+  "title": "CARTA Entity v0.2",
   "type": "object",
   "additionalProperties": false,
   "required": ["id", "type", "name", "layer", "status"],
@@ -12,7 +12,7 @@
     },
     "type": {
       "enum": [
-        "person", "producer", "project", "grape", "wine", "vineyard",
+        "person", "producer", "project", "ecosystem", "grape", "wine", "vineyard",
         "place", "appellation", "geographic_feature", "geology", "practice",
         "institution", "classification", "historical_event", "market_signal"
       ]
@@ -21,6 +21,12 @@
     "display_name": {"type": "string", "minLength": 1},
     "layer": {"enum": ["reference", "frontier", "lens"]},
     "status": {"enum": ["active", "historical", "provisional", "contested", "deprecated"]},
+    "place_kind": {
+      "enum": [
+        "country", "administrative_region", "cultural_region", "historical_territory",
+        "municipality", "locality", "wine_region", "analytical_region", "other"
+      ]
+    },
     "alternate_names": {
       "type": "array",
       "items": {
@@ -41,7 +47,12 @@
     "summary": {"type": "string"},
     "spatial_refs": {
       "type": "array",
-      "items": {"type": "string", "minLength": 1},
+      "items": {"type": "string", "pattern": "^(?:geom|spatial):[a-z0-9][a-z0-9._-]*$"},
+      "uniqueItems": true
+    },
+    "name_assertion_ids": {
+      "type": "array",
+      "items": {"type": "string", "pattern": "^name:[a-z0-9][a-z0-9._-]*$"},
       "uniqueItems": true
     },
     "claim_ids": {

@@ -1,13 +1,13 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://carta.local/schemas/claim.schema.json",
-  "title": "CARTA Claim v0.1",
+  "title": "CARTA Claim v0.2",
   "type": "object",
   "additionalProperties": false,
   "required": ["id", "subject_ref", "statement", "layer", "status", "confidence", "source_refs"],
   "properties": {
     "id": {"type": "string", "pattern": "^claim:[a-z0-9][a-z0-9._-]*$"},
-    "subject_ref": {"type": "string", "pattern": "^(?:[a-z][a-z0-9_-]*|rel|claim):[a-z0-9][a-z0-9._-]*$"},
+    "subject_ref": {"type": "string", "pattern": "^(?:[a-z][a-z0-9_-]*|rel|claim|name|spatial):[a-z0-9][a-z0-9._-]*$"},
     "statement": {"type": "string", "minLength": 1},
     "layer": {"enum": ["reference", "frontier", "lens"]},
     "status": {"enum": ["supported", "provisional", "contested", "rejected"]},
@@ -29,6 +29,7 @@
         "properties": {
           "source_id": {"type": "string", "pattern": "^source:[a-z0-9][a-z0-9._-]*$"},
           "role": {"enum": ["supports", "contradicts", "contextualizes"]},
+          "fitness": {"enum": ["excellent", "good", "limited", "lead_only"]},
           "locator": {"type": "string"},
           "notes": {"type": "string"}
         }

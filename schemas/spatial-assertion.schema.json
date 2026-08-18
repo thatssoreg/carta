@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://carta.local/schemas/spatial-assertion.schema.json",
+  "title": "CARTA Spatial Assertion v0.2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "entity_id", "representation_kind", "description", "layer", "status", "confidence", "source_ids"],
+  "properties": {
+    "id": {"type": "string", "pattern": "^spatial:[a-z0-9][a-z0-9._-]*$"},
+    "entity_id": {"type": "string", "pattern": "^[a-z][a-z0-9_-]*:[a-z0-9][a-z0-9._-]*$"},
+    "representation_kind": {
+      "enum": [
+        "reference_location", "source_described_area", "cultural_area",
+        "historical_area", "analytical_area", "network_anchor"
+      ]
+    },
+    "description": {"type": "string", "minLength": 1},
+    "layer": {"enum": ["reference", "frontier", "lens"]},
+    "status": {"enum": ["supported", "provisional", "contested", "rejected"]},
+    "confidence": {"enum": ["high", "medium", "low", "unknown"]},
+    "precision": {
+      "enum": ["address", "locality", "municipality", "regional", "approximate", "descriptive", "unknown"]
+    },
+    "anchor_entity_refs": {
+      "type": "array",
+      "items": {"type": "string", "pattern": "^[a-z][a-z0-9_-]*:[a-z0-9][a-z0-9._-]*$"},
+      "uniqueItems": true
+    },
+    "geometry_ids": {
+      "type": "array",
+      "items": {"type": "string", "pattern": "^geom:[a-z0-9][a-z0-9._-]*$"},
+      "uniqueItems": true
+    },
+    "source_ids": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"type": "string", "pattern": "^source:[a-z0-9][a-z0-9._-]*$"},
+      "uniqueItems": true
+    },
+    "claim_ids": {
+      "type": "array",
+      "items": {"type": "string", "pattern": "^claim:[a-z0-9][a-z0-9._-]*$"},
+      "uniqueItems": true
+    },
+    "valid_from": {"type": ["string", "null"], "format": "date"},
+    "valid_to": {"type": ["string", "null"], "format": "date"},
+    "observed_at": {"type": ["string", "null"], "format": "date"},
+    "time_precision": {"enum": ["day", "month", "year", "range", "unknown"]},
+    "notes": {"type": "string"},
+    "created_at": {"type": "string", "format": "date-time"},
+    "updated_at": {"type": "string", "format": "date-time"}
+  }
+}
