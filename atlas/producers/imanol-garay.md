@@ -1,51 +1,77 @@
 # Imanol Garay
 
-**CARTA ID:** `producer:imanol-garay`  
-**Type:** producer  
-**Status:** active
+**Maslacq / western Pyrenees, France, with cross-border work**
 
-## Why this producer matters in CARTA
+Imanol Garay is a grower and winemaker whose work connects the French side of the western Pyrenees with the Basque wine world across the Spanish border. Run 01 also documents a professional relationship with Richard Leroy and collaborative work with Alfredo Egia and Gile Iturriondobeitia.
 
-Imanol Garay is the central transmission node in Run 01. His work history reaches Richard Leroy, his collaborative work reaches Alfredo Egia and Gile Iturriondobeitia, and his geography spans the Maslacq/Orthez context and Saint-Étienne-de-Baïgorry.
+## Background & trajectory
 
-## Place and farming footprint
+The accepted Run 01 evidence establishes that Garay worked with Richard Leroy before developing his own project. The exact nature of that relationship is deliberately recorded as `WORKED_WITH`, not automatically `WORKED_FOR` or `MENTORED_BY`.
 
-| Spatial record | Kind | Precision | Status | Description |
-|---|---|---|---|---|
-| `spatial:imanol-garay-baigorry-vines` | `reference_location` | municipality | provisional | A recent importer profile reports about one hectare of Garay's own vines in Saint-Étienne-de-Baïgorry, described as just outside the Irouléguy appellation limits. Parcel geometry is not yet known. |
-| `spatial:imanol-garay-cellar-maslacq` | `reference_location` | locality | provisional | Recent trade reporting places Garay's cellar in Maslacq. Earlier sources use Orthez or near Orthez, so this is a provisional current locality rather than an exact address. |
+A fuller biography, training chronology, and account of how his French and Spanish work developed are priorities for the next enrichment pass.
 
-## Typed relationships
+## Place & vineyards
 
-| Relationship | Direction | Connected entity | Status | Evidence |
-|---|---:|---|---|---|
-| `CELLAR_IN` | → | `place:maslacq` | provisional | claim:imanol-cellar-maslacq |
-| `FARMS_IN` | → | `place:saint-etienne-de-baigorry` | provisional | claim:imanol-baigorry-vines |
-| `MADE_BY` | ← | `wine:ixilune` | supported | claim:ixilune-composition |
+Recent trade reporting places Garay's cellar in Maslacq, while older sources use Orthez or the area around Orthez. CARTA currently treats the present cellar locality as provisional until the chronology is better resolved.
 
-## Key wines / projects
+A recent importer profile also reports Garay's own vines around Saint-Étienne-de-Baïgorry, described as just outside the Irouléguy appellation limits, plus another holding near Orthez. Exact parcel geometry and the full tenure/fruit-sourcing picture remain open.
 
-- [Ixilune](../wines/ixilune.md)
+## Grapes
 
-## What CARTA is watching
+Current Run 01 evidence for **Ixilune** connects Garay to:
 
-The current principal cellar locality remains provisional because recent Maslacq reporting and older Orthez descriptions do not yet have a producer-confirmed chronology. Parcel tenure also remains more nuanced than the current relationship schema can fully express.
+- [Raffiat de Moncade](../grapes/raffiat-de-moncade.md)
+- [Petit Manseng](../grapes/petit-manseng.md)
+- [Petit Courbu](../grapes/petit-courbu.md)
+- Gros Manseng in some documented vintages
 
-## Claims and confidence
+The blend and maceration can vary by vintage, so CARTA does not treat one bottling description as a permanent recipe.
 
-| Claim | Status | Confidence | Statement |
-|---|---|---|---|
-| `claim:imanol-cellar-maslacq` | provisional | medium | Recent trade reporting locates Imanol Garay's cellar in Maslacq, while earlier trade sources described it as Orthez or near Orthez; this appears to reflect changing or imprecise locality descriptions rather than evidence of two simultaneous main cellars. |
-| `claim:imanol-baigorry-vines` | provisional | medium | A recent importer profile reports about one hectare of Garay's own vines in Saint-Étienne-de-Baïgorry, just outside the Irouléguy appellation limits, plus another hectare near Orthez. |
-| `claim:ixilune-composition` | supported | medium | Imanol Garay's Ixilune has been documented in different vintages as a blend centered on Raffiat de Moncade with Petit Manseng and Petit Courbu, and sometimes Gros Manseng; blend proportions and maceration vary by vintage. |
+## Wines to know
+
+### Ixilune
+
+[Ixilune](../wines/ixilune.md) is the first Garay wine ingested into CARTA. The next enrichment pass should identify several additional representative wines and explain how they differ in grape material, origin, and cellar approach.
+
+## Projects & collaborations
+
+### Hegan Egin
+
+[Hegan Egin](../projects/hegan-egin.md) connects Garay with Alfredo Egia and Gile Iturriondobeitia in a collaborative Basque project.
+
+## People, lineage & influence
+
+- Richard Leroy - documented work relationship; stronger mentorship/employment claims remain unaccepted without better evidence
+- [Alfredo Egia](alfredo-egia.md) - collaborator and documented mentee
+- Gile Iturriondobeitia - collaborator through Hegan Egin
+
+## Regional context
+
+- [Irouléguy](../countries/france/appellations/irouleguy.md)
+- [Béarn](../countries/france/regions/bearn.md)
+- [France](../countries/france/README.md)
+- [Spain](../countries/spain/README.md)
+- [Pyrenean Atlantic ecosystem](../ecosystems/pyrenean-atlantic.md)
+
+Garay is especially useful for understanding why producer careers, fruit sourcing, and technical exchange do not stop neatly at appellation or national borders.
+
+## Explore next
+
+[Alfredo Egia](alfredo-egia.md) · [Irouléguy](../countries/france/appellations/irouleguy.md) · [Raffiat de Moncade](../grapes/raffiat-de-moncade.md) · [Pyrenean Atlantic](../ecosystems/pyrenean-atlantic.md)
 
 ## Sources
 
-- `source:beattie-imanol` — [Imanol Garay, Maslacq, Pyrénées-Atlantiques](https://www.beattieandroberts.com/producers/imanol-garay)
-- `source:sourceimports-imanol-2022` — [Newsletter June 2022: Imanol Garay](https://thesourceimports.com/newsletter-june-2022/)
-- `source:orange-imanol-2022` — [Imanol Garay, the emotions of a wine](https://www.orangewines.es/en/imanol-garay/)
+- `source:beattie-imanol`
+- `source:sourceimports-imanol-2022`
+- `source:orange-imanol-2022`
 
-## Revision history
+## Record & provenance
 
-- Run 01: candidate research.
-- STRATA v0.2 ingestion: accepted/normalized proof card.
+This Human Reference profile composes:
+
+- `person:imanol-garay`
+- `producer:imanol-garay`
+- `project:hegan-egin`
+- `wine:ixilune`
+
+**Reference maturity:** node / migration stub. Baseline enrichment is queued.
