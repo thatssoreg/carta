@@ -1,77 +1,98 @@
 # Imanol Garay
 
-**Maslacq / western Pyrenees, France, with cross-border work**
+**Maslacq and the western Pyrenees, France, with cross-border work**
 
-Imanol Garay is a grower and winemaker whose work connects the French side of the western Pyrenees with the Basque wine world across the Spanish border. Run 01 also documents a professional relationship with Richard Leroy and collaborative work with Alfredo Egia and Gile Iturriondobeitia.
+Imanol Garay is a Basque grower and winemaker whose work is unusually useful for understanding CARTA's central premise: wine geography is real, but people, fruit, knowledge, and projects routinely cross the boundaries that make wine easy to teach. Garay works from the French side of the western Pyrenees while maintaining meaningful relationships to Basque Spain, purchased fruit, and collaborators across the border.
 
 ## Background & trajectory
 
-The accepted Run 01 evidence establishes that Garay worked with Richard Leroy before developing his own project. The exact nature of that relationship is deliberately recorded as `WORKED_WITH`, not automatically `WORKED_FOR` or `MENTORED_BY`.
+Current importer reporting places Garay's origins in the Basque world around San Sebastián and documents formative wine experience that included working with Richard Leroy and Vincent Carême. CARTA preserves the strongest defensible version of that history: **Garay worked with Leroy**. The current evidence does not justify silently upgrading that relationship to formal employment or mentorship.
 
-A fuller biography, training chronology, and account of how his French and Spanish work developed are priorities for the next enrichment pass.
+Garay later developed his own work across the French and Spanish sides of the border, making him less a tidy “regional producer” than a useful example of how producer careers create their own geography.
 
 ## Place & vineyards
 
-Recent trade reporting places Garay's cellar in Maslacq, while older sources use Orthez or the area around Orthez. CARTA currently treats the present cellar locality as provisional until the chronology is better resolved.
+Current reporting describes:
 
-A recent importer profile also reports Garay's own vines around Saint-Étienne-de-Baïgorry, described as just outside the Irouléguy appellation limits, plus another holding near Orthez. Exact parcel geometry and the full tenure/fruit-sourcing picture remain open.
+- roughly one hectare of Garay's own vines in **Saint-Étienne-de-Baïgorry**, reported just outside the Irouléguy appellation boundary
+- another roughly one hectare near **Orthez**
+- purchased fruit from **Madiran**
+- additional Spanish fruit sources in projects tied to Rioja/Navarra and the Basque side
+
+The cellar is currently reported in **Maslacq**. Older trade sources used Orthez or “near Orthez,” so CARTA keeps the chronology open rather than pretending those descriptions prove two simultaneous main cellars.
+
+## Farming
+
+Garay is documented as farming biodynamically on his own sites. The crucial distinction is ownership and responsibility: estate vines, farmed vines, and purchased fruit are not interchangeable categories. His producer profile therefore includes both farming and sourcing rather than implying every bottle comes from one estate block.
+
+## In the cellar
+
+Garay's cellar is deliberately heterogeneous. Current trade documentation describes barrels, tanks, and amphorae, with native fermentations and very low-intervention handling.
+
+The more important editorial rule is variability. **Ixilune alone changes materially across vintages.** Earlier documentation connects it strongly to Raffiat de Moncade, Petit Manseng, and Petit Courbu; a 2023 description gives a different composition. CARTA therefore treats each wine as a persistent cuvée identity whose vintage manifestations can change.
 
 ## Grapes
 
-Current Run 01 evidence for **Ixilune** connects Garay to:
+Garay is connected to a broad western-Pyrenean set, including:
 
-- [Raffiat de Moncade](../grapes/raffiat-de-moncade.md)
 - [Petit Manseng](../grapes/petit-manseng.md)
+- [Gros Manseng](../grapes/gros-manseng.md)
 - [Petit Courbu](../grapes/petit-courbu.md)
-- Gros Manseng in some documented vintages
+- [Raffiat de Moncade](../grapes/raffiat-de-moncade.md)
+- Tannat through purchased Madiran fruit
 
-The blend and maceration can vary by vintage, so CARTA does not treat one bottling description as a permanent recipe.
+His significance is partly that these grapes are not presented as museum pieces. They become working material across distinct sites, jurisdictions, and wine styles.
 
 ## Wines to know
 
-### Ixilune
+**Ixilune** is essential, but it should be read across vintages rather than as one permanent recipe.
 
-[Ixilune](../wines/ixilune.md) is the first Garay wine ingested into CARTA. The next enrichment pass should identify several additional representative wines and explain how they differ in grape material, origin, and cellar approach.
+**Saguzara** is another recurring reference in Garay's current range and helps broaden the picture beyond Ixilune.
+
+**Clandestinus** provides a different stylistic and grape reference from the white wines.
+
+**La Altannativa** is especially useful because it documents purchased Madiran Tannat, making the distinction between estate farming and sourced fruit legible.
 
 ## Projects & collaborations
 
 ### Hegan Egin
 
-[Hegan Egin](../projects/hegan-egin.md) connects Garay with Alfredo Egia and Gile Iturriondobeitia in a collaborative Basque project.
+[Hegan Egin](../projects/hegan-egin.md) connects Garay with Alfredo Egia and Gile Iturriondobeitia. It is not evidence that their domains are one producer. It is evidence of actual collaboration.
+
+Garay also maintains work on both sides of the French-Spanish border, which is why his profile should be read through the [Pyrenean Atlantic ecosystem](../ecosystems/pyrenean-atlantic.md) as well as through any single appellation.
 
 ## People, lineage & influence
 
-- Richard Leroy - documented work relationship; stronger mentorship/employment claims remain unaccepted without better evidence
-- [Alfredo Egia](alfredo-egia.md) - collaborator and documented mentee
-- Gile Iturriondobeitia - collaborator through Hegan Egin
+- [Richard Leroy](richard-leroy.md) — documented `WORKED_WITH` relationship; stronger claims withheld
+- [Alfredo Egia](alfredo-egia.md) — collaborator and documented mentee
+- Gile Iturriondobeitia — collaborator through Hegan Egin
 
-## Regional context
+## Style & significance
 
-- [Irouléguy](../countries/france/appellations/irouleguy.md)
-- [Béarn](../countries/france/regions/bearn.md)
-- [France](../countries/france/README.md)
-- [Spain](../countries/spain/README.md)
-- [Pyrenean Atlantic ecosystem](../ecosystems/pyrenean-atlantic.md)
+Garay's wines make a case for texture, maceration, vessel, and local grape material without collapsing those choices into a branded “natural wine style.” More importantly, his career demonstrates how technical knowledge can move from the Loire into the Pyrenees, then across French and Spanish Basque networks, while the wines remain grounded in specific fruit and sites.
 
-Garay is especially useful for understanding why producer careers, fruit sourcing, and technical exchange do not stop neatly at appellation or national borders.
+## Appellation context
+
+Garay's own Saint-Étienne-de-Baïgorry vines are currently reported just outside [Irouléguy](../countries/france/appellations/irouleguy.md). That boundary relationship is a prime GIS question: CARTA can say “reported just outside” today, but should not manufacture parcel geometry to prove it.
 
 ## Explore next
 
-[Alfredo Egia](alfredo-egia.md) · [Irouléguy](../countries/france/appellations/irouleguy.md) · [Raffiat de Moncade](../grapes/raffiat-de-moncade.md) · [Pyrenean Atlantic](../ecosystems/pyrenean-atlantic.md)
+[Richard Leroy](richard-leroy.md) · [Alfredo Egia](alfredo-egia.md) · [Irouléguy](../countries/france/appellations/irouleguy.md) · [Raffiat de Moncade](../grapes/raffiat-de-moncade.md) · [Pyrenean Atlantic](../ecosystems/pyrenean-atlantic.md)
 
 ## Sources
 
-- `source:beattie-imanol`
-- `source:sourceimports-imanol-2022`
-- `source:orange-imanol-2022`
+Primary CARTA source records include Beattie & Roberts, The Source Imports, Orange Wines, Buvons Wine, and vintage-specific Beattie & Roberts wine pages.
 
 ## Record & provenance
 
-This Human Reference profile composes:
+Composite profile:
 
 - `person:imanol-garay`
 - `producer:imanol-garay`
 - `project:hegan-egin`
 - `wine:ixilune`
+- `wine:saguzara`
+- `wine:clandestinus`
+- `wine:la-altannativa`
 
-**Reference maturity:** node / migration stub. Baseline enrichment is queued.
+**Reference maturity:** baseline / published.

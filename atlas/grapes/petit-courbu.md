@@ -1,56 +1,100 @@
 # Petit Courbu
 
-Petit Courbu is a distinct white Pyrenean cultivar that becomes especially interesting when the French and Basque naming systems are placed side by side. In current Bizkaiko Txakolina law it appears as **Hondarrabi Zuri Zerratia**, but CARTA keeps that jurisdiction-specific legal equivalence separate from broader claims about universal synonymy.
+Petit Courbu is a rare white Pyrenean grape whose importance is larger than its acreage suggests. In France it belongs to the old white-grape vocabulary of the southwest. In Bizkaia, current wine law pairs it with the name **Hondarrabi Zuri Zerratia**, making the grape one of CARTA's clearest examples of how biological identity, legal naming, and cross-border wine culture overlap without becoming the same thing.
 
 ## At a glance
 
-- **Origin / association:** Pyrenean
-- **Productivity:** low to moderate in the retained cultivar evidence
-- **Fruit:** very small
-- **Disease:** more susceptible to grey rot than Petit Manseng in the retained evidence
+Plantgrape describes Petit Courbu as:
+
+- an autochthonous Pyrenean cultivar
+- low in productivity
+- generally suited to long pruning
+- made up of small clusters and very small berries
+- susceptible to grey rot
+- capable of fine, aromatic wines
+
+That profile helps explain both its rarity and its contemporary appeal to growers interested in local material.
 
 ## In the vineyard
 
-Petit Courbu's small fruit and lower productivity make it biologically distinct from the neighboring grapes with which its names are often confused. A fuller treatment of ripening timing, acid behavior, site preferences, and modern farming practice remains for the enrichment pass.
+Petit Courbu is not the easy high-yield option in this grape family. Low productivity and grey-rot susceptibility matter in humid Atlantic-influenced conditions. Those constraints help explain why the grape can be historically important yet remain scarce in modern vineyards.
+
+The small berries also make it naturally interesting to producers seeking texture and extract, though CARTA avoids turning morphology directly into a deterministic wine style.
+
+## In the glass
+
+Petit Courbu is generally described through finesse, aromatic lift, and texture rather than brute concentration. In blends it can soften or broaden the sharp structural line of Mansengs. In contemporary barrel, lees, or maceration contexts it can also carry more phenolic and textural weight.
+
+The useful range includes floral, citrus, orchard-fruit, herbal, and waxy/nutty registers depending on ripeness and handling. These are tendencies, not a flavor checklist.
 
 ## Styles
 
-The current CARTA corpus connects Petit Courbu to contemporary white wines such as Rebel Rebel and Ixilune, but it does not yet support a complete account of the grape's historic or normal style range. That is a priority for the next research pass.
+### Dry whites
+
+The grape's primary modern role is dry wine, frequently blended with Mansengs or Courbu.
+
+### Blends and co-ferments
+
+Petit Courbu is especially important as part of the local white-grape matrix in Jurançon, Pacherenc, and the contemporary Basque network.
+
+### Textural and low-intervention expressions
+
+[Alfredo Egia](../producers/alfredo-egia.md) and [Imanol Garay](../producers/imanol-garay.md) are important because they show Petit Courbu in wines shaped by barrel, lees, maceration, and other choices that broaden the reader's idea of what these grapes can do.
+
+Run 02 proposed several additional historical sparkling and varietal claims that were not strong enough to promote into reference authority.
+
+## History & significance
+
+Petit Courbu's significance is not that it once dominated a famous international category. It is a survivor of a more diverse Pyrenean white-grape culture.
+
+That makes its modern revival especially useful. The grape can connect older Béarn/Jurançon/Pacherenc traditions to current Bizkaian wine without requiring CARTA to tell a simple “lost grape rediscovered” story. Some current use is genuinely new in visibility; some is continuity under changing names and legal regimes.
 
 ## Where it matters
 
-- [Bizkaiko Txakolina](../countries/spain/appellations/bizkaiko-txakolina.md), where Hondarrabi Zuri Zerratia (Petit Courbu) is a recommended/main white variety in the current specification
-- the broader western Pyrenean/Basque-Béarn grape world represented by the Run 01 ecosystem
+- [Jurançon](../countries/france/appellations/jurancon.md)
+- [Pacherenc du Vic-Bilh](../countries/france/appellations/pacherenc-du-vic-bilh.md)
+- the wider western-Pyrenean white-grape landscape
+- [Bizkaiko Txakolina](../countries/spain/appellations/bizkaiko-txakolina.md), where current law pairs Hondarrabi Zuri Zerratia with Petit Courbu
 
-## Wines currently represented
+## Producers to know
 
-- [Rebel Rebel](../wines/rebel-rebel.md), Alfredo Egia
-- [Ixilune](../wines/ixilune.md), Imanol Garay
+- **Camin Larredya** — contemporary Jurançon reference using Petit Courbu within a broader local grape mix
+- [Alfredo Egia](../producers/alfredo-egia.md) — one of the most important CARTA anchors for the Basque contemporary story
+- [Imanol Garay](../producers/imanol-garay.md) — another central contemporary interpreter
 
-These are current CARTA connections, not a complete benchmark list.
+## Wines to know
 
-## Names & identity
+- [Rebel Rebel](../wines/rebel-rebel.md)
+- Hegan Egin
+- [Ixilune](../wines/ixilune.md) in documented vintages
 
-- **Hondarrabi Zuri Zerratia** - legal name in the Bizkaiko context captured in Run 01
-- Plantgrape treats Petit Courbu as a distinct cultivar
-- CARTA keeps Petit Courbu separate from Courbu and Courbu noir unless stronger biological evidence says otherwise
+The point is not that these wines define the grape universally. They reveal different modern possibilities for it.
 
-## Producers & wines to know
+## Names & genetics
 
-Baseline enrichment queued. The next pass should identify historic, benchmark, contemporary, and emerging producers who clarify the grape's actual range rather than simply repeating the two wines already in CARTA.
+**Prime CARTA identity:** Petit Courbu.
+
+**Bizkaiko legal/local name:** Hondarrabi Zuri Zerratia.
+
+The current legal equivalence is strong within the Bizkaiko jurisdiction. CARTA does not automatically turn that into a universal, timeless synonym claim for every historical use of the name.
+
+Petit Courbu is **not** the same grape as [Courbu](courbu.md). Similar names and frequent co-planting have made confusion common.
+
+Parentage remains unresolved in CARTA. No genetic relationship is inferred from the name.
+
+## Current developments
+
+The most interesting current development is increased visibility through small contemporary producers and legal recognition in the Basque context. Total acreage and nursery availability remain too poorly documented for CARTA to claim a broad planting boom.
 
 ## Explore next
 
-[Courbu](courbu.md) · [Petit Manseng](petit-manseng.md) · [Bizkaiko Txakolina](../countries/spain/appellations/bizkaiko-txakolina.md) · [Alfredo Egia](../producers/alfredo-egia.md) · [Imanol Garay](../producers/imanol-garay.md)
+[Courbu](courbu.md) · [Petit Manseng](petit-manseng.md) · [Alfredo Egia](../producers/alfredo-egia.md) · [Imanol Garay](../producers/imanol-garay.md) · [Bizkaiko Txakolina](../countries/spain/appellations/bizkaiko-txakolina.md)
 
 ## Sources
 
-- `source:plantgrape-petit-courbu`
-- `source:euskadi-bizkaiko-pliego`
-- `source:eurlex-bizkaiko-2025-amendment`
+Key sources include Plantgrape, official Bizkaiko regulations, Camin Larredya, and producer/trade records.
 
 ## Record & provenance
 
-- Primary machine entity: `grape:petit-courbu`
-- Human Reference maturity: `node`; baseline enrichment queued
-- Cross-registry treatment of Hondarrabi Zuri Zerratia versus Petit Courbu remains a priority research question
+**CARTA ID:** `grape:petit-courbu`  
+**Reference maturity:** baseline / published.

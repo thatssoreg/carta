@@ -1,80 +1,75 @@
 # CARTA Human Reference
 
-The Human Reference is the reader-facing projection of CARTA's machine authority.
-
-It is designed as a deep wine reference, not as a display of database structure.
-
-The machine graph can separate people, producers, projects, wines, places, appellations, claims, and relationships. Human profiles are allowed to compose those records into one coherent reading experience.
+The Human Reference is CARTA's reader-facing wine reference. Machine records remain the data authority, but the thing a human experiences should feel like a serious atlas, producer guide, grape reference, and set of connected rabbit holes.
 
 ## Start here
 
-- [Pyrenean Atlantic ecosystem](ecosystems/pyrenean-atlantic.md)
+### Ecosystem
+
+- [Pyrenean Atlantic](ecosystems/pyrenean-atlantic.md)
+
+### Producers
+
+- [Alfredo Egia](producers/alfredo-egia.md)
+- [Imanol Garay](producers/imanol-garay.md)
+- [Richard Leroy](producers/richard-leroy.md)
+
+### Grapes
+
+- [Petit Manseng](grapes/petit-manseng.md)
+- [Gros Manseng](grapes/gros-manseng.md)
+- [Petit Courbu](grapes/petit-courbu.md)
+- [Courbu](grapes/courbu.md)
+- [Raffiat de Moncade](grapes/raffiat-de-moncade.md) — useful stub, not yet baseline
+
+### France
+
 - [France](countries/france/README.md)
+- [Béarn](countries/france/regions/bearn.md)
+- [Jurançon](countries/france/appellations/jurancon.md)
+- [Irouléguy](countries/france/appellations/irouleguy.md)
+- [Pacherenc du Vic-Bilh](countries/france/appellations/pacherenc-du-vic-bilh.md)
+
+### Spain
+
 - [Spain](countries/spain/README.md)
-- [Grapes](indexes/grapes.md)
-- [Producers and people](indexes/producers-and-people.md)
-- [Wines](indexes/wines.md)
-- [Landscapes](landscapes/README.md)
+- [Bizkaia](countries/spain/regions/bizkaia.md)
+- [Bizkaiko Txakolina](countries/spain/appellations/bizkaiko-txakolina.md)
 
-## Human geography
+### Landscapes
 
-Country-specific regions and appellations now live beneath their countries in the canonical Human Reference structure:
+- [Western Pyrenees](landscapes/western-pyrenees.md) — queued for GIS before promotion
 
-```text
-countries/
-  france/
-    README.md
-    regions/
-    appellations/
-  spain/
-    README.md
-    regions/
-    appellations/
-```
+## How to read CARTA
 
-Cross-border physical and cultural geography belongs under `landscapes/`.
+A producer page may compose a person, producer identity, projects, wines, places, and relationships into one readable dossier.
 
-Relationship-generated analytical constructs remain under `ecosystems/`.
+A grape page begins with the grape itself, then moves through vineyard behavior, structure, styles, history, places, producers, wines, and genetics.
 
-The older flat `regions/`, `appellations/`, and country Markdown paths remain temporarily as compatibility surfaces from the Run 01 proof set. New reference work should use the nested paths.
+Country pages orient. Region pages explain human geography. Appellation pages explain legal wine geography. Landscapes explain physical/cultural geography. Ecosystems explain relationship-generated worlds that may extend beyond geographic boundaries.
 
 ## Reference maturity
 
-A valid graph node is not automatically a finished reference page.
+- **node** — useful in the graph, not yet a complete standalone reference
+- **baseline** — generous, publishable orientation
+- **deep** — mature dossier depth
 
-CARTA distinguishes:
+Run 02 promoted 15 individual/reference profiles plus the existing Pyrenean Atlantic ecosystem to baseline. Raffiat de Moncade and Western Pyrenees remain intentionally below baseline.
 
-- **node** - enough to participate in the graph, not enough for a standalone reference;
-- **baseline** - generous, publishable reference depth;
-- **deep** - mature dossier depth.
+## Current spatial posture
 
-Publication state is governed separately through `data/reference-profiles/`.
+CARTA still has **zero fabricated geometry**.
 
-The Pyrenean Atlantic ecosystem is the first accepted baseline proof. Most Run 01 entity pages are now explicitly treated as stubs or enrichment targets under the Human Reference v0.2 standard.
+That is now a feature rather than a gap to paper over. The next pass moves from source-described geography to real GIS layers, beginning with Western Pyrenees and the appellation/site questions already identified in the reference.
 
-## Composite profiles
+## Indexes
 
-Producer profiles should usually compose the relevant person, producer, project, wine, place, and relationship records rather than forcing a reader to navigate machine ontology one object at a time.
+- [Grapes](indexes/grapes.md)
+- [Producers and people](indexes/producers-and-people.md)
+- [Wines](indexes/wines.md)
 
-This is why the next enrichment pass will rewrite Alfredo Egia and Imanol Garay as composite producer references and build a real Richard Leroy producer dossier rather than leaving him as a one-edge person page.
+## Authority
 
-## Editorial rule
+If prose and structured authority ever disagree, `data/` wins until the conflict is editorially resolved.
 
-Reference pages should lead with the subject itself:
-
-- what it is;
-- what it is like;
-- where it comes from;
-- how it developed;
-- what styles or wines matter;
-- who or what defines it;
-- what is changing;
-- where to explore next.
-
-CARTA IDs, claims, confidence tables, rejected edges, and revision history belong in a subordinate provenance section near the bottom.
-
-## Authority rule
-
-The structured records under `data/` remain authoritative if a Human Reference page and the machine layer disagree.
-
-See [`../docs/atlas-projection.md`](../docs/atlas-projection.md) for the full Human Reference v0.2 contract.
+See [`../docs/atlas-projection.md`](../docs/atlas-projection.md).

@@ -2,23 +2,38 @@
 
 Human Reference profiles are organized for readers, not one-to-one with machine entities.
 
-A producer profile may compose person, producer, project, wine, place, and relationship records. Separate person pages are reserved for cases where the person's career or cultural role extends meaningfully beyond one producer identity.
+## Baseline producer references
 
-## Producer references
+- [Alfredo Egia](../producers/alfredo-egia.md)
+- [Imanol Garay](../producers/imanol-garay.md)
+- [Richard Leroy](../producers/richard-leroy.md)
 
-- [Alfredo Egia](../producers/alfredo-egia.md) - composite migration stub; baseline enrichment queued
-- [Imanol Garay](../producers/imanol-garay.md) - current proof-set stub; composite baseline enrichment queued
-- **Richard Leroy** - producer reference queued for the next enrichment pass; current machine/person node is not considered an adequate producer dossier
+Richard Leroy now has a real producer identity and composite dossier rather than remaining a one-edge person node.
+
+## Representative producer anchors in the current graph
+
+These currently support grape, region, or appellation orientation without yet receiving standalone Human Reference profiles:
+
+- Domaine Cauhapé
+- Clos Uroulat
+- Domaine de Souch
+- Camin Larredya
+- Domaine Arretxea
+- Château Bouscassé
+
+Their presence is not a ranking or a claim that the current set is comprehensive.
 
 ## Projects
 
 - [Hegan Egin](../projects/hegan-egin.md)
 
-## Person-level nodes currently represented
+## Person-level nodes
 
-These remain useful to the machine graph and relationship network even when a separate reader-facing person profile may not be necessary after enrichment:
+The machine graph retains separate people where that distinction matters:
 
 - Alfredo Egia
 - Imanol Garay
 - Richard Leroy
 - Gile Iturriondobeitia
+
+Separate human person pages are only useful when a person's career meaningfully exceeds one producer identity.

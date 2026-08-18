@@ -1,37 +1,53 @@
 # France
 
-CARTA's first French reference coverage begins in the southwest, where Jurançon, Irouléguy, Pacherenc du Vic-Bilh, Béarn, and the western Pyrenean landscape intersect with the first ecosystem pilot. A separate professional thread reaches north to Richard Leroy in the Loire.
+France is a country-scale navigation surface in CARTA, not an attempt to compress all French wine into one page. The current reference is intentionally organized around the places and relationships already represented in the Pyrenean Atlantic pilot, plus Richard Leroy's Loire context.
 
-This page is the country-level navigation surface. It does not imply that every French wine region is represented yet.
+## Wine law in brief
 
-## Regions
+French wine geography is governed through overlapping legal and physical systems. AOP/AOC designations define regulated production zones and rules, but vineyards, historical regions, watersheds, geology, and producer networks do not always align cleanly with those boundaries.
 
-- [Béarn](regions/bearn.md) — historical and cultural territory, kept distinct from the legal Béarn appellation
+CARTA therefore keeps appellations as legal entities while allowing regions, landscapes, and ecosystems to overlap them.
 
-## Appellations
+## Current CARTA geographies
 
+### Southwest / western Pyrenees
+
+- [Béarn](regions/bearn.md) — historical and cultural geography, distinct from the legal Béarn appellation
 - [Jurançon](appellations/jurancon.md)
 - [Irouléguy](appellations/irouleguy.md)
 - [Pacherenc du Vic-Bilh](appellations/pacherenc-du-vic-bilh.md)
-- Béarn AOP — machine entity present; full Human Reference enrichment pending
+- [Western Pyrenees](../../landscapes/western-pyrenees.md) — physical/cultural landscape awaiting GIS enrichment
 
-## Producers and people
+This slice is especially important for Petit Manseng, Gros Manseng, Petit Courbu, Courbu, Tannat, and a network of producers whose work crosses formal boundaries.
 
-- [Imanol Garay](../../producers/imanol-garay.md)
-- Richard Leroy — producer dossier queued for the next enrichment pass
+### Loire / Anjou
 
-## Cross-border landscape
+[Richard Leroy](../../producers/richard-leroy.md) enters CARTA through a professional relationship with Imanol Garay, but his own reference belongs in Anjou and Chenin Blanc. That is a useful example of why a country page must support both geographic and network navigation.
 
-- Western Pyrenees — landscape dossier queued
+## Grapes currently represented
 
-## Ecosystem
+The French side of the pilot is especially dense in:
 
-- [Pyrenean Atlantic](../../ecosystems/pyrenean-atlantic.md)
+- [Petit Manseng](../../grapes/petit-manseng.md)
+- [Gros Manseng](../../grapes/gros-manseng.md)
+- [Petit Courbu](../../grapes/petit-courbu.md)
+- [Courbu](../../grapes/courbu.md)
+- [Raffiat de Moncade](../../grapes/raffiat-de-moncade.md)
+- Chenin Blanc through Richard Leroy
+
+## Cross-border context
+
+The western Pyrenees cannot be understood only as “France versus Spain.” The Basque cultural geography, shared grape material, Atlantic weather systems, mountain/watershed structure, and producer relationships all cross or ignore the national boundary in different ways.
+
+That does not make the border irrelevant. It means CARTA needs to show which relationship is legal, cultural, biological, physical, or professional.
 
 ## Explore next
 
-[Jurançon](appellations/jurancon.md) · [Béarn](regions/bearn.md) · [Imanol Garay](../../producers/imanol-garay.md) · [Pyrenean Atlantic](../../ecosystems/pyrenean-atlantic.md)
+[Béarn](regions/bearn.md) · [Jurançon](appellations/jurancon.md) · [Irouléguy](appellations/irouleguy.md) · [Pacherenc du Vic-Bilh](appellations/pacherenc-du-vic-bilh.md) · [Richard Leroy](../../producers/richard-leroy.md)
 
-## Sources
+## Record & provenance
 
-The current country surface is assembled from accepted Run 01 records. Deeper national context is intentionally reserved for a later country enrichment pass.
+**CARTA ID:** `place:france`  
+**Reference maturity:** baseline / published.
+
+This is an orientation page. It should expand as CARTA adds French ecosystems, regions, producers, and grapes, not pretend to be a finished encyclopedia of France.

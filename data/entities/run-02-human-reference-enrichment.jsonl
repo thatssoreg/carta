@@ -1,0 +1,19 @@
+{"display_name": "Richard Leroy", "id": "producer:richard-leroy", "layer": "reference", "name": "Domaine Richard Leroy", "status": "active", "tags": ["loire", "anjou", "chenin-blanc"], "type": "producer"}
+{"id": "grape:chenin-blanc", "layer": "reference", "name": "Chenin Blanc", "status": "active", "tags": ["white", "loire"], "type": "grape"}
+{"id": "place:rablay-sur-layon", "layer": "reference", "name": "Rablay-sur-Layon", "place_kind": "municipality", "status": "active", "tags": ["loire", "maine-et-loire"], "type": "place"}
+{"id": "wine:les-noels-de-montbenault", "layer": "reference", "name": "Les Noëls de Montbenault", "status": "active", "tags": ["richard-leroy", "chenin-blanc", "vin-de-france"], "type": "wine"}
+{"id": "wine:les-rouliers", "layer": "reference", "name": "Les Rouliers", "status": "active", "tags": ["richard-leroy", "chenin-blanc", "vin-de-france"], "type": "wine"}
+{"id": "wine:egia-enea", "layer": "reference", "name": "Egia Enea", "status": "active", "tags": ["alfredo-egia", "bizkaia", "white"], "type": "wine"}
+{"id": "wine:lexardi", "layer": "reference", "name": "Lexardi", "status": "active", "tags": ["alfredo-egia", "bizkaia", "white"], "type": "wine"}
+{"id": "wine:izaki", "layer": "reference", "name": "Izaki", "status": "active", "tags": ["alfredo-egia", "bizkaia", "white"], "type": "wine"}
+{"id": "wine:saguzara", "layer": "reference", "name": "Saguzara", "status": "active", "tags": ["imanol-garay"], "type": "wine"}
+{"id": "wine:clandestinus", "layer": "reference", "name": "Clandestinus", "status": "active", "tags": ["imanol-garay"], "type": "wine"}
+{"id": "wine:la-altannativa", "layer": "reference", "name": "La Altannativa", "status": "active", "tags": ["imanol-garay", "tannat"], "type": "wine"}
+{"id": "place:united-states", "layer": "reference", "name": "United States", "place_kind": "country", "status": "active", "type": "place"}
+{"id": "place:virginia", "layer": "reference", "name": "Virginia", "place_kind": "administrative_region", "status": "active", "tags": ["united-states", "wine-region"], "type": "place"}
+{"id": "producer:domaine-cauhape", "layer": "reference", "name": "Domaine Cauhapé", "status": "active", "tags": ["jurancon", "reference-anchor"], "type": "producer"}
+{"id": "producer:clos-uroulat", "layer": "reference", "name": "Clos Uroulat", "status": "active", "tags": ["jurancon", "reference-anchor"], "type": "producer"}
+{"id": "producer:domaine-de-souch", "layer": "reference", "name": "Domaine de Souch", "status": "active", "tags": ["jurancon", "reference-anchor"], "type": "producer"}
+{"id": "producer:camin-larredya", "layer": "reference", "name": "Camin Larredya", "status": "active", "tags": ["jurancon", "reference-anchor"], "type": "producer"}
+{"id": "producer:domaine-arretxea", "layer": "reference", "name": "Domaine Arretxea", "status": "active", "tags": ["irouleguy", "reference-anchor"], "type": "producer"}
+{"id": "producer:chateau-bouscasse", "layer": "reference", "name": "Château Bouscassé", "status": "active", "tags": ["pacherenc-du-vic-bilh", "reference-anchor"], "type": "producer"}

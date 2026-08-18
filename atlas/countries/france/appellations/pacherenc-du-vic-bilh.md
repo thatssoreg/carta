@@ -1,28 +1,69 @@
 # Pacherenc du Vic-Bilh
 
-Pacherenc du Vic-Bilh is a white-wine appellation in southwestern France that emerged during Run 01 as an important adjacent legal context to the Béarn/Jurançon/Pyrenean cluster.
+**Vic-Bilh, southwest France**
 
-## Overview
+Pacherenc du Vic-Bilh is the white-wine appellation of the Vic-Bilh area, sharing territory with Madiran but governed as its own white-wine designation. It produces both dry and sweet still wines and provides an essential second home for Manseng and Courbu material beyond Jurançon.
 
-The current accepted evidence establishes the appellation as a meaningful neighboring wine system, but the first pilot did not research it deeply enough to support a full baseline reference.
+## Landscape and growing conditions
 
-## Grapes, landscape & styles
+The appellation covers rolling hills in the Vic-Bilh area, farther from the high Pyrenean foothills than Jurançon but still shaped by Atlantic influence and long autumn ripening.
 
-Enrichment queued. The next research pass should establish the current grape matrix, normal style range, landscape, relationship to neighboring Madiran/Béarn/Jurançon contexts, representative producers, and wines to know.
+INAO describes the appellation across 37 communes and more than 300 hectares. The combination of slope, autumn conditions, and local grapes makes both dry wine and overripe sweet wine possible.
 
-## Why the distinction matters
+## Grapes
 
-CARTA does not treat every fruit source from the broader Madiran-side landscape as automatically equivalent to Pacherenc du Vic-Bilh. Legal geography and physical/cultural geography remain separate questions.
+The local white-grape set includes:
+
+- [Petit Manseng](../../../grapes/petit-manseng.md)
+- [Gros Manseng](../../../grapes/gros-manseng.md)
+- [Petit Courbu](../../../grapes/petit-courbu.md)
+- other regional whites in the current specification
+
+These grapes overlap with Jurançon, but shared material does not make the appellations interchangeable.
+
+## Styles
+
+### Dry
+
+Dry Pacherenc can be high-acid, aromatic, and substantial, often using Gros Manseng and other local varieties to balance ripeness and freshness.
+
+### Sweet
+
+Late harvesting and over-ripening support richer sweet styles, with Petit Manseng especially well suited to retaining acidity as sugars rise.
+
+## History & significance
+
+INAO records Pacherenc du Vic-Bilh as recognized in **1948**. Run 02 gave 1975 as the creation date; CARTA rejects that error.
+
+The appellation matters because it reveals a white-wine culture inside a landscape internationally better known for Madiran and Tannat. It also gives the Manseng/Courbu network another legal home, which helps prevent Jurançon from becoming a false synonym for all southwest-French wines made from these grapes.
+
+## Producers to know
+
+**Château Bouscassé** is retained as a representative anchor because its range helps orient readers to both dry and sweet Pacherenc styles.
+
+The producer set should widen as CARTA deepens this region.
+
+## Relationship to Madiran and Béarn
+
+Pacherenc occupies the white-wine side of the Vic-Bilh/Madiran landscape. [Béarn](../regions/bearn.md) is useful cultural/historical context, but CARTA keeps the legal entities separate.
+
+[Jurançon](jurancon.md) is nearby and shares grape material, yet its vineyards and rules are distinct.
+
+## Current developments
+
+Dry Pacherenc is increasingly relevant to drinkers interested in structured, high-acid southwest-French whites. The category also deserves more attention in any future Petit Manseng comparison with Virginia because it complicates the idea that Jurançon is the grape's only important French reference.
 
 ## Explore next
 
-[Béarn](../regions/bearn.md) · [Jurançon](jurancon.md) · [Pyrenean Atlantic](../../../ecosystems/pyrenean-atlantic.md)
+[Petit Manseng](../../../grapes/petit-manseng.md) · [Gros Manseng](../../../grapes/gros-manseng.md) · [Petit Courbu](../../../grapes/petit-courbu.md) · [Jurançon](jurancon.md) · [Béarn](../regions/bearn.md)
 
 ## Sources
 
-- `source:inao-pacherenc` - INAO Pacherenc du Vic-Bilh
+Current authority: INAO. Producer orientation uses specialist references.
 
 ## Record & provenance
 
-- Primary machine entity: `appellation:pacherenc-du-vic-bilh`
-- Human Reference maturity: `node`; enrichment queued
+**CARTA ID:** `appellation:pacherenc-du-vic-bilh`  
+**Reference maturity:** baseline / published.
+
+Official geometry remains a GIS acquisition task.

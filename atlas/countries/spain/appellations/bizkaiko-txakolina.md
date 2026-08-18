@@ -1,49 +1,75 @@
 # Bizkaiko Txakolina
 
-Bizkaiko Txakolina is the protected wine appellation of Bizkaia represented in Run 01. Its current legal grape naming makes it especially useful for understanding how the same biological material can be framed differently across jurisdictions.
+**Bizkaia, Basque Country, Spain**
 
-## Overview
+Bizkaiko Txakolina is the protected wine denomination covering registered vineyard land within municipalities of Bizkaia. Its most familiar international image is a bright, dry, Atlantic white, but its legal grape set and contemporary producers reveal a wider category than that shorthand suggests.
 
-The current specification protects the names Bizkaiko Txakolina, Chacolí de Bizkaia, and Txakoli de Bizkaia. Run 01 also captures a 2025 legal change that moved Hondarrabi Zuri Zerratia (Petit Courbu) into recommended/main status.
+## Landscape
 
-## Grapes & naming
+Bizkaia is cool, wet, and hilly by Spanish standards. Vineyard success depends on exposure, drainage, and air movement in a maritime environment.
 
-Current accepted relationships include:
+The denomination covers a province with meaningful internal variation. Coastal Bakio and inland Balmaseda should not be treated as interchangeable vineyard environments simply because both can carry the same DO name.
 
-- [Petit Courbu](../../../grapes/petit-courbu.md) - Hondarrabi Zuri Zerratia in Bizkaiko legal usage; recommended/main in the current specification
-- [Petit Manseng](../../../grapes/petit-manseng.md) - Izkiriota Ttipia; authorized under the current specification
-- [Gros Manseng](../../../grapes/gros-manseng.md) - Izkiriot Haundi; authorized under the current specification
+## Grapes
 
-These legal names are jurisdiction-specific assertions. They should not be generalized into universal synonymy without broader ampelographic evidence.
+Current Bizkaiko material makes grape naming especially important.
 
-## Geography
+### Core / recommended material
 
-The current EU PDO record defines the production area through eligible registered land in municipalities of Bizkaia. Official polygon geometry has not yet been ingested.
+- **Hondarrabi Zuri**
+- **Hondarrabi Beltza**
+- **Hondarrabi Zuri Zerratia (Petit Courbu)** in the current specification
 
-## Styles & producers
+### Other authorized material
 
-The next enrichment pass should explain the normal regional style spectrum, how contemporary producers work inside or outside those expectations, and add representative historic, benchmark, contemporary, and emerging producers and wines.
+The denomination also includes grapes such as:
 
-Current producer connection:
+- [Petit Manseng](../../../grapes/petit-manseng.md) under Izkiriota Ttipia
+- [Gros Manseng](../../../grapes/gros-manseng.md)
+- other local and international whites according to the current specification
 
-- [Alfredo Egia](../../../producers/alfredo-egia-wine.md), proof-set page pending composite rewrite
+The legal history is important. An official **2008** regulation already listed Petit Courbu, Gros Manseng, and Petit Manseng as authorized varieties. Run 02's claim that they were all newly added only in 2020-21 was rejected. Later amendments still matter because status and spelling have changed, particularly for Hondarrabi Zuri Zerratia / Petit Courbu.
+
+## Styles
+
+### Familiar Txakoli reference
+
+Dry, fresh, Atlantic white wine remains the category's central public identity.
+
+### Still and more textural expressions
+
+Bizkaia also contains more ambitious still wines, longer lees aging, barrel work, and other approaches that build weight without leaving local grape material behind.
+
+[Alfredo Egia](../../../producers/alfredo-egia.md) is a particularly useful contemporary reference because his wines widen the style conversation. CARTA does not use his work to claim that all Bizkaiko Txakolina is moving in that direction.
 
 ## History & significance
 
-A deeper treatment should explain how Txakoli's modern identity developed and how legal naming, local grapes, Atlantic/Basque geography, and contemporary stylistic experimentation interact.
+The modern DO helped stabilize and renew a local wine culture that had contracted dramatically. It also gave Hondarrabi-named grapes a strong public identity outside the Basque Country.
+
+For CARTA, the denomination is especially important because the legal naming system creates direct bridges to French Pyrenean grape identities. Those bridges must remain jurisdiction-specific rather than becoming sloppy universal synonyms.
+
+## Producers and projects to know
+
+- [Alfredo Egia](../../../producers/alfredo-egia.md) — contemporary textural/experimental reference
+- Hegan Egin — collaborative project connecting Egia, Imanol Garay, and Gile Iturriondobeitia
+
+This is not yet a broad enough producer set to stand in for the appellation. A future Bizkaia expansion should add established conventional and contemporary producers across the denomination.
+
+## Current developments
+
+The most useful current development is not simply “new grapes.” It is a widening of how authorized local and Pyrenean material is being interpreted, alongside legal refinements to grape status and naming.
 
 ## Explore next
 
-[Bizkaia](../regions/bizkaia.md) · [Petit Courbu](../../../grapes/petit-courbu.md) · [Alfredo Egia](../../../producers/alfredo-egia-wine.md) · [Pyrenean Atlantic](../../../ecosystems/pyrenean-atlantic.md)
+[Bizkaia](../regions/bizkaia.md) · [Courbu](../../../grapes/courbu.md) · [Petit Courbu](../../../grapes/petit-courbu.md) · [Petit Manseng](../../../grapes/petit-manseng.md) · [Alfredo Egia](../../../producers/alfredo-egia.md)
 
 ## Sources
 
-- `source:euskadi-bizkaiko-pliego`
-- `source:eurlex-bizkaiko-2025-amendment`
-- `source:euskadi-txakoli-term`
-- `source:plantgrape-petit-courbu`
+Current legal authority: Gobierno Vasco / Eusko Jaurlaritza and the EU PDO record. Producer/style context uses Spanish Wine Lover, Pellicle, Sager + Wine, and other trade/specialist sources.
 
 ## Record & provenance
 
-- Primary machine entity: `appellation:bizkaiko-txakolina`
-- Human Reference maturity: `node`; enrichment queued
+**CARTA ID:** `appellation:bizkaiko-txakolina`  
+**Reference maturity:** baseline / published.
+
+Official PDO geometry remains a GIS acquisition task.

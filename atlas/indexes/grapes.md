@@ -1,11 +1,25 @@
 # Grapes
 
-Run 01 accepted grape surfaces:
+## Baseline Human References
 
 - [Petit Manseng](../grapes/petit-manseng.md)
 - [Gros Manseng](../grapes/gros-manseng.md)
 - [Petit Courbu](../grapes/petit-courbu.md)
 - [Courbu](../grapes/courbu.md)
-- [Raffiat de Moncade](../grapes/raffiat-de-moncade.md)
 
-Additional accepted grape entities in the machine layer include Gouais blanc, Bouchalès, Arriloba, Sauvignon, and Savagnin. Human cards will be generated as their evidence becomes rich enough to justify a useful reading surface.
+## Useful stub
+
+- [Raffiat de Moncade](../grapes/raffiat-de-moncade.md) — genetics and network placement are useful; current viticulture/style/producer evidence is not yet rich enough for baseline
+
+## Additional machine-level grape entities
+
+Current machine authority also includes:
+
+- Arriloba
+- Bouchalès
+- Chenin Blanc
+- Gouais blanc
+- Sauvignon
+- Savagnin
+
+These receive Human Reference pages only when they are enriched enough to orient a reader rather than because an entity exists in the graph.

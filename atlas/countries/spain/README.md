@@ -1,45 +1,50 @@
 # Spain
 
-CARTA's first Spanish reference coverage begins in Bizkaia and the Atlantic Basque wine world, where local grape names, current Txakoli law, producer experimentation, and the western Pyrenean landscape create some of the strongest cross-border connections in Run 01.
+Spain is a country-scale navigation surface in CARTA. The current reference is deliberately narrow: it orients the reader to the Basque/Bizkaian slice represented by the Pyrenean Atlantic pilot rather than trying to summarize Spanish wine as a whole.
 
-This page is the country-level navigation surface. It does not imply that every Spanish wine region is represented yet.
+## Wine law in brief
 
-## Regions
+Spanish protected wine regions use DO/DOP and related classifications with region-specific governing documents. For CARTA, the legal denomination is one layer. Administrative provinces, cultural geographies, physical landscapes, grape identities, and producer networks remain separate objects.
 
-- [Bizkaia](regions/bizkaia.md)
+## Current CARTA geography
 
-## Appellations
+### Bizkaia
 
-- [Bizkaiko Txakolina](appellations/bizkaiko-txakolina.md)
-- Getariako Txakolina — machine entity present; full Human Reference enrichment pending
-- Arabako Txakolina — machine entity present; full Human Reference enrichment pending
+[Bizkaia](regions/bizkaia.md) is the current Spanish regional focus.
+
+Its principal pilot appellation is [Bizkaiko Txakolina](appellations/bizkaiko-txakolina.md), a legal denomination covering registered vineyard land within municipalities of Bizkaia.
+
+The pilot began around **Balmaseda**, where [Alfredo Egia](../../producers/alfredo-egia.md) works, and expanded through grape naming and producer relationships toward France.
+
+## Grapes currently represented
+
+Bizkaiko law makes the naming layer especially revealing:
+
+- [Courbu](../../grapes/courbu.md) ↔ Hondarrabi Zuri in Spanish official usage
+- [Petit Courbu](../../grapes/petit-courbu.md) ↔ Hondarrabi Zuri Zerratia in the current Bizkaiko legal context
+- [Petit Manseng](../../grapes/petit-manseng.md) ↔ Izkiriota Ttipia
+- [Gros Manseng](../../grapes/gros-manseng.md) under a local/legal Manseng name
+
+These names should not be used to flatten every Basque historical naming tradition into one universal synonym table.
 
 ## Producers and projects
 
-- [Alfredo Egia](../../producers/alfredo-egia-wine.md) — current proof-set page; composite producer rewrite queued
-- [Hegan Egin](../../projects/hegan-egin.md)
+- [Alfredo Egia](../../producers/alfredo-egia.md)
+- Hegan Egin, the collaboration linking Egia, Imanol Garay, and Gile Iturriondobeitia
 
-## Grapes and naming
+These producer relationships are one reason the Spanish side of the pilot cannot be read independently of the French side.
 
-Current Run 01 evidence connects:
+## Cross-border context
 
-- Petit Courbu with Hondarrabi Zuri Zerratia in Bizkaiko legal usage
-- Petit Manseng with Izkiriota Ttipia
-- Gros Manseng with Izkiriot Haundi
-- Courbu with Hondarrabi Zuri in Spanish official naming reported by Plantgrape
-
-## Cross-border landscape
-
-- Western Pyrenees — landscape dossier queued
-
-## Ecosystem
-
-- [Pyrenean Atlantic](../../ecosystems/pyrenean-atlantic.md)
+The Atlantic Basque world continues into France culturally and physically. Grapes, people, and weather systems cross the border in different ways. CARTA keeps those connections visible while preserving the fact that Spanish and French wine law remain distinct.
 
 ## Explore next
 
-[Bizkaia](regions/bizkaia.md) · [Bizkaiko Txakolina](appellations/bizkaiko-txakolina.md) · [Petit Courbu](../../grapes/petit-courbu.md) · [Pyrenean Atlantic](../../ecosystems/pyrenean-atlantic.md)
+[Bizkaia](regions/bizkaia.md) · [Bizkaiko Txakolina](appellations/bizkaiko-txakolina.md) · [Alfredo Egia](../../producers/alfredo-egia.md) · [Western Pyrenees](../../landscapes/western-pyrenees.md) · [Pyrenean Atlantic](../../ecosystems/pyrenean-atlantic.md)
 
-## Sources
+## Record & provenance
 
-The current country surface is assembled from accepted Run 01 records. Deeper national context is intentionally reserved for a later country enrichment pass.
+**CARTA ID:** `place:spain`  
+**Reference maturity:** baseline / published.
+
+This page expands as CARTA adds Spanish regions and ecosystems.
