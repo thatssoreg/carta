@@ -1,0 +1,36 @@
+{"id":"place:jura","layer":"reference","name":"Jura","place_kind":"wine_region","status":"active","type":"place"}
+{"id":"place:mathenay","layer":"reference","name":"Mathenay","place_kind":"municipality","status":"active","type":"place"}
+{"id":"appellation:arbois","layer":"reference","name":"Arbois AOP","status":"active","type":"appellation"}
+{"id":"producer:domaine-de-saint-pierre-jura","layer":"reference","name":"Domaine de Saint Pierre","status":"active","tags":["jura","arbois","mathenay"],"type":"producer"}
+{"id":"person:fabrice-dodane","layer":"reference","name":"Fabrice Dodane","status":"active","type":"person"}
+{"id":"person:philippe-moyne","layer":"reference","name":"Philippe Moyne","status":"historical","type":"person"}
+{"id":"wine:chateau-renard","layer":"reference","name":"Château Renard","status":"active","tags":["jura","arbois","white"],"type":"wine"}
+{"id":"place:apalta-valley","layer":"reference","name":"Apalta Valley","place_kind":"wine_region","status":"active","type":"place"}
+{"id":"place:santa-cruz-chile","layer":"reference","name":"Santa Cruz","place_kind":"municipality","status":"active","type":"place"}
+{"id":"appellation:apalta","layer":"reference","name":"Apalta","status":"active","summary":"Chilean legally recognized viticultural area within Valle de Colchagua, added to the national viticultural zoning by Decree 56 published in 2018; represented as an appellation entity for origin-law semantics, not as an EU-style standalone AOP.","type":"appellation"}
+{"id":"producer:domaines-bournet-lapostolle-chile","layer":"reference","name":"Domaines Bournet-Lapostolle Chile SpA","status":"active","tags":["chile","apalta","colchagua"],"type":"producer"}
+{"id":"project:clos-apalta","layer":"reference","name":"Clos Apalta Domaine","status":"active","summary":"The Bournet-Lapostolle family's Apalta estate/project; kept distinct from the flagship wine also named Clos Apalta.","type":"project"}
+{"id":"vineyard:clos-apalta-vineyard","layer":"reference","name":"Clos Apalta Vineyard","status":"active","type":"vineyard"}
+{"id":"wine:clos-apalta","layer":"reference","name":"Clos Apalta","status":"active","tags":["chile","apalta","red"],"type":"wine"}
+{"id":"wine:le-petit-clos","layer":"reference","name":"Le Petit Clos","status":"active","tags":["chile","apalta","red"],"type":"wine"}
+{"id":"person:alexandra-marnier-lapostolle","layer":"reference","name":"Alexandra Marnier Lapostolle","status":"active","type":"person"}
+{"id":"person:cyril-de-bournet","layer":"reference","name":"Cyril de Bournet","status":"active","type":"person"}
+{"id":"person:charles-henri-de-bournet-marnier-lapostolle","layer":"reference","name":"Charles-Henri de Bournet Marnier Lapostolle","status":"active","type":"person"}
+{"id":"person:andrea-leon","layer":"reference","name":"Andrea Leon","status":"active","type":"person"}
+{"id":"person:michel-rolland","layer":"reference","name":"Michel Rolland","status":"active","type":"person"}
+{"id":"grape:carmenere","layer":"reference","name":"Carmenère","status":"active","type":"grape"}
+{"id":"grape:cabernet-sauvignon","layer":"reference","name":"Cabernet Sauvignon","status":"active","type":"grape"}
+{"id":"grape:merlot","layer":"reference","name":"Merlot","status":"active","type":"grape"}
+{"id":"grape:cabernet-franc","layer":"reference","name":"Cabernet Franc","status":"active","type":"grape"}
+{"id":"place:barrio-de-la-estacion","layer":"reference","name":"Barrio de la Estación","place_kind":"locality","status":"active","type":"place"}
+{"id":"producer:bodegas-muga","layer":"reference","name":"Bodegas Muga","status":"active","tags":["rioja","rioja-alta","haro"],"type":"producer"}
+{"id":"person:isaac-muga-martinez","layer":"reference","name":"Isaac Muga Martínez","status":"historical","type":"person"}
+{"id":"person:aurora-cano","layer":"reference","name":"Aurora Caño","status":"historical","type":"person"}
+{"id":"wine:muga-prado-enea-gran-reserva","layer":"reference","name":"Muga Prado Enea Gran Reserva","status":"active","tags":["rioja","rioja-alta","gran-reserva","red"],"type":"wine"}
+{"id":"classification:rioja-gran-reserva","layer":"reference","name":"Rioja Gran Reserva","status":"active","summary":"DOCa Rioja aging classification. Current rules require five years total aging for red wines, including at least two years in 225 L oak and two years in bottle.","type":"classification"}
+{"id":"grape:tempranillo","layer":"reference","name":"Tempranillo","status":"active","type":"grape"}
+{"id":"grape:garnacha-tinta","layer":"reference","name":"Garnacha Tinta","status":"active","type":"grape"}
+{"id":"ecosystem:gang-of-four-beaujolais","layer":"reference","name":"Gang of Four (Beaujolais)","status":"active","summary":"Informal Beaujolais community of practice associated with Marcel Lapierre, Jean Foillard, Guy Breton, Jean-Paul Thévenet and Jules Chauvet's methods; the name was coined by Kermit Lynch and is not a formal organization.","type":"ecosystem"}
+{"id":"person:jean-foillard","layer":"reference","name":"Jean Foillard","status":"active","type":"person"}
+{"id":"person:guy-breton","layer":"reference","name":"Guy Breton","status":"active","type":"person"}
+{"id":"person:jean-paul-thevenet","layer":"reference","name":"Jean-Paul Thévenet","status":"active","type":"person"}

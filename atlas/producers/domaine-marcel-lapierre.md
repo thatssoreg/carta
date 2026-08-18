@@ -10,7 +10,9 @@ The domaine states that Michel Lapierre arrived in Villié-Morgon in 1909 and th
 
 Marcel died after the 2010 harvest. Mathieu Lapierre had joined in 2004, Camille Lapierre joined in 2013, and the siblings currently co-own and operate the winery.
 
-CARTA records the Chauvet connection as evidenced influence/guidance. It does not create a formal “Gang of Four” organization or automatic collaboration edges to other Beaujolais producers.
+CARTA records the Chauvet connection as evidenced influence/guidance.
+
+CARTA also now models the **Gang of Four** as `ecosystem:gang-of-four-beaujolais`: an informal community of practice associated with Marcel Lapierre, Jean Foillard, Guy Breton and Jean-Paul Thévenet, named by Kermit Lynch and historically connected to the adoption of Chauvet-associated methods. It is **not** represented as a formal organization, and its existence does not create automatic bilateral `COLLABORATED_WITH` edges among the four producers.
 
 ## Estate, grape, and appellation
 
@@ -58,17 +60,19 @@ The research report was completed, but several self-audit claims failed reconcil
 - it generalized zero-sulfur practice beyond the producer's own current wording;
 - it mixed whole-cluster and destemming descriptions;
 - it called the persistent Morgon identity a “non-vintage concept” in the ingestion frontier;
-- it overreached from contextual Beaujolais narratives toward collaboration edges.
+- it overreached from contextual Beaujolais narratives toward unsupported bilateral collaboration edges.
 
 Those claims were narrowed or rejected before ingestion.
 
+The historical significance of the Gang of Four itself is retained separately as a community-of-practice ecosystem.
+
 ## Explore next
 
-official Morgon climat geometry · Lapierre parcel holdings by climat · vintage-scoped Morgon élevage details · direct evidence for Foillard/Breton/Thévenet relationships
+official Morgon climat geometry · Lapierre parcel holdings by climat · vintage-scoped Morgon élevage details · independent producer profiles for Foillard/Breton/Thévenet · direct bilateral relationship evidence where it exists
 
 ## Sources
 
-Primary CARTA sources are Domaine Marcel Lapierre's current estate and viticulture/vinification pages plus INAO's current Morgon AOP record.
+Primary CARTA sources are Domaine Marcel Lapierre's current estate and viticulture/vinification pages plus INAO's current Morgon AOP record. Kermit Lynch is used as a fit-for-purpose specialist trade source for the historically influential Gang of Four community-of-practice framing.
 
 ## Record & provenance
 
@@ -82,5 +86,6 @@ This composite Human Reference profile is built from:
 - `wine:lapierre-morgon`
 - `grape:gamay-noir-a-jus-blanc`
 - `appellation:morgon`
+- `ecosystem:gang-of-four-beaujolais`
 
 **Reference maturity:** baseline / published.
