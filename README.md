@@ -8,11 +8,12 @@ Natural Wine 2.5 remains deliberately compressed for teaching. CARTA is allowed 
 
 > The reference system can become expansive while the curriculum remains edited.
 
-## Three knowledge layers
+## Core knowledge layers
 
 1. **Reference** — governed identities, sourced claims, typed relationships, names, geography, and temporal knowledge.
 2. **Frontier** — dated, perishable signals about what is emerging, changing, scarce, newly available, or culturally important.
-3. **Lens** — personal observations, taste preferences, hypotheses, watchlists, and production questions that may guide research without becoming reference truth automatically.
+
+**Personal Lens is external to CARTA core.** Private overlays may hold personal observations, taste preferences, holdings, hypotheses, watchlists, or production questions and may reference stable CARTA IDs, but that information is not stored in the shareable core repository and does not become Reference truth automatically.
 
 ## Four product surfaces
 
