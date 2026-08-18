@@ -34,7 +34,7 @@ Future revisions may add clones, rootstocks, accessions, or plant-material lots 
 - `wine`
 - `practice`
 
-A wine can represent a named cuvée or bottling concept. Vintage-specific manifestations remain an open question because the pilot showed that composition and extraction can change materially by vintage.
+A `wine` entity represents the durable named cuvée or bottling concept across vintages. Vintage-specific differences in composition, source, production, classification, release, or other historically meaningful facts belong in dated claims, relationships, or temporal metadata on that same wine identity. CARTA does not create separate wine entities solely because the vintage changes.
 
 ### Geography
 
@@ -200,7 +200,7 @@ Spatial intersection may be calculated by GIS, but a calculated intersection is 
 - `CLIMATE_ANALOGUE_OF`
 - `SITE_ANALOGUE_OF`
 
-These are analytical edges, not identity or lineage. They require an explicit comparison basis and should usually live in Lens or carefully governed Reference claims.
+These are analytical edges, not identity or lineage. They require an explicit comparison basis and should usually live outside CARTA core in an external analytical layer, or enter Reference only as carefully governed, evidence-backed claims.
 
 ## Spatial knowledge in v0.2
 
@@ -260,7 +260,6 @@ The next ingestion and future pilots should continue testing whether STRATA need
 - clone or accession;
 - vineyard parcel distinct from vineyard;
 - lease/tenure relationships;
-- vintage bottling distinct from wine/cuvée;
 - importer portfolio as an entity;
 - climate zone or mesoclimate;
 - sensory structure as a governed concept;
