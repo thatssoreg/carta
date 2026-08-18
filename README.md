@@ -1,77 +1,91 @@
 # CARTA
 
-**Working expansion:** Cartography · Ampelography · Relationships · Time · Access
+**Cartography · Ampelography · Relationships · Time · Access**
 
-CARTA is a sibling knowledge project to Natural Wine 2.5. It is not an expansion of the curriculum canon.
+CARTA is a spatial-temporal wine knowledge and field-intelligence system and a sibling project to Natural Wine 2.5.
 
-Natural Wine 2.5 remains deliberately compressed for teaching. CARTA is allowed to expand: more grapes, producers, people, vineyards, places, appellations, wines, practices, institutions, historical events, market signals, and evidence-backed relationships can enter as the knowledge system warrants them.
+Natural Wine 2.5 remains deliberately compressed for teaching. CARTA is allowed to expand: grapes, producers, people, vineyards, places, appellations, wines, practices, institutions, historical events, market signals, and evidence-backed relationships can enter as the knowledge system warrants them.
 
 > The reference system can become expansive while the curriculum remains edited.
 
 ## Three knowledge layers
 
-1. **Reference** - governed identities, sourced claims, typed relationships, naming assertions, spatial records, and temporal records intended to remain useful beyond a single moment.
-2. **Frontier** - dated, perishable signals about what is emerging, changing, becoming visible, scarce, newly available, or culturally important.
-3. **Lens** - personal observations, taste preferences, hypotheses, watchlists, production questions, and other exploratory material. Lens records may guide research but do not become reference truth merely because they are interesting.
+1. **Reference** — governed identities, sourced claims, typed relationships, names, geography, and temporal knowledge.
+2. **Frontier** — dated, perishable signals about what is emerging, changing, scarce, newly available, or culturally important.
+3. **Lens** — personal observations, taste preferences, hypotheses, watchlists, and production questions that may guide research without becoming reference truth automatically.
 
 ## Four product surfaces
 
-1. **Machine authority** - entities, relationships, claims, sources, names, and geography.
-2. **Human Reference** - reader-first Markdown profiles that may compose multiple machine records into one coherent reference experience.
-3. **Visual interfaces** - maps, TRAMA network views, timelines, genealogy, Frontier/access views, and future spatial tools.
-4. **AI / query layer** - agents and search interfaces operating over the same governed authority.
+1. **Machine authority** — entities, relationships, claims, sources, names, and geography.
+2. **Human Reference** — reader-first Markdown profiles that may compose several machine records into one coherent reference.
+3. **Visual interfaces** — maps, TRAMA network views, timelines, genealogy, Frontier/access views, and spatial tools.
+4. **AI / query layer** — agents and search interfaces over the same governed authority.
 
 ## STRATA v0.2
 
 STRATA means **Space · Time · Relationships · Appellations · Terroir · Ampelography**.
 
-The first post-pilot revision established source fitness by claim, first-class naming assertions, non-binary spatial provenance, place semantics, ecosystem entities, and the Human Reference foundation.
+The ontology distinguishes biological identity, legal naming, geography, professional relationships, production, classification, time, and evidence rather than flattening them into generic “connections.”
 
-## Human Reference v0.2
+## Human Reference
 
-Run 01 proved that CARTA can project machine authority into Markdown. It also proved that valid machine records do not automatically make a good human reference.
+The Human Reference is a deep wine reference, not a database demonstration.
 
-Human Reference v0.2 therefore adds:
+Run 02 completed the first major enrichment pass. CARTA now has **16 baseline/published Human Reference profiles** across the first ecosystem:
 
-- composite profiles that can combine person, producer, project, wine, place, and relationship records;
-- `node`, `baseline`, and `deep` maturity levels;
-- a publication gate so graph discovery does not masquerade as reference completeness;
-- generous minimum dossier requirements for producers, grapes, regions, appellations, countries, landscapes, and wines;
-- representative producers, wines, and projects as reference anchors;
-- reader-first prose before machine metadata;
-- country-nested regions and appellations in the Human Reference;
-- `landscapes/` for cross-border physical/cultural geography;
-- continued separation of landscapes from relationship-generated ecosystems;
-- separate ecosystem-discovery and entity-enrichment research modes.
+- Pyrenean Atlantic ecosystem
+- Alfredo Egia
+- Imanol Garay
+- Richard Leroy
+- Petit Manseng
+- Gros Manseng
+- Petit Courbu
+- Courbu
+- France
+- Spain
+- Béarn
+- Bizkaia
+- Jurançon
+- Irouléguy
+- Pacherenc du Vic-Bilh
+- Bizkaiko Txakolina
+
+Raffiat de Moncade remains an honest `node/stub`. Western Pyrenees remains `node/queued` because its promotion now depends on real GIS acquisition rather than prose.
+
+Start with [`atlas/README.md`](atlas/README.md).
+
+## Current machine authority
+
+After Run 02 normalization:
+
+- **58 entities**
+- **50 typed relationships**
+- **54 claims**
+- **43 sources**
+- **7 first-class name assertions**
+- **8 source-described spatial assertions**
+- **0 fabricated geometry records**
+
+Validation runs through `scripts/validate_data.py` and GitHub Actions.
 
 ## Repository hygiene
 
 CARTA keeps durable product and reference infrastructure, not the conversational scaffolding used to create it.
 
-Prompts, chat transcripts, scratch research plans, and temporary queues should stay outside the repository unless they become a genuinely reusable operating artifact. The repository should retain accepted machine authority, Human Reference pages, schemas, validation, durable evidence/provenance, and audits that materially explain accepted decisions.
+Prompts, chat transcripts, scratch plans, and temporary queues stay outside the repository unless they become genuinely reusable operating artifacts. Durable audits may remain when they materially explain accepted editorial or evidence decisions.
 
-Start here:
+## Next gate: GIS
 
-- [`atlas/README.md`](atlas/README.md)
-- [`docs/atlas-projection.md`](docs/atlas-projection.md)
-- [`schemas/reference-profile.schema.json`](schemas/reference-profile.schema.json)
-- [`data/reference-profiles/run-01-pyrenean-atlantic.jsonl`](data/reference-profiles/run-01-pyrenean-atlantic.jsonl)
+The Human Reference baseline is now strong enough to resume spatial work.
+
+The first GIS pass should earn the **Western Pyrenees** landscape by acquiring authoritative/open terrain, hydrology, geology, administrative/appellation, and reference-point data, while testing real spatial questions such as Garay's reported vines relative to the Irouléguy boundary.
+
+See [`atlas/landscapes/western-pyrenees.md`](atlas/landscapes/western-pyrenees.md) and [`audits/run-02-human-reference-normalization.md`](audits/run-02-human-reference-normalization.md).
+
+## Architecture
+
 - [`docs/architecture.md`](docs/architecture.md)
 - [`docs/ontology.md`](docs/ontology.md)
 - [`docs/evidence-policy.md`](docs/evidence-policy.md)
-
-## Current state
-
-Run 01 remains ingested against STRATA v0.2 with:
-
-- 39 entities
-- 31 typed relationships
-- 30 claims
-- 29 sources
-- 7 first-class name assertions
-- 8 source-described spatial assertions
-- 0 fabricated geometry records
-
-The Pyrenean Atlantic ecosystem is the first Human Reference baseline proof. Most individual Run 01 entity pages are governed as stubs/enrichment targets under the stricter v0.2 publication standard.
-
-The immediate gate is completion and normalization of the Human Reference enrichment research. Profiles should be promoted only when the completed evidence actually satisfies the baseline standard. GIS work resumes after that gate closes.
+- [`docs/atlas-projection.md`](docs/atlas-projection.md)
+- [`schemas/reference-profile.schema.json`](schemas/reference-profile.schema.json)
