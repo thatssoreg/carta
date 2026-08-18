@@ -1,0 +1,35 @@
+{"id": "place:oregon", "layer": "reference", "name": "Oregon", "place_kind": "administrative_region", "status": "active", "type": "place"}
+{"id": "place:hood-river", "layer": "reference", "name": "Hood River", "place_kind": "municipality", "status": "active", "type": "place"}
+{"id": "appellation:columbia-gorge-ava", "layer": "reference", "name": "Columbia Gorge AVA", "status": "active", "type": "appellation"}
+{"id": "producer:hiyu-wine-farm", "layer": "reference", "name": "Hiyu Wine Farm", "status": "active", "tags": ["oregon", "columbia-gorge"], "type": "producer"}
+{"id": "person:nate-ready", "layer": "reference", "name": "Nate Ready", "status": "active", "type": "person"}
+{"id": "person:china-tresemer", "layer": "reference", "name": "China Tresemer", "status": "active", "type": "person"}
+{"id": "project:tzum", "layer": "reference", "name": "Tzum", "status": "active", "summary": "Hiyu's site-specific wine label/project for small fields throughout the Columbia Gorge.", "type": "project"}
+{"id": "vineyard:moon-hill-farm", "layer": "reference", "name": "Moon Hill Farm", "status": "active", "type": "vineyard"}
+{"id": "wine:tzum-moon-hill-farm", "layer": "reference", "name": "Tzum Moon Hill Farm / Columbia Gorge White", "status": "active", "tags": ["tzum", "moon-hill", "white", "multi-vintage"], "type": "wine"}
+{"id": "grape:chardonnay", "layer": "reference", "name": "Chardonnay", "status": "active", "type": "grape"}
+{"id": "grape:pinot-gris", "layer": "reference", "name": "Pinot Gris", "status": "active", "type": "grape"}
+{"id": "grape:pinot-noir", "layer": "reference", "name": "Pinot Noir", "status": "active", "type": "grape"}
+{"id": "producer:antica-terra", "layer": "reference", "name": "Antica Terra", "status": "active", "type": "producer"}
+{"id": "person:maggie-harrison", "layer": "reference", "name": "Maggie Harrison", "status": "active", "type": "person"}
+{"id": "institution:the-french-laundry", "layer": "reference", "name": "The French Laundry", "status": "active", "type": "institution"}
+{"id": "place:ampuis", "layer": "reference", "name": "Ampuis", "place_kind": "municipality", "status": "active", "type": "place"}
+{"id": "place:cote-brune", "layer": "reference", "name": "Côte Brune", "place_kind": "locality", "status": "active", "summary": "A named Côte-Rôtie hillside/site around Ampuis; CARTA does not yet hold parcel geometry.", "type": "place"}
+{"id": "appellation:cote-rotie", "layer": "reference", "name": "Côte-Rôtie", "status": "active", "type": "appellation"}
+{"id": "producer:domaine-christiane-chambeyron-manin", "layer": "reference", "name": "Domaine Christiane Chambeyron-Manin", "status": "active", "tags": ["cote-rotie", "ampuis"], "type": "producer"}
+{"id": "person:veronique-manin", "layer": "reference", "name": "Véronique Manin", "status": "active", "type": "person"}
+{"id": "person:christiane-chambeyron-manin", "layer": "reference", "name": "Christiane Chambeyron-Manin", "status": "active", "summary": "Mother of Véronique Manin and namesake within the domaine's current name.", "type": "person"}
+{"id": "wine:chambeyron-manin-cote-rotie", "layer": "reference", "name": "Chambeyron-Manin Côte-Rôtie", "status": "active", "type": "wine"}
+{"id": "grape:syrah", "layer": "reference", "name": "Syrah", "status": "active", "type": "grape"}
+{"id": "place:cantabria", "layer": "reference", "name": "Cantabria", "place_kind": "administrative_region", "status": "active", "type": "place"}
+{"id": "place:potes", "layer": "reference", "name": "Potes", "place_kind": "municipality", "status": "active", "type": "place"}
+{"id": "place:valle-de-liebana", "layer": "reference", "name": "Valle de Liébana", "place_kind": "wine_region", "status": "active", "type": "place"}
+{"id": "geofeature:picos-de-europa", "layer": "reference", "name": "Picos de Europa", "status": "active", "type": "geographic_feature"}
+{"id": "appellation:vino-de-la-tierra-de-liebana", "layer": "reference", "name": "Vino de la Tierra de Liébana", "status": "active", "type": "appellation"}
+{"id": "person:goyo-garcia-viadero", "layer": "reference", "name": "Goyo García Viadero", "status": "active", "type": "person"}
+{"id": "producer:goyo-garcia-viadero", "layer": "reference", "name": "Goyo García Viadero", "status": "active", "tags": ["ribera-del-duero", "cantabria", "liebana"], "type": "producer"}
+{"id": "project:beatum", "layer": "reference", "name": "Beâtum", "status": "active", "summary": "Goyo García Viadero's Liébana label/project.", "type": "project"}
+{"id": "wine:beatum-blanco", "layer": "reference", "name": "Beâtum Blanco", "status": "active", "tags": ["liebana", "white", "skin-contact"], "type": "wine"}
+{"id": "wine:beatum-tinto", "layer": "reference", "name": "Beâtum Tinto", "status": "active", "tags": ["liebana", "red", "field-blend"], "type": "wine"}
+{"id": "grape:palomino-fino", "layer": "reference", "name": "Palomino Fino", "status": "active", "type": "grape"}
+{"id": "grape:mencia", "layer": "reference", "name": "Mencía", "status": "active", "type": "grape"}
