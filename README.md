@@ -16,8 +16,6 @@ Natural Wine 2.5 remains deliberately compressed for teaching. CARTA is allowed 
 
 ## Four product surfaces
 
-CARTA's structured records are the machine authority, but they are only one surface of the system.
-
 1. **Machine authority** — entities, relationships, claims, sources, names, and geography.
 2. **Human Atlas** — readable Markdown pages for grapes, producers, people, regions, countries, appellations, ecosystems, wines, and other useful objects.
 3. **Visual interfaces** — maps, TRAMA network views, timelines, genealogy, Frontier/access views, and future spatial tools.
@@ -25,41 +23,34 @@ CARTA's structured records are the machine authority, but they are only one surf
 
 ## STRATA v0.2
 
-The ontology and schema are called **STRATA**: Space · Time · Relationships · Appellations · Terroir · Ampelography.
+STRATA means **Space · Time · Relationships · Appellations · Terroir · Ampelography**.
 
-v0.2 is the first post-pilot revision. It incorporates what the Pyrenean Atlantic research exposed:
-
-- source fitness is assessed claim by claim rather than through a universal source hierarchy;
-- importer and distributor evidence can substantively carry producer-world facts when fit to the claim;
-- legal, local, and historical names can be represented without manufacturing duplicate entities;
-- country, administrative, cultural, historical, wine, and analytical regions can remain distinct;
-- useful spatial knowledge can exist without fabricated geometry;
-- ecosystems can connect physical geographies and non-spatial networks;
-- the GitHub repository must remain genuinely readable to humans through the CARTA Atlas.
+The first post-pilot revision established source fitness by claim, first-class naming assertions, non-binary spatial provenance, place semantics, ecosystem entities, and the Human Atlas.
 
 Start here:
 
+- [`atlas/README.md`](atlas/README.md)
+- [`atlas/ecosystems/pyrenean-atlantic.md`](atlas/ecosystems/pyrenean-atlantic.md)
+- [`research/run-01-pyrenean-atlantic/ingestion-audit.md`](research/run-01-pyrenean-atlantic/ingestion-audit.md)
 - [`docs/architecture.md`](docs/architecture.md)
 - [`docs/ontology.md`](docs/ontology.md)
 - [`docs/evidence-policy.md`](docs/evidence-policy.md)
 - [`docs/atlas-projection.md`](docs/atlas-projection.md)
-- [`schemas/entity.schema.json`](schemas/entity.schema.json)
-- [`schemas/relationship.schema.json`](schemas/relationship.schema.json)
-- [`schemas/claim.schema.json`](schemas/claim.schema.json)
-- [`schemas/source.schema.json`](schemas/source.schema.json)
-- [`schemas/name-assertion.schema.json`](schemas/name-assertion.schema.json)
-- [`schemas/geometry.schema.json`](schemas/geometry.schema.json)
-- [`schemas/spatial-assertion.schema.json`](schemas/spatial-assertion.schema.json)
-- [`pilots/pyrenean-atlantic.md`](pilots/pyrenean-atlantic.md)
-- [`atlas/README.md`](atlas/README.md)
 
 ## Current state
 
-STRATA v0.2 is the post-pilot architecture pass. The Deep Research Run 01 candidate packet has **not** yet been ingested. That is intentional.
+**Run 01 is ingested against STRATA v0.2.**
 
-Next milestone after v0.2 acceptance:
+Accepted normalized authority currently contains:
 
-1. normalize Run 01 candidates against the revised schemas;
-2. ingest accepted Pyrenean Atlantic entities, relationships, claims, names, sources, and spatial assertions;
-3. generate the first human-readable Atlas proof set;
-4. audit the resulting graph and cards before expanding to another ecosystem.
+- 39 entities
+- 31 typed relationships
+- 30 claims
+- 29 sources
+- 7 first-class name assertions
+- 8 source-described spatial assertions
+- 0 fabricated geometry records
+
+The first Human Atlas proof set is live in `atlas/`.
+
+The next gate is to audit this first real graph/Atlas pair in use, acquire a first true GIS geometry layer, and then decide whether to expand this ecosystem further or begin the next vertical slice.
