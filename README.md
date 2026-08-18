@@ -44,14 +44,18 @@ Human Reference v0.2 therefore adds:
 - continued separation of landscapes from relationship-generated ecosystems;
 - separate ecosystem-discovery and entity-enrichment research modes.
 
+## Repository hygiene
+
+CARTA keeps durable product and reference infrastructure, not the conversational scaffolding used to create it.
+
+Prompts, chat transcripts, scratch research plans, and temporary queues should stay outside the repository unless they become a genuinely reusable operating artifact. The repository should retain accepted machine authority, Human Reference pages, schemas, validation, durable evidence/provenance, and audits that materially explain accepted decisions.
+
 Start here:
 
 - [`atlas/README.md`](atlas/README.md)
 - [`docs/atlas-projection.md`](docs/atlas-projection.md)
 - [`schemas/reference-profile.schema.json`](schemas/reference-profile.schema.json)
 - [`data/reference-profiles/run-01-pyrenean-atlantic.jsonl`](data/reference-profiles/run-01-pyrenean-atlantic.jsonl)
-- [`research/run-01-pyrenean-atlantic/human-reference-enrichment-queue.md`](research/run-01-pyrenean-atlantic/human-reference-enrichment-queue.md)
-- [`research/run-01-pyrenean-atlantic/deep-research-human-reference-enrichment-prompt.md`](research/run-01-pyrenean-atlantic/deep-research-human-reference-enrichment-prompt.md)
 - [`docs/architecture.md`](docs/architecture.md)
 - [`docs/ontology.md`](docs/ontology.md)
 - [`docs/evidence-policy.md`](docs/evidence-policy.md)
@@ -68,6 +72,6 @@ Run 01 remains ingested against STRATA v0.2 with:
 - 8 source-described spatial assertions
 - 0 fabricated geometry records
 
-The Pyrenean Atlantic ecosystem is the first Human Reference baseline proof. Most individual Run 01 entity pages are now governed as stubs/enrichment targets under the stricter v0.2 publication standard.
+The Pyrenean Atlantic ecosystem is the first Human Reference baseline proof. Most individual Run 01 entity pages are governed as stubs/enrichment targets under the stricter v0.2 publication standard.
 
-The immediate next gate is a contained Deep Research enrichment pass to build baseline-quality producer, grape, country, region, appellation, and Western Pyrenees landscape dossiers before GIS work resumes.
+The immediate gate is completion and normalization of the Human Reference enrichment research. Profiles should be promoted only when the completed evidence actually satisfies the baseline standard. GIS work resumes after that gate closes.
