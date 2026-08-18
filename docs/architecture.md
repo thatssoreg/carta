@@ -2,9 +2,9 @@
 
 ## Purpose
 
-CARTA is a spatial-temporal wine knowledge and field-intelligence system. Its authority lives in inspectable, machine-readable records, but its repository must also remain useful to a human reader.
+CARTA is a spatial-temporal wine knowledge and field-intelligence system. Its authority lives in inspectable, machine-readable records, while its Human Reference is designed as a deep reading experience for people.
 
-Maps, graph views, timelines, Markdown cards, search, and future AI interfaces are projections of the same governed authority rather than competing sources of truth.
+Maps, graph views, timelines, reference profiles, search, and future AI interfaces are projections of the same governed authority rather than competing sources of truth.
 
 ## Architectural principles
 
@@ -18,6 +18,8 @@ Maps, graph views, timelines, Markdown cards, search, and future AI interfaces a
 8. **The graph may expand without a seat count.** CARTA does not use curriculum-style quotas for grapes or producers.
 9. **CARTA does not auto-expand Natural Wine 2.5.** Any downstream curriculum change remains a separate editorial action.
 10. **Human readability is required.** A person browsing GitHub should be able to understand CARTA without reading JSONL.
+11. **Human profiles are composite projections.** The ontology may separate person, producer, project, wine, place, and relationship records while one readable reference profile composes the records that belong together for a human reader.
+12. **Discovery does not equal publication.** A valid graph node may remain unpublished as a standalone reference until it meets the Human Reference baseline.
 
 ## Four surfaces of the same system
 
@@ -34,13 +36,13 @@ Structured records are the canonical data layer:
 - source-described spatial assertions;
 - Frontier and Lens records.
 
-### 2. Human Atlas
+### 2. Human Reference / Atlas
 
-Markdown pages under `atlas/` are the human-readable projection of the authority.
+Markdown under `atlas/` is the human-readable reference projection.
 
-They include grape cards, producer cards, person cards, country pages, region pages, appellation pages, ecosystem pages, wine pages, indexes, and other useful reading surfaces.
+Human profiles can combine multiple machine entities. Their publication state and maturity are governed separately through `reference_profile` records.
 
-See [`docs/atlas-projection.md`](atlas-projection.md).
+See [`docs/atlas-projection.md`](atlas-projection.md) and [`schemas/reference-profile.schema.json`](../schemas/reference-profile.schema.json).
 
 ### 3. Visual interfaces
 
@@ -68,10 +70,11 @@ Future agents and search interfaces should query the same accepted machine autho
 - `name_assertion` — an evidence-bound name attached to an entity, including jurisdictional and historical naming.
 - `geometry` — metadata pointing to actual mappable geometry.
 - `spatial_assertion` — useful geographic knowledge that does not yet warrant fabricated geometry.
+- `reference_profile` — governance metadata for a composite human-facing reference page, including component entities, maturity, publication state, path, anchors, and enrichment gaps.
 
 ## Entity families
 
-Initial families after the first pilot are:
+Current machine-entity families are:
 
 - `person`
 - `producer`
@@ -90,11 +93,9 @@ Initial families after the first pilot are:
 - `historical_event`
 - `market_signal`
 
-New entity families require an explicit schema revision, not an ad hoc `other` bucket.
+These machine distinctions do not force one-to-one Human Reference pages.
 
 ## Data layout
-
-Recommended repository layout after the first ingestion:
 
 ```text
 data/
@@ -106,18 +107,22 @@ data/
   geography/
     geometry/
     assertions/
+  reference-profiles/
   frontier/
   lens/
 
 atlas/
-  ecosystems/
   countries/
-  regions/
-  appellations/
+    <country>/
+      README.md
+      regions/
+      appellations/
+  landscapes/
+  ecosystems/
   grapes/
   producers/
-  people/
   wines/
+  people/
   institutions/
   practices/
   classifications/
@@ -125,15 +130,13 @@ atlas/
   indexes/
 
 research/
-  run-01-pyrenean-atlantic/
-
 schemas/
 docs/
 pilots/
 scripts/
 ```
 
-Records should begin as JSON or YAML that validates against JSON Schema. GeoJSON should carry actual geometry, while entity IDs connect geometry to the semantic graph. A generated SQLite or DuckDB database may later provide fast local querying, but generated databases must never become the only authority.
+The Human Reference hierarchy is a reading/navigation decision. The machine graph remains relational and does not need to mirror the directories.
 
 ## IDs
 
@@ -142,16 +145,17 @@ IDs are namespaced, stable, and not presentation labels.
 Examples:
 
 - `person:imanol-garay`
-- `producer:alfredo-egia`
+- `producer:alfredo-egia-wine`
 - `ecosystem:pyrenean-atlantic`
 - `grape:petit-courbu`
 - `place:balmaseda`
 - `appellation:bizkaiko-txakolina`
-- `wine:hegan-egin`
+- `wine:rebel-rebel`
+- `profile:alfredo-egia`
 - `name:petit-courbu-hondarrabi-zuri-zerratia-bizkaiko`
 - `spatial:imanol-garay-baigorry-source-described`
 
-If two real entities collide on name, IDs receive a disambiguating suffix based on stable context. Names may change; IDs should not.
+Names may change; IDs should not.
 
 ## Naming model
 
@@ -159,95 +163,59 @@ Names are not always identities.
 
 An entity may have lightweight alternate names for display, but consequential legal, local, historical, contested, or time-bound names belong in first-class name assertion records.
 
-This allows CARTA to represent jurisdiction-specific naming without manufacturing duplicate grape identities.
-
 ## Spatial model
 
 ### Actual geometry
 
 Use geometry records when actual point, line, or polygon geometry is available.
 
-Geometry metadata can express:
-
-- geometry reference;
-- point, line, or polygon type;
-- source;
-- precision;
-- confidence;
-- `valid_from`;
-- `valid_to`;
-- `observed_at`.
-
-This allows political borders, appellations, vineyard parcels, and other boundaries to change through time.
+Geometry metadata can express source, precision, confidence, validity intervals, and observation dates.
 
 ### Spatial assertions without geometry
 
 Useful wine geography often exists before CARTA acquires an official polygon or exact parcel coordinate.
 
-Spatial assertions can express:
-
-- reliable locality placement;
-- source-described areas;
-- cultural geographies;
-- historical geographies;
-- analytical geographies;
-- network anchors.
-
-They must state precision and provenance and may later link to actual geometry.
-
-A town coordinate must not masquerade as a vineyard coordinate. A source-described area must not masquerade as an official polygon.
+Spatial assertions can express reliable locality placement, source-described areas, cultural geographies, historical geographies, analytical geographies, and network anchors without false precision.
 
 ## Temporal model
 
-Dates are intervals when the evidence only supports intervals. Never manufacture exact dates.
+Use `valid_from`, `valid_to`, `observed_at`, and honest precision. Never manufacture exact dates.
 
-Use:
+## Human Reference model
 
-- `valid_from`
-- `valid_to`
-- `observed_at`
-- `precision` such as `day`, `month`, `year`, `range`, `unknown`
+The Human Reference is required, but not every machine node earns a full page.
 
-A relationship such as ownership may therefore be true only during a stated interval. A cellar location may change. A legal name can become valid or invalid. A retailer observation expires as evidence of current access.
+Profiles use three maturity levels:
 
-## Human-readable projection contract
+- `node` — graph-useful, insufficient for a standalone reference;
+- `baseline` — generous, publishable reference depth;
+- `deep` — mature dossier depth.
 
-The Atlas is required, not optional.
+A profile can separately be `queued`, `stub`, `published`, or `deprecated`.
 
-Machine records remain authoritative, but CARTA should generate or maintain Markdown pages that make the system readable in GitHub.
+The Human Reference contract defines profile-specific minimums, composite producer behavior, reader-facing geography, representative anchors, sensory/style writing, historical narrative, and the separation of ecosystem discovery from entity enrichment.
 
-The read-first layer should answer:
+## Human geography
 
-- Why should I care?
-- Where does this fit?
-- What connects to it?
-- What makes it distinctive?
-- What is CARTA watching?
-- What remains unresolved?
+For people browsing the Atlas:
 
-The evidence layer should expose:
+- country-specific regions and appellations are nested beneath their countries;
+- genuine cross-border physical/cultural geographies live under `landscapes/`;
+- relationship-generated analytical constructs live under `ecosystems/`.
 
-- typed relationships;
-- name assertions;
-- geography;
-- timeline;
-- claims and confidence;
-- sources;
-- revision history.
-
-Where possible, factual tables should be generated from structured records so the Atlas cannot quietly drift away from the machine authority.
+This hierarchy does not replace typed `WITHIN`, `LOCATED_IN`, `OVERLAPS`, or other graph relationships.
 
 ## Projections
 
 Future projections may include:
 
-- human Atlas
+- Human Reference / Atlas
 - map view
 - TRAMA network view
 - timeline view
 - grape genealogy/taxonomy view
 - producer lineage view
-- frontier/discovery feed
+- Frontier/discovery feed
 - availability/access view
 - personal Lens view
 - Natural Wine 2.5 curriculum export
