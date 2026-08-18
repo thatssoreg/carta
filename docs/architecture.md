@@ -14,7 +14,7 @@ Maps, graph views, timelines, reference profiles, search, and future AI interfac
 4. **Source fitness is claim-specific.** Importer, distributor, retailer, producer, regulatory, scientific, and community sources can all be appropriate evidence when the source fits the claim.
 5. **Time is first-class.** Relationships, names, ownership, appellation boundaries, permissions, classifications, locations, and availability may have validity intervals or observation dates.
 6. **Space is first-class, but precision is not binary.** Actual geometry, reliable locality references, source-described areas, cultural/historical geographies, and analytical geographies can coexist without false precision.
-7. **Reference, Frontier, and Lens never silently merge.** A current market signal or personal hypothesis cannot become reference truth without an explicit promotion decision.
+7. **Reference and Frontier never silently merge.** A current market signal cannot become reference truth without an explicit promotion decision. Personal Lens data lives outside CARTA core and may only consume stable CARTA IDs as an external/private overlay.
 8. **The graph may expand without a seat count.** CARTA does not use curriculum-style quotas for grapes or producers.
 9. **CARTA does not auto-expand Natural Wine 2.5.** Any downstream curriculum change remains a separate editorial action.
 10. **Human readability is required.** A person browsing GitHub should be able to understand CARTA without reading JSONL.
@@ -34,7 +34,7 @@ Structured records are the canonical data layer:
 - name assertions;
 - geometry metadata;
 - source-described spatial assertions;
-- Frontier and Lens records.
+- Frontier records.
 
 ### 2. Human Reference / Atlas
 
@@ -54,12 +54,15 @@ Future interfaces may include:
 - grape genealogy/taxonomy view;
 - producer lineage view;
 - Frontier/discovery feed;
-- availability/access view;
-- personal Lens view.
+- availability/access view.
 
 ### 4. AI / query layer
 
 Future agents and search interfaces should query the same accepted machine authority and cite the same claims/sources. AI is an interface over CARTA, not a replacement authority.
+
+## External/private Lens
+
+Personal Lens data is deliberately outside CARTA core. Holdings, tasting notes, preferences, acquisition history, private watchlists, owner-specific hypotheses, and similar material should live in a separate private system if implemented. That system may reference stable CARTA IDs and consume CARTA projections, but it must not write personal data into CARTA authority or make private preference a condition of Reference truth.
 
 ## Core record types
 
@@ -109,7 +112,6 @@ data/
     assertions/
   reference-profiles/
   frontier/
-  lens/
 
 atlas/
   countries/
@@ -181,6 +183,8 @@ Spatial assertions can express reliable locality placement, source-described are
 
 Use `valid_from`, `valid_to`, `observed_at`, and honest precision. Never manufacture exact dates.
 
+A durable wine/cuvée identity persists across vintages. Vintage-specific facts are represented through dated claims, relationships, or temporal metadata on that persistent wine identity rather than by creating a separate wine entity for each year.
+
 ## Human Reference model
 
 The Human Reference is required, but not every machine node earns a full page.
@@ -217,7 +221,8 @@ Future projections may include:
 - producer lineage view
 - Frontier/discovery feed
 - availability/access view
-- personal Lens view
 - Natural Wine 2.5 curriculum export
+
+External/private Lens systems may consume stable CARTA IDs and projections, but they are not CARTA core projections and must not write personal information into CARTA authority.
 
 No projection is permitted to invent information missing from the underlying records.
