@@ -11,7 +11,7 @@
     "source_class": {
       "enum": [
         "primary_regulatory", "primary_producer", "primary_scientific", "primary_institutional",
-        "independent_reporting", "trade_source", "community_source", "secondary_reference", "owner_context"
+        "independent_reporting", "trade_source", "community_source", "secondary_reference"
       ]
     },
     "publisher": {"type": "string"},

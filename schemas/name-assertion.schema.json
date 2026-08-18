@@ -15,7 +15,7 @@
         "trade_name", "label_name", "spelling_variant", "other"
       ]
     },
-    "layer": {"enum": ["reference", "frontier", "lens"]},
+    "layer": {"enum": ["reference", "frontier"]},
     "status": {"enum": ["supported", "provisional", "contested", "rejected"]},
     "language": {"type": "string"},
     "jurisdiction_ref": {

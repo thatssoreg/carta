@@ -22,7 +22,7 @@
       ]
     },
     "object_id": {"type": "string", "pattern": "^[a-z][a-z0-9_-]*:[a-z0-9][a-z0-9._-]*$"},
-    "layer": {"enum": ["reference", "frontier", "lens"]},
+    "layer": {"enum": ["reference", "frontier"]},
     "status": {"enum": ["supported", "provisional", "contested", "rejected", "deprecated"]},
     "claim_ids": {
       "type": "array",
