@@ -1,39 +1,40 @@
 # Courbu
 
-**CARTA ID:** `grape:courbu`  
-**Type:** grape  
-**Status:** active
+Courbu is a distinct white grape from the western Pyrenean wine world. It is especially useful for understanding how local grape names can create confusion: French official material uses **Gros Courbu** as an alternative name, while Spanish official naming reported by Plantgrape uses **Hondarrabi Zuri**.
 
-## Why I should care
+## Identity & naming
 
-Courbu shows that similar regional names can hide different naming systems. Plantgrape treats Courbu as a distinct cultivar and reports different official names in France and Spain.
+- **Gros Courbu** - official French propagation-material name captured in the current evidence
+- **Hondarrabi Zuri** - official Spanish name reported by Plantgrape
 
-## Identity and naming
+Courbu is kept separate from Petit Courbu and Courbu noir. Similar names do not establish biological identity or parentage.
 
-| Name | Kind | Jurisdiction | Status | Evidence |
-|---|---|---|---|---|
-| Gros Courbu | `legal_name` | `place:france` | supported | claim:courbu-hondarrabi-zuri |
-| Hondarrabi Zuri | `legal_name` | `place:spain` | supported | claim:courbu-hondarrabi-zuri |
+## In the vineyard
 
-## Viticultural / biological structure
+The current Run 01 record is not rich enough to support a useful baseline viticultural description. Ripening, vigor, yield, disease behavior, site preferences, and practical farming characteristics are explicit enrichment targets.
 
-CARTA keeps Courbu separate from Petit Courbu and from Courbu noir. Name resemblance is not biology.
+## Styles & significance
 
-## What CARTA is watching
+The present corpus does not yet support a responsible account of Courbu's normal wine styles, historical role, sensory range, or representative producers. Those gaps are why this page remains a reference stub rather than a published baseline.
 
-Future work should normalize additional registry evidence before expanding the synonym graph.
+## Where it matters
 
-## Claims and confidence
+The next enrichment pass should map Courbu's important French and Spanish contexts and clarify how its use overlaps with or differs from Petit Courbu and other local white varieties.
 
-| Claim | Status | Confidence | Statement |
-|---|---|---|---|
-| `claim:courbu-hondarrabi-zuri` | supported | high | Plantgrape states that Courbu is officially designated Hondarrabi Zuri in Spain, while Gros Courbu is an official propagation-material alternative in France. |
+## Producers & wines to know
+
+Baseline enrichment queued.
+
+## Explore next
+
+[Petit Courbu](petit-courbu.md) · [Petit Manseng](petit-manseng.md) · [Pyrenean Atlantic](../ecosystems/pyrenean-atlantic.md)
 
 ## Sources
 
-- `source:plantgrape-courbu` — [Courbu](https://www.plantgrape.fr/en/varieties/fruit-varieties/81)
+- `source:plantgrape-courbu`
 
-## Revision history
+## Record & provenance
 
-- Run 01: candidate research.
-- STRATA v0.2 ingestion: accepted/normalized proof card.
+- Primary machine entity: `grape:courbu`
+- Human Reference maturity: `node`; baseline enrichment queued
+- Current accepted naming claim: `claim:courbu-hondarrabi-zuri`
