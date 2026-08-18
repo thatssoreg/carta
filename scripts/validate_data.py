@@ -106,5 +106,9 @@ for p in data["profiles"]:
     for eid in p.get("representative_anchor_ids", []):
         if eid not in ids["entities"]:
             raise SystemExit(f"{p['id']}: missing representative anchor {eid}")
+    if p["publication_status"] == "published" and p["maturity"] == "node":
+        raise SystemExit(f"{p['id']}: node maturity cannot be published as a finished reference")
+    if p["publication_status"] in {"published", "stub"} and not (ROOT / p["path"]).exists():
+        raise SystemExit(f"{p['id']}: reference path does not exist: {p['path']}")
 
 print("PASS", ", ".join(f"{k}={len(v)}" for k, v in data.items()))
