@@ -1,0 +1,28 @@
+{"id":"place:beaujolais","layer":"reference","name":"Beaujolais","place_kind":"wine_region","status":"active","type":"place"}
+{"id":"place:villie-morgon","layer":"reference","name":"Villié-Morgon","place_kind":"municipality","status":"active","type":"place"}
+{"id":"appellation:morgon","layer":"reference","name":"Morgon AOP","status":"active","type":"appellation"}
+{"id":"producer:domaine-marcel-lapierre","layer":"reference","name":"Domaine Marcel Lapierre","status":"active","tags":["beaujolais","morgon"],"type":"producer"}
+{"id":"person:marcel-lapierre","layer":"reference","name":"Marcel Lapierre","status":"historical","type":"person"}
+{"id":"person:mathieu-lapierre","layer":"reference","name":"Mathieu Lapierre","status":"active","type":"person"}
+{"id":"person:camille-lapierre","layer":"reference","name":"Camille Lapierre","status":"active","type":"person"}
+{"id":"person:jules-chauvet","layer":"reference","name":"Jules Chauvet","status":"historical","type":"person"}
+{"id":"wine:lapierre-morgon","layer":"reference","name":"Domaine Marcel Lapierre Morgon","status":"active","tags":["morgon","gamay","red"],"type":"wine"}
+{"alternate_names":[{"kind":"synonym","language":"fr","name":"Gamay"}],"id":"grape:gamay-noir-a-jus-blanc","layer":"reference","name":"Gamay noir à jus blanc","status":"active","type":"grape"}
+{"id":"vineyard:cote-du-py","layer":"reference","name":"Côte du Py","status":"active","type":"vineyard"}
+{"id":"place:austria","layer":"reference","name":"Austria","place_kind":"country","status":"active","type":"place"}
+{"id":"place:wachau","layer":"reference","name":"Wachau","place_kind":"wine_region","status":"active","type":"place"}
+{"id":"place:wosendorf","layer":"reference","name":"Wösendorf","place_kind":"locality","status":"active","type":"place"}
+{"id":"appellation:wachau-dac","layer":"reference","name":"Wachau DAC","status":"active","type":"appellation"}
+{"id":"institution:vinea-wachau","layer":"reference","name":"Vinea Wachau Nobilis Districtus","status":"active","type":"institution"}
+{"id":"classification:smaragd","layer":"reference","name":"Smaragd","status":"active","summary":"Vinea Wachau quality category and registered trademark used by member wineries; it is distinct from the government Wachau DAC origin hierarchy.","type":"classification"}
+{"id":"producer:weingut-rudi-pichler","layer":"reference","name":"Weingut Rudi Pichler","status":"active","tags":["wachau","wosendorf"],"type":"producer"}
+{"id":"person:rudi-pichler","layer":"reference","name":"Rudi Pichler","status":"active","type":"person"}
+{"id":"vineyard:ried-hochrain","layer":"reference","name":"Ried Hochrain","status":"active","type":"vineyard"}
+{"id":"wine:rudi-pichler-riesling-hochrain-smaragd","layer":"reference","name":"Rudi Pichler Riesling Hochrain Smaragd","status":"active","tags":["wachau","riesling","hochrain","smaragd"],"type":"wine"}
+{"id":"place:portugal","layer":"reference","name":"Portugal","place_kind":"country","status":"active","type":"place"}
+{"id":"place:lima-valley","layer":"reference","name":"Lima Valley","place_kind":"wine_region","status":"active","type":"place"}
+{"id":"producer:aphros-wine","layer":"reference","name":"Aphros Wine","status":"active","tags":["portugal","lima-valley"],"type":"producer"}
+{"id":"person:vasco-croft","layer":"reference","name":"Vasco Croft","status":"active","type":"person"}
+{"id":"project:phaunus","layer":"reference","name":"Phaunus","status":"active","summary":"Aphros wine line/project represented by multiple Phaunus bottlings, including Phaunus Loureiro.","type":"project"}
+{"id":"wine:phaunus-loureiro","layer":"reference","name":"Phaunus Loureiro","status":"active","tags":["portugal","loureiro","amphora","skin-contact"],"type":"wine"}
+{"id":"grape:loureiro","layer":"reference","name":"Loureiro","status":"active","type":"grape"}
