@@ -1,6 +1,8 @@
-# STRATA Ontology v0.1
+# STRATA Ontology v0.2
 
-STRATA is CARTA's initial controlled vocabulary for entities and relationships. It is deliberately explicit because a useful wine knowledge graph must distinguish relationships that casual wine discourse often collapses.
+STRATA is CARTA's controlled vocabulary for entities, relationships, naming, geography, and claims. v0.2 incorporates the first Pyrenean Atlantic pilot rather than treating v0.1 as permanent law.
+
+The pilot reinforced one principle above all others: **wine knowledge is relational, but the relationships are not interchangeable.** Geography, law, naming, genetics, mentorship, employment, collaboration, access, stylistic analogy, and cultural continuity can overlap without becoming the same thing.
 
 ## Entity families
 
@@ -13,18 +15,26 @@ STRATA is CARTA's initial controlled vocabulary for entities and relationships. 
 
 A person is not automatically a producer. A producer is not automatically a legal company. A project may make wine without being a standalone producer entity.
 
+### Ecosystems
+
+- `ecosystem`
+
+An ecosystem is a governed analytical object that connects multiple entity types and relationship systems. It is **not automatically a geographic region**.
+
+The Pyrenean Atlantic pilot earned this type because its explanatory boundary includes several physical/legal geographies plus a non-spatial professional network reaching outside the Pyrenees. Modeling that object as a `place` would be false.
+
 ### Biological material
 
 - `grape`
 
-Future schema revisions may add clones, rootstocks, accessions, or plant-material lots if the pilot proves they require first-class identity.
+Future revisions may add clones, rootstocks, accessions, or plant-material lots if additional pilots prove they require first-class identity.
 
 ### Wine and production
 
 - `wine`
 - `practice`
 
-A wine can represent a named cuvée or bottling concept. Vintage-specific manifestations should be added only when the distinction materially matters.
+A wine can represent a named cuvée or bottling concept. Vintage-specific manifestations remain an open question because the pilot showed that composition and extraction can change materially by vintage.
 
 ### Geography
 
@@ -36,6 +46,19 @@ A wine can represent a named cuvée or bottling concept. Vintage-specific manife
 
 These overlap rather than forming a single forced hierarchy. A vineyard may simultaneously intersect a municipality, watershed, appellation, historical territory, geological unit, and mountain system.
 
+`place` may carry a `place_kind` such as:
+
+- `country`
+- `administrative_region`
+- `cultural_region`
+- `historical_territory`
+- `municipality`
+- `locality`
+- `wine_region`
+- `analytical_region`
+
+A cultural Basque geography, the Spanish autonomous community, and a cross-border analytical region must not be silently merged because they share a familiar label.
+
 ### History and classification
 
 - `classification`
@@ -45,7 +68,22 @@ These overlap rather than forming a single forced hierarchy. A vineyard may simu
 
 - `market_signal`
 
-Market signals belong to the Frontier layer by default and require dates, confidence, and expiry/review logic.
+Market signals belong to the Frontier layer by default and require dates, confidence, and review logic. Scarcity, current retailer stock, importer pickup, and editorial attention are signals, not permanent measures of importance or quality.
+
+## First-class naming assertions
+
+v0.1 treated names partly as entity data and partly as relationships. The pilot showed that this is insufficient.
+
+A name can be true only in a particular jurisdiction, language, legal regime, or time period without requiring CARTA to create a second biological entity.
+
+Example:
+
+- Bizkaiko law can pair `Hondarrabi Zuri Zerratia` with Petit Courbu.
+- That legal-name fact does not require CARTA to create a duplicate grape entity merely so it can draw `SYNONYM_OF`.
+
+Use `name-assertion.schema.json` for evidence-bound names with jurisdiction, time, status, and claim support.
+
+`alternate_names` on an entity remains useful as lightweight display metadata, but **legal, contested, historical, or otherwise consequential naming claims should be represented through first-class name assertions**.
 
 ## Relationship families
 
@@ -65,6 +103,8 @@ Relationship predicates are uppercase snake case. Direction matters unless expli
 - `CLONE_OF`
 - `GENETICALLY_CLOSE_TO`
 - `CROSSED_WITH`
+
+Name predicates should connect entities only when both objects genuinely warrant entity identity. Use name assertions when the object is fundamentally a name attached to an entity rather than a second entity.
 
 Genetic claims must not be inferred from naming similarity or geographic proximity.
 
@@ -93,7 +133,9 @@ Genetic claims must not be inferred from naming similarity or geographic proximi
 - `MEMBER_OF`
 - `INFLUENCED_BY`
 
-`INFLUENCED_BY` is high-risk and requires stronger evidence than stylistic similarity, proximity, importer overlap, or fandom.
+`WORKED_WITH`, `WORKED_FOR`, `MENTORED_BY`, and `INFLUENCED_BY` are deliberately different. A strong importer or specialist profile may substantively support these relationships when it clearly states them. First-person documentation is valuable but not a universal admission gate.
+
+`INFLUENCED_BY` remains especially high-risk because stylistic resemblance, proximity, importer overlap, or fandom cannot establish transmission by themselves.
 
 ### Ownership and commerce
 
@@ -103,6 +145,8 @@ Genetic claims must not be inferred from naming similarity or geographic proximi
 - `DISTRIBUTED_BY`
 - `BUYS_FRUIT_FROM`
 - `SOLD_TO`
+
+Parcel tenure remains an open question. The pilot showed that owned vines, rented/farmed vines, and purchased fruit can coexist and should not be collapsed.
 
 ### Production and wine
 
@@ -134,7 +178,7 @@ These exist so CARTA can distinguish grower, fermenter, bottler, label, and prod
 - `CROSSED_BY_BORDER`
 - `FORMERLY_WITHIN_TERRITORY`
 
-Spatial intersection may be calculated by GIS, but a calculated intersection is not automatically a cultural, historical, or legal relationship.
+Spatial intersection may be calculated by GIS, but a calculated intersection is not automatically a cultural, historical, legal, or causal relationship.
 
 ### Law, classification, and history
 
@@ -158,6 +202,31 @@ Spatial intersection may be calculated by GIS, but a calculated intersection is 
 
 These are analytical edges, not identity or lineage. They require an explicit comparison basis and should usually live in Lens or carefully governed Reference claims.
 
+## Spatial knowledge in v0.2
+
+CARTA now distinguishes **geometry** from **spatial assertion**.
+
+### Geometry
+
+Use `geometry.schema.json` when actual geometry exists: a point, line, polygon, parcel, official boundary, or other mappable object with source and precision.
+
+### Spatial assertions
+
+Use `spatial-assertion.schema.json` when useful geographic knowledge exists but exact geometry does not.
+
+Supported representation kinds include:
+
+- `reference_location` — a reliable locality or address-level placement without pretending it is a vineyard point;
+- `source_described_area` — an authoritative or credible textual description of an area whose geometry has not yet been acquired;
+- `cultural_area` — a sourced cultural geography;
+- `historical_area` — a sourced historical geography;
+- `analytical_area` — an explicitly analytical construct;
+- `network_anchor` — a spatial anchor used to show where a non-spatial relationship touches the map.
+
+This allows CARTA to represent "Garay's vines are reported in Saint-Étienne-de-Baïgorry, just outside the Irouléguy boundary" without inventing parcel coordinates.
+
+A spatial assertion can later point to one or more actual geometry records when better data is acquired.
+
 ## Prohibited inference rules
 
 The graph must not create a lineage edge solely because two entities:
@@ -173,17 +242,28 @@ The graph must not create a lineage edge solely because two entities:
 
 CARTA should be capable of recording a tempting-but-unsupported edge as rejected evidence rather than silently deleting the question.
 
-## Open ontology questions for the pilot
+## Pilot-earned changes adopted in v0.2
 
-The Pyrenean Atlantic pilot should specifically test whether STRATA needs first-class types for:
+The Pyrenean Atlantic pilot earned the following changes:
+
+1. **Source fitness is claim-specific.** Source class is descriptive, not a trust caste.
+2. **Jurisdictional name assertions are first-class.** Legal naming should not create duplicate biological entities.
+3. **Places have semantic kinds.** Country, municipality, cultural region, historical territory, wine region, and analytical region are not interchangeable.
+4. **Source-described spatial knowledge is first-class.** Useful geography does not require fabricated geometry.
+5. **Ecosystems are first-class analytical objects.** An ecosystem may connect multiple geographies plus non-spatial networks.
+6. **The human-readable Atlas is a required projection.** Machine authority must remain inspectable by humans in GitHub.
+
+## Open ontology questions after Run 01
+
+The next ingestion and future pilots should continue testing whether STRATA needs first-class treatment for:
 
 - clone or accession;
 - vineyard parcel distinct from vineyard;
-- historical territory distinct from place;
+- lease/tenure relationships;
 - vintage bottling distinct from wine/cuvée;
 - importer portfolio as an entity;
 - climate zone or mesoclimate;
 - sensory structure as a governed concept;
 - availability observation versus market signal.
 
-Do not add these preemptively. Let the pilot earn the complexity.
+Do not add these merely because they are imaginable. Let repeated evidence earn the complexity.
