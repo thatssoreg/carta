@@ -69,15 +69,59 @@ Phaunus label/legal designation · exact source quintas for Phaunus Loureiro · 
 
 Primary CARTA sources include Aphros's current project, quintas, biodynamics, wine-portfolio, and Phaunus Loureiro technical pages, with the Vinhos Verdes regional commission used only for Loureiro/Lima context rather than to manufacture a Phaunus appellation edge.
 
+<!-- BEGIN GENERATED CARTA PROVENANCE -->
 ## Record & provenance
 
-This composite Human Reference profile is built from:
+This section is generated from CARTA machine authority. Edit the governed records, then run `python scripts/validate_data.py --write-human-reference`.
+
+- **Profile:** `profile:aphros-wine`
+- **Maturity / publication:** `baseline` / `published`
+- **Primary entity:** `producer:aphros-wine`
+
+**Component entities**
 
 - `producer:aphros-wine`
 - `person:vasco-croft`
 - `project:phaunus`
 - `wine:phaunus-loureiro`
+
+**Representative anchors**
+
+- `wine:phaunus-loureiro`
 - `grape:loureiro`
 - `place:lima-valley`
+- `project:phaunus`
 
-**Reference maturity:** baseline / published.
+<details>
+<summary>Machine claims and sources</summary>
+
+### Material claims
+
+| Claim | Layer / observed | Status | Confidence | Sources |
+|---|---|---|---|---|
+| `claim:aphros-biodynamic-practice` | `reference / —` | `supported` | `high` | `source:aphros-project`, `source:aphros-biodynamics` |
+| `claim:aphros-lima-valley` | `reference / —` | `supported` | `high` | `source:aphros-project`, `source:aphros-quintas` |
+| `claim:aphros-project-identity` | `reference / —` | `supported` | `high` | `source:aphros-project` |
+| `claim:phaunus-appellation-unresolved` | `reference / 2026-08-18` | `provisional` | `medium` | `source:aphros-phaunus-2023`, `source:vinhos-verdes-loureiro-lima` |
+| `claim:phaunus-line` | `reference / 2026-08-18` | `supported` | `high` | `source:aphros-wines` |
+| `claim:phaunus-loureiro-2023-cellar` | `reference / 2026-08-18` | `supported` | `high` | `source:aphros-phaunus-2023` |
+| `claim:phaunus-loureiro-wine` | `reference / —` | `supported` | `high` | `source:aphros-phaunus-2023` |
+
+### Sources
+
+- `source:aphros-biodynamics` — Biodynamics
+- `source:aphros-phaunus-2023` — Phaunus Loureiro 2023
+- `source:aphros-project` — Project
+- `source:aphros-quintas` — Quintas
+- `source:aphros-wines` — Wines
+- `source:vinhos-verdes-loureiro-lima` — History of the Region — Loureiro and Lima
+
+</details>
+
+### Open questions
+
+- Confirm Phaunus Loureiro legal designation from producer label or explicit first-party documentation before creating an appellation edge
+- Resolve Phaunus line/project history and naming chronology
+- Acquire authoritative vineyard geometry for the relevant Aphros Loureiro source sites
+- `claim:phaunus-appellation-unresolved` — Confirm the legal designation printed on the relevant Phaunus Loureiro vintages before creating a WITHIN_APPELLATION edge. The current first-party Phaunus page says only Northwest Portugal, while other Aphros wines explicitly state Vinho Verde DOC / Lima.
+<!-- END GENERATED CARTA PROVENANCE -->

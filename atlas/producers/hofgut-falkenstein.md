@@ -48,9 +48,16 @@ Niedermenniger Sonnenberg · Saar/Mosel legal geography · Riesling · Kabinett 
 
 Primary CARTA source records include Hofgut Falkenstein, Piedmont Wine Imports, German Wine Act §20, and a documented 2024 Sonnenberg Kabinett trocken trade listing.
 
+<!-- BEGIN GENERATED CARTA PROVENANCE -->
 ## Record & provenance
 
-This composite Human Reference profile is built from:
+This section is generated from CARTA machine authority. Edit the governed records, then run `python scripts/validate_data.py --write-human-reference`.
+
+- **Profile:** `profile:hofgut-falkenstein`
+- **Maturity / publication:** `baseline` / `published`
+- **Primary entity:** `producer:hofgut-falkenstein`
+
+**Component entities**
 
 - `producer:hofgut-falkenstein`
 - `person:erich-weber`
@@ -58,4 +65,37 @@ This composite Human Reference profile is built from:
 - `vineyard:niedermenniger-sonnenberg`
 - `wine:hofgut-falkenstein-niedermenniger-sonnenberg-riesling-kabinett-trocken`
 
-**Reference maturity:** baseline / published.
+**Representative anchors**
+
+- `wine:hofgut-falkenstein-niedermenniger-sonnenberg-riesling-kabinett-trocken`
+- `grape:riesling`
+- `vineyard:niedermenniger-sonnenberg`
+- `place:saar`
+- `classification:kabinett`
+
+<details>
+<summary>Machine claims and sources</summary>
+
+### Material claims
+
+| Claim | Layer / observed | Status | Confidence | Sources |
+|---|---|---|---|---|
+| `claim:falkenstein-cellar` | `reference / —` | `supported` | `high` | `source:falkenstein-home`, `source:piedmont-falkenstein` |
+| `claim:falkenstein-farming` | `reference / —` | `supported` | `high` | `source:piedmont-falkenstein` |
+| `claim:falkenstein-identity` | `reference / —` | `supported` | `high` | `source:falkenstein-home`, `source:piedmont-falkenstein` |
+| `claim:falkenstein-sonnenberg-wine` | `reference / —` | `supported` | `high` | `source:kerler-falkenstein-sonnenberg-2024` |
+
+### Sources
+
+- `source:falkenstein-home` — Hofgut Falkenstein
+- `source:kerler-falkenstein-sonnenberg-2024` — 2024 Munny #9 Hofgut Falkenstein — Niedermenniger Sonnenberg Kabinett trocken
+- `source:piedmont-falkenstein` — Hofgut Falkenstein
+
+</details>
+
+### Open questions
+
+- Acquire Sonnenberg parcel geometry and fuller vineyard-site authority
+- Build a durable cask-name/AP-number chronology without fragmenting wines by vintage
+- Deepen Saar/Mosel legal-geographic modeling with German regulatory sources
+<!-- END GENERATED CARTA PROVENANCE -->

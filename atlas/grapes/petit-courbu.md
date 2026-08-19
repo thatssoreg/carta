@@ -64,9 +64,9 @@ That makes its modern revival especially useful. The grape can connect older Bé
 
 ## Wines to know
 
-- [Rebel Rebel](../wines/rebel-rebel.md)
+- [Rebel Rebel](../producers/alfredo-egia.md)
 - Hegan Egin
-- [Ixilune](../wines/ixilune.md) in documented vintages
+- [Ixilune](../producers/imanol-garay.md) in documented vintages
 
 The point is not that these wines define the grape universally. They reveal different modern possibilities for it.
 
@@ -94,7 +94,60 @@ The most interesting current development is increased visibility through small c
 
 Key sources include Plantgrape, official Bizkaiko regulations, Camin Larredya, and producer/trade records.
 
+<!-- BEGIN GENERATED CARTA PROVENANCE -->
 ## Record & provenance
 
-**CARTA ID:** `grape:petit-courbu`  
-**Reference maturity:** baseline / published.
+This section is generated from CARTA machine authority. Edit the governed records, then run `python scripts/validate_data.py --write-human-reference`.
+
+- **Profile:** `profile:petit-courbu`
+- **Maturity / publication:** `baseline` / `published`
+- **Primary entity:** `grape:petit-courbu`
+
+**Component entities**
+
+- `grape:petit-courbu`
+
+**Representative anchors**
+
+- `appellation:bizkaiko-txakolina`
+- `appellation:jurancon`
+- `appellation:pacherenc-du-vic-bilh`
+- `producer:camin-larredya`
+- `producer:alfredo-egia-wine`
+- `producer:imanol-garay`
+- `wine:rebel-rebel`
+- `project:hegan-egin`
+
+<details>
+<summary>Machine claims and sources</summary>
+
+### Material claims
+
+| Claim | Layer / observed | Status | Confidence | Sources |
+|---|---|---|---|---|
+| `claim:bizkaia-grape-list` | `reference / 2026-08-18` | `supported` | `high` | `source:euskadi-bizkaiko-pliego`, `source:eurlex-bizkaiko-2025-amendment` |
+| `claim:camin-larredya-grapes` | `reference / —` | `supported` | `high` | `source:camin-larredya-cuvees` |
+| `claim:ixilune-composition` | `reference / —` | `supported` | `medium` | `source:orange-imanol-2022`, `source:sourceimports-imanol-2022` |
+| `claim:petit-courbu-bizkaia-name` | `reference / 2026-08-18` | `supported` | `high` | `source:euskadi-bizkaiko-pliego`, `source:plantgrape-petit-courbu`, `source:eurlex-bizkaiko-2025-amendment` |
+| `claim:petit-courbu-expanded-traits` | `reference / —` | `supported` | `high` | `source:plantgrape-petit-courbu` |
+| `claim:petit-courbu-identity` | `reference / —` | `supported` | `high` | `source:plantgrape-petit-courbu` |
+| `claim:rebel-rebel-style` | `reference / 2026-08-18` | `supported` | `medium` | `source:sager-alfredo`, `source:pellicle-alfredo-2025` |
+
+### Sources
+
+- `source:camin-larredya-cuvees` — De la Vigne aux Vins
+- `source:eurlex-bizkaiko-2025-amendment` — Approved standard amendment: Bizkaiko Txakolina / Chacolí de Bizkaia / Txakoli de Bizkaia
+- `source:euskadi-bizkaiko-pliego` — Bizkaiko Txakolina consolidated product specification
+- `source:orange-imanol-2022` — Imanol Garay, the emotions of a wine
+- `source:pellicle-alfredo-2025` — Txakolí, Creativity, and Subversion in Basque Country, Spain
+- `source:plantgrape-petit-courbu` — Petit Courbu
+- `source:sager-alfredo` — Alfredo Egia
+- `source:sourceimports-imanol-2022` — Newsletter June 2022: Imanol Garay
+
+</details>
+
+### Open questions
+
+- Broaden varietal and historical producer anchors
+- Continue jurisdiction-specific naming research
+<!-- END GENERATED CARTA PROVENANCE -->

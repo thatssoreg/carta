@@ -40,6 +40,51 @@ Direct bilateral mentorship, collaboration, employment, friendship or influence 
 
 independent producer profiles for Foillard, Breton and Thévenet · direct evidence for their individual Chauvet relationships · the wider Beaujolais community around these producers · chronology of practice transmission
 
+<!-- BEGIN GENERATED CARTA PROVENANCE -->
 ## Record & provenance
 
-**Reference maturity:** baseline / published.
+This section is generated from CARTA machine authority. Edit the governed records, then run `python scripts/validate_data.py --write-human-reference`.
+
+- **Profile:** `profile:gang-of-four-beaujolais`
+- **Maturity / publication:** `baseline` / `published`
+- **Primary entity:** `ecosystem:gang-of-four-beaujolais`
+
+**Component entities**
+
+- `ecosystem:gang-of-four-beaujolais`
+- `person:marcel-lapierre`
+- `person:jean-foillard`
+- `person:guy-breton`
+- `person:jean-paul-thevenet`
+- `person:jules-chauvet`
+
+**Representative anchors**
+
+- `place:beaujolais`
+- `appellation:morgon`
+- `grape:gamay-noir-a-jus-blanc`
+
+<details>
+<summary>Machine claims and sources</summary>
+
+### Material claims
+
+| Claim | Layer / observed | Status | Confidence | Sources |
+|---|---|---|---|---|
+| `claim:gang-of-four-beaujolais-community` | `reference / —` | `supported` | `high` | `source:kermit-gang-of-four` |
+| `claim:lapierre-chauvet-guidance` | `reference / —` | `supported` | `high` | `source:lapierre-domaine` |
+| `claim:marcel-lapierre-1950-2010` | `reference / —` | `supported` | `high` | `source:lapierre-domaine` |
+
+### Sources
+
+- `source:kermit-gang-of-four` — Jean Foillard — Côte du Py / Beaujolais context
+- `source:lapierre-domaine` — The Domaine Marcel Lapierre
+
+</details>
+
+### Open questions
+
+- Deepen each producer independently rather than treating the community shorthand as complete biography
+- Research additional direct person-to-person relationships only where evidence supports them
+- Separate Kermit Lynch's naming role from the producers' own descriptions of their relationships
+<!-- END GENERATED CARTA PROVENANCE -->

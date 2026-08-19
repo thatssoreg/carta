@@ -57,7 +57,7 @@ His significance is partly that these grapes are not presented as museum pieces.
 
 ### Hegan Egin
 
-[Hegan Egin](../projects/hegan-egin.md) connects Garay with Alfredo Egia and Gile Iturriondobeitia. It is not evidence that their domains are one producer. It is evidence of actual collaboration.
+**Hegan Egin** connects Garay with Alfredo Egia and Gile Iturriondobeitia. It is not evidence that their domains are one producer. It is evidence of actual collaboration.
 
 Garay also maintains work on both sides of the French-Spanish border, which is why his profile should be read through the [Pyrenean Atlantic ecosystem](../ecosystems/pyrenean-atlantic.md) as well as through any single appellation.
 
@@ -83,9 +83,16 @@ Garay's own Saint-Étienne-de-Baïgorry vines are currently reported just outsid
 
 Primary CARTA source records include Beattie & Roberts, The Source Imports, Orange Wines, Buvons Wine, and vintage-specific Beattie & Roberts wine pages.
 
+<!-- BEGIN GENERATED CARTA PROVENANCE -->
 ## Record & provenance
 
-Composite profile:
+This section is generated from CARTA machine authority. Edit the governed records, then run `python scripts/validate_data.py --write-human-reference`.
+
+- **Profile:** `profile:imanol-garay`
+- **Maturity / publication:** `baseline` / `published`
+- **Primary entity:** `producer:imanol-garay`
+
+**Component entities**
 
 - `person:imanol-garay`
 - `producer:imanol-garay`
@@ -95,4 +102,59 @@ Composite profile:
 - `wine:clandestinus`
 - `wine:la-altannativa`
 
-**Reference maturity:** baseline / published.
+**Representative anchors**
+
+- `wine:ixilune`
+- `wine:saguzara`
+- `wine:clandestinus`
+- `wine:la-altannativa`
+- `project:hegan-egin`
+- `person:richard-leroy`
+- `person:alfredo-egia`
+
+<details>
+<summary>Machine claims and sources</summary>
+
+### Material claims
+
+| Claim | Layer / observed | Status | Confidence | Sources |
+|---|---|---|---|---|
+| `claim:alfredo-imanol-mentorship` | `reference / —` | `supported` | `medium` | `source:alfredo-interview-2022`, `source:sager-alfredo`, `source:sourceimports-alfredo-2022` |
+| `claim:clandestinus-2022` | `reference / —` | `supported` | `high` | `source:beattie-clandestinus-2022` |
+| `claim:hegan-egin-collaboration` | `reference / —` | `supported` | `high` | `source:alfredo-interview-2022`, `source:sourceimports-alfredo-2022` |
+| `claim:imanol-baigorry-vines` | `reference / 2026-08-18` | `provisional` | `medium` | `source:beattie-imanol` |
+| `claim:imanol-cellar-maslacq` | `reference / 2026-08-18` | `provisional` | `medium` | `source:beattie-imanol`, `source:sourceimports-imanol-2022`, `source:orange-imanol-2022` |
+| `claim:imanol-current-practice` | `reference / 2026-08-18` | `supported` | `medium` | `source:beattie-imanol` |
+| `claim:imanol-holdings-sourcing` | `reference / 2026-08-18` | `supported` | `medium` | `source:beattie-imanol` |
+| `claim:imanol-richard-work` | `reference / —` | `supported` | `medium` | `source:buvons-imanol`, `source:beattie-imanol`, `source:sourceimports-alfredo-2022` |
+| `claim:imanol-us-access` | `frontier / 2026-08-18` | `provisional` | `medium` | `source:buvons-imanol` |
+| `claim:imanol-vessels` | `reference / 2026-08-18` | `supported` | `medium` | `source:beattie-imanol` |
+| `claim:ixilune-2023` | `reference / —` | `supported` | `high` | `source:beattie-ixilune-2023` |
+| `claim:ixilune-composition` | `reference / —` | `supported` | `medium` | `source:orange-imanol-2022`, `source:sourceimports-imanol-2022` |
+| `claim:la-altannativa-2021` | `reference / —` | `supported` | `high` | `source:beattie-altannativa-2021` |
+
+### Sources
+
+- `source:alfredo-interview-2022` — Alfredo Egia: What matters to me is that my wines make you feel good for you
+- `source:beattie-altannativa-2021` — La Altannativa 2021
+- `source:beattie-clandestinus-2022` — Clandestinus 2022
+- `source:beattie-imanol` — Imanol Garay, Maslacq, Pyrénées-Atlantiques
+- `source:beattie-ixilune-2023` — Ixilune 2023
+- `source:buvons-imanol` — Imanol Garay Ixilune Blanc
+- `source:orange-imanol-2022` — Imanol Garay, the emotions of a wine
+- `source:sager-alfredo` — Alfredo Egia
+- `source:sourceimports-alfredo-2022` — Newsletter March 2022: Alfredo Egia and Imanol Garay
+- `source:sourceimports-imanol-2022` — Newsletter June 2022: Imanol Garay
+
+</details>
+
+### Open questions
+
+- Resolve Maslacq/Orthez cellar chronology with producer confirmation
+- Parcel-level geometry and tenure
+- Keep Leroy relationship at WORKED_WITH unless stronger evidence appears
+- `claim:imanol-baigorry-vines` — Parcel-level primary confirmation and official appellation-boundary overlay.
+- `claim:imanol-cellar-maslacq` — Producer confirmation of current cellar address and move chronology.
+- `claim:imanol-richard-work` — The exact arrangement remains unresolved: current evidence supports WORKED_WITH, but does not establish WORKED_FOR or MENTORED_BY.
+- `claim:imanol-us-access` — Capture a repeatable U.S. retail path with verified vintage, price, quantity, stock status, and location.
+<!-- END GENERATED CARTA PROVENANCE -->

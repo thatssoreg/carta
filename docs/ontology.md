@@ -66,9 +66,7 @@ A cultural Basque geography, the Spanish autonomous community, and a cross-borde
 
 ### Dynamic discovery
 
-- `market_signal`
-
-Market signals belong to the Frontier layer by default and require dates, confidence, and review logic. Scarcity, current retailer stock, importer pickup, and editorial attention are signals, not permanent measures of importance or quality.
+Frontier is expressed through dated claims on stable subjects. The `market_signal` entity type remains in the v0.2 schema only as a deprecated compatibility value and is not authored in CARTA core. Scarcity, current retailer stock, importer pickup, and editorial attention are signals, not permanent measures of importance or quality.
 
 ## First-class naming assertions
 
@@ -84,6 +82,8 @@ Example:
 Use `name-assertion.schema.json` for evidence-bound names with jurisdiction, time, status, and claim support.
 
 `alternate_names` on an entity remains useful as lightweight display metadata, but **legal, contested, historical, or otherwise consequential naming claims should be represented through first-class name assertions**.
+
+Entity `summary` and `tags` are likewise non-authoritative display, navigation, and search metadata. Material facts require sourced claims. The legacy entity fields `claim_ids`, `name_assertion_ids`, and `spatial_refs` are deprecated authored reverse indexes; derive those views from the forward claim, name-assertion, and spatial-assertion records.
 
 ## Relationship families
 
@@ -146,7 +146,7 @@ Genetic claims must not be inferred from naming similarity or geographic proximi
 - `BUYS_FRUIT_FROM`
 - `SOLD_TO`
 
-Parcel tenure remains an open question. The pilot showed that owned vines, rented/farmed vines, and purchased fruit can coexist and should not be collapsed.
+Owned vines, rented or farmed vines, and purchased fruit must not be collapsed. `FARMED_BY` or `FARMS_PARCEL` records the supported farming role; a dated, sourced claim may preserve observed tenure language when the evidence does not support ownership, an exact lease interval, or a more specific relationship. The current evidence does not warrant a lease predicate.
 
 ### Production and wine
 
@@ -180,6 +180,8 @@ These exist so CARTA can distinguish grower, fermenter, bottler, label, and prod
 
 Spatial intersection may be calculated by GIS, but a calculated intersection is not automatically a cultural, historical, legal, or causal relationship.
 
+`WITHIN_APPELLATION` is physical containment for spatial subjects such as vineyards and places. A wine's appellation or protected designation uses `CLASSIFIED_AS`, with vintage or validity scope where needed. A wine classification must not be inferred merely because its source vineyard lies inside an appellation.
+
 ### Law, classification, and history
 
 - `CREATED_BY`
@@ -193,6 +195,8 @@ Spatial intersection may be calculated by GIS, but a calculated intersection is 
 - `OWNED_AT_TIME`
 - `LOCATED_WITHIN_AT_TIME`
 
+`LEGAL_AT_TIME`, `OWNED_AT_TIME`, and `LOCATED_WITHIN_AT_TIME` are deprecated for authored CARTA core and remain in the v0.2 enum only for compatibility. Use the ordinary predicate that expresses the fact together with `valid_from`, `valid_to`, `time_precision`, and dated claims. Do not create replacement predicates.
+
 ### Comparison and interpretation
 
 - `STYLISTIC_NEIGHBOR_OF`
@@ -200,7 +204,7 @@ Spatial intersection may be calculated by GIS, but a calculated intersection is 
 - `CLIMATE_ANALOGUE_OF`
 - `SITE_ANALOGUE_OF`
 
-These are analytical edges, not identity or lineage. They require an explicit comparison basis and should usually live outside CARTA core in an external analytical layer, or enter Reference only as carefully governed, evidence-backed claims.
+These four comparison predicates are deprecated for authored CARTA core and remain in the v0.2 enum only for compatibility. Analytical comparisons belong in external analytical layers that may reference CARTA IDs; they are not identity, lineage, or Reference relationships. No replacement predicates are introduced.
 
 ## Spatial knowledge in v0.2
 
@@ -220,8 +224,9 @@ Supported representation kinds include:
 - `source_described_area` — an authoritative or credible textual description of an area whose geometry has not yet been acquired;
 - `cultural_area` — a sourced cultural geography;
 - `historical_area` — a sourced historical geography;
-- `analytical_area` — an explicitly analytical construct;
-- `network_anchor` — a spatial anchor used to show where a non-spatial relationship touches the map.
+- `analytical_area` — an explicitly analytical construct.
+
+`network_anchor` remains in the v0.2 enum only as a deprecated compatibility value. Map placement for a non-spatial relationship is presentation derived from the graph, not independent spatial authority.
 
 This allows CARTA to represent "Garay's vines are reported in Saint-Étienne-de-Baïgorry, just outside the Irouléguy boundary" without inventing parcel coordinates.
 
@@ -253,16 +258,13 @@ The Pyrenean Atlantic pilot earned the following changes:
 5. **Ecosystems are first-class analytical objects.** An ecosystem may connect multiple geographies plus non-spatial networks.
 6. **The human-readable Atlas is a required projection.** Machine authority must remain inspectable by humans in GitHub.
 
-## Open ontology questions after Run 01
+## Remaining ontology questions after Run 05
 
 The next ingestion and future pilots should continue testing whether STRATA needs first-class treatment for:
 
 - clone or accession;
 - vineyard parcel distinct from vineyard;
-- lease/tenure relationships;
-- importer portfolio as an entity;
 - climate zone or mesoclimate;
-- sensory structure as a governed concept;
-- availability observation versus market signal.
+- sensory structure as a governed concept.
 
 Do not add these merely because they are imaginable. Let repeated evidence earn the complexity.

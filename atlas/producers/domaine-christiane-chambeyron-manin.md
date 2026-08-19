@@ -77,13 +77,54 @@ Côte Brune · Côte-Rôtie · Syrah / Sérine · Ampuis · Chambeyron family hi
 
 Primary CARTA source records include Sacred Thirst Selections, The Wine Trust, and INAO.
 
+<!-- BEGIN GENERATED CARTA PROVENANCE -->
 ## Record & provenance
 
-This is a composite Human Reference profile built from:
+This section is generated from CARTA machine authority. Edit the governed records, then run `python scripts/validate_data.py --write-human-reference`.
+
+- **Profile:** `profile:domaine-christiane-chambeyron-manin`
+- **Maturity / publication:** `baseline` / `published`
+- **Primary entity:** `producer:domaine-christiane-chambeyron-manin`
+
+**Component entities**
 
 - `producer:domaine-christiane-chambeyron-manin`
 - `person:veronique-manin`
 - `person:christiane-chambeyron-manin`
 - `wine:chambeyron-manin-cote-rotie`
 
-**Reference maturity:** baseline / published.
+**Representative anchors**
+
+- `place:cote-brune`
+- `appellation:cote-rotie`
+- `grape:syrah`
+- `person:veronique-manin`
+
+<details>
+<summary>Machine claims and sources</summary>
+
+### Material claims
+
+| Claim | Layer / observed | Status | Confidence | Sources |
+|---|---|---|---|---|
+| `claim:chambeyron-cellar` | `reference / —` | `supported` | `high` | `source:sacred-thirst-chambeyron` |
+| `claim:chambeyron-family-name` | `reference / —` | `supported` | `medium` | `source:wine-trust-chambeyron` |
+| `claim:chambeyron-farming` | `reference / —` | `supported` | `medium` | `source:wine-trust-chambeyron` |
+| `claim:chambeyron-identity` | `reference / 2026-08-18` | `supported` | `high` | `source:wine-trust-chambeyron` |
+| `claim:chambeyron-site` | `reference / —` | `supported` | `high` | `source:sacred-thirst-chambeyron`, `source:wine-trust-chambeyron` |
+| `claim:chambeyron-syrah` | `reference / —` | `supported` | `high` | `source:sacred-thirst-chambeyron`, `source:wine-trust-chambeyron` |
+| `claim:chambeyron-vine-age` | `reference / 2026-08-18` | `supported` | `medium` | `source:sacred-thirst-chambeyron`, `source:wine-trust-chambeyron` |
+
+### Sources
+
+- `source:sacred-thirst-chambeyron` — Chambeyron-Manin
+- `source:wine-trust-chambeyron` — Chambeyron-Manin
+
+</details>
+
+### Open questions
+
+- Exact parcel geometry and rootstock status
+- More secure multigenerational chronology before adding additional family-person nodes
+- Independent source for farming language beyond importer descriptions
+<!-- END GENERATED CARTA PROVENANCE -->

@@ -8,7 +8,7 @@ Plantgrape reports Raffiat de Moncade as probably resulting from a cross between
 
 Raffiat de Moncade is also a documented parent of **Arriloba**, an INRA crossing made with Sauvignon.
 
-The Run 01 ecosystem connected Raffiat to [Imanol Garay](../producers/imanol-garay.md) through documented vintages of [Ixilune](../wines/ixilune.md). That is enough to show that the grape is not merely a historical catalogue entry.
+The Run 01 ecosystem connected Raffiat to [Imanol Garay](../producers/imanol-garay.md) through documented vintages of Ixilune. That is enough to show that the grape is not merely a historical catalogue entry.
 
 ## What is not yet established well enough
 
@@ -39,20 +39,55 @@ The current evidence places the grape in the southwest-French / Béarn context. 
 
 ## Explore next
 
-[Imanol Garay](../producers/imanol-garay.md) · [Ixilune](../wines/ixilune.md) · [Petit Manseng](petit-manseng.md) · [Petit Courbu](petit-courbu.md)
+[Imanol Garay](../producers/imanol-garay.md) · Ixilune · [Petit Manseng](petit-manseng.md) · [Petit Courbu](petit-courbu.md)
 
 ## Sources
 
 Current strong sources include Plantgrape records for Raffiat de Moncade and Arriloba plus wine-specific trade documentation for Ixilune.
 
+<!-- BEGIN GENERATED CARTA PROVENANCE -->
 ## Record & provenance
 
-**CARTA ID:** `grape:raffiat-de-moncade`  
-**Reference maturity:** node / stub.
+This section is generated from CARTA machine authority. Edit the governed records, then run `python scripts/validate_data.py --write-human-reference`.
 
-### Promotion gaps
+- **Profile:** `profile:raffiat-de-moncade`
+- **Maturity / publication:** `node` / `stub`
+- **Primary entity:** `grape:raffiat-de-moncade`
 
-- verified current plantings
-- reliable sensory and viticultural profile
-- current producer/wine anchors
-- current legal use by appellation
+**Component entities**
+
+- `grape:raffiat-de-moncade`
+
+**Representative anchors**
+
+- `wine:ixilune`
+- `grape:arriloba`
+- `grape:gouais-blanc`
+- `grape:bouchales`
+
+<details>
+<summary>Machine claims and sources</summary>
+
+### Material claims
+
+| Claim | Layer / observed | Status | Confidence | Sources |
+|---|---|---|---|---|
+| `claim:ixilune-composition` | `reference / —` | `supported` | `medium` | `source:orange-imanol-2022`, `source:sourceimports-imanol-2022` |
+| `claim:raffiat-arriloba` | `reference / —` | `supported` | `high` | `source:plantgrape-arriloba` |
+| `claim:raffiat-parentage` | `reference / —` | `supported` | `high` | `source:plantgrape-raffiat` |
+
+### Sources
+
+- `source:orange-imanol-2022` — Imanol Garay, the emotions of a wine
+- `source:plantgrape-arriloba` — Arriloba
+- `source:plantgrape-raffiat` — Raffiat de Moncade
+- `source:sourceimports-imanol-2022` — Newsletter June 2022: Imanol Garay
+
+</details>
+
+### Open questions
+
+- Verified current plantings and producer set
+- Independent evidence for sensory/style claims
+- Clarify present legal and regional use
+<!-- END GENERATED CARTA PROVENANCE -->

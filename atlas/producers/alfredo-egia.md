@@ -50,7 +50,7 @@ These are representative anchors, not an exhaustive catalogue.
 
 ### Hegan Egin
 
-[Hegan Egin](../projects/hegan-egin.md) is a documented collaboration among Alfredo Egia, Imanol Garay, and Gile Iturriondobeitia. It matters because the collaboration is itself evidence of knowledge exchange and shared work, not merely stylistic resemblance.
+**Hegan Egin** is a documented collaboration among Alfredo Egia, Imanol Garay, and Gile Iturriondobeitia. Egia's first-person account describes Garay contributing low-intervention experience, Gile working as winemaker, and Egia working as viticulturist. The role split is evidence of knowledge exchange and shared work, not merely stylistic resemblance.
 
 CARTA keeps Hegan Egin separate from other producer or collective identities rather than collapsing every collaboration into one brand.
 
@@ -76,16 +76,67 @@ Egia's vineyards and grape choices sit inside the [Bizkaiko Txakolina](../countr
 
 Primary CARTA source records include Spanish Wine Lover, Sager + Wine, The Source Imports, Pellicle, and Alfredo Egia interview material.
 
+<!-- BEGIN GENERATED CARTA PROVENANCE -->
 ## Record & provenance
 
-This is a composite Human Reference profile built from:
+This section is generated from CARTA machine authority. Edit the governed records, then run `python scripts/validate_data.py --write-human-reference`.
+
+- **Profile:** `profile:alfredo-egia`
+- **Maturity / publication:** `baseline` / `published`
+- **Primary entity:** `producer:alfredo-egia-wine`
+
+**Component entities**
 
 - `person:alfredo-egia`
 - `producer:alfredo-egia-wine`
 - `project:hegan-egin`
+- `wine:rebel-rebel`
+- `wine:egia-enea`
+- `wine:lexardi`
+- `wine:izaki`
+
+**Representative anchors**
+
 - `wine:egia-enea`
 - `wine:lexardi`
 - `wine:rebel-rebel`
 - `wine:izaki`
+- `project:hegan-egin`
+- `grape:petit-manseng`
+- `grape:petit-courbu`
 
-**Reference maturity:** baseline / published.
+<details>
+<summary>Machine claims and sources</summary>
+
+### Material claims
+
+| Claim | Layer / observed | Status | Confidence | Sources |
+|---|---|---|---|---|
+| `claim:alfredo-balmaseda` | `reference / —` | `supported` | `high` | `source:sager-alfredo`, `source:sourceimports-alfredo-2022` |
+| `claim:alfredo-cellar-range` | `reference / 2026-08-18` | `supported` | `medium` | `source:sager-alfredo`, `source:pellicle-alfredo-2025` |
+| `claim:alfredo-egia-enea-vineyard` | `reference / —` | `supported` | `medium` | `source:spanish-wine-lover-txakoli-guide` |
+| `claim:alfredo-imanol-mentorship` | `reference / —` | `supported` | `medium` | `source:alfredo-interview-2022`, `source:sager-alfredo`, `source:sourceimports-alfredo-2022` |
+| `claim:alfredo-range-anchors` | `reference / 2026-08-18` | `supported` | `medium` | `source:spanish-wine-lover-txakoli-guide`, `source:sager-alfredo` |
+| `claim:hegan-egin-collaboration` | `reference / —` | `supported` | `high` | `source:alfredo-interview-2022`, `source:sourceimports-alfredo-2022` |
+| `claim:rebel-rebel-style` | `reference / 2026-08-18` | `supported` | `medium` | `source:sager-alfredo`, `source:pellicle-alfredo-2025` |
+| `claim:rebel-rebel-us-buvons` | `frontier / 2026-08-18` | `supported` | `high` | `source:buvons-rebel-retail` |
+| `claim:rebel-rebel-us-leon` | `frontier / 2026-08-18` | `supported` | `high` | `source:leon-rebel-retail` |
+| `claim:rebel-rebel-us-leon-sold-out` | `frontier / 2026-08-18` | `supported` | `high` | `source:leon-rebel-retail` |
+
+### Sources
+
+- `source:alfredo-interview-2022` — Alfredo Egia: What matters to me is that my wines make you feel good for you
+- `source:buvons-rebel-retail` — Alfredo Egia Rebel Rebel Bizkaiko Txakolina retail listing
+- `source:leon-rebel-retail` — 2021 Alfredo Egia Rebel Rebel, Bizkaiko Txakolina retail listing
+- `source:pellicle-alfredo-2025` — Txakolí, Creativity, and Subversion in Basque Country, Spain
+- `source:sager-alfredo` — Alfredo Egia
+- `source:sourceimports-alfredo-2022` — Newsletter March 2022: Alfredo Egia and Imanol Garay
+- `source:spanish-wine-lover-txakoli-guide` — Txakoli: a guide to producers and wines
+
+</details>
+
+### Open questions
+
+- Parcel-level tenure and geometry
+- Longitudinal vintage-by-vintage cellar record
+<!-- END GENERATED CARTA PROVENANCE -->

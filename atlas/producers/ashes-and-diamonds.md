@@ -67,18 +67,60 @@ Those claims were rejected.
 
 complete Cabernet Franc release-number chronology · vintage vineyard sourcing · Cabernet Franc composition by vintage · authoritative Napa/Oak Knoll geometry
 
+<!-- BEGIN GENERATED CARTA PROVENANCE -->
 ## Record & provenance
 
-This Human Reference profile is built from:
+This section is generated from CARTA machine authority. Edit the governed records, then run `python scripts/validate_data.py --write-human-reference`.
+
+- **Profile:** `profile:ashes-and-diamonds`
+- **Maturity / publication:** `baseline` / `published`
+- **Primary entity:** `producer:ashes-and-diamonds`
+
+**Component entities**
 
 - `producer:ashes-and-diamonds`
 - `person:kashy-khaledi`
 - `person:steve-matthiasson`
 - `vineyard:ashes-and-diamonds-vineyard`
 - `wine:ashes-and-diamonds-cabernet-franc`
-- `grape:cabernet-franc`
-- `grape:merlot`
-- `appellation:napa-valley-ava`
-- `appellation:oak-knoll-district-ava`
 
-**Reference maturity:** baseline / published.
+**Representative anchors**
+
+- `wine:ashes-and-diamonds-cabernet-franc`
+- `grape:cabernet-franc`
+- `appellation:napa-valley-ava`
+- `vineyard:ashes-and-diamonds-vineyard`
+
+<details>
+<summary>Machine claims and sources</summary>
+
+### Material claims
+
+| Claim | Layer / observed | Status | Confidence | Sources |
+|---|---|---|---|---|
+| `claim:ashes-ad-vineyard` | `reference / —` | `supported` | `high` | `source:ashes-ad-vineyard` |
+| `claim:ashes-cab-franc-durable-identity` | `reference / 2026-08-18` | `supported` | `high` | `source:ashes-steve`, `source:ashes-cab-franc-2019`, `source:ashes-cab-franc-2023` |
+| `claim:ashes-cab-franc-no3-2016` | `reference / 2026-08-18` | `supported` | `high` | `source:decanter-ashes-no3-2016`, `source:ashes-diamond-vintages` |
+| `claim:ashes-cab-franc-numbered-variation` | `reference / —` | `supported` | `high` | `source:ashes-cab-franc-2019`, `source:ashes-cab-franc-2023` |
+| `claim:ashes-producer-identity` | `reference / 2026-08-18` | `supported` | `high` | `source:ashes-kashy` |
+| `claim:ashes-steve-cab-franc` | `reference / 2026-08-18` | `supported` | `high` | `source:ashes-steve`, `source:ashes-cab-franc-2019`, `source:ashes-cab-franc-2023` |
+
+### Sources
+
+- `source:ashes-ad-vineyard` — Ashes & Diamonds Vineyard
+- `source:ashes-cab-franc-2019` — Cabernet Franc №6 — 2019
+- `source:ashes-cab-franc-2023` — Cabernet Franc №10 — 2023
+- `source:ashes-diamond-vintages` — Diamond Vintages Cabernet Franc 2016–2018
+- `source:ashes-kashy` — Kashy Khaledi | Owner & Proprietor
+- `source:ashes-steve` — Steve Matthiasson | Winemaker
+- `source:decanter-ashes-no3-2016` — Ashes & Diamonds, No 3 Cabernet Franc, Napa Valley 2016
+- `source:ttb-slo-coast` — List of AVAs by Establishment Date
+
+</details>
+
+### Open questions
+
+- Build a vintage/release-number chronology for the Cabernet Franc line
+- Resolve the exact vineyard sourcing of each numbered release where producer documentation permits
+- Acquire authoritative Napa/Oak Knoll geometry rather than inferred points
+<!-- END GENERATED CARTA PROVENANCE -->

@@ -4,7 +4,7 @@
 
 CARTA is a spatial-temporal wine knowledge and field-intelligence system and a sibling project to Natural Wine 2.5.
 
-Natural Wine 2.5 remains deliberately compressed for teaching. CARTA is allowed to expand: grapes, producers, people, vineyards, places, appellations, wines, practices, institutions, historical events, market signals, and evidence-backed relationships can enter as the knowledge system warrants them.
+Natural Wine 2.5 remains deliberately compressed for teaching. CARTA is allowed to expand: grapes, producers, people, vineyards, places, appellations, wines, practices, institutions, historical events, dated Frontier claims, and evidence-backed relationships can enter as the knowledge system warrants them.
 
 > The reference system can become expansive while the curriculum remains edited.
 
@@ -32,56 +32,19 @@ The ontology distinguishes biological identity, legal naming, geography, profess
 
 The Human Reference is a deep wine reference, not a database demonstration.
 
-Run 02 completed the first major enrichment pass. CARTA now has **16 baseline/published Human Reference profiles** across the first ecosystem:
-
-- Pyrenean Atlantic ecosystem
-- Alfredo Egia
-- Imanol Garay
-- Richard Leroy
-- Petit Manseng
-- Gros Manseng
-- Petit Courbu
-- Courbu
-- France
-- Spain
-- Béarn
-- Bizkaia
-- Jurançon
-- Irouléguy
-- Pacherenc du Vic-Bilh
-- Bizkaiko Txakolina
-
-Raffiat de Moncade remains an honest `node/stub`. Western Pyrenees remains `node/queued` because its promotion now depends on real GIS acquisition rather than prose.
+Governed profile records determine publication status and canonical paths; the Atlas and its indexes are projections of those records and the underlying machine authority.
 
 Start with [`atlas/README.md`](atlas/README.md).
 
-## Current machine authority
+## Machine authority
 
-After Run 02 normalization:
-
-- **58 entities**
-- **50 typed relationships**
-- **54 claims**
-- **43 sources**
-- **7 first-class name assertions**
-- **8 source-described spatial assertions**
-- **0 fabricated geometry records**
-
-Validation runs through `scripts/validate_data.py` and GitHub Actions.
+Counts are derived from canonical records rather than maintained in this README. Validation runs through `scripts/validate_data.py` and GitHub Actions.
 
 ## Repository hygiene
 
 CARTA keeps durable product and reference infrastructure, not the conversational scaffolding used to create it.
 
 Prompts, chat transcripts, scratch plans, and temporary queues stay outside the repository unless they become genuinely reusable operating artifacts. Durable audits may remain when they materially explain accepted editorial or evidence decisions.
-
-## Next gate: GIS
-
-The Human Reference baseline is now strong enough to resume spatial work.
-
-The first GIS pass should earn the **Western Pyrenees** landscape by acquiring authoritative/open terrain, hydrology, geology, administrative/appellation, and reference-point data, while testing real spatial questions such as Garay's reported vines relative to the Irouléguy boundary.
-
-See [`atlas/landscapes/western-pyrenees.md`](atlas/landscapes/western-pyrenees.md) and [`audits/run-02-human-reference-normalization.md`](audits/run-02-human-reference-normalization.md).
 
 ## Architecture
 

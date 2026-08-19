@@ -45,9 +45,66 @@ That does not make the border irrelevant. It means CARTA needs to show which rel
 
 [Béarn](regions/bearn.md) · [Jurançon](appellations/jurancon.md) · [Irouléguy](appellations/irouleguy.md) · [Pacherenc du Vic-Bilh](appellations/pacherenc-du-vic-bilh.md) · [Richard Leroy](../../producers/richard-leroy.md)
 
+<!-- BEGIN GENERATED CARTA PROVENANCE -->
 ## Record & provenance
 
-**CARTA ID:** `place:france`  
-**Reference maturity:** baseline / published.
+This section is generated from CARTA machine authority. Edit the governed records, then run `python scripts/validate_data.py --write-human-reference`.
 
-This is an orientation page. It should expand as CARTA adds French ecosystems, regions, producers, and grapes, not pretend to be a finished encyclopedia of France.
+- **Profile:** `profile:france`
+- **Maturity / publication:** `baseline` / `published`
+- **Primary entity:** `place:france`
+
+**Component entities**
+
+- `place:france`
+
+**Representative anchors**
+
+- `appellation:jurancon`
+- `appellation:irouleguy`
+- `appellation:pacherenc-du-vic-bilh`
+- `place:bearn`
+- `producer:richard-leroy`
+
+<details>
+<summary>Machine claims and sources</summary>
+
+### Material claims
+
+| Claim | Layer / observed | Status | Confidence | Sources |
+|---|---|---|---|---|
+| `claim:arbois-aop` | `reference / 2026-08-18` | `supported` | `high` | `source:inao-arbois` |
+| `claim:chambeyron-site` | `reference / —` | `supported` | `high` | `source:sacred-thirst-chambeyron`, `source:wine-trust-chambeyron` |
+| `claim:chevillard-location` | `reference / —` | `supported` | `high` | `source:chevillard-domaine` |
+| `claim:cornas-aop-geography` | `reference / —` | `supported` | `high` | `source:inao-cornas` |
+| `claim:cote-rotie-official` | `reference / 2026-08-18` | `supported` | `high` | `source:inao-cote-rotie` |
+| `claim:cotes-du-rhone-aop` | `reference / —` | `supported` | `high` | `source:inao-cotes-du-rhone` |
+| `claim:jurancon-country` | `reference / —` | `supported` | `high` | `source:inao-jurancon` |
+| `claim:morgon-aop` | `reference / —` | `supported` | `high` | `source:inao-morgon` |
+| `claim:palette-official` | `reference / —` | `supported` | `high` | `source:inao-palette` |
+| `claim:richard-leroy-estate-history` | `reference / —` | `supported` | `high` | `source:winedoctor-richard-2013`, `source:vinetrail-richard`, `source:rvf-richard-2025` |
+| `claim:simone-family-history` | `reference / —` | `supported` | `high` | `source:simone-history` |
+
+### Sources
+
+- `source:chevillard-domaine` — Le domaine | Domaine de Chevillard
+- `source:inao-arbois` — Arbois blanc
+- `source:inao-cornas` — Cornas
+- `source:inao-cote-rotie` — Côte Rôtie
+- `source:inao-cotes-du-rhone` — Côtes du Rhône rouge
+- `source:inao-jurancon` — Jurançon
+- `source:inao-morgon` — Morgon ou Morgon cru du Beaujolais
+- `source:inao-palette` — Palette blanc
+- `source:rvf-richard-2025` — Domaine Richard Leroy
+- `source:sacred-thirst-chambeyron` — Chambeyron-Manin
+- `source:simone-history` — Our History | Château Simone
+- `source:vinetrail-richard` — Richard Leroy
+- `source:wine-trust-chambeyron` — Chambeyron-Manin
+- `source:winedoctor-richard-2013` — Richard Leroy, 2013 Update
+
+</details>
+
+### Open questions
+
+- This remains a CARTA orientation surface, not a complete national reference
+<!-- END GENERATED CARTA PROVENANCE -->

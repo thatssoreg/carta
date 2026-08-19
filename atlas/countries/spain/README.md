@@ -42,9 +42,46 @@ The Atlantic Basque world continues into France culturally and physically. Grape
 
 [Bizkaia](regions/bizkaia.md) · [Bizkaiko Txakolina](appellations/bizkaiko-txakolina.md) · [Alfredo Egia](../../producers/alfredo-egia.md) · [Western Pyrenees](../../landscapes/western-pyrenees.md) · [Pyrenean Atlantic](../../ecosystems/pyrenean-atlantic.md)
 
+<!-- BEGIN GENERATED CARTA PROVENANCE -->
 ## Record & provenance
 
-**CARTA ID:** `place:spain`  
-**Reference maturity:** baseline / published.
+This section is generated from CARTA machine authority. Edit the governed records, then run `python scripts/validate_data.py --write-human-reference`.
 
-This page expands as CARTA adds Spanish regions and ecosystems.
+- **Profile:** `profile:spain`
+- **Maturity / publication:** `baseline` / `published`
+- **Primary entity:** `place:spain`
+
+**Component entities**
+
+- `place:spain`
+
+**Representative anchors**
+
+- `place:bizkaia`
+- `appellation:bizkaiko-txakolina`
+- `producer:alfredo-egia-wine`
+- `project:hegan-egin`
+
+<details>
+<summary>Machine claims and sources</summary>
+
+### Material claims
+
+| Claim | Layer / observed | Status | Confidence | Sources |
+|---|---|---|---|---|
+| `claim:bizkaiko-geographical-area` | `reference / 2026-08-18` | `supported` | `high` | `source:eurlex-bizkaiko-2025-amendment` |
+| `claim:liebana-current-framework` | `reference / 2026-08-18` | `supported` | `high` | `source:cantabria-liebana-register` |
+| `claim:ribera-gran-reserva-law` | `reference / 2026-08-18` | `supported` | `high` | `source:ribera-product-spec-2023` |
+
+### Sources
+
+- `source:cantabria-liebana-register` — Registro de viticultores, elaboradores y embotelladores de Vino de la Tierra de Liébana
+- `source:eurlex-bizkaiko-2025-amendment` — Approved standard amendment: Bizkaiko Txakolina / Chacolí de Bizkaia / Txakoli de Bizkaia
+- `source:ribera-product-spec-2023` — Ribera del Duero product specification amendment, 2023
+
+</details>
+
+### Open questions
+
+- This remains a CARTA orientation surface, not a complete national reference
+<!-- END GENERATED CARTA PROVENANCE -->

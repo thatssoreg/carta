@@ -57,13 +57,57 @@ Jacquère · Altesse · Roussette de Savoie · Vin de Savoie Apremont · Combe d
 
 Primary CARTA source records include Domaine de Chevillard's current estate and wine pages plus INAO's Vin de Savoie Apremont product page.
 
+<!-- BEGIN GENERATED CARTA PROVENANCE -->
 ## Record & provenance
 
-This composite Human Reference profile is built from:
+This section is generated from CARTA machine authority. Edit the governed records, then run `python scripts/validate_data.py --write-human-reference`.
+
+- **Profile:** `profile:domaine-de-chevillard`
+- **Maturity / publication:** `baseline` / `published`
+- **Primary entity:** `producer:domaine-de-chevillard`
+
+**Component entities**
 
 - `producer:domaine-de-chevillard`
 - `person:matthieu-goury`
 - `person:guillemette-renard`
 - `wine:chevillard-apremont`
 
-**Reference maturity:** baseline / published.
+**Representative anchors**
+
+- `wine:chevillard-apremont`
+- `grape:jacquere`
+- `grape:altesse`
+- `appellation:vin-de-savoie-apremont`
+- `place:combe-de-savoie`
+
+<details>
+<summary>Machine claims and sources</summary>
+
+### Material claims
+
+| Claim | Layer / observed | Status | Confidence | Sources |
+|---|---|---|---|---|
+| `claim:chevillard-apremont` | `reference / —` | `supported` | `high` | `source:chevillard-wines` |
+| `claim:chevillard-cellar` | `reference / —` | `supported` | `high` | `source:chevillard-domaine` |
+| `claim:chevillard-estate-size` | `reference / 2026-08-18` | `provisional` | `medium` | `source:chevillard-domaine`, `source:chevillard-home` |
+| `claim:chevillard-local-grapes` | `reference / —` | `supported` | `high` | `source:chevillard-domaine`, `source:chevillard-wines` |
+| `claim:chevillard-location` | `reference / —` | `supported` | `high` | `source:chevillard-domaine` |
+| `claim:chevillard-organic-biodynamic` | `reference / —` | `supported` | `high` | `source:chevillard-domaine` |
+| `claim:chevillard-people` | `reference / —` | `supported` | `high` | `source:chevillard-home`, `source:chevillard-domaine` |
+
+### Sources
+
+- `source:chevillard-domaine` — Le domaine | Domaine de Chevillard
+- `source:chevillard-home` — Accueil | Domaine de Chevillard
+- `source:chevillard-wines` — Nos vins | Domaine de Chevillard
+
+</details>
+
+### Open questions
+
+- Reconcile current first-party estate-size figures of approximately 10 versus 12 hectares
+- Acquire parcel-level vineyard geometry
+- Deepen official Savoie cru and Mont Granier landscape history with primary/regulatory sources
+- `claim:chevillard-estate-size` — Current first-party pages disagree between approximately 10 and 12 hectares; treat size as approximate and time-sensitive until the producer reconciles the figures.
+<!-- END GENERATED CARTA PROVENANCE -->

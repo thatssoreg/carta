@@ -56,11 +56,46 @@ The region increasingly attracts attention for dry whites and small domaine prod
 
 Current legal/style authority: INAO. Representative-producer orientation uses specialist references.
 
+<!-- BEGIN GENERATED CARTA PROVENANCE -->
 ## Record & provenance
 
-**CARTA ID:** `appellation:irouleguy`  
-**Reference maturity:** baseline / published.
+This section is generated from CARTA machine authority. Edit the governed records, then run `python scripts/validate_data.py --write-human-reference`.
 
-### GIS question
+- **Profile:** `profile:irouleguy`
+- **Maturity / publication:** `baseline` / `published`
+- **Primary entity:** `appellation:irouleguy`
 
-Where exactly do Garay's reported Saint-Étienne-de-Baïgorry vines fall relative to the official Irouléguy boundary?
+**Component entities**
+
+- `appellation:irouleguy`
+
+**Representative anchors**
+
+- `producer:domaine-arretxea`
+- `producer:imanol-garay`
+- `grape:courbu`
+- `grape:petit-manseng`
+- `grape:gros-manseng`
+
+<details>
+<summary>Machine claims and sources</summary>
+
+### Material claims
+
+| Claim | Layer / observed | Status | Confidence | Sources |
+|---|---|---|---|---|
+| `claim:irouleguy-arretxea-anchor` | `reference / —` | `supported` | `medium` | `source:wsg-southwest-producer-guide` |
+| `claim:irouleguy-reference-summary` | `reference / —` | `supported` | `high` | `source:inao-irouleguy` |
+
+### Sources
+
+- `source:inao-irouleguy` — Irouléguy blanc
+- `source:wsg-southwest-producer-guide` — Producer Guide - South-West
+
+</details>
+
+### Open questions
+
+- Acquire official geometry and test Garay site relationship spatially
+- Broaden representative producer/wine set
+<!-- END GENERATED CARTA PROVENANCE -->

@@ -1,6 +1,6 @@
 # CARTA Human Reference Contract v0.2
 
-CARTA's machine-readable graph is the authority. The **Human Reference** is the reading experience.
+CARTA's machine-readable graph is the authority. The **Human Reference** is the reading experience. Corrections land in machine records first and flow into the Human Reference through projection.
 
 Those are deliberately not the same thing.
 
@@ -146,7 +146,7 @@ A **baseline producer profile should be generous**. When knowable, it should inc
 9. **People, lineage & influence** — documented work, mentorship, collaboration, succession, family, and cultural-transmission relationships. Stylistic resemblance alone is not lineage.
 10. **Style & significance** — what the wines tend to explore, how the work relates to regional expectations, and why the producer matters in the wider wine world.
 11. **Appellation / classification context** — relevant legal relationships, declassification, unusual compliant work, or tensions with local categories.
-12. **Access** — importer/distributor and current availability when useful, clearly separated from permanent producer identity.
+12. **Access** — importer/distributor relationships and dated Frontier availability when useful, clearly separated from permanent producer identity.
 13. **Explore next** — a small editorial set of useful rabbit holes.
 14. **Sources**.
 15. **Record & provenance** — machine IDs, claims, confidence, unresolved edges, and revision history at the bottom.
@@ -359,6 +359,16 @@ Machine IDs, relationship tables, claim IDs, confidence, unresolved questions, r
 
 GitHub Markdown limitations may require a normal heading instead of `<details>` in some generated contexts. The principle is more important than the exact rendering.
 
+For published profiles, this section should be a deterministic compact projection rather than a manually maintained second fact store. At minimum it should make discoverable:
+
+- the profile's component CARTA entities;
+- material claims used by the page;
+- relevant sources;
+- status or confidence where material;
+- unresolved or contested questions where applicable.
+
+Derive reverse lookup from canonical forward records: `claim.subject_ref`, `name_assertion.entity_id`, and `spatial_assertion.entity_id`. Do not restore entity-side reverse indexes merely to populate prose.
+
 ## Discovery versus enrichment workflow
 
 CARTA now separates two research jobs.
@@ -377,10 +387,6 @@ Output: baseline/deep producer, grape, region, appellation, landscape, wine, and
 
 An ecosystem discovery run should not be expected to produce deep profiles for every adjacent entity it encounters.
 
-## Current migration rule
+## Projection maintenance
 
-Run 01 proved the projection machinery but many first-generation pages are below the new baseline standard.
-
-Human Reference v0.2 therefore treats the existing pages as **proof-set stubs or enrichment candidates**, not as the final editorial form.
-
-Do not scale the current thin-card format to hundreds of entities.
+Each governed Human Reference profile has one canonical path. Alternate Markdown may serve navigation or historical context, but it must not claim parallel governed status. Profile indexes, provenance, and counts are derived or validated from machine authority so growth does not require hand-maintaining duplicate state.

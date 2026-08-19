@@ -39,17 +39,58 @@ Domaine de Saint Pierre is anchored to Mathenay and the Jura. No inferred vineya
 
 producer-level current technical documentation · Château Renard blend by vintage · exact parcel sourcing · authoritative Arbois/estate geometry · community-of-practice evidence inside Jura
 
+<!-- BEGIN GENERATED CARTA PROVENANCE -->
 ## Record & provenance
 
-This Human Reference profile is built from:
+This section is generated from CARTA machine authority. Edit the governed records, then run `python scripts/validate_data.py --write-human-reference`.
+
+- **Profile:** `profile:domaine-de-saint-pierre-jura`
+- **Maturity / publication:** `baseline` / `published`
+- **Primary entity:** `producer:domaine-de-saint-pierre-jura`
+
+**Component entities**
 
 - `producer:domaine-de-saint-pierre-jura`
 - `person:fabrice-dodane`
+- `person:philippe-moyne`
+- `wine:chateau-renard`
+
+**Representative anchors**
+
 - `wine:chateau-renard`
 - `appellation:arbois`
 - `place:mathenay`
-- `place:jura`
 - `grape:chardonnay`
-- `grape:savagnin`
 
-**Reference maturity:** baseline / published.
+<details>
+<summary>Machine claims and sources</summary>
+
+### Material claims
+
+| Claim | Layer / observed | Status | Confidence | Sources |
+|---|---|---|---|---|
+| `claim:arbois-aop` | `reference / 2026-08-18` | `supported` | `high` | `source:inao-arbois` |
+| `claim:chateau-renard-2018-chardonnay` | `reference / —` | `supported` | `high` | `source:saint-pierre-chateau-renard-2018` |
+| `claim:chateau-renard-2020-chardonnay-savagnin` | `reference / —` | `provisional` | `medium` | `source:saint-pierre-chateau-renard-2020` |
+| `claim:chateau-renard-wine-identity` | `reference / —` | `supported` | `high` | `source:saint-pierre-chateau-renard-2018`, `source:saint-pierre-chateau-renard-2020` |
+| `claim:saint-pierre-current-organic-certification` | `reference / 2026-08-18` | `supported` | `high` | `source:saint-pierre-ecocert` |
+| `claim:saint-pierre-jura-identity` | `reference / —` | `supported` | `high` | `source:saint-pierre-mfw`, `source:saint-pierre-hachette` |
+
+### Sources
+
+- `source:inao-arbois` — Arbois blanc
+- `source:saint-pierre-chateau-renard-2018` — 2018 Chardonnay, Arbois, Château Renard
+- `source:saint-pierre-chateau-renard-2020` — Arbois Château Renard Saint-Pierre 2020
+- `source:saint-pierre-ecocert` — DODANE Fabrice — Organic agriculture Europe
+- `source:saint-pierre-hachette` — Domaine de Saint-Pierre
+- `source:saint-pierre-mfw` — Domaine de Saint Pierre
+
+</details>
+
+### Open questions
+
+- Resolve Château Renard composition vintage by vintage rather than treating it as permanently 100% Chardonnay
+- Acquire producer-level primary documentation for current cellar practice and parcel sourcing
+- Acquire authoritative Arbois and estate-parcel geometry
+- `claim:chateau-renard-2020-chardonnay-savagnin` — iDealwine describes the 2020 Château Renard as Chardonnay complemented by a small proportion of Savagnin. CARTA preserves this as a vintage-specific market-source claim rather than universalizing it.
+<!-- END GENERATED CARTA PROVENANCE -->

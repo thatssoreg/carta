@@ -58,9 +58,16 @@ Le Mont · Clos du Bourg · current Vouvray specification · authoritative Le Ha
 
 Primary CARTA source records include Domaine Huet's current first-party site, INAO's current Vouvray page, and a dated trade listing used only to corroborate the recurring wine identity.
 
+<!-- BEGIN GENERATED CARTA PROVENANCE -->
 ## Record & provenance
 
-This composite Human Reference profile is built from:
+This section is generated from CARTA machine authority. Edit the governed records, then run `python scripts/validate_data.py --write-human-reference`.
+
+- **Profile:** `profile:domaine-huet`
+- **Maturity / publication:** `baseline` / `published`
+- **Primary entity:** `producer:domaine-huet`
+
+**Component entities**
 
 - `producer:domaine-huet`
 - `person:victor-huet`
@@ -68,4 +75,39 @@ This composite Human Reference profile is built from:
 - `vineyard:le-haut-lieu`
 - `wine:domaine-huet-le-haut-lieu-sec`
 
-**Reference maturity:** baseline / published.
+**Representative anchors**
+
+- `wine:domaine-huet-le-haut-lieu-sec`
+- `vineyard:le-haut-lieu`
+- `grape:chenin-blanc`
+- `appellation:vouvray`
+
+<details>
+<summary>Machine claims and sources</summary>
+
+### Material claims
+
+| Claim | Layer / observed | Status | Confidence | Sources |
+|---|---|---|---|---|
+| `claim:haut-lieu-brown-clay` | `reference / 2026-08-18` | `supported` | `high` | `source:huet-official` |
+| `claim:huet-biodynamic-1988` | `reference / 2026-08-18` | `supported` | `high` | `source:huet-official` |
+| `claim:huet-founded-1928` | `reference / —` | `supported` | `high` | `source:huet-official` |
+| `claim:huet-haut-lieu-sec-identity` | `reference / —` | `supported` | `high` | `source:klwines-huet-haut-lieu-sec-2023`, `source:huet-official` |
+| `claim:huet-sites-chenin` | `reference / 2026-08-18` | `supported` | `high` | `source:huet-official` |
+| `claim:huet-vouvray-location` | `reference / —` | `supported` | `high` | `source:huet-official`, `source:inao-vouvray` |
+| `claim:vouvray-current-context` | `reference / 2026-08-18` | `supported` | `high` | `source:inao-vouvray` |
+
+### Sources
+
+- `source:huet-official` — Domaine Huet
+- `source:inao-vouvray` — Vouvray
+- `source:klwines-huet-haut-lieu-sec-2023` — 2023 Domaine Huët "Le Haut-Lieu" Vouvray Sec
+
+</details>
+
+### Open questions
+
+- Resolve current Human Reference leadership roles from first-party or directly attributable sources before adding more people
+- Acquire authoritative Le Haut-Lieu parcel geometry
+- Extract current Vouvray specification details only when needed rather than relying on generalized sugar-threshold summaries
+<!-- END GENERATED CARTA PROVENANCE -->

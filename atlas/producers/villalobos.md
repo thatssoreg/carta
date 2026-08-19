@@ -53,9 +53,16 @@ Carignan in Chile · Lolol · Colchagua Valley · Mathieu Rousseau · VIGNO as a
 
 Primary CARTA source records include Villalobos's own Silvestre technical page, a Les Caves de Pyrene interview with the family, and Cream Wine Company.
 
+<!-- BEGIN GENERATED CARTA PROVENANCE -->
 ## Record & provenance
 
-This composite Human Reference profile is built from:
+This section is generated from CARTA machine authority. Edit the governed records, then run `python scripts/validate_data.py --write-human-reference`.
+
+- **Profile:** `profile:villalobos`
+- **Maturity / publication:** `baseline` / `published`
+- **Primary entity:** `producer:villalobos`
+
+**Component entities**
 
 - `producer:villalobos`
 - `person:enrique-villalobos`
@@ -64,4 +71,38 @@ This composite Human Reference profile is built from:
 - `vineyard:vinedo-silvestre`
 - `wine:vinedo-silvestre-carignan`
 
-**Reference maturity:** baseline / published.
+**Representative anchors**
+
+- `wine:vinedo-silvestre-carignan`
+- `vineyard:vinedo-silvestre`
+- `grape:carignan`
+- `place:lolol`
+- `place:colchagua-valley`
+
+<details>
+<summary>Machine claims and sources</summary>
+
+### Material claims
+
+| Claim | Layer / observed | Status | Confidence | Sources |
+|---|---|---|---|---|
+| `claim:villalobos-family` | `reference / —` | `supported` | `high` | `source:cream-villalobos`, `source:villalobos-silvestre` |
+| `claim:villalobos-rousseau` | `reference / —` | `supported` | `medium` | `source:caves-pyrene-villalobos` |
+| `claim:villalobos-silvestre-place` | `reference / —` | `supported` | `high` | `source:villalobos-silvestre` |
+| `claim:villalobos-silvestre-vineyard` | `reference / —` | `supported` | `high` | `source:villalobos-silvestre` |
+| `claim:villalobos-silvestre-wine` | `reference / —` | `supported` | `high` | `source:villalobos-silvestre` |
+
+### Sources
+
+- `source:caves-pyrene-villalobos` — Chatting with Villalobos, home of the wild vineyard
+- `source:cream-villalobos` — Villalobos
+- `source:villalobos-silvestre` — Silvestre Carignan
+
+</details>
+
+### Open questions
+
+- Acquire exact Silvestre parcel geometry and authoritative Chilean legal-geography context
+- Clarify Mathieu Rousseau's role beyond the documented 2007 support/collaboration
+- Research VIGNO and other Chilean Carignan institutions independently rather than inferring membership
+<!-- END GENERATED CARTA PROVENANCE -->

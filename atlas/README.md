@@ -2,7 +2,9 @@
 
 The Human Reference is CARTA's reader-facing wine reference. Machine records remain the data authority, but the thing a human experiences should feel like a serious atlas, producer guide, grape reference, and set of connected rabbit holes.
 
-## Start here
+## Start with the Pyrenean Atlantic
+
+These are the initial ecosystem entry points, not a complete directory. The generated indexes below cover every governed profile.
 
 ### Ecosystem
 
@@ -54,22 +56,17 @@ Country pages orient. Region pages explain human geography. Appellation pages ex
 - **baseline** — generous, publishable orientation
 - **deep** — mature dossier depth
 
-Run 02 promoted 15 individual/reference profiles plus the existing Pyrenean Atlantic ecosystem to baseline. Raffiat de Moncade and Western Pyrenees remain intentionally below baseline.
-
-## Current spatial posture
-
-CARTA still has **zero fabricated geometry**.
-
-That is now a feature rather than a gap to paper over. The next pass moves from source-described geography to real GIS layers, beginning with Western Pyrenees and the appellation/site questions already identified in the reference.
-
-## Indexes
-
-- [Grapes](indexes/grapes.md)
-- [Producers and people](indexes/producers-and-people.md)
-- [Wines](indexes/wines.md)
-
 ## Authority
 
 If prose and structured authority ever disagree, `data/` wins until the conflict is editorially resolved.
 
 See [`../docs/atlas-projection.md`](../docs/atlas-projection.md).
+
+<!-- BEGIN GENERATED CARTA INDEX DIRECTORY -->
+## Complete indexes
+
+- [Grapes](indexes/grapes.md)
+- [Producers and people](indexes/producers-and-people.md)
+- [Wines](indexes/wines.md)
+- [Places, law, landscapes, and ecosystems](indexes/places-and-law.md)
+<!-- END GENERATED CARTA INDEX DIRECTORY -->

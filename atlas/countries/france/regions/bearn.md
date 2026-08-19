@@ -18,6 +18,8 @@ The current CARTA slice emphasizes:
 - [Pacherenc du Vic-Bilh](../appellations/pacherenc-du-vic-bilh.md), farther north/east in the Vic-Bilh landscape
 - the legal Béarn appellation as a separate machine entity
 
+For that separate legal appellation, INAO historical material records vineyard decline after nineteenth-century scale, VDQS recognition in 1951, and AOC recognition in 1975. Those dates belong to `appellation:bearn`; they do not turn the broader historical and cultural `place:bearn` into the appellation.
+
 [Irouléguy](../appellations/irouleguy.md) belongs to French Basque Country and should not be casually absorbed into Béarn merely because all of these places share the same department.
 
 ## Grapes
@@ -62,8 +64,45 @@ Dry expressions, organic/biodynamic farming, renewed attention to local grapes, 
 
 [Jurançon](../appellations/jurancon.md) · [Pacherenc du Vic-Bilh](../appellations/pacherenc-du-vic-bilh.md) · [Petit Manseng](../../../grapes/petit-manseng.md) · [Western Pyrenees](../../../landscapes/western-pyrenees.md)
 
+<!-- BEGIN GENERATED CARTA PROVENANCE -->
 ## Record & provenance
 
-**CARTA ID:** `place:bearn`  
-**Place kind:** historical territory  
-**Reference maturity:** baseline / published.
+This section is generated from CARTA machine authority. Edit the governed records, then run `python scripts/validate_data.py --write-human-reference`.
+
+- **Profile:** `profile:bearn`
+- **Maturity / publication:** `baseline` / `published`
+- **Primary entity:** `place:bearn`
+
+**Component entities**
+
+- `place:bearn`
+- `appellation:bearn`
+
+**Representative anchors**
+
+- `appellation:jurancon`
+- `appellation:pacherenc-du-vic-bilh`
+- `grape:petit-manseng`
+- `grape:gros-manseng`
+- `grape:petit-courbu`
+
+<details>
+<summary>Machine claims and sources</summary>
+
+### Material claims
+
+| Claim | Layer / observed | Status | Confidence | Sources |
+|---|---|---|---|---|
+| `claim:bearn-history` | `reference / —` | `supported` | `high` | `source:inao-bearn` |
+
+### Sources
+
+- `source:inao-bearn` — Béarn blanc and cahier des charges
+
+</details>
+
+### Open questions
+
+- Deepen historical/cultural Béarn independently from legal Béarn AOP
+- Acquire watershed and geology layers in GIS
+<!-- END GENERATED CARTA PROVENANCE -->

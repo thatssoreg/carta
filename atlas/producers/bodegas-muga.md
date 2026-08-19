@@ -51,15 +51,58 @@ Muga is anchored to Barrio de la Estación in Haro. The 2019 wine is source-desc
 
 Prado Enea sourcing by vintage · parcel geometry · historical release chronology · Barrio de la Estación as a historical producer cluster · Muga family succession
 
+<!-- BEGIN GENERATED CARTA PROVENANCE -->
 ## Record & provenance
 
-This Human Reference profile is built from:
+This section is generated from CARTA machine authority. Edit the governed records, then run `python scripts/validate_data.py --write-human-reference`.
+
+- **Profile:** `profile:bodegas-muga`
+- **Maturity / publication:** `baseline` / `published`
+- **Primary entity:** `producer:bodegas-muga`
+
+**Component entities**
 
 - `producer:bodegas-muga`
+- `person:isaac-muga-martinez`
+- `person:aurora-cano`
 - `wine:muga-prado-enea-gran-reserva`
 - `classification:rioja-gran-reserva`
-- `place:barrio-de-la-estacion`
-- `place:haro`
-- `appellation:rioja`
 
-**Reference maturity:** baseline / published.
+**Representative anchors**
+
+- `wine:muga-prado-enea-gran-reserva`
+- `appellation:rioja`
+- `place:haro`
+- `place:barrio-de-la-estacion`
+- `classification:rioja-gran-reserva`
+
+<details>
+<summary>Machine claims and sources</summary>
+
+### Material claims
+
+| Claim | Layer / observed | Status | Confidence | Sources |
+|---|---|---|---|---|
+| `claim:mazuelo-carignan-rioja` | `reference / —` | `supported` | `high` | `source:rioja-mazuelo` |
+| `claim:muga-identity` | `reference / —` | `supported` | `high` | `source:muga-family`, `source:rioja-muga` |
+| `claim:prado-enea-2019-cellar` | `reference / —` | `supported` | `high` | `source:muga-prado-enea-2019` |
+| `claim:prado-enea-2019-composition` | `reference / —` | `supported` | `high` | `source:muga-prado-enea-2019` |
+| `claim:prado-enea-wine-identity` | `reference / 2026-08-18` | `supported` | `high` | `source:muga-prado-enea-2019` |
+| `claim:rioja-gran-reserva-current` | `reference / 2026-08-18` | `supported` | `high` | `source:rioja-classification` |
+
+### Sources
+
+- `source:muga-family` — Muga Family
+- `source:muga-prado-enea-2019` — Prado Enea Gran Reserva 2019
+- `source:rioja-classification` — Clasificación de vinos DOCa Rioja
+- `source:rioja-mazuelo` — Mazuelo
+- `source:rioja-muga` — Bodegas Muga
+
+</details>
+
+### Open questions
+
+- Extend Prado Enea vineyard sourcing and blend history vintage by vintage
+- Acquire authoritative parcel geometry for relevant Sajazarra, Cellorigo and Fonzaleche sources
+- Research Barrio de la Estación as a historical producer cluster without inventing bilateral relationships
+<!-- END GENERATED CARTA PROVENANCE -->

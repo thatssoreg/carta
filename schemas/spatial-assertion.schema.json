@@ -9,6 +9,7 @@
     "id": {"type": "string", "pattern": "^spatial:[a-z0-9][a-z0-9._-]*$"},
     "entity_id": {"type": "string", "pattern": "^[a-z][a-z0-9_-]*:[a-z0-9][a-z0-9._-]*$"},
     "representation_kind": {
+      "description": "Spatial assertion kind. network_anchor is retained for STRATA v0.2 compatibility but deprecated for authored authority because graph presentation is not independent spatial truth.",
       "enum": [
         "reference_location", "source_described_area", "cultural_area",
         "historical_area", "analytical_area", "network_anchor"

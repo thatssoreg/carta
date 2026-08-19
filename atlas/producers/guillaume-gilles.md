@@ -61,9 +61,16 @@ The core relationship is nearly the reverse: Michel's mentorship is strongly doc
 
 authoritative Les Peyrouses parcel geometry · Cornas AOP boundary overlay · Les Peyrouses red vintage cellar chronology · deeper Robert Michel and Marcel Juge references
 
+<!-- BEGIN GENERATED CARTA PROVENANCE -->
 ## Record & provenance
 
-This Human Reference profile is built from:
+This section is generated from CARTA machine authority. Edit the governed records, then run `python scripts/validate_data.py --write-human-reference`.
+
+- **Profile:** `profile:guillaume-gilles`
+- **Maturity / publication:** `baseline` / `published`
+- **Primary entity:** `producer:guillaume-gilles`
+
+**Component entities**
 
 - `producer:guillaume-gilles`
 - `person:guillaume-gilles`
@@ -72,9 +79,45 @@ This Human Reference profile is built from:
 - `person:jean-louis-chave`
 - `vineyard:les-peyrouses-cornas`
 - `wine:guillaume-gilles-les-peyrouses-rouge`
+
+**Representative anchors**
+
+- `wine:guillaume-gilles-les-peyrouses-rouge`
+- `vineyard:les-peyrouses-cornas`
 - `grape:syrah`
 - `appellation:cotes-du-rhone`
 - `appellation:cornas`
-- `place:cornas`
 
-**Reference maturity:** baseline / published.
+<details>
+<summary>Machine claims and sources</summary>
+
+### Material claims
+
+| Claim | Layer / observed | Status | Confidence | Sources |
+|---|---|---|---|---|
+| `claim:cornas-aop-geography` | `reference / —` | `supported` | `high` | `source:inao-cornas` |
+| `claim:cotes-du-rhone-aop` | `reference / —` | `supported` | `high` | `source:inao-cotes-du-rhone` |
+| `claim:gilles-chave-work` | `reference / —` | `supported` | `high` | `source:vinetrail-guillaume-gilles` |
+| `claim:gilles-marcel-juge-family` | `reference / —` | `supported` | `high` | `source:vinetrail-guillaume-gilles` |
+| `claim:gilles-organic-current` | `reference / 2026-08-18` | `supported` | `high` | `source:vinetrail-guillaume-gilles` |
+| `claim:gilles-producer-identity` | `reference / —` | `supported` | `high` | `source:rosenthal-gilles`, `source:vinetrail-guillaume-gilles`, `source:aoc-cornas-producers` |
+| `claim:gilles-robert-michel-mentorship` | `reference / —` | `supported` | `high` | `source:rosenthal-gilles`, `source:vinetrail-guillaume-gilles` |
+| `claim:peyrouses-rouge-identity` | `reference / —` | `supported` | `high` | `source:rosenthal-peyrouses-rouge`, `source:inao-cotes-du-rhone` |
+
+### Sources
+
+- `source:aoc-cornas-producers` — Domains & Companies of AOC Cornas
+- `source:inao-cornas` — Cornas
+- `source:inao-cotes-du-rhone` — Côtes du Rhône rouge
+- `source:rosenthal-gilles` — Guillaume Gilles | Northern Rhône
+- `source:rosenthal-peyrouses-rouge` — Les Peyrouses Côtes du Rhône Rouge
+- `source:vinetrail-guillaume-gilles` — Guillaume Gilles — Cornas
+
+</details>
+
+### Open questions
+
+- Acquire authoritative parcel geometry to resolve Les Peyrouses against the Cornas AOP delimitation
+- Deepen Guillaume Gilles vintage-specific Les Peyrouses élevage without universalizing estate practice
+- Develop Robert Michel and Marcel Juge Human Reference only when their independent worlds are researched
+<!-- END GENERATED CARTA PROVENANCE -->

@@ -58,12 +58,56 @@ Palette AOP · Clairette · Massif du Montaiguet · Rougier family succession ·
 
 Primary CARTA source records include Château Simone's history, terroir, vineyard, and white-wine pages plus INAO's current Palette AOP reference.
 
+<!-- BEGIN GENERATED CARTA PROVENANCE -->
 ## Record & provenance
 
-This composite Human Reference profile is built from:
+This section is generated from CARTA machine authority. Edit the governed records, then run `python scripts/validate_data.py --write-human-reference`.
+
+- **Profile:** `profile:chateau-simone`
+- **Maturity / publication:** `baseline` / `published`
+- **Primary entity:** `producer:chateau-simone`
+
+**Component entities**
 
 - `producer:chateau-simone`
 - `person:jean-francois-rougier`
 - `wine:chateau-simone-blanc`
 
-**Reference maturity:** baseline / published.
+**Representative anchors**
+
+- `wine:chateau-simone-blanc`
+- `appellation:palette`
+- `grape:clairette`
+- `geofeature:massif-du-montaiguet`
+- `place:meyreuil`
+
+<details>
+<summary>Machine claims and sources</summary>
+
+### Material claims
+
+| Claim | Layer / observed | Status | Confidence | Sources |
+|---|---|---|---|---|
+| `claim:palette-official` | `reference / —` | `supported` | `high` | `source:inao-palette` |
+| `claim:simone-blanc-cellar` | `reference / —` | `supported` | `high` | `source:simone-white` |
+| `claim:simone-blanc-composition` | `reference / 2026-08-18` | `supported` | `high` | `source:simone-white` |
+| `claim:simone-family-history` | `reference / —` | `supported` | `high` | `source:simone-history` |
+| `claim:simone-terroir` | `reference / —` | `supported` | `high` | `source:simone-terroir` |
+| `claim:simone-vineyard-farming` | `reference / —` | `supported` | `high` | `source:simone-vineyard` |
+
+### Sources
+
+- `source:inao-palette` — Palette blanc
+- `source:simone-history` — Our History | Château Simone
+- `source:simone-terroir` — Terroir | Château Simone
+- `source:simone-vineyard` — The Vineyard | Château Simone
+- `source:simone-white` — Château Simone White
+
+</details>
+
+### Open questions
+
+- Acquire Château Simone parcel and official Palette AOP geometry
+- Deepen Rougier family succession chronology from first-party archival evidence
+- Resolve historical minor-grape use separately from the current white-wine formula
+<!-- END GENERATED CARTA PROVENANCE -->

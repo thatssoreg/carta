@@ -27,5 +27,5 @@
 {"id":"person:elisabetta-gnudi-angelini","layer":"reference","name":"Elisabetta Gnudi Angelini","status":"active","type":"person"}
 {"id":"person:massimo-bracalente","layer":"reference","name":"Massimo Bracalente","status":"active","type":"person"}
 {"id":"vineyard:vigna-la-casa","layer":"reference","name":"Vigna La Casa","status":"active","type":"vineyard"}
-{"alternate_names":[{"kind":"local","language":"it","name":"Brunello","jurisdiction":"Montalcino"}],"id":"grape:sangiovese","layer":"reference","name":"Sangiovese","name_assertion_ids":["name:sangiovese-brunello-montalcino"],"status":"active","type":"grape"}
+{"alternate_names":[{"kind":"local","language":"it","name":"Brunello","jurisdiction":"Montalcino"}],"id":"grape:sangiovese","layer":"reference","name":"Sangiovese","status":"active","type":"grape"}
 {"id":"wine:caparzo-brunello-di-montalcino-vigna-la-casa","layer":"reference","name":"Caparzo Brunello di Montalcino Vigna La Casa","status":"active","tags":["montalcino","brunello","sangiovese","single-vineyard"],"type":"wine"}

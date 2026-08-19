@@ -75,9 +75,16 @@ Moon Hill Farm · Tzum · Columbia Gorge AVA · Chardonnay · Celilo Vineyard ·
 
 Primary CARTA source records include Hiyu Wine Farm's own site, Jenny & François Selections, and the TTB AVA directory.
 
+<!-- BEGIN GENERATED CARTA PROVENANCE -->
 ## Record & provenance
 
-This is a composite Human Reference profile built from:
+This section is generated from CARTA machine authority. Edit the governed records, then run `python scripts/validate_data.py --write-human-reference`.
+
+- **Profile:** `profile:hiyu-wine-farm`
+- **Maturity / publication:** `baseline` / `published`
+- **Primary entity:** `producer:hiyu-wine-farm`
+
+**Component entities**
 
 - `producer:hiyu-wine-farm`
 - `person:nate-ready`
@@ -86,4 +93,46 @@ This is a composite Human Reference profile built from:
 - `vineyard:moon-hill-farm`
 - `wine:tzum-moon-hill-farm`
 
-**Reference maturity:** baseline / published.
+**Representative anchors**
+
+- `project:tzum`
+- `vineyard:moon-hill-farm`
+- `wine:tzum-moon-hill-farm`
+- `appellation:columbia-gorge-ava`
+- `person:maggie-harrison`
+- `producer:antica-terra`
+
+<details>
+<summary>Machine claims and sources</summary>
+
+### Material claims
+
+| Claim | Layer / observed | Status | Confidence | Sources |
+|---|---|---|---|---|
+| `claim:columbia-gorge-ava` | `reference / —` | `supported` | `high` | `source:ttb-columbia-gorge` |
+| `claim:hiyu-cellar-general` | `reference / 2026-08-18` | `supported` | `medium` | `source:hiyu-about`, `source:jenny-francois-hiyu` |
+| `claim:hiyu-farming` | `reference / 2026-08-18` | `supported` | `medium` | `source:jenny-francois-hiyu`, `source:hiyu-about` |
+| `claim:hiyu-founders` | `reference / 2026-08-18` | `supported` | `high` | `source:jenny-francois-hiyu` |
+| `claim:hiyu-location` | `reference / 2026-08-18` | `supported` | `high` | `source:hiyu-shop` |
+| `claim:hiyu-tzum-boundary` | `reference / —` | `supported` | `high` | `source:hiyu-shop`, `source:jenny-francois-hiyu` |
+| `claim:moon-hill-multivintage` | `reference / —` | `supported` | `high` | `source:jenny-francois-hiyu` |
+| `claim:moon-hill-planting` | `reference / —` | `supported` | `high` | `source:jenny-francois-hiyu` |
+| `claim:moon-hill-site` | `reference / 2026-08-18` | `supported` | `high` | `source:jenny-francois-hiyu` |
+| `claim:moon-hill-wine-composition` | `reference / —` | `supported` | `high` | `source:jenny-francois-hiyu` |
+| `claim:nate-career` | `reference / —` | `supported` | `medium` | `source:jenny-francois-hiyu` |
+
+### Sources
+
+- `source:hiyu-about` — About | Hiyu Wine Farm
+- `source:hiyu-shop` — Shop | Hiyu Wine Farm
+- `source:jenny-francois-hiyu` — Hiyu Wine Farm
+- `source:ttb-columbia-gorge` — American Viticultural Area Explorer: Columbia Gorge
+
+</details>
+
+### Open questions
+
+- Parcel-level geometry for Hiyu and Moon Hill
+- Resolve Moon Hill land ownership without conflating ownership with Hiyu's long-term lease
+- Build a dated record of the continuing Moon Hill multi-vintage assemblage after spring 2021
+<!-- END GENERATED CARTA PROVENANCE -->

@@ -1,13 +1,20 @@
 #!/usr/bin/env python3
-"""Validate CARTA JSONL authority, Human Reference profiles, and cross-references."""
+"""Validate CARTA authority and its deterministic Human Reference projection."""
 from __future__ import annotations
+
+import argparse
 import json
-from pathlib import Path
+import posixpath
+import re
+from collections import defaultdict, deque
+from pathlib import Path, PurePosixPath
+from urllib.parse import unquote, urlsplit
 
 try:
     import jsonschema
 except ImportError:
     raise SystemExit("Install dev dependency: python -m pip install jsonschema")
+
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -21,7 +28,67 @@ SETS = {
     "profiles": ("data/reference-profiles", "schemas/reference-profile.schema.json"),
 }
 
-def load_jsonl(directory: Path):
+PROVENANCE_BEGIN = "<!-- BEGIN GENERATED CARTA PROVENANCE -->"
+PROVENANCE_END = "<!-- END GENERATED CARTA PROVENANCE -->"
+INDEX_BEGIN = "<!-- BEGIN GENERATED CARTA INDEX -->"
+INDEX_END = "<!-- END GENERATED CARTA INDEX -->"
+INDEX_DIRECTORY_BEGIN = "<!-- BEGIN GENERATED CARTA INDEX DIRECTORY -->"
+INDEX_DIRECTORY_END = "<!-- END GENERATED CARTA INDEX DIRECTORY -->"
+
+INDEX_PATHS = {
+    "grapes": "atlas/indexes/grapes.md",
+    "producers": "atlas/indexes/producers-and-people.md",
+    "wines": "atlas/indexes/wines.md",
+    "places": "atlas/indexes/places-and-law.md",
+}
+
+PROFILE_DIRECTORIES = {
+    "producer": "atlas/producers",
+    "person": "atlas/people",
+    "grape": "atlas/grapes",
+    "wine": "atlas/wines",
+    "landscape": "atlas/landscapes",
+    "ecosystem": "atlas/ecosystems",
+    "institution": "atlas/institutions",
+    "practice": "atlas/practices",
+    "classification": "atlas/classifications",
+    "historical_event": "atlas/historical-events",
+}
+
+ALLOWED_UNGOVERNED_ATLAS_PAGES = {
+    "atlas/README.md",
+    "atlas/indexes/grapes.md",
+    "atlas/indexes/places-and-law.md",
+    "atlas/indexes/producers-and-people.md",
+    "atlas/indexes/wines.md",
+    "atlas/landscapes/README.md",
+}
+
+MARKDOWN_LINK_RE = re.compile(r"(?<!!)\[[^\]]*\]\(([^)]+)\)")
+PERISHABLE_LANGUAGE_RE = re.compile(
+    r"\b(?:current(?:ly)?|recent(?:ly)?|continues?|continuing|now)\b", re.IGNORECASE
+)
+
+DEPRECATED_ENTITY_FIELDS = {"claim_ids", "name_assertion_ids", "spatial_refs"}
+DEPRECATED_RELATIONSHIP_PREDICATES = {
+    "LEGAL_AT_TIME",
+    "OWNED_AT_TIME",
+    "LOCATED_WITHIN_AT_TIME",
+    "STYLISTIC_NEIGHBOR_OF",
+    "STRUCTURAL_ANALOGUE_OF",
+    "CLIMATE_ANALOGUE_OF",
+    "SITE_ANALOGUE_OF",
+}
+SPATIAL_APPELLATION_SUBJECT_TYPES = {
+    "vineyard",
+    "place",
+    "appellation",
+    "geographic_feature",
+    "geology",
+}
+
+
+def load_jsonl(directory: Path) -> list[dict]:
     records = []
     if not directory.exists():
         return records
@@ -35,80 +102,744 @@ def load_jsonl(directory: Path):
                 raise SystemExit(f"{path}:{lineno}: invalid JSON: {exc}")
     return records
 
-data = {}
-for label, (directory, schema_path) in SETS.items():
-    records = load_jsonl(ROOT / directory)
-    schema = json.loads((ROOT / schema_path).read_text())
-    validator = jsonschema.Draft202012Validator(schema, format_checker=jsonschema.FormatChecker())
-    for record in records:
-        errors = sorted(validator.iter_errors(record), key=lambda e: list(e.path))
-        if errors:
-            raise SystemExit(f"{label} {record.get('id')}: {errors[0].message}")
-    data[label] = records
 
-ids = {}
-for label, records in data.items():
-    bucket = set()
-    for record in records:
-        rid = record["id"]
-        if rid in bucket:
-            raise SystemExit(f"duplicate {label} id: {rid}")
-        bucket.add(rid)
-    ids[label] = bucket
+def load_and_validate_schema() -> tuple[dict[str, list[dict]], dict[str, set[str]]]:
+    data = {}
+    for label, (directory, schema_path) in SETS.items():
+        records = load_jsonl(ROOT / directory)
+        schema = json.loads((ROOT / schema_path).read_text())
+        validator = jsonschema.Draft202012Validator(
+            schema, format_checker=jsonschema.FormatChecker()
+        )
+        for record in records:
+            errors = sorted(validator.iter_errors(record), key=lambda e: list(e.path))
+            if errors:
+                raise SystemExit(f"{label} {record.get('id')}: {errors[0].message}")
+        data[label] = records
 
-for r in data["relationships"]:
-    if r["subject_id"] not in ids["entities"] or r["object_id"] not in ids["entities"]:
-        raise SystemExit(f"{r['id']}: missing relationship endpoint")
-    for cid in r.get("claim_ids", []):
-        if cid not in ids["claims"]:
-            raise SystemExit(f"{r['id']}: missing claim {cid}")
+    ids = {}
+    for label, records in data.items():
+        bucket = set()
+        for record in records:
+            rid = record["id"]
+            if rid in bucket:
+                raise SystemExit(f"duplicate {label} id: {rid}")
+            bucket.add(rid)
+        ids[label] = bucket
+    return data, ids
 
-all_subject_ids = ids["entities"] | ids["relationships"] | ids["claims"] | ids["names"] | ids["spatial"]
-for c in data["claims"]:
-    if c["subject_ref"] not in all_subject_ids:
-        raise SystemExit(f"{c['id']}: missing subject {c['subject_ref']}")
-    for sr in c["source_refs"]:
-        if sr["source_id"] not in ids["sources"]:
-            raise SystemExit(f"{c['id']}: missing source {sr['source_id']}")
 
-for n in data["names"]:
-    if n["entity_id"] not in ids["entities"]:
-        raise SystemExit(f"{n['id']}: missing entity")
-    if n.get("jurisdiction_ref") and n["jurisdiction_ref"] not in ids["entities"]:
-        raise SystemExit(f"{n['id']}: missing jurisdiction")
-    for cid in n["claim_ids"]:
-        if cid not in ids["claims"]:
-            raise SystemExit(f"{n['id']}: missing claim {cid}")
+def validate_references(data: dict[str, list[dict]], ids: dict[str, set[str]]) -> None:
+    for relationship in data["relationships"]:
+        if (
+            relationship["subject_id"] not in ids["entities"]
+            or relationship["object_id"] not in ids["entities"]
+        ):
+            raise SystemExit(f"{relationship['id']}: missing relationship endpoint")
+        for claim_id in relationship.get("claim_ids", []):
+            if claim_id not in ids["claims"]:
+                raise SystemExit(f"{relationship['id']}: missing claim {claim_id}")
 
-for s in data["spatial"]:
-    if s["entity_id"] not in ids["entities"]:
-        raise SystemExit(f"{s['id']}: missing entity")
-    for eid in s.get("anchor_entity_refs", []):
-        if eid not in ids["entities"]:
-            raise SystemExit(f"{s['id']}: missing anchor {eid}")
-    for sid in s["source_ids"]:
-        if sid not in ids["sources"]:
-            raise SystemExit(f"{s['id']}: missing source {sid}")
-    for cid in s.get("claim_ids", []):
-        if cid not in ids["claims"]:
-            raise SystemExit(f"{s['id']}: missing claim {cid}")
+    all_subject_ids = (
+        ids["entities"]
+        | ids["relationships"]
+        | ids["claims"]
+        | ids["names"]
+        | ids["spatial"]
+    )
+    for claim in data["claims"]:
+        if claim["subject_ref"] not in all_subject_ids:
+            raise SystemExit(f"{claim['id']}: missing subject {claim['subject_ref']}")
+        for source_ref in claim["source_refs"]:
+            if source_ref["source_id"] not in ids["sources"]:
+                raise SystemExit(
+                    f"{claim['id']}: missing source {source_ref['source_id']}"
+                )
 
-for p in data["profiles"]:
-    for eid in p["component_entity_ids"]:
-        if eid not in ids["entities"]:
-            raise SystemExit(f"{p['id']}: missing component entity {eid}")
-    primary = p.get("primary_entity_id")
-    if primary and primary not in ids["entities"]:
-        raise SystemExit(f"{p['id']}: missing primary entity {primary}")
-    for eid in p.get("country_entity_ids", []):
-        if eid not in ids["entities"]:
-            raise SystemExit(f"{p['id']}: missing country entity {eid}")
-    for eid in p.get("representative_anchor_ids", []):
-        if eid not in ids["entities"]:
-            raise SystemExit(f"{p['id']}: missing representative anchor {eid}")
-    if p["publication_status"] == "published" and p["maturity"] == "node":
-        raise SystemExit(f"{p['id']}: node maturity cannot be published as a finished reference")
-    if p["publication_status"] in {"published", "stub"} and not (ROOT / p["path"]).exists():
-        raise SystemExit(f"{p['id']}: reference path does not exist: {p['path']}")
+    for name in data["names"]:
+        if name["entity_id"] not in ids["entities"]:
+            raise SystemExit(f"{name['id']}: missing entity")
+        if name.get("jurisdiction_ref") and name["jurisdiction_ref"] not in ids["entities"]:
+            raise SystemExit(f"{name['id']}: missing jurisdiction")
+        for claim_id in name["claim_ids"]:
+            if claim_id not in ids["claims"]:
+                raise SystemExit(f"{name['id']}: missing claim {claim_id}")
 
-print("PASS", ", ".join(f"{k}={len(v)}" for k, v in data.items()))
+    for spatial in data["spatial"]:
+        if spatial["entity_id"] not in ids["entities"]:
+            raise SystemExit(f"{spatial['id']}: missing entity")
+        for entity_id in spatial.get("anchor_entity_refs", []):
+            if entity_id not in ids["entities"]:
+                raise SystemExit(f"{spatial['id']}: missing anchor {entity_id}")
+        for source_id in spatial["source_ids"]:
+            if source_id not in ids["sources"]:
+                raise SystemExit(f"{spatial['id']}: missing source {source_id}")
+        for claim_id in spatial.get("claim_ids", []):
+            if claim_id not in ids["claims"]:
+                raise SystemExit(f"{spatial['id']}: missing claim {claim_id}")
+
+
+def validate_temporal_interval(record: dict) -> None:
+    valid_from = record.get("valid_from")
+    valid_to = record.get("valid_to")
+    if (valid_from or valid_to) and not record.get("time_precision"):
+        raise SystemExit(f"{record['id']}: validity interval requires time_precision")
+    if valid_from and valid_to and valid_from > valid_to:
+        raise SystemExit(f"{record['id']}: valid_from is after valid_to")
+
+
+def validate_authored_contracts(
+    data: dict[str, list[dict]], ids: dict[str, set[str]]
+) -> None:
+    """Enforce v0.2 maintenance rules kept schema-compatible for deprecation."""
+    entity_by_id = {entity["id"]: entity for entity in data["entities"]}
+    claim_by_id = {claim["id"]: claim for claim in data["claims"]}
+
+    for entity in data["entities"]:
+        reverse_fields = sorted(DEPRECATED_ENTITY_FIELDS & entity.keys())
+        if reverse_fields:
+            raise SystemExit(
+                f"{entity['id']}: deprecated authored reverse field(s): "
+                + ", ".join(reverse_fields)
+            )
+        if entity["type"] == "market_signal":
+            raise SystemExit(
+                f"{entity['id']}: market_signal is deprecated; attach a dated claim "
+                "to a stable subject"
+            )
+
+    for relationship in data["relationships"]:
+        validate_temporal_interval(relationship)
+        predicate = relationship["predicate"]
+        if predicate in DEPRECATED_RELATIONSHIP_PREDICATES:
+            raise SystemExit(
+                f"{relationship['id']}: deprecated authored predicate: {predicate}"
+            )
+
+        subject_type = entity_by_id[relationship["subject_id"]]["type"]
+        object_type = entity_by_id[relationship["object_id"]]["type"]
+        if predicate == "WITHIN_APPELLATION" and (
+            object_type != "appellation"
+            or subject_type not in SPATIAL_APPELLATION_SUBJECT_TYPES
+        ):
+            raise SystemExit(
+                f"{relationship['id']}: WITHIN_APPELLATION requires a spatial "
+                "subject and appellation object"
+            )
+        if predicate == "CLASSIFIED_AS":
+            if object_type not in {"appellation", "classification"}:
+                raise SystemExit(
+                    f"{relationship['id']}: CLASSIFIED_AS requires an appellation "
+                    "or classification object"
+                )
+            if object_type == "appellation" and subject_type != "wine":
+                raise SystemExit(
+                    f"{relationship['id']}: appellation designation requires a wine subject"
+                )
+        if predicate in {"IMPORTED_BY", "DISTRIBUTED_BY"}:
+            if object_type != "institution" or not relationship.get("claim_ids"):
+                raise SystemExit(
+                    f"{relationship['id']}: {predicate} requires an institution object "
+                    "and claim evidence"
+                )
+            for claim_id in relationship["claim_ids"]:
+                if claim_by_id[claim_id]["subject_ref"] != relationship["id"]:
+                    raise SystemExit(
+                        f"{relationship['id']}: access claim must address the relationship"
+                    )
+        if predicate == "CELLAR_IN" and (
+            subject_type not in {"producer", "project", "institution"}
+            or object_type != "place"
+        ):
+            raise SystemExit(
+                f"{relationship['id']}: CELLAR_IN requires a producer/project/institution "
+                "subject and place object"
+            )
+
+    for spatial in data["spatial"]:
+        if spatial["representation_kind"] == "network_anchor":
+            raise SystemExit(
+                f"{spatial['id']}: network_anchor is deprecated presentation metadata"
+            )
+
+    for claim in data["claims"]:
+        validate_temporal_interval(claim)
+        observed_at = claim.get("observed_at")
+        if claim["layer"] == "frontier" and not observed_at:
+            raise SystemExit(f"{claim['id']}: Frontier claim requires observed_at")
+        if claim["claim_type"] in {"market", "availability", "price"} and not observed_at:
+            raise SystemExit(
+                f"{claim['id']}: {claim['claim_type']} claim requires observed_at"
+            )
+        if claim["claim_type"] in {"availability", "price"}:
+            if claim["layer"] != "frontier":
+                raise SystemExit(
+                    f"{claim['id']}: {claim['claim_type']} observation must be Frontier"
+                )
+            if claim["subject_ref"] not in ids["entities"]:
+                raise SystemExit(
+                    f"{claim['id']}: {claim['claim_type']} must attach to a stable entity"
+                )
+        if PERISHABLE_LANGUAGE_RE.search(claim["statement"]) and not observed_at:
+            raise SystemExit(
+                f"{claim['id']}: perishable temporal language requires observed_at"
+            )
+
+
+def validate_profile_path(profile: dict) -> None:
+    raw_path = profile["path"]
+    path = PurePosixPath(raw_path)
+    if (
+        path.is_absolute()
+        or ".." in path.parts
+        or path.as_posix() != raw_path
+        or path.suffix != ".md"
+        or not path.parts
+        or path.parts[0] != "atlas"
+    ):
+        raise SystemExit(f"{profile['id']}: invalid canonical Atlas path: {raw_path}")
+
+    kind = profile["profile_kind"]
+    if kind == "country":
+        valid = (
+            len(path.parts) == 4
+            and path.parts[:2] == ("atlas", "countries")
+            and path.name == "README.md"
+        )
+    elif kind in {"region", "appellation"}:
+        folder = "regions" if kind == "region" else "appellations"
+        valid = (
+            len(path.parts) == 5
+            and path.parts[:2] == ("atlas", "countries")
+            and path.parts[3] == folder
+            and path.name != "README.md"
+        )
+    else:
+        expected_directory = PROFILE_DIRECTORIES[kind]
+        valid = path.parent.as_posix() == expected_directory and path.name != "README.md"
+    if not valid:
+        raise SystemExit(
+            f"{profile['id']}: path does not match {kind} profile convention: {raw_path}"
+        )
+
+
+def validate_profiles(
+    data: dict[str, list[dict]], ids: dict[str, set[str]]
+) -> None:
+    paths: dict[str, str] = {}
+    primary_entities: dict[str, str] = {}
+
+    for profile in data["profiles"]:
+        for entity_id in profile["component_entity_ids"]:
+            if entity_id not in ids["entities"]:
+                raise SystemExit(f"{profile['id']}: missing component entity {entity_id}")
+        primary = profile.get("primary_entity_id")
+        if primary and primary not in ids["entities"]:
+            raise SystemExit(f"{profile['id']}: missing primary entity {primary}")
+        if primary and primary not in profile["component_entity_ids"]:
+            raise SystemExit(f"{profile['id']}: primary entity is not a component: {primary}")
+        for entity_id in profile.get("country_entity_ids", []):
+            if entity_id not in ids["entities"]:
+                raise SystemExit(f"{profile['id']}: missing country entity {entity_id}")
+        for entity_id in profile.get("representative_anchor_ids", []):
+            if entity_id not in ids["entities"]:
+                raise SystemExit(
+                    f"{profile['id']}: missing representative anchor {entity_id}"
+                )
+        if profile["publication_status"] == "published" and profile["maturity"] == "node":
+            raise SystemExit(
+                f"{profile['id']}: node maturity cannot be published as a finished reference"
+            )
+
+        validate_profile_path(profile)
+        path = profile["path"]
+        if path in paths:
+            raise SystemExit(
+                f"duplicate canonical profile path: {path} ({paths[path]}, {profile['id']})"
+            )
+        paths[path] = profile["id"]
+        if primary:
+            if primary in primary_entities:
+                raise SystemExit(
+                    "duplicate canonical profile primary entity: "
+                    f"{primary} ({primary_entities[primary]}, {profile['id']})"
+                )
+            primary_entities[primary] = profile["id"]
+        if not (ROOT / path).is_file():
+            raise SystemExit(f"{profile['id']}: reference path does not exist: {path}")
+
+
+def profile_claims(profile: dict, data: dict[str, list[dict]]) -> list[dict]:
+    seed_entities = set(profile["component_entity_ids"])
+
+    claim_ids = {
+        claim["id"] for claim in data["claims"] if claim["subject_ref"] in seed_entities
+    }
+    for relationship in data["relationships"]:
+        if (
+            relationship["subject_id"] in seed_entities
+            or relationship["object_id"] in seed_entities
+        ):
+            claim_ids.update(relationship.get("claim_ids", []))
+    for name in data["names"]:
+        if name["entity_id"] in seed_entities:
+            claim_ids.update(name.get("claim_ids", []))
+    for spatial in data["spatial"]:
+        if spatial["entity_id"] in seed_entities:
+            claim_ids.update(spatial.get("claim_ids", []))
+
+    claim_by_id = {claim["id"]: claim for claim in data["claims"]}
+    return [claim_by_id[claim_id] for claim_id in sorted(claim_ids)]
+
+
+def render_provenance(profile: dict, data: dict[str, list[dict]]) -> str:
+    claims = profile_claims(profile, data)
+    source_by_id = {source["id"]: source for source in data["sources"]}
+    source_ids = {
+        source_ref["source_id"]
+        for claim in claims
+        for source_ref in claim["source_refs"]
+    }
+
+    seed_entities = set(profile["component_entity_ids"])
+    for spatial in data["spatial"]:
+        if spatial["entity_id"] in seed_entities:
+            source_ids.update(spatial.get("source_ids", []))
+
+    lines = [
+        PROVENANCE_BEGIN,
+        "## Record & provenance",
+        "",
+        (
+            "This section is generated from CARTA machine authority. Edit the governed "
+            "records, then run `python scripts/validate_data.py --write-human-reference`."
+        ),
+        "",
+        f"- **Profile:** `{profile['id']}`",
+        (
+            f"- **Maturity / publication:** `{profile['maturity']}` / "
+            f"`{profile['publication_status']}`"
+        ),
+    ]
+    if profile.get("primary_entity_id"):
+        lines.append(f"- **Primary entity:** `{profile['primary_entity_id']}`")
+
+    lines.extend(["", "**Component entities**", ""])
+    lines.extend(f"- `{entity_id}`" for entity_id in profile["component_entity_ids"])
+
+    anchors = profile.get("representative_anchor_ids", [])
+    if anchors:
+        lines.extend(["", "**Representative anchors**", ""])
+        lines.extend(f"- `{entity_id}`" for entity_id in anchors)
+
+    lines.extend(["", "<details>", "<summary>Machine claims and sources</summary>", ""])
+    lines.extend(["### Material claims", ""])
+    if claims:
+        lines.extend(
+            [
+                "| Claim | Layer / observed | Status | Confidence | Sources |",
+                "|---|---|---|---|---|",
+            ]
+        )
+        for claim in claims:
+            claim_sources = ", ".join(
+                f"`{source_ref['source_id']}`" for source_ref in claim["source_refs"]
+            )
+            layer_and_observed = f"{claim['layer']} / {claim.get('observed_at') or '—'}"
+            lines.append(
+                f"| `{claim['id']}` | `{layer_and_observed}` | `{claim['status']}` | "
+                f"`{claim['confidence']}` | {claim_sources} |"
+            )
+    else:
+        lines.append("No material machine claims are recorded for this profile yet.")
+
+    lines.extend(["", "### Sources", ""])
+    if source_ids:
+        for source_id in sorted(source_ids):
+            title = source_by_id[source_id]["title"].replace("\n", " ")
+            lines.append(f"- `{source_id}` — {title}")
+    else:
+        lines.append("No source records are projected for this profile yet.")
+    lines.extend(["", "</details>", "", "### Open questions", ""])
+
+    open_questions = list(profile.get("research_gaps", []))
+    unresolved_claims = [
+        claim
+        for claim in claims
+        if claim["status"] in {"provisional", "contested"}
+        or claim.get("resolution_needed")
+    ]
+    for question in open_questions:
+        lines.append(f"- {question}")
+    for claim in unresolved_claims:
+        detail = claim.get("resolution_needed") or claim["statement"]
+        lines.append(f"- `{claim['id']}` — {detail}")
+    if not open_questions and not unresolved_claims:
+        lines.append("- None recorded.")
+
+    lines.extend([PROVENANCE_END, ""])
+    return "\n".join(lines)
+
+
+def replace_generated_block(
+    text: str,
+    block: str,
+    begin: str,
+    end: str,
+    legacy_heading: str | None = None,
+) -> str:
+    begin_count = text.count(begin)
+    end_count = text.count(end)
+    if begin_count != end_count or begin_count > 1:
+        raise SystemExit(f"malformed generated block markers: {begin} / {end}")
+    if begin_count == 1:
+        start = text.index(begin)
+        finish = text.index(end, start) + len(end)
+        return text[:start] + block.rstrip() + text[finish:]
+
+    if legacy_heading:
+        legacy_re = re.compile(
+            rf"^## {re.escape(legacy_heading)}\s*$.*?(?=^## |\Z)", re.MULTILINE | re.DOTALL
+        )
+        text = legacy_re.sub("", text, count=1)
+    return text.rstrip() + "\n\n" + block.rstrip() + "\n"
+
+
+def profile_link(index_path: str, profile: dict) -> str:
+    relative = posixpath.relpath(profile["path"], posixpath.dirname(index_path))
+    return (
+        f"- [{profile['title']}]({relative}) — "
+        f"`{profile['maturity']}` / `{profile['publication_status']}`"
+    )
+
+
+def render_simple_profile_index(
+    path: str,
+    title: str,
+    introduction: str,
+    groups: list[tuple[str, set[str]]],
+    profiles: list[dict],
+) -> str:
+    lines = [
+        f"# {title}",
+        "",
+        introduction,
+        "",
+        INDEX_BEGIN,
+    ]
+    for heading, kinds in groups:
+        selected = sorted(
+            (profile for profile in profiles if profile["profile_kind"] in kinds),
+            key=lambda profile: (profile["title"].casefold(), profile["id"]),
+        )
+        if not selected:
+            continue
+        lines.extend([f"## {heading}", ""])
+        lines.extend(profile_link(path, profile) for profile in selected)
+        lines.append("")
+    lines.extend(
+        [
+            INDEX_END,
+            "",
+            (
+                "This index is generated from `data/reference-profiles/`. "
+                "Edit the governed profile record rather than this file."
+            ),
+            "",
+        ]
+    )
+    return "\n".join(lines)
+
+
+def render_wine_index(
+    path: str, profiles: list[dict], entities: list[dict]
+) -> str:
+    profiles_by_component: dict[str, list[dict]] = defaultdict(list)
+    for profile in profiles:
+        for entity_id in profile["component_entity_ids"]:
+            profiles_by_component[entity_id].append(profile)
+
+    wines = sorted(
+        (entity for entity in entities if entity["type"] == "wine"),
+        key=lambda entity: (entity.get("display_name", entity["name"]).casefold(), entity["id"]),
+    )
+    standalone_profiles = sorted(
+        (profile for profile in profiles if profile["profile_kind"] == "wine"),
+        key=lambda profile: (profile["title"].casefold(), profile["id"]),
+    )
+
+    lines = [
+        "# Wines",
+        "",
+        (
+            "Wine identities are persistent machine records. Most are read through a "
+            "governed composite producer profile rather than a parallel wine page."
+        ),
+        "",
+        INDEX_BEGIN,
+    ]
+    if standalone_profiles:
+        lines.extend(["## Standalone wine profiles", ""])
+        lines.extend(profile_link(path, profile) for profile in standalone_profiles)
+        lines.append("")
+
+    lines.extend(["## Wines in governed composite profiles", ""])
+    for wine in wines:
+        governing_profiles = sorted(
+            profiles_by_component.get(wine["id"], []),
+            key=lambda profile: (profile["title"].casefold(), profile["id"]),
+        )
+        wine_name = wine.get("display_name", wine["name"])
+        if governing_profiles:
+            links = []
+            for profile in governing_profiles:
+                relative = posixpath.relpath(
+                    profile["path"], posixpath.dirname(path)
+                )
+                links.append(f"[{profile['title']}]({relative})")
+            lines.append(f"- **{wine_name}** — " + ", ".join(links))
+        else:
+            lines.append(f"- **{wine_name}** — machine node; no governed profile")
+
+    lines.extend(
+        [
+            "",
+            INDEX_END,
+            "",
+            (
+                "This index is generated from canonical wine entities and governed "
+                "profile components."
+            ),
+            "",
+        ]
+    )
+    return "\n".join(lines)
+
+
+def render_indexes(data: dict[str, list[dict]]) -> dict[str, str]:
+    profiles = data["profiles"]
+    return {
+        INDEX_PATHS["grapes"]: render_simple_profile_index(
+            INDEX_PATHS["grapes"],
+            "Grapes",
+            "Governed grape profiles, including honest stubs, are listed here.",
+            [("Grape profiles", {"grape"})],
+            profiles,
+        ),
+        INDEX_PATHS["producers"]: render_simple_profile_index(
+            INDEX_PATHS["producers"],
+            "Producers and people",
+            (
+                "Human Reference profiles are organized for readers and may compose "
+                "multiple producer, person, project, vineyard, and wine records."
+            ),
+            [
+                ("Producer profiles", {"producer"}),
+                ("Person profiles", {"person"}),
+            ],
+            profiles,
+        ),
+        INDEX_PATHS["places"]: render_simple_profile_index(
+            INDEX_PATHS["places"],
+            "Places, law, landscapes, and ecosystems",
+            (
+                "Country-specific regions and appellations are nested beneath countries; "
+                "landscapes remain geographic and ecosystems remain relationship-generated. "
+                "See the [landscape reference model](../landscapes/README.md)."
+            ),
+            [
+                ("Countries", {"country"}),
+                ("Regions", {"region"}),
+                ("Appellations", {"appellation"}),
+                ("Landscapes", {"landscape"}),
+                ("Ecosystems", {"ecosystem"}),
+                ("Institutions", {"institution"}),
+                ("Practices", {"practice"}),
+                ("Classifications", {"classification"}),
+                ("Historical events", {"historical_event"}),
+            ],
+            profiles,
+        ),
+        INDEX_PATHS["wines"]: render_wine_index(
+            INDEX_PATHS["wines"], profiles, data["entities"]
+        ),
+    }
+
+
+def render_index_directory() -> str:
+    return "\n".join(
+        [
+            INDEX_DIRECTORY_BEGIN,
+            "## Complete indexes",
+            "",
+            "- [Grapes](indexes/grapes.md)",
+            "- [Producers and people](indexes/producers-and-people.md)",
+            "- [Wines](indexes/wines.md)",
+            "- [Places, law, landscapes, and ecosystems](indexes/places-and-law.md)",
+            INDEX_DIRECTORY_END,
+            "",
+        ]
+    )
+
+
+def sync_human_reference(data: dict[str, list[dict]], write: bool) -> None:
+    expected_indexes = render_indexes(data)
+    for relative_path, expected in sorted(expected_indexes.items()):
+        path = ROOT / relative_path
+        current = path.read_text() if path.exists() else ""
+        if current != expected:
+            if not write:
+                raise SystemExit(
+                    f"generated index is stale: {relative_path}; run "
+                    "python scripts/validate_data.py --write-human-reference"
+                )
+            path.write_text(expected)
+            print(f"UPDATED {relative_path}")
+
+    atlas_readme_path = ROOT / "atlas/README.md"
+    atlas_readme = atlas_readme_path.read_text()
+    expected_readme = replace_generated_block(
+        atlas_readme,
+        render_index_directory(),
+        INDEX_DIRECTORY_BEGIN,
+        INDEX_DIRECTORY_END,
+        legacy_heading="Indexes",
+    )
+    if atlas_readme != expected_readme:
+        if not write:
+            raise SystemExit(
+                "generated Atlas index directory is stale; run "
+                "python scripts/validate_data.py --write-human-reference"
+            )
+        atlas_readme_path.write_text(expected_readme)
+        print("UPDATED atlas/README.md")
+
+    for profile in sorted(data["profiles"], key=lambda item: item["path"]):
+        path = ROOT / profile["path"]
+        current = path.read_text()
+        expected = replace_generated_block(
+            current,
+            render_provenance(profile, data),
+            PROVENANCE_BEGIN,
+            PROVENANCE_END,
+            legacy_heading="Record & provenance",
+        )
+        if current != expected:
+            if not write:
+                raise SystemExit(
+                    f"generated provenance is stale: {profile['path']}; run "
+                    "python scripts/validate_data.py --write-human-reference"
+                )
+            path.write_text(expected)
+            print(f"UPDATED {profile['path']}")
+
+
+def validate_atlas_page_governance(data: dict[str, list[dict]]) -> None:
+    governed = {profile["path"] for profile in data["profiles"]}
+    atlas_pages = {
+        path.relative_to(ROOT).as_posix() for path in (ROOT / "atlas").rglob("*.md")
+    }
+    unexpected = sorted(atlas_pages - governed - ALLOWED_UNGOVERNED_ATLAS_PAGES)
+    if unexpected:
+        raise SystemExit(
+            "ungoverned non-navigation Atlas page(s): " + ", ".join(unexpected)
+        )
+
+
+def local_markdown_target(source: Path, raw_target: str) -> Path | None:
+    target = raw_target.strip()
+    if target.startswith("<") and target.endswith(">"):
+        target = target[1:-1]
+    target = target.split(maxsplit=1)[0]
+    parsed = urlsplit(target)
+    if parsed.scheme or parsed.netloc or target.startswith(("mailto:", "#")):
+        return None
+    path_part = unquote(parsed.path)
+    if not path_part:
+        return source.resolve()
+    if path_part.startswith("/"):
+        destination = (ROOT / path_part.lstrip("/")).resolve()
+    else:
+        destination = (source.parent / path_part).resolve()
+    return destination
+
+
+def markdown_links(source: Path) -> list[tuple[str, Path]]:
+    text = source.read_text()
+    links = []
+    for match in MARKDOWN_LINK_RE.finditer(text):
+        raw_target = match.group(1)
+        destination = local_markdown_target(source, raw_target)
+        if destination is not None:
+            links.append((raw_target, destination))
+    return links
+
+
+def validate_markdown_links_and_reachability(data: dict[str, list[dict]]) -> None:
+    atlas_root = (ROOT / "atlas").resolve()
+    atlas_pages = sorted((ROOT / "atlas").rglob("*.md"))
+    graph: dict[Path, set[Path]] = defaultdict(set)
+
+    for source in atlas_pages:
+        for raw_target, destination in markdown_links(source):
+            try:
+                destination.relative_to(ROOT.resolve())
+            except ValueError:
+                raise SystemExit(
+                    f"{source.relative_to(ROOT)}: local link escapes repository: {raw_target}"
+                )
+            if not destination.exists():
+                raise SystemExit(
+                    f"{source.relative_to(ROOT)}: broken local link: {raw_target}"
+                )
+            if destination.is_file() and destination.suffix == ".md":
+                try:
+                    destination.relative_to(atlas_root)
+                except ValueError:
+                    continue
+                graph[source.resolve()].add(destination)
+
+    start = (ROOT / "atlas/README.md").resolve()
+    reachable = {start}
+    queue = deque([start])
+    while queue:
+        current = queue.popleft()
+        for destination in graph.get(current, set()):
+            if destination not in reachable:
+                reachable.add(destination)
+                queue.append(destination)
+
+    unreachable_profiles = sorted(
+        profile["path"]
+        for profile in data["profiles"]
+        if (ROOT / profile["path"]).resolve() not in reachable
+    )
+    if unreachable_profiles:
+        raise SystemExit(
+            "governed profile(s) unreachable from atlas/README.md: "
+            + ", ".join(unreachable_profiles)
+        )
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--write-human-reference",
+        action="store_true",
+        help="Update deterministic Atlas indexes and profile provenance blocks.",
+    )
+    args = parser.parse_args()
+
+    data, ids = load_and_validate_schema()
+    validate_references(data, ids)
+    validate_authored_contracts(data, ids)
+    validate_profiles(data, ids)
+    sync_human_reference(data, args.write_human_reference)
+    validate_atlas_page_governance(data)
+    validate_markdown_links_and_reachability(data)
+
+    print("PASS", ", ".join(f"{key}={len(value)}" for key, value in data.items()))
+
+
+if __name__ == "__main__":
+    main()
