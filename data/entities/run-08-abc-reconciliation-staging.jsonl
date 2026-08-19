@@ -1,62 +1,62 @@
-{"id":"producer:aj-adam","layer":"reference","name":"Weingut A.J. Adam","status":"provisional","type":"producer"}
-{"id":"person:andreas-adam","layer":"reference","name":"Andreas Adam","status":"provisional","type":"person"}
-{"id":"person:barbara-gudelj","layer":"reference","name":"Barbara Gudelj","status":"provisional","type":"person"}
-{"id":"vineyard:dhroner-hofberg","layer":"reference","name":"Dhroner Hofberg","status":"provisional","type":"vineyard"}
-{"id":"wine:aj-adam-dhroner-hofberg-riesling-kabinett","layer":"reference","name":"A.J. Adam Dhroner Hofberg Riesling Kabinett","status":"provisional","type":"wine"}
-{"id":"place:neumagen-dhron","layer":"reference","name":"Neumagen-Dhron","place_kind":"municipality","status":"provisional","type":"place"}
-{"id":"producer:sandhi-vintners","layer":"reference","name":"Sandhi Vintners","status":"provisional","type":"producer"}
-{"id":"person:sashi-moorman","layer":"reference","name":"Sashi Moorman","status":"provisional","type":"person"}
-{"id":"wine:anika-grenache-coteaux-de-clair","layer":"reference","name":"Anika Grenache Coteaux de Clair","status":"provisional","type":"wine"}
-{"id":"wine:anika-mourvedre-enz-vineyard","layer":"reference","name":"Anika Mourvèdre Enz Vineyard","status":"provisional","type":"wine"}
-{"id":"vineyard:coteaux-de-clair","layer":"reference","name":"Coteaux de Clair","status":"provisional","type":"vineyard"}
-{"id":"vineyard:enz-vineyard","layer":"reference","name":"Enz Vineyard","status":"provisional","type":"vineyard"}
-{"id":"grape:mourvedre","layer":"reference","name":"Mourvèdre","status":"provisional","type":"grape"}
-{"id":"appellation:lime-kiln-valley-ava","layer":"reference","name":"Lime Kiln Valley AVA","status":"provisional","type":"appellation"}
-{"display_name":"COS","id":"producer:cos","layer":"reference","name":"Azienda Agricola COS","status":"provisional","type":"producer"}
-{"id":"person:giambattista-cilia","layer":"reference","name":"Giambattista Cilia","status":"provisional","type":"person"}
-{"id":"person:giusto-occhipinti","layer":"reference","name":"Giusto Occhipinti","status":"provisional","type":"person"}
-{"id":"person:cirino-strano","layer":"reference","name":"Cirino Strano","status":"provisional","type":"person"}
-{"id":"wine:cos-pithos-rosso","layer":"reference","name":"COS Pithos Rosso","status":"provisional","type":"wine"}
-{"id":"place:sicily","layer":"reference","name":"Sicily","place_kind":"administrative_region","status":"provisional","type":"place"}
-{"id":"place:vittoria-sicily","layer":"reference","name":"Vittoria","place_kind":"municipality","status":"provisional","type":"place"}
-{"id":"producer:macanita-vinhos","layer":"reference","name":"Maçanita Vinhos","status":"provisional","type":"producer"}
-{"id":"person:joana-macanita","layer":"reference","name":"Joana Maçanita","status":"provisional","type":"person"}
-{"id":"wine:macanita-branco-reserva","layer":"reference","name":"Maçanita Branco Reserva","status":"provisional","type":"wine"}
-{"id":"grape:folgasao","layer":"reference","name":"Folgasão","status":"provisional","type":"grape"}
-{"id":"place:douro","layer":"reference","name":"Douro","place_kind":"wine_region","status":"provisional","type":"place"}
-{"id":"appellation:douro-doc","layer":"reference","name":"Douro DOC","status":"provisional","type":"appellation"}
-{"id":"producer:wasenhaus","layer":"reference","name":"Wasenhaus","status":"provisional","type":"producer"}
-{"id":"person:christoph-wolber","layer":"reference","name":"Christoph Wolber","status":"provisional","type":"person"}
-{"id":"person:alexander-gotze","layer":"reference","name":"Alexander Götze","status":"provisional","type":"person"}
-{"id":"wine:wasenhaus-spatburgunder","layer":"reference","name":"Wasenhaus Spätburgunder","status":"provisional","type":"wine"}
-{"id":"place:baden","layer":"reference","name":"Baden","place_kind":"wine_region","status":"provisional","type":"place"}
-{"id":"place:markgraflerland","layer":"reference","name":"Markgräflerland","place_kind":"wine_region","status":"provisional","type":"place"}
-{"id":"place:staufen-im-breisgau","layer":"reference","name":"Staufen im Breisgau","place_kind":"municipality","status":"provisional","type":"place"}
-{"id":"appellation:badischer-landwein","layer":"reference","name":"Badischer Landwein","status":"provisional","type":"appellation"}
-{"id":"producer:chateau-auvernier","layer":"reference","name":"Caves du Château d'Auvernier","status":"provisional","type":"producer"}
-{"id":"person:henry-aloys-grosjean","layer":"reference","name":"Henry Aloys Grosjean","status":"provisional","type":"person"}
-{"id":"person:thierry-grosjean","layer":"reference","name":"Thierry Grosjean","status":"provisional","type":"person"}
-{"id":"wine:chateau-auvernier-oeil-de-perdrix-selection-tradition","layer":"reference","name":"Château d'Auvernier L'Œil de Perdrix Sélection Tradition","status":"provisional","type":"wine"}
-{"id":"place:switzerland","layer":"reference","name":"Switzerland","place_kind":"country","status":"provisional","type":"place"}
-{"id":"place:canton-neuchatel","layer":"reference","name":"Canton of Neuchâtel","place_kind":"administrative_region","status":"provisional","type":"place"}
-{"id":"place:auvernier","layer":"reference","name":"Auvernier","place_kind":"municipality","status":"provisional","type":"place"}
-{"id":"appellation:neuchatel-aoc","layer":"reference","name":"Neuchâtel AOC","status":"provisional","type":"appellation"}
-{"id":"producer:domaine-de-la-tournelle","layer":"reference","name":"Domaine de la Tournelle","status":"provisional","type":"producer"}
-{"id":"person:evelyne-clairet","layer":"reference","name":"Évelyne Clairet","status":"provisional","type":"person"}
+{"id":"producer:aj-adam","layer":"reference","name":"Weingut A.J. Adam","status":"active","type":"producer"}
+{"id":"person:andreas-adam","layer":"reference","name":"Andreas Adam","status":"active","type":"person"}
+{"id":"person:barbara-gudelj","layer":"reference","name":"Barbara Gudelj","status":"active","type":"person"}
+{"id":"vineyard:dhroner-hofberg","layer":"reference","name":"Dhroner Hofberg","status":"active","type":"vineyard"}
+{"id":"wine:aj-adam-dhroner-hofberg-riesling-kabinett","layer":"reference","name":"A.J. Adam Dhroner Hofberg Riesling Kabinett","status":"active","type":"wine"}
+{"id":"place:neumagen-dhron","layer":"reference","name":"Neumagen-Dhron","place_kind":"municipality","status":"active","type":"place"}
+{"id":"producer:sandhi-vintners","layer":"reference","name":"Sandhi Vintners","status":"active","type":"producer"}
+{"id":"person:sashi-moorman","layer":"reference","name":"Sashi Moorman","status":"active","type":"person"}
+{"id":"wine:anika-grenache-coteaux-de-clair","layer":"reference","name":"Anika Grenache Coteaux de Clair","status":"active","type":"wine"}
+{"id":"wine:anika-mourvedre-enz-vineyard","layer":"reference","name":"Anika Mourvèdre Enz Vineyard","status":"active","type":"wine"}
+{"id":"vineyard:coteaux-de-clair","layer":"reference","name":"Coteaux de Clair","status":"active","type":"vineyard"}
+{"id":"vineyard:enz-vineyard","layer":"reference","name":"Enz Vineyard","status":"active","type":"vineyard"}
+{"id":"grape:mourvedre","layer":"reference","name":"Mourvèdre","status":"active","type":"grape"}
+{"id":"appellation:lime-kiln-valley-ava","layer":"reference","name":"Lime Kiln Valley AVA","status":"active","type":"appellation"}
+{"display_name":"COS","id":"producer:cos","layer":"reference","name":"Azienda Agricola COS","status":"active","type":"producer"}
+{"id":"person:giambattista-cilia","layer":"reference","name":"Giambattista Cilia","status":"active","type":"person"}
+{"id":"person:giusto-occhipinti","layer":"reference","name":"Giusto Occhipinti","status":"active","type":"person"}
+{"id":"person:cirino-strano","layer":"reference","name":"Cirino Strano","status":"active","type":"person"}
+{"id":"wine:cos-pithos-rosso","layer":"reference","name":"COS Pithos Rosso","status":"active","type":"wine"}
+{"id":"place:sicily","layer":"reference","name":"Sicily","place_kind":"administrative_region","status":"active","type":"place"}
+{"id":"place:vittoria-sicily","layer":"reference","name":"Vittoria","place_kind":"municipality","status":"active","type":"place"}
+{"id":"producer:macanita-vinhos","layer":"reference","name":"Maçanita Vinhos","status":"active","type":"producer"}
+{"id":"person:joana-macanita","layer":"reference","name":"Joana Maçanita","status":"active","type":"person"}
+{"id":"wine:macanita-branco-reserva","layer":"reference","name":"Maçanita Branco Reserva","status":"active","type":"wine"}
+{"id":"grape:folgasao","layer":"reference","name":"Folgasão","status":"active","type":"grape"}
+{"id":"place:douro","layer":"reference","name":"Douro","place_kind":"wine_region","status":"active","type":"place"}
+{"id":"appellation:douro-doc","layer":"reference","name":"Douro DOC","status":"active","type":"appellation"}
+{"id":"producer:wasenhaus","layer":"reference","name":"Wasenhaus","status":"active","type":"producer"}
+{"id":"person:christoph-wolber","layer":"reference","name":"Christoph Wolber","status":"active","type":"person"}
+{"id":"person:alexander-gotze","layer":"reference","name":"Alexander Götze","status":"active","type":"person"}
+{"id":"wine:wasenhaus-spatburgunder","layer":"reference","name":"Wasenhaus Spätburgunder","status":"active","type":"wine"}
+{"id":"place:baden","layer":"reference","name":"Baden","place_kind":"wine_region","status":"active","type":"place"}
+{"id":"place:markgraflerland","layer":"reference","name":"Markgräflerland","place_kind":"wine_region","status":"active","type":"place"}
+{"id":"place:staufen-im-breisgau","layer":"reference","name":"Staufen im Breisgau","place_kind":"municipality","status":"active","type":"place"}
+{"id":"appellation:badischer-landwein","layer":"reference","name":"Badischer Landwein","status":"active","type":"appellation"}
+{"id":"producer:chateau-auvernier","layer":"reference","name":"Caves du Château d'Auvernier","status":"active","type":"producer"}
+{"id":"person:henry-aloys-grosjean","layer":"reference","name":"Henry Aloys Grosjean","status":"active","type":"person"}
+{"id":"person:thierry-grosjean","layer":"reference","name":"Thierry Grosjean","status":"active","type":"person"}
+{"id":"wine:chateau-auvernier-oeil-de-perdrix-selection-tradition","layer":"reference","name":"Château d'Auvernier L'Œil de Perdrix Sélection Tradition","status":"active","type":"wine"}
+{"id":"place:switzerland","layer":"reference","name":"Switzerland","place_kind":"country","status":"active","type":"place"}
+{"id":"place:canton-neuchatel","layer":"reference","name":"Canton of Neuchâtel","place_kind":"administrative_region","status":"active","type":"place"}
+{"id":"place:auvernier","layer":"reference","name":"Auvernier","place_kind":"municipality","status":"active","type":"place"}
+{"id":"appellation:neuchatel-aoc","layer":"reference","name":"Neuchâtel AOC","status":"active","type":"appellation"}
+{"id":"producer:domaine-de-la-tournelle","layer":"reference","name":"Domaine de la Tournelle","status":"active","type":"producer"}
+{"id":"person:evelyne-clairet","layer":"reference","name":"Évelyne Clairet","status":"active","type":"person"}
 {"id":"person:pascal-clairet","layer":"reference","name":"Pascal Clairet","status":"historical","type":"person"}
-{"id":"wine:domaine-de-la-tournelle-fleur-de-savagnin","layer":"reference","name":"Domaine de la Tournelle Fleur de Savagnin","status":"provisional","type":"wine"}
-{"id":"place:arbois","layer":"reference","name":"Arbois","place_kind":"municipality","status":"provisional","type":"place"}
-{"id":"producer:pax-wines","layer":"reference","name":"Pax Wines","status":"provisional","type":"producer"}
-{"id":"person:pax-mahle","layer":"reference","name":"Pax Mahle","status":"provisional","type":"person"}
-{"id":"person:pamela-mahle","layer":"reference","name":"Pamela Mahle","status":"provisional","type":"person"}
-{"id":"wine:pax-syrah-north-coast","layer":"reference","name":"Pax Syrah, North Coast","status":"provisional","type":"wine"}
-{"id":"appellation:north-coast-ava","layer":"reference","name":"North Coast AVA","status":"provisional","type":"appellation"}
-{"id":"place:sebastopol","layer":"reference","name":"Sebastopol","place_kind":"municipality","status":"provisional","type":"place"}
-{"id":"producer:casa-coste-piane","layer":"reference","name":"Casa Coste Piane","status":"provisional","type":"producer"}
-{"id":"person:loris-follador","layer":"reference","name":"Loris Follador","status":"provisional","type":"person"}
-{"id":"wine:casa-coste-piane-frizzante-naturalmente","layer":"reference","name":"Casa Coste Piane Valdobbiadene Prosecco DOCG Frizzante…Naturalmente","status":"provisional","type":"wine"}
-{"id":"grape:glera","layer":"reference","name":"Glera","status":"provisional","type":"grape"}
-{"id":"place:veneto","layer":"reference","name":"Veneto","place_kind":"administrative_region","status":"provisional","type":"place"}
-{"id":"place:valdobbiadene","layer":"reference","name":"Valdobbiadene","place_kind":"municipality","status":"provisional","type":"place"}
-{"id":"place:santo-stefano-di-valdobbiadene","layer":"reference","name":"Santo Stefano di Valdobbiadene","place_kind":"locality","status":"provisional","type":"place"}
-{"id":"appellation:conegliano-valdobbiadene-prosecco-docg","layer":"reference","name":"Conegliano Valdobbiadene–Prosecco DOCG","status":"provisional","type":"appellation"}
+{"id":"wine:domaine-de-la-tournelle-fleur-de-savagnin","layer":"reference","name":"Domaine de la Tournelle Fleur de Savagnin","status":"active","type":"wine"}
+{"id":"place:arbois","layer":"reference","name":"Arbois","place_kind":"municipality","status":"active","type":"place"}
+{"id":"producer:pax-wines","layer":"reference","name":"Pax Wines","status":"active","type":"producer"}
+{"id":"person:pax-mahle","layer":"reference","name":"Pax Mahle","status":"active","type":"person"}
+{"id":"person:pamela-mahle","layer":"reference","name":"Pamela Mahle","status":"active","type":"person"}
+{"id":"wine:pax-syrah-north-coast","layer":"reference","name":"Pax Syrah, North Coast","status":"active","type":"wine"}
+{"id":"appellation:north-coast-ava","layer":"reference","name":"North Coast AVA","status":"active","type":"appellation"}
+{"id":"place:sebastopol","layer":"reference","name":"Sebastopol","place_kind":"municipality","status":"active","type":"place"}
+{"id":"producer:casa-coste-piane","layer":"reference","name":"Casa Coste Piane","status":"active","type":"producer"}
+{"id":"person:loris-follador","layer":"reference","name":"Loris Follador","status":"active","type":"person"}
+{"id":"wine:casa-coste-piane-frizzante-naturalmente","layer":"reference","name":"Casa Coste Piane Valdobbiadene Prosecco DOCG Frizzante…Naturalmente","status":"active","type":"wine"}
+{"id":"grape:glera","layer":"reference","name":"Glera","status":"active","type":"grape"}
+{"id":"place:veneto","layer":"reference","name":"Veneto","place_kind":"administrative_region","status":"active","type":"place"}
+{"id":"place:valdobbiadene","layer":"reference","name":"Valdobbiadene","place_kind":"municipality","status":"active","type":"place"}
+{"id":"place:santo-stefano-di-valdobbiadene","layer":"reference","name":"Santo Stefano di Valdobbiadene","place_kind":"locality","status":"active","type":"place"}
+{"id":"appellation:conegliano-valdobbiadene-prosecco-docg","layer":"reference","name":"Conegliano Valdobbiadene–Prosecco DOCG","status":"active","type":"appellation"}
