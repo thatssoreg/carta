@@ -4,7 +4,6 @@
 {"id":"person:julien-labet","layer":"reference","name":"Julien Labet","status":"active","type":"person"}
 {"id":"person:charline-labet","layer":"reference","name":"Charline Labet","status":"active","type":"person"}
 {"id":"person:romain-labet","layer":"reference","name":"Romain Labet","status":"active","type":"person"}
-{"id":"grape:savagnin","layer":"reference","name":"Savagnin","status":"active","type":"grape"}
 {"id":"wine:domaine-labet-chardonnay-du-hasard","layer":"reference","name":"Domaine Labet Chardonnay du Hasard / Cuvée du Hasard","status":"active","tags":["jura","chardonnay","sous-voile"],"type":"wine"}
 {"id":"wine:domaine-labet-fleur-de-savagnin","layer":"reference","name":"Domaine Labet Fleur de Savagnin","status":"active","tags":["jura","savagnin","ouille"],"type":"wine"}
 {"id":"vineyard:la-bardette-labet","layer":"reference","name":"La Bardette","status":"active","summary":"Domaine Labet named vineyard/lieu-dit represented without fabricated parcel geometry.","type":"vineyard"}
