@@ -94,6 +94,27 @@ The most interesting current development is increased visibility through small c
 
 Key sources include Plantgrape, official Bizkaiko regulations, Camin Larredya, and producer/trade records.
 
+<!-- BEGIN GENERATED CARTA NAVIGATION -->
+## Explore CARTA
+
+This section is generated from governed profile dispositions, editorial anchors, and supported graph relationships. It is not a hand-maintained second knowledge graph.
+
+- [Alfredo Egia](../producers/alfredo-egia.md) — producer; baseline reference
+- [Imanol Garay](../producers/imanol-garay.md) — producer; baseline reference
+- [Bizkaiko Txakolina](../countries/spain/appellations/bizkaiko-txakolina.md) — appellation; baseline reference
+- [Jurançon](../countries/france/appellations/jurancon.md) — appellation; baseline reference
+- [Pacherenc du Vic-Bilh](../countries/france/appellations/pacherenc-du-vic-bilh.md) — appellation; baseline reference
+- [Bizkaia](../countries/spain/regions/bizkaia.md) — region; baseline reference
+- [Béarn](../countries/france/regions/bearn.md) — region; baseline reference
+- [Pyrenean Atlantic](../ecosystems/pyrenean-atlantic.md) — ecosystem; baseline reference
+- [Petit Manseng](petit-manseng.md) — grape; baseline reference
+- [Raffiat de Moncade](raffiat-de-moncade.md) — grape; navigation node
+
+### Deliberately deferred anchors
+
+- **Camin Larredya** — machine authority only; no reader-facing target
+<!-- END GENERATED CARTA NAVIGATION -->
+
 <!-- BEGIN GENERATED CARTA PROVENANCE -->
 ## Record & provenance
 

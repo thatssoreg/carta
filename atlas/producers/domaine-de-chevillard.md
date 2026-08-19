@@ -57,6 +57,19 @@ Jacquère · Altesse · Roussette de Savoie · Vin de Savoie Apremont · Combe d
 
 Primary CARTA source records include Domaine de Chevillard's current estate and wine pages plus INAO's Vin de Savoie Apremont product page.
 
+<!-- BEGIN GENERATED CARTA NAVIGATION -->
+## Explore CARTA
+
+This section is generated from governed profile dispositions, editorial anchors, and supported graph relationships. It is not a hand-maintained second knowledge graph.
+
+- [Combe de Savoie](../countries/france/regions/combe-de-savoie.md) — region; navigation node
+- [Jacquère](../grapes/jacquere.md) — grape; navigation node
+- [Altesse](../grapes/altesse.md) — grape; navigation node
+- [France](../countries/france/README.md) — country; baseline reference
+- [Vin de Savoie Apremont](../countries/france/appellations/vin-de-savoie-apremont.md) — appellation; navigation node
+- [Savoie](../countries/france/regions/savoie.md) — region; navigation node
+<!-- END GENERATED CARTA NAVIGATION -->
+
 <!-- BEGIN GENERATED CARTA PROVENANCE -->
 ## Record & provenance
 

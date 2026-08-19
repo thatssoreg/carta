@@ -48,6 +48,19 @@ Niedermenniger Sonnenberg · Saar/Mosel legal geography · Riesling · Kabinett 
 
 Primary CARTA source records include Hofgut Falkenstein, Piedmont Wine Imports, German Wine Act §20, and a documented 2024 Sonnenberg Kabinett trocken trade listing.
 
+<!-- BEGIN GENERATED CARTA NAVIGATION -->
+## Explore CARTA
+
+This section is generated from governed profile dispositions, editorial anchors, and supported graph relationships. It is not a hand-maintained second knowledge graph.
+
+- [Riesling](../grapes/riesling.md) — grape; navigation node
+- [Saar](../countries/germany/regions/saar.md) — region; navigation node
+- [Germany](../countries/germany/README.md) — country; navigation node
+- [Kabinett](../classifications/kabinett.md) — classification; navigation node
+- [Weingut Keller](weingut-keller.md) — producer; navigation node
+- [Weingut Rudi Pichler](weingut-rudi-pichler.md) — producer; baseline reference
+<!-- END GENERATED CARTA NAVIGATION -->
+
 <!-- BEGIN GENERATED CARTA PROVENANCE -->
 ## Record & provenance
 

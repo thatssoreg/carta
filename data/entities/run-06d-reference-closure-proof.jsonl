@@ -1,0 +1,28 @@
+{"id":"place:madeira-archipelago","layer":"reference","name":"Madeira Archipelago","place_kind":"cultural_region","status":"active","type":"place"}
+{"id":"place:porto-santo","layer":"reference","name":"Porto Santo","place_kind":"other","status":"active","type":"place"}
+{"id":"appellation:madeirense-dop","layer":"reference","name":"Madeirense DOP","status":"active","summary":"Protected designation for Madeira archipelago table wines; distinct from fortified DOP Madeira.","type":"appellation"}
+{"id":"producer:companhia-vinhos-profetas-villoes","layer":"reference","name":"Companhia de Vinhos dos Profetas e dos Villões","status":"active","tags":["porto-santo","madeira","profetas-villoes"],"type":"producer"}
+{"id":"person:antonio-macanita","layer":"reference","name":"António Maçanita","status":"active","type":"person"}
+{"id":"person:nuno-faria","layer":"reference","name":"Nuno Faria","status":"active","type":"person"}
+{"id":"wine:listrao-dos-profetas","layer":"reference","name":"Listrão dos Profetas","status":"active","tags":["porto-santo","listrao","madeirense"],"type":"wine"}
+{"id":"wine:vinho-da-corda-dos-profetas","layer":"reference","name":"Vinho da Corda dos Profetas","status":"active","tags":["porto-santo","listrao","caracol","vinho-da-corda"],"type":"wine"}
+{"id":"grape:caracol","layer":"reference","name":"Caracol","status":"active","type":"grape"}
+{"id":"practice:vinho-da-corda","layer":"reference","name":"Vinho da corda press-fraction method","status":"active","summary":"Historical Madeira/Porto Santo practice using the richer final press fraction; represented as a practice, not a legal appellation.","type":"practice"}
+{"id":"place:loire-valley","layer":"reference","name":"Loire Valley","place_kind":"wine_region","status":"active","type":"place"}
+{"id":"place:les-montils","layer":"reference","name":"Les Montils","place_kind":"municipality","status":"active","type":"place"}
+{"id":"producer:clos-du-tue-boeuf","layer":"reference","name":"Clos du Tue-Boeuf","status":"active","tags":["loire","les-montils","organic"],"type":"producer"}
+{"id":"person:thierry-puzelat","layer":"reference","name":"Thierry Puzelat","status":"active","type":"person"}
+{"id":"person:zoe-puzelat","layer":"reference","name":"Zoë Puzelat","status":"active","type":"person"}
+{"id":"wine:le-brin-de-chevre","layer":"reference","name":"Le Brin de Chèvre","status":"active","tags":["loire","menu-pineau","vin-de-france"],"type":"wine"}
+{"id":"grape:menu-pineau","layer":"reference","name":"Menu Pineau","status":"active","type":"grape"}
+{"id":"grape:petit-meslier","layer":"reference","name":"Petit Meslier","status":"active","type":"grape"}
+{"id":"classification:vin-de-france","layer":"reference","name":"Vin de France","status":"active","summary":"French national wine classification; not an appellation or geographic containment relationship.","type":"classification"}
+{"id":"place:santa-barbara-county","layer":"reference","name":"Santa Barbara County","place_kind":"administrative_region","status":"active","type":"place"}
+{"id":"appellation:santa-ynez-valley-ava","layer":"reference","name":"Santa Ynez Valley AVA","status":"active","type":"appellation"}
+{"id":"appellation:ballard-canyon-ava","layer":"reference","name":"Ballard Canyon AVA","status":"active","type":"appellation"}
+{"id":"producer:jonata","layer":"reference","name":"JONATA","status":"active","tags":["ballard-canyon","santa-ynez-valley","california"],"type":"producer"}
+{"id":"person:stan-kroenke","layer":"reference","name":"E. Stanley Kroenke","status":"active","type":"person"}
+{"id":"person:matt-dees","layer":"reference","name":"Matt Dees","status":"active","type":"person"}
+{"id":"vineyard:jonata-estate","layer":"reference","name":"JONATA Estate Vineyard","status":"active","tags":["ballard-canyon","certified-organic"],"type":"vineyard"}
+{"id":"wine:jonata-todos","layer":"reference","name":"JONATA Todos","status":"active","tags":["ballard-canyon","red-blend","todos"],"type":"wine"}
+{"id":"grape:petite-sirah","layer":"reference","name":"Petite Sirah","status":"active","type":"grape"}

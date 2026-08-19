@@ -58,6 +58,17 @@ Le Mont · Clos du Bourg · current Vouvray specification · authoritative Le Ha
 
 Primary CARTA source records include Domaine Huet's current first-party site, INAO's current Vouvray page, and a dated trade listing used only to corroborate the recurring wine identity.
 
+<!-- BEGIN GENERATED CARTA NAVIGATION -->
+## Explore CARTA
+
+This section is generated from governed profile dispositions, editorial anchors, and supported graph relationships. It is not a hand-maintained second knowledge graph.
+
+- [Chenin Blanc](../grapes/chenin-blanc.md) — grape; navigation node
+- [Vouvray AOP](../countries/france/appellations/vouvray.md) — appellation; navigation node
+- [France](../countries/france/README.md) — country; baseline reference
+- [Richard Leroy](richard-leroy.md) — producer; baseline reference
+<!-- END GENERATED CARTA NAVIGATION -->
+
 <!-- BEGIN GENERATED CARTA PROVENANCE -->
 ## Record & provenance
 

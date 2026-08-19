@@ -34,6 +34,8 @@ The Human Reference is a deep wine reference, not a database demonstration.
 
 Governed profile records determine publication status and canonical paths; the Atlas and its indexes are projections of those records and the underlying machine authority.
 
+Every active producer, country, and grape must now carry an explicit Human Reference disposition. A subject may be published, represented by an honest navigation stub, queued, or deliberately retained as machine-only authority; it may no longer disappear from reader discovery by accident.
+
 Start with [`atlas/README.md`](atlas/README.md).
 
 ## Machine authority

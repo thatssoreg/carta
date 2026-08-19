@@ -65,6 +65,20 @@ Bassi is spatially anchored to Avila Valley, Avila Beach, California and SLO Coa
 
 authoritative Bassi geometry · Bassi Chardonnay solera evolution · Pink Chardonnay propagation confirmation · Brij identity · ownership/tenure history before 2024
 
+<!-- BEGIN GENERATED CARTA NAVIGATION -->
+## Explore CARTA
+
+This section is generated from governed profile dispositions, editorial anchors, and supported graph relationships. It is not a hand-maintained second knowledge graph.
+
+- [Chardonnay](../grapes/chardonnay.md) — grape; navigation node
+- [San Luis Obispo Coast AVA](../countries/united-states/appellations/san-luis-obispo-coast-ava.md) — appellation; navigation node
+- [United States](../countries/united-states/README.md) — country; navigation node
+- [Domaine de Saint Pierre / Château Renard](domaine-de-saint-pierre-jura.md) — producer; baseline reference
+- [Domaine Labet](domaine-labet.md) — producer; navigation node
+- [Hiyu Wine Farm](hiyu-wine-farm.md) — producer; baseline reference
+- [Louis Michel & Fils](domaine-louis-michel-fils.md) — producer; baseline reference
+<!-- END GENERATED CARTA NAVIGATION -->
+
 <!-- BEGIN GENERATED CARTA PROVENANCE -->
 ## Record & provenance
 

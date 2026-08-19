@@ -62,6 +62,20 @@ official Vaudésir geometry · current people/leadership · parcel-level geology
 
 Primary CARTA source records include Louis Michel & Fils' current first-party site, INAO's current Chablis Grand Cru Vaudésir page, and the Chablis wine board's Vaudésir climat reference.
 
+<!-- BEGIN GENERATED CARTA NAVIGATION -->
+## Explore CARTA
+
+This section is generated from governed profile dispositions, editorial anchors, and supported graph relationships. It is not a hand-maintained second knowledge graph.
+
+- [Chablis Grand Cru AOP](../countries/france/appellations/chablis-grand-cru.md) — appellation; navigation node
+- [Chardonnay](../grapes/chardonnay.md) — grape; navigation node
+- [France](../countries/france/README.md) — country; baseline reference
+- [Domaine de Saint Pierre / Château Renard](domaine-de-saint-pierre-jura.md) — producer; baseline reference
+- [Domaine Labet](domaine-labet.md) — producer; navigation node
+- [Hiyu Wine Farm](hiyu-wine-farm.md) — producer; baseline reference
+- [Scar of the Sea / Bassi Vineyard](scar-of-the-sea.md) — producer; baseline reference
+<!-- END GENERATED CARTA NAVIGATION -->
+
 <!-- BEGIN GENERATED CARTA PROVENANCE -->
 ## Record & provenance
 

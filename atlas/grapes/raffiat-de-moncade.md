@@ -45,6 +45,19 @@ The current evidence places the grape in the southwest-French / Béarn context. 
 
 Current strong sources include Plantgrape records for Raffiat de Moncade and Arriloba plus wine-specific trade documentation for Ixilune.
 
+<!-- BEGIN GENERATED CARTA NAVIGATION -->
+## Explore CARTA
+
+This section is generated from governed profile dispositions, editorial anchors, and supported graph relationships. It is not a hand-maintained second knowledge graph.
+
+- [Imanol Garay](../producers/imanol-garay.md) — producer; baseline reference
+- [Arriloba](arriloba.md) — grape; navigation node
+- [Bouchalès](bouchales.md) — grape; navigation node
+- [Gouais blanc](gouais-blanc.md) — grape; navigation node
+- [Petit Courbu](petit-courbu.md) — grape; baseline reference
+- [Petit Manseng](petit-manseng.md) — grape; baseline reference
+<!-- END GENERATED CARTA NAVIGATION -->
+
 <!-- BEGIN GENERATED CARTA PROVENANCE -->
 ## Record & provenance
 

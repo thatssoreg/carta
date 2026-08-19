@@ -48,6 +48,22 @@ The vineyard is anchored to Apalta Valley and the legal Apalta/Colchagua geograp
 
 legal-company/public-brand naming chronology · parcel-level Le Petit Clos sourcing · vintage élevage history · official Apalta geometry · Clos Apalta flagship-wine history
 
+<!-- BEGIN GENERATED CARTA NAVIGATION -->
+## Explore CARTA
+
+This section is generated from governed profile dispositions, editorial anchors, and supported graph relationships. It is not a hand-maintained second knowledge graph.
+
+- [Apalta](../countries/chile/appellations/apalta.md) — appellation; navigation node
+- [Apalta Valley](../countries/chile/regions/apalta-valley.md) — region; navigation node
+- [Chile](../countries/chile/README.md) — country; navigation node
+- [Cabernet Franc](../grapes/cabernet-franc.md) — grape; navigation node
+- [Cabernet Sauvignon](../grapes/cabernet-sauvignon.md) — grape; navigation node
+- [Ashes & Diamonds / Cabernet Franc](ashes-and-diamonds.md) — producer; baseline reference
+- [Colchagua Valley](../countries/chile/regions/colchagua-valley.md) — region; navigation node
+- [Corison Winery](corison-winery.md) — producer; navigation node
+- [JONATA](jonata.md) — producer; navigation node
+<!-- END GENERATED CARTA NAVIGATION -->
+
 <!-- BEGIN GENERATED CARTA PROVENANCE -->
 ## Record & provenance
 

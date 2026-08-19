@@ -56,7 +56,19 @@ A baseline profile should answer the ordinary questions a serious wine reader wo
 
 A mature dossier with unusually strong depth: historical development, multiple representative anchors, richer site or production detail, cultural context, current movement, meaningful contradictions, and a dense relationship network.
 
-`publication_status` is separate from maturity. A profile may be queued, stubbed during migration, published, or deprecated.
+`publication_status` is separate from maturity. A profile may be queued, stubbed during migration, published, deliberately machine-only, or deprecated.
+
+### Projection disposition invariant
+
+Every active producer, country, and grape must occur in a governed `reference_profile` disposition. This is a projection-layer closure rule, not a claim that every entity deserves a page.
+
+- `published` requires baseline or deep maturity and a canonical Atlas path.
+- `stub` requires an honest node surface and a canonical Atlas path. It must identify itself as incomplete rather than imitating baseline depth.
+- `queued` reserves a governed surface while enrichment or migration remains pending.
+- `machine_only` is an explicit node-level deferral with no Atlas path.
+- `deprecated` preserves historical profile governance without presenting a current surface.
+
+The validator enforces this invariant for active producers, countries, and grapes. New ingestion therefore cannot create another invisible high-value producer or silently omit an entire country/grape population from projection governance.
 
 ## Promotion rule
 
@@ -341,6 +353,14 @@ Do not dump every graph edge.
 
 Choose the relationships most likely to deepen understanding.
 
+### Governed navigation and reciprocal discovery
+
+`country_entity_ids` and `representative_anchor_ids` are editorial projection anchors, not a second relationship graph. The Human Reference generator combines those anchors with supported or provisional typed relationships from machine authority, resolves each surfaced target through its canonical `reference_profile` path, and writes a deterministic `Explore CARTA` block.
+
+The same process derives reciprocal discovery. A producer may point outward to a grape or country through governed anchors and typed authority; the grape or country surface can then discover the producer without maintaining a separate reverse list. Short graph paths are limited to reader-useful predicates such as `MADE_BY`, `MADE_FROM`, `LOCATED_IN`, `WITHIN`, and `CLASSIFIED_AS`, and generated results are capped rather than dumping every edge.
+
+Machine-only dispositions are never rendered as fake links. When an editorial anchor is deliberately machine-only, the generated block may identify it as deferred plain text. Broken or stale canonical paths remain ordinary validator failures.
+
 ## Evidence and machine layer
 
 Near the bottom of a mature reference page, use a subordinate section such as:
@@ -390,3 +410,7 @@ An ecosystem discovery run should not be expected to produce deep profiles for e
 ## Projection maintenance
 
 Each governed Human Reference profile has one canonical path. Alternate Markdown may serve navigation or historical context, but it must not claim parallel governed status. Profile indexes, provenance, and counts are derived or validated from machine authority so growth does not require hand-maintaining duplicate state.
+
+`python scripts/validate_data.py --write-human-reference` creates honest node shells for new `stub` dispositions, refreshes generated navigation, provenance, and all indexes, and must be followed by a normal validation run. Generated files are committed with the governing records.
+
+Projects and vineyards remain valid primary/component entities inside composite producer-world profiles. Current cases such as Tzum, Vins Pepe Raventós, Soleras del Pacífico, Moon Hill Farm, Evangelho Vineyard, Kronos Vineyard, Sunbasket Vineyard, Westhofener Kirchspiel, and Terrasses del Serral remain understandable without separate `project` or `vineyard` profile kinds. Add those kinds only if a future case cannot be represented honestly through the composite model.

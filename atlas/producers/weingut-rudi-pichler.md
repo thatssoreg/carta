@@ -73,6 +73,19 @@ official Ried geometry · current Pichler leadership/personnel · wine-specific 
 
 Primary CARTA sources include Rudi Pichler's current estate, wine, vineyard, and wine-style pages; Vinea Wachau's Hochrain, wine-style, and DAC pages; and Austria's federal Wachau DAC regulation.
 
+<!-- BEGIN GENERATED CARTA NAVIGATION -->
+## Explore CARTA
+
+This section is generated from governed profile dispositions, editorial anchors, and supported graph relationships. It is not a hand-maintained second knowledge graph.
+
+- [Riesling](../grapes/riesling.md) — grape; navigation node
+- [Austria](../countries/austria/README.md) — country; navigation node
+- [Wachau DAC](../countries/austria/appellations/wachau-dac.md) — appellation; navigation node
+- [Hofgut Falkenstein](hofgut-falkenstein.md) — producer; baseline reference
+- [Wachau](../countries/austria/regions/wachau.md) — region; navigation node
+- [Weingut Keller](weingut-keller.md) — producer; navigation node
+<!-- END GENERATED CARTA NAVIGATION -->
+
 <!-- BEGIN GENERATED CARTA PROVENANCE -->
 ## Record & provenance
 

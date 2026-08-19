@@ -40,6 +40,18 @@ Direct bilateral mentorship, collaboration, employment, friendship or influence 
 
 independent producer profiles for Foillard, Breton and Thévenet · direct evidence for their individual Chauvet relationships · the wider Beaujolais community around these producers · chronology of practice transmission
 
+<!-- BEGIN GENERATED CARTA NAVIGATION -->
+## Explore CARTA
+
+This section is generated from governed profile dispositions, editorial anchors, and supported graph relationships. It is not a hand-maintained second knowledge graph.
+
+- [Beaujolais](../countries/france/regions/beaujolais.md) — region; navigation node
+- [France](../countries/france/README.md) — country; baseline reference
+- [Gamay noir à jus blanc](../grapes/gamay-noir-a-jus-blanc.md) — grape; navigation node
+- [Morgon AOP](../countries/france/appellations/morgon.md) — appellation; navigation node
+- [Domaine Marcel Lapierre](../producers/domaine-marcel-lapierre.md) — producer; baseline reference
+<!-- END GENERATED CARTA NAVIGATION -->
+
 <!-- BEGIN GENERATED CARTA PROVENANCE -->
 ## Record & provenance
 

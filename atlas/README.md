@@ -56,6 +56,8 @@ Country pages orient. Region pages explain human geography. Appellation pages ex
 - **baseline** — generous, publishable orientation
 - **deep** — mature dossier depth
 
+Publication is separate from maturity. An active subject may be a published profile, an honest stub, queued, or explicitly `machine_only`; machine-only authority appears in generated indexes without a fake link.
+
 ## Authority
 
 If prose and structured authority ever disagree, `data/` wins until the conflict is editorially resolved.

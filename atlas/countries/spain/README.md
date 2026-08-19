@@ -42,6 +42,29 @@ The Atlantic Basque world continues into France culturally and physically. Grape
 
 [Bizkaia](regions/bizkaia.md) · [Bizkaiko Txakolina](appellations/bizkaiko-txakolina.md) · [Alfredo Egia](../../producers/alfredo-egia.md) · [Western Pyrenees](../../landscapes/western-pyrenees.md) · [Pyrenean Atlantic](../../ecosystems/pyrenean-atlantic.md)
 
+<!-- BEGIN GENERATED CARTA NAVIGATION -->
+## Explore CARTA
+
+This section is generated from governed profile dispositions, editorial anchors, and supported graph relationships. It is not a hand-maintained second knowledge graph.
+
+- [Bizkaiko Txakolina](appellations/bizkaiko-txakolina.md) — appellation; baseline reference
+- [Alfredo Egia](../../producers/alfredo-egia.md) — producer; baseline reference
+- [Bizkaia](regions/bizkaia.md) — region; baseline reference
+- [Imanol Garay](../../producers/imanol-garay.md) — producer; baseline reference
+- [Penedès](regions/penedes.md) — region; navigation node
+- [Ribera del Duero DOP](appellations/ribera-del-duero.md) — appellation; navigation node
+- [Condado de Haza / Alenza Gran Reserva](../../producers/condado-de-haza.md) — producer; baseline reference
+- [Valle de Liébana](regions/valle-de-liebana.md) — region; navigation node
+- [Vino de la Tierra de Liébana](appellations/vino-de-la-tierra-de-liebana.md) — appellation; navigation node
+- [Vins Pepe Raventós](../../producers/vins-pepe-raventos.md) — producer; navigation node
+- [Bodegas Muga / Prado Enea Gran Reserva](../../producers/bodegas-muga.md) — producer; baseline reference
+- [Goyo García Viadero](../../producers/goyo-garcia-viadero.md) — producer; baseline reference
+- [R. López de Heredia Viña Tondonia](../../producers/lopez-de-heredia-vina-tondonia.md) — producer; baseline reference
+- [Ribera del Duero](regions/ribera-del-duero.md) — region; navigation node
+- [Rioja Alta](regions/rioja-alta.md) — region; navigation node
+- [Rioja DOCa](appellations/rioja.md) — appellation; navigation node
+<!-- END GENERATED CARTA NAVIGATION -->
+
 <!-- BEGIN GENERATED CARTA PROVENANCE -->
 ## Record & provenance
 
@@ -72,11 +95,13 @@ This section is generated from CARTA machine authority. Edit the governed record
 | `claim:bizkaiko-geographical-area` | `reference / 2026-08-18` | `supported` | `high` | `source:eurlex-bizkaiko-2025-amendment` |
 | `claim:liebana-current-framework` | `reference / 2026-08-18` | `supported` | `high` | `source:cantabria-liebana-register` |
 | `claim:ribera-gran-reserva-law` | `reference / 2026-08-18` | `supported` | `high` | `source:ribera-product-spec-2023` |
+| `claim:run07-penedes-navigation-geography` | `reference / 2026-08-18` | `supported` | `high` | `source:raventos-bastard-negre-2022` |
 
 ### Sources
 
 - `source:cantabria-liebana-register` — Registro de viticultores, elaboradores y embotelladores de Vino de la Tierra de Liébana
 - `source:eurlex-bizkaiko-2025-amendment` — Approved standard amendment: Bizkaiko Txakolina / Chacolí de Bizkaia / Txakoli de Bizkaia
+- `source:raventos-bastard-negre-2022` — Bastard Negre de les Terrasses del Serral 2022
 - `source:ribera-product-spec-2023` — Ribera del Duero product specification amendment, 2023
 
 </details>

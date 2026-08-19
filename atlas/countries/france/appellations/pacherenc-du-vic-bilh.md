@@ -61,6 +61,22 @@ Dry Pacherenc is increasingly relevant to drinkers interested in structured, hig
 
 Current authority: INAO. Producer orientation uses specialist references.
 
+<!-- BEGIN GENERATED CARTA NAVIGATION -->
+## Explore CARTA
+
+This section is generated from governed profile dispositions, editorial anchors, and supported graph relationships. It is not a hand-maintained second knowledge graph.
+
+- [France](../README.md) — country; baseline reference
+- [Gros Manseng](../../../grapes/gros-manseng.md) — grape; baseline reference
+- [Petit Courbu](../../../grapes/petit-courbu.md) — grape; baseline reference
+- [Petit Manseng](../../../grapes/petit-manseng.md) — grape; baseline reference
+- [Béarn](../regions/bearn.md) — region; baseline reference
+
+### Deliberately deferred anchors
+
+- **Château Bouscassé** — machine authority only; no reader-facing target
+<!-- END GENERATED CARTA NAVIGATION -->
+
 <!-- BEGIN GENERATED CARTA PROVENANCE -->
 ## Record & provenance
 

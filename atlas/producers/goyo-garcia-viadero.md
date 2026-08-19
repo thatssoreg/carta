@@ -67,6 +67,19 @@ Valle de Liébana · Vino de la Tierra de Liébana · Palomino Fino · Mencía �
 
 Primary CARTA source records include José Pastor Selections, Old World Wine Co., the Boletín Oficial del Estado, and the Government of Cantabria.
 
+<!-- BEGIN GENERATED CARTA NAVIGATION -->
+## Explore CARTA
+
+This section is generated from governed profile dispositions, editorial anchors, and supported graph relationships. It is not a hand-maintained second knowledge graph.
+
+- [Mencía](../grapes/mencia.md) — grape; navigation node
+- [Palomino Fino](../grapes/palomino-fino.md) — grape; navigation node
+- [Spain](../countries/spain/README.md) — country; baseline reference
+- [Vino de la Tierra de Liébana](../countries/spain/appellations/vino-de-la-tierra-de-liebana.md) — appellation; navigation node
+- [Companhia de Vinhos dos Profetas e dos Villões](companhia-vinhos-profetas-villoes.md) — producer; navigation node
+- [Soleras del Pacífico](soleras-del-pacifico.md) — producer; navigation node
+<!-- END GENERATED CARTA NAVIGATION -->
+
 <!-- BEGIN GENERATED CARTA PROVENANCE -->
 ## Record & provenance
 

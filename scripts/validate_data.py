@@ -30,6 +30,8 @@ SETS = {
 
 PROVENANCE_BEGIN = "<!-- BEGIN GENERATED CARTA PROVENANCE -->"
 PROVENANCE_END = "<!-- END GENERATED CARTA PROVENANCE -->"
+NAVIGATION_BEGIN = "<!-- BEGIN GENERATED CARTA NAVIGATION -->"
+NAVIGATION_END = "<!-- END GENERATED CARTA NAVIGATION -->"
 INDEX_BEGIN = "<!-- BEGIN GENERATED CARTA INDEX -->"
 INDEX_END = "<!-- END GENERATED CARTA INDEX -->"
 INDEX_DIRECTORY_BEGIN = "<!-- BEGIN GENERATED CARTA INDEX DIRECTORY -->"
@@ -86,6 +88,32 @@ SPATIAL_APPELLATION_SUBJECT_TYPES = {
     "geographic_feature",
     "geology",
 }
+
+LINKABLE_PUBLICATION_STATUSES = {"published", "stub", "queued"}
+NAVIGATION_RELATIONSHIP_STATUSES = {"supported", "provisional"}
+NAVIGATION_RELATIONSHIP_PREDICATES = {
+    "MENTORED_BY",
+    "TRAINED_AT",
+    "WORKED_FOR",
+    "WORKED_WITH",
+    "COLLABORATED_WITH",
+    "FOUNDED",
+    "MEMBER_OF",
+    "OWNED_BY",
+    "MADE_BY",
+    "FARMED_BY",
+    "MADE_FROM",
+    "USES_PRACTICE",
+    "PLANTED_AT",
+    "LOCATED_IN",
+    "FARMS_IN",
+    "FARMS_PARCEL",
+    "WITHIN_APPELLATION",
+    "WITHIN",
+    "CLASSIFIED_AS",
+}
+MAX_GRAPH_NAVIGATION_DISTANCE = 2
+MAX_RELATED_PROFILES = 16
 
 
 def load_jsonl(directory: Path) -> list[dict]:
@@ -328,11 +356,15 @@ def validate_profiles(
 ) -> None:
     paths: dict[str, str] = {}
     primary_entities: dict[str, str] = {}
+    entity_by_id = {entity["id"]: entity for entity in data["entities"]}
+    profiled_entities: set[str] = set()
+    primary_profile_kinds: dict[str, set[str]] = defaultdict(set)
 
     for profile in data["profiles"]:
         for entity_id in profile["component_entity_ids"]:
             if entity_id not in ids["entities"]:
                 raise SystemExit(f"{profile['id']}: missing component entity {entity_id}")
+            profiled_entities.add(entity_id)
         primary = profile.get("primary_entity_id")
         if primary and primary not in ids["entities"]:
             raise SystemExit(f"{profile['id']}: missing primary entity {primary}")
@@ -341,6 +373,11 @@ def validate_profiles(
         for entity_id in profile.get("country_entity_ids", []):
             if entity_id not in ids["entities"]:
                 raise SystemExit(f"{profile['id']}: missing country entity {entity_id}")
+            country = entity_by_id[entity_id]
+            if country["type"] != "place" or country.get("place_kind") != "country":
+                raise SystemExit(
+                    f"{profile['id']}: country_entity_ids contains non-country {entity_id}"
+                )
         for entity_id in profile.get("representative_anchor_ids", []):
             if entity_id not in ids["entities"]:
                 raise SystemExit(
@@ -350,14 +387,51 @@ def validate_profiles(
             raise SystemExit(
                 f"{profile['id']}: node maturity cannot be published as a finished reference"
             )
+        if profile["publication_status"] == "machine_only":
+            if profile["maturity"] != "node":
+                raise SystemExit(
+                    f"{profile['id']}: machine_only disposition requires node maturity"
+                )
+            if "path" in profile:
+                raise SystemExit(
+                    f"{profile['id']}: machine_only disposition cannot claim an Atlas path"
+                )
 
-        validate_profile_path(profile)
-        path = profile["path"]
-        if path in paths:
-            raise SystemExit(
-                f"duplicate canonical profile path: {path} ({paths[path]}, {profile['id']})"
-            )
-        paths[path] = profile["id"]
+        if primary:
+            primary_profile_kinds[primary].add(profile["profile_kind"])
+            primary_entity = entity_by_id[primary]
+            primary_type = primary_entity["type"]
+            kind = profile["profile_kind"]
+            semantic_match = {
+                "producer": primary_type in {"producer", "project"},
+                "grape": primary_type == "grape",
+                "country": primary_type == "place"
+                and primary_entity.get("place_kind") == "country",
+                "region": primary_type == "place"
+                and primary_entity.get("place_kind") != "country",
+                "appellation": primary_type == "appellation",
+                "landscape": primary_type in {"place", "geographic_feature", "geology"},
+                "ecosystem": primary_type == "ecosystem",
+                "wine": primary_type == "wine",
+                "person": primary_type == "person",
+                "institution": primary_type == "institution",
+                "practice": primary_type == "practice",
+                "classification": primary_type == "classification",
+                "historical_event": primary_type == "historical_event",
+            }[kind]
+            if not semantic_match:
+                raise SystemExit(
+                    f"{profile['id']}: {kind} profile has incompatible primary entity {primary}"
+                )
+
+        path = profile.get("path")
+        if path:
+            validate_profile_path(profile)
+            if path in paths:
+                raise SystemExit(
+                    f"duplicate canonical profile path: {path} ({paths[path]}, {profile['id']})"
+                )
+            paths[path] = profile["id"]
         if primary:
             if primary in primary_entities:
                 raise SystemExit(
@@ -365,8 +439,49 @@ def validate_profiles(
                     f"{primary} ({primary_entities[primary]}, {profile['id']})"
                 )
             primary_entities[primary] = profile["id"]
-        if not (ROOT / path).is_file():
+        if (
+            path
+            and not (ROOT / path).is_file()
+            and profile["publication_status"] != "stub"
+        ):
             raise SystemExit(f"{profile['id']}: reference path does not exist: {path}")
+
+    for entity in data["entities"]:
+        requires_disposition = (
+            entity["layer"] == "reference"
+            and entity["status"] == "active"
+            and (
+                entity["type"] in {"producer", "grape"}
+                or (
+                    entity["type"] == "place"
+                    and entity.get("place_kind") == "country"
+                )
+            )
+        )
+        if requires_disposition and entity["id"] not in profiled_entities:
+            raise SystemExit(
+                f"{entity['id']}: active {entity['type']} lacks an explicit "
+                "Human Reference disposition"
+            )
+        expected_primary_kind = (
+            "producer"
+            if entity["type"] == "producer"
+            else "grape"
+            if entity["type"] == "grape"
+            else "country"
+            if entity["type"] == "place" and entity.get("place_kind") == "country"
+            else None
+        )
+        if (
+            requires_disposition
+            and expected_primary_kind
+            and expected_primary_kind
+            not in primary_profile_kinds.get(entity["id"], set())
+        ):
+            raise SystemExit(
+                f"{entity['id']}: active {expected_primary_kind} requires its own "
+                "explicit Human Reference disposition"
+            )
 
 
 def profile_claims(profile: dict, data: dict[str, list[dict]]) -> list[dict]:
@@ -390,6 +505,141 @@ def profile_claims(profile: dict, data: dict[str, list[dict]]) -> list[dict]:
 
     claim_by_id = {claim["id"]: claim for claim in data["claims"]}
     return [claim_by_id[claim_id] for claim_id in sorted(claim_ids)]
+
+
+def profile_has_surface(profile: dict) -> bool:
+    return bool(profile.get("path")) and (
+        profile["publication_status"] in LINKABLE_PUBLICATION_STATUSES
+    )
+
+
+def profile_navigation_seeds(profile: dict) -> set[str]:
+    return set(profile.get("country_entity_ids", [])) | set(
+        profile.get("representative_anchor_ids", [])
+    )
+
+
+def navigation_graph(data: dict[str, list[dict]]) -> dict[str, set[str]]:
+    graph: dict[str, set[str]] = defaultdict(set)
+    for relationship in data["relationships"]:
+        if (
+            relationship["layer"] != "reference"
+            or relationship["status"] not in NAVIGATION_RELATIONSHIP_STATUSES
+            or relationship["predicate"] not in NAVIGATION_RELATIONSHIP_PREDICATES
+        ):
+            continue
+        subject = relationship["subject_id"]
+        object_id = relationship["object_id"]
+        graph[subject].add(object_id)
+        graph[object_id].add(subject)
+    return graph
+
+
+def shortest_navigation_distance(
+    graph: dict[str, set[str]], starts: set[str], targets: set[str]
+) -> int | None:
+    if starts & targets:
+        return 0
+    seen = set(starts)
+    queue = deque((entity_id, 0) for entity_id in starts)
+    while queue:
+        current, distance = queue.popleft()
+        if distance >= MAX_GRAPH_NAVIGATION_DISTANCE:
+            continue
+        for neighbor in graph.get(current, set()):
+            if neighbor in seen:
+                continue
+            next_distance = distance + 1
+            if neighbor in targets:
+                return next_distance
+            seen.add(neighbor)
+            queue.append((neighbor, next_distance))
+    return None
+
+
+def render_navigation(profile: dict, data: dict[str, list[dict]]) -> str:
+    current_entities = set(profile["component_entity_ids"])
+    current_seeds = profile_navigation_seeds(profile)
+    graph = navigation_graph(data)
+    ranked: list[tuple[int, int, str, str, dict]] = []
+
+    for other in data["profiles"]:
+        if other["id"] == profile["id"] or not profile_has_surface(other):
+            continue
+        other_entities = set(other["component_entity_ids"])
+        curated_outbound = bool(current_seeds & other_entities)
+        curated_reciprocal = bool(
+            current_entities & profile_navigation_seeds(other)
+        )
+        distance = shortest_navigation_distance(
+            graph, current_entities, other_entities
+        )
+        if not curated_outbound and not curated_reciprocal and distance is None:
+            continue
+        if curated_outbound:
+            rank = 0
+        elif curated_reciprocal:
+            rank = 1
+        else:
+            rank = 2 + (distance or 0)
+        ranked.append(
+            (
+                rank,
+                distance if distance is not None else 99,
+                other["title"].casefold(),
+                other["id"],
+                other,
+            )
+        )
+
+    related = [item[4] for item in sorted(ranked)[:MAX_RELATED_PROFILES]]
+    deferred = sorted(
+        {
+            candidate["title"]
+            for candidate in data["profiles"]
+            if candidate["publication_status"] == "machine_only"
+            and current_seeds & set(candidate["component_entity_ids"])
+        },
+        key=str.casefold,
+    )
+
+    lines = [
+        NAVIGATION_BEGIN,
+        "## Explore CARTA",
+        "",
+        (
+            "This section is generated from governed profile dispositions, editorial "
+            "anchors, and supported graph relationships. It is not a hand-maintained "
+            "second knowledge graph."
+        ),
+        "",
+    ]
+    if related:
+        for other in related:
+            relative = posixpath.relpath(
+                other["path"], posixpath.dirname(profile["path"])
+            )
+            depth = (
+                "navigation node"
+                if other["maturity"] == "node"
+                else f"{other['maturity']} reference"
+            )
+            lines.append(
+                f"- [{other['title']}]({relative}) — "
+                f"{other['profile_kind']}; {depth}"
+            )
+    else:
+        lines.append("No related Human Reference surface is generated yet.")
+
+    if deferred:
+        lines.extend(["", "### Deliberately deferred anchors", ""])
+        lines.extend(
+            f"- **{title}** — machine authority only; no reader-facing target"
+            for title in deferred
+        )
+
+    lines.extend([NAVIGATION_END, ""])
+    return "\n".join(lines)
 
 
 def render_provenance(profile: dict, data: dict[str, list[dict]]) -> str:
@@ -481,6 +731,27 @@ def render_provenance(profile: dict, data: dict[str, list[dict]]) -> str:
     return "\n".join(lines)
 
 
+def render_stub_shell(profile: dict) -> str:
+    return "\n".join(
+        [
+            f"# {profile['title']}",
+            "",
+            (
+                "> **Navigation node:** this honest stub keeps a meaningful CARTA "
+                "subject discoverable without presenting it as a finished baseline "
+                "reference."
+            ),
+            "",
+            (
+                "The machine graph and generated relationships below provide the current "
+                "orientation. A generous subject-specific enrichment pass is required "
+                "before baseline promotion."
+            ),
+            "",
+        ]
+    )
+
+
 def replace_generated_block(
     text: str,
     block: str,
@@ -505,7 +776,36 @@ def replace_generated_block(
     return text.rstrip() + "\n\n" + block.rstrip() + "\n"
 
 
+def replace_navigation_block(text: str, block: str) -> str:
+    begin_count = text.count(NAVIGATION_BEGIN)
+    end_count = text.count(NAVIGATION_END)
+    if begin_count != end_count or begin_count > 1:
+        raise SystemExit(
+            f"malformed generated block markers: {NAVIGATION_BEGIN} / {NAVIGATION_END}"
+        )
+    if begin_count == 1:
+        start = text.index(NAVIGATION_BEGIN)
+        finish = text.index(NAVIGATION_END, start) + len(NAVIGATION_END)
+        return text[:start] + block.rstrip() + text[finish:]
+
+    insertion = text.find(PROVENANCE_BEGIN)
+    if insertion >= 0:
+        return (
+            text[:insertion].rstrip()
+            + "\n\n"
+            + block.rstrip()
+            + "\n\n"
+            + text[insertion:].lstrip()
+        )
+    return text.rstrip() + "\n\n" + block.rstrip() + "\n"
+
+
 def profile_link(index_path: str, profile: dict) -> str:
+    if not profile.get("path"):
+        return (
+            f"- **{profile['title']}** — "
+            f"`{profile['maturity']}` / `{profile['publication_status']}`"
+        )
     relative = posixpath.relpath(profile["path"], posixpath.dirname(index_path))
     return (
         f"- [{profile['title']}]({relative}) — "
@@ -535,8 +835,20 @@ def render_simple_profile_index(
         if not selected:
             continue
         lines.extend([f"## {heading}", ""])
-        lines.extend(profile_link(path, profile) for profile in selected)
-        lines.append("")
+        surfaced = [profile for profile in selected if profile_has_surface(profile)]
+        machine_only = [
+            profile
+            for profile in selected
+            if profile["publication_status"] == "machine_only"
+        ]
+        if surfaced:
+            lines.extend(["### Human Reference surfaces", ""])
+            lines.extend(profile_link(path, profile) for profile in surfaced)
+            lines.append("")
+        if machine_only:
+            lines.extend(["### Explicit machine-only dispositions", ""])
+            lines.extend(profile_link(path, profile) for profile in machine_only)
+            lines.append("")
     lines.extend(
         [
             INDEX_END,
@@ -590,16 +902,33 @@ def render_wine_index(
             key=lambda profile: (profile["title"].casefold(), profile["id"]),
         )
         wine_name = wine.get("display_name", wine["name"])
-        if governing_profiles:
+        surfaced_profiles = [
+            profile for profile in governing_profiles if profile_has_surface(profile)
+        ]
+        machine_only_profiles = [
+            profile
+            for profile in governing_profiles
+            if profile["publication_status"] == "machine_only"
+        ]
+        if surfaced_profiles:
             links = []
-            for profile in governing_profiles:
+            for profile in surfaced_profiles:
                 relative = posixpath.relpath(
                     profile["path"], posixpath.dirname(path)
                 )
                 links.append(f"[{profile['title']}]({relative})")
             lines.append(f"- **{wine_name}** — " + ", ".join(links))
+        elif machine_only_profiles:
+            dispositions = ", ".join(
+                profile["title"] for profile in machine_only_profiles
+            )
+            lines.append(
+                f"- **{wine_name}** — machine-only / deferred with {dispositions}"
+            )
         else:
-            lines.append(f"- **{wine_name}** — machine node; no governed profile")
+            lines.append(
+                f"- **{wine_name}** — machine node; no Human Reference surface"
+            )
 
     lines.extend(
         [
@@ -714,11 +1043,30 @@ def sync_human_reference(data: dict[str, list[dict]], write: bool) -> None:
         atlas_readme_path.write_text(expected_readme)
         print("UPDATED atlas/README.md")
 
-    for profile in sorted(data["profiles"], key=lambda item: item["path"]):
+    surfaced_profiles = sorted(
+        (profile for profile in data["profiles"] if profile_has_surface(profile)),
+        key=lambda item: item["path"],
+    )
+    for profile in surfaced_profiles:
         path = ROOT / profile["path"]
-        current = path.read_text()
+        if path.exists():
+            current = path.read_text()
+        elif not write:
+            raise SystemExit(
+                f"{profile['id']}: reference path does not exist: {profile['path']}; "
+                "run python scripts/validate_data.py --write-human-reference"
+            )
+        elif profile["publication_status"] == "stub":
+            current = render_stub_shell(profile)
+        else:
+            raise SystemExit(
+                f"{profile['id']}: reference path does not exist: {profile['path']}"
+            )
+        expected = replace_navigation_block(
+            current, render_navigation(profile, data)
+        )
         expected = replace_generated_block(
-            current,
+            expected,
             render_provenance(profile, data),
             PROVENANCE_BEGIN,
             PROVENANCE_END,
@@ -730,12 +1078,15 @@ def sync_human_reference(data: dict[str, list[dict]], write: bool) -> None:
                     f"generated provenance is stale: {profile['path']}; run "
                     "python scripts/validate_data.py --write-human-reference"
                 )
+            path.parent.mkdir(parents=True, exist_ok=True)
             path.write_text(expected)
             print(f"UPDATED {profile['path']}")
 
 
 def validate_atlas_page_governance(data: dict[str, list[dict]]) -> None:
-    governed = {profile["path"] for profile in data["profiles"]}
+    governed = {
+        profile["path"] for profile in data["profiles"] if profile.get("path")
+    }
     atlas_pages = {
         path.relative_to(ROOT).as_posix() for path in (ROOT / "atlas").rglob("*.md")
     }
@@ -812,6 +1163,7 @@ def validate_markdown_links_and_reachability(data: dict[str, list[dict]]) -> Non
     unreachable_profiles = sorted(
         profile["path"]
         for profile in data["profiles"]
+        if profile.get("path")
         if (ROOT / profile["path"]).resolve() not in reachable
     )
     if unreachable_profiles:

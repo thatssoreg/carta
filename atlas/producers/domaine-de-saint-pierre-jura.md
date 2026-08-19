@@ -39,6 +39,22 @@ Domaine de Saint Pierre is anchored to Mathenay and the Jura. No inferred vineya
 
 producer-level current technical documentation · Château Renard blend by vintage · exact parcel sourcing · authoritative Arbois/estate geometry · community-of-practice evidence inside Jura
 
+<!-- BEGIN GENERATED CARTA NAVIGATION -->
+## Explore CARTA
+
+This section is generated from governed profile dispositions, editorial anchors, and supported graph relationships. It is not a hand-maintained second knowledge graph.
+
+- [Arbois AOP](../countries/france/appellations/arbois.md) — appellation; navigation node
+- [Chardonnay](../grapes/chardonnay.md) — grape; navigation node
+- [France](../countries/france/README.md) — country; baseline reference
+- [Savagnin](../grapes/savagnin.md) — grape; navigation node
+- [Domaine Labet](domaine-labet.md) — producer; navigation node
+- [Hiyu Wine Farm](hiyu-wine-farm.md) — producer; baseline reference
+- [Jura](../countries/france/regions/jura.md) — region; navigation node
+- [Louis Michel & Fils](domaine-louis-michel-fils.md) — producer; baseline reference
+- [Scar of the Sea / Bassi Vineyard](scar-of-the-sea.md) — producer; baseline reference
+<!-- END GENERATED CARTA NAVIGATION -->
+
 <!-- BEGIN GENERATED CARTA PROVENANCE -->
 ## Record & provenance
 

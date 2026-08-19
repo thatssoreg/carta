@@ -61,6 +61,20 @@ The core relationship is nearly the reverse: Michel's mentorship is strongly doc
 
 authoritative Les Peyrouses parcel geometry · Cornas AOP boundary overlay · Les Peyrouses red vintage cellar chronology · deeper Robert Michel and Marcel Juge references
 
+<!-- BEGIN GENERATED CARTA NAVIGATION -->
+## Explore CARTA
+
+This section is generated from governed profile dispositions, editorial anchors, and supported graph relationships. It is not a hand-maintained second knowledge graph.
+
+- [Côtes du Rhône AOP](../countries/france/appellations/cotes-du-rhone.md) — appellation; navigation node
+- [Syrah](../grapes/syrah.md) — grape; navigation node
+- [France](../countries/france/README.md) — country; baseline reference
+- [Cornas AOP](../countries/france/appellations/cornas.md) — appellation; navigation node
+- [Arnot-Roberts](arnot-roberts.md) — producer; baseline reference
+- [Domaine Christiane Chambeyron-Manin](domaine-christiane-chambeyron-manin.md) — producer; baseline reference
+- [JONATA](jonata.md) — producer; navigation node
+<!-- END GENERATED CARTA NAVIGATION -->
+
 <!-- BEGIN GENERATED CARTA PROVENANCE -->
 ## Record & provenance
 

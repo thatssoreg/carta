@@ -77,6 +77,19 @@ Côte Brune · Côte-Rôtie · Syrah / Sérine · Ampuis · Chambeyron family hi
 
 Primary CARTA source records include Sacred Thirst Selections, The Wine Trust, and INAO.
 
+<!-- BEGIN GENERATED CARTA NAVIGATION -->
+## Explore CARTA
+
+This section is generated from governed profile dispositions, editorial anchors, and supported graph relationships. It is not a hand-maintained second knowledge graph.
+
+- [Syrah](../grapes/syrah.md) — grape; navigation node
+- [Côte-Rôtie](../countries/france/appellations/cote-rotie.md) — appellation; navigation node
+- [France](../countries/france/README.md) — country; baseline reference
+- [Arnot-Roberts](arnot-roberts.md) — producer; baseline reference
+- [Guillaume Gilles / Les Peyrouses](guillaume-gilles.md) — producer; baseline reference
+- [JONATA](jonata.md) — producer; navigation node
+<!-- END GENERATED CARTA NAVIGATION -->
+
 <!-- BEGIN GENERATED CARTA PROVENANCE -->
 ## Record & provenance
 

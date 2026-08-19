@@ -53,6 +53,17 @@ Carignan in Chile · Lolol · Colchagua Valley · Mathieu Rousseau · VIGNO as a
 
 Primary CARTA source records include Villalobos's own Silvestre technical page, a Les Caves de Pyrene interview with the family, and Cream Wine Company.
 
+<!-- BEGIN GENERATED CARTA NAVIGATION -->
+## Explore CARTA
+
+This section is generated from governed profile dispositions, editorial anchors, and supported graph relationships. It is not a hand-maintained second knowledge graph.
+
+- [Carignan](../grapes/carignan.md) — grape; navigation node
+- [Colchagua Valley](../countries/chile/regions/colchagua-valley.md) — region; navigation node
+- [Chile](../countries/chile/README.md) — country; navigation node
+- [Bodegas Muga / Prado Enea Gran Reserva](bodegas-muga.md) — producer; baseline reference
+<!-- END GENERATED CARTA NAVIGATION -->
+
 <!-- BEGIN GENERATED CARTA PROVENANCE -->
 ## Record & provenance
 

@@ -20,6 +20,7 @@ Maps, graph views, timelines, reference profiles, search, and future AI interfac
 10. **Human readability is required.** A person browsing GitHub should be able to understand CARTA without reading JSONL.
 11. **Human profiles are composite projections.** The ontology may separate person, producer, project, wine, place, and relationship records while one readable reference profile composes the records that belong together for a human reader.
 12. **Discovery does not equal publication.** A valid graph node may remain unpublished as a standalone reference until it meets the Human Reference baseline.
+13. **Projection disposition is explicit.** Every active producer, country, and grape has a governed Human Reference disposition, including deliberate machine-only deferral. Generated navigation links only to canonical profile paths and derives reciprocal discovery from typed graph authority plus governed editorial anchors.
 
 ## Four surfaces of the same system
 
@@ -208,6 +209,8 @@ Profiles use three maturity levels:
 - `deep` — mature dossier depth.
 
 A profile can separately be `queued`, `stub`, `published`, or `deprecated`.
+
+`machine_only` is the explicit no-page disposition. It is valid only at `node` maturity and cannot claim an Atlas path. It prevents important graph populations from disappearing silently while preserving the rule that not every entity deserves a page.
 
 The Human Reference contract defines profile-specific minimums, composite producer behavior, reader-facing geography, representative anchors, sensory/style writing, historical narrative, and the separation of ecosystem discovery from entity enrichment.
 

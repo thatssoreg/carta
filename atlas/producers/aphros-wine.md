@@ -69,6 +69,16 @@ Phaunus label/legal designation · exact source quintas for Phaunus Loureiro · 
 
 Primary CARTA sources include Aphros's current project, quintas, biodynamics, wine-portfolio, and Phaunus Loureiro technical pages, with the Vinhos Verdes regional commission used only for Loureiro/Lima context rather than to manufacture a Phaunus appellation edge.
 
+<!-- BEGIN GENERATED CARTA NAVIGATION -->
+## Explore CARTA
+
+This section is generated from governed profile dispositions, editorial anchors, and supported graph relationships. It is not a hand-maintained second knowledge graph.
+
+- [Lima Valley](../countries/portugal/regions/lima-valley.md) — region; navigation node
+- [Loureiro](../grapes/loureiro.md) — grape; navigation node
+- [Portugal](../countries/portugal/README.md) — country; navigation node
+<!-- END GENERATED CARTA NAVIGATION -->
+
 <!-- BEGIN GENERATED CARTA PROVENANCE -->
 ## Record & provenance
 

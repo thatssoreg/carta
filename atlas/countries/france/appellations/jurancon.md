@@ -65,6 +65,34 @@ Dry wine, organic/biodynamic farming, and renewed attention to local grapes are 
 
 Current legal and historical authority: INAO. Producer anchors draw on specialist references and producer materials.
 
+<!-- BEGIN GENERATED CARTA NAVIGATION -->
+## Explore CARTA
+
+This section is generated from governed profile dispositions, editorial anchors, and supported graph relationships. It is not a hand-maintained second knowledge graph.
+
+- [France](../README.md) — country; baseline reference
+- [Gros Manseng](../../../grapes/gros-manseng.md) — grape; baseline reference
+- [Petit Manseng](../../../grapes/petit-manseng.md) — grape; baseline reference
+- [Béarn](../regions/bearn.md) — region; baseline reference
+- [Petit Courbu](../../../grapes/petit-courbu.md) — grape; baseline reference
+- [Pyrenean Atlantic](../../../ecosystems/pyrenean-atlantic.md) — ecosystem; baseline reference
+- [Beaujolais](../regions/beaujolais.md) — region; navigation node
+- [Cornas AOP](cornas.md) — appellation; navigation node
+- [Côte-Rôtie](cote-rotie.md) — appellation; navigation node
+- [Côtes du Rhône AOP](cotes-du-rhone.md) — appellation; navigation node
+- [Jura](../regions/jura.md) — region; navigation node
+- [Loire Valley](../regions/loire-valley.md) — region; navigation node
+- [Palette AOP](palette.md) — appellation; navigation node
+- [Savoie](../regions/savoie.md) — region; navigation node
+
+### Deliberately deferred anchors
+
+- **Camin Larredya** — machine authority only; no reader-facing target
+- **Clos Uroulat** — machine authority only; no reader-facing target
+- **Domaine Cauhapé** — machine authority only; no reader-facing target
+- **Domaine de Souch** — machine authority only; no reader-facing target
+<!-- END GENERATED CARTA NAVIGATION -->
+
 <!-- BEGIN GENERATED CARTA PROVENANCE -->
 ## Record & provenance
 

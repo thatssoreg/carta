@@ -69,6 +69,24 @@ The most useful current development is not simply “new grapes.” It is a wide
 
 Current legal authority: Gobierno Vasco / Eusko Jaurlaritza and the EU PDO record. Producer/style context uses Spanish Wine Lover, Pellicle, Sager + Wine, and other trade/specialist sources.
 
+<!-- BEGIN GENERATED CARTA NAVIGATION -->
+## Explore CARTA
+
+This section is generated from governed profile dispositions, editorial anchors, and supported graph relationships. It is not a hand-maintained second knowledge graph.
+
+- [Spain](../README.md) — country; baseline reference
+- [Alfredo Egia](../../../producers/alfredo-egia.md) — producer; baseline reference
+- [Courbu](../../../grapes/courbu.md) — grape; baseline reference
+- [Gros Manseng](../../../grapes/gros-manseng.md) — grape; baseline reference
+- [Imanol Garay](../../../producers/imanol-garay.md) — producer; baseline reference
+- [Petit Courbu](../../../grapes/petit-courbu.md) — grape; baseline reference
+- [Petit Manseng](../../../grapes/petit-manseng.md) — grape; baseline reference
+- [Bizkaia](../regions/bizkaia.md) — region; baseline reference
+- [Pyrenean Atlantic](../../../ecosystems/pyrenean-atlantic.md) — ecosystem; baseline reference
+- [Penedès](../regions/penedes.md) — region; navigation node
+- [Ribera del Duero DOP](ribera-del-duero.md) — appellation; navigation node
+<!-- END GENERATED CARTA NAVIGATION -->
+
 <!-- BEGIN GENERATED CARTA PROVENANCE -->
 ## Record & provenance
 

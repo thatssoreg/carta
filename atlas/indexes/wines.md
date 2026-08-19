@@ -8,7 +8,7 @@ Wine identities are persistent machine records. Most are read through a governed
 - **Alenza Gran Reserva** — [Condado de Haza / Alenza Gran Reserva](../producers/condado-de-haza.md)
 - **Arnot-Roberts Clary Ranch Syrah** — [Arnot-Roberts](../producers/arnot-roberts.md)
 - **Ashes & Diamonds Cabernet Franc** — [Ashes & Diamonds / Cabernet Franc](../producers/ashes-and-diamonds.md)
-- **Bastard Negre de les Terrasses del Serral** — machine node; no governed profile
+- **Bastard Negre de les Terrasses del Serral** — [Vins Pepe Raventós](../producers/vins-pepe-raventos.md)
 - **Beâtum Blanco** — [Goyo García Viadero](../producers/goyo-garcia-viadero.md)
 - **Beâtum Tinto** — [Goyo García Viadero](../producers/goyo-garcia-viadero.md)
 - **Caparzo Brunello di Montalcino Vigna La Casa** — [Caparzo](../producers/caparzo.md)
@@ -17,29 +17,32 @@ Wine identities are persistent machine records. Most are read through a governed
 - **Château Simone Blanc** — [Château Simone](../producers/chateau-simone.md)
 - **Clandestinus** — [Imanol Garay](../producers/imanol-garay.md)
 - **Clos Apalta** — [Clos Apalta / Domaines Bournet-Lapostolle](../producers/clos-apalta.md)
-- **Corison Kronos Vineyard Cabernet Sauvignon** — machine node; no governed profile
-- **Corison Napa Valley Cabernet Sauvignon** — machine node; no governed profile
-- **Corison Sunbasket Vineyard Cabernet Sauvignon** — machine node; no governed profile
+- **Corison Kronos Vineyard Cabernet Sauvignon** — [Corison Winery](../producers/corison-winery.md)
+- **Corison Napa Valley Cabernet Sauvignon** — [Corison Winery](../producers/corison-winery.md)
+- **Corison Sunbasket Vineyard Cabernet Sauvignon** — [Corison Winery](../producers/corison-winery.md)
 - **Domaine de Chevillard Apremont** — [Domaine de Chevillard](../producers/domaine-de-chevillard.md)
 - **Domaine Huet Le Haut-Lieu Sec** — [Domaine Huet](../producers/domaine-huet.md)
-- **Domaine Labet Chardonnay du Hasard / Cuvée du Hasard** — machine node; no governed profile
-- **Domaine Labet Fleur de Savagnin** — machine node; no governed profile
-- **Domaine Labet La Bardette Chardonnay** — machine node; no governed profile
+- **Domaine Labet Chardonnay du Hasard / Cuvée du Hasard** — [Domaine Labet](../producers/domaine-labet.md)
+- **Domaine Labet Fleur de Savagnin** — [Domaine Labet](../producers/domaine-labet.md)
+- **Domaine Labet La Bardette Chardonnay** — [Domaine Labet](../producers/domaine-labet.md)
 - **Domaine Marcel Lapierre Morgon** — [Domaine Marcel Lapierre](../producers/domaine-marcel-lapierre.md)
 - **Egia Enea** — [Alfredo Egia](../producers/alfredo-egia.md)
-- **Eruptio Arinto dos Açores** — machine node; no governed profile
+- **Eruptio Arinto dos Açores** — [Eruptio](../producers/eruptio.md)
 - **Guillaume Gilles Les Peyrouses Côtes du Rhône Rouge** — [Guillaume Gilles / Les Peyrouses](../producers/guillaume-gilles.md)
 - **Hofgut Falkenstein Niedermenniger Sonnenberg Riesling Kabinett trocken** — [Hofgut Falkenstein](../producers/hofgut-falkenstein.md)
 - **Ixilune** — [Imanol Garay](../producers/imanol-garay.md)
 - **Izaki** — [Alfredo Egia](../producers/alfredo-egia.md)
-- **Keller Riesling Kabinett limestone** — machine node; no governed profile
-- **Keller Riesling limestone** — machine node; no governed profile
-- **Keller Riesling RR** — machine node; no governed profile
+- **JONATA Todos** — [JONATA](../producers/jonata.md)
+- **Keller Riesling Kabinett limestone** — [Weingut Keller](../producers/weingut-keller.md)
+- **Keller Riesling limestone** — [Weingut Keller](../producers/weingut-keller.md)
+- **Keller Riesling RR** — [Weingut Keller](../producers/weingut-keller.md)
 - **La Altannativa** — [Imanol Garay](../producers/imanol-garay.md)
+- **Le Brin de Chèvre** — [Clos du Tue-Boeuf](../producers/clos-du-tue-boeuf.md)
 - **Le Petit Clos** — [Clos Apalta / Domaines Bournet-Lapostolle](../producers/clos-apalta.md)
 - **Les Noëls de Montbenault** — [Richard Leroy](../producers/richard-leroy.md)
 - **Les Rouliers** — [Richard Leroy](../producers/richard-leroy.md)
 - **Lexardi** — [Alfredo Egia](../producers/alfredo-egia.md)
+- **Listrão dos Profetas** — [Companhia de Vinhos dos Profetas e dos Villões](../producers/companhia-vinhos-profetas-villoes.md)
 - **Louis Michel & Fils Chablis Grand Cru Vaudésir** — [Louis Michel & Fils](../producers/domaine-louis-michel-fils.md)
 - **Muga Prado Enea Gran Reserva** — [Bodegas Muga / Prado Enea Gran Reserva](../producers/bodegas-muga.md)
 - **Phaunus Loureiro** — [Aphros Wine / Phaunus](../producers/aphros-wine.md)
@@ -48,8 +51,9 @@ Wine identities are persistent machine records. Most are read through a governed
 - **Rudi Pichler Riesling Hochrain Smaragd** — [Weingut Rudi Pichler](../producers/weingut-rudi-pichler.md)
 - **Saguzara** — [Imanol Garay](../producers/imanol-garay.md)
 - **Scar of the Sea Bassi Vineyard Chardonnay** — [Scar of the Sea / Bassi Vineyard](../producers/scar-of-the-sea.md)
-- **The Flor of Evangelho** — machine node; no governed profile
+- **The Flor of Evangelho** — [Soleras del Pacífico](../producers/soleras-del-pacifico.md)
 - **Tzum Moon Hill Farm / Columbia Gorge White** — [Hiyu Wine Farm](../producers/hiyu-wine-farm.md)
+- **Vinho da Corda dos Profetas** — [Companhia de Vinhos dos Profetas e dos Villões](../producers/companhia-vinhos-profetas-villoes.md)
 - **Viña Gravonia Blanco** — [R. López de Heredia Viña Tondonia](../producers/lopez-de-heredia-vina-tondonia.md)
 - **Viñedo Silvestre Carignan** — [Villalobos](../producers/villalobos.md)
 
