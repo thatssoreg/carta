@@ -9,6 +9,7 @@ The machine graph and generated relationships below provide the current orientat
 
 This section is generated from governed profile dispositions, editorial anchors, and supported graph relationships. It is not a hand-maintained second knowledge graph.
 
+- [Domaine Carrel & Senger / Jongieux Blanc](../producers/domaine-carrel-senger.md) — producer; navigation node
 - [Domaine de Chevillard](../producers/domaine-de-chevillard.md) — producer; baseline reference
 <!-- END GENERATED CARTA NAVIGATION -->
 
@@ -32,13 +33,19 @@ This section is generated from CARTA machine authority. Edit the governed record
 
 | Claim | Layer / observed | Status | Confidence | Sources |
 |---|---|---|---|---|
+| `claim:carrel-jongieux-blanc-09` | `reference / —` | `supported` | `high` | `source:carrel-jongieux-product`, `source:inao-vin-de-savoie-2019` |
 | `claim:chevillard-apremont` | `reference / —` | `supported` | `high` | `source:chevillard-wines` |
 | `claim:chevillard-local-grapes` | `reference / —` | `supported` | `high` | `source:chevillard-domaine`, `source:chevillard-wines` |
+| `claim:jacquere-roussette-hazard-09` | `reference / —` | `supported` | `high` | `source:vivc-jacquere-5604`, `source:vivc-altesse-354`, `source:inao-vin-de-savoie-2019` |
 
 ### Sources
 
+- `source:carrel-jongieux-product` — Jongieux blanc
 - `source:chevillard-domaine` — Le domaine | Domaine de Chevillard
 - `source:chevillard-wines` — Nos vins | Domaine de Chevillard
+- `source:inao-vin-de-savoie-2019` — Cahier des charges AOC Vin de Savoie
+- `source:vivc-altesse-354` — VIVC passport — Altesse
+- `source:vivc-jacquere-5604` — VIVC passport — Jacquère
 
 </details>
 

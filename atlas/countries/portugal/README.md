@@ -21,6 +21,8 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [Companhia de Vinhos dos Profetas e dos Villões](../../producers/companhia-vinhos-profetas-villoes.md) — producer; navigation node
 - [Eruptio](../../producers/eruptio.md) — producer; navigation node
 - [Madeirense DOP](appellations/madeirense-dop.md) — appellation; navigation node
+- [Natus Vini / Intus](../../producers/natus-vini.md) — producer; navigation node
+- [Trincadeira](../../grapes/trincadeira.md) — grape; navigation node
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->

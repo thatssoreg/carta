@@ -71,6 +71,7 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [France](../countries/france/README.md) — country; baseline reference
 - [Cornas AOP](../countries/france/appellations/cornas.md) — appellation; navigation node
 - [Arnot-Roberts](arnot-roberts.md) — producer; baseline reference
+- [Aurélien & Charlotte Houillon](domaine-houillon.md) — producer; navigation node
 - [Domaine Christiane Chambeyron-Manin](domaine-christiane-chambeyron-manin.md) — producer; baseline reference
 - [JONATA](jonata.md) — producer; navigation node
 - [Pax Wines](pax-wines.md) — producer; navigation node

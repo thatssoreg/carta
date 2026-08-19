@@ -65,6 +65,7 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [Tempranillo](../grapes/tempranillo.md) — grape; navigation node
 - [Spain](../countries/spain/README.md) — country; baseline reference
 - [Bodegas Muga / Prado Enea Gran Reserva](bodegas-muga.md) — producer; baseline reference
+- [Natus Vini / Intus](natus-vini.md) — producer; navigation node
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->

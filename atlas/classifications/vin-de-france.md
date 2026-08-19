@@ -12,8 +12,16 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [Clos du Tue-Boeuf](../producers/clos-du-tue-boeuf.md) — producer; navigation node
 - [Menu Pineau / Orbois](../grapes/menu-pineau.md) — grape; navigation node
 - [France](../countries/france/README.md) — country; baseline reference
+- [Aurélien & Charlotte Houillon](../producers/domaine-houillon.md) — producer; navigation node
+- [Domaine Lampyres / Harvest Moon](../producers/domaine-lampyres.md) — producer; navigation node
 - [François Blanchard / Le Grand Cléré](../producers/le-grand-clere.md) — producer; navigation node
+- [Prieuré Saint-Jean de Bébian / Tartuguier](../producers/prieure-saint-jean-de-bebian.md) — producer; navigation node
+- [Vindiou / Cœur Fidèle](../producers/vindiou.md) — producer; navigation node
 - [Loire Valley](../countries/france/regions/loire-valley.md) — region; navigation node
+- [Côtes du Rhône AOP](../countries/france/appellations/cotes-du-rhone.md) — appellation; navigation node
+- [Dureza](../grapes/dureza.md) — grape; navigation node
+- [Mourvèdre](../grapes/mourvedre.md) — grape; navigation node
+- [Syrah](../grapes/syrah.md) — grape; navigation node
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->
@@ -43,19 +51,29 @@ This section is generated from CARTA machine authority. Edit the governed record
 | Claim | Layer / observed | Status | Confidence | Sources |
 |---|---|---|---|---|
 | `claim:a-table-2022-identity` | `reference / —` | `supported` | `high` | `source:blanchard-nichifutsu-2024`, `source:blanchard-vins-sains`, `source:franceagrimer-vsig` |
+| `claim:bebian-tartuguier-vdf-09` | `reference / —` | `supported` | `medium` | `source:bebian-rezin-tartuguier` |
 | `claim:brin-vin-de-france` | `reference / 2026-08-18` | `supported` | `high` | `source:bowler-brin-chevre-2024`, `source:inao-cheverny-blanc` |
+| `claim:houillon-canne-2022-09` | `reference / —` | `provisional` | `low` | `source:houillon-essentia-2022` |
+| `claim:lampyres-harvest-moon-2023-09` | `reference / —` | `supported` | `medium` | `source:lampyres-terres-blanches` |
+| `claim:lampyres-harvest-moon-2024-09` | `reference / —` | `supported` | `medium` | `source:lampyres-terres-blanches` |
+| `claim:vindiou-coeur-fidele-2024-09` | `reference / —` | `supported` | `medium` | `source:vindiou-coeur-fidele-2024`, `source:vindiou-first-party` |
 
 ### Sources
 
+- `source:bebian-rezin-tartuguier` — Vin de France rouge Tartuguier
 - `source:blanchard-nichifutsu-2024` — August 2024 wine catalog — Domaine Grand Cléré / A Table !
 - `source:blanchard-vins-sains` — François Blanchard — Boisson Vivante — Loire
 - `source:bowler-brin-chevre-2024` — VDF Le Brin de Chèvre (Menu Pineau) 2024
 - `source:franceagrimer-vsig` — Les Vins Sans Indication Géographique (VSIG)
+- `source:houillon-essentia-2022` — Domaine Houillon Canne 2022
 - `source:inao-cheverny-blanc` — Cheverny blanc
+- `source:lampyres-terres-blanches` — Lampyres
+- `source:vindiou-coeur-fidele-2024` — Vindiou Cœur Fidèle 2024
+- `source:vindiou-first-party` — Vindiou
 
 </details>
 
 ### Open questions
 
-- None recorded.
+- `claim:houillon-canne-2022-09` — Verify the 2022 bottle or producer technical sheet before closing composition and legal category.
 <!-- END GENERATED CARTA PROVENANCE -->

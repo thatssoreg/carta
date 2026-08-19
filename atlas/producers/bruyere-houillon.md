@@ -1,4 +1,4 @@
-# Altesse
+# Renaud Bruyère & Adeline Houillon
 
 > **Navigation node:** this honest stub keeps a meaningful CARTA subject discoverable without presenting it as a finished baseline reference.
 
@@ -9,8 +9,9 @@ The machine graph and generated relationships below provide the current orientat
 
 This section is generated from governed profile dispositions, editorial anchors, and supported graph relationships. It is not a hand-maintained second knowledge graph.
 
-- [Domaine Carrel & Senger / Jongieux Blanc](../producers/domaine-carrel-senger.md) — producer; navigation node
-- [Domaine de Chevillard](../producers/domaine-de-chevillard.md) — producer; baseline reference
+- [Aurélien & Charlotte Houillon](domaine-houillon.md) — producer; navigation node
+- [France](../countries/france/README.md) — country; baseline reference
+- [Jura](../countries/france/regions/jura.md) — region; navigation node
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->
@@ -18,13 +19,20 @@ This section is generated from governed profile dispositions, editorial anchors,
 
 This section is generated from CARTA machine authority. Edit the governed records, then run `python scripts/validate_data.py --write-human-reference`.
 
-- **Profile:** `profile:altesse`
+- **Profile:** `profile:bruyere-houillon`
 - **Maturity / publication:** `node` / `stub`
-- **Primary entity:** `grape:altesse`
+- **Primary entity:** `producer:bruyere-houillon`
 
 **Component entities**
 
-- `grape:altesse`
+- `producer:bruyere-houillon`
+- `person:adeline-houillon`
+
+**Representative anchors**
+
+- `place:jura`
+- `person:aurelien-houillon`
+- `producer:domaine-houillon`
 
 <details>
 <summary>Machine claims and sources</summary>
@@ -33,16 +41,17 @@ This section is generated from CARTA machine authority. Edit the governed record
 
 | Claim | Layer / observed | Status | Confidence | Sources |
 |---|---|---|---|---|
-| `claim:chevillard-local-grapes` | `reference / —` | `supported` | `high` | `source:chevillard-domaine`, `source:chevillard-wines` |
+| `claim:houillon-family-disambiguation-09` | `reference / —` | `supported` | `high` | `source:houillon-vine-trail`, `source:overnoy-louis-dressner`, `source:bruyere-houillon-zrs` |
 
 ### Sources
 
-- `source:chevillard-domaine` — Le domaine | Domaine de Chevillard
-- `source:chevillard-wines` — Nos vins | Domaine de Chevillard
+- `source:bruyere-houillon-zrs` — Renaud Bruyère & Adeline Houillon
+- `source:houillon-vine-trail` — Aurélien & Charlotte Houillon
+- `source:overnoy-louis-dressner` — Pierre Overnoy / Emmanuel Houillon producer profile
 
 </details>
 
 ### Open questions
 
-- None recorded.
+- Build the Bruyère-Houillon producer world from first-party and specialist evidence before baseline promotion
 <!-- END GENERATED CARTA PROVENANCE -->

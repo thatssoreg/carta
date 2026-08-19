@@ -12,7 +12,11 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [Vin de France](../classifications/vin-de-france.md) — classification; navigation node
 - [Loire Valley](../countries/france/regions/loire-valley.md) — region; navigation node
 - [France](../countries/france/README.md) — country; baseline reference
+- [Aurélien & Charlotte Houillon](domaine-houillon.md) — producer; navigation node
 - [Clos du Tue-Boeuf](clos-du-tue-boeuf.md) — producer; navigation node
+- [Domaine Lampyres / Harvest Moon](domaine-lampyres.md) — producer; navigation node
+- [Prieuré Saint-Jean de Bébian / Tartuguier](prieure-saint-jean-de-bebian.md) — producer; navigation node
+- [Vindiou / Cœur Fidèle](vindiou.md) — producer; navigation node
 
 ### Deliberately deferred anchors
 
@@ -53,12 +57,14 @@ This section is generated from CARTA machine authority. Edit the governed record
 |---|---|---|---|---|
 | `claim:a-table-2022-cellar` | `reference / —` | `supported` | `medium` | `source:blanchard-nichifutsu-2024`, `source:blanchard-vins-sains` |
 | `claim:a-table-2022-identity` | `reference / —` | `supported` | `high` | `source:blanchard-nichifutsu-2024`, `source:blanchard-vins-sains`, `source:franceagrimer-vsig` |
+| `claim:blanchard-ecocert-control-09` | `reference / —` | `supported` | `medium` | `source:blanchard-first-party-09`, `source:blanchard-vins-sains` |
 | `claim:blanchard-farming` | `reference / 2026-08-19` | `supported` | `medium` | `source:blanchard-vins-sains` |
 | `claim:blanchard-grand-clere-site` | `reference / —` | `supported` | `high` | `source:blanchard-vins-sains` |
 | `claim:blanchard-producer-identity` | `reference / —` | `supported` | `high` | `source:blanchard-vins-sains`, `source:blanchard-nichifutsu-2024` |
 
 ### Sources
 
+- `source:blanchard-first-party-09` — Le Grand-Cléré
 - `source:blanchard-nichifutsu-2024` — August 2024 wine catalog — Domaine Grand Cléré / A Table !
 - `source:blanchard-vins-sains` — François Blanchard — Boisson Vivante — Loire
 - `source:franceagrimer-vsig` — Les Vins Sans Indication Géographique (VSIG)
@@ -70,6 +76,7 @@ This section is generated from CARTA machine authority. Edit the governed record
 - Reconcile the producer's preferred canonical public label over time
 - Verify Ecocert certificate scope and dates from certificate-level evidence
 - Do not assign Touraine appellation containment without official parcel evidence
+- `claim:blanchard-ecocert-control-09` — Certificate number and exact certification dates remain open.
 - `claim:blanchard-farming` — Seek the Ecocert certificate or certificate directory before assigning certification dates or scope beyond the association member declaration.
 - `claim:blanchard-producer-identity` — Le Grand Cléré is retained as the canonical producer display name while Domaine Grand Cléré and Boisson Vivante remain sourced trade/name forms rather than separate producers.
 <!-- END GENERATED CARTA PROVENANCE -->

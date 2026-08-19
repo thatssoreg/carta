@@ -7,6 +7,7 @@ Governed grape profiles, including honest stubs, are listed here.
 
 ### Human Reference surfaces
 
+- [Aligoté](../grapes/aligote.md) — `node` / `stub`
 - [Altesse](../grapes/altesse.md) — `node` / `stub`
 - [Arinto dos Açores](../grapes/arinto-dos-acores.md) — `node` / `stub`
 - [Arriloba](../grapes/arriloba.md) — `node` / `stub`
@@ -18,6 +19,7 @@ Governed grape profiles, including honest stubs, are listed here.
 - [Chenin Blanc](../grapes/chenin-blanc.md) — `node` / `stub`
 - [Clairette](../grapes/clairette.md) — `node` / `stub`
 - [Courbu](../grapes/courbu.md) — `baseline` / `published`
+- [Dureza](../grapes/dureza.md) — `node` / `stub`
 - [Folgasão](../grapes/folgasao.md) — `node` / `stub`
 - [Gamay noir à jus blanc](../grapes/gamay-noir-a-jus-blanc.md) — `node` / `stub`
 - [Glera](../grapes/glera.md) — `node` / `stub`
@@ -39,6 +41,7 @@ Governed grape profiles, including honest stubs, are listed here.
 - [Savagnin](../grapes/savagnin.md) — `node` / `stub`
 - [Syrah](../grapes/syrah.md) — `node` / `stub`
 - [Tempranillo](../grapes/tempranillo.md) — `node` / `stub`
+- [Trincadeira](../grapes/trincadeira.md) — `node` / `stub`
 - [Viura](../grapes/viura.md) — `node` / `stub`
 
 ### Explicit machine-only dispositions

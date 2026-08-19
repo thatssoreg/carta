@@ -1,0 +1,52 @@
+{"id":"producer:domaine-houillon","layer":"reference","name":"Domaine Houillon","status":"active","type":"producer"}
+{"id":"person:aurelien-houillon","layer":"reference","name":"Aurélien Houillon","status":"active","type":"person"}
+{"id":"person:charlotte-houillon","layer":"reference","name":"Charlotte Houillon","status":"active","type":"person"}
+{"id":"producer:maison-pierre-overnoy","layer":"reference","name":"Maison Pierre Overnoy / Emmanuel Houillon","status":"active","type":"producer"}
+{"id":"person:emmanuel-houillon","layer":"reference","name":"Emmanuel Houillon","status":"active","type":"person"}
+{"id":"person:pierre-overnoy","layer":"reference","name":"Pierre Overnoy","status":"historical","type":"person"}
+{"id":"producer:bruyere-houillon","layer":"reference","name":"Renaud Bruyère & Adeline Houillon","status":"active","type":"producer"}
+{"id":"person:adeline-houillon","layer":"reference","name":"Adeline Houillon","status":"active","type":"person"}
+{"id":"wine:domaine-houillon-canne","layer":"reference","name":"Domaine Houillon Canne","status":"active","type":"wine"}
+{"id":"place:faucon","layer":"reference","name":"Faucon","place_kind":"municipality","status":"active","type":"place"}
+{"id":"producer:burgess-cellars","layer":"reference","name":"Burgess Cellars","status":"active","type":"producer"}
+{"id":"person:tom-burgess","layer":"reference","name":"Tom Burgess","status":"historical","type":"person"}
+{"id":"person:meghan-zobeck","layer":"reference","name":"Meghan Zobeck","status":"active","type":"person"}
+{"id":"person:reid-griggs","layer":"reference","name":"Reid Griggs","status":"active","type":"person"}
+{"id":"wine:burgess-promiscua","layer":"reference","name":"Burgess Promiscua","status":"active","type":"wine"}
+{"id":"institution:lawrence-wine-estates","layer":"reference","name":"Lawrence Wine Estates","status":"active","type":"institution"}
+{"id":"institution:demeine-estates","layer":"reference","name":"Demeine Estates","status":"active","type":"institution"}
+{"id":"producer:natus-vini","layer":"reference","name":"Natus Vini","status":"active","type":"producer"}
+{"id":"person:hamilton-reis","layer":"reference","name":"Hamilton Reis","status":"active","type":"person"}
+{"id":"wine:natus-intus-tinto","layer":"reference","name":"Natus Vini Intus Tinto","status":"active","type":"wine"}
+{"id":"place:alentejo","layer":"reference","name":"Alentejo","place_kind":"wine_region","status":"active","type":"place"}
+{"id":"place:vidigueira","layer":"reference","name":"Vidigueira","place_kind":"municipality","status":"active","type":"place"}
+{"id":"appellation:alentejano-ig","layer":"reference","name":"Alentejano IG","status":"active","type":"appellation"}
+{"id":"grape:trincadeira","layer":"reference","name":"Trincadeira","status":"active","type":"grape"}
+{"id":"producer:prieure-saint-jean-de-bebian","layer":"reference","name":"Prieuré Saint-Jean de Bébian","status":"active","type":"producer"}
+{"id":"wine:bebian-tartuguier","layer":"reference","name":"Prieuré Saint-Jean de Bébian Tartuguier","status":"active","type":"wine"}
+{"id":"place:pezenas","layer":"reference","name":"Pézenas","place_kind":"municipality","status":"active","type":"place"}
+{"id":"geofeature:tartuguier","layer":"reference","name":"Tartuguier","status":"active","type":"geographic_feature"}
+{"id":"institution:williams-corner-wine","layer":"reference","name":"Williams Corner Wine","status":"active","type":"institution"}
+{"id":"producer:domaine-carrel-senger","layer":"reference","name":"Domaine Carrel & Senger","status":"active","type":"producer"}
+{"id":"person:olivier-carrel","layer":"reference","name":"Olivier Carrel","status":"active","type":"person"}
+{"id":"person:thomas-senger","layer":"reference","name":"Thomas Senger","status":"active","type":"person"}
+{"id":"wine:carrel-senger-jongieux-blanc","layer":"reference","name":"Domaine Carrel & Senger Jongieux Blanc","status":"active","type":"wine"}
+{"id":"place:jongieux","layer":"reference","name":"Jongieux","place_kind":"municipality","status":"active","type":"place"}
+{"id":"appellation:vin-de-savoie-jongieux","layer":"reference","name":"Vin de Savoie / Savoie — Jongieux","status":"active","type":"appellation"}
+{"id":"producer:domaine-lampyres","layer":"reference","name":"Domaine Lampyres","status":"active","type":"producer"}
+{"id":"person:francois-xavier-daure","layer":"reference","name":"François-Xavier Dauré","status":"active","type":"person"}
+{"id":"wine:lampyres-harvest-moon","layer":"reference","name":"Domaine Lampyres Harvest Moon","status":"active","type":"wine"}
+{"id":"place:espira-de-lagly","layer":"reference","name":"Espira-de-l'Agly","place_kind":"municipality","status":"active","type":"place"}
+{"id":"institution:terres-blanches","layer":"reference","name":"Terres Blanches","status":"active","type":"institution"}
+{"id":"producer:vindiou","layer":"reference","name":"Vindiou","status":"active","type":"producer"}
+{"id":"person:thomas-junique","layer":"reference","name":"Thomas Junique","status":"active","type":"person"}
+{"id":"person:cyprien-de-lageneste","layer":"reference","name":"Cyprien De Lageneste","status":"active","type":"person"}
+{"id":"wine:vindiou-coeur-fidele","layer":"reference","name":"Vindiou Cœur Fidèle","status":"active","type":"wine"}
+{"id":"place:plats","layer":"reference","name":"Plats","place_kind":"municipality","status":"active","type":"place"}
+{"id":"grape:dureza","layer":"reference","name":"Dureza","status":"active","type":"grape"}
+{"id":"producer:numa-cornut","layer":"reference","name":"Numa Cornut","status":"active","type":"producer"}
+{"id":"person:numa-cornut","layer":"reference","name":"Numa Cornut","status":"active","type":"person"}
+{"id":"wine:numa-cornut-bourgogne-aligote","layer":"reference","name":"Numa Cornut Bourgogne Aligoté","status":"active","type":"wine"}
+{"id":"place:burgundy","layer":"reference","name":"Burgundy","place_kind":"wine_region","status":"active","type":"place"}
+{"id":"appellation:bourgogne-aligote","layer":"reference","name":"Bourgogne Aligoté AOC","status":"active","type":"appellation"}
+{"id":"grape:aligote","layer":"reference","name":"Aligoté","status":"active","type":"grape"}

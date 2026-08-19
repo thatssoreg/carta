@@ -59,6 +59,7 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [Cabernet Franc](../grapes/cabernet-franc.md) — grape; navigation node
 - [Cabernet Sauvignon](../grapes/cabernet-sauvignon.md) — grape; navigation node
 - [Ashes & Diamonds / Cabernet Franc](ashes-and-diamonds.md) — producer; baseline reference
+- [Burgess Cellars / Promiscua](burgess-cellars.md) — producer; navigation node
 - [Colchagua Valley](../countries/chile/regions/colchagua-valley.md) — region; navigation node
 - [Corison Winery](corison-winery.md) — producer; navigation node
 - [JONATA](jonata.md) — producer; navigation node

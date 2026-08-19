@@ -13,6 +13,7 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [California](../countries/united-states/regions/california.md) — region; navigation node
 - [United States](../countries/united-states/README.md) — country; navigation node
 - [Arnot-Roberts](arnot-roberts.md) — producer; baseline reference
+- [Aurélien & Charlotte Houillon](domaine-houillon.md) — producer; navigation node
 - [Domaine Christiane Chambeyron-Manin](domaine-christiane-chambeyron-manin.md) — producer; baseline reference
 - [Guillaume Gilles / Les Peyrouses](guillaume-gilles.md) — producer; baseline reference
 - [JONATA](jonata.md) — producer; navigation node

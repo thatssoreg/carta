@@ -1,4 +1,4 @@
-# Altesse
+# Trincadeira
 
 > **Navigation node:** this honest stub keeps a meaningful CARTA subject discoverable without presenting it as a finished baseline reference.
 
@@ -9,8 +9,9 @@ The machine graph and generated relationships below provide the current orientat
 
 This section is generated from governed profile dispositions, editorial anchors, and supported graph relationships. It is not a hand-maintained second knowledge graph.
 
-- [Domaine Carrel & Senger / Jongieux Blanc](../producers/domaine-carrel-senger.md) — producer; navigation node
-- [Domaine de Chevillard](../producers/domaine-de-chevillard.md) — producer; baseline reference
+- [Natus Vini / Intus](../producers/natus-vini.md) — producer; navigation node
+- [Portugal](../countries/portugal/README.md) — country; navigation node
+- [Tempranillo](tempranillo.md) — grape; navigation node
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->
@@ -18,13 +19,19 @@ This section is generated from governed profile dispositions, editorial anchors,
 
 This section is generated from CARTA machine authority. Edit the governed records, then run `python scripts/validate_data.py --write-human-reference`.
 
-- **Profile:** `profile:altesse`
+- **Profile:** `profile:trincadeira`
 - **Maturity / publication:** `node` / `stub`
-- **Primary entity:** `grape:altesse`
+- **Primary entity:** `grape:trincadeira`
 
 **Component entities**
 
-- `grape:altesse`
+- `grape:trincadeira`
+
+**Representative anchors**
+
+- `producer:natus-vini`
+- `wine:natus-intus-tinto`
+- `place:portugal`
 
 <details>
 <summary>Machine claims and sources</summary>
@@ -33,16 +40,18 @@ This section is generated from CARTA machine authority. Edit the governed record
 
 | Claim | Layer / observed | Status | Confidence | Sources |
 |---|---|---|---|---|
-| `claim:chevillard-local-grapes` | `reference / —` | `supported` | `high` | `source:chevillard-domaine`, `source:chevillard-wines` |
+| `claim:natus-intus-tinto-grapes-09` | `reference / —` | `supported` | `medium` | `source:natus-intus-trade`, `source:vivc-tempranillo-12350`, `source:vivc-trincadeira-15685` |
+| `claim:trincadeira-tinta-amarela-name-09` | `reference / —` | `supported` | `high` | `source:vivc-trincadeira-15685` |
 
 ### Sources
 
-- `source:chevillard-domaine` — Le domaine | Domaine de Chevillard
-- `source:chevillard-wines` — Nos vins | Domaine de Chevillard
+- `source:natus-intus-trade` — Natus Vini Intus Tinto
+- `source:vivc-tempranillo-12350` — VIVC passport — Tempranillo
+- `source:vivc-trincadeira-15685` — VIVC passport — Trincadeira
 
 </details>
 
 ### Open questions
 
-- None recorded.
+- Build a primary ampelographic baseline and jurisdictional name map beyond the Tinta Amarela synonym
 <!-- END GENERATED CARTA PROVENANCE -->
