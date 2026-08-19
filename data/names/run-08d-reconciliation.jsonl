@@ -1,0 +1,3 @@
+{"claim_ids":["claim:blanchard-producer-identity"],"entity_id":"producer:le-grand-clere","id":"name:le-grand-clere-domaine-grand-clere","kind":"trade_name","layer":"reference","name":"Domaine Grand Cléré","status":"supported"}
+{"claim_ids":["claim:blanchard-producer-identity"],"entity_id":"producer:le-grand-clere","id":"name:le-grand-clere-boisson-vivante","kind":"trade_name","layer":"reference","name":"Boisson Vivante","status":"supported"}
+{"claim_ids":["claim:pinot-noir-spatburgunder-name-08d"],"entity_id":"grape:pinot-noir","id":"name:pinot-noir-spatburgunder","jurisdiction_ref":"place:germany","kind":"local_name","language":"de","layer":"reference","name":"Spätburgunder","status":"supported"}
