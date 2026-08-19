@@ -5,14 +5,19 @@ Wine identities are persistent machine records. Most are read through a governed
 <!-- BEGIN GENERATED CARTA INDEX -->
 ## Wines in governed composite profiles
 
+- **A.J. Adam Dhroner Hofberg Riesling Kabinett** — machine node; no Human Reference surface
 - **Alenza Gran Reserva** — [Condado de Haza / Alenza Gran Reserva](../producers/condado-de-haza.md)
+- **Anika Grenache Coteaux de Clair** — machine node; no Human Reference surface
+- **Anika Mourvèdre Enz Vineyard** — machine node; no Human Reference surface
 - **Arnot-Roberts Clary Ranch Syrah** — [Arnot-Roberts](../producers/arnot-roberts.md)
 - **Ashes & Diamonds Cabernet Franc** — [Ashes & Diamonds / Cabernet Franc](../producers/ashes-and-diamonds.md)
 - **Bastard Negre de les Terrasses del Serral** — [Vins Pepe Raventós](../producers/vins-pepe-raventos.md)
 - **Beâtum Blanco** — [Goyo García Viadero](../producers/goyo-garcia-viadero.md)
 - **Beâtum Tinto** — [Goyo García Viadero](../producers/goyo-garcia-viadero.md)
 - **Caparzo Brunello di Montalcino Vigna La Casa** — [Caparzo](../producers/caparzo.md)
+- **Casa Coste Piane Valdobbiadene Prosecco DOCG Frizzante…Naturalmente** — machine node; no Human Reference surface
 - **Chambeyron-Manin Côte-Rôtie** — [Domaine Christiane Chambeyron-Manin](../producers/domaine-christiane-chambeyron-manin.md)
+- **Château d'Auvernier L'Œil de Perdrix Sélection Tradition** — machine node; no Human Reference surface
 - **Château Renard** — [Domaine de Saint Pierre / Château Renard](../producers/domaine-de-saint-pierre-jura.md)
 - **Château Simone Blanc** — [Château Simone](../producers/chateau-simone.md)
 - **Clandestinus** — [Imanol Garay](../producers/imanol-garay.md)
@@ -20,7 +25,9 @@ Wine identities are persistent machine records. Most are read through a governed
 - **Corison Kronos Vineyard Cabernet Sauvignon** — [Corison Winery](../producers/corison-winery.md)
 - **Corison Napa Valley Cabernet Sauvignon** — [Corison Winery](../producers/corison-winery.md)
 - **Corison Sunbasket Vineyard Cabernet Sauvignon** — [Corison Winery](../producers/corison-winery.md)
+- **COS Pithos Rosso** — machine node; no Human Reference surface
 - **Domaine de Chevillard Apremont** — [Domaine de Chevillard](../producers/domaine-de-chevillard.md)
+- **Domaine de la Tournelle Fleur de Savagnin** — machine node; no Human Reference surface
 - **Domaine Huet Le Haut-Lieu Sec** — [Domaine Huet](../producers/domaine-huet.md)
 - **Domaine Labet Chardonnay du Hasard / Cuvée du Hasard** — [Domaine Labet](../producers/domaine-labet.md)
 - **Domaine Labet Fleur de Savagnin** — [Domaine Labet](../producers/domaine-labet.md)
@@ -44,7 +51,9 @@ Wine identities are persistent machine records. Most are read through a governed
 - **Lexardi** — [Alfredo Egia](../producers/alfredo-egia.md)
 - **Listrão dos Profetas** — [Companhia de Vinhos dos Profetas e dos Villões](../producers/companhia-vinhos-profetas-villoes.md)
 - **Louis Michel & Fils Chablis Grand Cru Vaudésir** — [Louis Michel & Fils](../producers/domaine-louis-michel-fils.md)
+- **Maçanita Branco Reserva** — machine node; no Human Reference surface
 - **Muga Prado Enea Gran Reserva** — [Bodegas Muga / Prado Enea Gran Reserva](../producers/bodegas-muga.md)
+- **Pax Syrah, North Coast** — machine node; no Human Reference surface
 - **Phaunus Loureiro** — [Aphros Wine / Phaunus](../producers/aphros-wine.md)
 - **Phelan Farm Mondeuse** — [Phelan Farm](../producers/phelan-farm.md)
 - **Rebel Rebel** — [Alfredo Egia](../producers/alfredo-egia.md)
@@ -56,6 +65,7 @@ Wine identities are persistent machine records. Most are read through a governed
 - **Vinho da Corda dos Profetas** — [Companhia de Vinhos dos Profetas e dos Villões](../producers/companhia-vinhos-profetas-villoes.md)
 - **Viña Gravonia Blanco** — [R. López de Heredia Viña Tondonia](../producers/lopez-de-heredia-vina-tondonia.md)
 - **Viñedo Silvestre Carignan** — [Villalobos](../producers/villalobos.md)
+- **Wasenhaus Spätburgunder** — machine node; no Human Reference surface
 
 <!-- END GENERATED CARTA INDEX -->
 
