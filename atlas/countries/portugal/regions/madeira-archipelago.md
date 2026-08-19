@@ -13,6 +13,7 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [Porto Santo](porto-santo.md) — region; navigation node
 - [Portugal](../README.md) — country; navigation node
 - [Madeirense DOP](../appellations/madeirense-dop.md) — appellation; navigation node
+- [Maçanita Vinhos](../../../producers/macanita-vinhos.md) — producer; navigation node
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->

@@ -12,7 +12,12 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [Ballard Canyon AVA](ballard-canyon-ava.md) — appellation; navigation node
 - [JONATA](../../../producers/jonata.md) — producer; navigation node
 - [United States](../README.md) — country; navigation node
+- [Sandhi Vintners / Anika](../../../producers/sandhi-vintners.md) — producer; navigation node
 - [Santa Barbara County](../regions/santa-barbara-county.md) — region; navigation node
+- [California](../regions/california.md) — region; navigation node
+- [Contra Costa County](../regions/contra-costa-county.md) — region; navigation node
+- [Napa Valley AVA](napa-valley-ava.md) — appellation; navigation node
+- [St. Helena AVA](st-helena-ava.md) — appellation; navigation node
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->
@@ -41,11 +46,13 @@ This section is generated from CARTA machine authority. Edit the governed record
 | Claim | Layer / observed | Status | Confidence | Sources |
 |---|---|---|---|---|
 | `claim:ballard-canyon-ava` | `reference / 2026-08-18` | `supported` | `high` | `source:ttb-ava-dates-run06d`, `source:ttb-established-avas-run06d` |
+| `claim:coteaux-de-clair-santa-ynez` | `reference / —` | `supported` | `medium` | `source:winespectrum-coteaux-de-clair` |
 
 ### Sources
 
 - `source:ttb-ava-dates-run06d` — List of AVAs by Establishment Date
 - `source:ttb-established-avas-run06d` — Established American Viticultural Areas
+- `source:winespectrum-coteaux-de-clair` — 2023 Mallea Vineyards Grenache Blanc
 
 </details>
 

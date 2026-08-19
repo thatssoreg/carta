@@ -48,6 +48,7 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [Chardonnay](../grapes/chardonnay.md) — grape; navigation node
 - [France](../countries/france/README.md) — country; baseline reference
 - [Savagnin](../grapes/savagnin.md) — grape; navigation node
+- [Domaine de la Tournelle](domaine-de-la-tournelle.md) — producer; navigation node
 - [Domaine Labet](domaine-labet.md) — producer; navigation node
 - [Hiyu Wine Farm](hiyu-wine-farm.md) — producer; baseline reference
 - [Jura](../countries/france/regions/jura.md) — region; navigation node

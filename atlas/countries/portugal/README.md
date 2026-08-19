@@ -16,6 +16,7 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [Porto Santo](regions/porto-santo.md) — region; navigation node
 - [Aphros Wine / Phaunus](../../producers/aphros-wine.md) — producer; baseline reference
 - [Madeira Archipelago](regions/madeira-archipelago.md) — region; navigation node
+- [Maçanita Vinhos](../../producers/macanita-vinhos.md) — producer; navigation node
 - [Pico DOP](appellations/pico-dop.md) — appellation; navigation node
 - [Companhia de Vinhos dos Profetas e dos Villões](../../producers/companhia-vinhos-profetas-villoes.md) — producer; navigation node
 - [Eruptio](../../producers/eruptio.md) — producer; navigation node

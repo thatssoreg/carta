@@ -16,6 +16,9 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [Riesling](../../grapes/riesling.md) — grape; navigation node
 - [Weingut Keller](../../producers/weingut-keller.md) — producer; navigation node
 - [Hofgut Falkenstein](../../producers/hofgut-falkenstein.md) — producer; baseline reference
+- [Wasenhaus](../../producers/wasenhaus.md) — producer; navigation node
+- [Weingut A.J. Adam](../../producers/aj-adam.md) — producer; navigation node
+- [Weingut Günther Steinmetz](../../producers/weingut-gunther-steinmetz.md) — producer; navigation node
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->

@@ -14,6 +14,7 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [Santa Ynez Valley AVA](santa-ynez-valley-ava.md) — appellation; navigation node
 - [United States](../README.md) — country; navigation node
 - [California](../regions/california.md) — region; navigation node
+- [Sandhi Vintners / Anika](../../../producers/sandhi-vintners.md) — producer; navigation node
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->

@@ -15,6 +15,7 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [Rheinhessen](../countries/germany/regions/rheinhessen.md) — region; navigation node
 - [Saar](../countries/germany/regions/saar.md) — region; navigation node
 - [Wachau](../countries/austria/regions/wachau.md) — region; navigation node
+- [Weingut A.J. Adam](../producers/aj-adam.md) — producer; navigation node
 - [Kabinett](../classifications/kabinett.md) — classification; navigation node
 - [Germany](../countries/germany/README.md) — country; navigation node
 <!-- END GENERATED CARTA NAVIGATION -->
@@ -48,6 +49,7 @@ This section is generated from CARTA machine authority. Edit the governed record
 
 | Claim | Layer / observed | Status | Confidence | Sources |
 |---|---|---|---|---|
+| `claim:aj-adam-hofberg-kabinett-identity` | `reference / —` | `supported` | `medium` | `source:vdp-aj-adam`, `source:vdp-dhroner-hofberg` |
 | `claim:falkenstein-sonnenberg-wine` | `reference / —` | `supported` | `high` | `source:kerler-falkenstein-sonnenberg-2024` |
 | `claim:keller-limestone-separate-identities` | `reference / 2026-08-18` | `supported` | `high` | `source:fleet-street-keller` |
 | `claim:keller-rr-base-source` | `reference / 2026-08-18` | `supported` | `high` | `source:vomboden-keller-rr` |
@@ -58,6 +60,8 @@ This section is generated from CARTA machine authority. Edit the governed record
 - `source:fleet-street-keller` — Weingut Keller
 - `source:kerler-falkenstein-sonnenberg-2024` — 2024 Munny #9 Hofgut Falkenstein — Niedermenniger Sonnenberg Kabinett trocken
 - `source:rudi-pichler-hochrain-wine` — Riesling Hochrain Smaragd
+- `source:vdp-aj-adam` — VDP.Weingut A.J.Adam
+- `source:vdp-dhroner-hofberg` — Weinberg.Online — HOFBERG, Dhron
 - `source:vomboden-keller-rr` — Riesling RR
 
 </details>
@@ -65,4 +69,5 @@ This section is generated from CARTA machine authority. Edit the governed record
 ### Open questions
 
 - Complete a generous independent grape baseline before promotion
+- `claim:aj-adam-hofberg-kabinett-identity` — Retain vintage-specific technical details separately; this staging claim does not universalize sweetness or cellar protocol.
 <!-- END GENERATED CARTA PROVENANCE -->
