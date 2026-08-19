@@ -12,6 +12,8 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [Arnot-Roberts](../producers/arnot-roberts.md) — producer; baseline reference
 - [Domaine Christiane Chambeyron-Manin](../producers/domaine-christiane-chambeyron-manin.md) — producer; baseline reference
 - [Guillaume Gilles / Les Peyrouses](../producers/guillaume-gilles.md) — producer; baseline reference
+- [JONATA](../producers/jonata.md) — producer; navigation node
+- [Cabernet Sauvignon](cabernet-sauvignon.md) — grape; navigation node
 - [Côtes du Rhône AOP](../countries/france/appellations/cotes-du-rhone.md) — appellation; navigation node
 - [Petaluma Gap AVA](../countries/united-states/appellations/petaluma-gap-ava.md) — appellation; navigation node
 <!-- END GENERATED CARTA NAVIGATION -->
@@ -40,11 +42,13 @@ This section is generated from CARTA machine authority. Edit the governed record
 | `claim:chambeyron-syrah` | `reference / —` | `supported` | `high` | `source:sacred-thirst-chambeyron`, `source:wine-trust-chambeyron` |
 | `claim:peyrouses-rouge-identity` | `reference / —` | `supported` | `high` | `source:rosenthal-peyrouses-rouge`, `source:inao-cotes-du-rhone` |
 | `claim:serine-terminology` | `reference / —` | `supported` | `high` | `source:sacred-thirst-chambeyron` |
+| `claim:todos-2022` | `reference / —` | `supported` | `high` | `source:jonata-todos-2022` |
 
 ### Sources
 
 - `source:arnot-roberts-clary` — Clary Ranch Syrah | Arnot-Roberts
 - `source:inao-cotes-du-rhone` — Côtes du Rhône rouge
+- `source:jonata-todos-2022` — 2022 Todos Red Wine Vineyard Blend Everyone
 - `source:rosenthal-peyrouses-rouge` — Les Peyrouses Côtes du Rhône Rouge
 - `source:sacred-thirst-chambeyron` — Chambeyron-Manin
 - `source:wine-trust-chambeyron` — Chambeyron-Manin

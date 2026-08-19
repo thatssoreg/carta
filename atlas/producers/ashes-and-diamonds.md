@@ -78,6 +78,7 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [California](../countries/united-states/regions/california.md) — region; navigation node
 - [Clos Apalta / Domaines Bournet-Lapostolle](clos-apalta.md) — producer; baseline reference
 - [Corison Winery](corison-winery.md) — producer; navigation node
+- [JONATA](jonata.md) — producer; navigation node
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->

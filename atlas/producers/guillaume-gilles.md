@@ -72,6 +72,7 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [Cornas AOP](../countries/france/appellations/cornas.md) — appellation; navigation node
 - [Arnot-Roberts](arnot-roberts.md) — producer; baseline reference
 - [Domaine Christiane Chambeyron-Manin](domaine-christiane-chambeyron-manin.md) — producer; baseline reference
+- [JONATA](jonata.md) — producer; navigation node
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->

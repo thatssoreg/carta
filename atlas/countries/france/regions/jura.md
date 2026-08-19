@@ -20,6 +20,7 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [Côtes du Rhône AOP](../appellations/cotes-du-rhone.md) — appellation; navigation node
 - [Domaine de Saint Pierre / Château Renard](../../../producers/domaine-de-saint-pierre-jura.md) — producer; baseline reference
 - [Jurançon](../appellations/jurancon.md) — appellation; baseline reference
+- [Loire Valley](loire-valley.md) — region; navigation node
 - [Palette AOP](../appellations/palette.md) — appellation; navigation node
 - [Savoie](savoie.md) — region; navigation node
 <!-- END GENERATED CARTA NAVIGATION -->

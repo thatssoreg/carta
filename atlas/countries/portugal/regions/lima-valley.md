@@ -12,6 +12,7 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [Portugal](../README.md) — country; navigation node
 - [Aphros Wine / Phaunus](../../../producers/aphros-wine.md) — producer; baseline reference
 - [Azores](azores.md) — region; navigation node
+- [Porto Santo](porto-santo.md) — region; navigation node
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->

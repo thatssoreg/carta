@@ -1,4 +1,4 @@
-# Contra Costa County
+# Santa Ynez Valley AVA
 
 > **Navigation node:** this honest stub keeps a meaningful CARTA subject discoverable without presenting it as a finished baseline reference.
 
@@ -9,13 +9,10 @@ The machine graph and generated relationships below provide the current orientat
 
 This section is generated from governed profile dispositions, editorial anchors, and supported graph relationships. It is not a hand-maintained second knowledge graph.
 
-- [Soleras del Pacífico](../../../producers/soleras-del-pacifico.md) — producer; navigation node
-- [Palomino Fino](../../../grapes/palomino-fino.md) — grape; navigation node
+- [Ballard Canyon AVA](ballard-canyon-ava.md) — appellation; navigation node
+- [JONATA](../../../producers/jonata.md) — producer; navigation node
 - [United States](../README.md) — country; navigation node
-- [California](california.md) — region; navigation node
-- [Napa Valley AVA](../appellations/napa-valley-ava.md) — appellation; navigation node
-- [Santa Barbara County](santa-barbara-county.md) — region; navigation node
-- [St. Helena AVA](../appellations/st-helena-ava.md) — appellation; navigation node
+- [Santa Barbara County](../regions/santa-barbara-county.md) — region; navigation node
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->
@@ -23,19 +20,18 @@ This section is generated from governed profile dispositions, editorial anchors,
 
 This section is generated from CARTA machine authority. Edit the governed records, then run `python scripts/validate_data.py --write-human-reference`.
 
-- **Profile:** `profile:contra-costa-county`
+- **Profile:** `profile:santa-ynez-valley-ava`
 - **Maturity / publication:** `node` / `stub`
-- **Primary entity:** `place:contra-costa-county`
+- **Primary entity:** `appellation:santa-ynez-valley-ava`
 
 **Component entities**
 
-- `place:contra-costa-county`
+- `appellation:santa-ynez-valley-ava`
 
 **Representative anchors**
 
-- `project:soleras-del-pacifico`
-- `vineyard:evangelho-vineyard`
-- `grape:palomino-fino`
+- `appellation:ballard-canyon-ava`
+- `producer:jonata`
 
 <details>
 <summary>Machine claims and sources</summary>
@@ -44,12 +40,12 @@ This section is generated from CARTA machine authority. Edit the governed record
 
 | Claim | Layer / observed | Status | Confidence | Sources |
 |---|---|---|---|---|
-| `claim:run07-contra-costa-navigation-geography` | `reference / 2026-08-18` | `supported` | `high` | `source:soleras-pacifico-vineyards`, `source:bedrock-vineyards` |
+| `claim:ballard-canyon-ava` | `reference / 2026-08-18` | `supported` | `high` | `source:ttb-ava-dates-run06d`, `source:ttb-established-avas-run06d` |
 
 ### Sources
 
-- `source:bedrock-vineyards` — Our Vineyards
-- `source:soleras-pacifico-vineyards` — Vineyards
+- `source:ttb-ava-dates-run06d` — List of AVAs by Establishment Date
+- `source:ttb-established-avas-run06d` — Established American Viticultural Areas
 
 </details>
 

@@ -18,6 +18,7 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [Domaine Marcel Lapierre](../../../producers/domaine-marcel-lapierre.md) — producer; baseline reference
 - [Jura](jura.md) — region; navigation node
 - [Jurançon](../appellations/jurancon.md) — appellation; baseline reference
+- [Loire Valley](loire-valley.md) — region; navigation node
 - [Palette AOP](../appellations/palette.md) — appellation; navigation node
 - [Savoie](savoie.md) — region; navigation node
 <!-- END GENERATED CARTA NAVIGATION -->

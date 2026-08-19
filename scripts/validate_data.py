@@ -358,6 +358,7 @@ def validate_profiles(
     primary_entities: dict[str, str] = {}
     entity_by_id = {entity["id"]: entity for entity in data["entities"]}
     profiled_entities: set[str] = set()
+    primary_profile_kinds: dict[str, set[str]] = defaultdict(set)
 
     for profile in data["profiles"]:
         for entity_id in profile["component_entity_ids"]:
@@ -372,6 +373,11 @@ def validate_profiles(
         for entity_id in profile.get("country_entity_ids", []):
             if entity_id not in ids["entities"]:
                 raise SystemExit(f"{profile['id']}: missing country entity {entity_id}")
+            country = entity_by_id[entity_id]
+            if country["type"] != "place" or country.get("place_kind") != "country":
+                raise SystemExit(
+                    f"{profile['id']}: country_entity_ids contains non-country {entity_id}"
+                )
         for entity_id in profile.get("representative_anchor_ids", []):
             if entity_id not in ids["entities"]:
                 raise SystemExit(
@@ -392,6 +398,7 @@ def validate_profiles(
                 )
 
         if primary:
+            primary_profile_kinds[primary].add(profile["profile_kind"])
             primary_entity = entity_by_id[primary]
             primary_type = primary_entity["type"]
             kind = profile["profile_kind"]
@@ -455,6 +462,23 @@ def validate_profiles(
             raise SystemExit(
                 f"{entity['id']}: active {entity['type']} lacks an explicit "
                 "Human Reference disposition"
+            )
+        expected_primary_kind = (
+            "grape"
+            if entity["type"] == "grape"
+            else "country"
+            if entity["type"] == "place" and entity.get("place_kind") == "country"
+            else None
+        )
+        if (
+            requires_disposition
+            and expected_primary_kind
+            and expected_primary_kind
+            not in primary_profile_kinds.get(entity["id"], set())
+        ):
+            raise SystemExit(
+                f"{entity['id']}: active {expected_primary_kind} requires its own "
+                "explicit Human Reference disposition"
             )
 
 
@@ -535,7 +559,7 @@ def render_navigation(profile: dict, data: dict[str, list[dict]]) -> str:
     current_entities = set(profile["component_entity_ids"])
     current_seeds = profile_navigation_seeds(profile)
     graph = navigation_graph(data)
-    ranked: list[tuple[int, int, str, dict]] = []
+    ranked: list[tuple[int, int, str, str, dict]] = []
 
     for other in data["profiles"]:
         if other["id"] == profile["id"] or not profile_has_surface(other):
@@ -561,11 +585,12 @@ def render_navigation(profile: dict, data: dict[str, list[dict]]) -> str:
                 rank,
                 distance if distance is not None else 99,
                 other["title"].casefold(),
+                other["id"],
                 other,
             )
         )
 
-    related = [item[3] for item in sorted(ranked)[:MAX_RELATED_PROFILES]]
+    related = [item[4] for item in sorted(ranked)[:MAX_RELATED_PROFILES]]
     deferred = sorted(
         {
             candidate["title"]

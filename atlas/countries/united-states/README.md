@@ -13,17 +13,18 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [Napa Valley AVA](appellations/napa-valley-ava.md) — appellation; navigation node
 - [Columbia Gorge AVA](appellations/columbia-gorge-ava.md) — appellation; navigation node
 - [Contra Costa County](regions/contra-costa-county.md) — region; navigation node
+- [Santa Barbara County](regions/santa-barbara-county.md) — region; navigation node
 - [St. Helena AVA](appellations/st-helena-ava.md) — appellation; navigation node
 - [Arnot-Roberts](../../producers/arnot-roberts.md) — producer; baseline reference
 - [Ashes & Diamonds / Cabernet Franc](../../producers/ashes-and-diamonds.md) — producer; baseline reference
+- [Ballard Canyon AVA](appellations/ballard-canyon-ava.md) — appellation; navigation node
 - [Corison Winery](../../producers/corison-winery.md) — producer; navigation node
 - [Hiyu Wine Farm](../../producers/hiyu-wine-farm.md) — producer; baseline reference
+- [JONATA](../../producers/jonata.md) — producer; navigation node
 - [Petaluma Gap AVA](appellations/petaluma-gap-ava.md) — appellation; navigation node
 - [Phelan Farm](../../producers/phelan-farm.md) — producer; baseline reference
 - [San Luis Obispo Coast AVA](appellations/san-luis-obispo-coast-ava.md) — appellation; navigation node
-- [Scar of the Sea / Bassi Vineyard](../../producers/scar-of-the-sea.md) — producer; baseline reference
-- [Soleras del Pacífico](../../producers/soleras-del-pacifico.md) — producer; navigation node
-- [Petit Manseng](../../grapes/petit-manseng.md) — grape; baseline reference
+- [Santa Ynez Valley AVA](appellations/santa-ynez-valley-ava.md) — appellation; navigation node
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->
@@ -54,13 +55,16 @@ This section is generated from CARTA machine authority. Edit the governed record
 |---|---|---|---|---|
 | `claim:hiyu-location` | `reference / 2026-08-18` | `supported` | `high` | `source:hiyu-shop` |
 | `claim:phelan-location` | `reference / —` | `supported` | `high` | `source:polaner-phelan`, `source:phelan-vineyard` |
+| `claim:santa-barbara-county-not-ava` | `reference / 2026-08-18` | `supported` | `high` | `source:ttb-appellation-origin-run06d`, `source:decanter-jonata-todos-2021` |
 | `claim:virginia-petit-manseng-2025-acreage` | `reference / 2025-12-31` | `supported` | `high` | `source:virginia-cgr-2025` |
 
 ### Sources
 
+- `source:decanter-jonata-todos-2021` — Jonata, Todos Red Blend, Ballard Canyon, Santa Barbara County, California, USA 2021
 - `source:hiyu-shop` — Shop | Hiyu Wine Farm
 - `source:phelan-vineyard` — Vineyard | Phelan Farm
 - `source:polaner-phelan` — Phelan Farm
+- `source:ttb-appellation-origin-run06d` — Wine Labeling: Appellation of Origin
 - `source:virginia-cgr-2025` — 2025 Commercial Wine Grape Report
 
 </details>

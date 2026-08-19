@@ -76,6 +76,7 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [Palomino Fino](../grapes/palomino-fino.md) — grape; navigation node
 - [Spain](../countries/spain/README.md) — country; baseline reference
 - [Vino de la Tierra de Liébana](../countries/spain/appellations/vino-de-la-tierra-de-liebana.md) — appellation; navigation node
+- [Companhia de Vinhos dos Profetas e dos Villões](companhia-vinhos-profetas-villoes.md) — producer; navigation node
 - [Soleras del Pacífico](soleras-del-pacifico.md) — producer; navigation node
 <!-- END GENERATED CARTA NAVIGATION -->
 

@@ -60,12 +60,12 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [Côte-Rôtie](appellations/cote-rotie.md) — appellation; navigation node
 - [Côtes du Rhône AOP](appellations/cotes-du-rhone.md) — appellation; navigation node
 - [Jura](regions/jura.md) — region; navigation node
+- [Loire Valley](regions/loire-valley.md) — region; navigation node
 - [Palette AOP](appellations/palette.md) — appellation; navigation node
 - [Savoie](regions/savoie.md) — region; navigation node
 - [Arbois AOP](appellations/arbois.md) — appellation; navigation node
 - [Château Simone](../../producers/chateau-simone.md) — producer; baseline reference
 - [Combe de Savoie](regions/combe-de-savoie.md) — region; navigation node
-- [Domaine Christiane Chambeyron-Manin](../../producers/domaine-christiane-chambeyron-manin.md) — producer; baseline reference
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->
@@ -108,10 +108,12 @@ This section is generated from CARTA machine authority. Edit the governed record
 | `claim:palette-official` | `reference / —` | `supported` | `high` | `source:inao-palette` |
 | `claim:richard-leroy-estate-history` | `reference / —` | `supported` | `high` | `source:winedoctor-richard-2013`, `source:vinetrail-richard`, `source:rvf-richard-2025` |
 | `claim:simone-family-history` | `reference / —` | `supported` | `high` | `source:simone-history` |
+| `claim:tue-boeuf-identity` | `reference / 2026-08-18` | `supported` | `high` | `source:dressner-tue-boeuf` |
 
 ### Sources
 
 - `source:chevillard-domaine` — Le domaine | Domaine de Chevillard
+- `source:dressner-tue-boeuf` — Clos du Tue-Boeuf Producer Profile
 - `source:inao-arbois` — Arbois blanc
 - `source:inao-cornas` — Cornas
 - `source:inao-cote-rotie` — Côte Rôtie

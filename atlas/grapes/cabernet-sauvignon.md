@@ -10,11 +10,13 @@ The machine graph and generated relationships below provide the current orientat
 This section is generated from governed profile dispositions, editorial anchors, and supported graph relationships. It is not a hand-maintained second knowledge graph.
 
 - [Corison Winery](../producers/corison-winery.md) — producer; navigation node
+- [JONATA](../producers/jonata.md) — producer; navigation node
 - [Napa Valley AVA](../countries/united-states/appellations/napa-valley-ava.md) — appellation; navigation node
 - [St. Helena AVA](../countries/united-states/appellations/st-helena-ava.md) — appellation; navigation node
 - [Clos Apalta / Domaines Bournet-Lapostolle](../producers/clos-apalta.md) — producer; baseline reference
 - [Apalta](../countries/chile/appellations/apalta.md) — appellation; navigation node
 - [Cabernet Franc](cabernet-franc.md) — grape; navigation node
+- [Syrah](syrah.md) — grape; navigation node
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->
@@ -43,11 +45,13 @@ This section is generated from CARTA machine authority. Edit the governed record
 | `claim:le-petit-clos-2020-blend` | `reference / —` | `supported` | `high` | `source:le-petit-clos-2020` |
 | `claim:le-petit-clos-2021-blend` | `reference / —` | `supported` | `high` | `source:le-petit-clos-2021` |
 | `claim:le-petit-clos-2022-blend` | `reference / —` | `supported` | `high` | `source:le-petit-clos-2022` |
+| `claim:todos-2022` | `reference / —` | `supported` | `high` | `source:jonata-todos-2022` |
 
 ### Sources
 
 - `source:corison-all-wines` — All Wines
 - `source:corison-vineyards` — Vineyards
+- `source:jonata-todos-2022` — 2022 Todos Red Wine Vineyard Blend Everyone
 - `source:le-petit-clos-2020` — Le Petit Clos 2020
 - `source:le-petit-clos-2021` — Le Petit Clos 2021
 - `source:le-petit-clos-2022` — Le Petit Clos 2022

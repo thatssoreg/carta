@@ -16,6 +16,7 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [California](../regions/california.md) — region; navigation node
 - [Cabernet Franc](../../../grapes/cabernet-franc.md) — grape; navigation node
 - [Contra Costa County](../regions/contra-costa-county.md) — region; navigation node
+- [Santa Barbara County](../regions/santa-barbara-county.md) — region; navigation node
 - [St. Helena AVA](st-helena-ava.md) — appellation; navigation node
 <!-- END GENERATED CARTA NAVIGATION -->
 

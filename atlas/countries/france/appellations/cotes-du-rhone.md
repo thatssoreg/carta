@@ -16,6 +16,7 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [Côte-Rôtie](cote-rotie.md) — appellation; navigation node
 - [Jura](../regions/jura.md) — region; navigation node
 - [Jurançon](jurancon.md) — appellation; baseline reference
+- [Loire Valley](../regions/loire-valley.md) — region; navigation node
 - [Palette AOP](palette.md) — appellation; navigation node
 - [Savoie](../regions/savoie.md) — region; navigation node
 - [Syrah](../../../grapes/syrah.md) — grape; navigation node

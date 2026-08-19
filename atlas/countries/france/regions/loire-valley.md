@@ -1,4 +1,4 @@
-# Savoie
+# Loire Valley
 
 > **Navigation node:** this honest stub keeps a meaningful CARTA subject discoverable without presenting it as a finished baseline reference.
 
@@ -10,16 +10,17 @@ The machine graph and generated relationships below provide the current orientat
 This section is generated from governed profile dispositions, editorial anchors, and supported graph relationships. It is not a hand-maintained second knowledge graph.
 
 - [France](../README.md) — country; baseline reference
-- [Combe de Savoie](combe-de-savoie.md) — region; navigation node
+- [Clos du Tue-Boeuf](../../../producers/clos-du-tue-boeuf.md) — producer; navigation node
+- [Menu Pineau / Orbois](../../../grapes/menu-pineau.md) — grape; navigation node
+- [Vin de France](../../../classifications/vin-de-france.md) — classification; navigation node
 - [Beaujolais](beaujolais.md) — region; navigation node
 - [Cornas AOP](../appellations/cornas.md) — appellation; navigation node
 - [Côte-Rôtie](../appellations/cote-rotie.md) — appellation; navigation node
 - [Côtes du Rhône AOP](../appellations/cotes-du-rhone.md) — appellation; navigation node
-- [Domaine de Chevillard](../../../producers/domaine-de-chevillard.md) — producer; baseline reference
 - [Jura](jura.md) — region; navigation node
 - [Jurançon](../appellations/jurancon.md) — appellation; baseline reference
-- [Loire Valley](loire-valley.md) — region; navigation node
 - [Palette AOP](../appellations/palette.md) — appellation; navigation node
+- [Savoie](savoie.md) — region; navigation node
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->
@@ -27,13 +28,19 @@ This section is generated from governed profile dispositions, editorial anchors,
 
 This section is generated from CARTA machine authority. Edit the governed records, then run `python scripts/validate_data.py --write-human-reference`.
 
-- **Profile:** `profile:savoie`
+- **Profile:** `profile:loire-valley`
 - **Maturity / publication:** `node` / `stub`
-- **Primary entity:** `place:savoie`
+- **Primary entity:** `place:loire-valley`
 
 **Component entities**
 
-- `place:savoie`
+- `place:loire-valley`
+
+**Representative anchors**
+
+- `producer:clos-du-tue-boeuf`
+- `grape:menu-pineau`
+- `classification:vin-de-france`
 
 <details>
 <summary>Machine claims and sources</summary>
@@ -42,11 +49,11 @@ This section is generated from CARTA machine authority. Edit the governed record
 
 | Claim | Layer / observed | Status | Confidence | Sources |
 |---|---|---|---|---|
-| `claim:chevillard-location` | `reference / —` | `supported` | `high` | `source:chevillard-domaine` |
+| `claim:tue-boeuf-identity` | `reference / 2026-08-18` | `supported` | `high` | `source:dressner-tue-boeuf` |
 
 ### Sources
 
-- `source:chevillard-domaine` — Le domaine | Domaine de Chevillard
+- `source:dressner-tue-boeuf` — Clos du Tue-Boeuf Producer Profile
 
 </details>
 

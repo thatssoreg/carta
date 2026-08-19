@@ -17,6 +17,7 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [Côtes du Rhône AOP](cotes-du-rhone.md) — appellation; navigation node
 - [Jura](../regions/jura.md) — region; navigation node
 - [Jurançon](jurancon.md) — appellation; baseline reference
+- [Loire Valley](../regions/loire-valley.md) — region; navigation node
 - [Savoie](../regions/savoie.md) — region; navigation node
 <!-- END GENERATED CARTA NAVIGATION -->
 

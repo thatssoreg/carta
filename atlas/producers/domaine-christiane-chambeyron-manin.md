@@ -87,6 +87,7 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [France](../countries/france/README.md) — country; baseline reference
 - [Arnot-Roberts](arnot-roberts.md) — producer; baseline reference
 - [Guillaume Gilles / Les Peyrouses](guillaume-gilles.md) — producer; baseline reference
+- [JONATA](jonata.md) — producer; navigation node
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->

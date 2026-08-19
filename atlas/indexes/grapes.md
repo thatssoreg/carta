@@ -25,6 +25,7 @@ Governed grape profiles, including honest stubs, are listed here.
 - [Jacquère](../grapes/jacquere.md) — `node` / `stub`
 - [Loureiro](../grapes/loureiro.md) — `node` / `stub`
 - [Mencía](../grapes/mencia.md) — `node` / `stub`
+- [Menu Pineau / Orbois](../grapes/menu-pineau.md) — `node` / `stub`
 - [Mondeuse](../grapes/mondeuse.md) — `node` / `stub`
 - [Palomino Fino](../grapes/palomino-fino.md) — `node` / `stub`
 - [Petit Courbu](../grapes/petit-courbu.md) — `baseline` / `published`
@@ -40,11 +41,14 @@ Governed grape profiles, including honest stubs, are listed here.
 ### Explicit machine-only dispositions
 
 - **Bourboulenc** — `node` / `machine_only`
+- **Caracol** — `node` / `machine_only`
 - **Carmenère** — `node` / `machine_only`
 - **Garnacha Tinta** — `node` / `machine_only`
 - **Grenache Blanc** — `node` / `machine_only`
 - **Merlot** — `node` / `machine_only`
 - **Muscat Blanc** — `node` / `machine_only`
+- **Petit Meslier** — `node` / `machine_only`
+- **Petite Sirah** — `node` / `machine_only`
 - **Pinot Gris** — `node` / `machine_only`
 - **Pinot Noir** — `node` / `machine_only`
 - **Sauvignon** — `node` / `machine_only`

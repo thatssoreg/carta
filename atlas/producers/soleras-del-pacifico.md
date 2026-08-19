@@ -25,6 +25,7 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [Palomino Fino](../grapes/palomino-fino.md) — grape; navigation node
 - [United States](../countries/united-states/README.md) — country; navigation node
 - [California](../countries/united-states/regions/california.md) — region; navigation node
+- [Companhia de Vinhos dos Profetas e dos Villões](companhia-vinhos-profetas-villoes.md) — producer; navigation node
 - [Goyo García Viadero](goyo-garcia-viadero.md) — producer; baseline reference
 
 ### Deliberately deferred anchors

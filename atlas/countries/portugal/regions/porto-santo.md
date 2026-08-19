@@ -1,4 +1,4 @@
-# Contra Costa County
+# Porto Santo
 
 > **Navigation node:** this honest stub keeps a meaningful CARTA subject discoverable without presenting it as a finished baseline reference.
 
@@ -9,13 +9,13 @@ The machine graph and generated relationships below provide the current orientat
 
 This section is generated from governed profile dispositions, editorial anchors, and supported graph relationships. It is not a hand-maintained second knowledge graph.
 
-- [Soleras del Pacífico](../../../producers/soleras-del-pacifico.md) — producer; navigation node
+- [Portugal](../README.md) — country; navigation node
+- [Companhia de Vinhos dos Profetas e dos Villões](../../../producers/companhia-vinhos-profetas-villoes.md) — producer; navigation node
+- [Madeirense DOP](../appellations/madeirense-dop.md) — appellation; navigation node
 - [Palomino Fino](../../../grapes/palomino-fino.md) — grape; navigation node
-- [United States](../README.md) — country; navigation node
-- [California](california.md) — region; navigation node
-- [Napa Valley AVA](../appellations/napa-valley-ava.md) — appellation; navigation node
-- [Santa Barbara County](santa-barbara-county.md) — region; navigation node
-- [St. Helena AVA](../appellations/st-helena-ava.md) — appellation; navigation node
+- [Madeira Archipelago](madeira-archipelago.md) — region; navigation node
+- [Azores](azores.md) — region; navigation node
+- [Lima Valley](lima-valley.md) — region; navigation node
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->
@@ -23,18 +23,18 @@ This section is generated from governed profile dispositions, editorial anchors,
 
 This section is generated from CARTA machine authority. Edit the governed records, then run `python scripts/validate_data.py --write-human-reference`.
 
-- **Profile:** `profile:contra-costa-county`
+- **Profile:** `profile:porto-santo`
 - **Maturity / publication:** `node` / `stub`
-- **Primary entity:** `place:contra-costa-county`
+- **Primary entity:** `place:porto-santo`
 
 **Component entities**
 
-- `place:contra-costa-county`
+- `place:porto-santo`
 
 **Representative anchors**
 
-- `project:soleras-del-pacifico`
-- `vineyard:evangelho-vineyard`
+- `producer:companhia-vinhos-profetas-villoes`
+- `appellation:madeirense-dop`
 - `grape:palomino-fino`
 
 <details>
@@ -44,12 +44,13 @@ This section is generated from CARTA machine authority. Edit the governed record
 
 | Claim | Layer / observed | Status | Confidence | Sources |
 |---|---|---|---|---|
-| `claim:run07-contra-costa-navigation-geography` | `reference / 2026-08-18` | `supported` | `high` | `source:soleras-pacifico-vineyards`, `source:bedrock-vineyards` |
+| `claim:listrao-2022-identity` | `reference / —` | `supported` | `high` | `source:macanita-listrao-2022` |
+| `claim:vinho-corda-2023` | `reference / —` | `supported` | `high` | `source:macanita-vinho-corda-2023` |
 
 ### Sources
 
-- `source:bedrock-vineyards` — Our Vineyards
-- `source:soleras-pacifico-vineyards` — Vineyards
+- `source:macanita-listrao-2022` — Listrão dos Profetas 2022
+- `source:macanita-vinho-corda-2023` — Vinho da Corda 2023
 
 </details>
 

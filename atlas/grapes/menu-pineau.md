@@ -1,4 +1,4 @@
-# Contra Costa County
+# Menu Pineau / Orbois
 
 > **Navigation node:** this honest stub keeps a meaningful CARTA subject discoverable without presenting it as a finished baseline reference.
 
@@ -9,13 +9,10 @@ The machine graph and generated relationships below provide the current orientat
 
 This section is generated from governed profile dispositions, editorial anchors, and supported graph relationships. It is not a hand-maintained second knowledge graph.
 
-- [Soleras del Pacífico](../../../producers/soleras-del-pacifico.md) — producer; navigation node
-- [Palomino Fino](../../../grapes/palomino-fino.md) — grape; navigation node
-- [United States](../README.md) — country; navigation node
-- [California](california.md) — region; navigation node
-- [Napa Valley AVA](../appellations/napa-valley-ava.md) — appellation; navigation node
-- [Santa Barbara County](santa-barbara-county.md) — region; navigation node
-- [St. Helena AVA](../appellations/st-helena-ava.md) — appellation; navigation node
+- [Clos du Tue-Boeuf](../producers/clos-du-tue-boeuf.md) — producer; navigation node
+- [France](../countries/france/README.md) — country; baseline reference
+- [Loire Valley](../countries/france/regions/loire-valley.md) — region; navigation node
+- [Vin de France](../classifications/vin-de-france.md) — classification; navigation node
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->
@@ -23,19 +20,19 @@ This section is generated from governed profile dispositions, editorial anchors,
 
 This section is generated from CARTA machine authority. Edit the governed records, then run `python scripts/validate_data.py --write-human-reference`.
 
-- **Profile:** `profile:contra-costa-county`
+- **Profile:** `profile:menu-pineau`
 - **Maturity / publication:** `node` / `stub`
-- **Primary entity:** `place:contra-costa-county`
+- **Primary entity:** `grape:menu-pineau`
 
 **Component entities**
 
-- `place:contra-costa-county`
+- `grape:menu-pineau`
 
 **Representative anchors**
 
-- `project:soleras-del-pacifico`
-- `vineyard:evangelho-vineyard`
-- `grape:palomino-fino`
+- `producer:clos-du-tue-boeuf`
+- `wine:le-brin-de-chevre`
+- `place:loire-valley`
 
 <details>
 <summary>Machine claims and sources</summary>
@@ -44,16 +41,17 @@ This section is generated from CARTA machine authority. Edit the governed record
 
 | Claim | Layer / observed | Status | Confidence | Sources |
 |---|---|---|---|---|
-| `claim:run07-contra-costa-navigation-geography` | `reference / 2026-08-18` | `supported` | `high` | `source:soleras-pacifico-vineyards`, `source:bedrock-vineyards` |
+| `claim:brin-chevre-2024` | `reference / —` | `supported` | `high` | `source:bowler-brin-chevre-2024` |
+| `claim:menu-pineau-orbois-name` | `reference / 2026-08-18` | `supported` | `high` | `source:dressner-tue-boeuf` |
 
 ### Sources
 
-- `source:bedrock-vineyards` — Our Vineyards
-- `source:soleras-pacifico-vineyards` — Vineyards
+- `source:bowler-brin-chevre-2024` — VDF Le Brin de Chèvre (Menu Pineau) 2024
+- `source:dressner-tue-boeuf` — Clos du Tue-Boeuf Producer Profile
 
 </details>
 
 ### Open questions
 
-- None recorded.
+- Complete an independent grape baseline and deepen the supported Orbois local-name context
 <!-- END GENERATED CARTA PROVENANCE -->

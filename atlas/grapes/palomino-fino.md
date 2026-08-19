@@ -9,9 +9,12 @@ The machine graph and generated relationships below provide the current orientat
 
 This section is generated from governed profile dispositions, editorial anchors, and supported graph relationships. It is not a hand-maintained second knowledge graph.
 
+- [Companhia de Vinhos dos Profetas e dos Villões](../producers/companhia-vinhos-profetas-villoes.md) — producer; navigation node
 - [Goyo García Viadero](../producers/goyo-garcia-viadero.md) — producer; baseline reference
 - [Soleras del Pacífico](../producers/soleras-del-pacifico.md) — producer; navigation node
 - [Contra Costa County](../countries/united-states/regions/contra-costa-county.md) — region; navigation node
+- [Porto Santo](../countries/portugal/regions/porto-santo.md) — region; navigation node
+- [Madeirense DOP](../countries/portugal/appellations/madeirense-dop.md) — appellation; navigation node
 - [Mencía](mencia.md) — grape; navigation node
 <!-- END GENERATED CARTA NAVIGATION -->
 
@@ -40,12 +43,17 @@ This section is generated from CARTA machine authority. Edit the governed record
 | `claim:evangelho-site` | `reference / 2026-08-18` | `supported` | `high` | `source:soleras-pacifico-vineyards`, `source:bedrock-vineyards` |
 | `claim:flor-evangelho-process` | `reference / 2026-08-18` | `supported` | `high` | `source:soleras-pacifico-wines` |
 | `claim:liebana-grapes` | `reference / —` | `supported` | `high` | `source:boe-liebana-2009` |
+| `claim:listrao-2022-identity` | `reference / —` | `supported` | `high` | `source:macanita-listrao-2022` |
+| `claim:listrao-palomino-name` | `reference / 2026-08-18` | `supported` | `high` | `source:macanita-vinho-corda-2023` |
+| `claim:vinho-corda-2023` | `reference / —` | `supported` | `high` | `source:macanita-vinho-corda-2023` |
 
 ### Sources
 
 - `source:bedrock-vineyards` — Our Vineyards
 - `source:boe-liebana-2009` — Orden DES/57/2009 modifying Vino de la Tierra de Liébana rules
 - `source:jose-pastor-goyo` — Goyo Garcia Viadero
+- `source:macanita-listrao-2022` — Listrão dos Profetas 2022
+- `source:macanita-vinho-corda-2023` — Vinho da Corda 2023
 - `source:soleras-pacifico-vineyards` — Vineyards
 - `source:soleras-pacifico-wines` — Wines
 

@@ -61,6 +61,7 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [Ashes & Diamonds / Cabernet Franc](ashes-and-diamonds.md) — producer; baseline reference
 - [Colchagua Valley](../countries/chile/regions/colchagua-valley.md) — region; navigation node
 - [Corison Winery](corison-winery.md) — producer; navigation node
+- [JONATA](jonata.md) — producer; navigation node
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->

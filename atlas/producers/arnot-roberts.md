@@ -66,6 +66,7 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [United States](../countries/united-states/README.md) — country; navigation node
 - [Domaine Christiane Chambeyron-Manin](domaine-christiane-chambeyron-manin.md) — producer; baseline reference
 - [Guillaume Gilles / Les Peyrouses](guillaume-gilles.md) — producer; baseline reference
+- [JONATA](jonata.md) — producer; navigation node
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->

@@ -15,6 +15,8 @@ Human Reference profiles are organized for readers and may compose multiple prod
 - [Caparzo](../producers/caparzo.md) — `baseline` / `published`
 - [Château Simone](../producers/chateau-simone.md) — `baseline` / `published`
 - [Clos Apalta / Domaines Bournet-Lapostolle](../producers/clos-apalta.md) — `baseline` / `published`
+- [Clos du Tue-Boeuf](../producers/clos-du-tue-boeuf.md) — `node` / `stub`
+- [Companhia de Vinhos dos Profetas e dos Villões](../producers/companhia-vinhos-profetas-villoes.md) — `node` / `stub`
 - [Condado de Haza / Alenza Gran Reserva](../producers/condado-de-haza.md) — `baseline` / `published`
 - [Corison Winery](../producers/corison-winery.md) — `node` / `stub`
 - [Domaine Christiane Chambeyron-Manin](../producers/domaine-christiane-chambeyron-manin.md) — `baseline` / `published`
@@ -29,6 +31,7 @@ Human Reference profiles are organized for readers and may compose multiple prod
 - [Hiyu Wine Farm](../producers/hiyu-wine-farm.md) — `baseline` / `published`
 - [Hofgut Falkenstein](../producers/hofgut-falkenstein.md) — `baseline` / `published`
 - [Imanol Garay](../producers/imanol-garay.md) — `baseline` / `published`
+- [JONATA](../producers/jonata.md) — `node` / `stub`
 - [Louis Michel & Fils](../producers/domaine-louis-michel-fils.md) — `baseline` / `published`
 - [Phelan Farm](../producers/phelan-farm.md) — `baseline` / `published`
 - [R. López de Heredia Viña Tondonia](../producers/lopez-de-heredia-vina-tondonia.md) — `baseline` / `published`

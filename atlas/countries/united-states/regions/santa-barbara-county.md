@@ -1,4 +1,4 @@
-# Contra Costa County
+# Santa Barbara County
 
 > **Navigation node:** this honest stub keeps a meaningful CARTA subject discoverable without presenting it as a finished baseline reference.
 
@@ -9,12 +9,13 @@ The machine graph and generated relationships below provide the current orientat
 
 This section is generated from governed profile dispositions, editorial anchors, and supported graph relationships. It is not a hand-maintained second knowledge graph.
 
-- [Soleras del Pacífico](../../../producers/soleras-del-pacifico.md) — producer; navigation node
-- [Palomino Fino](../../../grapes/palomino-fino.md) — grape; navigation node
+- [Ballard Canyon AVA](../appellations/ballard-canyon-ava.md) — appellation; navigation node
+- [JONATA](../../../producers/jonata.md) — producer; navigation node
+- [Santa Ynez Valley AVA](../appellations/santa-ynez-valley-ava.md) — appellation; navigation node
 - [United States](../README.md) — country; navigation node
 - [California](california.md) — region; navigation node
+- [Contra Costa County](contra-costa-county.md) — region; navigation node
 - [Napa Valley AVA](../appellations/napa-valley-ava.md) — appellation; navigation node
-- [Santa Barbara County](santa-barbara-county.md) — region; navigation node
 - [St. Helena AVA](../appellations/st-helena-ava.md) — appellation; navigation node
 <!-- END GENERATED CARTA NAVIGATION -->
 
@@ -23,19 +24,19 @@ This section is generated from governed profile dispositions, editorial anchors,
 
 This section is generated from CARTA machine authority. Edit the governed records, then run `python scripts/validate_data.py --write-human-reference`.
 
-- **Profile:** `profile:contra-costa-county`
+- **Profile:** `profile:santa-barbara-county`
 - **Maturity / publication:** `node` / `stub`
-- **Primary entity:** `place:contra-costa-county`
+- **Primary entity:** `place:santa-barbara-county`
 
 **Component entities**
 
-- `place:contra-costa-county`
+- `place:santa-barbara-county`
 
 **Representative anchors**
 
-- `project:soleras-del-pacifico`
-- `vineyard:evangelho-vineyard`
-- `grape:palomino-fino`
+- `producer:jonata`
+- `appellation:ballard-canyon-ava`
+- `appellation:santa-ynez-valley-ava`
 
 <details>
 <summary>Machine claims and sources</summary>
@@ -44,12 +45,15 @@ This section is generated from CARTA machine authority. Edit the governed record
 
 | Claim | Layer / observed | Status | Confidence | Sources |
 |---|---|---|---|---|
-| `claim:run07-contra-costa-navigation-geography` | `reference / 2026-08-18` | `supported` | `high` | `source:soleras-pacifico-vineyards`, `source:bedrock-vineyards` |
+| `claim:ballard-canyon-ava` | `reference / 2026-08-18` | `supported` | `high` | `source:ttb-ava-dates-run06d`, `source:ttb-established-avas-run06d` |
+| `claim:santa-barbara-county-not-ava` | `reference / 2026-08-18` | `supported` | `high` | `source:ttb-appellation-origin-run06d`, `source:decanter-jonata-todos-2021` |
 
 ### Sources
 
-- `source:bedrock-vineyards` — Our Vineyards
-- `source:soleras-pacifico-vineyards` — Vineyards
+- `source:decanter-jonata-todos-2021` — Jonata, Todos Red Blend, Ballard Canyon, Santa Barbara County, California, USA 2021
+- `source:ttb-appellation-origin-run06d` — Wine Labeling: Appellation of Origin
+- `source:ttb-ava-dates-run06d` — List of AVAs by Establishment Date
+- `source:ttb-established-avas-run06d` — Established American Viticultural Areas
 
 </details>
 

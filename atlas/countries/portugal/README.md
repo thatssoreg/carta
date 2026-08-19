@@ -13,9 +13,13 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [Lima Valley](regions/lima-valley.md) — region; navigation node
 - [Arinto dos Açores](../../grapes/arinto-dos-acores.md) — grape; navigation node
 - [Loureiro](../../grapes/loureiro.md) — grape; navigation node
+- [Porto Santo](regions/porto-santo.md) — region; navigation node
 - [Aphros Wine / Phaunus](../../producers/aphros-wine.md) — producer; baseline reference
+- [Madeira Archipelago](regions/madeira-archipelago.md) — region; navigation node
 - [Pico DOP](appellations/pico-dop.md) — appellation; navigation node
+- [Companhia de Vinhos dos Profetas e dos Villões](../../producers/companhia-vinhos-profetas-villoes.md) — producer; navigation node
 - [Eruptio](../../producers/eruptio.md) — producer; navigation node
+- [Madeirense DOP](appellations/madeirense-dop.md) — appellation; navigation node
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->
@@ -46,13 +50,17 @@ This section is generated from CARTA machine authority. Edit the governed record
 | Claim | Layer / observed | Status | Confidence | Sources |
 |---|---|---|---|---|
 | `claim:aphros-lima-valley` | `reference / —` | `supported` | `high` | `source:aphros-project`, `source:aphros-quintas` |
+| `claim:listrao-2022-identity` | `reference / —` | `supported` | `high` | `source:macanita-listrao-2022` |
 | `claim:run07-pico-navigation-geography` | `reference / 2026-08-18` | `supported` | `high` | `source:abegoaria-eruptio-arinto-2020` |
+| `claim:vinho-corda-2023` | `reference / —` | `supported` | `high` | `source:macanita-vinho-corda-2023` |
 
 ### Sources
 
 - `source:abegoaria-eruptio-arinto-2020` — Eruptio Arinto dos Açores 2020
 - `source:aphros-project` — Project
 - `source:aphros-quintas` — Quintas
+- `source:macanita-listrao-2022` — Listrão dos Profetas 2022
+- `source:macanita-vinho-corda-2023` — Vinho da Corda 2023
 
 </details>
 
