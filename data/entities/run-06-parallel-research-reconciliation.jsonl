@@ -1,0 +1,53 @@
+{"id":"place:rotalier","layer":"reference","name":"Rotalier","place_kind":"municipality","status":"active","type":"place"}
+{"id":"producer:domaine-labet","layer":"reference","name":"Domaine Labet","status":"active","tags":["jura","sud-revermont","rotalier"],"type":"producer"}
+{"id":"person:alain-labet","layer":"reference","name":"Alain Labet","status":"active","type":"person"}
+{"id":"person:julien-labet","layer":"reference","name":"Julien Labet","status":"active","type":"person"}
+{"id":"person:charline-labet","layer":"reference","name":"Charline Labet","status":"active","type":"person"}
+{"id":"person:romain-labet","layer":"reference","name":"Romain Labet","status":"active","type":"person"}
+{"id":"wine:domaine-labet-chardonnay-du-hasard","layer":"reference","name":"Domaine Labet Chardonnay du Hasard / Cuvée du Hasard","status":"active","tags":["jura","chardonnay","sous-voile"],"type":"wine"}
+{"id":"wine:domaine-labet-fleur-de-savagnin","layer":"reference","name":"Domaine Labet Fleur de Savagnin","status":"active","tags":["jura","savagnin","ouille"],"type":"wine"}
+{"id":"vineyard:la-bardette-labet","layer":"reference","name":"La Bardette","status":"active","summary":"Domaine Labet named vineyard/lieu-dit represented without fabricated parcel geometry.","type":"vineyard"}
+{"id":"wine:domaine-labet-la-bardette-chardonnay","layer":"reference","name":"Domaine Labet La Bardette Chardonnay","status":"active","tags":["jura","chardonnay","la-bardette"],"type":"wine"}
+{"id":"practice:ouillage","layer":"reference","name":"Ouillage / topped-up élevage","status":"active","type":"practice"}
+{"id":"practice:sous-voile-aging","layer":"reference","name":"Sous-voile aging","status":"active","type":"practice"}
+{"id":"place:penedes","layer":"reference","name":"Penedès","place_kind":"wine_region","status":"active","type":"place"}
+{"id":"place:sant-sadurni-danoia","layer":"reference","name":"Sant Sadurní d'Anoia","place_kind":"municipality","status":"active","type":"place"}
+{"id":"project:vins-pepe-raventos","layer":"reference","name":"Vins Pepe Raventós","status":"active","type":"project"}
+{"id":"person:pepe-raventos","layer":"reference","name":"Pepe Raventós","status":"active","type":"person"}
+{"id":"vineyard:terrasses-del-serral","layer":"reference","name":"Les Terrasses del Serral","status":"active","type":"vineyard"}
+{"id":"grape:graciano","layer":"reference","name":"Graciano","status":"active","type":"grape"}
+{"id":"wine:pepe-raventos-bastard-negre","layer":"reference","name":"Bastard Negre de les Terrasses del Serral","status":"active","tags":["penedes","bastard-negre"],"type":"wine"}
+{"id":"place:contra-costa-county","layer":"reference","name":"Contra Costa County","place_kind":"administrative_region","status":"active","type":"place"}
+{"id":"project:soleras-del-pacifico","layer":"reference","name":"Soleras del Pacífico","status":"active","type":"project"}
+{"id":"person:jake-neustadt","layer":"reference","name":"Jake Neustadt","status":"active","type":"person"}
+{"id":"producer:bedrock-wine-co","layer":"reference","name":"Bedrock Wine Co.","status":"active","type":"producer"}
+{"id":"vineyard:evangelho-vineyard","layer":"reference","name":"Evangelho Vineyard","status":"active","tags":["contra-costa","old-vines"],"type":"vineyard"}
+{"id":"wine:flor-of-evangelho","layer":"reference","name":"The Flor of Evangelho","status":"active","tags":["contra-costa","palomino-fino","flor","solera"],"type":"wine"}
+{"id":"practice:flor-aging","layer":"reference","name":"Flor aging","status":"active","type":"practice"}
+{"id":"practice:solera-aging","layer":"reference","name":"Solera fractional aging","status":"active","type":"practice"}
+{"id":"place:azores","layer":"reference","name":"Azores","place_kind":"administrative_region","status":"active","type":"place"}
+{"id":"place:pico-island","layer":"reference","name":"Pico Island","place_kind":"other","status":"active","type":"place"}
+{"id":"appellation:pico-dop","layer":"reference","name":"Pico DOP","status":"active","type":"appellation"}
+{"id":"project:eruptio","layer":"reference","name":"Eruptio","status":"active","type":"project"}
+{"id":"institution:abegoaria-group","layer":"reference","name":"Abegoaria","status":"active","type":"institution"}
+{"id":"institution:adega-do-pico","layer":"reference","name":"Adega do Pico","status":"active","type":"institution"}
+{"id":"person:bernardo-cabral","layer":"reference","name":"Bernardo Cabral","status":"active","type":"person"}
+{"id":"grape:arinto-dos-acores","layer":"reference","name":"Arinto dos Açores","status":"active","type":"grape"}
+{"id":"wine:eruptio-arinto-dos-acores","layer":"reference","name":"Eruptio Arinto dos Açores","status":"active","tags":["azores","pico","arinto-dos-acores"],"type":"wine"}
+{"id":"place:rheinhessen","layer":"reference","name":"Rheinhessen","place_kind":"wine_region","status":"active","type":"place"}
+{"id":"place:westhofen","layer":"reference","name":"Westhofen","place_kind":"municipality","status":"active","type":"place"}
+{"id":"producer:weingut-keller","layer":"reference","name":"Weingut Keller","status":"active","tags":["rheinhessen","westhofen"],"type":"producer"}
+{"id":"person:klaus-peter-keller","layer":"reference","name":"Klaus-Peter Keller","status":"active","type":"person"}
+{"id":"vineyard:westhofener-kirchspiel","layer":"reference","name":"Westhofener Kirchspiel","status":"active","type":"vineyard"}
+{"id":"wine:keller-riesling-limestone","layer":"reference","name":"Keller Riesling limestone","status":"active","tags":["rheinhessen","riesling","limestone"],"type":"wine"}
+{"id":"wine:keller-riesling-limestone-kabinett","layer":"reference","name":"Keller Riesling Kabinett limestone","status":"active","tags":["rheinhessen","riesling","limestone","kabinett"],"type":"wine"}
+{"id":"wine:keller-riesling-rr","layer":"reference","name":"Keller Riesling RR","status":"active","tags":["rheinhessen","riesling","kirchspiel","feinherb"],"type":"wine"}
+{"id":"place:st-helena-california","layer":"reference","name":"St. Helena, California","place_kind":"municipality","status":"active","type":"place"}
+{"id":"appellation:st-helena-ava","layer":"reference","name":"St. Helena AVA","status":"active","type":"appellation"}
+{"id":"producer:corison-winery","layer":"reference","name":"Corison Winery","status":"active","tags":["napa-valley","st-helena"],"type":"producer"}
+{"id":"person:cathy-corison","layer":"reference","name":"Cathy Corison","status":"active","type":"person"}
+{"id":"vineyard:kronos-vineyard","layer":"reference","name":"Kronos Vineyard","status":"active","type":"vineyard"}
+{"id":"vineyard:sunbasket-vineyard","layer":"reference","name":"Sunbasket Vineyard","status":"active","type":"vineyard"}
+{"id":"wine:corison-napa-valley-cabernet-sauvignon","layer":"reference","name":"Corison Napa Valley Cabernet Sauvignon","status":"active","tags":["napa-valley","cabernet-sauvignon"],"type":"wine"}
+{"id":"wine:corison-kronos-cabernet-sauvignon","layer":"reference","name":"Corison Kronos Vineyard Cabernet Sauvignon","status":"active","tags":["napa-valley","cabernet-sauvignon","kronos"],"type":"wine"}
+{"id":"wine:corison-sunbasket-cabernet-sauvignon","layer":"reference","name":"Corison Sunbasket Vineyard Cabernet Sauvignon","status":"active","tags":["napa-valley","cabernet-sauvignon","sunbasket"],"type":"wine"}

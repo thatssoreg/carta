@@ -80,6 +80,7 @@ This section is generated from CARTA machine authority. Edit the governed record
 | `claim:cote-rotie-official` | `reference / 2026-08-18` | `supported` | `high` | `source:inao-cote-rotie` |
 | `claim:cotes-du-rhone-aop` | `reference / —` | `supported` | `high` | `source:inao-cotes-du-rhone` |
 | `claim:jurancon-country` | `reference / —` | `supported` | `high` | `source:inao-jurancon` |
+| `claim:labet-estate-identity` | `reference / —` | `supported` | `high` | `source:jura-vins-domaine-labet` |
 | `claim:morgon-aop` | `reference / —` | `supported` | `high` | `source:inao-morgon` |
 | `claim:palette-official` | `reference / —` | `supported` | `high` | `source:inao-palette` |
 | `claim:richard-leroy-estate-history` | `reference / —` | `supported` | `high` | `source:winedoctor-richard-2013`, `source:vinetrail-richard`, `source:rvf-richard-2025` |
@@ -95,6 +96,7 @@ This section is generated from CARTA machine authority. Edit the governed record
 - `source:inao-jurancon` — Jurançon
 - `source:inao-morgon` — Morgon ou Morgon cru du Beaujolais
 - `source:inao-palette` — Palette blanc
+- `source:jura-vins-domaine-labet` — Domaine Labet
 - `source:rvf-richard-2025` — Domaine Richard Leroy
 - `source:sacred-thirst-chambeyron` — Chambeyron-Manin
 - `source:simone-history` — Our History | Château Simone
