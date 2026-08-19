@@ -23,5 +23,6 @@
 {"id":"producer:jonata","layer":"reference","name":"JONATA","status":"active","tags":["ballard-canyon","santa-ynez-valley","california"],"type":"producer"}
 {"id":"person:stan-kroenke","layer":"reference","name":"E. Stanley Kroenke","status":"active","type":"person"}
 {"id":"person:matt-dees","layer":"reference","name":"Matt Dees","status":"active","type":"person"}
+{"id":"vineyard:jonata-estate","layer":"reference","name":"JONATA Estate Vineyard","status":"active","tags":["ballard-canyon","certified-organic"],"type":"vineyard"}
 {"id":"wine:jonata-todos","layer":"reference","name":"JONATA Todos","status":"active","tags":["ballard-canyon","red-blend","todos"],"type":"wine"}
 {"id":"grape:petite-sirah","layer":"reference","name":"Petite Sirah","status":"active","type":"grape"}
