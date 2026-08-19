@@ -9,6 +9,7 @@ The machine graph and generated relationships below provide the current orientat
 
 This section is generated from governed profile dispositions, editorial anchors, and supported graph relationships. It is not a hand-maintained second knowledge graph.
 
+- [Burgess Cellars / Promiscua](../producers/burgess-cellars.md) — producer; navigation node
 - [Corison Winery](../producers/corison-winery.md) — producer; navigation node
 - [JONATA](../producers/jonata.md) — producer; navigation node
 - [Napa Valley AVA](../countries/united-states/appellations/napa-valley-ava.md) — appellation; navigation node
@@ -39,6 +40,8 @@ This section is generated from CARTA machine authority. Edit the governed record
 
 | Claim | Layer / observed | Status | Confidence | Sources |
 |---|---|---|---|---|
+| `claim:burgess-promiscua-2021-09` | `reference / —` | `supported` | `high` | `source:burgess-promiscua-2021` |
+| `claim:burgess-promiscua-napa-09` | `reference / 2026-08-19` | `supported` | `high` | `source:burgess-promiscua-current` |
 | `claim:corison-flagship-identity` | `reference / 2026-08-18` | `supported` | `high` | `source:corison-all-wines`, `source:corison-vineyards` |
 | `claim:corison-kronos` | `reference / —` | `supported` | `high` | `source:corison-vineyards` |
 | `claim:corison-sunbasket` | `reference / —` | `supported` | `high` | `source:corison-all-wines`, `source:corison-vineyards` |
@@ -49,6 +52,8 @@ This section is generated from CARTA machine authority. Edit the governed record
 
 ### Sources
 
+- `source:burgess-promiscua-2021` — Promiscua Cabernet Sauvignon 2021 technical note
+- `source:burgess-promiscua-current` — 2022 Promiscua Cabernet Sauvignon
 - `source:corison-all-wines` — All Wines
 - `source:corison-vineyards` — Vineyards
 - `source:jonata-todos-2022` — 2022 Todos Red Wine Vineyard Blend Everyone

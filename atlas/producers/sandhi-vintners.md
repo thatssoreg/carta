@@ -15,6 +15,8 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [Phelan Farm](phelan-farm.md) — producer; baseline reference
 - [Ballard Canyon AVA](../countries/united-states/appellations/ballard-canyon-ava.md) — appellation; navigation node
 - [California](../countries/united-states/regions/california.md) — region; navigation node
+- [Domaine Lampyres / Harvest Moon](domaine-lampyres.md) — producer; navigation node
+- [Prieuré Saint-Jean de Bébian / Tartuguier](prieure-saint-jean-de-bebian.md) — producer; navigation node
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->
@@ -51,6 +53,7 @@ This section is generated from CARTA machine authority. Edit the governed record
 
 | Claim | Layer / observed | Status | Confidence | Sources |
 |---|---|---|---|---|
+| `claim:anika-grenache-2018-santa-barbara-county-09` | `reference / —` | `provisional` | `medium` | `source:kogod-anika-grenache` |
 | `claim:anika-grenache-seed-identity` | `reference / —` | `provisional` | `medium` | `source:kogod-anika-grenache`, `source:winespectrum-coteaux-de-clair` |
 | `claim:anika-mourvedre-seed-identity` | `reference / —` | `supported` | `medium` | `source:roberson-anika-mourvedre` |
 | `claim:anika-sandhi-label-context` | `reference / —` | `supported` | `medium` | `source:sandhi-anika-syrah`, `source:roberson-anika-mourvedre`, `source:kogod-anika-grenache` |
@@ -73,5 +76,6 @@ This section is generated from CARTA machine authority. Edit the governed record
 
 - Verify the exact legal appellation on the 2018 Anika Grenache bottle or producer technical sheet
 - Complete a fit primary ampelographic reconciliation for the Grenache/Garnacha name surface before adding a grape edge
+- `claim:anika-grenache-2018-santa-barbara-county-09` — Confirm with TTB COLA or bottle/back-label authority.
 - `claim:anika-grenache-seed-identity` — Verify the bottle label or producer technical sheet for the exact 2018 appellation before activation.
 <!-- END GENERATED CARTA PROVENANCE -->

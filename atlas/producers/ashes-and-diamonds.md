@@ -75,6 +75,7 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [Cabernet Franc](../grapes/cabernet-franc.md) — grape; navigation node
 - [Napa Valley AVA](../countries/united-states/appellations/napa-valley-ava.md) — appellation; navigation node
 - [United States](../countries/united-states/README.md) — country; navigation node
+- [Burgess Cellars / Promiscua](burgess-cellars.md) — producer; navigation node
 - [California](../countries/united-states/regions/california.md) — region; navigation node
 - [Clos Apalta / Domaines Bournet-Lapostolle](clos-apalta.md) — producer; baseline reference
 - [Corison Winery](corison-winery.md) — producer; navigation node

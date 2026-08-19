@@ -10,6 +10,7 @@ The machine graph and generated relationships below provide the current orientat
 This section is generated from governed profile dispositions, editorial anchors, and supported graph relationships. It is not a hand-maintained second knowledge graph.
 
 - [France](../README.md) — country; baseline reference
+- [Aurélien & Charlotte Houillon](../../../producers/domaine-houillon.md) — producer; navigation node
 - [Guillaume Gilles / Les Peyrouses](../../../producers/guillaume-gilles.md) — producer; baseline reference
 - [Beaujolais](../regions/beaujolais.md) — region; navigation node
 - [Cornas AOP](cornas.md) — appellation; navigation node
@@ -20,6 +21,7 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [Palette AOP](palette.md) — appellation; navigation node
 - [Savoie](../regions/savoie.md) — region; navigation node
 - [Syrah](../../../grapes/syrah.md) — grape; navigation node
+- [Vin de France](../../../classifications/vin-de-france.md) — classification; navigation node
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->
@@ -43,10 +45,12 @@ This section is generated from CARTA machine authority. Edit the governed record
 | Claim | Layer / observed | Status | Confidence | Sources |
 |---|---|---|---|---|
 | `claim:cotes-du-rhone-aop` | `reference / —` | `supported` | `high` | `source:inao-cotes-du-rhone` |
+| `claim:houillon-canne-2021-legal-09` | `reference / —` | `supported` | `medium` | `source:houillon-vine-trail` |
 | `claim:peyrouses-rouge-identity` | `reference / —` | `supported` | `high` | `source:rosenthal-peyrouses-rouge`, `source:inao-cotes-du-rhone` |
 
 ### Sources
 
+- `source:houillon-vine-trail` — Aurélien & Charlotte Houillon
 - `source:inao-cotes-du-rhone` — Côtes du Rhône rouge
 - `source:rosenthal-peyrouses-rouge` — Les Peyrouses Côtes du Rhône Rouge
 

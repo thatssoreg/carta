@@ -1,4 +1,4 @@
-# Tempranillo
+# Natus Vini / Intus
 
 > **Navigation node:** this honest stub keeps a meaningful CARTA subject discoverable without presenting it as a finished baseline reference.
 
@@ -9,13 +9,11 @@ The machine graph and generated relationships below provide the current orientat
 
 This section is generated from governed profile dispositions, editorial anchors, and supported graph relationships. It is not a hand-maintained second knowledge graph.
 
-- [Condado de Haza / Alenza Gran Reserva](../producers/condado-de-haza.md) — producer; baseline reference
-- [Natus Vini / Intus](../producers/natus-vini.md) — producer; navigation node
-- [Bodegas Muga / Prado Enea Gran Reserva](../producers/bodegas-muga.md) — producer; baseline reference
-- [Carignan](carignan.md) — grape; navigation node
-- [Ribera del Duero DOP](../countries/spain/appellations/ribera-del-duero.md) — appellation; navigation node
-- [Rioja DOCa](../countries/spain/appellations/rioja.md) — appellation; navigation node
-- [Trincadeira](trincadeira.md) — grape; navigation node
+- [Tempranillo](../grapes/tempranillo.md) — grape; navigation node
+- [Trincadeira](../grapes/trincadeira.md) — grape; navigation node
+- [Portugal](../countries/portugal/README.md) — country; navigation node
+- [Bodegas Muga / Prado Enea Gran Reserva](bodegas-muga.md) — producer; baseline reference
+- [Condado de Haza / Alenza Gran Reserva](condado-de-haza.md) — producer; baseline reference
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->
@@ -23,13 +21,24 @@ This section is generated from governed profile dispositions, editorial anchors,
 
 This section is generated from CARTA machine authority. Edit the governed records, then run `python scripts/validate_data.py --write-human-reference`.
 
-- **Profile:** `profile:tempranillo`
+- **Profile:** `profile:natus-vini`
 - **Maturity / publication:** `node` / `stub`
-- **Primary entity:** `grape:tempranillo`
+- **Primary entity:** `producer:natus-vini`
 
 **Component entities**
 
+- `producer:natus-vini`
+- `person:hamilton-reis`
+- `wine:natus-intus-tinto`
+
+**Representative anchors**
+
+- `place:alentejo`
+- `place:vidigueira`
+- `appellation:alentejano-ig`
+- `grape:trincadeira`
 - `grape:tempranillo`
+- `wine:natus-intus-tinto`
 
 <details>
 <summary>Machine claims and sources</summary>
@@ -38,20 +47,16 @@ This section is generated from CARTA machine authority. Edit the governed record
 
 | Claim | Layer / observed | Status | Confidence | Sources |
 |---|---|---|---|---|
-| `claim:alenza-wine-identity` | `reference / —` | `supported` | `high` | `source:alenza-2019`, `source:condado-de-haza` |
+| `claim:natus-intus-legal-09` | `reference / —` | `supported` | `medium` | `source:natus-intus-trade` |
 | `claim:natus-intus-tinto-grapes-09` | `reference / —` | `supported` | `medium` | `source:natus-intus-trade`, `source:vivc-tempranillo-12350`, `source:vivc-trincadeira-15685` |
-| `claim:prado-enea-2019-composition` | `reference / —` | `supported` | `high` | `source:muga-prado-enea-2019` |
+| `claim:natus-producer-intus-line-09` | `reference / —` | `supported` | `high` | `source:natus-cvra` |
+| `claim:natus-vidigueira-09` | `reference / —` | `supported` | `high` | `source:natus-cvra` |
 | `claim:tempranillo-aragonez-name-09` | `reference / —` | `supported` | `high` | `source:vivc-tempranillo-12350`, `source:natus-intus-trade` |
-| `claim:tempranillo-ribera-names` | `reference / —` | `supported` | `high` | `source:ribera-varieties`, `source:ribera-product-spec-2023` |
 
 ### Sources
 
-- `source:alenza-2019` — Alenza Gran Reserva 2019
-- `source:condado-de-haza` — Condado de Haza
-- `source:muga-prado-enea-2019` — Prado Enea Gran Reserva 2019
+- `source:natus-cvra` — Natus Vini
 - `source:natus-intus-trade` — Natus Vini Intus Tinto
-- `source:ribera-product-spec-2023` — Ribera del Duero product specification amendment, 2023
-- `source:ribera-varieties` — Variedades de uva
 - `source:vivc-tempranillo-12350` — VIVC passport — Tempranillo
 - `source:vivc-trincadeira-15685` — VIVC passport — Trincadeira
 
@@ -59,5 +64,6 @@ This section is generated from CARTA machine authority. Edit the governed record
 
 ### Open questions
 
-- None recorded.
+- Obtain certificate-level organic authority and conversion dates before flattening certification across estate and contracted fruit
+- Identify contracted Intus growers only when named evidence exists
 <!-- END GENERATED CARTA PROVENANCE -->

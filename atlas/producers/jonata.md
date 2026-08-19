@@ -33,6 +33,8 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [United States](../countries/united-states/README.md) — country; navigation node
 - [Arnot-Roberts](arnot-roberts.md) — producer; baseline reference
 - [Ashes & Diamonds / Cabernet Franc](ashes-and-diamonds.md) — producer; baseline reference
+- [Aurélien & Charlotte Houillon](domaine-houillon.md) — producer; navigation node
+- [Burgess Cellars / Promiscua](burgess-cellars.md) — producer; navigation node
 - [Clos Apalta / Domaines Bournet-Lapostolle](clos-apalta.md) — producer; baseline reference
 - [Corison Winery](corison-winery.md) — producer; navigation node
 - [Domaine Christiane Chambeyron-Manin](domaine-christiane-chambeyron-manin.md) — producer; baseline reference

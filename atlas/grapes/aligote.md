@@ -1,4 +1,4 @@
-# Altesse
+# Aligoté
 
 > **Navigation node:** this honest stub keeps a meaningful CARTA subject discoverable without presenting it as a finished baseline reference.
 
@@ -9,8 +9,7 @@ The machine graph and generated relationships below provide the current orientat
 
 This section is generated from governed profile dispositions, editorial anchors, and supported graph relationships. It is not a hand-maintained second knowledge graph.
 
-- [Domaine Carrel & Senger / Jongieux Blanc](../producers/domaine-carrel-senger.md) — producer; navigation node
-- [Domaine de Chevillard](../producers/domaine-de-chevillard.md) — producer; baseline reference
+- [Domaine Numa Cornut / Bourgogne Aligoté](../producers/numa-cornut.md) — producer; navigation node
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->
@@ -18,13 +17,19 @@ This section is generated from governed profile dispositions, editorial anchors,
 
 This section is generated from CARTA machine authority. Edit the governed records, then run `python scripts/validate_data.py --write-human-reference`.
 
-- **Profile:** `profile:altesse`
+- **Profile:** `profile:aligote`
 - **Maturity / publication:** `node` / `stub`
-- **Primary entity:** `grape:altesse`
+- **Primary entity:** `grape:aligote`
 
 **Component entities**
 
-- `grape:altesse`
+- `grape:aligote`
+
+**Representative anchors**
+
+- `producer:numa-cornut`
+- `wine:numa-cornut-bourgogne-aligote`
+- `appellation:bourgogne-aligote`
 
 <details>
 <summary>Machine claims and sources</summary>
@@ -33,16 +38,16 @@ This section is generated from CARTA machine authority. Edit the governed record
 
 | Claim | Layer / observed | Status | Confidence | Sources |
 |---|---|---|---|---|
-| `claim:chevillard-local-grapes` | `reference / —` | `supported` | `high` | `source:chevillard-domaine`, `source:chevillard-wines` |
+| `claim:numa-aligote-2023-09` | `reference / —` | `supported` | `medium` | `source:numa-allied-aligote`, `source:vivc-aligote-312` |
 
 ### Sources
 
-- `source:chevillard-domaine` — Le domaine | Domaine de Chevillard
-- `source:chevillard-wines` — Nos vins | Domaine de Chevillard
+- `source:numa-allied-aligote` — Grand vin de Bourgogne — Aligoté 2023
+- `source:vivc-aligote-312` — VIVC passport — Aligoté
 
 </details>
 
 ### Open questions
 
-- None recorded.
+- Build a primary ampelographic baseline before promotion and keep producer-specific old-vine claims separate from grape history
 <!-- END GENERATED CARTA PROVENANCE -->

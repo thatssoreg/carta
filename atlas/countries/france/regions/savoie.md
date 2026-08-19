@@ -10,6 +10,7 @@ The machine graph and generated relationships below provide the current orientat
 This section is generated from governed profile dispositions, editorial anchors, and supported graph relationships. It is not a hand-maintained second knowledge graph.
 
 - [France](../README.md) — country; baseline reference
+- [Domaine Carrel & Senger / Jongieux Blanc](../../../producers/domaine-carrel-senger.md) — producer; navigation node
 - [Combe de Savoie](combe-de-savoie.md) — region; navigation node
 - [Beaujolais](beaujolais.md) — region; navigation node
 - [Cornas AOP](../appellations/cornas.md) — appellation; navigation node
@@ -42,11 +43,14 @@ This section is generated from CARTA machine authority. Edit the governed record
 
 | Claim | Layer / observed | Status | Confidence | Sources |
 |---|---|---|---|---|
+| `claim:carrel-jongieux-blanc-09` | `reference / —` | `supported` | `high` | `source:carrel-jongieux-product`, `source:inao-vin-de-savoie-2019` |
 | `claim:chevillard-location` | `reference / —` | `supported` | `high` | `source:chevillard-domaine` |
 
 ### Sources
 
+- `source:carrel-jongieux-product` — Jongieux blanc
 - `source:chevillard-domaine` — Le domaine | Domaine de Chevillard
+- `source:inao-vin-de-savoie-2019` — Cahier des charges AOC Vin de Savoie
 
 </details>
 

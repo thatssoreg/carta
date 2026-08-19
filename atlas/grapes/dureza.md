@@ -1,4 +1,4 @@
-# Altesse
+# Dureza
 
 > **Navigation node:** this honest stub keeps a meaningful CARTA subject discoverable without presenting it as a finished baseline reference.
 
@@ -9,8 +9,9 @@ The machine graph and generated relationships below provide the current orientat
 
 This section is generated from governed profile dispositions, editorial anchors, and supported graph relationships. It is not a hand-maintained second knowledge graph.
 
-- [Domaine Carrel & Senger / Jongieux Blanc](../producers/domaine-carrel-senger.md) — producer; navigation node
-- [Domaine de Chevillard](../producers/domaine-de-chevillard.md) — producer; baseline reference
+- [Vindiou / Cœur Fidèle](../producers/vindiou.md) — producer; navigation node
+- [Syrah](syrah.md) — grape; navigation node
+- [Vin de France](../classifications/vin-de-france.md) — classification; navigation node
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->
@@ -18,13 +19,19 @@ This section is generated from governed profile dispositions, editorial anchors,
 
 This section is generated from CARTA machine authority. Edit the governed records, then run `python scripts/validate_data.py --write-human-reference`.
 
-- **Profile:** `profile:altesse`
+- **Profile:** `profile:dureza`
 - **Maturity / publication:** `node` / `stub`
-- **Primary entity:** `grape:altesse`
+- **Primary entity:** `grape:dureza`
 
 **Component entities**
 
-- `grape:altesse`
+- `grape:dureza`
+
+**Representative anchors**
+
+- `producer:vindiou`
+- `wine:vindiou-coeur-fidele`
+- `grape:syrah`
 
 <details>
 <summary>Machine claims and sources</summary>
@@ -33,16 +40,19 @@ This section is generated from CARTA machine authority. Edit the governed record
 
 | Claim | Layer / observed | Status | Confidence | Sources |
 |---|---|---|---|---|
-| `claim:chevillard-local-grapes` | `reference / —` | `supported` | `high` | `source:chevillard-domaine`, `source:chevillard-wines` |
+| `claim:dureza-parent-syrah-09` | `reference / —` | `supported` | `high` | `source:dureza-bowers-2000`, `source:vivc-dureza-22231` |
+| `claim:vindiou-coeur-fidele-2024-09` | `reference / —` | `supported` | `medium` | `source:vindiou-coeur-fidele-2024`, `source:vindiou-first-party` |
 
 ### Sources
 
-- `source:chevillard-domaine` — Le domaine | Domaine de Chevillard
-- `source:chevillard-wines` — Nos vins | Domaine de Chevillard
+- `source:dureza-bowers-2000` — Historical Genetics: The Parentage of Chardonnay, Gamay, and Other Wine Grapes of Northeastern France
+- `source:vindiou-coeur-fidele-2024` — Vindiou Cœur Fidèle 2024
+- `source:vindiou-first-party` — Vindiou
+- `source:vivc-dureza-22231` — VIVC passport — Dureza
 
 </details>
 
 ### Open questions
 
-- None recorded.
+- Build a fuller primary ampelographic baseline while retaining the evidence-backed Syrah parentage relationship
 <!-- END GENERATED CARTA PROVENANCE -->

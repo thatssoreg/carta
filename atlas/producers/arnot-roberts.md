@@ -64,6 +64,7 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [Petaluma Gap AVA](../countries/united-states/appellations/petaluma-gap-ava.md) — appellation; navigation node
 - [Syrah](../grapes/syrah.md) — grape; navigation node
 - [United States](../countries/united-states/README.md) — country; navigation node
+- [Aurélien & Charlotte Houillon](domaine-houillon.md) — producer; navigation node
 - [Domaine Christiane Chambeyron-Manin](domaine-christiane-chambeyron-manin.md) — producer; baseline reference
 - [Guillaume Gilles / Les Peyrouses](guillaume-gilles.md) — producer; baseline reference
 - [JONATA](jonata.md) — producer; navigation node
