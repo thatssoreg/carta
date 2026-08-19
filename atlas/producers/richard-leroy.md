@@ -89,6 +89,7 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [France](../countries/france/README.md) — country; baseline reference
 - [Pyrenean Atlantic](../ecosystems/pyrenean-atlantic.md) — ecosystem; baseline reference
 - [Alfredo Egia](alfredo-egia.md) — producer; baseline reference
+- [Domaine de la Bergerie / Clos de la Bergerie](domaine-de-la-bergerie-anjou.md) — producer; navigation node
 - [Domaine Huet](domaine-huet.md) — producer; baseline reference
 <!-- END GENERATED CARTA NAVIGATION -->
 

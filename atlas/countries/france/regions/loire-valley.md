@@ -13,6 +13,8 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [Clos du Tue-Boeuf](../../../producers/clos-du-tue-boeuf.md) — producer; navigation node
 - [Menu Pineau / Orbois](../../../grapes/menu-pineau.md) — grape; navigation node
 - [Vin de France](../../../classifications/vin-de-france.md) — classification; navigation node
+- [Domaine de la Bergerie / Clos de la Bergerie](../../../producers/domaine-de-la-bergerie-anjou.md) — producer; navigation node
+- [François Blanchard / Le Grand Cléré](../../../producers/le-grand-clere.md) — producer; navigation node
 - [Beaujolais](beaujolais.md) — region; navigation node
 - [Cornas AOP](../appellations/cornas.md) — appellation; navigation node
 - [Côte-Rôtie](../appellations/cote-rotie.md) — appellation; navigation node

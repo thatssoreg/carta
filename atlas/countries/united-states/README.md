@@ -14,6 +14,7 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [Columbia Gorge AVA](appellations/columbia-gorge-ava.md) — appellation; navigation node
 - [Contra Costa County](regions/contra-costa-county.md) — region; navigation node
 - [Santa Barbara County](regions/santa-barbara-county.md) — region; navigation node
+- [Santa Ynez Valley AVA](appellations/santa-ynez-valley-ava.md) — appellation; navigation node
 - [St. Helena AVA](appellations/st-helena-ava.md) — appellation; navigation node
 - [Arnot-Roberts](../../producers/arnot-roberts.md) — producer; baseline reference
 - [Ashes & Diamonds / Cabernet Franc](../../producers/ashes-and-diamonds.md) — producer; baseline reference
@@ -21,10 +22,9 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [Corison Winery](../../producers/corison-winery.md) — producer; navigation node
 - [Hiyu Wine Farm](../../producers/hiyu-wine-farm.md) — producer; baseline reference
 - [JONATA](../../producers/jonata.md) — producer; navigation node
+- [Pax Wines](../../producers/pax-wines.md) — producer; navigation node
 - [Petaluma Gap AVA](appellations/petaluma-gap-ava.md) — appellation; navigation node
 - [Phelan Farm](../../producers/phelan-farm.md) — producer; baseline reference
-- [San Luis Obispo Coast AVA](appellations/san-luis-obispo-coast-ava.md) — appellation; navigation node
-- [Santa Ynez Valley AVA](appellations/santa-ynez-valley-ava.md) — appellation; navigation node
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->

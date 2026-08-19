@@ -13,6 +13,7 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [Riesling](../grapes/riesling.md) — grape; navigation node
 - [Germany](../countries/germany/README.md) — country; navigation node
 - [Hofgut Falkenstein](../producers/hofgut-falkenstein.md) — producer; baseline reference
+- [Weingut A.J. Adam](../producers/aj-adam.md) — producer; navigation node
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->
@@ -41,6 +42,7 @@ This section is generated from CARTA machine authority. Edit the governed record
 
 | Claim | Layer / observed | Status | Confidence | Sources |
 |---|---|---|---|---|
+| `claim:aj-adam-hofberg-kabinett-identity` | `reference / —` | `supported` | `medium` | `source:vdp-aj-adam`, `source:vdp-dhroner-hofberg` |
 | `claim:kabinett-law` | `reference / —` | `supported` | `high` | `source:german-wine-act-kabinett` |
 | `claim:keller-limestone-separate-identities` | `reference / 2026-08-18` | `supported` | `high` | `source:fleet-street-keller` |
 
@@ -48,10 +50,12 @@ This section is generated from CARTA machine authority. Edit the governed record
 
 - `source:fleet-street-keller` — Weingut Keller
 - `source:german-wine-act-kabinett` — Weingesetz § 20 Qualitätsprüfung der Prädikatsweine
+- `source:vdp-aj-adam` — VDP.Weingut A.J.Adam
+- `source:vdp-dhroner-hofberg` — Weinberg.Online — HOFBERG, Dhron
 
 </details>
 
 ### Open questions
 
-- None recorded.
+- `claim:aj-adam-hofberg-kabinett-identity` — Retain vintage-specific technical details separately; this staging claim does not universalize sweetness or cellar protocol.
 <!-- END GENERATED CARTA PROVENANCE -->

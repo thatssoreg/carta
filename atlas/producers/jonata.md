@@ -37,6 +37,7 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [Corison Winery](corison-winery.md) — producer; navigation node
 - [Domaine Christiane Chambeyron-Manin](domaine-christiane-chambeyron-manin.md) — producer; baseline reference
 - [Guillaume Gilles / Les Peyrouses](guillaume-gilles.md) — producer; baseline reference
+- [Pax Wines](pax-wines.md) — producer; navigation node
 
 ### Deliberately deferred anchors
 

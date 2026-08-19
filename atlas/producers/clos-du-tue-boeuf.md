@@ -29,6 +29,7 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [Vin de France](../classifications/vin-de-france.md) — classification; navigation node
 - [Loire Valley](../countries/france/regions/loire-valley.md) — region; navigation node
 - [France](../countries/france/README.md) — country; baseline reference
+- [François Blanchard / Le Grand Cléré](le-grand-clere.md) — producer; navigation node
 
 ### Deliberately deferred anchors
 

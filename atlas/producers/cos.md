@@ -1,4 +1,4 @@
-# St. Helena AVA
+# COS
 
 > **Navigation node:** this honest stub keeps a meaningful CARTA subject discoverable without presenting it as a finished baseline reference.
 
@@ -9,14 +9,7 @@ The machine graph and generated relationships below provide the current orientat
 
 This section is generated from governed profile dispositions, editorial anchors, and supported graph relationships. It is not a hand-maintained second knowledge graph.
 
-- [United States](../README.md) — country; navigation node
-- [Cabernet Sauvignon](../../../grapes/cabernet-sauvignon.md) — grape; navigation node
-- [Corison Winery](../../../producers/corison-winery.md) — producer; navigation node
-- [California](../regions/california.md) — region; navigation node
-- [Contra Costa County](../regions/contra-costa-county.md) — region; navigation node
-- [Napa Valley AVA](napa-valley-ava.md) — appellation; navigation node
-- [Santa Barbara County](../regions/santa-barbara-county.md) — region; navigation node
-- [Santa Ynez Valley AVA](santa-ynez-valley-ava.md) — appellation; navigation node
+- [Italy](../countries/italy/README.md) — country; navigation node
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->
@@ -24,18 +17,23 @@ This section is generated from governed profile dispositions, editorial anchors,
 
 This section is generated from CARTA machine authority. Edit the governed records, then run `python scripts/validate_data.py --write-human-reference`.
 
-- **Profile:** `profile:st-helena-ava`
+- **Profile:** `profile:cos`
 - **Maturity / publication:** `node` / `stub`
-- **Primary entity:** `appellation:st-helena-ava`
+- **Primary entity:** `producer:cos`
 
 **Component entities**
 
-- `appellation:st-helena-ava`
+- `producer:cos`
+- `person:giambattista-cilia`
+- `person:giusto-occhipinti`
+- `person:cirino-strano`
+- `wine:cos-pithos-rosso`
 
 **Representative anchors**
 
-- `producer:corison-winery`
-- `grape:cabernet-sauvignon`
+- `place:sicily`
+- `place:vittoria-sicily`
+- `wine:cos-pithos-rosso`
 
 <details>
 <summary>Machine claims and sources</summary>
@@ -44,15 +42,20 @@ This section is generated from CARTA machine authority. Edit the governed record
 
 | Claim | Layer / observed | Status | Confidence | Sources |
 |---|---|---|---|---|
-| `claim:st-helena-ava-established` | `reference / 2026-08-18` | `supported` | `high` | `source:ttb-ava-establishment-dates-run06` |
+| `claim:cos-biodynamic-principles` | `reference / 2026-08-19` | `supported` | `high` | `source:cos-company` |
+| `claim:cos-founders-1980` | `reference / —` | `supported` | `high` | `source:cos-company` |
+| `claim:cos-pithos-born-2000` | `reference / —` | `provisional` | `medium` | `source:cos-company`, `source:opening-bottle-cos` |
 
 ### Sources
 
-- `source:ttb-ava-establishment-dates-run06` — AVA Establishment Dates
+- `source:cos-company` — COS — The Company and Wines
+- `source:opening-bottle-cos` — COS
 
 </details>
 
 ### Open questions
 
-- None recorded.
+- Confirm the exact seed bottle/vintage before treating Vittoria Rosso as Pithos Rosso
+- Resolve Pithos Rosso composition by vintage rather than selecting between conflicting timeless descriptions
+- `claim:cos-pithos-born-2000` — Confirm the exact seed bottle/vintage and current Pithos Rosso grape composition before activation.
 <!-- END GENERATED CARTA PROVENANCE -->

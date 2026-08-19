@@ -14,6 +14,7 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [Domaine Labet](../../../producers/domaine-labet.md) — producer; navigation node
 - [Chardonnay](../../../grapes/chardonnay.md) — grape; navigation node
 - [Savagnin](../../../grapes/savagnin.md) — grape; navigation node
+- [Domaine de la Tournelle](../../../producers/domaine-de-la-tournelle.md) — producer; navigation node
 - [Beaujolais](beaujolais.md) — region; navigation node
 - [Cornas AOP](../appellations/cornas.md) — appellation; navigation node
 - [Côte-Rôtie](../appellations/cote-rotie.md) — appellation; navigation node

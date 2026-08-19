@@ -14,6 +14,7 @@ Country-specific regions and appellations are nested beneath countries; landscap
 - [Italy](../countries/italy/README.md) — `node` / `stub`
 - [Portugal](../countries/portugal/README.md) — `node` / `stub`
 - [Spain](../countries/spain/README.md) — `baseline` / `published`
+- [Switzerland](../countries/switzerland/README.md) — `node` / `stub`
 - [United States](../countries/united-states/README.md) — `node` / `stub`
 
 ## Regions

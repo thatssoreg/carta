@@ -1,4 +1,4 @@
-# Italy
+# Folgasão
 
 > **Navigation node:** this honest stub keeps a meaningful CARTA subject discoverable without presenting it as a finished baseline reference.
 
@@ -9,10 +9,7 @@ The machine graph and generated relationships below provide the current orientat
 
 This section is generated from governed profile dispositions, editorial anchors, and supported graph relationships. It is not a hand-maintained second knowledge graph.
 
-- [Brunello di Montalcino DOCG](appellations/brunello-di-montalcino.md) — appellation; navigation node
-- [Caparzo](../../producers/caparzo.md) — producer; baseline reference
-- [Casa Coste Piane](../../producers/casa-coste-piane.md) — producer; navigation node
-- [COS](../../producers/cos.md) — producer; navigation node
+- [Maçanita Vinhos](../producers/macanita-vinhos.md) — producer; navigation node
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->
@@ -20,28 +17,30 @@ This section is generated from governed profile dispositions, editorial anchors,
 
 This section is generated from CARTA machine authority. Edit the governed records, then run `python scripts/validate_data.py --write-human-reference`.
 
-- **Profile:** `profile:italy`
+- **Profile:** `profile:folgasao`
 - **Maturity / publication:** `node` / `stub`
-- **Primary entity:** `place:italy`
+- **Primary entity:** `grape:folgasao`
 
 **Component entities**
 
-- `place:italy`
+- `grape:folgasao`
 
 <details>
 <summary>Machine claims and sources</summary>
 
 ### Material claims
 
-No material machine claims are recorded for this profile yet.
+| Claim | Layer / observed | Status | Confidence | Sources |
+|---|---|---|---|---|
+| `claim:macanita-reserva-2021-composition` | `reference / —` | `supported` | `high` | `source:macanita-reserva-2021` |
 
 ### Sources
 
-No source records are projected for this profile yet.
+- `source:macanita-reserva-2021` — Maçanita Branco Reserva 2021 technical sheet
 
 </details>
 
 ### Open questions
 
-- Build a baseline national orientation from Italian regulatory and institutional authority
+- Complete an independent ampelographic baseline before promotion
 <!-- END GENERATED CARTA PROVENANCE -->

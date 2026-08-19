@@ -1,4 +1,4 @@
-# Italy
+# Glera
 
 > **Navigation node:** this honest stub keeps a meaningful CARTA subject discoverable without presenting it as a finished baseline reference.
 
@@ -9,10 +9,7 @@ The machine graph and generated relationships below provide the current orientat
 
 This section is generated from governed profile dispositions, editorial anchors, and supported graph relationships. It is not a hand-maintained second knowledge graph.
 
-- [Brunello di Montalcino DOCG](appellations/brunello-di-montalcino.md) — appellation; navigation node
-- [Caparzo](../../producers/caparzo.md) — producer; baseline reference
-- [Casa Coste Piane](../../producers/casa-coste-piane.md) — producer; navigation node
-- [COS](../../producers/cos.md) — producer; navigation node
+- [Casa Coste Piane](../producers/casa-coste-piane.md) — producer; navigation node
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->
@@ -20,28 +17,30 @@ This section is generated from governed profile dispositions, editorial anchors,
 
 This section is generated from CARTA machine authority. Edit the governed records, then run `python scripts/validate_data.py --write-human-reference`.
 
-- **Profile:** `profile:italy`
+- **Profile:** `profile:glera`
 - **Maturity / publication:** `node` / `stub`
-- **Primary entity:** `place:italy`
+- **Primary entity:** `grape:glera`
 
 **Component entities**
 
-- `place:italy`
+- `grape:glera`
 
 <details>
 <summary>Machine claims and sources</summary>
 
 ### Material claims
 
-No material machine claims are recorded for this profile yet.
+| Claim | Layer / observed | Status | Confidence | Sources |
+|---|---|---|---|---|
+| `claim:casa-frizzante-identity` | `reference / —` | `supported` | `high` | `source:casa-coste-piane-frizzante` |
 
 ### Sources
 
-No source records are projected for this profile yet.
+- `source:casa-coste-piane-frizzante` — Valdobbiadene Prosecco DOCG Frizzante...Naturalmente
 
 </details>
 
 ### Open questions
 
-- Build a baseline national orientation from Italian regulatory and institutional authority
+- Build a primary ampelographic and legal-name baseline without collapsing grape identity into Prosecco place/designation terminology
 <!-- END GENERATED CARTA PROVENANCE -->

@@ -9,6 +9,7 @@ The machine graph and generated relationships below provide the current orientat
 
 This section is generated from governed profile dispositions, editorial anchors, and supported graph relationships. It is not a hand-maintained second knowledge graph.
 
+- [Domaine de la Tournelle](../producers/domaine-de-la-tournelle.md) — producer; navigation node
 - [Domaine Labet](../producers/domaine-labet.md) — producer; navigation node
 - [Jura](../countries/france/regions/jura.md) — region; navigation node
 - [Domaine de Saint Pierre / Château Renard](../producers/domaine-de-saint-pierre-jura.md) — producer; baseline reference
@@ -39,12 +40,15 @@ This section is generated from CARTA machine authority. Edit the governed record
 | `claim:chateau-renard-2020-chardonnay-savagnin` | `reference / —` | `provisional` | `medium` | `source:saint-pierre-chateau-renard-2020` |
 | `claim:labet-fleur-savagnin` | `reference / 2026-08-18` | `supported` | `high` | `source:jura-vins-domaine-labet` |
 | `claim:petit-manseng-savagnin` | `reference / —` | `supported` | `high` | `source:plantgrape-petit-manseng` |
+| `claim:tournelle-fleur-identity` | `reference / —` | `supported` | `high` | `source:tournelle-fleur-fr`, `source:tournelle-fleur-en` |
 
 ### Sources
 
 - `source:jura-vins-domaine-labet` — Domaine Labet
 - `source:plantgrape-petit-manseng` — Petit Manseng
 - `source:saint-pierre-chateau-renard-2020` — Arbois Château Renard Saint-Pierre 2020
+- `source:tournelle-fleur-en` — Fleur de Savagnin — English page
+- `source:tournelle-fleur-fr` — Fleur de Savagnin — fiche française
 
 </details>
 

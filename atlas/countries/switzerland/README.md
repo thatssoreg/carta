@@ -1,4 +1,4 @@
-# Italy
+# Switzerland
 
 > **Navigation node:** this honest stub keeps a meaningful CARTA subject discoverable without presenting it as a finished baseline reference.
 
@@ -9,10 +9,7 @@ The machine graph and generated relationships below provide the current orientat
 
 This section is generated from governed profile dispositions, editorial anchors, and supported graph relationships. It is not a hand-maintained second knowledge graph.
 
-- [Brunello di Montalcino DOCG](appellations/brunello-di-montalcino.md) — appellation; navigation node
-- [Caparzo](../../producers/caparzo.md) — producer; baseline reference
-- [Casa Coste Piane](../../producers/casa-coste-piane.md) — producer; navigation node
-- [COS](../../producers/cos.md) — producer; navigation node
+- [Caves du Château d'Auvernier](../../producers/chateau-auvernier.md) — producer; navigation node
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->
@@ -20,13 +17,19 @@ This section is generated from governed profile dispositions, editorial anchors,
 
 This section is generated from CARTA machine authority. Edit the governed records, then run `python scripts/validate_data.py --write-human-reference`.
 
-- **Profile:** `profile:italy`
+- **Profile:** `profile:switzerland`
 - **Maturity / publication:** `node` / `stub`
-- **Primary entity:** `place:italy`
+- **Primary entity:** `place:switzerland`
 
 **Component entities**
 
-- `place:italy`
+- `place:switzerland`
+
+**Representative anchors**
+
+- `place:canton-neuchatel`
+- `appellation:neuchatel-aoc`
+- `producer:chateau-auvernier`
 
 <details>
 <summary>Machine claims and sources</summary>
@@ -43,5 +46,5 @@ No source records are projected for this profile yet.
 
 ### Open questions
 
-- Build a baseline national orientation from Italian regulatory and institutional authority
+- Build a baseline national orientation from Swiss federal and cantonal regulatory authority before broader expansion
 <!-- END GENERATED CARTA PROVENANCE -->

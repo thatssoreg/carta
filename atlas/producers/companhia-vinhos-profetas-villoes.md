@@ -31,6 +31,7 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [Palomino Fino](../grapes/palomino-fino.md) — grape; navigation node
 - [Porto Santo](../countries/portugal/regions/porto-santo.md) — region; navigation node
 - [Portugal](../countries/portugal/README.md) — country; navigation node
+- [Maçanita Vinhos](macanita-vinhos.md) — producer; navigation node
 - [Goyo García Viadero](goyo-garcia-viadero.md) — producer; baseline reference
 - [Soleras del Pacífico](soleras-del-pacifico.md) — producer; navigation node
 
@@ -77,6 +78,7 @@ This section is generated from CARTA machine authority. Edit the governed record
 | `claim:listrao-2022-cellar` | `reference / —` | `supported` | `high` | `source:macanita-listrao-2022` |
 | `claim:listrao-2022-identity` | `reference / —` | `supported` | `high` | `source:macanita-listrao-2022` |
 | `claim:listrao-palomino-name` | `reference / 2026-08-18` | `supported` | `high` | `source:macanita-vinho-corda-2023` |
+| `claim:macanita-vinhos-identity` | `reference / —` | `supported` | `high` | `source:macanita-reserva-2023`, `source:macanita-team` |
 | `claim:madeirense-distinct-madeira` | `reference / 2026-08-18` | `supported` | `high` | `source:ivv-madeira-dop-list`, `source:ivv-madeirense-spec-index`, `source:ivv-madeira-dop` |
 | `claim:profetas-project-identity` | `reference / 2026-08-18` | `supported` | `high` | `source:macanita-profetas-project`, `source:macanita-profetas-team` |
 | `claim:profetas-start-2020` | `reference / —` | `supported` | `high` | `source:macanita-profetas-project` |
@@ -91,6 +93,8 @@ This section is generated from CARTA machine authority. Edit the governed record
 - `source:macanita-listrao-2022` — Listrão dos Profetas 2022
 - `source:macanita-profetas-project` — Companhia dos Profetas e dos Villões Project
 - `source:macanita-profetas-team` — Equipa | Companhia dos Vinhos dos Profetas e Villões
+- `source:macanita-reserva-2023` — Maçanita Reserva Branco 2023
+- `source:macanita-team` — Maçanita Vinhos team
 - `source:macanita-vinho-corda-2023` — Vinho da Corda 2023
 
 </details>

@@ -27,6 +27,7 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [Savagnin](../grapes/savagnin.md) — grape; navigation node
 - [France](../countries/france/README.md) — country; baseline reference
 - [Jura](../countries/france/regions/jura.md) — region; navigation node
+- [Domaine de la Tournelle](domaine-de-la-tournelle.md) — producer; navigation node
 - [Domaine de Saint Pierre / Château Renard](domaine-de-saint-pierre-jura.md) — producer; baseline reference
 - [Hiyu Wine Farm](hiyu-wine-farm.md) — producer; baseline reference
 - [Louis Michel & Fils](domaine-louis-michel-fils.md) — producer; baseline reference

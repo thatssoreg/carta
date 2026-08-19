@@ -10,6 +10,7 @@ The machine graph and generated relationships below provide the current orientat
 This section is generated from governed profile dispositions, editorial anchors, and supported graph relationships. It is not a hand-maintained second knowledge graph.
 
 - [France](../README.md) — country; baseline reference
+- [Domaine de la Tournelle](../../../producers/domaine-de-la-tournelle.md) — producer; navigation node
 - [Domaine de Saint Pierre / Château Renard](../../../producers/domaine-de-saint-pierre-jura.md) — producer; baseline reference
 - [Jura](../regions/jura.md) — region; navigation node
 - [Chardonnay](../../../grapes/chardonnay.md) — grape; navigation node
@@ -38,12 +39,15 @@ This section is generated from CARTA machine authority. Edit the governed record
 |---|---|---|---|---|
 | `claim:arbois-aop` | `reference / 2026-08-18` | `supported` | `high` | `source:inao-arbois` |
 | `claim:chateau-renard-wine-identity` | `reference / —` | `supported` | `high` | `source:saint-pierre-chateau-renard-2018`, `source:saint-pierre-chateau-renard-2020` |
+| `claim:tournelle-fleur-identity` | `reference / —` | `supported` | `high` | `source:tournelle-fleur-fr`, `source:tournelle-fleur-en` |
 
 ### Sources
 
 - `source:inao-arbois` — Arbois blanc
 - `source:saint-pierre-chateau-renard-2018` — 2018 Chardonnay, Arbois, Château Renard
 - `source:saint-pierre-chateau-renard-2020` — Arbois Château Renard Saint-Pierre 2020
+- `source:tournelle-fleur-en` — Fleur de Savagnin — English page
+- `source:tournelle-fleur-fr` — Fleur de Savagnin — fiche française
 
 </details>
 

@@ -69,6 +69,7 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [Mondeuse](../grapes/mondeuse.md) — grape; navigation node
 - [San Luis Obispo Coast AVA](../countries/united-states/appellations/san-luis-obispo-coast-ava.md) — appellation; navigation node
 - [United States](../countries/united-states/README.md) — country; navigation node
+- [Sandhi Vintners / Anika](sandhi-vintners.md) — producer; navigation node
 - [California](../countries/united-states/regions/california.md) — region; navigation node
 <!-- END GENERATED CARTA NAVIGATION -->
 
@@ -102,6 +103,7 @@ This section is generated from CARTA machine authority. Edit the governed record
 
 | Claim | Layer / observed | Status | Confidence | Sources |
 |---|---|---|---|---|
+| `claim:anika-sandhi-label-context` | `reference / —` | `supported` | `medium` | `source:sandhi-anika-syrah`, `source:roberson-anika-mourvedre`, `source:kogod-anika-grenache` |
 | `claim:phelan-2007-planting` | `reference / —` | `supported` | `high` | `source:phelan-vineyard`, `source:polaner-phelan` |
 | `claim:phelan-cellar` | `reference / 2026-08-18` | `supported` | `high` | `source:phelan-wines` |
 | `claim:phelan-farming` | `reference / 2026-08-18` | `supported` | `high` | `source:phelan-viticulture`, `source:polaner-phelan` |
@@ -114,13 +116,16 @@ This section is generated from CARTA machine authority. Edit the governed record
 
 ### Sources
 
+- `source:kogod-anika-grenache` — Sandhi Vintners Anika Grenache 2018
 - `source:leon-phelan-mondeuse-2021` — 2021 Phelan Farm Mondeuse, San Luis Obispo County, USA
 - `source:phelan-vineyard` — Vineyard | Phelan Farm
 - `source:phelan-viticulture` — Viticulture | Phelan Farm
 - `source:phelan-wines` — Phelan Farm Wines
 - `source:polaner-may-2026-ny-price-list` — New York Price List — May 2026
 - `source:polaner-phelan` — Phelan Farm
+- `source:roberson-anika-mourvedre` — Anika Mourvèdre 2018 Rajat Parr
 - `source:sager-phelan` — Parr Wines
+- `source:sandhi-anika-syrah` — 2022 Anika Syrah
 - `source:ttb-slo-coast` — List of AVAs by Establishment Date
 
 </details>
