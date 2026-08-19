@@ -1,0 +1,20 @@
+{"id":"person:francois-blanchard","layer":"reference","name":"François Blanchard","status":"active","type":"person"}
+{"id":"producer:le-grand-clere","layer":"reference","name":"Le Grand Cléré","status":"active","summary":"François Blanchard's Lémeré winegrowing identity; sources also use Domaine Grand Cléré and the trade signature Boisson Vivante.","type":"producer"}
+{"id":"wine:a-table-blanchard","layer":"reference","name":"A Table !","status":"active","tags":["loire","vin-de-france","skin-maceration"],"type":"wine"}
+{"id":"vineyard:le-grand-clere","layer":"reference","name":"Le Grand-Cléré","status":"active","summary":"Source-described approximately three-hectare clay-and-flint site at Lémeré; no CARTA geometry is asserted.","type":"vineyard"}
+{"id":"place:lemere","layer":"reference","name":"Lémeré","place_kind":"municipality","status":"active","type":"place"}
+{"id":"institution:vins-sains","layer":"reference","name":"Les vins S.A.I.N.S.","status":"active","summary":"Winegrower association whose member declarations and charter are useful source context but are not government certification.","type":"institution"}
+{"id":"producer:weingut-gunther-steinmetz","layer":"reference","name":"Weingut Günther Steinmetz","status":"active","type":"producer"}
+{"id":"person:gunther-steinmetz","layer":"reference","name":"Günther Steinmetz","status":"active","type":"person"}
+{"id":"person:stefan-steinmetz","layer":"reference","name":"Stefan Steinmetz","status":"active","type":"person"}
+{"id":"person:sammie-steinmetz","layer":"reference","name":"Sammie Steinmetz","status":"active","type":"person"}
+{"id":"wine:steinmetz-pinot-noir-unfiltriert","layer":"reference","name":"Pinot Noir Unfiltriert","status":"active","tags":["mosel","pinot-noir"],"type":"wine"}
+{"id":"place:brauneberg","layer":"reference","name":"Brauneberg","place_kind":"municipality","status":"active","type":"place"}
+{"id":"producer:domaine-de-la-bergerie-anjou","layer":"reference","name":"Domaine de la Bergerie","status":"active","tags":["loire","anjou","coteaux-du-layon"],"type":"producer"}
+{"id":"person:anne-guegniard","layer":"reference","name":"Anne Guégniard","status":"active","type":"person"}
+{"id":"person:marie-guegniard","layer":"reference","name":"Marie Guégniard","status":"active","type":"person"}
+{"id":"wine:bergerie-clos-de-la-bergerie","layer":"reference","name":"Clos de la Bergerie","status":"active","tags":["coteaux-du-layon","chenin","sweet"],"type":"wine"}
+{"id":"vineyard:la-bergerie-champ-sur-layon","layer":"reference","name":"La Bergerie","status":"active","summary":"Source-described site at Champ-sur-Layon for Clos de la Bergerie; enclosure, cadastral status, ownership and exact boundary remain unresolved.","type":"vineyard"}
+{"id":"place:champ-sur-layon","layer":"reference","name":"Champ-sur-Layon","place_kind":"municipality","status":"active","type":"place"}
+{"id":"appellation:coteaux-du-layon","layer":"reference","name":"Coteaux du Layon","status":"active","type":"appellation"}
+{"id":"institution:martines-wines","layer":"reference","name":"Martine's Wines","status":"active","type":"institution"}
