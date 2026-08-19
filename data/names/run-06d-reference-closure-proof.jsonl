@@ -1,0 +1,3 @@
+{"claim_ids":["claim:listrao-palomino-name"],"entity_id":"grape:palomino-fino","id":"name:palomino-fino-listrao","jurisdiction_ref":"place:porto-santo","kind":"local_name","language":"pt","layer":"reference","name":"Listrão","status":"supported"}
+{"claim_ids":["claim:listrao-palomino-name"],"entity_id":"grape:palomino-fino","id":"name:palomino-fino-listan-blanco","kind":"synonym","language":"es","layer":"reference","name":"Listán Blanco","status":"supported"}
+{"claim_ids":["claim:menu-pineau-orbois-name"],"entity_id":"grape:menu-pineau","id":"name:menu-pineau-orbois","jurisdiction_ref":"place:loire-valley","kind":"local_name","language":"fr","layer":"reference","name":"Orbois","status":"supported"}
