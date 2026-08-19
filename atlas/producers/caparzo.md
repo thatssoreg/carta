@@ -57,6 +57,16 @@ authoritative Vigna La Casa geometry · Montosoli spatial definition · historic
 
 Primary CARTA source records include Caparzo's current first-party site and the Brunello di Montalcino Consorzio's producer and production-rule pages.
 
+<!-- BEGIN GENERATED CARTA NAVIGATION -->
+## Explore CARTA
+
+This section is generated from governed profile dispositions, editorial anchors, and supported graph relationships. It is not a hand-maintained second knowledge graph.
+
+- [Brunello di Montalcino DOCG](../countries/italy/appellations/brunello-di-montalcino.md) — appellation; navigation node
+- [Sangiovese](../grapes/sangiovese.md) — grape; navigation node
+- [Italy](../countries/italy/README.md) — country; navigation node
+<!-- END GENERATED CARTA NAVIGATION -->
+
 <!-- BEGIN GENERATED CARTA PROVENANCE -->
 ## Record & provenance
 

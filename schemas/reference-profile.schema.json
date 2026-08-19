@@ -4,7 +4,7 @@
   "title": "CARTA Human Reference Profile v0.2",
   "type": "object",
   "additionalProperties": false,
-  "required": ["id", "title", "profile_kind", "component_entity_ids", "maturity", "publication_status", "path"],
+  "required": ["id", "title", "profile_kind", "component_entity_ids", "maturity", "publication_status"],
   "properties": {
     "id": {"type": "string", "pattern": "^profile:[a-z0-9][a-z0-9._-]*$"},
     "title": {"type": "string", "minLength": 1},
@@ -19,7 +19,7 @@
       "uniqueItems": true
     },
     "maturity": {"enum": ["node", "baseline", "deep"]},
-    "publication_status": {"enum": ["published", "stub", "queued", "deprecated"]},
+    "publication_status": {"enum": ["published", "stub", "queued", "machine_only", "deprecated"]},
     "path": {"type": "string", "minLength": 1},
     "country_entity_ids": {
       "type": "array",
@@ -38,5 +38,15 @@
     "notes": {"type": "string"},
     "created_at": {"type": "string", "format": "date-time"},
     "updated_at": {"type": "string", "format": "date-time"}
-  }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {"publication_status": {"const": "machine_only"}},
+        "required": ["publication_status"]
+      },
+      "then": {"not": {"required": ["path"]}},
+      "else": {"required": ["path"]}
+    }
+  ]
 }

@@ -56,6 +56,17 @@ None of those claims entered CARTA authority.
 
 Alenza vintage chronology · Maricalva parcel geometry and tenure · historical Grupo Pesquera naming versus current Familia Fernández Rivera presentation · Condado de Haza succession
 
+<!-- BEGIN GENERATED CARTA NAVIGATION -->
+## Explore CARTA
+
+This section is generated from governed profile dispositions, editorial anchors, and supported graph relationships. It is not a hand-maintained second knowledge graph.
+
+- [Ribera del Duero DOP](../countries/spain/appellations/ribera-del-duero.md) — appellation; navigation node
+- [Tempranillo](../grapes/tempranillo.md) — grape; navigation node
+- [Spain](../countries/spain/README.md) — country; baseline reference
+- [Bodegas Muga / Prado Enea Gran Reserva](bodegas-muga.md) — producer; baseline reference
+<!-- END GENERATED CARTA NAVIGATION -->
+
 <!-- BEGIN GENERATED CARTA PROVENANCE -->
 ## Record & provenance
 

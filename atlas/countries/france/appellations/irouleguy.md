@@ -56,6 +56,22 @@ The region increasingly attracts attention for dry whites and small domaine prod
 
 Current legal/style authority: INAO. Representative-producer orientation uses specialist references.
 
+<!-- BEGIN GENERATED CARTA NAVIGATION -->
+## Explore CARTA
+
+This section is generated from governed profile dispositions, editorial anchors, and supported graph relationships. It is not a hand-maintained second knowledge graph.
+
+- [Courbu](../../../grapes/courbu.md) — grape; baseline reference
+- [France](../README.md) — country; baseline reference
+- [Gros Manseng](../../../grapes/gros-manseng.md) — grape; baseline reference
+- [Imanol Garay](../../../producers/imanol-garay.md) — producer; baseline reference
+- [Petit Manseng](../../../grapes/petit-manseng.md) — grape; baseline reference
+
+### Deliberately deferred anchors
+
+- **Domaine Arretxea** — machine authority only; no reader-facing target
+<!-- END GENERATED CARTA NAVIGATION -->
+
 <!-- BEGIN GENERATED CARTA PROVENANCE -->
 ## Record & provenance
 

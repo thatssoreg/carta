@@ -104,4 +104,16 @@ Run 05 represented tenure, availability, and importer/distributor access without
 - Relationship predicates remain typed.
 - Reference / Frontier / Lens remain separate.
 - Natural Wine 2.5 remains an independent downstream editorial system rather than an automatic full-graph projection.
+
+## Human Reference navigability closure
+
+**Decision:** Close invisible-subject and stale-navigation failure modes in the Human Reference projection without changing STRATA core ontology.
+
+- active producers, countries, and grapes require explicit profile dispositions;
+- `machine_only` records deliberate no-page deferral at node maturity;
+- honest stubs preserve visibility without lowering baseline quality;
+- generated navigation resolves canonical profile targets and derives selective reciprocal discovery from existing typed relationships and editorial anchors;
+- project and vineyard objects remain composite profile components because no core or projection information loss was demonstrated.
+
+**Result:** STRATA remains v0.2. The repair changes projection governance, generation, and validation, not the entity or relationship vocabulary.
 - No Run 01 candidate is accepted merely by appearing in the research output.

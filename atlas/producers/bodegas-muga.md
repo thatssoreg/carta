@@ -51,6 +51,19 @@ Muga is anchored to Barrio de la Estación in Haro. The 2019 wine is source-desc
 
 Prado Enea sourcing by vintage · parcel geometry · historical release chronology · Barrio de la Estación as a historical producer cluster · Muga family succession
 
+<!-- BEGIN GENERATED CARTA NAVIGATION -->
+## Explore CARTA
+
+This section is generated from governed profile dispositions, editorial anchors, and supported graph relationships. It is not a hand-maintained second knowledge graph.
+
+- [Rioja DOCa](../countries/spain/appellations/rioja.md) — appellation; navigation node
+- [Spain](../countries/spain/README.md) — country; baseline reference
+- [Carignan](../grapes/carignan.md) — grape; navigation node
+- [Tempranillo](../grapes/tempranillo.md) — grape; navigation node
+- [Condado de Haza / Alenza Gran Reserva](condado-de-haza.md) — producer; baseline reference
+- [Villalobos](villalobos.md) — producer; baseline reference
+<!-- END GENERATED CARTA NAVIGATION -->
+
 <!-- BEGIN GENERATED CARTA PROVENANCE -->
 ## Record & provenance
 

@@ -79,6 +79,19 @@ Modern references commonly present Les Noëls de Montbenault and Les Rouliers as
 
 Primary CARTA source records include long-form Winedoctor reporting, Vine Trail, and La Revue du vin de France.
 
+<!-- BEGIN GENERATED CARTA NAVIGATION -->
+## Explore CARTA
+
+This section is generated from governed profile dispositions, editorial anchors, and supported graph relationships. It is not a hand-maintained second knowledge graph.
+
+- [Chenin Blanc](../grapes/chenin-blanc.md) — grape; navigation node
+- [Imanol Garay](imanol-garay.md) — producer; baseline reference
+- [France](../countries/france/README.md) — country; baseline reference
+- [Pyrenean Atlantic](../ecosystems/pyrenean-atlantic.md) — ecosystem; baseline reference
+- [Alfredo Egia](alfredo-egia.md) — producer; baseline reference
+- [Domaine Huet](domaine-huet.md) — producer; baseline reference
+<!-- END GENERATED CARTA NAVIGATION -->
+
 <!-- BEGIN GENERATED CARTA PROVENANCE -->
 ## Record & provenance
 

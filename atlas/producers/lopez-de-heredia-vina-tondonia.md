@@ -53,6 +53,17 @@ Viura / Macabeo · Rioja DOCa · Rioja Alta · Haro · Viña Zaconia / Gravonia 
 
 Primary CARTA source records include R. López de Heredia's estate history, the Consejo Regulador DOCa Rioja, and recent Viña Gravonia technical sheets distributed by Pibernat.
 
+<!-- BEGIN GENERATED CARTA NAVIGATION -->
+## Explore CARTA
+
+This section is generated from governed profile dispositions, editorial anchors, and supported graph relationships. It is not a hand-maintained second knowledge graph.
+
+- [Viura](../grapes/viura.md) — grape; navigation node
+- [Rioja Alta](../countries/spain/regions/rioja-alta.md) — region; navigation node
+- [Rioja DOCa](../countries/spain/appellations/rioja.md) — appellation; navigation node
+- [Spain](../countries/spain/README.md) — country; baseline reference
+<!-- END GENERATED CARTA NAVIGATION -->
+
 <!-- BEGIN GENERATED CARTA PROVENANCE -->
 ## Record & provenance
 

@@ -74,6 +74,18 @@ official Morgon climat geometry · Lapierre parcel holdings by climat · vintage
 
 Primary CARTA sources are Domaine Marcel Lapierre's current estate and viticulture/vinification pages plus INAO's current Morgon AOP record. Kermit Lynch is used as a fit-for-purpose specialist trade source for the historically influential Gang of Four community-of-practice framing.
 
+<!-- BEGIN GENERATED CARTA NAVIGATION -->
+## Explore CARTA
+
+This section is generated from governed profile dispositions, editorial anchors, and supported graph relationships. It is not a hand-maintained second knowledge graph.
+
+- [Gamay noir à jus blanc](../grapes/gamay-noir-a-jus-blanc.md) — grape; navigation node
+- [Morgon AOP](../countries/france/appellations/morgon.md) — appellation; navigation node
+- [France](../countries/france/README.md) — country; baseline reference
+- [Gang of Four (Beaujolais)](../ecosystems/gang-of-four-beaujolais.md) — ecosystem; baseline reference
+- [Beaujolais](../countries/france/regions/beaujolais.md) — region; navigation node
+<!-- END GENERATED CARTA NAVIGATION -->
+
 <!-- BEGIN GENERATED CARTA PROVENANCE -->
 ## Record & provenance
 

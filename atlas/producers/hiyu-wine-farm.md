@@ -75,6 +75,24 @@ Moon Hill Farm · Tzum · Columbia Gorge AVA · Chardonnay · Celilo Vineyard ·
 
 Primary CARTA source records include Hiyu Wine Farm's own site, Jenny & François Selections, and the TTB AVA directory.
 
+<!-- BEGIN GENERATED CARTA NAVIGATION -->
+## Explore CARTA
+
+This section is generated from governed profile dispositions, editorial anchors, and supported graph relationships. It is not a hand-maintained second knowledge graph.
+
+- [Columbia Gorge AVA](../countries/united-states/appellations/columbia-gorge-ava.md) — appellation; navigation node
+- [United States](../countries/united-states/README.md) — country; navigation node
+- [Chardonnay](../grapes/chardonnay.md) — grape; navigation node
+- [Domaine de Saint Pierre / Château Renard](domaine-de-saint-pierre-jura.md) — producer; baseline reference
+- [Domaine Labet](domaine-labet.md) — producer; navigation node
+- [Louis Michel & Fils](domaine-louis-michel-fils.md) — producer; baseline reference
+- [Scar of the Sea / Bassi Vineyard](scar-of-the-sea.md) — producer; baseline reference
+
+### Deliberately deferred anchors
+
+- **Antica Terra** — machine authority only; no reader-facing target
+<!-- END GENERATED CARTA NAVIGATION -->
+
 <!-- BEGIN GENERATED CARTA PROVENANCE -->
 ## Record & provenance
 

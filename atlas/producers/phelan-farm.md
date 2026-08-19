@@ -61,6 +61,17 @@ Mondeuse · San Luis Obispo Coast · Raj Parr · cool-climate plant-material mov
 
 Primary CARTA source records include Phelan Farm's vineyard, viticulture and wine pages, Polaner Selections, Leon & Son, Sager + Wine, TTB, and the Run 03G Bassi reconciliation sources.
 
+<!-- BEGIN GENERATED CARTA NAVIGATION -->
+## Explore CARTA
+
+This section is generated from governed profile dispositions, editorial anchors, and supported graph relationships. It is not a hand-maintained second knowledge graph.
+
+- [Mondeuse](../grapes/mondeuse.md) — grape; navigation node
+- [San Luis Obispo Coast AVA](../countries/united-states/appellations/san-luis-obispo-coast-ava.md) — appellation; navigation node
+- [United States](../countries/united-states/README.md) — country; navigation node
+- [California](../countries/united-states/regions/california.md) — region; navigation node
+<!-- END GENERATED CARTA NAVIGATION -->
+
 <!-- BEGIN GENERATED CARTA PROVENANCE -->
 ## Record & provenance
 

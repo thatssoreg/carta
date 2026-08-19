@@ -56,6 +56,18 @@ authoritative Clary Ranch geometry · vintage-specific Clary vinification · Pet
 
 Primary CARTA source records include Arnot-Roberts' first-party history and Clary Ranch pages plus TTB's Petaluma Gap establishment record.
 
+<!-- BEGIN GENERATED CARTA NAVIGATION -->
+## Explore CARTA
+
+This section is generated from governed profile dispositions, editorial anchors, and supported graph relationships. It is not a hand-maintained second knowledge graph.
+
+- [Petaluma Gap AVA](../countries/united-states/appellations/petaluma-gap-ava.md) — appellation; navigation node
+- [Syrah](../grapes/syrah.md) — grape; navigation node
+- [United States](../countries/united-states/README.md) — country; navigation node
+- [Domaine Christiane Chambeyron-Manin](domaine-christiane-chambeyron-manin.md) — producer; baseline reference
+- [Guillaume Gilles / Les Peyrouses](guillaume-gilles.md) — producer; baseline reference
+<!-- END GENERATED CARTA NAVIGATION -->
+
 <!-- BEGIN GENERATED CARTA PROVENANCE -->
 ## Record & provenance
 

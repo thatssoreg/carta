@@ -83,6 +83,25 @@ Garay's own Saint-Étienne-de-Baïgorry vines are currently reported just outsid
 
 Primary CARTA source records include Beattie & Roberts, The Source Imports, Orange Wines, Buvons Wine, and vintage-specific Beattie & Roberts wine pages.
 
+<!-- BEGIN GENERATED CARTA NAVIGATION -->
+## Explore CARTA
+
+This section is generated from governed profile dispositions, editorial anchors, and supported graph relationships. It is not a hand-maintained second knowledge graph.
+
+- [Alfredo Egia](alfredo-egia.md) — producer; baseline reference
+- [Richard Leroy](richard-leroy.md) — producer; baseline reference
+- [France](../countries/france/README.md) — country; baseline reference
+- [Spain](../countries/spain/README.md) — country; baseline reference
+- [Petit Courbu](../grapes/petit-courbu.md) — grape; baseline reference
+- [Petit Manseng](../grapes/petit-manseng.md) — grape; baseline reference
+- [Raffiat de Moncade](../grapes/raffiat-de-moncade.md) — grape; navigation node
+- [Bizkaia](../countries/spain/regions/bizkaia.md) — region; baseline reference
+- [Bizkaiko Txakolina](../countries/spain/appellations/bizkaiko-txakolina.md) — appellation; baseline reference
+- [Gros Manseng](../grapes/gros-manseng.md) — grape; baseline reference
+- [Irouléguy](../countries/france/appellations/irouleguy.md) — appellation; baseline reference
+- [Pyrenean Atlantic](../ecosystems/pyrenean-atlantic.md) — ecosystem; baseline reference
+<!-- END GENERATED CARTA NAVIGATION -->
+
 <!-- BEGIN GENERATED CARTA PROVENANCE -->
 ## Record & provenance
 

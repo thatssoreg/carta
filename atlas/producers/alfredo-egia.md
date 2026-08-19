@@ -76,6 +76,21 @@ Egia's vineyards and grape choices sit inside the [Bizkaiko Txakolina](../countr
 
 Primary CARTA source records include Spanish Wine Lover, Sager + Wine, The Source Imports, Pellicle, and Alfredo Egia interview material.
 
+<!-- BEGIN GENERATED CARTA NAVIGATION -->
+## Explore CARTA
+
+This section is generated from governed profile dispositions, editorial anchors, and supported graph relationships. It is not a hand-maintained second knowledge graph.
+
+- [Imanol Garay](imanol-garay.md) — producer; baseline reference
+- [Petit Courbu](../grapes/petit-courbu.md) — grape; baseline reference
+- [Petit Manseng](../grapes/petit-manseng.md) — grape; baseline reference
+- [Spain](../countries/spain/README.md) — country; baseline reference
+- [Bizkaia](../countries/spain/regions/bizkaia.md) — region; baseline reference
+- [Bizkaiko Txakolina](../countries/spain/appellations/bizkaiko-txakolina.md) — appellation; baseline reference
+- [Pyrenean Atlantic](../ecosystems/pyrenean-atlantic.md) — ecosystem; baseline reference
+- [Richard Leroy](richard-leroy.md) — producer; baseline reference
+<!-- END GENERATED CARTA NAVIGATION -->
+
 <!-- BEGIN GENERATED CARTA PROVENANCE -->
 ## Record & provenance
 

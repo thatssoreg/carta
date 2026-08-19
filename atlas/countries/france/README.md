@@ -45,6 +45,29 @@ That does not make the border irrelevant. It means CARTA needs to show which rel
 
 [Béarn](regions/bearn.md) · [Jurançon](appellations/jurancon.md) · [Irouléguy](appellations/irouleguy.md) · [Pacherenc du Vic-Bilh](appellations/pacherenc-du-vic-bilh.md) · [Richard Leroy](../../producers/richard-leroy.md)
 
+<!-- BEGIN GENERATED CARTA NAVIGATION -->
+## Explore CARTA
+
+This section is generated from governed profile dispositions, editorial anchors, and supported graph relationships. It is not a hand-maintained second knowledge graph.
+
+- [Jurançon](appellations/jurancon.md) — appellation; baseline reference
+- [Richard Leroy](../../producers/richard-leroy.md) — producer; baseline reference
+- [Béarn](regions/bearn.md) — region; baseline reference
+- [Irouléguy](appellations/irouleguy.md) — appellation; baseline reference
+- [Pacherenc du Vic-Bilh](appellations/pacherenc-du-vic-bilh.md) — appellation; baseline reference
+- [Beaujolais](regions/beaujolais.md) — region; navigation node
+- [Cornas AOP](appellations/cornas.md) — appellation; navigation node
+- [Côte-Rôtie](appellations/cote-rotie.md) — appellation; navigation node
+- [Côtes du Rhône AOP](appellations/cotes-du-rhone.md) — appellation; navigation node
+- [Jura](regions/jura.md) — region; navigation node
+- [Palette AOP](appellations/palette.md) — appellation; navigation node
+- [Savoie](regions/savoie.md) — region; navigation node
+- [Arbois AOP](appellations/arbois.md) — appellation; navigation node
+- [Château Simone](../../producers/chateau-simone.md) — producer; baseline reference
+- [Combe de Savoie](regions/combe-de-savoie.md) — region; navigation node
+- [Domaine Christiane Chambeyron-Manin](../../producers/domaine-christiane-chambeyron-manin.md) — producer; baseline reference
+<!-- END GENERATED CARTA NAVIGATION -->
+
 <!-- BEGIN GENERATED CARTA PROVENANCE -->
 ## Record & provenance
 

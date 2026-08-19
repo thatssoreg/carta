@@ -94,6 +94,15 @@ OpenStreetMap may support reference points, but it should not replace official a
 
 [Pyrenean Atlantic ecosystem](../ecosystems/pyrenean-atlantic.md) · [Bizkaia](../countries/spain/regions/bizkaia.md) · [Irouléguy](../countries/france/appellations/irouleguy.md) · [Jurançon](../countries/france/appellations/jurancon.md) · [Béarn](../countries/france/regions/bearn.md)
 
+<!-- BEGIN GENERATED CARTA NAVIGATION -->
+## Explore CARTA
+
+This section is generated from governed profile dispositions, editorial anchors, and supported graph relationships. It is not a hand-maintained second knowledge graph.
+
+- [France](../countries/france/README.md) — country; baseline reference
+- [Spain](../countries/spain/README.md) — country; baseline reference
+<!-- END GENERATED CARTA NAVIGATION -->
+
 <!-- BEGIN GENERATED CARTA PROVENANCE -->
 ## Record & provenance
 

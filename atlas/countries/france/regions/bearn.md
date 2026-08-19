@@ -64,6 +64,19 @@ Dry expressions, organic/biodynamic farming, renewed attention to local grapes, 
 
 [Jurançon](../appellations/jurancon.md) · [Pacherenc du Vic-Bilh](../appellations/pacherenc-du-vic-bilh.md) · [Petit Manseng](../../../grapes/petit-manseng.md) · [Western Pyrenees](../../../landscapes/western-pyrenees.md)
 
+<!-- BEGIN GENERATED CARTA NAVIGATION -->
+## Explore CARTA
+
+This section is generated from governed profile dispositions, editorial anchors, and supported graph relationships. It is not a hand-maintained second knowledge graph.
+
+- [France](../README.md) — country; baseline reference
+- [Gros Manseng](../../../grapes/gros-manseng.md) — grape; baseline reference
+- [Jurançon](../appellations/jurancon.md) — appellation; baseline reference
+- [Pacherenc du Vic-Bilh](../appellations/pacherenc-du-vic-bilh.md) — appellation; baseline reference
+- [Petit Courbu](../../../grapes/petit-courbu.md) — grape; baseline reference
+- [Petit Manseng](../../../grapes/petit-manseng.md) — grape; baseline reference
+<!-- END GENERATED CARTA NAVIGATION -->
+
 <!-- BEGIN GENERATED CARTA PROVENANCE -->
 ## Record & provenance
 

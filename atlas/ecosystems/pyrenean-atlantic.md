@@ -102,6 +102,20 @@ See [`research/run-01-pyrenean-atlantic/`](../../research/run-01-pyrenean-atlant
 
 **Last normalized against STRATA:** v0.2
 
+<!-- BEGIN GENERATED CARTA NAVIGATION -->
+## Explore CARTA
+
+This section is generated from governed profile dispositions, editorial anchors, and supported graph relationships. It is not a hand-maintained second knowledge graph.
+
+- [Alfredo Egia](../producers/alfredo-egia.md) — producer; baseline reference
+- [Bizkaiko Txakolina](../countries/spain/appellations/bizkaiko-txakolina.md) — appellation; baseline reference
+- [Imanol Garay](../producers/imanol-garay.md) — producer; baseline reference
+- [Jurançon](../countries/france/appellations/jurancon.md) — appellation; baseline reference
+- [Petit Courbu](../grapes/petit-courbu.md) — grape; baseline reference
+- [Petit Manseng](../grapes/petit-manseng.md) — grape; baseline reference
+- [Richard Leroy](../producers/richard-leroy.md) — producer; baseline reference
+<!-- END GENERATED CARTA NAVIGATION -->
+
 <!-- BEGIN GENERATED CARTA PROVENANCE -->
 ## Record & provenance
 

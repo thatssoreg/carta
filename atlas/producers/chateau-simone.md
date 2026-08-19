@@ -58,6 +58,16 @@ Palette AOP · Clairette · Massif du Montaiguet · Rougier family succession ·
 
 Primary CARTA source records include Château Simone's history, terroir, vineyard, and white-wine pages plus INAO's current Palette AOP reference.
 
+<!-- BEGIN GENERATED CARTA NAVIGATION -->
+## Explore CARTA
+
+This section is generated from governed profile dispositions, editorial anchors, and supported graph relationships. It is not a hand-maintained second knowledge graph.
+
+- [Clairette](../grapes/clairette.md) — grape; navigation node
+- [France](../countries/france/README.md) — country; baseline reference
+- [Palette AOP](../countries/france/appellations/palette.md) — appellation; navigation node
+<!-- END GENERATED CARTA NAVIGATION -->
+
 <!-- BEGIN GENERATED CARTA PROVENANCE -->
 ## Record & provenance
 
