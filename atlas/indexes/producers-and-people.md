@@ -53,6 +53,8 @@ Human Reference profiles are organized for readers and may compose multiple prod
 - **Domaine Arretxea** — `node` / `machine_only`
 - **Domaine Cauhapé** — `node` / `machine_only`
 - **Domaine de Souch** — `node` / `machine_only`
+- **Domaines Bournet-Lapostolle Chile SpA** — `node` / `machine_only`
+- **Familia Fernández Rivera** — `node` / `machine_only`
 
 <!-- END GENERATED CARTA INDEX -->
 

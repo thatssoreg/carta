@@ -464,7 +464,9 @@ def validate_profiles(
                 "Human Reference disposition"
             )
         expected_primary_kind = (
-            "grape"
+            "producer"
+            if entity["type"] == "producer"
+            else "grape"
             if entity["type"] == "grape"
             else "country"
             if entity["type"] == "place" and entity.get("place_kind") == "country"
