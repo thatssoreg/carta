@@ -45,6 +45,7 @@ Human Reference profiles are organized for readers and may compose multiple prod
 - [JONATA](../producers/jonata.md) — `node` / `stub`
 - [Louis Michel & Fils](../producers/domaine-louis-michel-fils.md) — `baseline` / `published`
 - [Maison Pierre Overnoy / Emmanuel Houillon](../producers/maison-pierre-overnoy.md) — `node` / `stub`
+- [Matassa / Tom Lubbe](../producers/matassa.md) — `node` / `stub`
 - [Maçanita Vinhos](../producers/macanita-vinhos.md) — `node` / `stub`
 - [Natus Vini / Intus](../producers/natus-vini.md) — `node` / `stub`
 - [Pax Wines](../producers/pax-wines.md) — `node` / `stub`
