@@ -1,0 +1,2 @@
+{"id":"rel:tom-lubbe-founded-matassa","subject_id":"person:tom-lubbe","predicate":"FOUNDED","object_id":"producer:matassa","layer":"reference","status":"supported","claim_ids":["claim:matassa-identity-bridge"],"valid_from":"2003-01-01","time_precision":"year"}
+{"id":"rel:daure-worked-for-matassa","subject_id":"person:francois-xavier-daure","predicate":"WORKED_FOR","object_id":"producer:matassa","layer":"reference","status":"supported","claim_ids":["claim:daure-worked-for-matassa-bridge"],"valid_from":"2015-01-01","valid_to":"2019-12-31","time_precision":"range"}
