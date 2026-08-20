@@ -13,7 +13,6 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [Savoie](../countries/france/regions/savoie.md) — region; navigation node
 - [Altesse](../grapes/altesse.md) — grape; navigation node
 - [France](../countries/france/README.md) — country; baseline reference
-- [Domaine de Chevillard](domaine-de-chevillard.md) — producer; baseline reference
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->

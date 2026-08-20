@@ -11,7 +11,6 @@ This section is generated from governed profile dispositions, editorial anchors,
 
 - [Natus Vini / Intus](../producers/natus-vini.md) — producer; navigation node
 - [Portugal](../countries/portugal/README.md) — country; navigation node
-- [Tempranillo](tempranillo.md) — grape; navigation node
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->

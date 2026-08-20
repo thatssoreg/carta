@@ -27,11 +27,7 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [Napa Valley AVA](../countries/united-states/appellations/napa-valley-ava.md) — appellation; navigation node
 - [St. Helena AVA](../countries/united-states/appellations/st-helena-ava.md) — appellation; navigation node
 - [United States](../countries/united-states/README.md) — country; navigation node
-- [Ashes & Diamonds / Cabernet Franc](ashes-and-diamonds.md) — producer; baseline reference
-- [Burgess Cellars / Promiscua](burgess-cellars.md) — producer; navigation node
 - [California](../countries/united-states/regions/california.md) — region; navigation node
-- [Clos Apalta / Domaines Bournet-Lapostolle](clos-apalta.md) — producer; baseline reference
-- [JONATA](jonata.md) — producer; navigation node
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->

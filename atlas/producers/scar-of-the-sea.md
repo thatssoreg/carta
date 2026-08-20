@@ -73,10 +73,7 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [Chardonnay](../grapes/chardonnay.md) — grape; navigation node
 - [San Luis Obispo Coast AVA](../countries/united-states/appellations/san-luis-obispo-coast-ava.md) — appellation; navigation node
 - [United States](../countries/united-states/README.md) — country; navigation node
-- [Domaine de Saint Pierre / Château Renard](domaine-de-saint-pierre-jura.md) — producer; baseline reference
-- [Domaine Labet](domaine-labet.md) — producer; navigation node
 - [Hiyu Wine Farm](hiyu-wine-farm.md) — producer; baseline reference
-- [Louis Michel & Fils](domaine-louis-michel-fils.md) — producer; baseline reference
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->

@@ -11,14 +11,6 @@ This section is generated from governed profile dispositions, editorial anchors,
 
 - [France](../README.md) — country; baseline reference
 - [Château Simone](../../../producers/chateau-simone.md) — producer; baseline reference
-- [Beaujolais](../regions/beaujolais.md) — region; navigation node
-- [Cornas AOP](cornas.md) — appellation; navigation node
-- [Côte-Rôtie](cote-rotie.md) — appellation; navigation node
-- [Côtes du Rhône AOP](cotes-du-rhone.md) — appellation; navigation node
-- [Jura](../regions/jura.md) — region; navigation node
-- [Jurançon](jurancon.md) — appellation; baseline reference
-- [Loire Valley](../regions/loire-valley.md) — region; navigation node
-- [Savoie](../regions/savoie.md) — region; navigation node
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->

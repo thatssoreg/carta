@@ -17,10 +17,8 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [Pax Wines](../producers/pax-wines.md) — producer; navigation node
 - [Dureza](dureza.md) — grape; navigation node
 - [Vindiou / Cœur Fidèle](../producers/vindiou.md) — producer; navigation node
-- [Cabernet Sauvignon](cabernet-sauvignon.md) — grape; navigation node
 - [Côtes du Rhône AOP](../countries/france/appellations/cotes-du-rhone.md) — appellation; navigation node
 - [Petaluma Gap AVA](../countries/united-states/appellations/petaluma-gap-ava.md) — appellation; navigation node
-- [Vin de France](../classifications/vin-de-france.md) — classification; navigation node
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->

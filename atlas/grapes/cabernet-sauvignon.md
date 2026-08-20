@@ -16,8 +16,6 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [St. Helena AVA](../countries/united-states/appellations/st-helena-ava.md) — appellation; navigation node
 - [Clos Apalta / Domaines Bournet-Lapostolle](../producers/clos-apalta.md) — producer; baseline reference
 - [Apalta](../countries/chile/appellations/apalta.md) — appellation; navigation node
-- [Cabernet Franc](cabernet-franc.md) — grape; navigation node
-- [Syrah](syrah.md) — grape; navigation node
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->

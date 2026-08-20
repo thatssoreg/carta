@@ -12,7 +12,6 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [Domaine Lampyres / Harvest Moon](../producers/domaine-lampyres.md) — producer; navigation node
 - [Prieuré Saint-Jean de Bébian / Tartuguier](../producers/prieure-saint-jean-de-bebian.md) — producer; navigation node
 - [Sandhi Vintners / Anika](../producers/sandhi-vintners.md) — producer; navigation node
-- [Vin de France](../classifications/vin-de-france.md) — classification; navigation node
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->

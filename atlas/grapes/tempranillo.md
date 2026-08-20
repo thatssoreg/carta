@@ -12,10 +12,8 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [Condado de Haza / Alenza Gran Reserva](../producers/condado-de-haza.md) — producer; baseline reference
 - [Natus Vini / Intus](../producers/natus-vini.md) — producer; navigation node
 - [Bodegas Muga / Prado Enea Gran Reserva](../producers/bodegas-muga.md) — producer; baseline reference
-- [Carignan](carignan.md) — grape; navigation node
 - [Ribera del Duero DOP](../countries/spain/appellations/ribera-del-duero.md) — appellation; navigation node
 - [Rioja DOCa](../countries/spain/appellations/rioja.md) — appellation; navigation node
-- [Trincadeira](trincadeira.md) — grape; navigation node
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->

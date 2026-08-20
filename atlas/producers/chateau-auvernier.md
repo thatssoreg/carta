@@ -11,8 +11,6 @@ This section is generated from governed profile dispositions, editorial anchors,
 
 - [Switzerland](../countries/switzerland/README.md) — country; navigation node
 - [Hiyu Wine Farm](hiyu-wine-farm.md) — producer; baseline reference
-- [Wasenhaus](wasenhaus.md) — producer; navigation node
-- [Weingut Günther Steinmetz](weingut-gunther-steinmetz.md) — producer; navigation node
 
 ### Deliberately deferred anchors
 

@@ -107,8 +107,6 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [Bizkaia](../countries/spain/regions/bizkaia.md) — region; baseline reference
 - [Béarn](../countries/france/regions/bearn.md) — region; baseline reference
 - [Pyrenean Atlantic](../ecosystems/pyrenean-atlantic.md) — ecosystem; baseline reference
-- [Petit Manseng](petit-manseng.md) — grape; baseline reference
-- [Raffiat de Moncade](raffiat-de-moncade.md) — grape; navigation node
 
 ### Deliberately deferred anchors
 

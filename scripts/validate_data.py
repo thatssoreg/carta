@@ -8,6 +8,7 @@ import posixpath
 import re
 from collections import defaultdict, deque
 from pathlib import Path, PurePosixPath
+from typing import Any
 from urllib.parse import unquote, urlsplit
 
 try:
@@ -114,6 +115,47 @@ NAVIGATION_RELATIONSHIP_PREDICATES = {
 }
 MAX_GRAPH_NAVIGATION_DISTANCE = 2
 MAX_RELATED_PROFILES = 16
+
+PROFESSIONAL_NAVIGATION_PREDICATES = {
+    "MENTORED_BY",
+    "TRAINED_AT",
+    "WORKED_FOR",
+    "WORKED_WITH",
+    "COLLABORATED_WITH",
+    "FOUNDED",
+}
+PRODUCER_SPECIFIC_TWO_HOP_PREDICATES = (
+    PROFESSIONAL_NAVIGATION_PREDICATES
+    | {
+        "FARMS_PARCEL",
+        "PLANTED_AT",
+        "FARMED_BY",
+        "USES_PRACTICE",
+    }
+)
+GEOGRAPHIC_CONTAINMENT_PREDICATES = {
+    "WITHIN",
+    "LOCATED_IN",
+    "WITHIN_APPELLATION",
+}
+
+# Every schema profile kind has an explicit two-hop disposition. The named
+# policies below are projection semantics, not ontology or relationship scores.
+TWO_HOP_POLICY_BY_SOURCE_KIND = {
+    "country": "country_orientation",
+    "region": "directional_geography",
+    "appellation": "directional_geography",
+    "landscape": "directional_geography",
+    "grape": "grape_context",
+    "producer": "producer_world",
+    "person": "producer_world",
+    "classification": "governed_context",
+    "ecosystem": "governed_context",
+    "wine": "governed_context",
+    "institution": "governed_context",
+    "practice": "governed_context",
+    "historical_event": "governed_context",
+}
 
 
 def load_jsonl(directory: Path) -> list[dict]:
@@ -513,10 +555,19 @@ def profile_has_surface(profile: dict) -> bool:
     )
 
 
+def profile_country_entities(profile: dict) -> set[str]:
+    """Return structural geographic membership used only in the outbound direction."""
+    return set(profile.get("country_entity_ids", []))
+
+
+def profile_editorial_anchors(profile: dict) -> set[str]:
+    """Return governed editorial anchors, which retain reciprocal discovery."""
+    return set(profile.get("representative_anchor_ids", []))
+
+
 def profile_navigation_seeds(profile: dict) -> set[str]:
-    return set(profile.get("country_entity_ids", [])) | set(
-        profile.get("representative_anchor_ids", [])
-    )
+    """Return all outbound projection seeds (kept for deferred-anchor display)."""
+    return profile_country_entities(profile) | profile_editorial_anchors(profile)
 
 
 def navigation_graph(data: dict[str, list[dict]]) -> dict[str, set[str]]:
@@ -533,6 +584,108 @@ def navigation_graph(data: dict[str, list[dict]]) -> dict[str, set[str]]:
         graph[subject].add(object_id)
         graph[object_id].add(subject)
     return graph
+
+
+def navigation_adjacency(
+    data: dict[str, list[dict]],
+) -> dict[str, list[tuple[str, dict[str, Any], str]]]:
+    """Return deterministic relationship-record adjacency with traversal direction."""
+    adjacency: dict[str, list[tuple[str, dict[str, Any], str]]] = defaultdict(list)
+    for relationship in data["relationships"]:
+        if (
+            relationship["layer"] != "reference"
+            or relationship["status"] not in NAVIGATION_RELATIONSHIP_STATUSES
+            or relationship["predicate"] not in NAVIGATION_RELATIONSHIP_PREDICATES
+        ):
+            continue
+        subject = relationship["subject_id"]
+        object_id = relationship["object_id"]
+        adjacency[subject].append((object_id, relationship, "forward"))
+        adjacency[object_id].append((subject, relationship, "reverse"))
+    for entity_id in adjacency:
+        adjacency[entity_id].sort(
+            key=lambda item: (item[0], item[1]["predicate"], item[1]["id"], item[2])
+        )
+    return adjacency
+
+
+def navigation_path_edge_label(relationship: dict[str, Any], direction: str) -> str:
+    arrow = ">" if direction == "forward" else "<"
+    return f"{relationship['predicate']}{arrow}"
+
+
+def enumerate_navigation_paths(
+    starts: set[str],
+    targets: set[str],
+    adjacency: dict[str, list[tuple[str, dict[str, Any], str]]],
+) -> list[dict[str, Any]]:
+    """Enumerate explainable paths of length zero, one, or two."""
+    paths: list[dict[str, Any]] = []
+    for shared in sorted(starts & targets):
+        paths.append(
+            {
+                "distance": 0,
+                "entities": [shared],
+                "relationship_ids": [],
+                "predicates": [],
+                "directions": [],
+                "pattern": "SHARED_COMPONENT",
+                "intermediary": None,
+            }
+        )
+
+    seen: set[tuple[Any, ...]] = set()
+    for start in sorted(starts):
+        for neighbor, first, first_direction in adjacency.get(start, []):
+            first_key = (start, first["id"], neighbor)
+            if neighbor in targets and first_key not in seen:
+                seen.add(first_key)
+                paths.append(
+                    {
+                        "distance": 1,
+                        "entities": [start, neighbor],
+                        "relationship_ids": [first["id"]],
+                        "predicates": [first["predicate"]],
+                        "directions": [first_direction],
+                        "pattern": navigation_path_edge_label(first, first_direction),
+                        "intermediary": None,
+                    }
+                )
+
+            # Starting from every component already makes paths through another source
+            # component redundant. Backtracking over one relationship is not a path.
+            if neighbor in starts or neighbor in targets:
+                continue
+            for end, second, second_direction in adjacency.get(neighbor, []):
+                if end not in targets or second["id"] == first["id"]:
+                    continue
+                second_key = (start, first["id"], neighbor, second["id"], end)
+                if second_key in seen:
+                    continue
+                seen.add(second_key)
+                paths.append(
+                    {
+                        "distance": 2,
+                        "entities": [start, neighbor, end],
+                        "relationship_ids": [first["id"], second["id"]],
+                        "predicates": [first["predicate"], second["predicate"]],
+                        "directions": [first_direction, second_direction],
+                        "pattern": (
+                            f"{navigation_path_edge_label(first, first_direction)}/"
+                            f"{navigation_path_edge_label(second, second_direction)}"
+                        ),
+                        "intermediary": neighbor,
+                    }
+                )
+    return sorted(
+        paths,
+        key=lambda path: (
+            path["distance"],
+            path["pattern"],
+            path["entities"],
+            path["relationship_ids"],
+        ),
+    )
 
 
 def shortest_navigation_distance(
@@ -557,42 +710,238 @@ def shortest_navigation_distance(
     return None
 
 
+def _is_up_then_down_peer_geography(path: dict[str, Any]) -> bool:
+    predicates = set(path["predicates"])
+    return (
+        path["distance"] == 2
+        and bool(predicates)
+        and predicates.issubset(GEOGRAPHIC_CONTAINMENT_PREDICATES)
+        and path["directions"] == ["forward", "reverse"]
+    )
+
+
+def two_hop_navigation_eligibility(
+    source_kind: str,
+    target_kind: str,
+    paths: list[dict[str, Any]],
+) -> tuple[bool, str, str]:
+    """Apply the source-kind reader policy to a graph-only two-hop candidate.
+
+    Returns ``(eligible, category, reason)`` so generation, tests, and audits use
+    the same inspectable decision rather than duplicating the policy.
+    """
+    policy = TWO_HOP_POLICY_BY_SOURCE_KIND[source_kind]
+    two_hop_paths = [path for path in paths if path["distance"] == 2]
+
+    if policy == "country_orientation":
+        allowed_targets = {
+            "region",
+            "appellation",
+            "landscape",
+            "ecosystem",
+            "grape",
+            "classification",
+        }
+        if target_kind not in allowed_targets:
+            return (
+                False,
+                "country_non_orientation_two_hop",
+                "country pages admit two-hop graph paths only to geographic, "
+                "ecosystem, grape, or classification orientation surfaces",
+            )
+        return (
+            True,
+            "country_orientation_two_hop",
+            "target kind supports the country page's internal/reference orientation job",
+        )
+
+    if (
+        policy == "directional_geography"
+        and target_kind in {"region", "appellation", "landscape"}
+        and two_hop_paths
+        and all(_is_up_then_down_peer_geography(path) for path in two_hop_paths)
+    ):
+        return (
+            False,
+            "shared_broad_geography",
+            "every two-hop path climbs to a broad container and descends to a peer geography",
+        )
+
+    if policy == "grape_context" and target_kind in {"grape", "classification"}:
+        return (
+            False,
+            "grape_cooccurrence_two_hop",
+            "a two-hop wine/classification bridge does not establish general grape adjacency",
+        )
+
+    if policy == "producer_world" and target_kind in {"producer", "person"}:
+        specific_paths = [
+            path
+            for path in two_hop_paths
+            if set(path["predicates"]) & PRODUCER_SPECIFIC_TWO_HOP_PREDICATES
+        ]
+        if not specific_paths:
+            return (
+                False,
+                "broad_composite_producer_two_hop",
+                "no two-hop path carries professional, site, farming, or explicit practice semantics",
+            )
+        return (
+            True,
+            "specific_producer_two_hop",
+            "a two-hop path carries professional, site, farming, or explicit practice semantics",
+        )
+
+    return (
+        True,
+        f"{policy}_two_hop",
+        f"the {source_kind} policy preserves this governed two-hop context",
+    )
+
+
+def resolve_navigation_candidate(
+    source: dict,
+    target: dict,
+    graph: dict[str, set[str]],
+    adjacency: dict[str, list[tuple[str, dict[str, Any], str]]],
+) -> dict[str, Any]:
+    """Resolve one source/target profile pair with route and policy explanation."""
+    starts = set(source["component_entity_ids"])
+    targets = set(target["component_entity_ids"])
+    source_editorial_anchors = profile_editorial_anchors(source)
+    source_countries = profile_country_entities(source)
+    target_editorial_anchors = profile_editorial_anchors(target)
+    target_countries = profile_country_entities(target)
+    paths = enumerate_navigation_paths(starts, targets, adjacency)
+    distance = shortest_navigation_distance(graph, starts, targets)
+
+    editorial_outbound_entities = sorted(source_editorial_anchors & targets)
+    structural_country_outbound_entities = sorted(source_countries & targets)
+    editorial_reciprocal_entities = sorted(starts & target_editorial_anchors)
+    structural_country_reciprocal_entities = sorted(starts & target_countries)
+
+    decision: dict[str, Any] = {
+        "source_id": source["id"],
+        "target_id": target["id"],
+        "source_kind": source["profile_kind"],
+        "target_kind": target["profile_kind"],
+        "distance": distance,
+        "paths": paths,
+        "editorial_outbound": bool(editorial_outbound_entities),
+        "editorial_outbound_entities": editorial_outbound_entities,
+        "structural_country_outbound": bool(structural_country_outbound_entities),
+        "structural_country_outbound_entities": structural_country_outbound_entities,
+        "editorial_reciprocal": bool(editorial_reciprocal_entities),
+        "editorial_reciprocal_entities": editorial_reciprocal_entities,
+        "structural_country_reciprocal_entities": structural_country_reciprocal_entities,
+    }
+
+    if editorial_outbound_entities:
+        decision.update(
+            eligible=True,
+            route_kind="editorial_anchor_outbound",
+            reason="the source explicitly selects a target component as an editorial anchor",
+        )
+    elif structural_country_outbound_entities:
+        decision.update(
+            eligible=True,
+            route_kind="structural_country_outbound",
+            reason="the source's structural country membership provides upward orientation",
+        )
+    elif editorial_reciprocal_entities:
+        decision.update(
+            eligible=True,
+            route_kind="editorial_anchor_reciprocal",
+            reason="the target explicitly selects a source component as an editorial anchor",
+        )
+    elif (
+        structural_country_reciprocal_entities
+        and source["profile_kind"] == "country"
+        and target["profile_kind"] in {"region", "appellation"}
+    ):
+        decision.update(
+            eligible=True,
+            route_kind="structural_country_descendant",
+            reason="the target's structural country membership provides downward geographic orientation",
+        )
+    elif distance == 0:
+        decision.update(
+            eligible=True,
+            route_kind="shared_component",
+            reason="the profiles share a governed component entity",
+        )
+    elif distance == 1:
+        decision.update(
+            eligible=True,
+            route_kind="direct_relationship",
+            reason="a direct eligible governed relationship connects the profile components",
+        )
+    elif distance == 2:
+        eligible, category, reason = two_hop_navigation_eligibility(
+            source["profile_kind"], target["profile_kind"], paths
+        )
+        decision.update(
+            eligible=eligible,
+            route_kind="two_hop_relationship" if eligible else "rejected_two_hop",
+            policy_category=category,
+            reason=reason,
+        )
+    elif structural_country_reciprocal_entities:
+        decision.update(
+            eligible=False,
+            route_kind="rejected_structural_country_reciprocal",
+            policy_category="structural_country_not_editorial",
+            reason="target country membership is structural and does not create reciprocal discovery",
+        )
+    else:
+        decision.update(
+            eligible=False,
+            route_kind="no_route",
+            reason="no editorial, structural-outbound, shared, direct, or eligible two-hop route exists",
+        )
+    return decision
+
+
+def navigation_candidate_sort_key(candidate: dict[str, Any]) -> tuple[Any, ...]:
+    if candidate["editorial_outbound"] or candidate["structural_country_outbound"]:
+        tier = 0
+    elif (
+        candidate["editorial_reciprocal"]
+        or candidate["route_kind"] == "structural_country_descendant"
+    ):
+        tier = 1
+    else:
+        tier = 2 + (candidate["distance"] or 0)
+    return (
+        tier,
+        candidate["distance"] if candidate["distance"] is not None else 99,
+        candidate["title"].casefold(),
+        candidate["target_id"],
+    )
+
+
 def render_navigation(profile: dict, data: dict[str, list[dict]]) -> str:
-    current_entities = set(profile["component_entity_ids"])
     current_seeds = profile_navigation_seeds(profile)
     graph = navigation_graph(data)
-    ranked: list[tuple[int, int, str, str, dict]] = []
+    adjacency = navigation_adjacency(data)
+    candidates: list[dict[str, Any]] = []
 
     for other in data["profiles"]:
         if other["id"] == profile["id"] or not profile_has_surface(other):
             continue
-        other_entities = set(other["component_entity_ids"])
-        curated_outbound = bool(current_seeds & other_entities)
-        curated_reciprocal = bool(
-            current_entities & profile_navigation_seeds(other)
-        )
-        distance = shortest_navigation_distance(
-            graph, current_entities, other_entities
-        )
-        if not curated_outbound and not curated_reciprocal and distance is None:
+        candidate = resolve_navigation_candidate(profile, other, graph, adjacency)
+        if not candidate["eligible"]:
             continue
-        if curated_outbound:
-            rank = 0
-        elif curated_reciprocal:
-            rank = 1
-        else:
-            rank = 2 + (distance or 0)
-        ranked.append(
-            (
-                rank,
-                distance if distance is not None else 99,
-                other["title"].casefold(),
-                other["id"],
-                other,
-            )
-        )
+        candidate["title"] = other["title"]
+        candidate["profile"] = other
+        candidates.append(candidate)
 
-    related = [item[4] for item in sorted(ranked)[:MAX_RELATED_PROFILES]]
+    related = [
+        item["profile"]
+        for item in sorted(candidates, key=navigation_candidate_sort_key)[
+            :MAX_RELATED_PROFILES
+        ]
+    ]
     deferred = sorted(
         {
             candidate["title"]

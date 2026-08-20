@@ -13,10 +13,6 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [Palomino Fino](../../../grapes/palomino-fino.md) — grape; navigation node
 - [United States](../README.md) — country; navigation node
 - [California](california.md) — region; navigation node
-- [Napa Valley AVA](../appellations/napa-valley-ava.md) — appellation; navigation node
-- [Santa Barbara County](santa-barbara-county.md) — region; navigation node
-- [Santa Ynez Valley AVA](../appellations/santa-ynez-valley-ava.md) — appellation; navigation node
-- [St. Helena AVA](../appellations/st-helena-ava.md) — appellation; navigation node
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->

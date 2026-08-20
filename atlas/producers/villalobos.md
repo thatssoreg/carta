@@ -61,7 +61,6 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [Carignan](../grapes/carignan.md) — grape; navigation node
 - [Colchagua Valley](../countries/chile/regions/colchagua-valley.md) — region; navigation node
 - [Chile](../countries/chile/README.md) — country; navigation node
-- [Bodegas Muga / Prado Enea Gran Reserva](bodegas-muga.md) — producer; baseline reference
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->

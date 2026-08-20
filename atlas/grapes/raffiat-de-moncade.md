@@ -54,8 +54,6 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [Arriloba](arriloba.md) — grape; navigation node
 - [Bouchalès](bouchales.md) — grape; navigation node
 - [Gouais blanc](gouais-blanc.md) — grape; navigation node
-- [Petit Courbu](petit-courbu.md) — grape; baseline reference
-- [Petit Manseng](petit-manseng.md) — grape; baseline reference
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->

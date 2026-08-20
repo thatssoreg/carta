@@ -14,7 +14,6 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [Jura](../countries/france/regions/jura.md) — region; navigation node
 - [Domaine de Saint Pierre / Château Renard](../producers/domaine-de-saint-pierre-jura.md) — producer; baseline reference
 - [Arbois AOP](../countries/france/appellations/arbois.md) — appellation; navigation node
-- [Chardonnay](chardonnay.md) — grape; navigation node
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->

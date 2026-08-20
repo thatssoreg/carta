@@ -14,8 +14,6 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [Mosel](../countries/germany/regions/mosel.md) — region; navigation node
 - [Germany](../countries/germany/README.md) — country; navigation node
 - [Hofgut Falkenstein](hofgut-falkenstein.md) — producer; baseline reference
-- [Weingut Keller](weingut-keller.md) — producer; navigation node
-- [Weingut Rudi Pichler](weingut-rudi-pichler.md) — producer; baseline reference
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->

@@ -12,7 +12,6 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [Chile](../README.md) — country; navigation node
 - [Clos Apalta / Domaines Bournet-Lapostolle](../../../producers/clos-apalta.md) — producer; baseline reference
 - [Colchagua Valley](colchagua-valley.md) — region; navigation node
-- [Apalta](../appellations/apalta.md) — appellation; navigation node
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->

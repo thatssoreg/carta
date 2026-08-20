@@ -66,8 +66,6 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [Chenin Blanc](../grapes/chenin-blanc.md) — grape; navigation node
 - [Vouvray AOP](../countries/france/appellations/vouvray.md) — appellation; navigation node
 - [France](../countries/france/README.md) — country; baseline reference
-- [Domaine de la Bergerie / Clos de la Bergerie](domaine-de-la-bergerie-anjou.md) — producer; navigation node
-- [Richard Leroy](richard-leroy.md) — producer; baseline reference
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->

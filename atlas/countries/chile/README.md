@@ -12,8 +12,6 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [Colchagua Valley](regions/colchagua-valley.md) — region; navigation node
 - [Apalta](appellations/apalta.md) — appellation; navigation node
 - [Apalta Valley](regions/apalta-valley.md) — region; navigation node
-- [Clos Apalta / Domaines Bournet-Lapostolle](../../producers/clos-apalta.md) — producer; baseline reference
-- [Villalobos](../../producers/villalobos.md) — producer; baseline reference
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->

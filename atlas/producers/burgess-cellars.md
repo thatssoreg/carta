@@ -13,10 +13,6 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [Napa Valley AVA](../countries/united-states/appellations/napa-valley-ava.md) — appellation; navigation node
 - [California](../countries/united-states/regions/california.md) — region; navigation node
 - [United States](../countries/united-states/README.md) — country; navigation node
-- [Ashes & Diamonds / Cabernet Franc](ashes-and-diamonds.md) — producer; baseline reference
-- [Clos Apalta / Domaines Bournet-Lapostolle](clos-apalta.md) — producer; baseline reference
-- [Corison Winery](corison-winery.md) — producer; navigation node
-- [JONATA](jonata.md) — producer; navigation node
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->

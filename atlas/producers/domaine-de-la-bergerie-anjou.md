@@ -12,8 +12,6 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [Chenin Blanc](../grapes/chenin-blanc.md) — grape; navigation node
 - [Loire Valley](../countries/france/regions/loire-valley.md) — region; navigation node
 - [France](../countries/france/README.md) — country; baseline reference
-- [Domaine Huet](domaine-huet.md) — producer; baseline reference
-- [Richard Leroy](richard-leroy.md) — producer; baseline reference
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->

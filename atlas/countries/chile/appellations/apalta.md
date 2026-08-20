@@ -12,7 +12,6 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [Chile](../README.md) — country; navigation node
 - [Clos Apalta / Domaines Bournet-Lapostolle](../../../producers/clos-apalta.md) — producer; baseline reference
 - [Colchagua Valley](../regions/colchagua-valley.md) — region; navigation node
-- [Apalta Valley](../regions/apalta-valley.md) — region; navigation node
 - [Cabernet Franc](../../../grapes/cabernet-franc.md) — grape; navigation node
 - [Cabernet Sauvignon](../../../grapes/cabernet-sauvignon.md) — grape; navigation node
 <!-- END GENERATED CARTA NAVIGATION -->

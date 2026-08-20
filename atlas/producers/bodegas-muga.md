@@ -60,12 +60,6 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [Spain](../countries/spain/README.md) — country; baseline reference
 - [Carignan](../grapes/carignan.md) — grape; navigation node
 - [Tempranillo](../grapes/tempranillo.md) — grape; navigation node
-- [Aurélien & Charlotte Houillon](domaine-houillon.md) — producer; navigation node
-- [Condado de Haza / Alenza Gran Reserva](condado-de-haza.md) — producer; baseline reference
-- [Domaine Lampyres / Harvest Moon](domaine-lampyres.md) — producer; navigation node
-- [Natus Vini / Intus](natus-vini.md) — producer; navigation node
-- [Prieuré Saint-Jean de Bébian / Tartuguier](prieure-saint-jean-de-bebian.md) — producer; navigation node
-- [Villalobos](villalobos.md) — producer; baseline reference
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->

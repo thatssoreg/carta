@@ -12,7 +12,6 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [Villalobos](../producers/villalobos.md) — producer; baseline reference
 - [Bodegas Muga / Prado Enea Gran Reserva](../producers/bodegas-muga.md) — producer; baseline reference
 - [Rioja DOCa](../countries/spain/appellations/rioja.md) — appellation; navigation node
-- [Tempranillo](tempranillo.md) — grape; navigation node
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->

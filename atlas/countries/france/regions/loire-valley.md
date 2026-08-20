@@ -15,14 +15,6 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [Vin de France](../../../classifications/vin-de-france.md) — classification; navigation node
 - [Domaine de la Bergerie / Clos de la Bergerie](../../../producers/domaine-de-la-bergerie-anjou.md) — producer; navigation node
 - [François Blanchard / Le Grand Cléré](../../../producers/le-grand-clere.md) — producer; navigation node
-- [Beaujolais](beaujolais.md) — region; navigation node
-- [Cornas AOP](../appellations/cornas.md) — appellation; navigation node
-- [Côte-Rôtie](../appellations/cote-rotie.md) — appellation; navigation node
-- [Côtes du Rhône AOP](../appellations/cotes-du-rhone.md) — appellation; navigation node
-- [Jura](jura.md) — region; navigation node
-- [Jurançon](../appellations/jurancon.md) — appellation; baseline reference
-- [Palette AOP](../appellations/palette.md) — appellation; navigation node
-- [Savoie](savoie.md) — region; navigation node
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->

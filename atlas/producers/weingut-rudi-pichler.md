@@ -83,8 +83,6 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [Wachau DAC](../countries/austria/appellations/wachau-dac.md) — appellation; navigation node
 - [Hofgut Falkenstein](hofgut-falkenstein.md) — producer; baseline reference
 - [Wachau](../countries/austria/regions/wachau.md) — region; navigation node
-- [Weingut A.J. Adam](aj-adam.md) — producer; navigation node
-- [Weingut Keller](weingut-keller.md) — producer; navigation node
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->

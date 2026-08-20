@@ -29,11 +29,6 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [Vin de France](../classifications/vin-de-france.md) — classification; navigation node
 - [Loire Valley](../countries/france/regions/loire-valley.md) — region; navigation node
 - [France](../countries/france/README.md) — country; baseline reference
-- [Aurélien & Charlotte Houillon](domaine-houillon.md) — producer; navigation node
-- [Domaine Lampyres / Harvest Moon](domaine-lampyres.md) — producer; navigation node
-- [François Blanchard / Le Grand Cléré](le-grand-clere.md) — producer; navigation node
-- [Prieuré Saint-Jean de Bébian / Tartuguier](prieure-saint-jean-de-bebian.md) — producer; navigation node
-- [Vindiou / Cœur Fidèle](vindiou.md) — producer; navigation node
 
 ### Deliberately deferred anchors
 

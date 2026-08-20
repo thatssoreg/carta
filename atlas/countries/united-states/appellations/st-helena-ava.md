@@ -13,10 +13,6 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [Cabernet Sauvignon](../../../grapes/cabernet-sauvignon.md) — grape; navigation node
 - [Corison Winery](../../../producers/corison-winery.md) — producer; navigation node
 - [California](../regions/california.md) — region; navigation node
-- [Contra Costa County](../regions/contra-costa-county.md) — region; navigation node
-- [Napa Valley AVA](napa-valley-ava.md) — appellation; navigation node
-- [Santa Barbara County](../regions/santa-barbara-county.md) — region; navigation node
-- [Santa Ynez Valley AVA](santa-ynez-valley-ava.md) — appellation; navigation node
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->

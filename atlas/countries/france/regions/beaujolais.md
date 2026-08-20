@@ -12,15 +12,7 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [France](../README.md) — country; baseline reference
 - [Gang of Four (Beaujolais)](../../../ecosystems/gang-of-four-beaujolais.md) — ecosystem; baseline reference
 - [Morgon AOP](../appellations/morgon.md) — appellation; navigation node
-- [Cornas AOP](../appellations/cornas.md) — appellation; navigation node
-- [Côte-Rôtie](../appellations/cote-rotie.md) — appellation; navigation node
-- [Côtes du Rhône AOP](../appellations/cotes-du-rhone.md) — appellation; navigation node
 - [Domaine Marcel Lapierre](../../../producers/domaine-marcel-lapierre.md) — producer; baseline reference
-- [Jura](jura.md) — region; navigation node
-- [Jurançon](../appellations/jurancon.md) — appellation; baseline reference
-- [Loire Valley](loire-valley.md) — region; navigation node
-- [Palette AOP](../appellations/palette.md) — appellation; navigation node
-- [Savoie](savoie.md) — region; navigation node
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->

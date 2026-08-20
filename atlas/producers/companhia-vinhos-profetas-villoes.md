@@ -32,7 +32,6 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [Porto Santo](../countries/portugal/regions/porto-santo.md) — region; navigation node
 - [Portugal](../countries/portugal/README.md) — country; navigation node
 - [Maçanita Vinhos](macanita-vinhos.md) — producer; navigation node
-- [Goyo García Viadero](goyo-garcia-viadero.md) — producer; baseline reference
 - [Soleras del Pacífico](soleras-del-pacifico.md) — producer; navigation node
 
 ### Deliberately deferred anchors

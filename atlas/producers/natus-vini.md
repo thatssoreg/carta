@@ -12,8 +12,6 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [Tempranillo](../grapes/tempranillo.md) — grape; navigation node
 - [Trincadeira](../grapes/trincadeira.md) — grape; navigation node
 - [Portugal](../countries/portugal/README.md) — country; navigation node
-- [Bodegas Muga / Prado Enea Gran Reserva](bodegas-muga.md) — producer; baseline reference
-- [Condado de Haza / Alenza Gran Reserva](condado-de-haza.md) — producer; baseline reference
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->

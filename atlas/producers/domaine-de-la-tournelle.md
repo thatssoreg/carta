@@ -13,7 +13,6 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [Savagnin](../grapes/savagnin.md) — grape; navigation node
 - [Jura](../countries/france/regions/jura.md) — region; navigation node
 - [France](../countries/france/README.md) — country; baseline reference
-- [Domaine de Saint Pierre / Château Renard](domaine-de-saint-pierre-jura.md) — producer; baseline reference
 - [Domaine Labet](domaine-labet.md) — producer; navigation node
 <!-- END GENERATED CARTA NAVIGATION -->
 

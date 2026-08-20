@@ -24,9 +24,12 @@ from validate_data import (
     MAX_RELATED_PROFILES,
     NAVIGATION_RELATIONSHIP_PREDICATES,
     NAVIGATION_RELATIONSHIP_STATUSES,
+    enumerate_navigation_paths,
+    navigation_adjacency,
+    navigation_candidate_sort_key,
     navigation_graph,
     render_navigation,
-    shortest_navigation_distance,
+    resolve_navigation_candidate,
 )
 
 
@@ -39,15 +42,6 @@ DATA_DIRECTORIES = {
 }
 
 GENERATED_LINK_RE = re.compile(r"^- \[([^]]+)\]\([^)]+\) — ")
-
-PROFESSIONAL_PREDICATES = {
-    "MENTORED_BY",
-    "TRAINED_AT",
-    "WORKED_FOR",
-    "WORKED_WITH",
-    "COLLABORATED_WITH",
-    "FOUNDED",
-}
 
 # Smaller is more specific for reader navigation. These values are prototypes,
 # not ontology claims and not production configuration.
@@ -162,102 +156,6 @@ def eligible_relationships(data: dict[str, list[dict[str, Any]]]) -> list[dict[s
     ]
 
 
-def edge_adjacency(
-    relationships: list[dict[str, Any]],
-) -> dict[str, list[tuple[str, dict[str, Any], str]]]:
-    adjacency: dict[str, list[tuple[str, dict[str, Any], str]]] = defaultdict(list)
-    for relationship in relationships:
-        subject = relationship["subject_id"]
-        object_id = relationship["object_id"]
-        adjacency[subject].append((object_id, relationship, "forward"))
-        adjacency[object_id].append((subject, relationship, "reverse"))
-    for entity_id in adjacency:
-        adjacency[entity_id].sort(
-            key=lambda item: (item[0], item[1]["predicate"], item[1]["id"], item[2])
-        )
-    return adjacency
-
-
-def path_edge_label(relationship: dict[str, Any], direction: str) -> str:
-    arrow = ">" if direction == "forward" else "<"
-    return f"{relationship['predicate']}{arrow}"
-
-
-def enumerate_paths(
-    starts: set[str],
-    targets: set[str],
-    adjacency: dict[str, list[tuple[str, dict[str, Any], str]]],
-) -> list[dict[str, Any]]:
-    """Enumerate distinct relationship-record paths of length zero, one, or two."""
-    paths: list[dict[str, Any]] = []
-    for shared in sorted(starts & targets):
-        paths.append(
-            {
-                "distance": 0,
-                "entities": [shared],
-                "relationship_ids": [],
-                "predicates": [],
-                "directions": [],
-                "pattern": "SHARED_COMPONENT",
-                "intermediary": None,
-            }
-        )
-
-    seen: set[tuple[Any, ...]] = set()
-    for start in sorted(starts):
-        for neighbor, first, first_direction in adjacency.get(start, []):
-            first_key = (start, first["id"], neighbor)
-            if neighbor in targets and first_key not in seen:
-                seen.add(first_key)
-                paths.append(
-                    {
-                        "distance": 1,
-                        "entities": [start, neighbor],
-                        "relationship_ids": [first["id"]],
-                        "predicates": [first["predicate"]],
-                        "directions": [first_direction],
-                        "pattern": path_edge_label(first, first_direction),
-                        "intermediary": None,
-                    }
-                )
-
-            # Starting from every component already makes paths through another source
-            # component redundant. Backtracking over the same relationship is not a
-            # meaningful graph path.
-            if neighbor in starts or neighbor in targets:
-                continue
-            for end, second, second_direction in adjacency.get(neighbor, []):
-                if end not in targets or second["id"] == first["id"]:
-                    continue
-                second_key = (start, first["id"], neighbor, second["id"], end)
-                if second_key in seen:
-                    continue
-                seen.add(second_key)
-                paths.append(
-                    {
-                        "distance": 2,
-                        "entities": [start, neighbor, end],
-                        "relationship_ids": [first["id"], second["id"]],
-                        "predicates": [first["predicate"], second["predicate"]],
-                        "directions": [first_direction, second_direction],
-                        "pattern": (
-                            f"{path_edge_label(first, first_direction)}"
-                            f"/{path_edge_label(second, second_direction)}"
-                        ),
-                        "intermediary": neighbor,
-                    }
-                )
-    return sorted(
-        paths,
-        key=lambda path: (
-            path["distance"],
-            path["pattern"],
-            path["entities"],
-            path["relationship_ids"],
-        ),
-    )
-
-
 def route_rank(candidate: dict[str, Any]) -> int:
     if candidate["curated_outbound"]:
         return 0
@@ -332,165 +230,6 @@ def hub_penalized_key(candidate: dict[str, Any], degree: dict[str, int]) -> tupl
     return (score, best_predicate_cost(candidate), candidate["title"].casefold(), candidate["id"])
 
 
-def target_kind_priority(source_kind: str, candidate: dict[str, Any]) -> int:
-    target_kind = candidate["profile_kind"]
-    predicates = {
-        predicate for path in candidate["paths"] for predicate in path["predicates"]
-    }
-    if source_kind == "producer" and predicates & PROFESSIONAL_PREDICATES:
-        return 0
-
-    priorities = {
-        "producer": {
-            "wine": 0,
-            "person": 0,
-            "appellation": 1,
-            "region": 1,
-            "landscape": 1,
-            "grape": 2,
-            "classification": 2,
-            "institution": 2,
-            "country": 3,
-            "producer": 4,
-        },
-        "wine": {
-            "producer": 0,
-            "grape": 0,
-            "appellation": 0,
-            "classification": 0,
-            "region": 1,
-            "practice": 1,
-            "country": 3,
-        },
-        "grape": {
-            "region": 0,
-            "appellation": 0,
-            "country": 1,
-            "wine": 2,
-            "producer": 3,
-            "classification": 4,
-            "grape": 4,
-        },
-        "country": {
-            "region": 0,
-            "appellation": 1,
-            "landscape": 2,
-            "grape": 3,
-            "classification": 4,
-            "producer": 5,
-            "wine": 6,
-        },
-        "region": {
-            "country": 0,
-            "appellation": 1,
-            "region": 1,
-            "landscape": 1,
-            "grape": 2,
-            "producer": 3,
-            "wine": 3,
-        },
-        "appellation": {
-            "country": 0,
-            "region": 1,
-            "grape": 1,
-            "producer": 2,
-            "wine": 2,
-            "classification": 2,
-        },
-        "classification": {
-            "country": 0,
-            "region": 1,
-            "appellation": 1,
-            "grape": 2,
-            "producer": 3,
-            "wine": 3,
-        },
-    }
-    return priorities.get(source_kind, {}).get(target_kind, 5)
-
-
-def kind_aware_key(
-    source_kind: str, candidate: dict[str, Any], degree: dict[str, int]
-) -> tuple[Any, ...]:
-    priority = target_kind_priority(source_kind, candidate)
-    combined_cost = best_predicate_cost(candidate) + best_hub_cost(candidate, degree) / 10
-    anchor_bonus = 1 if candidate["curated_outbound"] else 0.5 if candidate["curated_reciprocal"] else 0
-    return (
-        priority,
-        combined_cost - anchor_bonus,
-        candidate["distance"] if candidate["distance"] is not None else 99,
-        candidate["title"].casefold(),
-        candidate["id"],
-    )
-
-
-def kind_aware_candidate_allowed(
-    source_kind: str, candidate: dict[str, Any]
-) -> bool:
-    """Prototype inspectable traversal gates for genuinely different reader jobs."""
-    target_kind = candidate["profile_kind"]
-    distance = candidate["distance"]
-    path_predicate_sets = [set(path["predicates"]) for path in candidate["paths"]]
-
-    if source_kind == "country":
-        # Country pages orient through internal/reference surfaces. A producer may
-        # remain only when the country explicitly selected it as an outbound anchor;
-        # the fact that every producer points back to its country is not selection.
-        return target_kind in {
-            "region",
-            "appellation",
-            "landscape",
-            "ecosystem",
-            "grape",
-            "classification",
-        } or (target_kind in {"producer", "wine", "person"} and candidate["curated_outbound"])
-
-    if source_kind in {"region", "appellation"}:
-        if distance == 2 and target_kind in {"region", "appellation"}:
-            # Suppress peer geographies reached only by climbing to a broad container
-            # and descending elsewhere. Explicit anchors/direct containment survive.
-            broad_geography_only = all(
-                predicates
-                and predicates.issubset({"WITHIN", "LOCATED_IN", "WITHIN_APPELLATION"})
-                and path["directions"] == ["forward", "reverse"]
-                for path, predicates in zip(candidate["paths"], path_predicate_sets)
-            )
-            if broad_geography_only and not candidate["curated_outbound"] and not candidate["curated_reciprocal"]:
-                return False
-        return True
-
-    if source_kind == "grape":
-        if distance == 2 and target_kind in {"grape", "classification"}:
-            # A co-occurrence in one wine or a broad legal class is not yet a governed
-            # grape-to-grape or grape-to-classification editorial relationship.
-            return candidate["curated_outbound"] or candidate["curated_reciprocal"]
-        return True
-
-    if source_kind == "producer":
-        if distance == 2 and target_kind == "producer":
-            specific = any(
-                predicates
-                & (
-                    PROFESSIONAL_PREDICATES
-                    | {
-                        "FARMS_PARCEL",
-                        "PLANTED_AT",
-                        "FARMED_BY",
-                        "USES_PRACTICE",
-                    }
-                )
-                for predicates in path_predicate_sets
-            )
-            return (
-                specific
-                or candidate["curated_outbound"]
-                or candidate["curated_reciprocal"]
-            )
-        return True
-
-    return True
-
-
 def analyze(
     root: Path, data: dict[str, list[dict[str, Any]]] | None = None
 ) -> dict[str, Any]:
@@ -499,7 +238,7 @@ def analyze(
     profiles.sort(key=lambda profile: profile["id"])
     entity_by_id = {entity["id"]: entity for entity in data["entities"]}
     relationships = eligible_relationships(data)
-    adjacency = edge_adjacency(relationships)
+    adjacency = navigation_adjacency(data)
     graph = navigation_graph(data)
     degree = {entity_id: len(neighbors) for entity_id, neighbors in graph.items()}
 
@@ -518,49 +257,49 @@ def analyze(
             other_seeds = profile_seeds(other)
             curated_outbound_entities = sorted(seeds & targets)
             curated_reciprocal_entities = sorted(starts & other_seeds)
-            distance = shortest_navigation_distance(graph, starts, targets)
+            decision = resolve_navigation_candidate(profile, other, graph, adjacency)
+            distance = decision["distance"]
             if not curated_outbound_entities and not curated_reciprocal_entities and distance is None:
                 continue
-            paths = enumerate_paths(starts, targets, adjacency)
-            for path in paths:
-                intermediary = path["intermediary"]
-                if intermediary:
-                    intermediary_pairs[intermediary].add((profile["id"], other["id"]))
-                    intermediary_path_counts[intermediary] += 1
-            candidate = {
+            paths = decision["paths"]
+            candidate = decision | {
                 "id": other["id"],
                 "title": other["title"],
                 "profile_kind": other["profile_kind"],
                 "publication_status": other["publication_status"],
                 "maturity": other["maturity"],
-                "distance": distance,
+                # These legacy fields reconstruct Run 10, when structural countries
+                # and editorial anchors were one reciprocal seed set.
                 "curated_outbound": bool(curated_outbound_entities),
                 "curated_outbound_entities": curated_outbound_entities,
                 "curated_reciprocal": bool(curated_reciprocal_entities),
                 "curated_reciprocal_entities": curated_reciprocal_entities,
-                "paths": paths,
                 "path_count": len(paths),
                 "direct_path_count": sum(path["distance"] == 1 for path in paths),
                 "two_hop_path_count": sum(path["distance"] == 2 for path in paths),
             }
             candidates.append(candidate)
 
+        current_candidates = [candidate for candidate in candidates if candidate["eligible"]]
+        for candidate in current_candidates:
+            for path in candidate["paths"]:
+                intermediary = path["intermediary"]
+                if intermediary:
+                    intermediary_pairs[intermediary].add(
+                        (profile["id"], candidate["id"])
+                    )
+                    intermediary_path_counts[intermediary] += 1
+
         model_lists = {
-            "A_current": sorted(candidates, key=current_key),
+            "A_current": sorted(current_candidates, key=navigation_candidate_sort_key),
+            "Run10_baseline": sorted(candidates, key=current_key),
             "B_direct_first": sorted(candidates, key=direct_first_key),
             "C_predicate_weighted": sorted(candidates, key=predicate_weighted_key),
             "D_hub_penalized": sorted(
                 candidates, key=lambda candidate: hub_penalized_key(candidate, degree)
             ),
             "E_profile_kind_aware": sorted(
-                [
-                    candidate
-                    for candidate in candidates
-                    if kind_aware_candidate_allowed(profile["profile_kind"], candidate)
-                ],
-                key=lambda candidate: kind_aware_key(
-                    profile["profile_kind"], candidate, degree
-                ),
+                current_candidates, key=navigation_candidate_sort_key
             ),
         }
         displayed_ids = {
@@ -584,14 +323,28 @@ def analyze(
         current_ids = set(displayed_ids["A_current"])
         for candidate in candidates:
             candidate["displayed_current"] = candidate["id"] in current_ids
-            candidate["current_sort_key"] = list(current_key(candidate))
+            candidate["run10_sort_key"] = list(current_key(candidate))
+            if candidate["eligible"]:
+                candidate["current_sort_key"] = list(
+                    navigation_candidate_sort_key(candidate)
+                )
 
-        direct_candidates = sum(candidate["distance"] == 1 for candidate in candidates)
-        two_hop_candidates = sum(candidate["distance"] == 2 for candidate in candidates)
+        direct_candidates = sum(
+            candidate["distance"] == 1 for candidate in current_candidates
+        )
+        two_hop_candidates = sum(
+            candidate["distance"] == 2 for candidate in current_candidates
+        )
         anchor_only = sum(
             candidate["distance"] is None
-            and (candidate["curated_outbound"] or candidate["curated_reciprocal"])
-            for candidate in candidates
+            and candidate["route_kind"]
+            in {
+                "editorial_anchor_outbound",
+                "structural_country_outbound",
+                "structural_country_descendant",
+                "editorial_anchor_reciprocal",
+            }
+            for candidate in current_candidates
         )
         result_profiles[profile["id"]] = {
             "id": profile["id"],
@@ -599,27 +352,41 @@ def analyze(
             "profile_kind": profile["profile_kind"],
             "path": profile["path"],
             "component_entity_ids": profile["component_entity_ids"],
-            "navigation_seed_ids": sorted(seeds),
+            "structural_country_ids": sorted(profile.get("country_entity_ids", [])),
+            "editorial_anchor_ids": sorted(
+                profile.get("representative_anchor_ids", [])
+            ),
             "direct_eligible_neighbors": direct_candidates,
             "two_hop_eligible_neighbors": two_hop_candidates,
             "two_hop_only_neighbors": two_hop_candidates,
             "anchor_only_neighbors": anchor_only,
             "raw_candidate_path_instances": sum(
                 candidate["path_count"]
-                + len(candidate["curated_outbound_entities"])
-                + len(candidate["curated_reciprocal_entities"])
-                for candidate in candidates
+                + len(candidate["editorial_outbound_entities"])
+                + len(candidate["structural_country_outbound_entities"])
+                + len(candidate["editorial_reciprocal_entities"])
+                for candidate in current_candidates
             ),
-            "unique_candidate_profiles": len(candidates),
-            "candidates_after_deduplication": len(candidates),
-            "displayed": min(MAX_RELATED_PROFILES, len(candidates)),
-            "displaced_by_cap": max(0, len(candidates) - MAX_RELATED_PROFILES),
+            "unique_candidate_profiles": len(current_candidates),
+            "candidates_after_deduplication": len(current_candidates),
+            "run10_baseline_candidate_profiles": len(candidates),
+            "displayed": min(MAX_RELATED_PROFILES, len(current_candidates)),
+            "displaced_by_cap": max(
+                0, len(current_candidates) - MAX_RELATED_PROFILES
+            ),
             "model_displayed_ids": displayed_ids,
-            "candidates": sorted(candidates, key=current_key),
+            "candidates": sorted(
+                current_candidates, key=navigation_candidate_sort_key
+            ),
+            "rejected_candidates": sorted(
+                (candidate for candidate in candidates if not candidate["eligible"]),
+                key=current_key,
+            ),
         }
 
     recommended_frequency: Counter[str] = Counter()
     displayed_route_counts: Counter[str] = Counter()
+    displayed_distance_counts: Counter[str] = Counter()
     all_current_links = 0
     for profile in result_profiles.values():
         by_id = {candidate["id"]: candidate for candidate in profile["candidates"]}
@@ -627,22 +394,52 @@ def analyze(
             candidate = by_id[candidate_id]
             recommended_frequency[candidate_id] += 1
             all_current_links += 1
+            displayed_route_counts[candidate["route_kind"]] += 1
+            if candidate["distance"] is None:
+                displayed_distance_counts["anchor_only"] += 1
+            else:
+                displayed_distance_counts[f"distance_{candidate['distance']}"] += 1
+
+    run10_route_counts: Counter[str] = Counter()
+    run10_distance_counts: Counter[str] = Counter()
+    run10_displayed_links = 0
+    for profile in result_profiles.values():
+        all_candidates = profile["candidates"] + profile["rejected_candidates"]
+        by_id = {candidate["id"]: candidate for candidate in all_candidates}
+        for candidate_id in profile["model_displayed_ids"]["Run10_baseline"]:
+            candidate = by_id[candidate_id]
+            run10_displayed_links += 1
             if candidate["curated_outbound"]:
-                displayed_route_counts["outbound_anchor"] += 1
+                run10_route_counts["outbound_anchor"] += 1
             elif candidate["curated_reciprocal"]:
-                displayed_route_counts["reciprocal_anchor"] += 1
+                run10_route_counts["reciprocal_anchor"] += 1
             elif candidate["distance"] == 0:
-                displayed_route_counts["shared_component"] += 1
+                run10_route_counts["shared_component"] += 1
             elif candidate["distance"] == 1:
-                displayed_route_counts["direct_relationship"] += 1
+                run10_route_counts["direct_relationship"] += 1
             elif candidate["distance"] == 2:
-                displayed_route_counts["two_hop_relationship"] += 1
+                run10_route_counts["two_hop_relationship"] += 1
+
+            if candidate["distance"] is None:
+                run10_distance_counts["anchor_only"] += 1
+            else:
+                run10_distance_counts[f"distance_{candidate['distance']}"] += 1
 
     candidate_counts = [
         profile["unique_candidate_profiles"] for profile in result_profiles.values()
     ]
     saturated = sum(count >= MAX_RELATED_PROFILES for count in candidate_counts)
     displaced = sum(count > MAX_RELATED_PROFILES for count in candidate_counts)
+    run10_candidate_counts = [
+        profile["run10_baseline_candidate_profiles"]
+        for profile in result_profiles.values()
+    ]
+    run10_saturated = sum(
+        count >= MAX_RELATED_PROFILES for count in run10_candidate_counts
+    )
+    run10_displaced = sum(
+        count > MAX_RELATED_PROFILES for count in run10_candidate_counts
+    )
 
     kind_groups: dict[str, list[dict[str, Any]]] = defaultdict(list)
     for profile in result_profiles.values():
@@ -755,6 +552,47 @@ def analyze(
             "displayed_route_percent": {
                 key: round_metric(100 * value / all_current_links)
                 for key, value in sorted(displayed_route_counts.items())
+            },
+            "displayed_distance_counts": dict(
+                sorted(displayed_distance_counts.items())
+            ),
+            "displayed_distance_percent": {
+                key: round_metric(100 * value / all_current_links)
+                for key, value in sorted(displayed_distance_counts.items())
+            },
+        },
+        "run10_baseline": {
+            "surfaced_profiles": len(result_profiles),
+            "eligible_relationship_records": len(relationships),
+            "candidate_profile_pairs_directed": sum(run10_candidate_counts),
+            "displayed_links": run10_displayed_links,
+            "mean_candidates": round_metric(
+                statistics.mean(run10_candidate_counts)
+            ),
+            "median_candidates": round_metric(
+                statistics.median(run10_candidate_counts)
+            ),
+            "p95_candidates": percentile(run10_candidate_counts, 0.95),
+            "max_candidates": max(run10_candidate_counts),
+            "saturated_profiles": run10_saturated,
+            "saturation_rate_percent": round_metric(
+                100 * run10_saturated / len(run10_candidate_counts)
+            ),
+            "displaced_profiles": run10_displaced,
+            "displacement_rate_percent": round_metric(
+                100 * run10_displaced / len(run10_candidate_counts)
+            ),
+            "displayed_route_counts": dict(sorted(run10_route_counts.items())),
+            "displayed_route_percent": {
+                key: round_metric(100 * value / run10_displayed_links)
+                for key, value in sorted(run10_route_counts.items())
+            },
+            "displayed_distance_counts": dict(
+                sorted(run10_distance_counts.items())
+            ),
+            "displayed_distance_percent": {
+                key: round_metric(100 * value / run10_displayed_links)
+                for key, value in sorted(run10_distance_counts.items())
             },
         },
         "by_profile_kind": by_kind,
@@ -882,21 +720,26 @@ def evaluate_models(
         de_removed = 0
         rated_retained = Counter()
         links_changed = 0
+        kind_totals: dict[str, Counter[str]] = defaultdict(Counter)
+        kind_retained: dict[str, Counter[str]] = defaultdict(Counter)
+        removed_by_rating: dict[str, list[str]] = defaultdict(list)
         for profile_id, candidate_ratings in ratings.items():
             profile = report["profiles"][profile_id]
-            current = set(profile["model_displayed_ids"]["A_current"])
+            baseline = set(profile["model_displayed_ids"]["Run10_baseline"])
             rated = set(candidate_ratings)
-            if rated != current:
-                missing = sorted(current - rated)
-                extra = sorted(rated - current)
+            if rated != baseline:
+                missing = sorted(baseline - rated)
+                extra = sorted(rated - baseline)
                 raise SystemExit(
-                    f"{profile_id}: ratings must cover every current displayed link; "
+                    f"{profile_id}: ratings must cover every Run 10 displayed link; "
                     f"missing={missing}, extra={extra}"
                 )
             displayed = set(profile["model_displayed_ids"][model])
-            links_changed += len(current - displayed)
+            links_changed += len(baseline - displayed)
+            source_kind = profile["profile_kind"]
             for candidate_id, rating_record in candidate_ratings.items():
                 rating = rating_record["rating"]
+                kind_totals[source_kind][rating] += 1
                 if rating in {"A", "B"}:
                     ab_total += 1
                     ab_retained += candidate_id in displayed
@@ -905,6 +748,30 @@ def evaluate_models(
                     de_removed += candidate_id not in displayed
                 if candidate_id in displayed:
                     rated_retained[rating] += 1
+                    kind_retained[source_kind][rating] += 1
+                else:
+                    removed_by_rating[rating].append(
+                        f"{profile_id} -> {candidate_id}"
+                    )
+
+        ratings_by_source_kind = {}
+        for source_kind in sorted(kind_totals):
+            totals = kind_totals[source_kind]
+            retained = kind_retained[source_kind]
+            baseline_total = sum(totals.values())
+            retained_total = sum(retained.values())
+            baseline_de = totals["D"] + totals["E"]
+            retained_de = retained["D"] + retained["E"]
+            ratings_by_source_kind[source_kind] = {
+                "baseline_counts": dict(sorted(totals.items())),
+                "retained_counts": dict(sorted(retained.items())),
+                "baseline_de_rate_percent": round_metric(
+                    100 * baseline_de / baseline_total if baseline_total else 0
+                ),
+                "retained_de_rate_percent": round_metric(
+                    100 * retained_de / retained_total if retained_total else 0
+                ),
+            }
         output[model] = {
             "sample_profiles": len(ratings),
             "rated_links": sum(len(records) for records in ratings.values()),
@@ -919,7 +786,13 @@ def evaluate_models(
                 100 * de_removed / de_total if de_total else 0
             ),
             "current_links_removed_from_sample": links_changed,
+            "run10_links_removed_from_sample": links_changed,
             "retained_ratings": dict(sorted(rated_retained.items())),
+            "removed_links_by_rating": {
+                rating: sorted(items)
+                for rating, items in sorted(removed_by_rating.items())
+            },
+            "ratings_by_source_kind": ratings_by_source_kind,
         }
     return output
 
@@ -941,20 +814,43 @@ def compact_report(report: dict[str, Any], profile_ids: list[str]) -> dict[str, 
 
 def markdown_summary(report: dict[str, Any], model_evaluation: dict[str, Any]) -> str:
     overall = report["overall"]
+    baseline = report["run10_baseline"]
     lines = [
         "# CARTA Human Reference navigation audit metrics",
         "",
-        f"- Surfaced profiles: {overall['surfaced_profiles']}",
-        f"- Directed candidate pairs: {overall['candidate_profile_pairs_directed']}",
-        f"- Mean / median / p95 candidates: {overall['mean_candidates']} / {overall['median_candidates']} / {overall['p95_candidates']}",
-        f"- Saturation: {overall['saturated_profiles']} profiles ({overall['saturation_rate_percent']}%)",
-        f"- Displacement: {overall['displaced_profiles']} profiles ({overall['displacement_rate_percent']}%)",
+        "| Metric | Run 10 baseline | Current production |",
+        "|---|---:|---:|",
+        f"| Surfaced profiles | {baseline['surfaced_profiles']} | {overall['surfaced_profiles']} |",
+        f"| Directed candidate pairs | {baseline['candidate_profile_pairs_directed']} | {overall['candidate_profile_pairs_directed']} |",
+        f"| Displayed links | {baseline['displayed_links']} | {overall['displayed_links']} |",
+        f"| Mean candidates | {baseline['mean_candidates']} | {overall['mean_candidates']} |",
+        f"| Median candidates | {baseline['median_candidates']} | {overall['median_candidates']} |",
+        f"| p95 candidates | {baseline['p95_candidates']} | {overall['p95_candidates']} |",
+        f"| Saturated profiles | {baseline['saturated_profiles']} | {overall['saturated_profiles']} |",
+        f"| Displaced profiles | {baseline['displaced_profiles']} | {overall['displaced_profiles']} |",
+        "",
+        "## Displayed shortest-distance distribution",
+        "",
+        "| Distance | Run 10 | Current |",
+        "|---|---:|---:|",
+    ]
+    for key in ("anchor_only", "distance_0", "distance_1", "distance_2"):
+        label = key.replace("_", " ")
+        lines.append(
+            f"| {label} | {baseline['displayed_distance_counts'].get(key, 0)} "
+            f"({baseline['displayed_distance_percent'].get(key, 0)}%) | "
+            f"{overall['displayed_distance_counts'].get(key, 0)} "
+            f"({overall['displayed_distance_percent'].get(key, 0)}%) |"
+        )
+    lines.extend(
+        [
         "",
         "## Highest-degree entities",
         "",
         "| Entity | Type | Degree |",
         "|---|---:|---:|",
-    ]
+        ]
+    )
     for item in report["highest_degree_entities"][:15]:
         lines.append(
             f"| `{item['entity_id']}` ({item['name']}) | {item['entity_type']} | {item['degree']} |"
@@ -978,7 +874,7 @@ def markdown_summary(report: dict[str, Any], model_evaluation: dict[str, Any]) -
                 "",
                 "## Model evaluation against ratings",
                 "",
-                "| Model | A/B retained | D/E removed | Current links removed |",
+                "| Model | A/B retained | D/E removed | Run 10 links removed |",
                 "|---|---:|---:|---:|",
             ]
         )

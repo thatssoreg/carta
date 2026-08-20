@@ -19,7 +19,6 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [Chablis Grand Cru AOP](../countries/france/appellations/chablis-grand-cru.md) — appellation; navigation node
 - [Columbia Gorge AVA](../countries/united-states/appellations/columbia-gorge-ava.md) — appellation; navigation node
 - [San Luis Obispo Coast AVA](../countries/united-states/appellations/san-luis-obispo-coast-ava.md) — appellation; navigation node
-- [Savagnin](savagnin.md) — grape; navigation node
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->

@@ -11,7 +11,6 @@ This section is generated from governed profile dispositions, editorial anchors,
 
 - [Austria](../README.md) — country; navigation node
 - [Weingut Rudi Pichler](../../../producers/weingut-rudi-pichler.md) — producer; baseline reference
-- [Wachau](../regions/wachau.md) — region; navigation node
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->

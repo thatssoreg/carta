@@ -16,15 +16,10 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [Santa Barbara County](regions/santa-barbara-county.md) — region; navigation node
 - [Santa Ynez Valley AVA](appellations/santa-ynez-valley-ava.md) — appellation; navigation node
 - [St. Helena AVA](appellations/st-helena-ava.md) — appellation; navigation node
-- [Arnot-Roberts](../../producers/arnot-roberts.md) — producer; baseline reference
-- [Ashes & Diamonds / Cabernet Franc](../../producers/ashes-and-diamonds.md) — producer; baseline reference
 - [Ballard Canyon AVA](appellations/ballard-canyon-ava.md) — appellation; navigation node
-- [Burgess Cellars / Promiscua](../../producers/burgess-cellars.md) — producer; navigation node
-- [Corison Winery](../../producers/corison-winery.md) — producer; navigation node
-- [Hiyu Wine Farm](../../producers/hiyu-wine-farm.md) — producer; baseline reference
-- [JONATA](../../producers/jonata.md) — producer; navigation node
-- [Pax Wines](../../producers/pax-wines.md) — producer; navigation node
 - [Petaluma Gap AVA](appellations/petaluma-gap-ava.md) — appellation; navigation node
+- [San Luis Obispo Coast AVA](appellations/san-luis-obispo-coast-ava.md) — appellation; navigation node
+- [Petit Manseng](../../grapes/petit-manseng.md) — grape; baseline reference
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->

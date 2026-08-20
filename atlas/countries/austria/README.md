@@ -11,7 +11,6 @@ This section is generated from governed profile dispositions, editorial anchors,
 
 - [Wachau](regions/wachau.md) — region; navigation node
 - [Wachau DAC](appellations/wachau-dac.md) — appellation; navigation node
-- [Weingut Rudi Pichler](../../producers/weingut-rudi-pichler.md) — producer; baseline reference
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->

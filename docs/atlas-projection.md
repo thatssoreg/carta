@@ -355,11 +355,50 @@ Choose the relationships most likely to deepen understanding.
 
 ### Governed navigation and reciprocal discovery
 
-`country_entity_ids` and `representative_anchor_ids` are editorial projection anchors, not a second relationship graph. The Human Reference generator combines those anchors with supported or provisional typed relationships from machine authority, resolves each surfaced target through its canonical `reference_profile` path, and writes a deterministic `Explore CARTA` block.
+Machine graph connectivity and Human Reference navigation eligibility are different questions. The machine graph records supported or provisional typed authority. The projection resolver asks whether a shared component, direct edge, explicit anchor, structural country route, or two-hop path is appropriate for the reader job of the source profile kind. Rejecting a navigation candidate does not delete, weaken, or hide the underlying graph relationship from other machine and analytical surfaces.
 
-The same process derives reciprocal discovery. A producer may point outward to a grape or country through governed anchors and typed authority; the grape or country surface can then discover the producer without maintaining a separate reverse list. Short graph paths are limited to reader-useful predicates such as `MADE_BY`, `MADE_FROM`, `LOCATED_IN`, `WITHIN`, and `CLASSIFIED_AS`, and generated results are capped rather than dumping every edge.
+The generator resolves every surfaced target through its canonical `reference_profile` path and writes a deterministic `Explore CARTA` block. It keeps the existing 16-link cap and uses only route tier, shortest distance, case-folded title, and profile ID for ordering. Alphabetical order is therefore only a stable tie-breaker inside an already eligible route tier; it is not a semantic score.
 
-Machine-only dispositions are never rendered as fake links. When an editorial anchor is deliberately machine-only, the generated block may identify it as deferred plain text. Broken or stale canonical paths remain ordinary validator failures.
+#### Structural countries versus editorial anchors
+
+`country_entity_ids` records structural geographic assignment. It provides a strong outbound containing-country link from the subject page and a downward country-to-region/appellation orientation route. It does not make producers, grapes, classifications, or other subjects reciprocal country-page recommendations merely because they share the country assignment.
+
+`representative_anchor_ids` records explicit editorial selection. It remains strong outbound projection authority and retains reciprocal discovery. An editorial anchor can select a component inside a composite profile without creating another relationship graph.
+
+Machine-only dispositions are never rendered as fake links. When an outbound country or editorial anchor is deliberately machine-only, the generated block may identify it as deferred plain text. Broken or stale canonical paths remain ordinary validator failures.
+
+#### Direct and two-hop routes
+
+Shared components, direct governed relationships, structural country routes, and explicit editorial anchors do not need two-hop inference and therefore bypass the two-hop kind gate. This preserves professional history, mentorship/collaboration, sites and vineyards, production, grape composition, legal/appellation context, and other direct subject evidence. The resolver does not manufacture inverse machine authority when it traverses an eligible relationship in either direction for discovery.
+
+Graph-only paths of exactly two relationships use these inspectable source-kind rules:
+
+| Source profile kind | Two-hop reader policy |
+|---|---|
+| `country` | Admit geographic, ecosystem, grape, and classification orientation targets; reject producer/person/wine adjacency unless a direct or editorial route independently supports it. |
+| `region`, `appellation`, `landscape` | Reject peer geography when every path climbs a broad container and descends elsewhere; retain downward containment and other governed context. |
+| `grape` | Reject general grape or classification adjacency established only by a two-hop wine/classification bridge; retain represented geography and producer/production context. |
+| `producer`, `person` | For producer/person targets, require at least one path carrying professional, parcel/site, farming, planting, or explicit-practice semantics; reject paths supported only by broad grape, classification, or geography components. |
+| `classification`, `ecosystem`, `wine`, `institution`, `practice`, `historical_event` | Retain governed two-hop context until surfaced fixtures demonstrate a narrower reader job. Direct and anchor behavior remains unchanged. |
+
+Every schema profile kind must have an explicit entry in the production policy map. A new kind therefore cannot silently inherit accidental two-hop behavior.
+
+Directional geography is evaluated from the authored relationship direction. Appellation → region → country and country → represented internal region/appellation are useful orientation. Jura → France → Loire Valley and Napa Valley → California → Santa Ynez Valley are up-then-down sibling traversal and are ineligible without another direct or editorial route. The projection never guesses missing containment to rescue a familiar geography.
+
+Composite producer profiles still begin traversal from every governed component entity. Compression does not, however, promote producer → component wine → broad grape/classification → component wine → producer into a recommendation. A two-hop producer-world route survives only when an eligible specific path explains the connection; direct professional, site, production, and anchor routes continue to survive.
+
+#### Auditing navigation quality
+
+`scripts/audit_navigation.py` imports the production resolver, enumerates every relationship-record path with predicates and directions, reconstructs the Run 10 baseline, and evaluates the unchanged 28-page A–E ratings fixture. `tests/test_navigation.py` asserts focused route decisions and includes the full fixture regression. Re-run both with:
+
+```text
+python scripts/audit_navigation.py \
+  --ratings audits/run-10-human-reference-navigation-ratings.json \
+  --format json
+python -m unittest discover -s tests -v
+```
+
+Run 11 changed projection eligibility and route explanation only. It did not change STRATA v0.2, the relationship vocabulary, machine authority, profile kinds, the 16-link cap, persistent wine identity, composite project/vineyard treatment, or the rule that generated Human Reference pages are projections rather than authority.
 
 ## Evidence and machine layer
 

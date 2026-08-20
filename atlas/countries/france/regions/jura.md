@@ -17,14 +17,7 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [Domaine de la Tournelle](../../../producers/domaine-de-la-tournelle.md) — producer; navigation node
 - [Maison Pierre Overnoy / Emmanuel Houillon](../../../producers/maison-pierre-overnoy.md) — producer; navigation node
 - [Renaud Bruyère & Adeline Houillon](../../../producers/bruyere-houillon.md) — producer; navigation node
-- [Beaujolais](beaujolais.md) — region; navigation node
-- [Cornas AOP](../appellations/cornas.md) — appellation; navigation node
-- [Côte-Rôtie](../appellations/cote-rotie.md) — appellation; navigation node
-- [Côtes du Rhône AOP](../appellations/cotes-du-rhone.md) — appellation; navigation node
 - [Domaine de Saint Pierre / Château Renard](../../../producers/domaine-de-saint-pierre-jura.md) — producer; baseline reference
-- [Jurançon](../appellations/jurancon.md) — appellation; baseline reference
-- [Loire Valley](loire-valley.md) — region; navigation node
-- [Palette AOP](../appellations/palette.md) — appellation; navigation node
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->

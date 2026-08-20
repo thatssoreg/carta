@@ -10,9 +10,7 @@ The machine graph and generated relationships below provide the current orientat
 This section is generated from governed profile dispositions, editorial anchors, and supported graph relationships. It is not a hand-maintained second knowledge graph.
 
 - [Germany](../countries/germany/README.md) — country; navigation node
-- [Caves du Château d'Auvernier](chateau-auvernier.md) — producer; navigation node
 - [Hiyu Wine Farm](hiyu-wine-farm.md) — producer; baseline reference
-- [Weingut Günther Steinmetz](weingut-gunther-steinmetz.md) — producer; navigation node
 
 ### Deliberately deferred anchors
 

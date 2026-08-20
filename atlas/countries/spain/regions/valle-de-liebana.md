@@ -10,7 +10,6 @@ The machine graph and generated relationships below provide the current orientat
 This section is generated from governed profile dispositions, editorial anchors, and supported graph relationships. It is not a hand-maintained second knowledge graph.
 
 - [Spain](../README.md) — country; baseline reference
-- [Vino de la Tierra de Liébana](../appellations/vino-de-la-tierra-de-liebana.md) — appellation; navigation node
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->

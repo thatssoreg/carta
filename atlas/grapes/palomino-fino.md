@@ -15,7 +15,6 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [Contra Costa County](../countries/united-states/regions/contra-costa-county.md) — region; navigation node
 - [Porto Santo](../countries/portugal/regions/porto-santo.md) — region; navigation node
 - [Madeirense DOP](../countries/portugal/appellations/madeirense-dop.md) — appellation; navigation node
-- [Mencía](mencia.md) — grape; navigation node
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->

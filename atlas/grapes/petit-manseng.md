@@ -144,8 +144,6 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [Béarn](../countries/france/regions/bearn.md) — region; baseline reference
 - [Irouléguy](../countries/france/appellations/irouleguy.md) — appellation; baseline reference
 - [Pyrenean Atlantic](../ecosystems/pyrenean-atlantic.md) — ecosystem; baseline reference
-- [Petit Courbu](petit-courbu.md) — grape; baseline reference
-- [Raffiat de Moncade](raffiat-de-moncade.md) — grape; navigation node
 - [United States](../countries/united-states/README.md) — country; navigation node
 
 ### Deliberately deferred anchors
