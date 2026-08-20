@@ -117,3 +117,16 @@ Run 05 represented tenure, availability, and importer/distributor access without
 
 **Result:** STRATA remains v0.2. The repair changes projection governance, generation, and validation, not the entity or relationship vocabulary.
 - No Run 01 candidate is accepted merely by appearing in the research output.
+
+## Run 11 kind-aware Human Reference navigation
+
+**Decision:** Keep the machine graph authoritative while giving its reader projection deterministic source-kind semantics.
+
+- `country_entity_ids` remains structural geographic assignment: outbound to the containing country and downward from a country to its governed region/appellation surfaces, without automatic reciprocal producer recommendations;
+- `representative_anchor_ids` remains explicit editorial projection authority with outbound and reciprocal discovery;
+- shared components, direct governed relationships, structural routes, and explicit anchors survive without a two-hop gate;
+- graph-only two-hop candidates are filtered by inspectable country, directional-geography, grape, and producer/person policies;
+- composite producer profiles no longer turn a shared broad grape/classification component into producer adjacency unless another specific professional, site, farming, planting, practice, direct, or editorial route supports it;
+- audit and test output expose source/target kinds, path predicates/directions, route class, and acceptance/rejection reason.
+
+**Unchanged:** No STRATA v0.3, schema vocabulary, machine relationship, profile kind, cap, wine identity rule, or composite project/vineyard policy was introduced or removed.

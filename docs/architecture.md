@@ -20,7 +20,7 @@ Maps, graph views, timelines, reference profiles, search, and future AI interfac
 10. **Human readability is required.** A person browsing GitHub should be able to understand CARTA without reading JSONL.
 11. **Human profiles are composite projections.** The ontology may separate person, producer, project, wine, place, and relationship records while one readable reference profile composes the records that belong together for a human reader.
 12. **Discovery does not equal publication.** A valid graph node may remain unpublished as a standalone reference until it meets the Human Reference baseline.
-13. **Projection disposition is explicit.** Every active producer, country, and grape has a governed Human Reference disposition, including deliberate machine-only deferral. Generated navigation links only to canonical profile paths and derives reciprocal discovery from typed graph authority plus governed editorial anchors.
+13. **Projection disposition and navigation eligibility are explicit.** Every active producer, country, and grape has a governed Human Reference disposition, including deliberate machine-only deferral. Generated navigation links only to canonical profile paths; it keeps structural country membership distinct from reciprocal editorial anchors and applies deterministic source-kind semantics to graph-only two-hop discovery.
 
 ## Four surfaces of the same system
 
