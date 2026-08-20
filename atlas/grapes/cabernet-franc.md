@@ -12,7 +12,6 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [Ashes & Diamonds / Cabernet Franc](../producers/ashes-and-diamonds.md) — producer; baseline reference
 - [Clos Apalta / Domaines Bournet-Lapostolle](../producers/clos-apalta.md) — producer; baseline reference
 - [Apalta](../countries/chile/appellations/apalta.md) — appellation; navigation node
-- [Cabernet Sauvignon](cabernet-sauvignon.md) — grape; navigation node
 - [Napa Valley AVA](../countries/united-states/appellations/napa-valley-ava.md) — appellation; navigation node
 <!-- END GENERATED CARTA NAVIGATION -->
 

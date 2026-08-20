@@ -11,7 +11,6 @@ This section is generated from governed profile dispositions, editorial anchors,
 
 - [Vindiou / Cœur Fidèle](../producers/vindiou.md) — producer; navigation node
 - [Syrah](syrah.md) — grape; navigation node
-- [Vin de France](../classifications/vin-de-france.md) — classification; navigation node
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->

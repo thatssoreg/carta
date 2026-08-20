@@ -15,8 +15,6 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [Phelan Farm](phelan-farm.md) — producer; baseline reference
 - [Ballard Canyon AVA](../countries/united-states/appellations/ballard-canyon-ava.md) — appellation; navigation node
 - [California](../countries/united-states/regions/california.md) — region; navigation node
-- [Domaine Lampyres / Harvest Moon](domaine-lampyres.md) — producer; navigation node
-- [Prieuré Saint-Jean de Bébian / Tartuguier](prieure-saint-jean-de-bebian.md) — producer; navigation node
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->

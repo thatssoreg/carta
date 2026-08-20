@@ -13,7 +13,6 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [Weingut A.J. Adam](../../../producers/aj-adam.md) — producer; navigation node
 - [Weingut Günther Steinmetz](../../../producers/weingut-gunther-steinmetz.md) — producer; navigation node
 - [Saar](saar.md) — region; navigation node
-- [Rheinhessen](rheinhessen.md) — region; navigation node
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->

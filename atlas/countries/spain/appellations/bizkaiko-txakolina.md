@@ -83,8 +83,6 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [Petit Manseng](../../../grapes/petit-manseng.md) — grape; baseline reference
 - [Bizkaia](../regions/bizkaia.md) — region; baseline reference
 - [Pyrenean Atlantic](../../../ecosystems/pyrenean-atlantic.md) — ecosystem; baseline reference
-- [Penedès](../regions/penedes.md) — region; navigation node
-- [Ribera del Duero DOP](ribera-del-duero.md) — appellation; navigation node
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->

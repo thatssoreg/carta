@@ -64,8 +64,8 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [Palette AOP](appellations/palette.md) — appellation; navigation node
 - [Savoie](regions/savoie.md) — region; navigation node
 - [Arbois AOP](appellations/arbois.md) — appellation; navigation node
-- [Aurélien & Charlotte Houillon](../../producers/domaine-houillon.md) — producer; navigation node
-- [Château Simone](../../producers/chateau-simone.md) — producer; baseline reference
+- [Combe de Savoie](regions/combe-de-savoie.md) — region; navigation node
+- [Morgon AOP](appellations/morgon.md) — appellation; navigation node
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->

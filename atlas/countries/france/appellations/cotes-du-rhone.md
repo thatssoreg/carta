@@ -12,14 +12,6 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [France](../README.md) — country; baseline reference
 - [Aurélien & Charlotte Houillon](../../../producers/domaine-houillon.md) — producer; navigation node
 - [Guillaume Gilles / Les Peyrouses](../../../producers/guillaume-gilles.md) — producer; baseline reference
-- [Beaujolais](../regions/beaujolais.md) — region; navigation node
-- [Cornas AOP](cornas.md) — appellation; navigation node
-- [Côte-Rôtie](cote-rotie.md) — appellation; navigation node
-- [Jura](../regions/jura.md) — region; navigation node
-- [Jurançon](jurancon.md) — appellation; baseline reference
-- [Loire Valley](../regions/loire-valley.md) — region; navigation node
-- [Palette AOP](palette.md) — appellation; navigation node
-- [Savoie](../regions/savoie.md) — region; navigation node
 - [Syrah](../../../grapes/syrah.md) — grape; navigation node
 - [Vin de France](../../../classifications/vin-de-france.md) — classification; navigation node
 <!-- END GENERATED CARTA NAVIGATION -->

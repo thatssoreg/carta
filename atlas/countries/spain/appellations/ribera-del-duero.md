@@ -11,8 +11,6 @@ This section is generated from governed profile dispositions, editorial anchors,
 
 - [Spain](../README.md) — country; baseline reference
 - [Condado de Haza / Alenza Gran Reserva](../../../producers/condado-de-haza.md) — producer; baseline reference
-- [Bizkaiko Txakolina](bizkaiko-txakolina.md) — appellation; baseline reference
-- [Penedès](../regions/penedes.md) — region; navigation node
 - [Tempranillo](../../../grapes/tempranillo.md) — grape; navigation node
 <!-- END GENERATED CARTA NAVIGATION -->
 

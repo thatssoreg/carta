@@ -10,9 +10,6 @@ The machine graph and generated relationships below provide the current orientat
 This section is generated from governed profile dispositions, editorial anchors, and supported graph relationships. It is not a hand-maintained second knowledge graph.
 
 - [Brunello di Montalcino DOCG](appellations/brunello-di-montalcino.md) — appellation; navigation node
-- [Caparzo](../../producers/caparzo.md) — producer; baseline reference
-- [Casa Coste Piane](../../producers/casa-coste-piane.md) — producer; navigation node
-- [COS](../../producers/cos.md) — producer; navigation node
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->

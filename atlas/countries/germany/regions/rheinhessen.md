@@ -12,7 +12,6 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [Germany](../README.md) — country; navigation node
 - [Weingut Keller](../../../producers/weingut-keller.md) — producer; navigation node
 - [Riesling](../../../grapes/riesling.md) — grape; navigation node
-- [Mosel](mosel.md) — region; navigation node
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->

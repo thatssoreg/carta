@@ -12,8 +12,6 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [Spain](../README.md) — country; baseline reference
 - [Vins Pepe Raventós](../../../producers/vins-pepe-raventos.md) — producer; navigation node
 - [Graciano](../../../grapes/graciano.md) — grape; navigation node
-- [Bizkaiko Txakolina](../appellations/bizkaiko-txakolina.md) — appellation; baseline reference
-- [Ribera del Duero DOP](../appellations/ribera-del-duero.md) — appellation; navigation node
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->

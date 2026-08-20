@@ -14,8 +14,6 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [Madeirense DOP](../appellations/madeirense-dop.md) — appellation; navigation node
 - [Palomino Fino](../../../grapes/palomino-fino.md) — grape; navigation node
 - [Madeira Archipelago](madeira-archipelago.md) — region; navigation node
-- [Azores](azores.md) — region; navigation node
-- [Lima Valley](lima-valley.md) — region; navigation node
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->

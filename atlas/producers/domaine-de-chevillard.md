@@ -67,7 +67,6 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [Altesse](../grapes/altesse.md) — grape; navigation node
 - [France](../countries/france/README.md) — country; baseline reference
 - [Vin de Savoie Apremont](../countries/france/appellations/vin-de-savoie-apremont.md) — appellation; navigation node
-- [Domaine Carrel & Senger / Jongieux Blanc](domaine-carrel-senger.md) — producer; navigation node
 - [Savoie](../countries/france/regions/savoie.md) — region; navigation node
 <!-- END GENERATED CARTA NAVIGATION -->
 

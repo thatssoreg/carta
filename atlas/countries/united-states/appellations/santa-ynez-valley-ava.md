@@ -15,9 +15,6 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [Sandhi Vintners / Anika](../../../producers/sandhi-vintners.md) — producer; navigation node
 - [Santa Barbara County](../regions/santa-barbara-county.md) — region; navigation node
 - [California](../regions/california.md) — region; navigation node
-- [Contra Costa County](../regions/contra-costa-county.md) — region; navigation node
-- [Napa Valley AVA](napa-valley-ava.md) — appellation; navigation node
-- [St. Helena AVA](st-helena-ava.md) — appellation; navigation node
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->

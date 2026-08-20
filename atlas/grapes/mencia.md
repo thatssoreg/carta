@@ -10,7 +10,6 @@ The machine graph and generated relationships below provide the current orientat
 This section is generated from governed profile dispositions, editorial anchors, and supported graph relationships. It is not a hand-maintained second knowledge graph.
 
 - [Goyo García Viadero](../producers/goyo-garcia-viadero.md) — producer; baseline reference
-- [Palomino Fino](palomino-fino.md) — grape; navigation node
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->

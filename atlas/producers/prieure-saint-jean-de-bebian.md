@@ -12,13 +12,6 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [Mourvèdre](../grapes/mourvedre.md) — grape; navigation node
 - [Vin de France](../classifications/vin-de-france.md) — classification; navigation node
 - [France](../countries/france/README.md) — country; baseline reference
-- [Aurélien & Charlotte Houillon](domaine-houillon.md) — producer; navigation node
-- [Bodegas Muga / Prado Enea Gran Reserva](bodegas-muga.md) — producer; baseline reference
-- [Clos du Tue-Boeuf](clos-du-tue-boeuf.md) — producer; navigation node
-- [Domaine Lampyres / Harvest Moon](domaine-lampyres.md) — producer; navigation node
-- [François Blanchard / Le Grand Cléré](le-grand-clere.md) — producer; navigation node
-- [Sandhi Vintners / Anika](sandhi-vintners.md) — producer; navigation node
-- [Vindiou / Cœur Fidèle](vindiou.md) — producer; navigation node
 
 ### Deliberately deferred anchors
 

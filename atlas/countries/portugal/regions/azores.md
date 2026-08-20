@@ -13,8 +13,6 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [Portugal](../README.md) — country; navigation node
 - [Eruptio](../../../producers/eruptio.md) — producer; navigation node
 - [Arinto dos Açores](../../../grapes/arinto-dos-acores.md) — grape; navigation node
-- [Lima Valley](lima-valley.md) — region; navigation node
-- [Porto Santo](porto-santo.md) — region; navigation node
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->

@@ -15,16 +15,6 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [Vin de France](../classifications/vin-de-france.md) — classification; navigation node
 - [France](../countries/france/README.md) — country; baseline reference
 - [Renaud Bruyère & Adeline Houillon](bruyere-houillon.md) — producer; navigation node
-- [Arnot-Roberts](arnot-roberts.md) — producer; baseline reference
-- [Bodegas Muga / Prado Enea Gran Reserva](bodegas-muga.md) — producer; baseline reference
-- [Clos du Tue-Boeuf](clos-du-tue-boeuf.md) — producer; navigation node
-- [Domaine Christiane Chambeyron-Manin](domaine-christiane-chambeyron-manin.md) — producer; baseline reference
-- [Domaine Lampyres / Harvest Moon](domaine-lampyres.md) — producer; navigation node
-- [François Blanchard / Le Grand Cléré](le-grand-clere.md) — producer; navigation node
-- [Guillaume Gilles / Les Peyrouses](guillaume-gilles.md) — producer; baseline reference
-- [JONATA](jonata.md) — producer; navigation node
-- [Pax Wines](pax-wines.md) — producer; navigation node
-- [Prieuré Saint-Jean de Bébian / Tartuguier](prieure-saint-jean-de-bebian.md) — producer; navigation node
 
 ### Deliberately deferred anchors
 

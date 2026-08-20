@@ -12,15 +12,7 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [France](../README.md) — country; baseline reference
 - [Domaine Carrel & Senger / Jongieux Blanc](../../../producers/domaine-carrel-senger.md) — producer; navigation node
 - [Combe de Savoie](combe-de-savoie.md) — region; navigation node
-- [Beaujolais](beaujolais.md) — region; navigation node
-- [Cornas AOP](../appellations/cornas.md) — appellation; navigation node
-- [Côte-Rôtie](../appellations/cote-rotie.md) — appellation; navigation node
-- [Côtes du Rhône AOP](../appellations/cotes-du-rhone.md) — appellation; navigation node
 - [Domaine de Chevillard](../../../producers/domaine-de-chevillard.md) — producer; baseline reference
-- [Jura](jura.md) — region; navigation node
-- [Jurançon](../appellations/jurancon.md) — appellation; baseline reference
-- [Loire Valley](loire-valley.md) — region; navigation node
-- [Palette AOP](../appellations/palette.md) — appellation; navigation node
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->

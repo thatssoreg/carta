@@ -76,14 +76,6 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [Béarn](../regions/bearn.md) — region; baseline reference
 - [Petit Courbu](../../../grapes/petit-courbu.md) — grape; baseline reference
 - [Pyrenean Atlantic](../../../ecosystems/pyrenean-atlantic.md) — ecosystem; baseline reference
-- [Beaujolais](../regions/beaujolais.md) — region; navigation node
-- [Cornas AOP](cornas.md) — appellation; navigation node
-- [Côte-Rôtie](cote-rotie.md) — appellation; navigation node
-- [Côtes du Rhône AOP](cotes-du-rhone.md) — appellation; navigation node
-- [Jura](../regions/jura.md) — region; navigation node
-- [Loire Valley](../regions/loire-valley.md) — region; navigation node
-- [Palette AOP](palette.md) — appellation; navigation node
-- [Savoie](../regions/savoie.md) — region; navigation node
 
 ### Deliberately deferred anchors
 

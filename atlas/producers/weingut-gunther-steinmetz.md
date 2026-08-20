@@ -11,9 +11,7 @@ This section is generated from governed profile dispositions, editorial anchors,
 
 - [Mosel](../countries/germany/regions/mosel.md) — region; navigation node
 - [Germany](../countries/germany/README.md) — country; navigation node
-- [Caves du Château d'Auvernier](chateau-auvernier.md) — producer; navigation node
 - [Hiyu Wine Farm](hiyu-wine-farm.md) — producer; baseline reference
-- [Wasenhaus](wasenhaus.md) — producer; navigation node
 
 ### Deliberately deferred anchors
 

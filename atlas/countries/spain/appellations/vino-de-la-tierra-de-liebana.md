@@ -11,7 +11,6 @@ This section is generated from governed profile dispositions, editorial anchors,
 
 - [Spain](../README.md) — country; baseline reference
 - [Goyo García Viadero](../../../producers/goyo-garcia-viadero.md) — producer; baseline reference
-- [Valle de Liébana](../regions/valle-de-liebana.md) — region; navigation node
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->
