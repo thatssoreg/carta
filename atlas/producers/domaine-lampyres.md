@@ -12,6 +12,7 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [Mourvèdre](../grapes/mourvedre.md) — grape; navigation node
 - [Vin de France](../classifications/vin-de-france.md) — classification; navigation node
 - [France](../countries/france/README.md) — country; baseline reference
+- [Matassa / Tom Lubbe](matassa.md) — producer; navigation node
 - [Aurélien & Charlotte Houillon](domaine-houillon.md) — producer; navigation node
 - [Bodegas Muga / Prado Enea Gran Reserva](bodegas-muga.md) — producer; baseline reference
 - [Clos du Tue-Boeuf](clos-du-tue-boeuf.md) — producer; navigation node
@@ -57,6 +58,7 @@ This section is generated from CARTA machine authority. Edit the governed record
 | Claim | Layer / observed | Status | Confidence | Sources |
 |---|---|---|---|---|
 | `claim:daure-matassa-work-09` | `reference / —` | `supported` | `medium` | `source:lampyres-jancis` |
+| `claim:daure-worked-for-matassa-bridge` | `reference / —` | `supported` | `medium` | `source:lampyres-jancis`, `source:lampyres-terres-blanches` |
 | `claim:garnacha-grenache-name-09` | `reference / —` | `supported` | `high` | `source:vivc-garnacha-tinta-4461` |
 | `claim:lampyres-harvest-moon-2023-09` | `reference / —` | `supported` | `medium` | `source:lampyres-terres-blanches` |
 | `claim:lampyres-harvest-moon-2024-09` | `reference / —` | `supported` | `medium` | `source:lampyres-terres-blanches` |
