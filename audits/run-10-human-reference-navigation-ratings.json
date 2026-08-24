@@ -444,8 +444,8 @@
       ],
       "C": [
         {
-          "candidates": ["profile:ashes-and-diamonds", "profile:corison-winery"],
-          "reason": "Other represented Napa producers are useful local expansions."
+          "candidates": ["profile:ashes-and-diamonds", "profile:corison-winery", "profile:st-helena-ava"],
+          "reason": "Other represented Napa producers and a governed internal Napa AVA are useful local expansions."
         }
       ],
       "D": [
