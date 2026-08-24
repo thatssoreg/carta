@@ -9,10 +9,13 @@ The machine graph and generated relationships below provide the current orientat
 
 This section is generated from governed profile dispositions, editorial anchors, and supported graph relationships. It is not a hand-maintained second knowledge graph.
 
+- [Corison Winery](../../../producers/corison-winery.md) — producer; navigation node
 - [United States](../README.md) — country; navigation node
 - [Cabernet Sauvignon](../../../grapes/cabernet-sauvignon.md) — grape; navigation node
-- [Corison Winery](../../../producers/corison-winery.md) — producer; navigation node
 - [California](../regions/california.md) — region; navigation node
+- [Napa Valley AVA](napa-valley-ava.md) — appellation; navigation node
+- [Ashes & Diamonds / Cabernet Franc](../../../producers/ashes-and-diamonds.md) — producer; baseline reference
+- [Burgess Cellars / Promiscua](../../../producers/burgess-cellars.md) — producer; navigation node
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->
@@ -41,10 +44,12 @@ This section is generated from CARTA machine authority. Edit the governed record
 | Claim | Layer / observed | Status | Confidence | Sources |
 |---|---|---|---|---|
 | `claim:st-helena-ava-established` | `reference / 2026-08-18` | `supported` | `high` | `source:ttb-ava-establishment-dates-run06` |
+| `claim:st-helena-within-napa-valley` | `reference / 2026-08-23` | `supported` | `high` | `source:ttb-established-avas-st-helena` |
 
 ### Sources
 
 - `source:ttb-ava-establishment-dates-run06` — AVA Establishment Dates
+- `source:ttb-established-avas-st-helena` — Established American Viticultural Areas
 
 </details>
 
