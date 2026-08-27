@@ -28,7 +28,6 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [France](../countries/france/README.md) — country; baseline reference
 - [Jura](../countries/france/regions/jura.md) — region; navigation node
 - [Domaine de la Tournelle](domaine-de-la-tournelle.md) — producer; navigation node
-- [Hiyu Wine Farm](hiyu-wine-farm.md) — producer; baseline reference
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->

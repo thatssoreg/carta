@@ -33,7 +33,6 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [Rheinhessen](../countries/germany/regions/rheinhessen.md) — region; navigation node
 - [Riesling](../grapes/riesling.md) — grape; navigation node
 - [Germany](../countries/germany/README.md) — country; navigation node
-- [Hofgut Falkenstein](hofgut-falkenstein.md) — producer; baseline reference
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->

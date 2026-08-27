@@ -13,7 +13,6 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [Riesling](../grapes/riesling.md) — grape; navigation node
 - [Mosel](../countries/germany/regions/mosel.md) — region; navigation node
 - [Germany](../countries/germany/README.md) — country; navigation node
-- [Hofgut Falkenstein](hofgut-falkenstein.md) — producer; baseline reference
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->
