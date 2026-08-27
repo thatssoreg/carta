@@ -15,6 +15,7 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [Ashes & Diamonds / Cabernet Franc](../../../producers/ashes-and-diamonds.md) — producer; baseline reference
 - [Burgess Cellars / Promiscua](../../../producers/burgess-cellars.md) — producer; navigation node
 - [California](../regions/california.md) — region; navigation node
+- [St. Helena AVA](st-helena-ava.md) — appellation; navigation node
 - [Cabernet Franc](../../../grapes/cabernet-franc.md) — grape; navigation node
 <!-- END GENERATED CARTA NAVIGATION -->
 
@@ -48,6 +49,7 @@ This section is generated from CARTA machine authority. Edit the governed record
 | `claim:burgess-promiscua-napa-09` | `reference / 2026-08-19` | `supported` | `high` | `source:burgess-promiscua-current` |
 | `claim:corison-flagship-identity` | `reference / 2026-08-18` | `supported` | `high` | `source:corison-all-wines`, `source:corison-vineyards` |
 | `claim:napa-ava-status` | `reference / —` | `supported` | `high` | `source:ttb-slo-coast` |
+| `claim:st-helena-within-napa-valley` | `reference / 2026-08-23` | `supported` | `high` | `source:ttb-established-avas-st-helena` |
 
 ### Sources
 
@@ -59,6 +61,7 @@ This section is generated from CARTA machine authority. Edit the governed record
 - `source:corison-all-wines` — All Wines
 - `source:corison-vineyards` — Vineyards
 - `source:decanter-ashes-no3-2016` — Ashes & Diamonds, No 3 Cabernet Franc, Napa Valley 2016
+- `source:ttb-established-avas-st-helena` — Established American Viticultural Areas
 - `source:ttb-slo-coast` — List of AVAs by Establishment Date
 
 </details>

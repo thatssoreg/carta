@@ -76,6 +76,7 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [Napa Valley AVA](../countries/united-states/appellations/napa-valley-ava.md) — appellation; navigation node
 - [United States](../countries/united-states/README.md) — country; navigation node
 - [California](../countries/united-states/regions/california.md) — region; navigation node
+- [St. Helena AVA](../countries/united-states/appellations/st-helena-ava.md) — appellation; navigation node
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->

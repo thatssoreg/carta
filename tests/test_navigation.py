@@ -147,14 +147,13 @@ class NavigationPolicyTest(unittest.TestCase):
             json.dumps(decision, indent=2, sort_keys=True),
         )
 
-    def test_st_helena_is_not_inferred_around_missing_authority(self) -> None:
+    def test_st_helena_is_linked_from_governed_containment(self) -> None:
         self.assert_decision(
             "profile:napa-valley-ava",
             "profile:st-helena-ava",
-            eligible=False,
-            route_kind="rejected_two_hop",
-            category="shared_broad_geography",
-            path_pattern="WITHIN>/LOCATED_IN<",
+            eligible=True,
+            route_kind="direct_relationship",
+            path_pattern="WITHIN<",
         )
 
     def test_direct_professional_and_editorial_routes_survive(self) -> None:
@@ -223,15 +222,11 @@ class NavigationPolicyTest(unittest.TestCase):
             ROOT / "audits/run-10-human-reference-navigation-ratings.json"
         )
         current = evaluate_models(self.report, ratings)["A_current"]
-        self.assertEqual(current["ab_retained"], 108, current)
+        self.assertEqual(current["ab_retained"], 109, current)
         self.assertEqual(current["retained_ratings"]["B"], 6, current)
         self.assertEqual(current["de_removed"], 70, current)
         self.assertNotIn("E", current["retained_ratings"], current)
-        self.assertEqual(
-            current["removed_links_by_rating"]["A"],
-            ["profile:napa-valley-ava -> profile:st-helena-ava"],
-            current,
-        )
+        self.assertNotIn("A", current["removed_links_by_rating"], current)
 
 
 if __name__ == "__main__":
