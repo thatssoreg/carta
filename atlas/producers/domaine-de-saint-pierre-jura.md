@@ -48,7 +48,6 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [Chardonnay](../grapes/chardonnay.md) — grape; navigation node
 - [France](../countries/france/README.md) — country; baseline reference
 - [Savagnin](../grapes/savagnin.md) — grape; navigation node
-- [Hiyu Wine Farm](hiyu-wine-farm.md) — producer; baseline reference
 - [Jura](../countries/france/regions/jura.md) — region; navigation node
 <!-- END GENERATED CARTA NAVIGATION -->
 

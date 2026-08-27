@@ -81,7 +81,6 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [Riesling](../grapes/riesling.md) — grape; navigation node
 - [Austria](../countries/austria/README.md) — country; navigation node
 - [Wachau DAC](../countries/austria/appellations/wachau-dac.md) — appellation; navigation node
-- [Hofgut Falkenstein](hofgut-falkenstein.md) — producer; baseline reference
 - [Wachau](../countries/austria/regions/wachau.md) — region; navigation node
 <!-- END GENERATED CARTA NAVIGATION -->
 

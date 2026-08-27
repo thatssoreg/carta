@@ -83,13 +83,6 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [Columbia Gorge AVA](../countries/united-states/appellations/columbia-gorge-ava.md) — appellation; navigation node
 - [United States](../countries/united-states/README.md) — country; navigation node
 - [Chardonnay](../grapes/chardonnay.md) — grape; navigation node
-- [Caves du Château d'Auvernier](chateau-auvernier.md) — producer; navigation node
-- [Domaine de Saint Pierre / Château Renard](domaine-de-saint-pierre-jura.md) — producer; baseline reference
-- [Domaine Labet](domaine-labet.md) — producer; navigation node
-- [Louis Michel & Fils](domaine-louis-michel-fils.md) — producer; baseline reference
-- [Scar of the Sea / Bassi Vineyard](scar-of-the-sea.md) — producer; baseline reference
-- [Wasenhaus](wasenhaus.md) — producer; navigation node
-- [Weingut Günther Steinmetz](weingut-gunther-steinmetz.md) — producer; navigation node
 
 ### Deliberately deferred anchors
 

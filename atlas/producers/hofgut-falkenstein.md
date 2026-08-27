@@ -57,9 +57,6 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [Saar](../countries/germany/regions/saar.md) — region; navigation node
 - [Germany](../countries/germany/README.md) — country; navigation node
 - [Kabinett](../classifications/kabinett.md) — classification; navigation node
-- [Weingut A.J. Adam](aj-adam.md) — producer; navigation node
-- [Weingut Keller](weingut-keller.md) — producer; navigation node
-- [Weingut Rudi Pichler](weingut-rudi-pichler.md) — producer; baseline reference
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->

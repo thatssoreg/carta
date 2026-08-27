@@ -13,7 +13,6 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [Aurélien & Charlotte Houillon](../../../producers/domaine-houillon.md) — producer; navigation node
 - [Guillaume Gilles / Les Peyrouses](../../../producers/guillaume-gilles.md) — producer; baseline reference
 - [Syrah](../../../grapes/syrah.md) — grape; navigation node
-- [Vin de France](../../../classifications/vin-de-france.md) — classification; navigation node
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->

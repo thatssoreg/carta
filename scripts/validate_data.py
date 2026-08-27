@@ -128,7 +128,6 @@ PRODUCER_SPECIFIC_TWO_HOP_PREDICATES = (
     PROFESSIONAL_NAVIGATION_PREDICATES
     | {
         "FARMS_PARCEL",
-        "PLANTED_AT",
         "FARMED_BY",
         "USES_PRACTICE",
     }
@@ -670,6 +669,16 @@ def enumerate_navigation_paths(
                         "relationship_ids": [first["id"], second["id"]],
                         "predicates": [first["predicate"], second["predicate"]],
                         "directions": [first_direction, second_direction],
+                        "validity_intervals": [
+                            {
+                                "valid_from": first.get("valid_from"),
+                                "valid_to": first.get("valid_to"),
+                            },
+                            {
+                                "valid_from": second.get("valid_from"),
+                                "valid_to": second.get("valid_to"),
+                            },
+                        ],
                         "pattern": (
                             f"{navigation_path_edge_label(first, first_direction)}/"
                             f"{navigation_path_edge_label(second, second_direction)}"
@@ -720,6 +729,27 @@ def _is_up_then_down_peer_geography(path: dict[str, Any]) -> bool:
     )
 
 
+def _is_temporally_disjoint_classification_bridge(path: dict[str, Any]) -> bool:
+    if (
+        path["distance"] != 2
+        or path["predicates"] != ["CLASSIFIED_AS", "CLASSIFIED_AS"]
+        or path["directions"] != ["reverse", "forward"]
+    ):
+        return False
+    intervals = path.get("validity_intervals", [])
+    if len(intervals) != 2:
+        return False
+    first, second = intervals
+    first_start = first.get("valid_from")
+    first_end = first.get("valid_to")
+    second_start = second.get("valid_from")
+    second_end = second.get("valid_to")
+    return bool(
+        (first_end and second_start and first_end < second_start)
+        or (second_end and first_start and second_end < first_start)
+    )
+
+
 def two_hop_navigation_eligibility(
     source_kind: str,
     target_kind: str,
@@ -732,6 +762,21 @@ def two_hop_navigation_eligibility(
     """
     policy = TWO_HOP_POLICY_BY_SOURCE_KIND[source_kind]
     two_hop_paths = [path for path in paths if path["distance"] == 2]
+
+    if (
+        source_kind in {"appellation", "classification"}
+        and target_kind in {"appellation", "classification"}
+        and two_hop_paths
+        and all(
+            _is_temporally_disjoint_classification_bridge(path)
+            for path in two_hop_paths
+        )
+    ):
+        return (
+            False,
+            "temporally_disjoint_classification_bridge",
+            "every two-hop classification path crosses disjoint validity intervals on a persistent subject",
+        )
 
     if policy == "country_orientation":
         allowed_targets = {

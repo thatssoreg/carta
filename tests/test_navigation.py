@@ -18,6 +18,7 @@ from validate_data import (  # noqa: E402
     navigation_adjacency,
     navigation_graph,
     resolve_navigation_candidate,
+    two_hop_navigation_eligibility,
 )
 
 
@@ -187,19 +188,113 @@ class NavigationPolicyTest(unittest.TestCase):
                 )
 
     def test_specific_two_hop_producer_context_survives(self) -> None:
-        decision = self.assert_decision(
-            "profile:domaine-labet",
-            "profile:hiyu-wine-farm",
-            eligible=True,
-            route_kind="two_hop_relationship",
-            category="specific_producer_two_hop",
+        specific_practice_path = [
+            {
+                "distance": 2,
+                "predicates": ["MADE_FROM", "USES_PRACTICE"],
+                "directions": ["forward", "reverse"],
+            }
+        ]
+        eligible, category, _ = two_hop_navigation_eligibility(
+            "producer", "producer", specific_practice_path
         )
-        predicates = {
-            predicate
-            for path in decision["paths"]
-            for predicate in path["predicates"]
-        }
-        self.assertIn("PLANTED_AT", predicates, json.dumps(decision, indent=2))
+        self.assertTrue(eligible)
+        self.assertEqual(category, "specific_producer_two_hop")
+
+    def test_planting_alone_does_not_create_producer_adjacency(self) -> None:
+        cases = [
+            (
+                "profile:weingut-gunther-steinmetz",
+                "profile:hiyu-wine-farm",
+                "MADE_FROM>/PLANTED_AT>",
+            ),
+            (
+                "profile:weingut-keller",
+                "profile:hofgut-falkenstein",
+                "MADE_FROM>/PLANTED_AT>",
+            ),
+            (
+                "profile:domaine-labet",
+                "profile:hiyu-wine-farm",
+                "MADE_FROM>/PLANTED_AT>",
+            ),
+        ]
+        for source_id, target_id, pattern in cases:
+            with self.subTest(source=source_id, target=target_id):
+                self.assert_decision(
+                    source_id,
+                    target_id,
+                    eligible=False,
+                    route_kind="rejected_two_hop",
+                    category="broad_composite_producer_two_hop",
+                    path_pattern=pattern,
+                )
+
+    def test_disjoint_classification_history_does_not_create_lateral_adjacency(self) -> None:
+        for source_id, target_id in [
+            ("profile:cotes-du-rhone", "profile:vin-de-france"),
+            ("profile:vin-de-france", "profile:cotes-du-rhone"),
+        ]:
+            with self.subTest(source=source_id, target=target_id):
+                decision = self.assert_decision(
+                    source_id,
+                    target_id,
+                    eligible=False,
+                    route_kind="rejected_two_hop",
+                    category="temporally_disjoint_classification_bridge",
+                    path_pattern="CLASSIFIED_AS</CLASSIFIED_AS>",
+                )
+                self.assertTrue(
+                    any(
+                        path.get("validity_intervals")
+                        == [
+                            {"valid_from": "2021-01-01", "valid_to": "2021-12-31"},
+                            {"valid_from": "2022-01-01", "valid_to": "2022-12-31"},
+                        ]
+                        or path.get("validity_intervals")
+                        == [
+                            {"valid_from": "2022-01-01", "valid_to": "2022-12-31"},
+                            {"valid_from": "2021-01-01", "valid_to": "2021-12-31"},
+                        ]
+                        for path in decision["paths"]
+                    ),
+                    json.dumps(decision, indent=2, sort_keys=True),
+                )
+
+    def test_overlapping_or_unknown_classification_history_is_not_suppressed(self) -> None:
+        overlapping = [
+            {
+                "distance": 2,
+                "predicates": ["CLASSIFIED_AS", "CLASSIFIED_AS"],
+                "directions": ["reverse", "forward"],
+                "validity_intervals": [
+                    {"valid_from": "2022-01-01", "valid_to": "2022-12-31"},
+                    {"valid_from": "2022-06-01", "valid_to": "2023-05-31"},
+                ],
+            }
+        ]
+        eligible, category, _ = two_hop_navigation_eligibility(
+            "appellation", "classification", overlapping
+        )
+        self.assertTrue(eligible)
+        self.assertEqual(category, "directional_geography_two_hop")
+
+        unknown = [
+            {
+                "distance": 2,
+                "predicates": ["CLASSIFIED_AS", "CLASSIFIED_AS"],
+                "directions": ["reverse", "forward"],
+                "validity_intervals": [
+                    {"valid_from": None, "valid_to": None},
+                    {"valid_from": "2022-01-01", "valid_to": "2022-12-31"},
+                ],
+            }
+        ]
+        eligible, category, _ = two_hop_navigation_eligibility(
+            "appellation", "classification", unknown
+        )
+        self.assertTrue(eligible)
+        self.assertEqual(category, "directional_geography_two_hop")
 
     def test_grape_cooccurrence_does_not_create_general_adjacency(self) -> None:
         self.assert_decision(
@@ -224,7 +319,8 @@ class NavigationPolicyTest(unittest.TestCase):
         current = evaluate_models(self.report, ratings)["A_current"]
         self.assertEqual(current["ab_retained"], 109, current)
         self.assertEqual(current["retained_ratings"]["B"], 6, current)
-        self.assertEqual(current["de_removed"], 70, current)
+        self.assertEqual(current["de_removed"], 72, current)
+        self.assertNotIn("D", current["retained_ratings"], current)
         self.assertNotIn("E", current["retained_ratings"], current)
         self.assertNotIn("A", current["removed_links_by_rating"], current)
 

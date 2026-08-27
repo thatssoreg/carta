@@ -70,7 +70,6 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [Chablis Grand Cru AOP](../countries/france/appellations/chablis-grand-cru.md) — appellation; navigation node
 - [Chardonnay](../grapes/chardonnay.md) — grape; navigation node
 - [France](../countries/france/README.md) — country; baseline reference
-- [Hiyu Wine Farm](hiyu-wine-farm.md) — producer; baseline reference
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->

@@ -10,7 +10,6 @@ The machine graph and generated relationships below provide the current orientat
 This section is generated from governed profile dispositions, editorial anchors, and supported graph relationships. It is not a hand-maintained second knowledge graph.
 
 - [Germany](../countries/germany/README.md) — country; navigation node
-- [Hiyu Wine Farm](hiyu-wine-farm.md) — producer; baseline reference
 
 ### Deliberately deferred anchors
 

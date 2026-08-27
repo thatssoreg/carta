@@ -378,14 +378,16 @@ Graph-only paths of exactly two relationships use these inspectable source-kind 
 | `country` | Admit geographic, ecosystem, grape, and classification orientation targets; reject producer/person/wine adjacency unless a direct or editorial route independently supports it. |
 | `region`, `appellation`, `landscape` | Reject peer geography when every path climbs a broad container and descends elsewhere; retain downward containment and other governed context. |
 | `grape` | Reject general grape or classification adjacency established only by a two-hop wine/classification bridge; retain represented geography and producer/production context. |
-| `producer`, `person` | For producer/person targets, require at least one path carrying professional, parcel/site, farming, planting, or explicit-practice semantics; reject paths supported only by broad grape, classification, or geography components. |
+| `producer`, `person` | For producer/person targets, require at least one path carrying professional, parcel/site, farming, or explicit-practice semantics; reject paths supported only by broad grape, planting-through-a-shared-grape, classification, or geography components. |
 | `classification`, `ecosystem`, `wine`, `institution`, `practice`, `historical_event` | Retain governed two-hop context until surfaced fixtures demonstrate a narrower reader job. Direct and anchor behavior remains unchanged. |
 
 Every schema profile kind must have an explicit entry in the production policy map. A new kind therefore cannot silently inherit accidental two-hop behavior.
 
 Directional geography is evaluated from the authored relationship direction. Appellation → region → country and country → represented internal region/appellation are useful orientation. Jura → France → Loire Valley and Napa Valley → California → Santa Ynez Valley are up-then-down sibling traversal and are ineligible without another direct or editorial route. The projection never guesses missing containment to rescue a familiar geography.
 
-Composite producer profiles still begin traversal from every governed component entity. Compression does not, however, promote producer → component wine → broad grape/classification → component wine → producer into a recommendation. A two-hop producer-world route survives only when an eligible specific path explains the connection; direct professional, site, production, and anchor routes continue to survive.
+For appellation/classification pairs, two `CLASSIFIED_AS` edges through one persistent subject do not create lateral Human Reference adjacency when the authored validity intervals prove that the classifications are disjoint in time. Overlapping intervals and intervals too incomplete to prove disjointness remain eligible under the source-kind policy. The machine relationships are unchanged: the rule prevents a vintage-to-vintage legal transition from being rendered as a timeless category relationship while preserving persistent wine identity.
+
+Composite producer profiles still begin traversal from every governed component entity. Compression does not, however, promote producer → component wine → broad grape/classification → component wine → producer into a recommendation. `PLANTED_AT` remains valid viticultural machine authority, but a producer → wine → grape → planted vineyard path is still only shared-variety context and is not producer-specific by itself. A two-hop producer-world route survives only when an eligible specific path explains the connection; direct professional, site, production, and anchor routes continue to survive.
 
 #### Auditing navigation quality
 
@@ -398,7 +400,7 @@ python scripts/audit_navigation.py \
 python -m unittest discover -s tests -v
 ```
 
-Run 11 changed projection eligibility and route explanation only. It did not change STRATA v0.2, the relationship vocabulary, machine authority, profile kinds, the 16-link cap, persistent wine identity, composite project/vineyard treatment, or the rule that generated Human Reference pages are projections rather than authority.
+The current projection eligibility rules do not change STRATA v0.2, the relationship vocabulary, machine authority, profile kinds, the 16-link cap, persistent wine identity, composite project/vineyard treatment, or the rule that generated Human Reference pages are projections rather than authority.
 
 ## Evidence and machine layer
 
