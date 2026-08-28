@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="CARTA Atlas connects ordinary geography to governed wine knowledge."
+    />
+    <meta name="theme-color" content="#f4f0e8" />
+    <title>CARTA Atlas</title>
+  </head>
+  <body>
+    <main class="atlas-shell">
+      <header class="atlas-header">
+        <a class="wordmark" href="./" aria-label="CARTA Atlas home">
+          <span class="wordmark__carta">CARTA</span>
+          <span class="wordmark__atlas">Atlas</span>
+        </a>
+
+        <nav class="context-trail" aria-label="Map context">
+          <button class="context-trail__item" type="button" data-world>World</button>
+          <span class="context-trail__separator" aria-hidden="true">/</span>
+          <span class="context-trail__current" data-context>Orientation</span>
+        </nav>
+
+        <form class="atlas-search" role="search" data-search-form>
+          <label class="sr-only" for="atlas-search-input">Search France wine geography</label>
+          <svg aria-hidden="true" viewBox="0 0 24 24" width="16" height="16">
+            <circle cx="11" cy="11" r="6.75"></circle>
+            <path d="m16 16 4 4"></path>
+          </svg>
+          <input
+            id="atlas-search-input"
+            type="search"
+            inputmode="search"
+            autocomplete="off"
+            placeholder="Search regions & appellations"
+            aria-autocomplete="list"
+            aria-controls="search-results"
+            aria-expanded="false"
+            data-search-input
+          />
+          <kbd aria-hidden="true">/</kbd>
+          <div
+            id="search-results"
+            class="search-results"
+            role="listbox"
+            aria-label="Atlas search results"
+            hidden
+            data-search-results
+          ></div>
+        </form>
+
+        <div class="header-actions">
+          <button class="header-action" type="button" aria-haspopup="true" aria-expanded="false" data-layers-button>
+            <svg aria-hidden="true" viewBox="0 0 24 24" width="16" height="16">
+              <path d="m12 3 8 4.5-8 4.5-8-4.5L12 3Z"></path>
+              <path d="m4 12 8 4.5 8-4.5M4 16.5 12 21l8-4.5"></path>
+            </svg>
+            <span>Layers</span>
+          </button>
+          <button class="header-action" type="button" data-sources-button>
+            <svg aria-hidden="true" viewBox="0 0 24 24" width="16" height="16">
+              <circle cx="12" cy="12" r="9"></circle>
+              <path d="M12 10.5V17M12 7h.01"></path>
+            </svg>
+            <span>Sources</span>
+          </button>
+        </div>
+      </header>
+
+      <section class="map-stage" aria-label="Interactive CARTA map">
+        <div id="map" role="application" aria-label="CARTA world and France wine map"></div>
+
+        <section class="map-intro" aria-labelledby="map-intro-title">
+          <p class="eyebrow">A geographic way into wine</p>
+          <h1 id="map-intro-title">Start with the world.<br />Then follow the wine.</h1>
+          <p>
+            CARTA keeps cities, rivers, borders, and coasts in view while sourced wine
+            geography appears at the scale where it becomes useful.
+          </p>
+          <button class="primary-action" type="button" data-explore-france>
+            Explore France
+            <span aria-hidden="true">→</span>
+          </button>
+          <p class="intro-note">Or select France directly on the map.</p>
+        </section>
+
+        <section class="layer-panel" aria-labelledby="layer-panel-title" hidden data-layer-panel>
+          <div class="panel-heading-row">
+            <div>
+              <p class="panel-kicker">STRATA · Space + Appellations</p>
+              <h2 id="layer-panel-title">Map layers</h2>
+            </div>
+            <button class="icon-button" type="button" aria-label="Close layers" data-close-layers>×</button>
+          </div>
+          <fieldset>
+            <legend>France wine geography</legend>
+            <label class="layer-choice">
+              <input type="checkbox" checked data-layer-aoc />
+              <span>
+                <strong>AOC / AOP areas</strong>
+                <small>Regulatory geographical areas · on by default</small>
+              </span>
+            </label>
+            <label class="layer-choice">
+              <input type="checkbox" data-layer-igp />
+              <span>
+                <strong>IGP areas</strong>
+                <small>Broader regulatory geography · off by default</small>
+              </span>
+            </label>
+            <label class="layer-choice">
+              <input type="checkbox" checked data-layer-regions />
+              <span>
+                <strong>Wine-region orientation</strong>
+                <small>Derived labels, never invented boundaries</small>
+              </span>
+            </label>
+          </fieldset>
+          <p class="layer-panel__note">
+            Eligible communes, approved parcels, and actual vineyard land are different
+            layers and are not shown in this release.
+          </p>
+        </section>
+
+        <aside class="detail-panel" aria-label="Map feature details" aria-hidden="true" data-detail-panel>
+          <button class="detail-panel__close icon-button" type="button" aria-label="Close feature details" data-close-detail>×</button>
+          <div class="detail-panel__content" data-detail-content></div>
+        </aside>
+
+        <div class="map-status" role="status" aria-live="polite" data-map-status>
+          <span class="status-dot" aria-hidden="true"></span>
+          <span data-status-copy>Preparing the map…</span>
+        </div>
+      </section>
+    </main>
+
+    <dialog class="sources-dialog" data-sources-dialog>
+      <div class="sources-dialog__header">
+        <div>
+          <p class="panel-kicker">Evidence → map</p>
+          <h2>Sources &amp; map meaning</h2>
+        </div>
+        <button class="icon-button" type="button" aria-label="Close sources" data-close-sources>×</button>
+      </div>
+      <div class="sources-dialog__body" data-sources-content>
+        <p>Loading the committed provenance manifests…</p>
+      </div>
+    </dialog>
+
+    <div class="toast" role="alert" hidden data-toast></div>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,113 @@
+{
+  "authority_class": "authoritative_regulatory",
+  "checksum": "1142ea75761a08b824b489924b7d3da55a0cb4f21576a4fdd61c57cc5f509fe6",
+  "checksum_algorithm": "sha256",
+  "dataset_title": "Délimitation des aires-géographiques des SIQO",
+  "dataset_url": "https://www.data.gouv.fr/datasets/delimitation-des-aires-geographiques-des-siqo",
+  "derived_artifacts": [
+    {
+      "bytes": 7852898,
+      "feature_count": 1320,
+      "format": "GeoJSON",
+      "path": "atlas-app/public/data/france-appellations-aoc.geojson",
+      "role": "Default AOC/AOP regulatory geographical-area layer",
+      "sha256": "f99b609d247d8fd20b01971c3a618027bdc3e22da9b01f0900454778bc920faf"
+    },
+    {
+      "bytes": 2699715,
+      "feature_count": 165,
+      "format": "GeoJSON",
+      "path": "atlas-app/public/data/france-appellations-igp.geojson",
+      "role": "Optional IGP regulatory geographical-area layer",
+      "sha256": "e1ea50a0cefe65f2ffa5ed7e9e5dcfc064e825c71c657441bb603fe383e55dd2"
+    },
+    {
+      "bytes": 3080,
+      "feature_count": 4,
+      "format": "GeoJSON",
+      "path": "atlas-app/public/data/france-wine-regions.geojson",
+      "role": "Derived governed CARTA wine-region label anchors and camera bounds",
+      "sha256": "5ec860d8c09a1a670bbe6be490bf1ff1eca180ffc181e3b70ea7c8c5137332b1"
+    },
+    {
+      "bytes": 956127,
+      "format": "JSON",
+      "path": "atlas-app/public/data/search-index.json",
+      "record_count": 1482,
+      "role": "Search records derived from rendered INAO features and governed region labels",
+      "sha256": "08b5fc601bf410ee462de0cdcf90954ccb1dd940248e3f2da4cab3466eb9e120"
+    },
+    {
+      "bytes": 10271,
+      "format": "JSONL",
+      "path": "data/geography/geometry/atlas-france-inao.jsonl",
+      "record_count": 18,
+      "role": "CARTA geometry metadata for accepted INAO-to-CARTA mappings",
+      "sha256": "12acca2e14fb0e39e7d4186bb5b70acc3a5220b510171c765ae7de6d2b725159"
+    }
+  ],
+  "geographic_meaning": "INAO cartographic representation of the SIQO regulatory geographical area; informative GIS does not replace the legal cahier des charges and its commune list",
+  "id": "spatial-dataset:inao-aires-geographiques-siqo-2026-08-24",
+  "license": {
+    "attribution_text": "Institut national de l'origine et de la qualité (INAO) — data.gouv.fr — Licence Ouverte 2.0",
+    "commercial_use": true,
+    "id": "etalab-open-licence-2.0",
+    "redistribution": "permitted_with_attribution",
+    "share_alike": false,
+    "url": "https://www.etalab.gouv.fr/licence-ouverte-open-licence/"
+  },
+  "notes": "The brief's researched 2026-08-17 static URL returned 404 during execution. The stable data.gouv.fr resource ID resolved to this exact 2026-08-24 replacement snapshot, which is therefore pinned and checksummed here.",
+  "publisher": "Institut national de l'origine et de la qualité (INAO)",
+  "resource_id": "687d62d7-8ee6-4997-a47a-81e3183be31b",
+  "resource_url": "https://static.data.gouv.fr/resources/delimitation-des-aires-geographiques-des-siqo/20260824-213348/2026-08-24-delim-aire-geographique-shp.zip",
+  "retrieval_status": "acquired",
+  "retrieved_at": "2026-08-28",
+  "source_crs": "IGNF:LAMB93 (RGF93 / Lambert-93; equivalent EPSG:2154)",
+  "source_format": "ESRI Shapefile in ZIP",
+  "source_id": "source:inao-aires-geographiques-siqo-2026-08-24",
+  "source_release_date": "2026-08-24",
+  "transformations": [
+    {
+      "operation": "filter_wine_geography",
+      "order": 1,
+      "parameters": {
+        "category_rule": "categorie begins with 'Vin'",
+        "included_signs": [
+          "AOC",
+          "IGP"
+        ]
+      }
+    },
+    {
+      "operation": "validate_and_repair_geometry",
+      "order": 2,
+      "parameters": {
+        "discard_invalid": false,
+        "method": "Shapely make_valid only when source or transformed geometry is invalid"
+      }
+    },
+    {
+      "operation": "topology_preserving_web_simplification",
+      "order": 3,
+      "parameters": {
+        "aoc_tolerance_metres": 40,
+        "igp_tolerance_metres": 120,
+        "preserve_topology": true
+      }
+    },
+    {
+      "operation": "reproject",
+      "order": 4,
+      "parameters": {
+        "target_crs": "EPSG:4326"
+      }
+    },
+    {
+      "operation": "coordinate_rounding",
+      "order": 5,
+      "parameters": {
+        "decimal_places": 6
+      }
+    }
+  ]
+}

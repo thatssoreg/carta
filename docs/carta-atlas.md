@@ -6,6 +6,58 @@ It should feel familiar before it feels novel: a person can begin with the world
 
 The goal is not to make another decorative wine map. The goal is to make wine geography easier to understand while letting CARTA's deeper spatial, temporal, relational, legal, terroir, and ampelographic knowledge become visible when it is useful.
 
+## France-first v0.1
+
+The working product slice follows this path:
+
+**world → France → governed wine-region orientation → sourced appellation area → feature detail → Human Reference**
+
+The initial world is an ordinary OpenFreeMap Liberty basemap with a small Natural Earth interaction layer. Entering France lazy-loads the default INAO AOC/AOP geography and four defensible governed region anchors derived from mapped child appellations. IGP remains a separate, off-by-default layer. Search covers every rendered INAO denomination and the governed region anchors.
+
+The app distinguishes three things throughout:
+
+- ordinary basemap context is presentation infrastructure, not wine authority;
+- an INAO polygon is a cartographic representation of a regulatory geographical area, not commune membership, approved parcel eligibility, or actual vineyard land;
+- a sourced feature can remain useful on the map without being promoted to a governed CARTA identity.
+
+Region anchors are representative points and camera bounds derived from the union of mapped governed children. They are labels, not invented France-wide wine-region polygons. A region without enough mapped child geography is intentionally absent.
+
+### Run locally
+
+The committed app does not need Python or a network build step:
+
+```bash
+cd atlas-app
+npm ci
+npm run dev
+```
+
+`npm run build` produces a static-host-compatible `dist/` directory. OpenFreeMap is the only runtime map service; CARTA-owned thematic assets are committed under `atlas-app/public/data/` and require no API key.
+
+To regenerate those assets from the checksummed upstream snapshots:
+
+```bash
+python -m pip install -r requirements-atlas.txt
+python scripts/build_atlas.py
+python scripts/validate_atlas.py
+```
+
+The generator downloads into an ignored local cache unless archives are supplied with `--source-archive DATASET_ID=/absolute/path.zip`. Raw source archives are never committed. Dataset manifests, transformation parameters, checksums, licenses, derived-artifact metadata, and geographic meaning live in [`data/geography/datasets/`](../data/geography/datasets/); accepted external-ID reconciliation lives in [`data/geography/external-id-mappings/`](../data/geography/external-id-mappings/).
+
+### Browser-delivery decision
+
+Run 01 measured the generated assets after topology-preserving simplification and six-decimal coordinate rounding:
+
+| Asset | Records | Bytes | Delivery |
+|---|---:|---:|---|
+| Natural Earth countries | 258 | 2,214,567 | initial interaction layer |
+| INAO AOC/AOP | 1,320 | 7,852,898 | loaded on France entry |
+| INAO IGP | 165 | 2,699,715 | loaded only when enabled |
+| Governed region anchors | 4 | 3,080 | loaded on France entry |
+| Search index | 1,482 | 956,127 | loaded on first useful search |
+
+The split GeoJSON delivery is responsive in the tested desktop and phone flows and keeps IDs and feature-level click behavior simple. PMTiles would add complexity without solving an observed Run 01 problem, so it remains a measured future option rather than a default dependency. The manifests are the authoritative place for current sizes and checksums if later regeneration changes these values.
+
 ## Human experience
 
 A useful CARTA Atlas should let someone:
@@ -60,8 +112,8 @@ The first interactive Atlas implementation is expected to use MapLibre and open 
 
 The long-term delivery format may evolve as scale requires it. The durable requirement is that map features remain linked to stable CARTA entity IDs and that the visual layer can be regenerated from governed authority and documented spatial sources.
 
-## Prototype standard
+## Product-slice standard
 
-A prototype should already be useful to a human being. It should not exist merely to demonstrate that a map can render.
+A product slice should already be useful to a human being. It should not exist merely to demonstrate that a map can render.
 
-The first useful Atlas should therefore provide recognizable geographic orientation, meaningful wine-region navigation, semantic zoom, clickable CARTA-linked features, and a clear path into Human Reference. Experimental code and incomplete coverage are acceptable. Project-internal language, fake precision, and visually impressive but informationally empty interactions are not.
+The first useful Atlas should therefore provide recognizable geographic orientation, meaningful wine-region navigation, semantic zoom, clickable CARTA-linked features, and a clear path into Human Reference. Incomplete coverage is acceptable when it is stated honestly. Project-internal language, fake precision, and visually impressive but informationally empty interactions are not.

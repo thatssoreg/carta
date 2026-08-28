@@ -1,0 +1,77 @@
+{
+  "authority_class": "institutional_geographic_context",
+  "checksum": "ce1ac7036499a0edd641fbc093cd209a98f96a49d2eca8480aaacad35138a7f6",
+  "checksum_algorithm": "sha256",
+  "dataset_title": "Natural Earth Admin 0 — Countries, 1:10m",
+  "dataset_url": "https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-admin-0-countries/",
+  "derived_artifacts": [
+    {
+      "bytes": 2214567,
+      "feature_count": 258,
+      "format": "GeoJSON",
+      "path": "atlas-app/public/data/world-countries.geojson",
+      "role": "Generalized world country interaction layer",
+      "sha256": "f2a70f733ae09b7bc70f0867c7a85ac437e404a9f07af2748c5d53a4b962819a"
+    }
+  ],
+  "geographic_meaning": "Generalized country polygons for world orientation and interaction; Natural Earth's default de facto depiction is not CARTA authority for disputed geopolitical claims",
+  "id": "spatial-dataset:natural-earth-admin-0-countries-5.1.1",
+  "license": {
+    "attribution_text": "Made with Natural Earth",
+    "commercial_use": true,
+    "id": "public-domain",
+    "redistribution": "public_domain",
+    "share_alike": false,
+    "url": "https://www.naturalearthdata.com/about/terms-of-use/"
+  },
+  "publisher": "Natural Earth",
+  "resource_id": "natural-earth-5.1.1-ne_10m_admin_0_countries",
+  "resource_url": "https://naturalearth.s3.amazonaws.com/10m_cultural/ne_10m_admin_0_countries.zip",
+  "retrieval_status": "acquired",
+  "retrieved_at": "2026-08-28",
+  "source_crs": "EPSG:4326",
+  "source_format": "ESRI Shapefile in ZIP",
+  "source_id": "source:natural-earth-admin-0-countries-5.1.1",
+  "source_release_date": "2022-05-08",
+  "transformations": [
+    {
+      "operation": "select_interaction_properties",
+      "order": 1,
+      "parameters": {
+        "fields": [
+          "ADMIN",
+          "NAME",
+          "NAME_LONG",
+          "NAME_FR",
+          "ISO_A2",
+          "ISO_A3",
+          "ADM0_A3",
+          "NE_ID"
+        ]
+      }
+    },
+    {
+      "operation": "validate_and_repair_geometry",
+      "order": 2,
+      "parameters": {
+        "discard_invalid": false,
+        "method": "Shapely make_valid only when source or transformed geometry is invalid"
+      }
+    },
+    {
+      "operation": "topology_preserving_web_simplification",
+      "order": 3,
+      "parameters": {
+        "preserve_topology": true,
+        "tolerance_degrees": 0.03
+      }
+    },
+    {
+      "operation": "coordinate_rounding",
+      "order": 4,
+      "parameters": {
+        "decimal_places": 6
+      }
+    }
+  ]
+}

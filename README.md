@@ -36,7 +36,7 @@ For complete coverage, use the generated Human Reference indexes for [grapes](at
 
 ## CARTA Atlas
 
-**[CARTA Atlas](docs/carta-atlas.md)** is the geographic projection of the same system: a conventional, legible world and country map that can progressively reveal wine regions, subregions, appellations, places, vineyards, producers, and other evidence-backed geography.
+**[CARTA Atlas](docs/carta-atlas.md)** is the geographic projection of the same system: a conventional, legible world and country map that progressively reveals wine regions, appellations, and their evidence-backed geography. The France-first v0.1 lives in [`atlas-app/`](atlas-app/), with search, semantic zoom, source details, governed identity states, and links back to Human Reference.
 
 The Atlas is meant to teach ordinary geography and wine geography together. Cities, rivers, mountains, coasts, political borders, and terrain remain useful context rather than disappearing beneath wine-specific layers. Semantic zoom controls what becomes visible as a reader moves from world to country to region to appellation and, where the evidence supports it, site scale.
 
@@ -73,6 +73,7 @@ You only need a few directories to understand the repository:
 | Path | Purpose |
 |---|---|
 | [`atlas/`](atlas/) | Human Reference. Start here if you want to read and explore CARTA. |
+| [`atlas-app/`](atlas-app/) | CARTA Atlas static MapLibre application and generated browser data. |
 | [`data/`](data/) | Machine authority. This is the canonical knowledge layer. |
 | [`docs/`](docs/) | Durable architecture, ontology, evidence policy, and projection rules, including CARTA Atlas. |
 | [`schemas/`](schemas/) | Contracts for structured authority. |
@@ -93,7 +94,7 @@ For the technical model, read:
 
 ## Current state
 
-CARTA is an active STRATA v0.2 reference system with governed machine authority and a deterministic Human Reference spanning countries, regions, appellations, landscapes, ecosystems, producers, people, grapes, wines, classifications, and related kinds. Exact record counts are reported by `python scripts/validate_data.py` rather than copied into this README, so the repository does not maintain a second status ledger.
+CARTA is an active STRATA v0.2 reference system with governed machine authority, a deterministic Human Reference, and a France-first interactive Atlas spanning world orientation, governed region anchors, and sourced appellation geography. Exact authority counts are reported by `python scripts/validate_data.py` rather than copied into this README, so the repository does not maintain a second status ledger.
 
 The architecture, authority rules, persistent wine identity model, profile kinds, 16-link navigation cap, and Human Reference generation contract are stable. New knowledge and new projections such as CARTA Atlas can expand the system without reopening those foundations.
 

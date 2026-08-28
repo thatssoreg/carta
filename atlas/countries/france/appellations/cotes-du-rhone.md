@@ -42,6 +42,7 @@ This section is generated from CARTA machine authority. Edit the governed record
 ### Sources
 
 - `source:houillon-vine-trail` — Aurélien & Charlotte Houillon
+- `source:inao-aires-geographiques-siqo-2026-08-24` — Délimitation des aires-géographiques des SIQO — 2026-08-24 snapshot
 - `source:inao-cotes-du-rhone` — Côtes du Rhône rouge
 - `source:rosenthal-peyrouses-rouge` — Les Peyrouses Côtes du Rhône Rouge
 
