@@ -30,7 +30,7 @@ The normalized counts are larger because v0.2 made country/ecosystem orientation
 
 The research did not reveal a single legal or historical region called the Pyrenean Atlantic. It revealed a **braided ecosystem** linking Atlantic Basque wine-law geographies, French Basque geography around Irouléguy, the Béarn/Jurançon/Pacherenc foothill wine world, and a non-spatial professional network extending to Richard Leroy in the Loire.
 
-See the human projection: [`../../atlas/ecosystems/pyrenean-atlantic.md`](../../atlas/ecosystems/pyrenean-atlantic.md).
+See the human projection: [`../../../atlas/ecosystems/pyrenean-atlantic.md`](../../../atlas/ecosystems/pyrenean-atlantic.md).
 
 ## Ingestion audit
 

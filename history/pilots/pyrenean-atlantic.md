@@ -107,6 +107,6 @@ The pilot succeeds after ingestion if:
 
 ## Ingestion outcome
 
-**PASS.** The accepted normalized authority contains 39 entities, 31 relationships, 30 claims, 29 sources, 7 first-class name assertions, and 8 source-described spatial assertions. No geometry was fabricated. The first Human Atlas proof set is live under [`../atlas/`](../atlas/).
+**PASS.** The accepted normalized authority contains 39 entities, 31 relationships, 30 claims, 29 sources, 7 first-class name assertions, and 8 source-described spatial assertions. No geometry was fabricated. The first Human Atlas proof set is live under [`../../atlas/`](../../atlas/).
 
 STRATA is expected to keep changing after future pilots. That remains a feature, not a failure.

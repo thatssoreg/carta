@@ -2,14 +2,13 @@
 
 **CARTA ID:** `ecosystem:pyrenean-atlantic`  
 **Type:** analytical ecosystem  
-**Status:** active  
-**Pilot:** Deep Research Run 01
+**Status:** active
 
 > **What this is not:** a single appellation, government region, historical territory, or claim that the Loire is part of the Pyrenees.
 
 ## Why I should care
 
-Run 01 found something more useful than a conventional regional survey: a **braided ecosystem** in which several different geographies and relationship systems overlap.
+CARTA's first ecosystem research found something more useful than a conventional regional survey: a **braided ecosystem** in which several different geographies and relationship systems overlap.
 
 1. Atlantic Basque wine-law geography, especially Bizkaiko, Getariako, and Arabako Txakolina.
 2. French Basque geography around Irouléguy.
@@ -33,10 +32,10 @@ The national border matters enormously for law, protected names, and legal grape
 
 The strongest lesson is that similar-looking names do not create a family tree.
 
-- [Petit Manseng](../grapes/petit-manseng.md) and [Gros Manseng](../grapes/gros-manseng.md) are central local grapes in Jurançon, but Run 01 did not establish a parent-offspring relationship between them.
+- [Petit Manseng](../grapes/petit-manseng.md) and [Gros Manseng](../grapes/gros-manseng.md) are central local grapes in Jurançon, but CARTA does not establish a parent-offspring relationship between them.
 - [Petit Courbu](../grapes/petit-courbu.md) is legally named **Hondarrabi Zuri Zerratia** in the Bizkaiko context without CARTA turning that jurisdictional equivalence into universal biological synonymy.
 - [Courbu](../grapes/courbu.md) has a different naming pattern, including Hondarrabi Zuri in Spain.
-- [Raffiat de Moncade](../grapes/raffiat-de-moncade.md) unexpectedly produced the cleanest pedigree thread in the pilot, reaching backward to proposed parents Gouais blanc and Bouchalès and forward to Arriloba.
+- [Raffiat de Moncade](../grapes/raffiat-de-moncade.md) produced the cleanest pedigree thread in the initial ecosystem research, reaching backward to proposed parents Gouais blanc and Bouchalès and forward to Arriloba.
 
 ## Producer and cultural-transmission network
 
@@ -52,7 +51,7 @@ CARTA does **not** ingest an Alfredo Egia → Richard Leroy mentorship or collab
 
 | Spatial record | Kind | Precision | Status | Description |
 |---|---|---|---|---|
-| `spatial:pyrenean-atlantic-analytical-area` | `analytical_area` | descriptive | supported | CARTA's Run 01 analytical ecosystem braids Atlantic Basque wine-law geography, French Basque/Irouléguy geography, the Béarn/Jurançon/Pacherenc foothill wine world, and non-spatial professional relationships. It is not an official boundary. |
+| `spatial:pyrenean-atlantic-analytical-area` | `analytical_area` | descriptive | supported | CARTA's analytical ecosystem braids Atlantic Basque wine-law geography, French Basque/Irouléguy geography, the Béarn/Jurançon/Pacherenc foothill wine world, and non-spatial professional relationships. It is not an official boundary. |
 
 The first map should therefore be relational. Exact parcels and official polygons can be added when acquired, but useful spatial knowledge is already present without manufacturing precision.
 
@@ -79,7 +78,7 @@ The first map should therefore be relational. Exact parcels and official polygon
 
 ## Rejected edges
 
-The pilot deliberately rejected or withheld:
+CARTA deliberately rejects or withholds:
 
 - Alfredo Egia `MENTORED_BY` Richard Leroy
 - Alfredo Egia `WORKED_WITH` Richard Leroy
@@ -98,7 +97,7 @@ Law separates the landscape into protected systems. Grapes and names cross those
 
 ## Research record
 
-See [`research/run-01-pyrenean-atlantic/`](../../research/run-01-pyrenean-atlantic/).
+The original research handoff and ingestion audit are retained in [`history/research/run-01-pyrenean-atlantic/`](../../history/research/run-01-pyrenean-atlantic/). They are historical evidence of how this ecosystem entered CARTA, not a second authority layer.
 
 **Last normalized against STRATA:** v0.2
 
