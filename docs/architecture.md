@@ -2,9 +2,9 @@
 
 ## Purpose
 
-CARTA is a spatial-temporal wine knowledge and field-intelligence system. Its authority lives in inspectable, machine-readable records, while its Human Reference is designed as a deep reading experience for people.
+CARTA is a spatial-temporal wine knowledge and field-intelligence system. Its authority lives in inspectable, machine-readable records, while its human-facing projections are designed for people.
 
-Maps, graph views, timelines, reference profiles, search, and future AI interfaces are projections of the same governed authority rather than competing sources of truth.
+Human Reference, CARTA Atlas, graph views, timelines, search, and future AI interfaces are projections of the same governed authority rather than competing sources of truth.
 
 ## Architectural principles
 
@@ -21,6 +21,7 @@ Maps, graph views, timelines, reference profiles, search, and future AI interfac
 11. **Human profiles are composite projections.** The ontology may separate person, producer, project, wine, place, and relationship records while one readable reference profile composes the records that belong together for a human reader.
 12. **Discovery does not equal publication.** A valid graph node may remain unpublished as a standalone reference until it meets the Human Reference baseline.
 13. **Projection disposition and navigation eligibility are explicit.** Every active producer, country, and grape has a governed Human Reference disposition, including deliberate machine-only deferral. Generated navigation links only to canonical profile paths; it keeps structural country membership distinct from reciprocal editorial anchors and applies deterministic source-kind semantics to graph-only two-hop discovery.
+14. **Spatial projection does not create spatial truth.** CARTA Atlas may display only geometry and spatial relationships that can be traced to governed CARTA records and documented spatial sources. Missing geometry is not filled in for visual completeness.
 
 ## Four surfaces of the same system
 
@@ -37,19 +38,28 @@ Structured records are the canonical data layer:
 - source-described spatial assertions;
 - dated Frontier claims on stable subjects.
 
-### 2. Human Reference / Atlas
+### 2. Human-facing reference projections
 
-Markdown under `atlas/` is the human-readable reference projection.
+#### Human Reference
+
+Markdown under `atlas/` is the reader-facing reference projection.
 
 Human profiles can combine multiple machine entities. Their publication state and maturity are governed separately through `reference_profile` records.
 
 See [`docs/atlas-projection.md`](atlas-projection.md) and [`schemas/reference-profile.schema.json`](../schemas/reference-profile.schema.json).
 
-### 3. Visual interfaces
+#### CARTA Atlas
 
-Future interfaces may include:
+CARTA Atlas is the interactive geographic projection. It begins with recognizable world and country geography and progressively reveals wine regions, subregions, appellations, places, vineyards, producers, and other evidence-backed features through semantic zoom.
 
-- map;
+STRATA provides its conceptual layer system: Space, Time, Relationships, Appellations, Terroir, and Ampelography. The default map remains geographically legible without requiring every layer to be active.
+
+Map features must remain linked to stable CARTA IDs and retain source and license provenance for adopted geographic datasets. See [`docs/carta-atlas.md`](carta-atlas.md).
+
+### 3. Other visual interfaces
+
+Additional interfaces may include:
+
 - TRAMA relationship/network view;
 - timeline;
 - grape genealogy/taxonomy view;
@@ -138,14 +148,15 @@ atlas/
   historical-events/
   indexes/
 
-research/
 schemas/
 docs/
-pilots/
 scripts/
+tests/
+audits/
+history/
 ```
 
-The Human Reference hierarchy is a reading/navigation decision. The machine graph remains relational and does not need to mirror the directories.
+The Human Reference hierarchy is a reading/navigation decision. The machine graph remains relational and does not need to mirror the directories. CARTA Atlas likewise consumes governed authority without requiring the data layout to mirror map tiles or zoom levels.
 
 ## IDs
 
@@ -178,7 +189,7 @@ An entity may have lightweight alternate names for display, but consequential le
 
 Use geometry records when actual point, line, or polygon geometry is available.
 
-Geometry metadata can express source, precision, confidence, validity intervals, and observation dates.
+Geometry metadata can express source, precision, confidence, validity intervals, and observation dates. Adopted external GIS datasets must additionally have documented license and provenance sufficient for CARTA to redistribute or derive its spatial projection lawfully.
 
 ### Spatial assertions without geometry
 
@@ -187,6 +198,12 @@ Useful wine geography often exists before CARTA acquires an official polygon or 
 Spatial assertions can express reliable locality placement, source-described areas, cultural geographies, historical geographies, and analytical geographies without false precision.
 
 `network_anchor` remains in the v0.2 schema only as a deprecated compatibility value. Where a graph relationship touches a map, the relationship remains graph truth; presentation placement is derived rather than authored as independent spatial authority.
+
+### Spatial projection
+
+CARTA Atlas can combine ordinary geographic context with CARTA-linked wine geography. Geographic context such as countries, cities, rivers, mountains, coastlines, and terrain may come from documented open or appropriately licensed datasets without becoming new wine-domain authority.
+
+Semantic zoom is a display rule. It controls which governed features are useful at a given map scale; it does not alter entity identity, relationships, or evidentiary status.
 
 ## Appellation semantics
 
@@ -216,13 +233,13 @@ The Human Reference contract defines profile-specific minimums, composite produc
 
 ## Human geography
 
-For people browsing the Atlas:
+For people browsing the Human Reference:
 
 - country-specific regions and appellations are nested beneath their countries;
 - genuine cross-border physical/cultural geographies live under `landscapes/`;
 - relationship-generated analytical constructs live under `ecosystems/`.
 
-This hierarchy does not replace typed `WITHIN`, `LOCATED_IN`, `OVERLAPS`, or other graph relationships.
+For people browsing CARTA Atlas, ordinary geographic context remains visible and wine geography appears at useful scales. These presentation hierarchies do not replace typed `WITHIN`, `LOCATED_IN`, `OVERLAPS`, or other graph relationships.
 
 ## Cross-project operating contract
 
@@ -243,10 +260,10 @@ Curriculum work may produce research questions, coverage signals, source leads, 
 
 ## Projections
 
-Future projections may include:
+Current and future projections may include:
 
-- Human Reference / Atlas
-- map view
+- Human Reference
+- CARTA Atlas
 - TRAMA network view
 - timeline view
 - grape genealogy/taxonomy view

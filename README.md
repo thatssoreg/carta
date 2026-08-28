@@ -34,15 +34,23 @@ A few existing doors show different parts of the system at work:
 
 For complete coverage, use the generated Human Reference indexes for [grapes](atlas/indexes/grapes.md), [producers and people](atlas/indexes/producers-and-people.md), [wines](atlas/indexes/wines.md), and [places, law, landscapes, and ecosystems](atlas/indexes/places-and-law.md).
 
+## CARTA Atlas
+
+**[CARTA Atlas](docs/carta-atlas.md)** is the geographic projection of the same system: a conventional, legible world and country map that can progressively reveal wine regions, subregions, appellations, places, vineyards, producers, and other evidence-backed geography.
+
+The Atlas is meant to teach ordinary geography and wine geography together. Cities, rivers, mountains, coasts, political borders, and terrain remain useful context rather than disappearing beneath wine-specific layers. Semantic zoom controls what becomes visible as a reader moves from world to country to region to appellation and, where the evidence supports it, site scale.
+
+STRATA becomes the Atlas layer system: Space is the geographic floor, while Time, Relationships, Appellations, Terroir, and Ampelography add depth when useful. CARTA Atlas remains a projection of governed authority rather than a second source of truth.
+
 ## How CARTA works
 
-CARTA has one knowledge authority and one reader-facing projection:
+CARTA has one knowledge authority and multiple human-facing projections:
 
-**evidence → governed machine authority → deterministic Human Reference**
+**evidence → governed machine authority → Human Reference / CARTA Atlas / future interfaces**
 
-The machine authority lives in [`data/`](data/) as structured entities, relationships, claims, sources, names, spatial assertions, and profile dispositions. The Human Reference lives in [`atlas/`](atlas/) and turns that governed authority into readable profiles, indexes, provenance, and connected paths.
+The machine authority lives in [`data/`](data/) as structured entities, relationships, claims, sources, names, spatial assertions, and profile dispositions. The Human Reference lives in [`atlas/`](atlas/) and turns that governed authority into readable profiles, indexes, provenance, and connected paths. CARTA Atlas will turn the same authority, together with documented spatial datasets, into an interactive geographic view.
 
-Human Reference is not independently authored truth. Generated navigation, indexes, and provenance come from governed records. If structured authority and prose disagree, the machine layer wins until the discrepancy is resolved editorially.
+Human Reference and CARTA Atlas are not independently authored truth. Generated navigation, indexes, provenance, and spatial features must resolve back to governed records. If structured authority and a projection disagree, the machine layer wins until the discrepancy is resolved editorially.
 
 Personal Lens remains external and private. Personal taste, holdings, hypotheses, watchlists, and production questions can reference stable CARTA IDs without becoming shareable Reference authority.
 
@@ -66,7 +74,7 @@ You only need a few directories to understand the repository:
 |---|---|
 | [`atlas/`](atlas/) | Human Reference. Start here if you want to read and explore CARTA. |
 | [`data/`](data/) | Machine authority. This is the canonical knowledge layer. |
-| [`docs/`](docs/) | Durable architecture, ontology, evidence policy, and projection rules. |
+| [`docs/`](docs/) | Durable architecture, ontology, evidence policy, and projection rules, including CARTA Atlas. |
 | [`schemas/`](schemas/) | Contracts for structured authority. |
 | [`scripts/`](scripts/) and [`tests/`](tests/) | Deterministic generation, validation, navigation audit tooling, and regression tests. |
 | [`audits/`](audits/) | Current navigation-quality fixtures and the durable audit entry point. Completed execution-era audits live in Git history. |
@@ -77,6 +85,7 @@ You only need a few directories to understand the repository:
 For the technical model, read:
 
 - [Architecture](docs/architecture.md)
+- [CARTA Atlas](docs/carta-atlas.md)
 - [Ontology](docs/ontology.md)
 - [Evidence policy](docs/evidence-policy.md)
 - [Human Reference projection](docs/atlas-projection.md)
@@ -86,7 +95,7 @@ For the technical model, read:
 
 CARTA is an active STRATA v0.2 reference system with governed machine authority and a deterministic Human Reference spanning countries, regions, appellations, landscapes, ecosystems, producers, people, grapes, wines, classifications, and related kinds. Exact record counts are reported by `python scripts/validate_data.py` rather than copied into this README, so the repository does not maintain a second status ledger.
 
-The architecture, authority rules, persistent wine identity model, profile kinds, 16-link navigation cap, and Human Reference generation contract are stable. New knowledge can expand the system without reopening those foundations.
+The architecture, authority rules, persistent wine identity model, profile kinds, 16-link navigation cap, and Human Reference generation contract are stable. New knowledge and new projections such as CARTA Atlas can expand the system without reopening those foundations.
 
 ## Relationship to Natural Wine 2.5
 
