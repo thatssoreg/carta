@@ -43,6 +43,7 @@ This section is generated from CARTA machine authority. Edit the governed record
 
 ### Sources
 
+- `source:inao-aires-geographiques-siqo-2026-08-24` — Délimitation des aires-géographiques des SIQO — 2026-08-24 snapshot
 - `source:inao-arbois` — Arbois blanc
 - `source:saint-pierre-chateau-renard-2018` — 2018 Chardonnay, Arbois, Château Renard
 - `source:saint-pierre-chateau-renard-2020` — Arbois Château Renard Saint-Pierre 2020

@@ -41,6 +41,7 @@ This section is generated from CARTA machine authority. Edit the governed record
 ### Sources
 
 - `source:huet-official` — Domaine Huet
+- `source:inao-aires-geographiques-siqo-2026-08-24` — Délimitation des aires-géographiques des SIQO — 2026-08-24 snapshot
 - `source:inao-vouvray` — Vouvray
 - `source:klwines-huet-haut-lieu-sec-2023` — 2023 Domaine Huët "Le Haut-Lieu" Vouvray Sec
 

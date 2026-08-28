@@ -1,0 +1,38 @@
+{
+  "appName": "CARTA Atlas",
+  "basemap": {
+    "styleUrl": "https://tiles.openfreemap.org/styles/liberty",
+    "datasetId": "spatial-dataset:openfreemap-liberty-runtime",
+    "attribution": "OpenFreeMap © OpenMapTiles Data from OpenStreetMap"
+  },
+  "data": {
+    "countries": "./data/world-countries.geojson",
+    "aocAreas": "./data/france-appellations-aoc.geojson",
+    "igpAreas": "./data/france-appellations-igp.geojson",
+    "wineRegions": "./data/france-wine-regions.geojson",
+    "searchIndex": "./data/search-index.json",
+    "provenance": "./data/provenance.json"
+  },
+  "countries": {
+    "france": {
+      "cartaEntityId": "place:france",
+      "bounds": [-5.6, 41.15, 10.1, 51.35],
+      "maxZoom": 6.1
+    }
+  },
+  "semanticZoom": {
+    "wineRegionsMin": 4.3,
+    "wineRegionsMax": 8.2,
+    "appellationFillMin": 5.15,
+    "appellationOutlineMin": 5.8,
+    "appellationLabelMin": 8.6
+  },
+  "defaultLayers": {
+    "aocAreas": true,
+    "igpAreas": false,
+    "wineRegions": true
+  },
+  "humanReference": {
+    "repositoryBaseUrl": "https://github.com/thatssoreg/carta/blob/main/"
+  }
+}

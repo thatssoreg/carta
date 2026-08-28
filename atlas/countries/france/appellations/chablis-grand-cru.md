@@ -40,6 +40,7 @@ This section is generated from CARTA machine authority. Edit the governed record
 ### Sources
 
 - `source:chablis-vaudesir` — Vaudésir | The Climats of Chablis
+- `source:inao-aires-geographiques-siqo-2026-08-24` — Délimitation des aires-géographiques des SIQO — 2026-08-24 snapshot
 - `source:inao-chablis-grand-cru-vaudesir` — Chablis Grand Cru Vaudésir
 - `source:louis-michel-grand-cru` — Chablis Grand Crus | Louis Michel & Fils
 

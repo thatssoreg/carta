@@ -1,0 +1,137 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://carta.local/schemas/spatial-dataset.schema.json",
+  "title": "CARTA Spatial Dataset Manifest v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "source_id",
+    "dataset_title",
+    "publisher",
+    "dataset_url",
+    "resource_url",
+    "retrieval_status",
+    "license",
+    "source_release_date",
+    "retrieved_at",
+    "checksum_algorithm",
+    "checksum",
+    "source_format",
+    "source_crs",
+    "geographic_meaning",
+    "authority_class",
+    "transformations",
+    "derived_artifacts"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^spatial-dataset:[a-z0-9][a-z0-9._-]*$"
+    },
+    "source_id": {
+      "type": "string",
+      "pattern": "^source:[a-z0-9][a-z0-9._-]*$"
+    },
+    "dataset_title": {"type": "string", "minLength": 1},
+    "publisher": {"type": "string", "minLength": 1},
+    "dataset_url": {"type": "string", "format": "uri"},
+    "resource_url": {"type": "string", "format": "uri"},
+    "resource_id": {"type": ["string", "null"]},
+    "retrieval_status": {"enum": ["acquired", "runtime_service"]},
+    "license": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "url",
+        "attribution_text",
+        "commercial_use",
+        "share_alike",
+        "redistribution"
+      ],
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "url": {"type": "string", "format": "uri"},
+        "attribution_text": {"type": "string", "minLength": 1},
+        "commercial_use": {"type": "boolean"},
+        "share_alike": {"type": "boolean"},
+        "redistribution": {
+          "enum": [
+            "public_domain",
+            "permitted_with_attribution",
+            "runtime_service_subject_to_upstream_licenses"
+          ]
+        }
+      }
+    },
+    "source_release_date": {"type": ["string", "null"], "format": "date"},
+    "retrieved_at": {"type": "string", "format": "date"},
+    "checksum_algorithm": {"type": ["string", "null"], "enum": ["sha256", null]},
+    "checksum": {
+      "type": ["string", "null"],
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "source_format": {"type": "string", "minLength": 1},
+    "source_crs": {"type": "string", "minLength": 1},
+    "geographic_meaning": {"type": "string", "minLength": 1},
+    "authority_class": {
+      "enum": [
+        "authoritative_regulatory",
+        "institutional_geographic_context",
+        "presentation_infrastructure"
+      ]
+    },
+    "transformations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["order", "operation", "parameters"],
+        "properties": {
+          "order": {"type": "integer", "minimum": 1},
+          "operation": {"type": "string", "minLength": 1},
+          "parameters": {"type": "object"}
+        }
+      }
+    },
+    "derived_artifacts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["path", "format", "sha256", "bytes", "role"],
+        "properties": {
+          "path": {"type": "string", "minLength": 1},
+          "format": {"type": "string", "minLength": 1},
+          "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+          "bytes": {"type": "integer", "minimum": 1},
+          "feature_count": {"type": "integer", "minimum": 0},
+          "record_count": {"type": "integer", "minimum": 0},
+          "role": {"type": "string", "minLength": 1}
+        }
+      }
+    },
+    "notes": {"type": "string"}
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {"retrieval_status": {"const": "acquired"}},
+        "required": ["retrieval_status"]
+      },
+      "then": {
+        "properties": {
+          "checksum_algorithm": {"const": "sha256"},
+          "checksum": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+        }
+      },
+      "else": {
+        "properties": {
+          "checksum_algorithm": {"type": "null"},
+          "checksum": {"type": "null"}
+        }
+      }
+    }
+  ]
+}

@@ -25,6 +25,7 @@ SETS = {
     "claims": ("data/claims", "schemas/claim.schema.json"),
     "sources": ("data/sources", "schemas/source.schema.json"),
     "names": ("data/names", "schemas/name-assertion.schema.json"),
+    "geometry": ("data/geography/geometry", "schemas/geometry.schema.json"),
     "spatial": ("data/geography/assertions", "schemas/spatial-assertion.schema.json"),
     "profiles": ("data/reference-profiles", "schemas/reference-profile.schema.json"),
 }
@@ -234,6 +235,13 @@ def validate_references(data: dict[str, list[dict]], ids: dict[str, set[str]]) -
             if claim_id not in ids["claims"]:
                 raise SystemExit(f"{name['id']}: missing claim {claim_id}")
 
+    for geometry in data["geometry"]:
+        if geometry["entity_id"] not in ids["entities"]:
+            raise SystemExit(f"{geometry['id']}: missing entity")
+        for source_id in geometry["source_ids"]:
+            if source_id not in ids["sources"]:
+                raise SystemExit(f"{geometry['id']}: missing source {source_id}")
+
     for spatial in data["spatial"]:
         if spatial["entity_id"] not in ids["entities"]:
             raise SystemExit(f"{spatial['id']}: missing entity")
@@ -243,6 +251,9 @@ def validate_references(data: dict[str, list[dict]], ids: dict[str, set[str]]) -
         for source_id in spatial["source_ids"]:
             if source_id not in ids["sources"]:
                 raise SystemExit(f"{spatial['id']}: missing source {source_id}")
+        for geometry_id in spatial.get("geometry_ids", []):
+            if geometry_id not in ids["geometry"]:
+                raise SystemExit(f"{spatial['id']}: missing geometry {geometry_id}")
         for claim_id in spatial.get("claim_ids", []):
             if claim_id not in ids["claims"]:
                 raise SystemExit(f"{spatial['id']}: missing claim {claim_id}")

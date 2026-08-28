@@ -38,6 +38,7 @@ This section is generated from CARTA machine authority. Edit the governed record
 
 ### Sources
 
+- `source:inao-aires-geographiques-siqo-2026-08-24` — Délimitation des aires-géographiques des SIQO — 2026-08-24 snapshot
 - `source:inao-cote-rotie` — Côte Rôtie
 - `source:sacred-thirst-chambeyron` — Chambeyron-Manin
 - `source:wine-trust-chambeyron` — Chambeyron-Manin

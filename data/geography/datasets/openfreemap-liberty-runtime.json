@@ -1,0 +1,29 @@
+{
+  "id": "spatial-dataset:openfreemap-liberty-runtime",
+  "source_id": "source:openfreemap-liberty-runtime",
+  "dataset_title": "OpenFreeMap Liberty MapLibre style and hosted basemap",
+  "publisher": "OpenFreeMap",
+  "dataset_url": "https://openfreemap.org/",
+  "resource_url": "https://tiles.openfreemap.org/styles/liberty",
+  "resource_id": null,
+  "retrieval_status": "runtime_service",
+  "license": {
+    "id": "openfreemap-mit-with-openstreetmap-odbl-data",
+    "url": "https://openfreemap.org/#license",
+    "attribution_text": "OpenFreeMap © OpenMapTiles Data from OpenStreetMap",
+    "commercial_use": true,
+    "share_alike": true,
+    "redistribution": "runtime_service_subject_to_upstream_licenses"
+  },
+  "source_release_date": null,
+  "retrieved_at": "2026-08-28",
+  "checksum_algorithm": null,
+  "checksum": null,
+  "source_format": "Runtime MapLibre Style JSON and vector tiles",
+  "source_crs": "Web Mercator tile presentation (EPSG:3857)",
+  "geographic_meaning": "Ordinary geographic presentation context including countries, cities, roads, rivers, coasts, borders, and physical labels; not CARTA wine-domain authority",
+  "authority_class": "presentation_infrastructure",
+  "transformations": [],
+  "derived_artifacts": [],
+  "notes": "The public runtime style is intentionally not treated as a pinned CARTA derivative. MapLibre displays the upstream attribution embedded by OpenFreeMap."
+}
