@@ -249,6 +249,43 @@ A baseline appellation profile should cover:
 - Explore next;
 - authoritative sources and legal version dates.
 
+## Atlas Run 04 teaching projection
+
+The interactive Atlas adds a deterministic editorial layer from
+`data/atlas/run-04-experience.json`. The build publishes that layer as
+`atlas-app/public/data/atlas-editorial.json`; the authored copy never becomes a
+Reference claim merely because it is shown in the interface.
+
+The projection contract is strict:
+
+- every tell, definition, lens, affinity, surprise, and featured recommendation
+  carries governed claim IDs;
+- every action target must resolve to a native subject route;
+- ordinary “Keep wandering” recommendations must come from a governed relationship
+  or profile component;
+- a “Same Energy” comparison may cross the graph only when it is explicitly bounded
+  and sourced as editorial comparison—it must not be written back as a false
+  `STYLISTIC_NEIGHBOR_OF` Reference edge;
+- map reactions reuse governed appellation geometry and producer-base assertions;
+- active map emphasis is presentation state, not a new spatial assertion.
+
+The interface also keeps culture and regulation visually distinct. Regulatory panels
+explain what a territorial name governs. Cultural panels can explain mentorship,
+house codes, scarcity pressure, recognition, and insider vocabulary, but they must
+not present those observations as legal tiers or quality rankings.
+
+Four small signals recur across subject grammars:
+
+- **Rabbit Hole** — an unexpected supported connection;
+- **The Tell** — a recognition clue together with why it works and where it misleads;
+- **IYKYK** — insider context translated without gatekeeping;
+- **Same Energy** — a bounded affinity, never an identity claim.
+
+Subject pages are intentionally not one generic card. Places foreground geography,
+appellations foreground territory and law, grapes foreground biological identity and
+style paths, producers and people foreground human work and transmission, and wines
+foreground one expression connected outward to maker, grape, place, and practice.
+
 ## Landscapes
 
 `atlas/landscapes/` is for physical, climatic, geological, watershed, island, mountain, or cultural-landscape reference objects that may cross national borders.

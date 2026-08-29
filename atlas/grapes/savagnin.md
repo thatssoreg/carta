@@ -47,6 +47,7 @@ This section is generated from CARTA machine authority. Edit the governed record
 | `claim:petit-manseng-savagnin` | `reference / —` | `supported` | `high` | `source:plantgrape-petit-manseng` |
 | `claim:savagnin-grape-not-method-11` | `reference / 2026-08-29` | `supported` | `high` | `source:plantgrape-savagnin`, `source:tournelle-fleur-fr`, `source:jura-vins-domaine-labet`, `source:civj-cremant-du-jura`, `source:civj-cotes-du-jura-spec` |
 | `claim:savagnin-nature-synonym-11` | `reference / 2026-08-29` | `supported` | `high` | `source:plantgrape-savagnin` |
+| `claim:savagnin-palomino-affinity-12` | `reference / 2026-08-29` | `supported` | `medium` | `source:civj-cotes-du-jura-spec`, `source:soleras-pacifico-wines` |
 | `claim:tournelle-fleur-identity` | `reference / —` | `supported` | `high` | `source:tournelle-fleur-fr`, `source:tournelle-fleur-en` |
 
 ### Sources
@@ -59,6 +60,7 @@ This section is generated from CARTA machine authority. Edit the governed record
 - `source:plantgrape-petit-manseng` — Petit Manseng
 - `source:plantgrape-savagnin` — Savagnin blanc
 - `source:saint-pierre-chateau-renard-2020` — Arbois Château Renard Saint-Pierre 2020
+- `source:soleras-pacifico-wines` — Wines
 - `source:tournelle-fleur-en` — Fleur de Savagnin — English page
 - `source:tournelle-fleur-fr` — Fleur de Savagnin — fiche française
 

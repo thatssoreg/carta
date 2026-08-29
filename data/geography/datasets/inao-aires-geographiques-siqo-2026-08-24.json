@@ -30,12 +30,12 @@
       "sha256": "52a46edf0980d68e91cb558c256f33b4fd24b7381e7af7f4630d38037835c03b"
     },
     {
-      "bytes": 1015591,
+      "bytes": 1017157,
       "format": "JSON",
       "path": "atlas-app/public/data/search-index.json",
-      "record_count": 1504,
+      "record_count": 1509,
       "role": "Search records derived from rendered INAO features and governed region labels",
-      "sha256": "e22cfa2c990a2218f6a72055a4fbed77bb5ed1e0c8a662c9bec6f74c15ba13a3"
+      "sha256": "7d32a8c0fed6a239d8748023e259d8f4e01456297015f9e6ce12e136c878da8e"
     },
     {
       "bytes": 18228,

@@ -42,11 +42,15 @@ This section is generated from CARTA machine authority. Edit the governed record
 
 | Claim | Layer / observed | Status | Confidence | Sources |
 |---|---|---|---|---|
+| `claim:emmanuel-overnoy-mentorship-12` | `reference / —` | `supported` | `medium` | `source:overnoy-louis-dressner-profile` |
 | `claim:houillon-family-disambiguation-09` | `reference / —` | `supported` | `high` | `source:houillon-vine-trail`, `source:overnoy-louis-dressner`, `source:bruyere-houillon-zrs` |
 | `claim:houillon-overnoy-lineage-09` | `reference / —` | `supported` | `medium` | `source:houillon-vine-trail` |
 | `claim:overnoy-jura-grapes-11` | `reference / 2026-08-29` | `supported` | `medium` | `source:overnoy-louis-dressner-profile` |
+| `claim:overnoy-label-code-12` | `reference / 2026-08-29` | `supported` | `medium` | `source:overnoy-louis-dressner-profile` |
 | `claim:overnoy-pupillin-base-11` | `reference / 2026-08-29` | `supported` | `high` | `source:annuaire-entreprises-overnoy`, `source:overnoy-louis-dressner-profile` |
 | `claim:overnoy-transmission-11` | `reference / —` | `supported` | `medium` | `source:overnoy-louis-dressner-profile` |
+| `claim:overnoy-us-access-context-12` | `reference / 2026-08-29` | `supported` | `medium` | `source:overnoy-louis-dressner-profile` |
+| `claim:pierre-overnoy-estate-history-12` | `reference / —` | `supported` | `medium` | `source:overnoy-louis-dressner-profile` |
 
 ### Sources
 

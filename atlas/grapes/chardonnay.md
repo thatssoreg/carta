@@ -50,6 +50,7 @@ This section is generated from CARTA machine authority. Edit the governed record
 | `claim:bassi-chardonnay-wine` | `reference / 2026-08-18` | `supported` | `high` | `source:scar-trade`, `source:coeur-scar` |
 | `claim:beaujolais-chardonnay-share-2024-10` | `reference / 2024-01-01` | `supported` | `high` | `source:beaujolais-key-figures-2024` |
 | `claim:burgundy-chardonnay-share-2024-10` | `reference / 2024-09-01` | `supported` | `high` | `source:bivb-burgundy-key-figures-2024` |
+| `claim:chardonnay-jura-burgundy-contrast-12` | `reference / 2026-08-29` | `supported` | `high` | `source:bivb-burgundy-key-figures-2024`, `source:civj-jura-key-figures-2024`, `source:jura-vins-domaine-labet` |
 | `claim:chateau-renard-2018-chardonnay` | `reference / —` | `supported` | `high` | `source:saint-pierre-chateau-renard-2018` |
 | `claim:chateau-renard-2020-chardonnay-savagnin` | `reference / —` | `provisional` | `medium` | `source:saint-pierre-chateau-renard-2020` |
 | `claim:jura-chardonnay-share-2023-10` | `reference / 2023-12-31` | `supported` | `high` | `source:civj-jura-key-figures-2024` |

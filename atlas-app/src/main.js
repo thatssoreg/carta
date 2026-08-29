@@ -10,6 +10,7 @@ const TRAIL_STORAGE_KEY = "carta-atlas-rabbit-hole-v1";
 const AOC_LAYERS = ["aoc-complements-fill", "aoc-areas-fill"];
 const REGION_LAYERS = ["wine-region-labels", "wine-region-halos"];
 const PRODUCER_LAYERS = ["producer-clusters", "producer-cluster-count", "producer-points", "producer-labels"];
+const SUBJECT_REACTION_LAYERS = ["subject-areas-fill", "subject-areas-line", "subject-producer-halos", "subject-producer-labels"];
 
 const elements = {
   intro: document.querySelector(".map-intro"),
@@ -34,6 +35,8 @@ const elements = {
   rabbitTrail: document.querySelector("[data-rabbit-trail]"),
   detailPanel: document.querySelector("[data-detail-panel]"),
   detailContent: document.querySelector("[data-detail-content]"),
+  backButton: document.querySelector("[data-back-detail]"),
+  backLabel: document.querySelector("[data-back-label]"),
   inspectButton: document.querySelector("[data-inspect-button]"),
   sourcesDialog: document.querySelector("[data-sources-dialog]"),
   sourcesContent: document.querySelector("[data-sources-content]"),
@@ -56,6 +59,7 @@ const state = {
   searchIndex: null,
   atlasGuides: null,
   subjects: null,
+  editorial: null,
   entryPoints: null,
   producerFeatures: null,
   searchMatches: [],
@@ -66,6 +70,7 @@ const state = {
   geographicSubjectId: null,
   inspectMode: false,
   sourcesRendered: false,
+  surpriseTurns: {},
   trail: readStoredTrail(),
 };
 
@@ -157,6 +162,10 @@ function addFranceLayers() {
     clusterRadius: 48,
     clusterMaxZoom: 8,
   });
+  map.addSource("subject-producer-points", {
+    type: "geojson",
+    data: config.data.producerPoints,
+  });
 
   map.addLayer({
     id: "aoc-areas-fill",
@@ -192,6 +201,26 @@ function addFranceLayers() {
     filter: ["==", ["get", "feature_type"], "geographical_complement"],
     layout: { visibility: elements.aocToggle.checked ? "visible" : "none" },
     paint: { "fill-color": "#9a4960", "fill-opacity": 0.25, "fill-outline-color": "#723247" },
+  }, beforeId);
+  map.addLayer({
+    id: "subject-areas-fill",
+    type: "fill",
+    source: "aoc-areas",
+    minzoom: 4.7,
+    filter: ["==", ["get", "source_feature_id"], "__none__"],
+    paint: { "fill-color": "#d6a447", "fill-opacity": 0.3 },
+  }, beforeId);
+  map.addLayer({
+    id: "subject-areas-line",
+    type: "line",
+    source: "aoc-areas",
+    minzoom: 4.7,
+    filter: ["==", ["get", "source_feature_id"], "__none__"],
+    paint: {
+      "line-color": "#713148",
+      "line-width": ["interpolate", ["linear"], ["zoom"], 5, 1.8, 10, 3.4],
+      "line-opacity": 0.95,
+    },
   }, beforeId);
   map.addLayer({
     id: "aoc-selection-fill",
@@ -332,6 +361,37 @@ function addFranceLayers() {
     },
     paint: { "text-color": "#213b32", "text-halo-color": "#fffdf8", "text-halo-width": 1.7 },
   });
+  map.addLayer({
+    id: "subject-producer-halos",
+    type: "circle",
+    source: "subject-producer-points",
+    minzoom: config.semanticZoom.producerClustersMin,
+    filter: ["==", ["get", "carta_entity_id"], "__none__"],
+    paint: {
+      "circle-radius": ["interpolate", ["linear"], ["zoom"], 5.6, 8, 12, 15],
+      "circle-color": "#f2c95e",
+      "circle-opacity": 0.76,
+      "circle-stroke-color": "#5a2334",
+      "circle-stroke-width": 2.4,
+    },
+  }, beforeId);
+  map.addLayer({
+    id: "subject-producer-labels",
+    type: "symbol",
+    source: "subject-producer-points",
+    minzoom: 7.2,
+    filter: ["==", ["get", "carta_entity_id"], "__none__"],
+    layout: {
+      "text-field": ["get", "name"],
+      "text-font": ["Noto Sans Bold"],
+      "text-size": 11,
+      "text-offset": [0, 1.55],
+      "text-anchor": "top",
+      "text-max-width": 12,
+      "text-allow-overlap": false,
+    },
+    paint: { "text-color": "#44202b", "text-halo-color": "#fffdf8", "text-halo-width": 2 },
+  });
 }
 
 async function ensureFranceData() {
@@ -413,6 +473,22 @@ function applyViewport(viewport) {
   map.easeTo({ ...viewport, padding: panelPadding(), duration: transitionDuration(720), essential: true });
 }
 
+function animateMap(action, expectedDuration) {
+  return new Promise((resolve) => {
+    let settled = false;
+    const finish = () => {
+      if (settled) return;
+      settled = true;
+      map.off("moveend", finish);
+      window.clearTimeout(timer);
+      resolve();
+    };
+    map.once("moveend", finish);
+    const timer = window.setTimeout(finish, expectedDuration + 450);
+    action();
+  });
+}
+
 function mapSelectionFilter(ids) {
   return ids?.length
     ? ["match", ["get", "source_feature_id"], ids, true, false]
@@ -431,6 +507,70 @@ function applyMapSelection(selection) {
   }
 }
 
+function propertyMatchFilter(property, values) {
+  return values?.length
+    ? ["match", ["get", property], values, true, false]
+    : ["==", ["get", property], "__none__"];
+}
+
+function subjectMapReaction(subject) {
+  const configured = state.editorial?.subjects?.[subject?.entity_id]?.map_reaction || {};
+  const areaSubjectIds = [...(configured.area_subject_ids || [])];
+  const producerIds = [...(configured.producer_ids || [])];
+  if (subject?.kind === "appellation" && subject.map_target && !areaSubjectIds.includes(subject.entity_id)) {
+    areaSubjectIds.unshift(subject.entity_id);
+  }
+  if (subject?.kind === "producer" && subject.map_target && !producerIds.includes(subject.entity_id)) {
+    producerIds.unshift(subject.entity_id);
+  }
+  if (!areaSubjectIds.length) {
+    areaSubjectIds.push(...subject.connections
+      .filter((connection) => connection.target_kind === "appellation" && state.subjects[connection.target_id]?.map_target)
+      .slice(0, 4)
+      .map((connection) => connection.target_id));
+  }
+  if (!producerIds.length && ["grape", "wine", "person", "project"].includes(subject?.kind)) {
+    producerIds.push(...subject.connections
+      .filter((connection) => connection.target_kind === "producer" && state.subjects[connection.target_id]?.map_target)
+      .slice(0, 4)
+      .map((connection) => connection.target_id));
+  }
+  const areaFeatureIds = [...new Set(areaSubjectIds.flatMap((entityId) => (
+    state.subjects[entityId]?.map_target?.map_feature_ids || []
+  )).filter((featureId) => featureId.startsWith("inao-")))];
+  return { areaFeatureIds, producerIds: [...new Set(producerIds)] };
+}
+
+function applySubjectMapReaction(subject = null) {
+  if (!state.franceLoaded) return;
+  const reaction = subject ? subjectMapReaction(subject) : { areaFeatureIds: [], producerIds: [] };
+  const areaFilter = propertyMatchFilter("source_feature_id", reaction.areaFeatureIds);
+  const producerFilter = propertyMatchFilter("carta_entity_id", reaction.producerIds);
+  if (map.getLayer("subject-areas-fill")) map.setFilter("subject-areas-fill", areaFilter);
+  if (map.getLayer("subject-areas-line")) map.setFilter("subject-areas-line", areaFilter);
+  if (map.getLayer("subject-producer-halos")) map.setFilter("subject-producer-halos", producerFilter);
+  if (map.getLayer("subject-producer-labels")) map.setFilter("subject-producer-labels", producerFilter);
+  const active = reaction.areaFeatureIds.length || reaction.producerIds.length;
+  if (map.getLayer("aoc-areas-fill")) {
+    map.setPaintProperty("aoc-areas-fill", "fill-opacity", active
+      ? ["interpolate", ["linear"], ["zoom"], 5.15, 0.07, 8, 0.12, 11, 0.18]
+      : ["interpolate", ["linear"], ["zoom"], 5.15, 0.16, 8, 0.27, 11, 0.36]);
+  }
+  if (map.getLayer("producer-points")) {
+    map.setPaintProperty("producer-points", "circle-opacity", reaction.producerIds.length
+      ? ["case", producerFilter, 1, 0.22]
+      : 1);
+  }
+  if (map.getLayer("producer-labels")) {
+    map.setPaintProperty("producer-labels", "text-opacity", reaction.producerIds.length
+      ? ["case", producerFilter, 1, 0.18]
+      : 1);
+  }
+  if (map.getLayer("producer-clusters")) {
+    map.setPaintProperty("producer-clusters", "circle-opacity", reaction.producerIds.length ? 0.35 : 0.94);
+  }
+}
+
 function hideDiscovery() {
   elements.discoveryPanel.hidden = true;
   elements.guidesButton.setAttribute("aria-expanded", "false");
@@ -446,6 +586,9 @@ function closeDetails({ preserveSubject = false } = {}) {
   elements.detailPanel.setAttribute("aria-hidden", "true");
   elements.detailPanel.classList.remove("is-open");
   if (!preserveSubject) state.activeSubjectId = null;
+  applySubjectMapReaction(null);
+  elements.backButton.hidden = true;
+  renderTrail();
   if (map.loaded()) map.easeTo({ padding: { top: 0, right: 0, bottom: 0, left: 0 }, duration: transitionDuration(220) });
 }
 
@@ -460,23 +603,26 @@ function returnToWorld({ updateHistory = true } = {}) {
   hideDiscovery();
   closeRabbit();
   applyMapSelection(null);
+  applySubjectMapReaction(null);
   map.flyTo({ ...WORLD_VIEW, duration: transitionDuration(1000), essential: true });
   setStatus("World ready · select France to begin");
   if (updateHistory) history.pushState({ subjectId: null }, "", `${location.pathname}${location.search}`);
 }
 
 async function loadExperience() {
-  if (state.subjects && state.entryPoints && state.producerFeatures && state.atlasGuides) return;
-  const [subjectResponse, entryResponse, producerResponse, guideResponse] = await Promise.all([
+  if (state.subjects && state.editorial && state.entryPoints && state.producerFeatures && state.atlasGuides) return;
+  const [subjectResponse, editorialResponse, entryResponse, producerResponse, guideResponse] = await Promise.all([
     fetch(config.data.atlasSubjects),
+    fetch(config.data.atlasEditorial),
     fetch(config.data.entryPoints),
     fetch(config.data.producerPoints),
     fetch(config.data.atlasGuides),
   ]);
-  for (const response of [subjectResponse, entryResponse, producerResponse, guideResponse]) {
+  for (const response of [subjectResponse, editorialResponse, entryResponse, producerResponse, guideResponse]) {
     if (!response.ok) throw new Error(`Atlas learning data request failed (${response.status})`);
   }
   state.subjects = (await subjectResponse.json()).subjects;
+  state.editorial = await editorialResponse.json();
   state.entryPoints = await entryResponse.json();
   state.producerFeatures = (await producerResponse.json()).features;
   state.atlasGuides = (await guideResponse.json()).guides;
@@ -529,22 +675,73 @@ function claimLabel(claim) {
   return labels[claim.claim_type] || "Worth knowing";
 }
 
+let termInstance = 0;
+
+function richText(value) {
+  const copy = String(value || "");
+  const token = /\{\{term:([a-z0-9-]+)\|([^{}]+)\}\}/g;
+  let result = "";
+  let cursor = 0;
+  for (const match of copy.matchAll(token)) {
+    result += escapeHtml(copy.slice(cursor, match.index));
+    const termId = match[1];
+    const label = match[2];
+    const term = state.editorial?.glossary?.[termId];
+    if (!term) {
+      result += escapeHtml(label);
+    } else {
+      termInstance += 1;
+      const popoverId = `term-${termId}-${termInstance}`;
+      result += `<span class="inline-term">
+        <button class="inline-term__trigger" type="button" aria-expanded="false" aria-controls="${popoverId}" data-term-id="${escapeHtml(termId)}">${escapeHtml(label)}<sup aria-hidden="true">?</sup></button>
+        <span class="inline-term__popover" id="${popoverId}" role="note">
+          <strong>${escapeHtml(term.term)}</strong>
+          <span>${escapeHtml(term.definition)}</span>
+          <small>${escapeHtml(term.matters)}</small>
+          ${term.explore_target_id ? `<button type="button" data-explore-subject="${escapeHtml(term.explore_target_id)}">Explore this idea →</button>` : ""}
+        </span>
+      </span>`;
+    }
+    cursor = match.index + match[0].length;
+  }
+  result += escapeHtml(copy.slice(cursor));
+  return result;
+}
+
+function signalMeta(signalId) {
+  return state.editorial?.legend?.find((item) => item.id === signalId) || null;
+}
+
+function signalMarkup(signalId, { compact = false } = {}) {
+  const signal = signalMeta(signalId);
+  if (!signal) return "";
+  return `<span class="signal signal--${escapeHtml(signalId)} ${compact ? "signal--compact" : ""}"><b aria-hidden="true">${escapeHtml(signal.symbol)}</b>${escapeHtml(signal.label)}</span>`;
+}
+
+function legendMarkup() {
+  return `<details class="signal-legend"><summary>How to read the signals</summary><div>${state.editorial.legend.map((signal) => `
+    <p>${signalMarkup(signal.id, { compact: true })}<span>${escapeHtml(signal.meaning)}</span></p>`).join("")}</div></details>`;
+}
+
 function connectionNote(connection) {
   const labels = {
-    GENETICALLY_CLOSE_TO: "Genetically close — not a parentage claim",
-    TRADITIONAL_IN: "A place where this matters",
-    USED_BY: connection.direction === "outbound" ? "A producer working with it" : "A grape in the picture",
-    MADE_FROM: connection.direction === "outbound" ? "Made with" : "A wine made from this",
-    MADE_BY: connection.direction === "outbound" ? "Made by" : "A wine from this producer",
-    USES_PRACTICE: connection.direction === "outbound" ? "A cellar choice" : "A wine that makes it concrete",
-    CLASSIFIED_AS: "Wine-area connection",
-    LOCATED_IN: "Based here",
-    CELLAR_IN: "Production base",
-    WITHIN: "Part of this place",
-    PROFILE_COMPONENT: "Wine area to explore",
-    EXPLORE: "A useful next turn",
+    GENETICALLY_CLOSE_TO: "A surprising family resemblance—not a parentage claim.",
+    TRADITIONAL_IN: "One of the places where this subject has a real cultural life.",
+    USED_BY: connection.direction === "outbound" ? "See who turns this grape into a working cellar language." : "One of the grapes in this producer's vocabulary.",
+    MADE_FROM: connection.direction === "outbound" ? "Follow the bottle back to its grape material." : "A specific wine that lets this grape stop being abstract.",
+    MADE_BY: connection.direction === "outbound" ? "Meet the maker behind this expression." : "A bottle that makes the producer's decisions visible.",
+    USES_PRACTICE: connection.direction === "outbound" ? "The cellar choice that changes how this wine speaks." : "A concrete bottle in which this practice matters.",
+    CLASSIFIED_AS: "Read the legal identity attached to this wine.",
+    LOCATED_IN: "Open the place that gives this subject geographic context.",
+    CELLAR_IN: "Find the production base without confusing it for vineyard holdings.",
+    WITHIN: "See the larger place this subject belongs to.",
+    WITHIN_APPELLATION: "Read the regulatory territory around this place.",
+    MENTORED_BY: connection.direction === "outbound" ? "Part of the lineage: follow who taught whom." : "See how this knowledge moved to the next person.",
+    WORKED_WITH: "A human collaboration that shaped the work.",
+    PROFILE_COMPONENT: "A governed chapter inside this subject's wider guide.",
+    EXPLORE: "A representative route selected by CARTA's guide graph.",
   };
-  return labels[connection.predicate] || "Connected in CARTA";
+  return labels[connection.predicate] || "A supported relationship in CARTA's knowledge graph.";
 }
 
 function exploreVerb(kind) {
@@ -556,32 +753,66 @@ function mapVerb(connection) {
   return `Go to ${connection.target_name.replace(/ AOP$/, "")}`;
 }
 
-function connectionMarkup(subject) {
+function configuredFeaturedConnections(subject) {
+  const configured = state.editorial?.subjects?.[subject.entity_id]?.featured_connections || [];
+  const featured = configured.map((item) => ({
+    ...item,
+    target: state.subjects[item.target_id],
+  })).filter((item) => item.target);
+  const used = new Set(featured.map((item) => item.target_id));
+  const fallbackPriority = { GENETICALLY_CLOSE_TO: 0, MENTORED_BY: 1, USES_PRACTICE: 2, MADE_BY: 3, MADE_FROM: 4 };
+  const fallbacks = [...subject.connections]
+    .filter((connection) => !used.has(connection.target_id))
+    .sort((a, b) => (fallbackPriority[a.predicate] ?? 8) - (fallbackPriority[b.predicate] ?? 8) || a.target_name.localeCompare(b.target_name))
+    .slice(0, Math.max(0, 3 - featured.length))
+    .map((connection) => ({
+      target_id: connection.target_id,
+      target: state.subjects[connection.target_id],
+      reason: connectionNote(connection),
+      signal: connection.predicate === "GENETICALLY_CLOSE_TO" ? "rabbit-hole" : "rabbit-hole",
+      action: exploreVerb(connection.target_kind),
+    }));
+  return [...featured, ...fallbacks].slice(0, 3);
+}
+
+function connectionGroup(kind) {
+  return {
+    place: "Places",
+    appellation: "Wine areas",
+    grape: "Grapes",
+    person: "People",
+    producer: "Producers",
+    project: "Projects",
+    wine: "Wines",
+    practice: "Practices",
+  }[kind] || "Unexpected connections";
+}
+
+function connectionsMarkup(subject) {
   if (!subject.connections.length) return "";
-  const priority = { grape: 0, producer: 1, appellation: 2, place: 3, wine: 4, practice: 5 };
-  const connections = [...subject.connections]
-    .sort((a, b) => {
-      if (a.predicate === "GENETICALLY_CLOSE_TO" && b.predicate !== "GENETICALLY_CLOSE_TO") return -1;
-      if (b.predicate === "GENETICALLY_CLOSE_TO" && a.predicate !== "GENETICALLY_CLOSE_TO") return 1;
-      return (priority[a.target_kind] ?? 9) - (priority[b.target_kind] ?? 9) || a.target_name.localeCompare(b.target_name);
-    })
-    .slice(0, 18);
+  const featured = configuredFeaturedConnections(subject);
+  const featuredIds = new Set(featured.map((item) => item.target_id));
+  const more = subject.connections.filter((connection) => !featuredIds.has(connection.target_id));
+  const grouped = more.reduce((result, connection) => {
+    const key = connectionGroup(connection.target_kind);
+    (result[key] ||= []).push(connection);
+    return result;
+  }, {});
   return `
-    <section class="detail-section connection-section">
-      <h3>Where next?</h3>
-      <div class="connection-list">${connections.map((connection) => `
-        <article class="connection-card ${connection.predicate === "GENETICALLY_CLOSE_TO" ? "connection-card--surprise" : ""}">
-          ${connection.predicate === "GENETICALLY_CLOSE_TO" ? '<p class="connection-surprise">Unexpected turn</p>' : ""}
-          <button class="connection-subject" type="button" data-explore-subject="${escapeHtml(connection.target_id)}">
-            <span>${escapeHtml(connection.target_name)}</span>
-            <small>${escapeHtml(connectionNote(connection))}</small>
-          </button>
-          <div class="connection-actions">
-            <button type="button" data-explore-subject="${escapeHtml(connection.target_id)}">${exploreVerb(connection.target_kind)}</button>
-            ${connection.has_map_target ? `<button class="connection-go" type="button" data-go-to-subject="${escapeHtml(connection.target_id)}">${escapeHtml(mapVerb(connection))}</button>` : ""}
-          </div>
-        </article>`).join("")}</div>
-    </section>`;
+    ${featured.length ? `<section class="detail-section wandering-section">
+      <p class="section-kicker">Editorial picks · graph-informed</p>
+      <h3>Keep wandering</h3>
+      <div class="wandering-list">${featured.map((item, index) => `
+        <button type="button" data-explore-subject="${escapeHtml(item.target_id)}">
+          <span class="wandering-index">0${index + 1}</span>
+          <span class="wandering-copy">${signalMarkup(item.signal, { compact: true })}<strong>${escapeHtml(item.target.display_name)}</strong><small>${richText(item.reason)}</small></span>
+          <span class="wandering-arrow" aria-hidden="true">↗</span>
+        </button>`).join("")}</div>
+    </section>` : ""}
+    ${more.length ? `<details class="more-connections detail-disclosure"><summary>More connections <span>${more.length}</span></summary>
+      <div class="connection-groups">${Object.entries(grouped).map(([label, connections]) => `<section><h4>${escapeHtml(label)}</h4><div>${connections.sort((a, b) => a.target_name.localeCompare(b.target_name)).map((connection) => `
+        <button type="button" data-explore-subject="${escapeHtml(connection.target_id)}"><span>${escapeHtml(connection.target_name)}</span><small>${escapeHtml(connectionNote(connection))}</small><b aria-hidden="true">→</b></button>`).join("")}</div></section>`).join("")}</div>
+    </details>` : ""}`;
 }
 
 function sourcesMarkup(sources) {
@@ -619,53 +850,184 @@ function returnToSavagninMarkup() {
   return `<button class="return-context" type="button" data-restore-trail="${index}">← Back to Savagnin in Jura</button>`;
 }
 
-function fallbackSubjectLede(subject) {
-  const copy = {
-    practice: "A cellar choice best understood through the wines and producers that make it concrete.",
-    wine: "A bottle-level way into its producer, grapes, place, and cellar choices.",
-    place: "A local place best understood through the producers and wine areas connected to it.",
-    person: "A person whose connections help explain part of this wine world.",
-  };
-  return copy[subject.kind] || "A useful way into the places, people, bottles, and relationships around it.";
+function subjectEditorial(subject) {
+  return state.editorial?.subjects?.[subject.entity_id] || {};
 }
 
-function subjectCardMarkup(subject, guide = null, overlaps = []) {
-  const lead = subject.claims.find((claim) => claim.claim_id === subject.lead_claim_id) || subject.claims[0];
-  const quantitativeClaimIds = new Set((guide?.quantities || []).map((item) => item.claim_id));
-  const claims = subject.claims
-    .filter((claim) => claim !== lead && !quantitativeClaimIds.has(claim.claim_id))
-    .slice(0, 5);
-  const placement = producerPlacement(subject);
-  const special = subject.entity_id === "grape:savagnin"
-    ? '<p class="rabbit-whisper">One grape. Several cellar paths. A very good place to get lost.</p>'
-    : "";
-  const currentMapAction = subject.map_target
-    ? `<button class="secondary-action" type="button" data-go-to-current>${subject.kind === "producer" ? "Show this domaine on the map" : `Go to ${escapeHtml(subject.display_name.replace(/ AOP$/, ""))}`}</button>`
-    : "";
-  const claimSections = claims.map((claim) => `
-    <section class="detail-section claim-section ${claim.status === "contested" ? "claim-section--note" : ""}">
+function subjectLead(subject) {
+  return subject.claims.find((claim) => claim.claim_id === subject.lead_claim_id) || subject.claims[0] || null;
+}
+
+function mapActionMarkup(subject) {
+  if (!subject.map_target) return "";
+  if (state.geographicSubjectId === subject.entity_id) {
+    return `<p class="current-location"><span aria-hidden="true">◎</span> You are exploring ${escapeHtml(subject.display_name.replace(/ AOP$/, ""))} on the map</p>`;
+  }
+  const label = subject.kind === "producer"
+    ? "Show this producer base on the map"
+    : `Go to ${subject.display_name.replace(/ AOP$/, "")}`;
+  return `<button class="secondary-action map-action" type="button" data-go-to-current>${escapeHtml(label)} <span aria-hidden="true">↗</span></button>`;
+}
+
+function claimsMarkup(subject, claims, { heading = null, className = "" } = {}) {
+  if (!claims.length) return "";
+  return `${heading ? `<p class="section-kicker">${escapeHtml(heading)}</p>` : ""}${claims.map((claim) => `
+    <section class="detail-section claim-section ${className} ${claim.status === "contested" ? "claim-section--note" : ""}">
       <h3>${escapeHtml(claim.status === "contested" ? "A source note" : claimLabel(claim))}</h3>
       ${claim.subject_ref !== subject.entity_id ? `<p class="claim-subject">About ${escapeHtml(claim.subject_name)}</p>` : ""}
       <p>${escapeHtml(claim.statement)}</p>
-    </section>`).join("");
+    </section>`).join("")}`;
+}
+
+function routeButtons(subject, kinds, limit = 8) {
+  const routes = subject.connections.filter((connection) => kinds.includes(connection.target_kind)).slice(0, limit);
+  if (!routes.length) return "";
+  return `<div class="route-ledger">${routes.map((connection) => `<button type="button" data-explore-subject="${escapeHtml(connection.target_id)}"><span>${escapeHtml(connection.target_name)}</span><small>${escapeHtml(connectionNote(connection))}</small><b aria-hidden="true">→</b></button>`).join("")}</div>`;
+}
+
+function lensesMarkup(editorial) {
+  const lenses = editorial.lenses || [];
+  if (!lenses.length) return "";
+  return `<section class="culture-panel detail-section"><p class="section-kicker">Culture, not a legal tier</p><h3>What insiders notice</h3><div>${lenses.map((lens) => `
+    <article>${lens.signal ? signalMarkup(lens.signal) : ""}<h4>${escapeHtml(lens.title)}</h4><p>${richText(lens.text)}</p></article>`).join("")}</div></section>`;
+}
+
+function accentMarkup(editorial) {
+  const accent = editorial.accent;
+  if (!accent) return "";
+  return `<section class="accent-section" id="chapter-accent" data-chapter="accent">
+    <p class="section-kicker">Jura's accent</p>
+    <h3>${escapeHtml(accent.title)}</h3>
+    <p>${richText(accent.intro)}</p>
+    <div class="tell-list">${accent.tells.map((tell, index) => `<details class="tell-card" ${index === 0 ? "open" : ""}>
+      <summary>${signalMarkup("tell", { compact: true })}<span><b>${escapeHtml(tell.title)}</b><small>${richText(tell.clue)}</small></span><i aria-hidden="true">+</i></summary>
+      <div><p><strong>Why the clue works</strong>${richText(tell.why)}</p><p><strong>Where it misleads</strong>${richText(tell.correction)}</p><button type="button" data-explore-subject="${escapeHtml(tell.target_id)}">Follow the clue →</button></div>
+    </details>`).join("")}</div>
+  </section>`;
+}
+
+function stylePathsMarkup(editorial) {
+  if (!editorial.style_paths?.length) return "";
+  return `<section class="style-paths detail-section"><p class="section-kicker">One grape · several cellar paths</p><h3>The fork is the point</h3><div>${editorial.style_paths.map((path, index) => `
+    <article><span>0${index + 1}</span><div><strong>${richText(path.name)}</strong><small>${richText(path.note)}</small></div><button type="button" aria-label="Explore ${escapeHtml(state.subjects[path.target_id].display_name)}" data-explore-subject="${escapeHtml(path.target_id)}">↗</button></article>`).join("")}</div></section>`;
+}
+
+function affinitiesMarkup(editorial) {
+  if (!editorial.affinities?.length) return "";
+  return `<section class="affinity-section detail-section"><p class="section-kicker">People Also Like · editorial graph</p><h3>Kinship, mechanism, and Same Energy</h3><p class="affinity-intro">These are teachable bridges, not an algorithmic popularity list.</p><div>${editorial.affinities.map((item) => {
+    const target = state.subjects[item.target_id];
+    return `<article>${signalMarkup(item.signal, { compact: true })}<strong>${escapeHtml(target.display_name)}</strong><small>${richText(item.reason)}</small><button type="button" aria-label="Explore ${escapeHtml(target.display_name)}" data-explore-subject="${escapeHtml(item.target_id)}">→</button></article>`;
+  }).join("")}</div></section>`;
+}
+
+function surpriseCandidates(subject, editorial) {
+  if (editorial.surprises?.length) return editorial.surprises;
+  const ranked = [...subject.connections].sort((a, b) => {
+    const priority = { GENETICALLY_CLOSE_TO: 0, MENTORED_BY: 1, USES_PRACTICE: 2, MADE_FROM: 3, TRADITIONAL_IN: 4 };
+    return (priority[a.predicate] ?? 8) - (priority[b.predicate] ?? 8) || a.target_name.localeCompare(b.target_name);
+  });
+  return ranked.slice(0, 3).map((connection) => ({
+    target_id: connection.target_id,
+    reveal: connectionNote(connection),
+  }));
+}
+
+function surpriseMarkup(subject, editorial) {
+  const candidates = surpriseCandidates(subject, editorial);
+  if (!candidates.length) return "";
+  return `<section class="surprise-engine detail-section" data-surprise-engine>
+    <p class="section-kicker">A context-aware detour</p><h3>Surprise me</h3>
+    <p>One considered turn from this subject—never a random bottle roulette.</p>
+    <button type="button" data-surprise-subject="${escapeHtml(subject.entity_id)}">Reveal a good detour <span aria-hidden="true">✦</span></button>
+    <div class="surprise-reveal" aria-live="polite" hidden data-surprise-reveal></div>
+  </section>`;
+}
+
+function juraPlaceMarkup(subject, guide, overlaps, editorial, lead, claims) {
+  const landClaims = claims.filter((claim) => ["geography", "climate", "geology"].includes(claim.claim_type)).slice(0, 3);
+  const wineClaims = claims.filter((claim) => ["cellar", "viticulture", "other"].includes(claim.claim_type)).slice(0, 4);
+  const ruleClaims = claims.filter((claim) => ["legal", "classification"].includes(claim.claim_type)).slice(0, 4);
   return `
+    <nav class="chapter-nav" aria-label="Jura guide chapters">
+      <button type="button" data-chapter-target="accent">Accent</button><button type="button" data-chapter-target="land">Land</button><button type="button" data-chapter-target="grapes">Grapes</button><button type="button" data-chapter-target="rules">Rules</button><button type="button" data-chapter-target="people">People</button>
+    </nav>
+    ${accentMarkup(editorial)}
+    <details class="region-chapter" id="chapter-land" data-chapter="land" open><summary><span>01</span><strong>Land &amp; scale</strong><i aria-hidden="true">+</i></summary><div>${claimsMarkup(subject, landClaims.length ? landClaims : [lead].filter(Boolean))}</div></details>
+    <details class="region-chapter" id="chapter-grapes" data-chapter="grapes" open><summary><span>02</span><strong>The grape chorus</strong><i aria-hidden="true">+</i></summary><div><p>Five principal grapes share a compact region, but none supplies a complete regional flavor code.</p>${routeButtons(subject, ["grape"], 6)}</div></details>
+    <details class="region-chapter regulation-panel" id="chapter-rules" data-chapter="rules" open><summary><span>03</span><strong>Territory &amp; regulation</strong><i aria-hidden="true">+</i></summary><div><p class="regulation-note">A sober layer: these names govern origin, category, and method. They do not rank cultural importance.</p>${guideFactsMarkup(guide)}${claimsMarkup(subject, ruleClaims)}${routeButtons(subject, ["appellation"], 8)}${overlapMarkup(overlaps)}</div></details>
+    <details class="region-chapter" id="chapter-people" data-chapter="people" open><summary><span>04</span><strong>People, cellars &amp; bottles</strong><i aria-hidden="true">+</i></summary><div>${claimsMarkup(subject, wineClaims)}${routeButtons(subject, ["producer", "person", "wine"], 10)}</div></details>
+    ${lensesMarkup(editorial)}`;
+}
+
+function grapeMarkup(subject, editorial, claims) {
+  const lead = subjectLead(subject);
+  const culturalMachines = subject.entity_id === "grape:chardonnay" ? `<section class="cultural-machines detail-section">
+    <p class="section-kicker">One organism · two regional scripts</p><h3>Same grape. Different cultural machine.</h3>
+    <div><article><span>Jura</span><strong>Cellar choice stays audible</strong><p>Topped, under-veil, blended and sparkling paths coexist; the grape name does not settle the register.</p></article>
+    <article><span>Burgundy</span><strong>Place hierarchy leads</strong><p>A much larger culture of nested origin makes classification and named place the primary reading frame.</p></article></div>
+    ${lead ? `<p class="cultural-machines__evidence">${escapeHtml(lead.statement)}</p>` : ""}
+  </section>` : "";
+  return `${culturalMachines}${stylePathsMarkup(editorial)}${affinitiesMarkup(editorial)}${lensesMarkup(editorial)}${claimsMarkup(subject, claims.slice(0, 6), { heading: "What the sources let us say" })}`;
+}
+
+function appellationMarkup(subject, guide, overlaps, claims) {
+  const rules = claims.filter((claim) => ["legal", "classification"].includes(claim.claim_type));
+  const context = claims.filter((claim) => !["legal", "classification"].includes(claim.claim_type));
+  return `<section class="territory-section detail-section"><p class="section-kicker">Territory first</p><h3>Read the outline</h3>${guideFactsMarkup(guide)}${overlapMarkup(overlaps)}</section>
+    <section class="regulation-panel detail-section"><p class="section-kicker">Rules second</p><h3>What the name governs</h3>${claimsMarkup(subject, rules.length ? rules : claims.slice(0, 3))}</section>
+    ${claimsMarkup(subject, context.slice(0, 3), { heading: "Life inside the outline", className: "culture-claim" })}`;
+}
+
+function humanMarkup(subject, editorial, claims) {
+  return `<section class="human-ledger detail-section"><p class="section-kicker">A human subject</p><h3>Work, place, transmission</h3>${claimsMarkup(subject, claims.slice(0, 6))}${routeButtons(subject, ["person", "producer", "project", "place"], 8)}</section>${lensesMarkup(editorial)}`;
+}
+
+function wineMarkup(subject, claims) {
+  return `<section class="wine-expression detail-section"><p class="section-kicker">A specific expression</p><h3>Read the bottle outward</h3>${routeButtons(subject, ["grape", "producer", "project", "practice", "appellation"], 8)}${claimsMarkup(subject, claims.slice(0, 5))}</section>`;
+}
+
+function practiceMarkup(subject, editorial, claims) {
+  return `<section class="word-study detail-section"><p class="section-kicker">Helpful vernacular</p><h3>A word that prevents a shortcut</h3><p>${richText(editorial.thesis || subjectLead(subject)?.statement || "")}</p>${routeButtons(subject, ["wine", "producer", "grape"], 7)}${claimsMarkup(subject, claims.slice(0, 3))}</section>`;
+}
+
+function subjectCardMarkup(subject, guide = null, overlaps = []) {
+  const editorial = subjectEditorial(subject);
+  const lead = subjectLead(subject);
+  const quantitativeClaimIds = new Set((guide?.quantities || []).map((item) => item.claim_id));
+  const claims = subject.claims.filter((claim) => claim !== lead && !quantitativeClaimIds.has(claim.claim_id));
+  const placement = producerPlacement(subject);
+  const thesis = editorial.thesis || lead?.statement || "Follow the supported relationships that make this subject legible.";
+  const monogram = subject.display_name.split(/\s+/).filter((word) => word.length > 2).slice(0, 2).map((word) => word[0]).join("");
+  let body = "";
+  if (subject.entity_id === "place:jura") body = juraPlaceMarkup(subject, guide, overlaps, editorial, lead, claims);
+  else if (subject.kind === "place") body = `${guideFactsMarkup(guide)}${claimsMarkup(subject, claims.slice(0, 6))}${routeButtons(subject, ["appellation", "grape", "producer"], 10)}`;
+  else if (subject.kind === "appellation") body = appellationMarkup(subject, guide, overlaps, claims);
+  else if (subject.kind === "grape") body = grapeMarkup(subject, editorial, claims);
+  else if (["producer", "person", "project"].includes(subject.kind)) body = humanMarkup(subject, editorial, claims);
+  else if (subject.kind === "wine") body = wineMarkup(subject, claims);
+  else if (subject.kind === "practice") body = practiceMarkup(subject, editorial, claims);
+  else body = claimsMarkup(subject, claims.slice(0, 6));
+  return `<article class="subject-card subject-card--${escapeHtml(subject.kind)} ${subject.entity_id === "place:jura" ? "subject-card--jura" : ""}">
     ${returnToSavagninMarkup()}
-    <p class="detail-eyebrow">${escapeHtml(subject.kind_label)}</p>
-    <h2>${escapeHtml(subject.display_name)}</h2>
-    ${placement ? `<p class="subject-place">${escapeHtml(placement)}</p>` : ""}
-    ${special}
-    ${lead ? `<p class="guide-lede">${escapeHtml(lead.statement)}</p>` : `<p class="guide-lede">${escapeHtml(fallbackSubjectLede(subject))}</p>`}
-    ${currentMapAction ? `<div class="subject-actions">${currentMapAction}</div>` : ""}
-    ${guideFactsMarkup(guide)}
-    ${claimSections}
-    ${overlapMarkup(overlaps)}
-    ${connectionMarkup(subject)}
+    <header class="subject-hero">
+      ${["producer", "person", "project"].includes(subject.kind) ? `<span class="subject-monogram" aria-hidden="true">${escapeHtml(monogram)}</span>` : ""}
+      <p class="detail-eyebrow">${escapeHtml(editorial.hero_kicker || subject.kind_label)}</p>
+      <h2>${escapeHtml(subject.display_name)}</h2>
+      ${placement ? `<p class="subject-place">${escapeHtml(placement)}</p>` : ""}
+      <p class="guide-lede">${richText(thesis)}</p>
+      ${mapActionMarkup(subject)}
+      ${legendMarkup()}
+    </header>
+    ${body}
+    ${surpriseMarkup(subject, editorial)}
+    ${connectionsMarkup(subject)}
     ${sourcesMarkup(subject.sources)}
     <details class="detail-disclosure technical-disclosure"><summary>Technical details</summary><dl>
       <div><dt>CARTA identity</dt><dd><code>${escapeHtml(subject.entity_id)}</code></dd></div>
       <div><dt>Route</dt><dd><code>${escapeHtml(subject.route)}</code></dd></div>
       ${subject.location ? `<div><dt>Map precision</dt><dd>${escapeHtml(subject.location.precision)}</dd></div>` : ""}
-    </dl></details>`;
+    </dl></details>
+  </article>`;
 }
 
 function mapCoverageMarkup(record, overlaps = []) {
@@ -688,11 +1050,19 @@ function mapCoverageMarkup(record, overlaps = []) {
     </dl></details>`;
 }
 
+function renderPanelMarkup(markup) {
+  elements.detailContent.innerHTML = markup;
+  elements.detailContent.scrollTop = 0;
+  const mobile = window.matchMedia("(max-width: 720px)").matches;
+  elements.detailContent.querySelectorAll(".region-chapter").forEach((chapter) => {
+    chapter.open = !mobile;
+  });
+}
+
 function openPanel(markup) {
   elements.detailPanel.setAttribute("aria-hidden", "false");
   elements.detailPanel.classList.add("is-open");
-  elements.detailContent.innerHTML = markup;
-  elements.detailContent.scrollTop = 0;
+  renderPanelMarkup(markup);
   map.easeTo({ padding: panelPadding(), duration: transitionDuration(300) });
 }
 
@@ -729,9 +1099,10 @@ function renderTrail() {
     : '<li class="rabbit-empty">Your trail will appear as soon as something catches your eye.</li>';
 }
 
-function historyStateFor(subject) {
+function historyStateFor(subject, fromSubjectId = history.state?.fromSubjectId || null) {
   return {
     subjectId: subject.entity_id,
+    fromSubjectId,
     viewport: captureViewport(),
     selection: state.activeMapSelection,
     geographicSubjectId: state.geographicSubjectId,
@@ -739,10 +1110,17 @@ function historyStateFor(subject) {
   };
 }
 
-function setHistory(subject, mode) {
+function setHistory(subject, mode, fromSubjectId = null) {
   if (mode === "none") return;
   const method = mode === "replace" ? "replaceState" : "pushState";
-  history[method](historyStateFor(subject), "", `${location.pathname}${location.search}${subject.route}`);
+  const origin = mode === "replace" ? history.state?.fromSubjectId || fromSubjectId : fromSubjectId;
+  history[method](historyStateFor(subject, origin), "", `${location.pathname}${location.search}${subject.route}`);
+}
+
+function updateBackButton(currentState = history.state) {
+  const previous = state.subjects?.[currentState?.fromSubjectId];
+  elements.backButton.hidden = !previous;
+  elements.backLabel.textContent = previous ? `Back to ${previous.display_name}` : "Back";
 }
 
 async function moveToMapTarget(subject, { selection = null } = {}) {
@@ -753,21 +1131,23 @@ async function moveToMapTarget(subject, { selection = null } = {}) {
   if (target.kind === "bounds") {
     const areaFeatureIds = target.map_feature_ids.filter((id) => id.startsWith("inao-"));
     applyMapSelection(selection || { areaFeatureIds, producerEntityId: null });
-    map.fitBounds(target.bounds, {
+    const duration = transitionDuration(900);
+    await animateMap(() => map.fitBounds(target.bounds, {
       padding: panelPadding(),
       maxZoom: target.max_zoom,
-      duration: transitionDuration(900),
+      duration,
       essential: true,
-    });
+    }), duration);
   } else if (target.kind === "point") {
     applyMapSelection(selection || { areaFeatureIds: [], producerEntityId: subject.entity_id });
-    map.flyTo({
+    const duration = transitionDuration(900);
+    await animateMap(() => map.flyTo({
       center: target.center,
       zoom: target.zoom,
       padding: panelPadding(),
-      duration: transitionDuration(900),
+      duration,
       essential: true,
-    });
+    }), duration);
   }
   if (subject.entity_id === "appellation:jurancon") {
     showToast("You've wandered from Jura to the western Pyrenees.");
@@ -786,6 +1166,11 @@ async function navigateSubject(entityId, {
     await loadExperience();
     const subject = state.subjects[entityId];
     if (!subject) throw new Error(`No native subject for ${entityId}`);
+    const previousSubjectId = state.activeSubjectId && state.activeSubjectId !== entityId
+      ? state.activeSubjectId
+      : history.state?.subjectId && history.state.subjectId !== entityId
+        ? history.state.subjectId
+        : history.state?.fromSubjectId || null;
     await enterFrance({ fit: false, reveal: false });
     hideDiscovery();
     closeRabbit();
@@ -813,9 +1198,11 @@ async function navigateSubject(entityId, {
     } else if (moveMap) {
       moved = await moveToMapTarget(subject);
     }
+    applySubjectMapReaction(subject);
     if (addTrail) recordTrail(subject, { moved });
     else renderTrail();
-    setHistory(subject, historyMode);
+    setHistory(subject, historyMode, previousSubjectId);
+    updateBackButton(historyMode === "none" ? restore || history.state : history.state);
     updateContextLabel();
   } catch (error) {
     console.error(error);
@@ -1147,6 +1534,7 @@ map.on("error", (event) => {
 document.querySelector("[data-explore-france]").addEventListener("click", () => enterFrance());
 document.querySelector("[data-world]").addEventListener("click", () => returnToWorld());
 document.querySelector("[data-close-detail]").addEventListener("click", () => closeDetails());
+elements.backButton.addEventListener("click", () => history.back());
 
 elements.guidesButton.addEventListener("click", async () => {
   if (elements.discoveryPanel.hidden) {
@@ -1181,7 +1569,7 @@ document.querySelector("[data-close-layers]").addEventListener("click", () => {
 
 elements.aocToggle.addEventListener("change", async () => {
   await enterFrance({ fit: state.context !== "france", reveal: false });
-  setLayerVisibility(["aoc-areas-fill", "aoc-areas-line", "aoc-complements-fill", "aoc-labels"], elements.aocToggle.checked);
+  setLayerVisibility(["aoc-areas-fill", "aoc-areas-line", "aoc-complements-fill", "aoc-labels", "subject-areas-fill", "subject-areas-line"], elements.aocToggle.checked);
 });
 elements.igpToggle.addEventListener("change", async () => {
   if (elements.igpToggle.checked) await ensureIgpData();
@@ -1193,7 +1581,7 @@ elements.regionsToggle.addEventListener("change", async () => {
 });
 elements.producersToggle.addEventListener("change", async () => {
   await enterFrance({ fit: state.context !== "france", reveal: false });
-  setLayerVisibility([...PRODUCER_LAYERS, "producer-selection"], elements.producersToggle.checked);
+  setLayerVisibility([...PRODUCER_LAYERS, "producer-selection", "subject-producer-halos", "subject-producer-labels"], elements.producersToggle.checked);
 });
 
 elements.inspectButton.addEventListener("click", async () => {
@@ -1228,6 +1616,40 @@ elements.discoveryContent.addEventListener("click", (event) => {
 });
 
 elements.detailContent.addEventListener("click", async (event) => {
+  const termTrigger = event.target.closest("[data-term-id]");
+  if (termTrigger) {
+    const wrapper = termTrigger.closest(".inline-term");
+    const opening = !wrapper.classList.contains("is-open");
+    elements.detailContent.querySelectorAll(".inline-term.is-open").forEach((item) => item.classList.remove("is-open"));
+    elements.detailContent.querySelectorAll("[data-term-id][aria-expanded='true']").forEach((item) => item.setAttribute("aria-expanded", "false"));
+    wrapper.classList.toggle("is-open", opening);
+    termTrigger.setAttribute("aria-expanded", String(opening));
+    return;
+  }
+  const chapter = event.target.closest("[data-chapter-target]");
+  if (chapter) {
+    const target = elements.detailContent.querySelector(`[data-chapter="${CSS.escape(chapter.dataset.chapterTarget)}"]`);
+    if (target) {
+      if (target.tagName === "DETAILS") target.open = true;
+      target.scrollIntoView({ behavior: prefersReducedMotion() ? "auto" : "smooth", block: "start" });
+    }
+    return;
+  }
+  const surprise = event.target.closest("[data-surprise-subject]");
+  if (surprise) {
+    const subject = state.subjects[surprise.dataset.surpriseSubject];
+    const editorial = subjectEditorial(subject);
+    const candidates = surpriseCandidates(subject, editorial);
+    const turn = state.surpriseTurns[subject.entity_id] || 0;
+    state.surpriseTurns[subject.entity_id] = turn + 1;
+    const candidate = candidates[turn % candidates.length];
+    const target = state.subjects[candidate.target_id];
+    const signal = editorial.affinities?.find((item) => item.target_id === candidate.target_id)?.signal || "rabbit-hole";
+    const reveal = surprise.closest("[data-surprise-engine]").querySelector("[data-surprise-reveal]");
+    reveal.innerHTML = `${signalMarkup(signal)}<strong>${escapeHtml(target.display_name)}</strong><p>${richText(candidate.reveal)}</p><button type="button" data-explore-subject="${escapeHtml(target.entity_id)}">Follow this detour →</button>`;
+    reveal.hidden = false;
+    return;
+  }
   const explore = event.target.closest("[data-explore-subject]");
   if (explore) {
     await navigateSubject(explore.dataset.exploreSubject, { moveMap: false });
@@ -1243,7 +1665,11 @@ elements.detailContent.addEventListener("click", async (event) => {
     const subject = state.subjects[state.activeSubjectId];
     await moveToMapTarget(subject);
     recordTrail(subject, { moved: true });
-    history.replaceState(historyStateFor(subject), "", `${location.pathname}${location.search}${subject.route}`);
+    history.replaceState(historyStateFor(subject, history.state?.fromSubjectId || null), "", `${location.pathname}${location.search}${subject.route}`);
+    const guide = state.atlasGuides[subject.entity_id] || null;
+    renderPanelMarkup(subjectCardMarkup(subject, guide, state.activeOverlapRecords));
+    applySubjectMapReaction(subject);
+    updateBackButton();
     return;
   }
   const restore = event.target.closest("[data-restore-trail]");

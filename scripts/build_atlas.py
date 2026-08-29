@@ -6,6 +6,7 @@ import argparse
 import hashlib
 import json
 import os
+import re
 import shutil
 import sys
 import urllib.request
@@ -30,7 +31,7 @@ MANIFEST_DIR = ROOT / "data/geography/datasets"
 MAPPING_DIR = ROOT / "data/geography/external-id-mappings"
 PUBLIC_DATA_DIR = ROOT / "atlas-app/public/data"
 GEOMETRY_METADATA_PATH = ROOT / "data/geography/geometry/atlas-france-inao.jsonl"
-EXPERIENCE_CONFIG_PATH = ROOT / "data/atlas/run-03-experience.json"
+EXPERIENCE_CONFIG_PATH = ROOT / "data/atlas/run-04-experience.json"
 PRODUCER_BASES_SOURCE_PATH = (
     ROOT / "data/geography/producer-bases/run-11-jura-producers.geojson"
 )
@@ -907,6 +908,7 @@ def build_atlas_subjects(
         "grape": "Grape",
         "place": "Place",
         "producer": "Producer",
+        "project": "Wine project",
         "wine": "Wine",
         "practice": "Cellar practice",
         "person": "Person",
@@ -1112,7 +1114,7 @@ def build_atlas_subjects(
 
     return {
         "generated_from": [
-            "data/atlas/run-03-experience.json",
+            "data/atlas/run-04-experience.json",
             "data/claims/*.jsonl",
             "data/entities/*.jsonl",
             "data/geography/assertions/*.jsonl",
@@ -1175,9 +1177,161 @@ def build_entry_points(
             }
         )
     return {
-        "generated_from": "data/atlas/run-03-experience.json",
+        "generated_from": "data/atlas/run-04-experience.json",
         "entry_points": entries,
         "featured_worlds": featured_worlds,
+    }
+
+
+TERM_TOKEN_RE = re.compile(r"\{\{term:([a-z0-9-]+)\|[^{}]+\}\}")
+
+
+def nested_values(value: Any, key: str) -> Iterable[Any]:
+    """Yield values for a named key anywhere in a JSON-like structure."""
+    if isinstance(value, dict):
+        for nested_key, nested_value in value.items():
+            if nested_key == key:
+                yield nested_value
+            yield from nested_values(nested_value, key)
+    elif isinstance(value, list):
+        for item in value:
+            yield from nested_values(item, key)
+
+
+def nested_strings(value: Any) -> Iterable[str]:
+    if isinstance(value, str):
+        yield value
+    elif isinstance(value, dict):
+        for nested_value in value.values():
+            yield from nested_strings(nested_value)
+    elif isinstance(value, list):
+        for item in value:
+            yield from nested_strings(item)
+
+
+def build_atlas_editorial(
+    experience: dict[str, Any], subjects: dict[str, Any]
+) -> dict[str, Any]:
+    """Validate and project the Run 04 teaching and interaction layer.
+
+    Authored copy remains explicitly editorial. Every factual teaching device names
+    governed claims, while every action target resolves to a native subject.
+    """
+    editorial = experience.get("editorial")
+    if not editorial:
+        raise SystemExit("Run 04 experience config is missing its editorial layer")
+    claims = {
+        record["id"]: record
+        for record in read_jsonl((ROOT / "data/claims").glob("*.jsonl"))
+    }
+    sources = {
+        record["id"]: record
+        for record in read_jsonl((ROOT / "data/sources").glob("*.jsonl"))
+    }
+    native_ids = set(subjects)
+    legend_ids = [item["id"] for item in editorial.get("legend", [])]
+    if len(legend_ids) != 4 or len(set(legend_ids)) != 4:
+        raise SystemExit("Run 04 legend must define exactly four unique signals")
+    required_signals = {"rabbit-hole", "tell", "iykyk", "same-energy"}
+    if set(legend_ids) != required_signals:
+        raise SystemExit("Run 04 legend is missing a required teaching signal")
+
+    configured_subjects = editorial.get("subjects", {})
+    missing_subjects = sorted(set(configured_subjects) - native_ids)
+    if missing_subjects:
+        raise SystemExit(
+            "Run 04 editorial subjects are not native: " + ", ".join(missing_subjects)
+        )
+
+    claim_ids: set[str] = set()
+    for value in nested_values(editorial, "claim_ids"):
+        if not isinstance(value, list) or not value:
+            raise SystemExit("Run 04 claim_ids fields must be non-empty arrays")
+        claim_ids.update(value)
+    for claim_id in sorted(claim_ids):
+        claim = claims.get(claim_id)
+        if not claim or claim["status"] not in {"supported", "contested"}:
+            raise SystemExit(f"Run 04 editorial claim is not usable: {claim_id}")
+
+    glossary = editorial.get("glossary", {})
+    for copy in nested_strings(editorial):
+        for term_id in TERM_TOKEN_RE.findall(copy):
+            if term_id not in glossary:
+                raise SystemExit(f"Run 04 copy references unknown term: {term_id}")
+    for term_id, term in glossary.items():
+        if not term.get("definition") or not term.get("matters"):
+            raise SystemExit(f"Run 04 glossary entry is incomplete: {term_id}")
+        target_id = term.get("explore_target_id")
+        if target_id and target_id not in native_ids:
+            raise SystemExit(f"Run 04 glossary target is not native: {target_id}")
+
+    for subject_id, configured in configured_subjects.items():
+        direct_targets = {
+            connection["target_id"] for connection in subjects[subject_id]["connections"]
+        }
+        featured = configured.get("featured_connections", [])
+        if len(featured) > 3:
+            raise SystemExit(f"{subject_id}: Keep wandering supports at most three routes")
+        for connection in featured:
+            target_id = connection.get("target_id")
+            if target_id not in native_ids:
+                raise SystemExit(f"{subject_id}: dead featured target {target_id}")
+            if not connection.get("reason") or not connection.get("claim_ids"):
+                raise SystemExit(f"{subject_id}: featured route lacks reason or evidence")
+            signal = connection.get("signal")
+            if signal not in required_signals:
+                raise SystemExit(f"{subject_id}: unknown signal {signal}")
+            # Same Energy is an explicitly sourced editorial comparison rather than
+            # a false Reference relationship. All other recommendations must be
+            # direct graph/profile projections.
+            if target_id not in direct_targets and signal != "same-energy":
+                raise SystemExit(
+                    f"{subject_id}: featured target is not graph-derived: {target_id}"
+                )
+        for target_id in nested_values(configured, "target_id"):
+            if target_id not in native_ids:
+                raise SystemExit(f"{subject_id}: dead editorial target {target_id}")
+        reaction = configured.get("map_reaction", {})
+        for area_id in reaction.get("area_subject_ids", []):
+            area = subjects.get(area_id)
+            if not area or area["kind"] != "appellation" or not area.get("map_target"):
+                raise SystemExit(f"{subject_id}: invalid active map area {area_id}")
+        for producer_id in reaction.get("producer_ids", []):
+            producer = subjects.get(producer_id)
+            if not producer or producer["kind"] != "producer" or not producer.get("map_target"):
+                raise SystemExit(f"{subject_id}: invalid active map producer {producer_id}")
+
+    claim_support = {}
+    for claim_id in sorted(claim_ids):
+        claim = claims[claim_id]
+        source_ids = [reference["source_id"] for reference in claim["source_refs"]]
+        claim_support[claim_id] = {
+            "statement": claim["statement"],
+            "status": claim["status"],
+            "subject_ref": claim["subject_ref"],
+            "source_ids": source_ids,
+            "sources": [
+                {
+                    "source_id": source_id,
+                    "title": sources[source_id]["title"],
+                    "publisher": sources[source_id].get("publisher"),
+                    "url": sources[source_id].get("url"),
+                }
+                for source_id in source_ids
+            ],
+        }
+    return {
+        "generated_from": "data/atlas/run-04-experience.json",
+        "release": experience.get("release"),
+        "projection_contract": (
+            "Authored teaching copy is editorial, not Reference authority. Every factual "
+            "tell, definition, lens, affinity, surprise, and recommendation carries "
+            "governed claim IDs; every action resolves to a native subject."
+        ),
+        "legend": editorial["legend"],
+        "glossary": editorial["glossary"],
+        "subjects": {key: configured_subjects[key] for key in sorted(configured_subjects)},
+        "claim_support": claim_support,
     }
 
 
@@ -1380,6 +1534,7 @@ def main() -> None:
         experience, geographic_search, producer_points
     )
     entry_points = build_entry_points(experience, atlas_subjects["subjects"])
+    editorial = build_atlas_editorial(experience, atlas_subjects["subjects"])
     search_index = extend_search_index(geographic_search, atlas_subjects["subjects"])
 
     world_path = PUBLIC_DATA_DIR / "world-countries.geojson"
@@ -1390,6 +1545,7 @@ def main() -> None:
     guide_path = PUBLIC_DATA_DIR / "atlas-guides.json"
     subject_path = PUBLIC_DATA_DIR / "atlas-subjects.json"
     entry_path = PUBLIC_DATA_DIR / "atlas-entry-points.json"
+    editorial_path = PUBLIC_DATA_DIR / "atlas-editorial.json"
     producer_path = PUBLIC_DATA_DIR / "jura-producers.geojson"
 
     write_json(world_path, world)
@@ -1400,6 +1556,7 @@ def main() -> None:
     write_json(guide_path, atlas_guides)
     write_json(subject_path, atlas_subjects)
     write_json(entry_path, entry_points)
+    write_json(editorial_path, editorial)
     write_json(producer_path, producer_points)
     write_jsonl(GEOMETRY_METADATA_PATH, geometry_records)
 
@@ -1469,6 +1626,7 @@ def main() -> None:
                 f"search={len(search_index)}",
                 f"guides={len(atlas_guides['guides'])}",
                 f"subjects={len(atlas_subjects['subjects'])}",
+                f"editorial_subjects={len(editorial['subjects'])}",
                 f"producer_points={len(producer_points['features'])}",
                 f"world_source={world_stats['source_features']}",
             ]
