@@ -58,6 +58,7 @@ This section is generated from CARTA machine authority. Edit the governed record
 | `claim:louis-michel-vaudesir-wine` | `reference / —` | `supported` | `high` | `source:louis-michel-grand-cru` |
 | `claim:moon-hill-planting` | `reference / —` | `supported` | `high` | `source:jenny-francois-hiyu` |
 | `claim:moon-hill-wine-composition` | `reference / —` | `supported` | `high` | `source:jenny-francois-hiyu` |
+| `claim:overnoy-jura-grapes-11` | `reference / 2026-08-29` | `supported` | `medium` | `source:overnoy-louis-dressner-profile` |
 
 ### Sources
 
@@ -69,6 +70,7 @@ This section is generated from CARTA machine authority. Edit the governed record
 - `source:jura-vins-domaine-labet` — Domaine Labet
 - `source:klwines-labet-la-bardette-2022` — 2022 Domaine Labet La Bardette Chardonnay Côtes du Jura Blanc
 - `source:louis-michel-grand-cru` — Chablis Grand Crus | Louis Michel & Fils
+- `source:overnoy-louis-dressner-profile` — Emmanuel Houillon and Pierre Overnoy profile
 - `source:saint-pierre-chateau-renard-2018` — 2018 Chardonnay, Arbois, Château Renard
 - `source:saint-pierre-chateau-renard-2020` — Arbois Château Renard Saint-Pierre 2020
 - `source:scar-trade` — Trade | Scar of the Sea

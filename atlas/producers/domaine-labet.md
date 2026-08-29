@@ -75,12 +75,15 @@ This section is generated from CARTA machine authority. Edit the governed record
 | `claim:labet-hasard-fortification-rejected` | `reference / —` | `rejected` | `high` | `source:jura-vins-domaine-labet` |
 | `claim:labet-hasard-sous-voile` | `reference / 2026-08-18` | `supported` | `high` | `source:jura-vins-domaine-labet` |
 | `claim:labet-malo-avoidance-rejected` | `reference / —` | `rejected` | `high` | `source:rvf-domaine-labet` |
+| `claim:labet-rotalier-base-11` | `reference / 2026-08-29` | `supported` | `high` | `source:rotalier-viticultural-domains`, `source:jura-vins-domaine-labet` |
 | `claim:labet-white-ouillage` | `reference / 2026-08-18` | `supported` | `high` | `source:jura-vins-domaine-labet` |
 
 ### Sources
 
+- `source:api-adresse-gouv-fr` — API Adresse
 - `source:jura-vins-domaine-labet` — Domaine Labet
 - `source:klwines-labet-la-bardette-2022` — 2022 Domaine Labet La Bardette Chardonnay Côtes du Jura Blanc
+- `source:rotalier-viticultural-domains` — Domaines viticoles — Domaine Labet
 - `source:rvf-domaine-labet` — Domaine Labet : l'étendard du Jura paysan
 
 </details>

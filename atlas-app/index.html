@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="CARTA Atlas connects ordinary geography to governed wine knowledge."
+      content="CARTA Atlas connects ordinary geography to sourced wine knowledge."
     />
     <meta name="theme-color" content="#f4f0e8" />
     <title>CARTA Atlas</title>
@@ -25,7 +25,7 @@
         </nav>
 
         <form class="atlas-search" role="search" data-search-form>
-          <label class="sr-only" for="atlas-search-input">Search France wine geography</label>
+          <label class="sr-only" for="atlas-search-input">Search wine places, grapes, and producers</label>
           <svg aria-hidden="true" viewBox="0 0 24 24" width="16" height="16">
             <circle cx="11" cy="11" r="6.75"></circle>
             <path d="m16 16 4 4"></path>
@@ -35,7 +35,7 @@
             type="search"
             inputmode="search"
             autocomplete="off"
-            placeholder="Search France wine places"
+            placeholder="Search places, grapes, producers"
             aria-autocomplete="list"
             aria-controls="search-results"
             aria-expanded="false"
@@ -53,6 +53,22 @@
         </form>
 
         <div class="header-actions">
+          <button class="header-action" type="button" aria-expanded="false" data-guides-button>
+            <svg aria-hidden="true" viewBox="0 0 24 24" width="16" height="16">
+              <path d="M5 4.5h10.5A3.5 3.5 0 0 1 19 8v11.5H8.5A3.5 3.5 0 0 1 5 16V4.5Z"></path>
+              <path d="M5 16a3.5 3.5 0 0 1 3.5-3.5H19"></path>
+            </svg>
+            <span>Start here</span>
+          </button>
+          <button class="header-action rabbit-action" type="button" aria-expanded="false" data-rabbit-button>
+            <svg aria-hidden="true" viewBox="0 0 24 24" width="16" height="16">
+              <path d="M8.3 9.4C6.7 7.7 6.1 4.6 7.5 3.6c1.3-.9 3.7 1.2 4.5 3.4.8-2.2 3.2-4.3 4.5-3.4 1.4 1 .8 4.1-.8 5.8"></path>
+              <path d="M17.8 14.2c0 3.2-2.6 5.8-5.8 5.8s-5.8-2.6-5.8-5.8 2.6-5.8 5.8-5.8 5.8 2.6 5.8 5.8Z"></path>
+              <path d="M9.7 14.2h.01M14.3 14.2h.01M10.7 17c.8.5 1.8.5 2.6 0"></path>
+            </svg>
+            <span>Your rabbit hole</span>
+            <b hidden data-rabbit-count>0</b>
+          </button>
           <button class="header-action" type="button" aria-haspopup="true" aria-expanded="false" data-layers-button>
             <svg aria-hidden="true" viewBox="0 0 24 24" width="16" height="16">
               <path d="m12 3 8 4.5-8 4.5-8-4.5L12 3Z"></path>
@@ -118,6 +134,13 @@
                 <small>Five learning anchors derived from official areas</small>
               </span>
             </label>
+            <label class="layer-choice">
+              <input type="checkbox" checked data-layer-producers />
+              <span>
+                <strong>Producer bases</strong>
+                <small>Clusters at region scale, domaine points up close</small>
+              </span>
+            </label>
           </fieldset>
           <p class="layer-panel__note">
             These official areas are not the same as planted vineyard parcels. Region
@@ -125,10 +148,41 @@
           </p>
         </section>
 
+        <section class="discovery-panel" aria-labelledby="discovery-title" hidden data-discovery-panel>
+          <div class="panel-heading-row">
+            <div>
+              <p class="panel-kicker">Good places to begin</p>
+              <h2 id="discovery-title">Pick up the thread</h2>
+            </div>
+            <button class="icon-button" type="button" aria-label="Close starting points" data-close-discovery>×</button>
+          </div>
+          <div data-discovery-content></div>
+        </section>
+
+        <aside class="rabbit-drawer" aria-label="Your rabbit hole" aria-hidden="true" data-rabbit-drawer>
+          <div class="panel-heading-row">
+            <div>
+              <p class="panel-kicker">Every turn is reversible</p>
+              <h2>Your rabbit hole</h2>
+            </div>
+            <button class="icon-button" type="button" aria-label="Close rabbit hole" data-close-rabbit>×</button>
+          </div>
+          <p class="rabbit-intro">A little trail of what caught your attention. Pick any step to return to its map view.</p>
+          <ol class="rabbit-trail" data-rabbit-trail></ol>
+        </aside>
+
         <aside class="detail-panel" aria-label="Map feature details" aria-hidden="true" data-detail-panel>
           <button class="detail-panel__close icon-button" type="button" aria-label="Close feature details" data-close-detail>×</button>
           <div class="detail-panel__content" data-detail-content></div>
         </aside>
+
+        <button class="map-tool" type="button" aria-pressed="false" data-inspect-button>
+          <svg aria-hidden="true" viewBox="0 0 24 24" width="17" height="17">
+            <circle cx="11" cy="11" r="6.5"></circle>
+            <path d="m16 16 4 4M11 8v6M8 11h6"></path>
+          </svg>
+          <span>What am I looking at?</span>
+        </button>
 
         <div class="map-status" role="status" aria-live="polite" data-map-status>
           <span class="status-dot" aria-hidden="true"></span>

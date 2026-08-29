@@ -30,6 +30,10 @@ MANIFEST_DIR = ROOT / "data/geography/datasets"
 MAPPING_DIR = ROOT / "data/geography/external-id-mappings"
 PUBLIC_DATA_DIR = ROOT / "atlas-app/public/data"
 GEOMETRY_METADATA_PATH = ROOT / "data/geography/geometry/atlas-france-inao.jsonl"
+EXPERIENCE_CONFIG_PATH = ROOT / "data/atlas/run-03-experience.json"
+PRODUCER_BASES_SOURCE_PATH = (
+    ROOT / "data/geography/producer-bases/run-11-jura-producers.geojson"
+)
 
 INAO_DATASET_ID = "spatial-dataset:inao-aires-geographiques-siqo-2026-08-24"
 NATURAL_EARTH_DATASET_ID = "spatial-dataset:natural-earth-admin-0-countries-5.1.1"
@@ -536,6 +540,97 @@ def feature_bounds(feature: dict[str, Any]) -> list[float]:
     return [round(west, 6), round(south, 6), round(east, 6), round(north, 6)]
 
 
+def subject_route(entity_id: str) -> str:
+    kind, slug = entity_id.split(":", 1)
+    return f"#/{kind}/{slug}"
+
+
+def build_producer_points(
+    experience: dict[str, Any],
+) -> dict[str, Any]:
+    """Project governed producer-base assertions into a map-safe point layer."""
+    entities = {
+        record["id"]: record
+        for record in read_jsonl((ROOT / "data/entities").glob("*.jsonl"))
+    }
+    geometry_records = {
+        record["id"]: record
+        for record in read_jsonl((ROOT / "data/geography/geometry").glob("*.jsonl"))
+    }
+    assertions = read_jsonl(
+        (ROOT / "data/geography/assertions").glob("*.jsonl")
+    )
+    raw = read_json(PRODUCER_BASES_SOURCE_PATH)
+    raw_by_id = {feature["id"]: feature for feature in raw["features"]}
+    features: list[dict[str, Any]] = []
+
+    for entity_id in experience["producer_ids"]:
+        candidates = [
+            record
+            for record in assertions
+            if record["entity_id"] == entity_id
+            and record["representation_kind"] == "reference_location"
+            and record["status"] == "supported"
+            and record.get("geometry_ids")
+        ]
+        if not candidates:
+            raise SystemExit(f"{entity_id}: no supported producer-base spatial assertion")
+        candidates.sort(
+            key=lambda record: (
+                0 if record.get("observed_at") else 1,
+                record.get("observed_at") or "",
+                record["id"],
+            ),
+            reverse=True,
+        )
+        spatial = candidates[0]
+        if len(spatial["geometry_ids"]) != 1:
+            raise SystemExit(f"{spatial['id']}: producer point requires one geometry")
+        geometry_record = geometry_records[spatial["geometry_ids"][0]]
+        marker = "#source_feature_id="
+        if marker not in geometry_record["geometry_ref"]:
+            raise SystemExit(f"{geometry_record['id']}: missing source feature selector")
+        relative, raw_feature_id = geometry_record["geometry_ref"].split(marker, 1)
+        if (ROOT / relative).resolve() != PRODUCER_BASES_SOURCE_PATH.resolve():
+            raise SystemExit(f"{geometry_record['id']}: unexpected producer point source")
+        source_feature = raw_by_id.get(raw_feature_id)
+        if not source_feature:
+            raise SystemExit(f"{geometry_record['id']}: source point does not exist")
+        if source_feature["properties"]["entity_id"] != entity_id:
+            raise SystemExit(f"{geometry_record['id']}: source point identity drifted")
+        place_label = source_feature["properties"]["place_label"]
+        precision = spatial.get("precision", "unknown")
+        placement_note = (
+            f"Approximate location · {place_label}"
+            if precision not in {"address", "locality"}
+            else f"Production base · {place_label}"
+        )
+        feature_id = f"carta-producer-{entity_id.split(':', 1)[1]}"
+        features.append(
+            {
+                "type": "Feature",
+                "id": feature_id,
+                "properties": {
+                    "source_feature_id": feature_id,
+                    "carta_entity_id": entity_id,
+                    "name": entities[entity_id]["name"],
+                    "feature_type": "producer_base",
+                    "place_label": place_label,
+                    "precision": precision,
+                    "placement_note": placement_note,
+                    "representation_label": "Production or cellar base; not vineyard holdings",
+                    "spatial_assertion_id": spatial["id"],
+                    "geometry_id": geometry_record["id"],
+                    "source_ids": spatial["source_ids"],
+                    "native_route": subject_route(entity_id),
+                },
+                "geometry": source_feature["geometry"],
+            }
+        )
+    features.sort(key=lambda feature: feature["properties"]["name"].casefold())
+    return {"type": "FeatureCollection", "features": features}
+
+
 def build_search_index(
     groups: dict[str, list[dict[str, Any]]], region_labels: dict[str, Any]
 ) -> list[dict[str, Any]]:
@@ -752,6 +847,390 @@ def build_atlas_guides(profile_paths: dict[str, str]) -> dict[str, Any]:
     }
 
 
+def build_atlas_subjects(
+    experience: dict[str, Any],
+    geographic_search: list[dict[str, Any]],
+    producer_points: dict[str, Any],
+) -> dict[str, Any]:
+    """Build native subject cards and graph routes directly from CARTA authority."""
+    entity_records = read_jsonl((ROOT / "data/entities").glob("*.jsonl"))
+    claim_records = read_jsonl((ROOT / "data/claims").glob("*.jsonl"))
+    source_records = read_jsonl((ROOT / "data/sources").glob("*.jsonl"))
+    profile_records = read_jsonl(
+        (ROOT / "data/reference-profiles").glob("*.jsonl")
+    )
+    relationship_records = read_jsonl(
+        (ROOT / "data/relationships").glob("*.jsonl")
+    )
+    spatial_records = read_jsonl(
+        (ROOT / "data/geography/assertions").glob("*.jsonl")
+    )
+    entities = {record["id"]: record for record in entity_records}
+    claims = {record["id"]: record for record in claim_records}
+    sources = {record["id"]: record for record in source_records}
+    profiles = {
+        record["primary_entity_id"]: record
+        for record in profile_records
+        if record.get("primary_entity_id")
+    }
+    native_ids = experience["native_subject_ids"]
+    native_id_set = set(native_ids)
+    if len(native_ids) != len(native_id_set):
+        raise SystemExit("Atlas experience config contains duplicate native subjects")
+    missing = sorted(native_id_set - entities.keys())
+    if missing:
+        raise SystemExit("Atlas experience config has missing entities: " + ", ".join(missing))
+
+    geo_by_entity: dict[str, dict[str, Any]] = {}
+    for record in geographic_search:
+        entity_id = record.get("carta_entity_id")
+        if entity_id and entity_id not in geo_by_entity:
+            geo_by_entity[entity_id] = {
+                "kind": "bounds",
+                "bounds": record["bounds"],
+                "max_zoom": 7.4 if record["result_type"] == "wine_region" else 10.4,
+                "map_feature_ids": record.get("source_feature_ids", []),
+            }
+    point_by_entity: dict[str, dict[str, Any]] = {}
+    for feature in producer_points["features"]:
+        properties = feature["properties"]
+        entity_id = properties["carta_entity_id"]
+        point_by_entity[entity_id] = {
+            "kind": "point",
+            "center": feature["geometry"]["coordinates"],
+            "zoom": 11.5,
+            "map_feature_ids": [feature["id"]],
+        }
+
+    type_labels = {
+        "appellation": "Wine area",
+        "grape": "Grape",
+        "place": "Place",
+        "producer": "Producer",
+        "wine": "Wine",
+        "practice": "Cellar practice",
+        "person": "Person",
+    }
+    claim_type_priority = {
+        "identity": 0,
+        "geography": 1,
+        "history": 2,
+        "genetics": 3,
+        "viticulture": 4,
+        "cellar": 5,
+        "farming": 6,
+        "legal": 7,
+        "naming": 8,
+        "other": 9,
+    }
+
+    payloads: dict[str, dict[str, Any]] = {}
+    for entity_id in native_ids:
+        entity = entities[entity_id]
+        entity_claim_type_priority = claim_type_priority
+        if entity["type"] == "producer":
+            entity_claim_type_priority = {
+                **claim_type_priority,
+                "identity": 0,
+                "history": 1,
+                "farming": 2,
+                "viticulture": 3,
+                "cellar": 4,
+                "geography": 5,
+            }
+        profile = profiles.get(entity_id)
+        component_ids = set(profile.get("component_entity_ids", [])) if profile else {entity_id}
+        component_ids.add(entity_id)
+        selected_claims = [
+            claim
+            for claim in claim_records
+            if claim["subject_ref"] in component_ids
+            and claim["status"] in {"supported", "contested"}
+            and claim["subject_ref"] in entities
+        ]
+        selected_claims.sort(
+            key=lambda claim: (
+                0
+                if claim["subject_ref"] == entity_id
+                and claim.get("atlas_presentation", {}).get("emphasis") == "lead"
+                else 1,
+                0 if claim["subject_ref"] == entity_id else 1,
+                0 if claim.get("atlas_presentation", {}).get("order") is not None else 1,
+                claim.get("atlas_presentation", {}).get("order", 999),
+                entity_claim_type_priority.get(claim.get("claim_type", "other"), 20),
+                claim["id"],
+            )
+        )
+        projected_claims: list[dict[str, Any]] = []
+        used_source_ids: set[str] = set()
+        for claim in selected_claims[:12]:
+            source_ids = [reference["source_id"] for reference in claim["source_refs"]]
+            used_source_ids.update(source_ids)
+            projected_claims.append(
+                {
+                    "claim_id": claim["id"],
+                    "subject_ref": claim["subject_ref"],
+                    "subject_name": entities[claim["subject_ref"]]["name"],
+                    "claim_type": claim.get("claim_type", "other"),
+                    "statement": claim["statement"],
+                    "status": claim["status"],
+                    "observed_at": claim.get("observed_at"),
+                    "source_ids": source_ids,
+                    "label": claim.get("atlas_presentation", {}).get("label"),
+                }
+            )
+
+        connection_candidates: list[dict[str, Any]] = []
+        for relationship in relationship_records:
+            if relationship["status"] not in {"supported", "provisional"}:
+                continue
+            subject_in = relationship["subject_id"] in component_ids
+            object_in = relationship["object_id"] in component_ids
+            if subject_in == object_in:
+                continue
+            target_id = relationship["object_id"] if subject_in else relationship["subject_id"]
+            if target_id not in native_id_set:
+                continue
+            connection_candidates.append(
+                {
+                    "target_id": target_id,
+                    "predicate": relationship["predicate"],
+                    "direction": "outbound" if subject_in else "inbound",
+                    "relationship_id": relationship["id"],
+                    "claim_ids": relationship.get("claim_ids", []),
+                    "status": relationship["status"],
+                    "basis": "relationship",
+                }
+            )
+        if profile:
+            # A profile's component list is already governed CARTA authority. Project
+            # those components as native paths so regional guides expose their mapped
+            # appellations without requiring a separate relationship record.
+            for target_id in sorted(component_ids - {entity_id}):
+                if target_id not in native_id_set:
+                    continue
+                component_claim_ids = [
+                    claim["claim_id"]
+                    for claim in projected_claims
+                    if claim["subject_ref"] == target_id
+                ]
+                connection_candidates.append(
+                    {
+                        "target_id": target_id,
+                        "predicate": "PROFILE_COMPONENT",
+                        "direction": "outbound",
+                        "relationship_id": None,
+                        "claim_ids": component_claim_ids,
+                        "status": "supported",
+                        "basis": "profile_component",
+                    }
+                )
+            for target_id in profile.get("representative_anchor_ids", []):
+                if target_id in native_id_set and target_id not in component_ids:
+                    connection_candidates.append(
+                        {
+                            "target_id": target_id,
+                            "predicate": "EXPLORE",
+                            "direction": "outbound",
+                            "relationship_id": None,
+                            "claim_ids": [],
+                            "status": "supported",
+                            "basis": "profile_anchor",
+                        }
+                    )
+        connections_by_target: dict[str, dict[str, Any]] = {}
+        for connection in sorted(
+            connection_candidates,
+            key=lambda item: (
+                0 if item["basis"] == "relationship" else 1,
+                item["target_id"],
+                item["predicate"],
+            ),
+        ):
+            connections_by_target.setdefault(connection["target_id"], connection)
+        connections = []
+        for target_id, connection in connections_by_target.items():
+            target = entities[target_id]
+            connections.append(
+                {
+                    **connection,
+                    "target_name": target["name"],
+                    "target_kind": target["type"],
+                    "target_route": subject_route(target_id),
+                    "has_map_target": target_id in geo_by_entity or target_id in point_by_entity,
+                }
+            )
+
+        spatial = [
+            record
+            for record in spatial_records
+            if record["entity_id"] == entity_id
+            and record["status"] == "supported"
+            and record["representation_kind"] != "network_anchor"
+        ]
+        spatial.sort(key=lambda record: (record.get("observed_at") or "", record["id"]), reverse=True)
+        primary_spatial = spatial[0] if spatial else None
+        if primary_spatial:
+            used_source_ids.update(primary_spatial["source_ids"])
+        alternate_names = [record["name"] for record in entity.get("alternate_names", [])]
+        map_target = point_by_entity.get(entity_id) or geo_by_entity.get(entity_id)
+        payloads[entity_id] = {
+            "entity_id": entity_id,
+            "name": entity["name"],
+            "display_name": entity.get("display_name") or entity["name"],
+            "kind": entity["type"],
+            "kind_label": type_labels.get(entity["type"], entity["type"].replace("_", " ").title()),
+            "route": subject_route(entity_id),
+            "alternate_names": alternate_names,
+            "lead_claim_id": projected_claims[0]["claim_id"] if projected_claims else None,
+            "claims": projected_claims,
+            "connections": connections,
+            "map_target": map_target,
+            "location": (
+                {
+                    "spatial_assertion_id": primary_spatial["id"],
+                    "description": primary_spatial["description"],
+                    "precision": primary_spatial.get("precision", "unknown"),
+                    "anchor_entity_refs": primary_spatial.get("anchor_entity_refs", []),
+                    "source_ids": primary_spatial["source_ids"],
+                }
+                if primary_spatial
+                else None
+            ),
+            "sources": [
+                {
+                    "source_id": source_id,
+                    "title": sources[source_id]["title"],
+                    "publisher": sources[source_id].get("publisher"),
+                    "url": sources[source_id].get("url"),
+                    "source_class": sources[source_id]["source_class"],
+                    "accessed_at": sources[source_id]["accessed_at"],
+                }
+                for source_id in sorted(used_source_ids)
+            ],
+        }
+
+    return {
+        "generated_from": [
+            "data/atlas/run-03-experience.json",
+            "data/claims/*.jsonl",
+            "data/entities/*.jsonl",
+            "data/geography/assertions/*.jsonl",
+            "data/geography/geometry/*.jsonl",
+            "data/reference-profiles/*.jsonl",
+            "data/relationships/*.jsonl",
+            "data/sources/*.jsonl",
+        ],
+        "projection_contract": (
+            "Learner statements are verbatim claim projections with claim and source IDs. "
+            "Connections are supported/provisional CARTA relationships or governed profile "
+            "anchors. Map targets come from rendered geography or spatial assertions."
+        ),
+        "subjects": {entity_id: payloads[entity_id] for entity_id in sorted(payloads)},
+    }
+
+
+def build_entry_points(
+    experience: dict[str, Any], subjects: dict[str, Any]
+) -> dict[str, Any]:
+    claims = {
+        record["id"]: record
+        for record in read_jsonl((ROOT / "data/claims").glob("*.jsonl"))
+    }
+    entries = []
+    for configured in experience["entry_points"]:
+        subject_id = configured["subject_id"]
+        if subject_id not in subjects:
+            raise SystemExit(f"{configured['id']}: entry subject is not native")
+        projected = []
+        for claim_id in configured["claim_ids"]:
+            claim = claims.get(claim_id)
+            if not claim or claim["status"] != "supported":
+                raise SystemExit(f"{configured['id']}: invalid supporting claim {claim_id}")
+            projected.append(
+                {
+                    "claim_id": claim_id,
+                    "statement": claim["statement"],
+                    "source_ids": [item["source_id"] for item in claim["source_refs"]],
+                }
+            )
+        entries.append(
+            {
+                **configured,
+                "subject_name": subjects[subject_id]["display_name"],
+                "subject_kind": subjects[subject_id]["kind"],
+                "subject_route": subjects[subject_id]["route"],
+                "supporting_claims": projected,
+            }
+        )
+    featured_worlds = []
+    for entity_id in experience["featured_world_ids"]:
+        subject = subjects[entity_id]
+        featured_worlds.append(
+            {
+                "entity_id": entity_id,
+                "name": subject["display_name"],
+                "route": subject["route"],
+                "map_target": subject["map_target"],
+            }
+        )
+    return {
+        "generated_from": "data/atlas/run-03-experience.json",
+        "entry_points": entries,
+        "featured_worlds": featured_worlds,
+    }
+
+
+def extend_search_index(
+    geographic_search: list[dict[str, Any]], subjects: dict[str, Any]
+) -> list[dict[str, Any]]:
+    """Attach native routes to geography and add conceptual native subjects."""
+    results: list[dict[str, Any]] = []
+    represented_entities: set[str] = set()
+    for raw in geographic_search:
+        record = dict(raw)
+        entity_id = record.get("carta_entity_id")
+        subject = subjects.get(entity_id)
+        if subject:
+            record["native_route"] = subject["route"]
+            record["subject_kind"] = subject["kind"]
+            record["experience_level"] = "native_guide"
+            represented_entities.add(entity_id)
+        else:
+            record["experience_level"] = "map_coverage"
+        results.append(record)
+    for entity_id, subject in subjects.items():
+        if entity_id in represented_entities:
+            continue
+        map_target = subject.get("map_target")
+        context_names = [
+            connection["target_name"]
+            for connection in subject["connections"]
+            if connection["target_kind"] in {"place", "appellation"}
+        ][:2]
+        record = {
+            "id": f"carta-subject-{entity_id.replace(':', '-')}",
+            "name": subject["display_name"],
+            "result_type": "native_subject",
+            "subject_kind": subject["kind"],
+            "context_label": " · ".join(context_names),
+            "carta_entity_id": entity_id,
+            "native_route": subject["route"],
+            "experience_level": "native_guide",
+            "governance_status": "governed",
+            "bounds": map_target.get("bounds") if map_target and map_target["kind"] == "bounds" else None,
+        }
+        results.append(record)
+    results.sort(
+        key=lambda result: (
+            0 if result["experience_level"] == "native_guide" else 1,
+            result["name"].casefold(),
+            result["id"],
+        )
+    )
+    return results
+
+
 def build_geometry_metadata(
     features_by_entity: dict[str, list[dict[str, Any]]]
 ) -> list[dict[str, Any]]:
@@ -845,7 +1324,7 @@ def build_provenance(manifests: list[dict[str, Any]], statistics: dict[str, Any]
             "Wine-region labels are derived CARTA orientation points, not statutory polygons.",
             "INAO areas are cartographic representations of regulatory geographical areas, not parcel eligibility or actual vineyard land.",
             "Eligible communes, approved viticultural parcels, actual vineyard land, cadastral parcels, and lieux-dits remain distinct concepts.",
-            "External sourced geography may be displayed without being promoted into governed CARTA identity."
+            "External sourced geography may be displayed without becoming a native CARTA guide or subject."
         ]
     }
 
@@ -892,9 +1371,16 @@ def main() -> None:
         inao_shape, inao_manifest, profile_paths
     )
     region_labels = build_region_labels(linkage["geometry_by_entity"])
-    search_index = build_search_index(groups, region_labels)
+    geographic_search = build_search_index(groups, region_labels)
     geometry_records = build_geometry_metadata(linkage["features_by_entity"])
     atlas_guides = build_atlas_guides(profile_paths)
+    experience = read_json(EXPERIENCE_CONFIG_PATH)
+    producer_points = build_producer_points(experience)
+    atlas_subjects = build_atlas_subjects(
+        experience, geographic_search, producer_points
+    )
+    entry_points = build_entry_points(experience, atlas_subjects["subjects"])
+    search_index = extend_search_index(geographic_search, atlas_subjects["subjects"])
 
     world_path = PUBLIC_DATA_DIR / "world-countries.geojson"
     aoc_path = PUBLIC_DATA_DIR / "france-appellations-aoc.geojson"
@@ -902,6 +1388,9 @@ def main() -> None:
     region_path = PUBLIC_DATA_DIR / "france-wine-regions.geojson"
     search_path = PUBLIC_DATA_DIR / "search-index.json"
     guide_path = PUBLIC_DATA_DIR / "atlas-guides.json"
+    subject_path = PUBLIC_DATA_DIR / "atlas-subjects.json"
+    entry_path = PUBLIC_DATA_DIR / "atlas-entry-points.json"
+    producer_path = PUBLIC_DATA_DIR / "jura-producers.geojson"
 
     write_json(world_path, world)
     write_json(aoc_path, {"type": "FeatureCollection", "features": groups["AOC"]})
@@ -909,6 +1398,9 @@ def main() -> None:
     write_json(region_path, region_labels)
     write_json(search_path, search_index)
     write_json(guide_path, atlas_guides)
+    write_json(subject_path, atlas_subjects)
+    write_json(entry_path, entry_points)
+    write_json(producer_path, producer_points)
     write_jsonl(GEOMETRY_METADATA_PATH, geometry_records)
 
     natural_artifacts = [
@@ -976,6 +1468,8 @@ def main() -> None:
                 f"unmapped={inao_stats['unmapped_features']}",
                 f"search={len(search_index)}",
                 f"guides={len(atlas_guides['guides'])}",
+                f"subjects={len(atlas_subjects['subjects'])}",
+                f"producer_points={len(producer_points['features'])}",
                 f"world_source={world_stats['source_features']}",
             ]
         )

@@ -1,0 +1,6 @@
+{"claim_ids":["claim:pupillin-commune-jura-11"],"id":"rel:pupillin-within-jura-11","layer":"reference","object_id":"place:jura","predicate":"WITHIN","status":"supported","subject_id":"place:pupillin"}
+{"claim_ids":["claim:overnoy-pupillin-base-11"],"id":"rel:overnoy-cellar-pupillin-11","layer":"reference","object_id":"place:pupillin","predicate":"CELLAR_IN","status":"supported","subject_id":"producer:maison-pierre-overnoy"}
+{"claim_ids":["claim:overnoy-jura-grapes-11"],"id":"rel:chardonnay-used-by-overnoy-11","layer":"reference","object_id":"producer:maison-pierre-overnoy","predicate":"USED_BY","status":"supported","subject_id":"grape:chardonnay"}
+{"claim_ids":["claim:overnoy-jura-grapes-11"],"id":"rel:savagnin-used-by-overnoy-11","layer":"reference","object_id":"producer:maison-pierre-overnoy","predicate":"USED_BY","status":"supported","subject_id":"grape:savagnin"}
+{"claim_ids":["claim:overnoy-jura-grapes-11"],"id":"rel:poulsard-used-by-overnoy-11","layer":"reference","object_id":"producer:maison-pierre-overnoy","predicate":"USED_BY","status":"supported","subject_id":"grape:poulsard"}
+{"claim_ids":["claim:overnoy-jura-grapes-11"],"id":"rel:trousseau-used-by-overnoy-11","layer":"reference","object_id":"producer:maison-pierre-overnoy","predicate":"USED_BY","status":"supported","subject_id":"grape:trousseau"}

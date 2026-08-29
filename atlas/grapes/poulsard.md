@@ -50,10 +50,12 @@ This section is generated from CARTA machine authority. Edit the governed record
 | Claim | Layer / observed | Status | Confidence | Sources |
 |---|---|---|---|---|
 | `claim:jura-poulsard-share-2023-10` | `reference / 2023-12-31` | `supported` | `high` | `source:civj-jura-key-figures-2024` |
+| `claim:overnoy-jura-grapes-11` | `reference / 2026-08-29` | `supported` | `medium` | `source:overnoy-louis-dressner-profile` |
 
 ### Sources
 
 - `source:civj-jura-key-figures-2024` — Le vignoble du Jura en quelques chiffres
+- `source:overnoy-louis-dressner-profile` — Emmanuel Houillon and Pierre Overnoy profile
 
 </details>
 

@@ -82,6 +82,9 @@ def load_authority() -> dict[str, Any]:
     claims = read_jsonl((ROOT / "data/claims").glob("*.jsonl"))
     sources = read_jsonl((ROOT / "data/sources").glob("*.jsonl"))
     profiles = read_jsonl((ROOT / "data/reference-profiles").glob("*.jsonl"))
+    relationships = read_jsonl((ROOT / "data/relationships").glob("*.jsonl"))
+    spatial = read_jsonl((ROOT / "data/geography/assertions").glob("*.jsonl"))
+    geometry = read_jsonl((ROOT / "data/geography/geometry").glob("*.jsonl"))
     entity_ids = {record["id"] for record in entities}
     source_ids = {record["id"] for record in sources}
     profile_paths: dict[str, list[str]] = defaultdict(list)
@@ -96,9 +99,135 @@ def load_authority() -> dict[str, Any]:
         "entities": {record["id"]: record for record in entities},
         "claims": {record["id"]: record for record in claims},
         "sources": {record["id"]: record for record in sources},
+        "relationships": {record["id"]: record for record in relationships},
+        "spatial": {record["id"]: record for record in spatial},
+        "geometry": {record["id"]: record for record in geometry},
         "profile_paths": {
             entity_id: sorted(set(paths)) for entity_id, paths in profile_paths.items()
         },
+    }
+
+
+def validate_native_experience(authority: dict[str, Any]) -> dict[str, Any]:
+    value = read_json(PUBLIC_DATA_DIR / "atlas-subjects.json")
+    expected_inputs = [
+        "data/atlas/run-03-experience.json",
+        "data/claims/*.jsonl",
+        "data/entities/*.jsonl",
+        "data/geography/assertions/*.jsonl",
+        "data/geography/geometry/*.jsonl",
+        "data/reference-profiles/*.jsonl",
+        "data/relationships/*.jsonl",
+        "data/sources/*.jsonl",
+    ]
+    if value.get("generated_from") != expected_inputs:
+        fail("atlas-subjects.json: governed projection inputs are stale")
+    subjects = value.get("subjects")
+    if not isinstance(subjects, dict) or not subjects:
+        fail("atlas-subjects.json: expected native subject mapping")
+    required = {
+        "place:jura",
+        "appellation:arbois",
+        "appellation:cotes-du-jura",
+        "appellation:chateau-chalon",
+        "appellation:l-etoile",
+        "appellation:cremant-du-jura",
+        "appellation:macvin-du-jura",
+        "grape:savagnin",
+        "grape:petit-manseng",
+        "producer:domaine-de-la-tournelle",
+        "producer:domaine-labet",
+        "producer:maison-pierre-overnoy",
+        "producer:domaine-de-saint-pierre-jura",
+        "appellation:jurancon",
+    }
+    if not required.issubset(subjects):
+        fail("atlas-subjects.json: missing required Run 03 native subjects")
+
+    for entity_id, subject in subjects.items():
+        entity = authority["entities"].get(entity_id)
+        if not entity:
+            fail(f"atlas-subjects.json:{entity_id}: missing CARTA entity")
+        if subject.get("entity_id") != entity_id:
+            fail(f"atlas-subjects.json:{entity_id}: identity drifted")
+        if subject.get("name") != entity["name"] or subject.get("kind") != entity["type"]:
+            fail(f"atlas-subjects.json:{entity_id}: entity projection drifted")
+        expected_route = f"#/{entity['type']}/{entity_id.split(':', 1)[1]}"
+        if subject.get("route") != expected_route:
+            fail(f"atlas-subjects.json:{entity_id}: unstable native route")
+        projected_source_ids: set[str] = set()
+        for projected in subject.get("claims", []):
+            claim_id = projected.get("claim_id")
+            claim = authority["claims"].get(claim_id)
+            if not claim or claim["status"] not in {"supported", "contested"}:
+                fail(f"atlas-subjects.json:{entity_id}: invalid claim {claim_id}")
+            if projected.get("statement") != claim["statement"]:
+                fail(f"atlas-subjects.json:{claim_id}: statement drifted")
+            if projected.get("subject_ref") != claim["subject_ref"]:
+                fail(f"atlas-subjects.json:{claim_id}: subject drifted")
+            source_ids = [item["source_id"] for item in claim["source_refs"]]
+            if projected.get("source_ids") != source_ids:
+                fail(f"atlas-subjects.json:{claim_id}: source lineage drifted")
+            projected_source_ids.update(source_ids)
+        for connection in subject.get("connections", []):
+            target_id = connection.get("target_id")
+            if target_id not in subjects:
+                fail(f"atlas-subjects.json:{entity_id}: non-native connection {target_id}")
+            relationship_id = connection.get("relationship_id")
+            if relationship_id:
+                relationship = authority["relationships"].get(relationship_id)
+                if not relationship:
+                    fail(f"atlas-subjects.json:{entity_id}: missing relationship {relationship_id}")
+                if connection.get("predicate") != relationship["predicate"]:
+                    fail(f"atlas-subjects.json:{relationship_id}: predicate drifted")
+                if connection.get("claim_ids") != relationship.get("claim_ids", []):
+                    fail(f"atlas-subjects.json:{relationship_id}: claim lineage drifted")
+        location = subject.get("location")
+        if location:
+            spatial_id = location.get("spatial_assertion_id")
+            spatial = authority["spatial"].get(spatial_id)
+            if not spatial or spatial["entity_id"] != entity_id:
+                fail(f"atlas-subjects.json:{entity_id}: invalid spatial projection")
+            if location.get("description") != spatial["description"]:
+                fail(f"atlas-subjects.json:{spatial_id}: description drifted")
+            if location.get("source_ids") != spatial["source_ids"]:
+                fail(f"atlas-subjects.json:{spatial_id}: source lineage drifted")
+            projected_source_ids.update(spatial["source_ids"])
+        actual_source_ids = {item["source_id"] for item in subject.get("sources", [])}
+        if actual_source_ids != projected_source_ids:
+            fail(f"atlas-subjects.json:{entity_id}: source projection incomplete")
+
+    entries = read_json(PUBLIC_DATA_DIR / "atlas-entry-points.json")
+    if entries.get("generated_from") != "data/atlas/run-03-experience.json":
+        fail("atlas-entry-points.json: experience config lineage is stale")
+    if len(entries.get("entry_points", [])) < 4:
+        fail("atlas-entry-points.json: expected restrained Run 03 entry set")
+    entry_ids: set[str] = set()
+    for entry in entries["entry_points"]:
+        if entry["id"] in entry_ids:
+            fail(f"atlas-entry-points.json: duplicate entry {entry['id']}")
+        entry_ids.add(entry["id"])
+        if entry["subject_id"] not in subjects:
+            fail(f"atlas-entry-points.json:{entry['id']}: subject is not native")
+        for projected in entry["supporting_claims"]:
+            claim = authority["claims"].get(projected["claim_id"])
+            if not claim or claim["status"] != "supported":
+                fail(f"atlas-entry-points.json:{entry['id']}: invalid supporting claim")
+            if projected["statement"] != claim["statement"]:
+                fail(f"atlas-entry-points.json:{projected['claim_id']}: statement drifted")
+    featured_ids = {item["entity_id"] for item in entries.get("featured_worlds", [])}
+    if featured_ids != {
+        "place:jura",
+        "place:burgundy",
+        "place:loire-valley",
+        "place:beaujolais",
+        "place:bearn",
+    }:
+        fail("atlas-entry-points.json: five France worlds are not discoverable")
+    return {
+        "subjects": subjects,
+        "subject_count": len(subjects),
+        "entry_count": len(entries["entry_points"]),
     }
 
 
@@ -332,6 +461,7 @@ def validate_atlas() -> dict[str, Any]:
     validate_artifacts(manifests)
     mappings = load_and_validate_mappings(manifests, authority)
     atlas_guide_count = validate_atlas_guides(authority)
+    native_experience = validate_native_experience(authority)
 
     world = validate_geojson(
         PUBLIC_DATA_DIR / "world-countries.geojson",
@@ -404,6 +534,24 @@ def validate_atlas() -> dict[str, Any]:
             "governance_status",
         },
     )
+    producers = validate_geojson(
+        PUBLIC_DATA_DIR / "jura-producers.geojson",
+        {"Point"},
+        {
+            "source_feature_id",
+            "carta_entity_id",
+            "name",
+            "feature_type",
+            "place_label",
+            "precision",
+            "placement_note",
+            "representation_label",
+            "spatial_assertion_id",
+            "geometry_id",
+            "source_ids",
+            "native_route",
+        },
+    )
 
     all_wine_features = aoc["features"] + igp["features"]
     source_ids: dict[str, list[dict[str, Any]]] = defaultdict(list)
@@ -434,6 +582,25 @@ def validate_atlas() -> dict[str, Any]:
             fail(f"{label}: invalid governed child set for derived label")
         validate_profile_link(properties, authority, label)
 
+    for feature in producers["features"]:
+        properties = feature["properties"]
+        entity_id = properties["carta_entity_id"]
+        entity = authority["entities"].get(entity_id)
+        if not entity or entity["type"] != "producer":
+            fail(f"{feature['id']}: producer point has invalid CARTA identity")
+        spatial = authority["spatial"].get(properties["spatial_assertion_id"])
+        geometry = authority["geometry"].get(properties["geometry_id"])
+        if not spatial or spatial["entity_id"] != entity_id:
+            fail(f"{feature['id']}: producer point spatial lineage is invalid")
+        if not geometry or geometry["entity_id"] != entity_id:
+            fail(f"{feature['id']}: producer point geometry lineage is invalid")
+        if geometry["geometry_type"] != "Point":
+            fail(f"{feature['id']}: producer geometry is not a point")
+        if properties["feature_type"] != "producer_base":
+            fail(f"{feature['id']}: producer point meaning drifted")
+        if "not vineyard" not in properties["representation_label"].casefold():
+            fail(f"{feature['id']}: producer point does not disclose its meaning")
+
     inao_mappings = [
         mapping for mapping in mappings if mapping["source_dataset_id"] == INAO_DATASET_ID
     ]
@@ -458,13 +625,29 @@ def validate_atlas() -> dict[str, Any]:
     search_ids = [record.get("id") for record in search]
     if len(search_ids) != len(set(search_ids)):
         fail("search-index.json: duplicate result ID")
-    expected_search_ids = {
+    expected_geographic_search_ids = {
         f"inao-denom-{denom_id}" for denom_id in source_ids
     } | {feature["id"] for feature in regions["features"]}
-    if set(search_ids) != expected_search_ids:
-        fail("search-index.json: results do not match rendered wine features and regions")
+    geographic_entities = {
+        record.get("carta_entity_id")
+        for record in search
+        if record.get("id") in expected_geographic_search_ids
+    }
+    expected_native_search_ids = {
+        f"carta-subject-{entity_id.replace(':', '-')}"
+        for entity_id in native_experience["subjects"]
+        if entity_id not in geographic_entities
+    }
+    if set(search_ids) != expected_geographic_search_ids | expected_native_search_ids:
+        fail("search-index.json: results do not match geography plus native subjects")
     for record in search:
         bounds = record.get("bounds")
+        if record.get("result_type") == "native_subject" and bounds is None:
+            if record.get("carta_entity_id") not in native_experience["subjects"]:
+                fail(f"search-index.json:{record.get('id')}: subject is not native")
+            if not record.get("native_route"):
+                fail(f"search-index.json:{record.get('id')}: native route missing")
+            continue
         if (
             not isinstance(bounds, list)
             or len(bounds) != 4
@@ -552,6 +735,9 @@ def validate_atlas() -> dict[str, Any]:
         "geometry_records": len(atlas_geometry),
         "search_records": len(search),
         "atlas_guides": atlas_guide_count,
+        "native_subjects": native_experience["subject_count"],
+        "entry_points": native_experience["entry_count"],
+        "producer_points": len(producers["features"]),
     }
 
 
