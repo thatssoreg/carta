@@ -128,6 +128,7 @@ This section is generated from CARTA machine authority. Edit the governed record
 | `claim:labet-estate-identity` | `reference / —` | `supported` | `high` | `source:jura-vins-domaine-labet` |
 | `claim:macvin-du-jura-area-2023-10` | `reference / 2023-12-31` | `supported` | `high` | `source:civj-jura-key-figures-2024` |
 | `claim:macvin-du-jura-guide-orientation-10` | `reference / 2024-01-01` | `supported` | `high` | `source:civj-macvin-spec` |
+| `claim:pupillin-commune-jura-11` | `reference / 2026-08-29` | `supported` | `high` | `source:geo-api-communes-gouv-fr`, `source:overnoy-louis-dressner-profile` |
 | `claim:saint-pierre-jura-identity` | `reference / —` | `supported` | `high` | `source:saint-pierre-mfw`, `source:saint-pierre-hachette` |
 | `claim:tournelle-fleur-identity` | `reference / —` | `supported` | `high` | `source:tournelle-fleur-fr`, `source:tournelle-fleur-en` |
 
@@ -138,9 +139,11 @@ This section is generated from CARTA machine authority. Edit the governed record
 - `source:civj-jura-key-figures-2024` — Le vignoble du Jura en quelques chiffres
 - `source:civj-jura-professional-guide` — Les vins du Jura — guide professionnel
 - `source:civj-macvin-spec` — Cahier des charges de l’appellation Macvin du Jura
+- `source:geo-api-communes-gouv-fr` — API Découpage administratif — Communes
 - `source:inao-aires-geographiques-siqo-2026-08-24` — Délimitation des aires-géographiques des SIQO — 2026-08-24 snapshot
 - `source:inao-arbois` — Arbois blanc
 - `source:jura-vins-domaine-labet` — Domaine Labet
+- `source:overnoy-louis-dressner-profile` — Emmanuel Houillon and Pierre Overnoy profile
 - `source:saint-pierre-chateau-renard-2018` — 2018 Chardonnay, Arbois, Château Renard
 - `source:saint-pierre-chateau-renard-2020` — Arbois Château Renard Saint-Pierre 2020
 - `source:saint-pierre-hachette` — Domaine de Saint-Pierre

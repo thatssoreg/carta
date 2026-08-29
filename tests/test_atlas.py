@@ -120,6 +120,93 @@ class AtlasContractTest(unittest.TestCase):
         self.assertTrue(expected.issubset(set(jura["component_entity_ids"])))
         self.assertGreaterEqual(len(jura["sources"]), 5)
 
+    def test_run_03_native_jura_rabbit_hole_is_projected(self):
+        subjects = json.loads(
+            (ROOT / "atlas-app/public/data/atlas-subjects.json").read_text()
+        )["subjects"]
+        required = {
+            "place:jura",
+            "appellation:arbois",
+            "appellation:cotes-du-jura",
+            "appellation:chateau-chalon",
+            "appellation:l-etoile",
+            "appellation:cremant-du-jura",
+            "appellation:macvin-du-jura",
+            "producer:domaine-de-la-tournelle",
+            "producer:domaine-labet",
+            "producer:maison-pierre-overnoy",
+            "producer:domaine-de-saint-pierre-jura",
+            "grape:savagnin",
+            "grape:petit-manseng",
+            "appellation:jurancon",
+        }
+        self.assertTrue(required.issubset(subjects))
+
+        savagnin_targets = {
+            item["target_id"]: item
+            for item in subjects["grape:savagnin"]["connections"]
+        }
+        self.assertIn("grape:petit-manseng", savagnin_targets)
+        self.assertFalse(savagnin_targets["grape:petit-manseng"]["has_map_target"])
+        self.assertEqual(
+            savagnin_targets["grape:petit-manseng"]["predicate"],
+            "GENETICALLY_CLOSE_TO",
+        )
+
+        petit_manseng_targets = {
+            item["target_id"]: item
+            for item in subjects["grape:petit-manseng"]["connections"]
+        }
+        self.assertTrue(petit_manseng_targets["appellation:jurancon"]["has_map_target"])
+        self.assertEqual(
+            subjects["appellation:jurancon"]["map_target"]["kind"], "bounds"
+        )
+
+    def test_producer_points_are_production_bases_with_honest_precision(self):
+        points = json.loads(
+            (ROOT / "atlas-app/public/data/jura-producers.geojson").read_text()
+        )["features"]
+        self.assertEqual(len(points), 4)
+        by_entity = {
+            feature["properties"]["carta_entity_id"]: feature
+            for feature in points
+        }
+        self.assertEqual(
+            by_entity["producer:domaine-de-saint-pierre-jura"]["properties"]["precision"],
+            "municipality",
+        )
+        self.assertIn(
+            "Approximate location",
+            by_entity["producer:domaine-de-saint-pierre-jura"]["properties"]["placement_note"],
+        )
+        for feature in points:
+            properties = feature["properties"]
+            self.assertEqual(feature["geometry"]["type"], "Point")
+            self.assertEqual(properties["feature_type"], "producer_base")
+            self.assertIn("not vineyard", properties["representation_label"])
+            self.assertTrue(properties["native_route"].startswith("#/producer/"))
+
+    def test_entry_points_and_subject_claims_keep_authority_lineage(self):
+        entries = json.loads(
+            (ROOT / "atlas-app/public/data/atlas-entry-points.json").read_text()
+        )
+        self.assertEqual(len(entries["entry_points"]), 4)
+        self.assertEqual(len(entries["featured_worlds"]), 5)
+        claims = {}
+        for path in sorted((ROOT / "data/claims").glob("*.jsonl")):
+            for line in path.read_text().splitlines():
+                if line.strip():
+                    claim = json.loads(line)
+                    claims[claim["id"]] = claim
+        for entry in entries["entry_points"]:
+            for projected in entry["supporting_claims"]:
+                claim = claims[projected["claim_id"]]
+                self.assertEqual(projected["statement"], claim["statement"])
+                self.assertEqual(
+                    projected["source_ids"],
+                    [source["source_id"] for source in claim["source_refs"]],
+                )
+
 
 if __name__ == "__main__":
     unittest.main()

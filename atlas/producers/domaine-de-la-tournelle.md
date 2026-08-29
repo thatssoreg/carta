@@ -47,6 +47,7 @@ This section is generated from CARTA machine authority. Edit the governed record
 
 | Claim | Layer / observed | Status | Confidence | Sources |
 |---|---|---|---|---|
+| `claim:tournelle-arbois-base-11` | `reference / 2026-08-29` | `supported` | `high` | `source:tournelle-contact` |
 | `claim:tournelle-fleur-elevage-range` | `reference / 2026-08-19` | `contested` | `high` | `source:tournelle-fleur-fr`, `source:tournelle-fleur-en` |
 | `claim:tournelle-fleur-identity` | `reference / —` | `supported` | `high` | `source:tournelle-fleur-fr`, `source:tournelle-fleur-en` |
 | `claim:tournelle-fleur-not-sous-voile` | `reference / —` | `rejected` | `high` | `source:tournelle-fleur-fr`, `source:tournelle-fleur-en` |
@@ -54,6 +55,8 @@ This section is generated from CARTA machine authority. Edit the governed record
 
 ### Sources
 
+- `source:api-adresse-gouv-fr` — API Adresse
+- `source:tournelle-contact` — Contact — Domaine de la Tournelle
 - `source:tournelle-cuvees` — Nos cuvées
 - `source:tournelle-fleur-en` — Fleur de Savagnin — English page
 - `source:tournelle-fleur-fr` — Fleur de Savagnin — fiche française

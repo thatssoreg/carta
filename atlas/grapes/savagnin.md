@@ -43,14 +43,21 @@ This section is generated from CARTA machine authority. Edit the governed record
 | `claim:chateau-renard-2020-chardonnay-savagnin` | `reference / —` | `provisional` | `medium` | `source:saint-pierre-chateau-renard-2020` |
 | `claim:jura-savagnin-share-2023-10` | `reference / 2023-12-31` | `supported` | `high` | `source:civj-jura-key-figures-2024` |
 | `claim:labet-fleur-savagnin` | `reference / 2026-08-18` | `supported` | `high` | `source:jura-vins-domaine-labet` |
+| `claim:overnoy-jura-grapes-11` | `reference / 2026-08-29` | `supported` | `medium` | `source:overnoy-louis-dressner-profile` |
 | `claim:petit-manseng-savagnin` | `reference / —` | `supported` | `high` | `source:plantgrape-petit-manseng` |
+| `claim:savagnin-grape-not-method-11` | `reference / 2026-08-29` | `supported` | `high` | `source:plantgrape-savagnin`, `source:tournelle-fleur-fr`, `source:jura-vins-domaine-labet`, `source:civj-cremant-du-jura`, `source:civj-cotes-du-jura-spec` |
+| `claim:savagnin-nature-synonym-11` | `reference / 2026-08-29` | `supported` | `high` | `source:plantgrape-savagnin` |
 | `claim:tournelle-fleur-identity` | `reference / —` | `supported` | `high` | `source:tournelle-fleur-fr`, `source:tournelle-fleur-en` |
 
 ### Sources
 
+- `source:civj-cotes-du-jura-spec` — Cahier des charges de l’appellation Côtes du Jura
+- `source:civj-cremant-du-jura` — Le délicat Crémant du Jura
 - `source:civj-jura-key-figures-2024` — Le vignoble du Jura en quelques chiffres
 - `source:jura-vins-domaine-labet` — Domaine Labet
+- `source:overnoy-louis-dressner-profile` — Emmanuel Houillon and Pierre Overnoy profile
 - `source:plantgrape-petit-manseng` — Petit Manseng
+- `source:plantgrape-savagnin` — Savagnin blanc
 - `source:saint-pierre-chateau-renard-2020` — Arbois Château Renard Saint-Pierre 2020
 - `source:tournelle-fleur-en` — Fleur de Savagnin — English page
 - `source:tournelle-fleur-fr` — Fleur de Savagnin — fiche française

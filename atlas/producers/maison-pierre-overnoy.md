@@ -44,12 +44,18 @@ This section is generated from CARTA machine authority. Edit the governed record
 |---|---|---|---|---|
 | `claim:houillon-family-disambiguation-09` | `reference / —` | `supported` | `high` | `source:houillon-vine-trail`, `source:overnoy-louis-dressner`, `source:bruyere-houillon-zrs` |
 | `claim:houillon-overnoy-lineage-09` | `reference / —` | `supported` | `medium` | `source:houillon-vine-trail` |
+| `claim:overnoy-jura-grapes-11` | `reference / 2026-08-29` | `supported` | `medium` | `source:overnoy-louis-dressner-profile` |
+| `claim:overnoy-pupillin-base-11` | `reference / 2026-08-29` | `supported` | `high` | `source:annuaire-entreprises-overnoy`, `source:overnoy-louis-dressner-profile` |
+| `claim:overnoy-transmission-11` | `reference / —` | `supported` | `medium` | `source:overnoy-louis-dressner-profile` |
 
 ### Sources
 
+- `source:annuaire-entreprises-overnoy` — GAEC Emmanuel Houillon Overnoy — Annuaire des Entreprises
+- `source:api-adresse-gouv-fr` — API Adresse
 - `source:bruyere-houillon-zrs` — Renaud Bruyère & Adeline Houillon
 - `source:houillon-vine-trail` — Aurélien & Charlotte Houillon
 - `source:overnoy-louis-dressner` — Pierre Overnoy / Emmanuel Houillon producer profile
+- `source:overnoy-louis-dressner-profile` — Emmanuel Houillon and Pierre Overnoy profile
 
 </details>
 

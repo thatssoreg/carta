@@ -90,6 +90,7 @@ This section is generated from CARTA machine authority. Edit the governed record
 
 ### Sources
 
+- `source:geo-api-communes-gouv-fr` — API Découpage administratif — Communes
 - `source:inao-arbois` — Arbois blanc
 - `source:saint-pierre-chateau-renard-2018` — 2018 Chardonnay, Arbois, Château Renard
 - `source:saint-pierre-chateau-renard-2020` — Arbois Château Renard Saint-Pierre 2020

@@ -1,0 +1,81 @@
+{
+  "entry_points": [
+    {
+      "claim_ids": ["claim:jura-world-significance-10"],
+      "id": "entry:jura-outsized-world",
+      "kicker": "A small place with a long shadow",
+      "subject_id": "place:jura",
+      "title": "Why does Jura feel bigger than it is?"
+    },
+    {
+      "claim_ids": ["claim:savagnin-grape-not-method-11"],
+      "id": "entry:savagnin-not-style",
+      "kicker": "One grape, several cellar paths",
+      "subject_id": "grape:savagnin",
+      "title": "Savagnin is a grape, not a style"
+    },
+    {
+      "claim_ids": ["claim:jura-appellation-hierarchy-10"],
+      "id": "entry:jura-overlaps",
+      "kicker": "The outlines are telling different truths",
+      "subject_id": "appellation:arbois",
+      "title": "Why do Jura's wine areas overlap?"
+    },
+    {
+      "claim_ids": ["claim:petit-manseng-savagnin"],
+      "id": "entry:savagnin-petit-manseng",
+      "kicker": "A surprising genetic neighbor",
+      "subject_id": "grape:savagnin",
+      "title": "Follow Savagnin toward the Pyrenees"
+    }
+  ],
+  "featured_world_ids": [
+    "place:jura",
+    "place:burgundy",
+    "place:loire-valley",
+    "place:beaujolais",
+    "place:bearn"
+  ],
+  "native_subject_ids": [
+    "place:jura",
+    "place:burgundy",
+    "place:loire-valley",
+    "place:beaujolais",
+    "place:bearn",
+    "place:pupillin",
+    "place:arbois",
+    "place:rotalier",
+    "place:mathenay",
+    "appellation:arbois",
+    "appellation:cotes-du-jura",
+    "appellation:chateau-chalon",
+    "appellation:l-etoile",
+    "appellation:cremant-du-jura",
+    "appellation:macvin-du-jura",
+    "appellation:jurancon",
+    "grape:savagnin",
+    "grape:chardonnay",
+    "grape:poulsard",
+    "grape:trousseau",
+    "grape:pinot-noir",
+    "grape:petit-manseng",
+    "producer:domaine-de-la-tournelle",
+    "producer:domaine-labet",
+    "producer:maison-pierre-overnoy",
+    "producer:domaine-de-saint-pierre-jura",
+    "wine:domaine-de-la-tournelle-fleur-de-savagnin",
+    "wine:domaine-labet-fleur-de-savagnin",
+    "wine:domaine-labet-chardonnay-du-hasard",
+    "wine:domaine-labet-la-bardette-chardonnay",
+    "wine:chateau-renard",
+    "practice:ouillage",
+    "practice:sous-voile-aging"
+  ],
+  "producer_ids": [
+    "producer:domaine-de-la-tournelle",
+    "producer:domaine-labet",
+    "producer:maison-pierre-overnoy",
+    "producer:domaine-de-saint-pierre-jura"
+  ],
+  "version": 1
+}

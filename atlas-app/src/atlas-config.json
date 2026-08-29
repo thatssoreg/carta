@@ -12,6 +12,9 @@
     "wineRegions": "./data/france-wine-regions.geojson",
     "searchIndex": "./data/search-index.json",
     "atlasGuides": "./data/atlas-guides.json",
+    "atlasSubjects": "./data/atlas-subjects.json",
+    "entryPoints": "./data/atlas-entry-points.json",
+    "producerPoints": "./data/jura-producers.geojson",
     "provenance": "./data/provenance.json"
   },
   "countries": {
@@ -24,6 +27,8 @@
   "semanticZoom": {
     "wineRegionsMin": 4.3,
     "wineRegionsMax": 8.2,
+    "producerClustersMin": 5.6,
+    "producerPointsMin": 8.1,
     "appellationFillMin": 5.15,
     "appellationOutlineMin": 5.8,
     "appellationLabelMin": 8.6
