@@ -9,9 +9,9 @@ The machine graph and generated relationships below provide the current orientat
 
 This section is generated from governed profile dispositions, editorial anchors, and supported graph relationships. It is not a hand-maintained second knowledge graph.
 
-- [Arbois AOP](../countries/france/appellations/arbois.md) — appellation; navigation node
+- [Arbois AOP](../countries/france/appellations/arbois.md) — appellation; baseline reference
+- [Jura](../countries/france/regions/jura.md) — region; deep reference
 - [Savagnin](../grapes/savagnin.md) — grape; navigation node
-- [Jura](../countries/france/regions/jura.md) — region; navigation node
 - [France](../countries/france/README.md) — country; baseline reference
 - [Domaine Labet](domaine-labet.md) — producer; navigation node
 <!-- END GENERATED CARTA NAVIGATION -->

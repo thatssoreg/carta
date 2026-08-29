@@ -138,10 +138,10 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [Alfredo Egia](../producers/alfredo-egia.md) — producer; baseline reference
 - [Imanol Garay](../producers/imanol-garay.md) — producer; baseline reference
 - [Bizkaiko Txakolina](../countries/spain/appellations/bizkaiko-txakolina.md) — appellation; baseline reference
+- [Béarn](../countries/france/regions/bearn.md) — region; baseline reference
 - [Jurançon](../countries/france/appellations/jurancon.md) — appellation; baseline reference
 - [Pacherenc du Vic-Bilh](../countries/france/appellations/pacherenc-du-vic-bilh.md) — appellation; baseline reference
 - [Bizkaia](../countries/spain/regions/bizkaia.md) — region; baseline reference
-- [Béarn](../countries/france/regions/bearn.md) — region; baseline reference
 - [Irouléguy](../countries/france/appellations/irouleguy.md) — appellation; baseline reference
 - [Pyrenean Atlantic](../ecosystems/pyrenean-atlantic.md) — ecosystem; baseline reference
 - [United States](../countries/united-states/README.md) — country; navigation node

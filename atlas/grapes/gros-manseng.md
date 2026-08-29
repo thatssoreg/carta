@@ -90,10 +90,10 @@ Key sources include Plantgrape, INAO, Camin Larredya, and current producer/trade
 This section is generated from governed profile dispositions, editorial anchors, and supported graph relationships. It is not a hand-maintained second knowledge graph.
 
 - [Bizkaiko Txakolina](../countries/spain/appellations/bizkaiko-txakolina.md) — appellation; baseline reference
+- [Béarn](../countries/france/regions/bearn.md) — region; baseline reference
 - [Imanol Garay](../producers/imanol-garay.md) — producer; baseline reference
 - [Jurançon](../countries/france/appellations/jurancon.md) — appellation; baseline reference
 - [Pacherenc du Vic-Bilh](../countries/france/appellations/pacherenc-du-vic-bilh.md) — appellation; baseline reference
-- [Béarn](../countries/france/regions/bearn.md) — region; baseline reference
 - [Irouléguy](../countries/france/appellations/irouleguy.md) — appellation; baseline reference
 
 ### Deliberately deferred anchors

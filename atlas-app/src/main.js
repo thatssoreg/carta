@@ -34,6 +34,7 @@ const state = {
   franceLoaded: false,
   igpLoaded: false,
   searchIndex: null,
+  atlasGuides: null,
   searchMatches: [],
   activeSearchIndex: -1,
   sourcesRendered: false,
@@ -192,7 +193,7 @@ async function ensureFranceData() {
   setStatus("Loading sourced France wine geography…", true);
   addFranceLayers();
   state.franceLoaded = true;
-  setStatus("France · 1,320 AOC areas · 4 governed region anchors");
+  setStatus("France · 5 region guides · 32 governed appellation areas");
 }
 
 async function ensureIgpData() {
@@ -215,7 +216,7 @@ async function ensureIgpData() {
 function panelPadding() {
   return window.matchMedia("(max-width: 720px)").matches
     ? { top: 55, right: 24, bottom: elements.detailPanel.getAttribute("aria-hidden") === "false" ? 260 : 45, left: 24 }
-    : { top: 90, right: elements.detailPanel.getAttribute("aria-hidden") === "false" ? 430 : 60, bottom: 60, left: 60 };
+    : { top: 90, right: elements.detailPanel.getAttribute("aria-hidden") === "false" ? 500 : 60, bottom: 60, left: 60 };
 }
 
 async function enterFrance({ fit = true } = {}) {
@@ -253,13 +254,120 @@ function featureRecord(feature) {
   return feature?.properties ?? feature ?? {};
 }
 
-function detailMarkup(record, overlaps = []) {
+function formatQuantity(quantity) {
+  const value = Number(quantity.value).toLocaleString(undefined, { maximumFractionDigits: 2 });
+  if (quantity.unit === "percent") return `${value}%`;
+  if (quantity.unit === "ha") return `${value} ha`;
+  if (quantity.unit === "km") return `${value} km`;
+  return value;
+}
+
+function measureLabel(measure) {
+  return {
+    grape_share: "Grape picture",
+    wine_color_share: "Wine colors",
+    production_tier_share: "Production by appellation tier",
+  }[measure] || "Measured picture";
+}
+
+function sectionLabel(section) {
+  return {
+    why_it_matters: "Why it matters",
+    wine_picture: "The wine picture",
+    physical_place: "The physical place",
+    hierarchy: "How to read the hierarchy",
+    map_meaning: "What the map means",
+  }[section] || "In context";
+}
+
+function guideMarkup(record, guide, overlaps, sourceMeaning) {
+  const lead = guide.sections.find((item) => item.section === "orientation");
+  const narrative = [...guide.sections, ...guide.quantities.filter((item) => item.section !== "quick_fact")]
+    .filter((item) => !["orientation", "quick_fact"].includes(item.section))
+    .sort((a, b) => a.order - b.order || a.claim_id.localeCompare(b.claim_id))
+    .map((item) => `
+      <section class="detail-section guide-section">
+        <h3>${escapeHtml(item.label || sectionLabel(item.section))}</h3>
+        <p>${escapeHtml(item.statement)}</p>
+      </section>`).join("");
+  const measured = guide.quantities.filter((item) => item.quantity.unit !== "percent");
+  const measuredMarkup = measured.length ? `
+    <section class="detail-section measured-section">
+      <h3>At a glance</h3>
+      <div class="fact-grid">${measured.slice(0, 6).map((item) => `
+        <article class="fact-card">
+          <strong>${escapeHtml(formatQuantity(item.quantity))}</strong>
+          <span>${escapeHtml(item.label || item.quantity.dimension_name || item.quantity.dimension_label || item.subject_name)}</span>
+          <small>${escapeHtml(item.observed_at?.slice(0, 4) || "Dated source")}</small>
+        </article>`).join("")}</div>
+    </section>` : "";
+  const shares = [...new Set(guide.quantities
+    .filter((item) => item.quantity.unit === "percent")
+    .map((item) => item.quantity.measure))];
+  const sharesMarkup = shares.map((measure) => {
+    const items = guide.quantities.filter((item) => item.quantity.measure === measure);
+    const context = items[0]?.quantity.scope;
+    return `
+      <section class="detail-section share-section">
+        <h3>${escapeHtml(measureLabel(measure))}</h3>
+        <div class="share-bars">${items.map((item) => `
+          <div class="share-row">
+            <div><span>${escapeHtml(item.label || item.quantity.dimension_name || item.quantity.dimension_label)}</span><strong>${escapeHtml(formatQuantity(item.quantity))}</strong></div>
+            <div class="share-track" aria-hidden="true"><i style="width:${Math.max(2, Math.min(100, item.quantity.value))}%"></i></div>
+          </div>`).join("")}</div>
+        <p class="measure-note">${escapeHtml(context)} · ${escapeHtml(items[0]?.observed_at?.slice(0, 4) || "dated source")}</p>
+      </section>`;
+  }).join("");
+  const exploreMarkup = guide.explore.length ? `
+    <section class="detail-section explore-section">
+      <h3>Keep exploring</h3>
+      <div class="explore-links">${guide.explore.slice(0, 8).map((item) => `
+        <a href="${escapeHtml(humanReferenceUrl(item.human_reference_path))}" target="_blank" rel="noreferrer">
+          <span>${escapeHtml(item.label)}</span><span aria-hidden="true">↗</span>
+        </a>`).join("")}</div>
+    </section>` : "";
+  const sourceMarkup = guide.sources.filter((source) => source.url).map((source) => `
+    <li><a href="${escapeHtml(source.url)}" target="_blank" rel="noreferrer">${escapeHtml(source.title)}</a><small>${escapeHtml(source.publisher || "Source")}${source.publication_date ? ` · ${escapeHtml(source.publication_date.slice(0, 4))}` : ""}</small></li>`).join("");
+  const overlapItems = overlaps
+    .filter((item) => item.source_denomination_id !== record.source_denomination_id)
+    .slice(0, 8)
+    .map((item) => `<li><span>${escapeHtml(item.name)}</span><small>${escapeHtml(item.designation || "AOC")}</small></li>`)
+    .join("");
+  const reference = humanReferenceUrl(guide.human_reference_path || record.human_reference_path);
+  const aliasNote = guide.guide_entity_id !== record.carta_entity_id
+    ? `<p class="guide-context">This mapped area opens the broader ${escapeHtml(guide.title)} guide.</p>`
+    : "";
+
+  return `
+    <p class="detail-eyebrow">${record.feature_type === "wine_region_orientation" || record.result_type === "wine_region" ? "Region guide" : `${escapeHtml(record.designation || "Wine")} place guide`}</p>
+    <h2>${escapeHtml(record.name)}</h2>
+    ${aliasNote}
+    <p class="guide-lede">${escapeHtml(lead?.statement || guide.sections[0]?.statement || "A governed path into this wine place.")}</p>
+    <div class="detail-badges"><span class="badge badge--governed">Governed CARTA guide</span><span class="badge">${escapeHtml(guide.maturity)} reference</span></div>
+    ${measuredMarkup}
+    ${sharesMarkup}
+    ${narrative}
+    ${exploreMarkup}
+    ${overlapItems ? `<section class="detail-section overlap-section"><h3>Wine areas that overlap here</h3><p>Wine rules can cover the same point for different origins, categories, or geographic levels. Overlap is context—not an error.</p><ul class="overlap-list">${overlapItems}</ul></section>` : ""}
+    <details class="detail-disclosure"><summary>What this map shape means</summary><p>${escapeHtml(sourceMeaning)}</p></details>
+    <details class="detail-disclosure"><summary>Sources &amp; notes <span>${guide.sources.length}</span></summary><ul class="guide-sources">${sourceMarkup}</ul></details>
+    <details class="detail-disclosure technical-disclosure"><summary>Technical details</summary><dl>
+      <div><dt>Representation</dt><dd>${escapeHtml(record.representation_label || record.representation_type || "Sourced map feature")}</dd></div>
+      ${record.source_release_date ? `<div><dt>Map snapshot</dt><dd>${escapeHtml(record.source_release_date)}</dd></div>` : ""}
+      ${record.carta_entity_id ? `<div><dt>CARTA identity</dt><dd><code>${escapeHtml(record.carta_entity_id)}</code></dd></div>` : ""}
+    </dl></details>
+    ${reference ? `<a class="reference-link" href="${escapeHtml(reference)}" target="_blank" rel="noreferrer">Read the full Human Reference <span aria-hidden="true">↗</span></a>` : ""}
+  `;
+}
+
+function detailMarkup(record, overlaps = [], guide = null) {
   const governed = record.governance_status === "governed";
   const isRegion = record.feature_type === "wine_region_orientation" || record.result_type === "wine_region";
-  const designation = isRegion ? "Wine-region orientation" : `${record.designation || "Wine"} ${record.feature_type === "geographical_complement" ? "geographical complement" : "appellation"}`;
+  const designation = isRegion ? "Region orientation" : `${record.designation || "Wine"} ${record.feature_type === "geographical_complement" ? "geographic denomination" : "area"}`;
   const sourceMeaning = isRegion
-    ? "This point is derived from mapped child appellation geometry for orientation. It is not a statutory wine-region boundary."
-    : "The shape is an INAO cartographic representation of the regulatory geographical area. It is not a map of eligible parcels or actual planted vineyard land.";
+    ? "This point is derived from mapped child-appellation areas for orientation. It is not a statutory wine-region boundary."
+    : "This shape is INAO’s cartographic representation of the regulatory geographical area. It is not a map of approved parcels or actual planted vineyard land.";
+  if (guide) return guideMarkup(record, guide, overlaps, sourceMeaning);
   const reference = humanReferenceUrl(record.human_reference_path);
   const overlapItems = overlaps
     .filter((item) => item.source_denomination_id !== record.source_denomination_id)
@@ -268,31 +376,50 @@ function detailMarkup(record, overlaps = []) {
     .join("");
 
   return `
-    <p class="detail-eyebrow">${escapeHtml(designation)}</p>
+    <p class="detail-eyebrow">${escapeHtml(designation)} · map coverage</p>
     <h2>${escapeHtml(record.name)}</h2>
     <div class="detail-badges">
-      <span class="badge ${governed ? "badge--governed" : ""}">${governed ? "Governed in CARTA" : "Not yet governed in CARTA"}</span>
-      ${record.source_release_date ? `<span class="badge">Source · ${escapeHtml(record.source_release_date)}</span>` : ""}
+      <span class="badge ${governed ? "badge--governed" : ""}">${governed ? "Governed map identity" : "Official map coverage"}</span>
     </div>
-    <section class="detail-section"><h3>What this map means</h3><p>${escapeHtml(sourceMeaning)}</p></section>
-    ${overlapItems ? `<section class="detail-section"><h3>Also at this point</h3><ul class="overlap-list">${overlapItems}</ul></section>` : ""}
-    <section class="detail-section detail-provenance">
-      <h3>Evidence trail</h3>
+    <section class="detail-section"><h3>What you can learn here</h3><p>This release has reliable map coverage for this area, but not yet a full learner guide. Use the shape to orient yourself and compare nearby wine areas.</p></section>
+    ${overlapItems ? `<section class="detail-section"><h3>Wine areas that overlap here</h3><p>Different wine rules can cover the same point. Overlap is context—not an error.</p><ul class="overlap-list">${overlapItems}</ul></section>` : ""}
+    <details class="detail-disclosure"><summary>Map meaning &amp; technical details</summary><p>${escapeHtml(sourceMeaning)}</p>
       <dl>
         <div><dt>Representation</dt><dd>${escapeHtml(record.representation_label || record.representation_type || "Sourced map feature")}</dd></div>
         <div><dt>Source</dt><dd>${escapeHtml(isRegion ? "CARTA derivation from mapped INAO child areas" : "INAO SIQO geographical areas")}</dd></div>
         ${record.carta_entity_id ? `<div><dt>CARTA identity</dt><dd><code>${escapeHtml(record.carta_entity_id)}</code></dd></div>` : ""}
       </dl>
-    </section>
-    ${reference ? `<a class="reference-link" href="${escapeHtml(reference)}" target="_blank" rel="noreferrer">Open Human Reference <span aria-hidden="true">↗</span></a>` : `<p class="reference-empty">No governed Human Reference page is linked for this external feature.</p>`}
+    </details>
+    ${reference ? `<a class="reference-link" href="${escapeHtml(reference)}" target="_blank" rel="noreferrer">Read the Human Reference <span aria-hidden="true">↗</span></a>` : `<p class="reference-empty">A full CARTA guide has not been published for this area yet.</p>`}
   `;
 }
 
-function openDetails(record, overlaps = []) {
-  elements.detailContent.innerHTML = detailMarkup(featureRecord(record), overlaps.map(featureRecord));
+async function loadAtlasGuides() {
+  if (!state.atlasGuides) {
+    const response = await fetch(config.data.atlasGuides);
+    if (!response.ok) throw new Error(`Atlas guides request failed (${response.status})`);
+    state.atlasGuides = (await response.json()).guides;
+  }
+  return state.atlasGuides;
+}
+
+async function openDetails(record, overlaps = []) {
+  const feature = featureRecord(record);
+  const overlapRecords = overlaps.map(featureRecord);
   elements.detailPanel.setAttribute("aria-hidden", "false");
   elements.detailPanel.classList.add("is-open");
+  elements.detailContent.innerHTML = `<p class="detail-loading">Opening ${escapeHtml(feature.name)}…</p>`;
+  elements.detailContent.scrollTop = 0;
   map.easeTo({ padding: panelPadding(), duration: 350 });
+  try {
+    const guides = await loadAtlasGuides();
+    elements.detailContent.innerHTML = detailMarkup(feature, overlapRecords, guides[feature.carta_entity_id] || null);
+    elements.detailContent.scrollTop = 0;
+  } catch {
+    elements.detailContent.innerHTML = detailMarkup(feature, overlapRecords);
+    elements.detailContent.scrollTop = 0;
+    showToast("The learning guide could not load; official map context remains available.");
+  }
 }
 
 function closeDetails() {
@@ -332,7 +459,7 @@ async function renderSearch() {
       ? state.searchMatches.map((record, index) => `
           <button id="search-option-${index}" type="button" role="option" aria-selected="${index === 0}" data-result-index="${index}">
             <span>${escapeHtml(record.name)}</span>
-            <small>${record.result_type === "wine_region" ? "Wine-region orientation" : `${escapeHtml(record.designation)} · ${record.governance_status === "governed" ? "CARTA + INAO" : "INAO"}`}</small>
+            <small>${record.result_type === "wine_region" ? "Region guide" : `${escapeHtml(record.designation)} · ${record.governance_status === "governed" ? "Guide + official map" : "Official map"}`}</small>
           </button>`).join("")
       : `<p class="search-empty">No France wine geography matches “${escapeHtml(elements.searchInput.value.trim())}”.</p>`;
     elements.searchResults.hidden = false;
@@ -391,7 +518,7 @@ async function renderSources() {
           <a href="${escapeHtml(dataset.dataset_url)}" target="_blank" rel="noreferrer">View source <span aria-hidden="true">↗</span></a>
         </article>`).join("")}</div>
       <section class="semantic-note"><h3>Important distinctions</h3><ul>${provenance.semantic_distinctions.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul></section>
-      <p class="source-counts">Run 01 reconciliation: ${provenance.inao_reconciliation.wine_features.toLocaleString()} wine features · ${provenance.inao_reconciliation.mapped_features} accepted CARTA mappings · ${provenance.inao_reconciliation.ambiguous_mappings} ambiguous.</p>
+      <p class="source-counts">Current reconciliation: ${provenance.inao_reconciliation.wine_features.toLocaleString()} wine features · ${provenance.inao_reconciliation.mapped_features} accepted CARTA mappings · ${provenance.inao_reconciliation.ambiguous_mappings} ambiguous.</p>
     `;
     state.sourcesRendered = true;
   } catch {

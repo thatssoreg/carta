@@ -17,7 +17,6 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [François Blanchard / Le Grand Cléré](../producers/le-grand-clere.md) — producer; navigation node
 - [Prieuré Saint-Jean de Bébian / Tartuguier](../producers/prieure-saint-jean-de-bebian.md) — producer; navigation node
 - [Vindiou / Cœur Fidèle](../producers/vindiou.md) — producer; navigation node
-- [Loire Valley](../countries/france/regions/loire-valley.md) — region; navigation node
 - [Dureza](../grapes/dureza.md) — grape; navigation node
 - [Mourvèdre](../grapes/mourvedre.md) — grape; navigation node
 - [Syrah](../grapes/syrah.md) — grape; navigation node

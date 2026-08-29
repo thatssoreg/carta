@@ -10,6 +10,7 @@ The machine graph and generated relationships below provide the current orientat
 This section is generated from governed profile dispositions, editorial anchors, and supported graph relationships. It is not a hand-maintained second knowledge graph.
 
 - [Domaine Numa Cornut / Bourgogne Aligoté](../producers/numa-cornut.md) — producer; navigation node
+- [Burgundy](../countries/france/regions/burgundy.md) — region; baseline reference
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->
@@ -38,10 +39,12 @@ This section is generated from CARTA machine authority. Edit the governed record
 
 | Claim | Layer / observed | Status | Confidence | Sources |
 |---|---|---|---|---|
+| `claim:burgundy-aligote-share-2024-10` | `reference / 2024-09-01` | `supported` | `high` | `source:bivb-burgundy-key-figures-2024` |
 | `claim:numa-aligote-2023-09` | `reference / —` | `supported` | `medium` | `source:numa-allied-aligote`, `source:vivc-aligote-312` |
 
 ### Sources
 
+- `source:bivb-burgundy-key-figures-2024` — Bourgogne wines — key figures 2024
 - `source:numa-allied-aligote` — Grand vin de Bourgogne — Aligoté 2023
 - `source:vivc-aligote-312` — VIVC passport — Aligoté
 

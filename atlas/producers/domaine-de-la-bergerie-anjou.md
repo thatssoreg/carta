@@ -10,7 +10,7 @@ The machine graph and generated relationships below provide the current orientat
 This section is generated from governed profile dispositions, editorial anchors, and supported graph relationships. It is not a hand-maintained second knowledge graph.
 
 - [Chenin Blanc](../grapes/chenin-blanc.md) — grape; navigation node
-- [Loire Valley](../countries/france/regions/loire-valley.md) — region; navigation node
+- [Loire Valley](../countries/france/regions/loire-valley.md) — region; baseline reference
 - [France](../countries/france/README.md) — country; baseline reference
 <!-- END GENERATED CARTA NAVIGATION -->
 

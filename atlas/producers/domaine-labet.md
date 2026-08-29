@@ -26,7 +26,8 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [Chardonnay](../grapes/chardonnay.md) — grape; navigation node
 - [Savagnin](../grapes/savagnin.md) — grape; navigation node
 - [France](../countries/france/README.md) — country; baseline reference
-- [Jura](../countries/france/regions/jura.md) — region; navigation node
+- [Jura](../countries/france/regions/jura.md) — region; deep reference
+- [Côtes du Jura AOP](../countries/france/appellations/cotes-du-jura.md) — appellation; baseline reference
 - [Domaine de la Tournelle](domaine-de-la-tournelle.md) — producer; navigation node
 <!-- END GENERATED CARTA NAVIGATION -->
 

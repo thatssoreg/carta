@@ -607,6 +607,151 @@ def build_search_index(
     return results
 
 
+def build_atlas_guides(profile_paths: dict[str, str]) -> dict[str, Any]:
+    """Project sourced CARTA claims into compact learner guides.
+
+    This artifact contains no authored facts: every section and quantity names the
+    governed claim it came from, and every link comes from a governed profile anchor.
+    """
+    entities = read_jsonl((ROOT / "data/entities").glob("*.jsonl"))
+    claims = read_jsonl((ROOT / "data/claims").glob("*.jsonl"))
+    sources = read_jsonl((ROOT / "data/sources").glob("*.jsonl"))
+    profiles = read_jsonl((ROOT / "data/reference-profiles").glob("*.jsonl"))
+    entity_by_id = {record["id"]: record for record in entities}
+    source_by_id = {record["id"]: record for record in sources}
+    eligible_profiles = [
+        profile
+        for profile in profiles
+        if profile.get("publication_status") == "published"
+        and profile.get("profile_kind") in {"region", "appellation"}
+        and "place:france" in profile.get("country_entity_ids", [])
+        and profile.get("primary_entity_id")
+    ]
+
+    payloads: dict[str, dict[str, Any]] = {}
+    by_profile: dict[str, dict[str, Any]] = {}
+    for profile in sorted(eligible_profiles, key=lambda item: item["id"]):
+        component_ids = set(profile["component_entity_ids"])
+        selected_claims = sorted(
+            (
+                claim
+                for claim in claims
+                if claim["subject_ref"] in component_ids
+                and claim.get("atlas_presentation")
+                and (
+                    claim["subject_ref"] == profile["primary_entity_id"]
+                    or claim["atlas_presentation"]["section"] != "orientation"
+                )
+                and claim["status"] == "supported"
+            ),
+            key=lambda claim: (
+                claim["atlas_presentation"]["order"], claim["id"]
+            ),
+        )
+        if not selected_claims:
+            continue
+
+        section_claims = []
+        quantities = []
+        used_source_ids: set[str] = set()
+        for claim in selected_claims:
+            presentation = claim["atlas_presentation"]
+            source_ids = [ref["source_id"] for ref in claim["source_refs"]]
+            used_source_ids.update(source_ids)
+            projected = {
+                "claim_id": claim["id"],
+                "subject_ref": claim["subject_ref"],
+                "subject_name": entity_by_id[claim["subject_ref"]]["name"],
+                "section": presentation["section"],
+                "order": presentation["order"],
+                "label": presentation.get("label"),
+                "statement": claim["statement"],
+                "observed_at": claim.get("observed_at"),
+                "source_ids": source_ids,
+            }
+            if claim.get("quantity"):
+                quantity = dict(claim["quantity"])
+                dimension_ref = quantity.get("dimension_ref")
+                if dimension_ref:
+                    quantity["dimension_name"] = entity_by_id[dimension_ref]["name"]
+                projected["quantity"] = quantity
+                quantities.append(projected)
+            else:
+                section_claims.append(projected)
+
+        anchors = []
+        for entity_id in profile.get("representative_anchor_ids", []):
+            path = profile_paths.get(entity_id)
+            entity = entity_by_id[entity_id]
+            if not path or path == profile.get("path"):
+                continue
+            prefix = {
+                "producer": "Meet",
+                "project": "Meet",
+                "grape": "Learn about",
+                "appellation": "Explore",
+                "place": "Explore",
+            }.get(entity["type"], "Explore")
+            anchors.append(
+                {
+                    "entity_id": entity_id,
+                    "name": entity["name"],
+                    "kind": entity["type"],
+                    "label": f"{prefix} {entity['name']}",
+                    "human_reference_path": path,
+                }
+            )
+
+        payload = {
+            "guide_entity_id": profile["primary_entity_id"],
+            "title": profile["title"],
+            "profile_id": profile["id"],
+            "human_reference_path": profile["path"],
+            "maturity": profile["maturity"],
+            "component_entity_ids": profile["component_entity_ids"],
+            "sections": section_claims,
+            "quantities": quantities,
+            "explore": anchors,
+            "sources": [
+                {
+                    "source_id": source_id,
+                    "title": source_by_id[source_id]["title"],
+                    "publisher": source_by_id[source_id].get("publisher"),
+                    "url": source_by_id[source_id].get("url"),
+                    "publication_date": source_by_id[source_id].get("publication_date"),
+                    "accessed_at": source_by_id[source_id]["accessed_at"],
+                }
+                for source_id in sorted(used_source_ids)
+            ],
+        }
+        by_profile[profile["id"]] = payload
+        payloads[profile["primary_entity_id"]] = payload
+
+    # Region profiles can teach mapped child appellations that do not yet merit a
+    # standalone profile. A primary profile always wins over this alias.
+    for profile in sorted(eligible_profiles, key=lambda item: item["id"]):
+        payload = by_profile.get(profile["id"])
+        if not payload:
+            continue
+        for entity_id in profile["component_entity_ids"]:
+            payloads.setdefault(entity_id, payload)
+
+    return {
+        "generated_from": [
+            "data/claims/*.jsonl",
+            "data/entities/*.jsonl",
+            "data/reference-profiles/*.jsonl",
+            "data/sources/*.jsonl",
+        ],
+        "projection_contract": (
+            "Every learner statement and number carries a claim_id; consumers must "
+            "not parse quantities from prose. Region aliases never change the selected "
+            "map feature's CARTA identity."
+        ),
+        "guides": {key: payloads[key] for key in sorted(payloads)},
+    }
+
+
 def build_geometry_metadata(
     features_by_entity: dict[str, list[dict[str, Any]]]
 ) -> list[dict[str, Any]]:
@@ -749,18 +894,21 @@ def main() -> None:
     region_labels = build_region_labels(linkage["geometry_by_entity"])
     search_index = build_search_index(groups, region_labels)
     geometry_records = build_geometry_metadata(linkage["features_by_entity"])
+    atlas_guides = build_atlas_guides(profile_paths)
 
     world_path = PUBLIC_DATA_DIR / "world-countries.geojson"
     aoc_path = PUBLIC_DATA_DIR / "france-appellations-aoc.geojson"
     igp_path = PUBLIC_DATA_DIR / "france-appellations-igp.geojson"
     region_path = PUBLIC_DATA_DIR / "france-wine-regions.geojson"
     search_path = PUBLIC_DATA_DIR / "search-index.json"
+    guide_path = PUBLIC_DATA_DIR / "atlas-guides.json"
 
     write_json(world_path, world)
     write_json(aoc_path, {"type": "FeatureCollection", "features": groups["AOC"]})
     write_json(igp_path, {"type": "FeatureCollection", "features": groups["IGP"]})
     write_json(region_path, region_labels)
     write_json(search_path, search_index)
+    write_json(guide_path, atlas_guides)
     write_jsonl(GEOMETRY_METADATA_PATH, geometry_records)
 
     natural_artifacts = [
@@ -827,6 +975,7 @@ def main() -> None:
                 f"mapped={inao_stats['mapped_features']}",
                 f"unmapped={inao_stats['unmapped_features']}",
                 f"search={len(search_index)}",
+                f"guides={len(atlas_guides['guides'])}",
                 f"world_source={world_stats['source_features']}",
             ]
         )

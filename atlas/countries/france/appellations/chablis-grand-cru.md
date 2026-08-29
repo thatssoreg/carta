@@ -10,6 +10,7 @@ The machine graph and generated relationships below provide the current orientat
 This section is generated from governed profile dispositions, editorial anchors, and supported graph relationships. It is not a hand-maintained second knowledge graph.
 
 - [France](../README.md) — country; baseline reference
+- [Burgundy](../regions/burgundy.md) — region; baseline reference
 - [Louis Michel & Fils](../../../producers/domaine-louis-michel-fils.md) — producer; baseline reference
 - [Chardonnay](../../../grapes/chardonnay.md) — grape; navigation node
 <!-- END GENERATED CARTA NAVIGATION -->

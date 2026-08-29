@@ -44,11 +44,11 @@ producer-level current technical documentation · Château Renard blend by vinta
 
 This section is generated from governed profile dispositions, editorial anchors, and supported graph relationships. It is not a hand-maintained second knowledge graph.
 
-- [Arbois AOP](../countries/france/appellations/arbois.md) — appellation; navigation node
+- [Arbois AOP](../countries/france/appellations/arbois.md) — appellation; baseline reference
 - [Chardonnay](../grapes/chardonnay.md) — grape; navigation node
+- [Jura](../countries/france/regions/jura.md) — region; deep reference
 - [France](../countries/france/README.md) — country; baseline reference
 - [Savagnin](../grapes/savagnin.md) — grape; navigation node
-- [Jura](../countries/france/regions/jura.md) — region; navigation node
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->

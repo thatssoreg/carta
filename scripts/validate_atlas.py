@@ -79,6 +79,7 @@ def validate_record(
 
 def load_authority() -> dict[str, Any]:
     entities = read_jsonl((ROOT / "data/entities").glob("*.jsonl"))
+    claims = read_jsonl((ROOT / "data/claims").glob("*.jsonl"))
     sources = read_jsonl((ROOT / "data/sources").glob("*.jsonl"))
     profiles = read_jsonl((ROOT / "data/reference-profiles").glob("*.jsonl"))
     entity_ids = {record["id"] for record in entities}
@@ -92,10 +93,77 @@ def load_authority() -> dict[str, Any]:
     return {
         "entity_ids": entity_ids,
         "source_ids": source_ids,
+        "entities": {record["id"]: record for record in entities},
+        "claims": {record["id"]: record for record in claims},
+        "sources": {record["id"]: record for record in sources},
         "profile_paths": {
             entity_id: sorted(set(paths)) for entity_id, paths in profile_paths.items()
         },
     }
+
+
+def validate_atlas_guides(authority: dict[str, Any]) -> int:
+    value = read_json(PUBLIC_DATA_DIR / "atlas-guides.json")
+    expected_inputs = [
+        "data/claims/*.jsonl",
+        "data/entities/*.jsonl",
+        "data/reference-profiles/*.jsonl",
+        "data/sources/*.jsonl",
+    ]
+    if value.get("generated_from") != expected_inputs:
+        fail("atlas-guides.json: governed projection inputs are stale")
+    guides = value.get("guides")
+    if not isinstance(guides, dict) or not guides:
+        fail("atlas-guides.json: expected non-empty guide mapping")
+    required = {
+        "place:jura",
+        "place:burgundy",
+        "place:loire-valley",
+        "place:beaujolais",
+        "place:bearn",
+    }
+    if not required.issubset(guides):
+        fail("atlas-guides.json: missing one or more required France worlds")
+
+    for entity_id, guide in guides.items():
+        if entity_id not in authority["entity_ids"]:
+            fail(f"atlas-guides.json:{entity_id}: missing CARTA entity")
+        projected_claims = guide.get("sections", []) + guide.get("quantities", [])
+        if not projected_claims:
+            fail(f"atlas-guides.json:{entity_id}: guide has no governed claims")
+        expected_source_ids: set[str] = set()
+        for projected in projected_claims:
+            claim_id = projected.get("claim_id")
+            claim = authority["claims"].get(claim_id)
+            if not claim or not claim.get("atlas_presentation"):
+                fail(f"atlas-guides.json:{entity_id}: invalid projected claim {claim_id}")
+            if projected.get("statement") != claim["statement"]:
+                fail(f"atlas-guides.json:{claim_id}: statement drifted from authority")
+            if projected.get("subject_ref") != claim["subject_ref"]:
+                fail(f"atlas-guides.json:{claim_id}: subject drifted from authority")
+            if projected.get("subject_name") != authority["entities"][claim["subject_ref"]]["name"]:
+                fail(f"atlas-guides.json:{claim_id}: subject name drifted from authority")
+            if projected.get("observed_at") != claim.get("observed_at"):
+                fail(f"atlas-guides.json:{claim_id}: observation date drifted")
+            source_ids = [item["source_id"] for item in claim["source_refs"]]
+            if projected.get("source_ids") != source_ids:
+                fail(f"atlas-guides.json:{claim_id}: source projection drifted")
+            expected_source_ids.update(source_ids)
+            if claim.get("quantity"):
+                quantity = dict(projected.get("quantity", {}))
+                quantity.pop("dimension_name", None)
+                if quantity != claim["quantity"]:
+                    fail(f"atlas-guides.json:{claim_id}: quantity drifted from authority")
+            elif "quantity" in projected:
+                fail(f"atlas-guides.json:{claim_id}: invented quantity")
+        actual_source_ids = {item.get("source_id") for item in guide.get("sources", [])}
+        if actual_source_ids != expected_source_ids:
+            fail(f"atlas-guides.json:{entity_id}: source list is incomplete or stale")
+        for source in guide.get("sources", []):
+            authority_source = authority["sources"][source["source_id"]]
+            if source.get("url") != authority_source.get("url"):
+                fail(f"atlas-guides.json:{source['source_id']}: source URL drifted")
+    return len(guides)
 
 
 def load_and_validate_manifests(authority: dict[str, Any]) -> dict[str, dict[str, Any]]:
@@ -263,6 +331,7 @@ def validate_atlas() -> dict[str, Any]:
     manifests = load_and_validate_manifests(authority)
     validate_artifacts(manifests)
     mappings = load_and_validate_mappings(manifests, authority)
+    atlas_guide_count = validate_atlas_guides(authority)
 
     world = validate_geojson(
         PUBLIC_DATA_DIR / "world-countries.geojson",
@@ -482,6 +551,7 @@ def validate_atlas() -> dict[str, Any]:
         "external_mappings": len(mappings),
         "geometry_records": len(atlas_geometry),
         "search_records": len(search),
+        "atlas_guides": atlas_guide_count,
     }
 
 

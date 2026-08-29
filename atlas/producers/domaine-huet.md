@@ -64,7 +64,8 @@ Primary CARTA source records include Domaine Huet's current first-party site, IN
 This section is generated from governed profile dispositions, editorial anchors, and supported graph relationships. It is not a hand-maintained second knowledge graph.
 
 - [Chenin Blanc](../grapes/chenin-blanc.md) — grape; navigation node
-- [Vouvray AOP](../countries/france/appellations/vouvray.md) — appellation; navigation node
+- [Loire Valley](../countries/france/regions/loire-valley.md) — region; baseline reference
+- [Vouvray AOP](../countries/france/appellations/vouvray.md) — appellation; baseline reference
 - [France](../countries/france/README.md) — country; baseline reference
 <!-- END GENERATED CARTA NAVIGATION -->
 

@@ -1,7 +1,7 @@
 {
   "metadata": {
     "sample_size": 28,
-    "basis": "Manual reader-salience review of every link displayed by Model A (current) at main 0cd35464018768199cf9fcb2a79ac57a13805ede.",
+    "basis": "Manual reader-salience review of every generated Human Reference link after the Run 02 five-France-world enrichment on 2026-08-29.",
     "scale": {
       "A": "essential orientation",
       "B": "strong explanatory connection",
@@ -20,6 +20,7 @@
             "profile:irouleguy",
             "profile:pacherenc-du-vic-bilh",
             "profile:beaujolais",
+            "profile:burgundy",
             "profile:cornas",
             "profile:cote-rotie",
             "profile:cotes-du-rhone",
@@ -40,8 +41,8 @@
       ],
       "D": [
         {
-          "candidates": ["profile:domaine-houillon", "profile:chateau-simone"],
-          "reason": "They appear because their profiles point reciprocally to France; the universal country bucket provides no reason these two producers should outrank the 30 displaced French surfaces."
+          "candidates": ["profile:domaine-houillon"],
+          "reason": "The producer appears through reciprocal country context and is low-salience on the national orientation surface."
         }
       ]
     },
@@ -64,16 +65,8 @@
       ],
       "D": [
         {
-          "candidates": [
-            "profile:arnot-roberts",
-            "profile:ashes-and-diamonds",
-            "profile:burgess-cellars",
-            "profile:corison-winery",
-            "profile:hiyu-wine-farm",
-            "profile:jonata",
-            "profile:pax-wines"
-          ],
-          "reason": "Every producer is present through the same reciprocal country anchor; alphabetical order, not a country-page editorial distinction, decides which producers displace internal geography."
+          "candidates": ["profile:arnot-roberts", "profile:ashes-and-diamonds", "profile:burgess-cellars", "profile:corison-winery", "profile:hiyu-wine-farm", "profile:jonata", "profile:pax-wines"],
+          "reason": "Every producer is present through the same reciprocal country anchor; the country page gives no editorial reason for this subset."
         }
       ]
     },
@@ -87,7 +80,7 @@
       "C": [
         {
           "candidates": ["profile:weingut-keller", "profile:hofgut-falkenstein", "profile:wasenhaus", "profile:aj-adam", "profile:weingut-gunther-steinmetz"],
-          "reason": "The represented producers are useful expansions while Germany remains below the cap, although their order is only reciprocal-anchor alphabetization."
+          "reason": "The represented producers are useful expansions, although their order is only reciprocal-anchor alphabetization."
         }
       ]
     },
@@ -109,47 +102,41 @@
       "C": [
         {
           "candidates": ["profile:arinto-dos-acores", "profile:loureiro", "profile:aphros-wine", "profile:macanita-vinhos", "profile:companhia-vinhos-profetas-villoes", "profile:eruptio", "profile:natus-vini", "profile:trincadeira"],
-          "reason": "The grapes and producers illuminate represented Portuguese places and traditions; no link currently displaces another because the page remains under cap."
+          "reason": "The grapes and producers illuminate represented Portuguese places and traditions."
         }
       ]
     },
     "profile:loire-valley": {
       "A": [
         {
-          "candidates": ["profile:france", "profile:menu-pineau"],
-          "reason": "Containing country and a regionally meaningful grape provide basic orientation."
+          "candidates": ["profile:france", "profile:menu-pineau", "profile:cabernet-franc", "profile:chenin-blanc", "profile:melon-de-bourgogne", "profile:vouvray"],
+          "reason": "Containing country, regionally meaningful grapes, and a governed appellation provide essential Loire orientation."
         }
       ],
       "C": [
         {
-          "candidates": ["profile:clos-du-tue-boeuf", "profile:vin-de-france", "profile:domaine-de-la-bergerie-anjou", "profile:le-grand-clere"],
-          "reason": "These producers and the classification illuminate represented Loire work."
+          "candidates": ["profile:clos-du-tue-boeuf", "profile:domaine-de-la-bergerie-anjou", "profile:le-grand-clere", "profile:domaine-huet"],
+          "reason": "These governed producers illuminate represented Loire work without standing in for the whole region."
         }
       ],
       "E": [
         {
-          "candidates": ["profile:beaujolais", "profile:cornas", "profile:cote-rotie", "profile:cotes-du-rhone", "profile:jura", "profile:jurancon", "profile:palette", "profile:savoie"],
-          "reason": "Each appears only through Loire Valley WITHIN France and the target also WITHIN/LOCATED_IN France; rendering them as nearest Loire rabbit holes falsely amplifies a shared-country fact into regional relevance."
+          "candidates": ["profile:bearn", "profile:beaujolais", "profile:burgundy", "profile:cornas", "profile:cote-rotie", "profile:cotes-du-rhone"],
+          "reason": "These sibling French surfaces are reached through the country hub and do not explain the Loire Valley."
         }
       ]
     },
     "profile:jura": {
       "A": [
         {
-          "candidates": ["profile:arbois", "profile:france", "profile:chardonnay", "profile:savagnin"],
-          "reason": "Containing geography, a central appellation, and central grapes are essential Jura orientation."
+          "candidates": ["profile:arbois", "profile:france", "profile:chardonnay", "profile:savagnin", "profile:chateau-chalon", "profile:cotes-du-jura", "profile:cremant-du-jura", "profile:l-etoile", "profile:macvin-du-jura", "profile:poulsard", "profile:trousseau"],
+          "reason": "Containing geography, the six regional AOP routes, and the central grapes are essential Jura orientation."
         }
       ],
       "C": [
         {
           "candidates": ["profile:domaine-labet", "profile:domaine-de-la-tournelle", "profile:maison-pierre-overnoy", "profile:bruyere-houillon", "profile:domaine-de-saint-pierre-jura"],
           "reason": "These represented Jura producers and people are useful subject-specific expansions."
-        }
-      ],
-      "E": [
-        {
-          "candidates": ["profile:beaujolais", "profile:cornas", "profile:cote-rotie", "profile:cotes-du-rhone", "profile:jurancon", "profile:loire-valley", "profile:palette"],
-          "reason": "They are sibling French surfaces reached only through France; alphabetical traversal makes them look relevant to Jura while the more relevant Savoie surface is displaced."
         }
       ]
     },
@@ -168,8 +155,8 @@
       ],
       "E": [
         {
-          "candidates": ["profile:beaujolais", "profile:cornas", "profile:cote-rotie", "profile:cotes-du-rhone", "profile:jura", "profile:jurancon", "profile:loire-valley", "profile:palette"],
-          "reason": "They are unrelated sibling French surfaces produced solely by the shared France intermediary, so the page implies regional relevance that authority does not establish."
+          "candidates": ["profile:bearn", "profile:beaujolais", "profile:burgundy", "profile:cornas", "profile:cote-rotie", "profile:cotes-du-rhone", "profile:jura", "profile:jurancon", "profile:loire-valley", "profile:palette"],
+          "reason": "These unrelated sibling French surfaces are produced by the shared France intermediary."
         }
       ]
     },
@@ -189,12 +176,12 @@
       "D": [
         {
           "candidates": ["profile:vin-de-france"],
-          "reason": "The classification appears through a wine carrying both classifications across time; without path explanation it is too broad to orient this appellation."
+          "reason": "The broad classification is a low-specificity legal bridge for this appellation page."
         }
       ],
       "E": [
         {
-          "candidates": ["profile:beaujolais", "profile:jura", "profile:jurancon", "profile:loire-valley", "profile:palette", "profile:savoie"],
+          "candidates": ["profile:bearn", "profile:beaujolais", "profile:burgundy", "profile:jura", "profile:jurancon", "profile:loire-valley", "profile:palette", "profile:savoie"],
           "reason": "These sibling French surfaces are connected only by the country hub and are not explanatory of Côtes du Rhône."
         }
       ]
@@ -229,7 +216,7 @@
       "E": [
         {
           "candidates": ["profile:contra-costa-county", "profile:santa-barbara-county", "profile:santa-ynez-valley-ava"],
-          "reason": "They appear only because all are within California; that sibling-state path outranks the genuinely internal St. Helena AVA alphabetically and implies a Napa relationship that is not present."
+          "reason": "They appear only through shared California containment and do not explain Napa Valley."
         }
       ]
     },
@@ -256,12 +243,8 @@
       ],
       "D": [
         {
-          "candidates": ["profile:cabernet-sauvignon"],
-          "reason": "It appears because a represented wine contains both grapes; the page gives no reason that one blend should establish a general grape-to-grape rabbit hole."
-        },
-        {
-          "candidates": ["profile:vin-de-france"],
-          "reason": "It appears through one Syrah wine's broad national classification, a low-specificity legal bridge for a grape page."
+          "candidates": ["profile:cabernet-sauvignon", "profile:vin-de-france"],
+          "reason": "These arise from a shared blend or broad classification and are low-specificity links for a Syrah page."
         }
       ]
     },
@@ -289,39 +272,45 @@
       "D": [
         {
           "candidates": ["profile:vin-de-france"],
-          "reason": "A national classification shared by some Mourvèdre wines is too broad to explain the grape without path context."
+          "reason": "A national classification shared by some wines is too broad to explain the grape without path context."
         }
       ]
     },
     "profile:savagnin": {
       "A": [
         {
-          "candidates": ["profile:jura", "profile:arbois"],
-          "reason": "The central region and appellation orient Savagnin."
+          "candidates": ["profile:jura", "profile:arbois", "profile:chateau-chalon", "profile:cotes-du-jura", "profile:l-etoile", "profile:macvin-du-jura"],
+          "reason": "The central region and governed appellation routes orient Savagnin."
         }
       ],
       "C": [
         {
           "candidates": ["profile:domaine-de-la-tournelle", "profile:domaine-labet", "profile:domaine-de-saint-pierre-jura", "profile:chardonnay"],
-          "reason": "The producers use Savagnin; Chardonnay is a useful Jura white-wine comparison, though its path is only a shared wine."
+          "reason": "These represented producers use Savagnin; Chardonnay is a useful Jura white-wine comparison."
         }
       ]
     },
     "profile:chardonnay": {
       "A": [
         {
-          "candidates": ["profile:jura", "profile:arbois", "profile:chablis-grand-cru"],
-          "reason": "These represented geographic/legal surfaces are structurally important Chardonnay contexts."
+          "candidates": ["profile:jura", "profile:arbois", "profile:chablis-grand-cru", "profile:burgundy", "profile:bourgogne-cote-d-or", "profile:cotes-du-jura", "profile:cremant-du-jura", "profile:l-etoile", "profile:macvin-du-jura"],
+          "reason": "These represented geographic and legal surfaces are structurally important Chardonnay contexts."
         }
       ],
       "C": [
         {
-          "candidates": ["profile:domaine-de-saint-pierre-jura", "profile:domaine-labet", "profile:domaine-louis-michel-fils", "profile:scar-of-the-sea", "profile:hiyu-wine-farm", "profile:columbia-gorge-ava", "profile:san-luis-obispo-coast-ava", "profile:savagnin"],
-          "reason": "The producers, their governing regions, and Savagnin comparison illuminate varied represented Chardonnay contexts."
+          "candidates": ["profile:domaine-de-saint-pierre-jura", "profile:domaine-labet", "profile:domaine-louis-michel-fils", "profile:scar-of-the-sea", "profile:hiyu-wine-farm", "profile:columbia-gorge-ava", "profile:san-luis-obispo-coast-ava"],
+          "reason": "The producers and their governing regions illuminate varied represented Chardonnay contexts."
         }
       ]
     },
     "profile:aligote": {
+      "A": [
+        {
+          "candidates": ["profile:burgundy"],
+          "reason": "The central governed region is essential orientation for Aligoté."
+        }
+      ],
       "C": [
         {
           "candidates": ["profile:numa-cornut"],
@@ -345,13 +334,13 @@
       "D": [
         {
           "candidates": ["profile:domaine-houillon", "profile:prieure-saint-jean-de-bebian", "profile:sandhi-vintners"],
-          "reason": "They are reached only through shared grapes and/or Vin de France wines; that is valid connectivity but not a documented producer relationship."
+          "reason": "They are reached only through shared grapes or a broad classification and lack a documented producer relationship."
         }
       ],
       "E": [
         {
           "candidates": ["profile:bodegas-muga", "profile:clos-du-tue-boeuf", "profile:le-grand-clere", "profile:vindiou"],
-          "reason": "They are distant producer worlds reached through a broad shared grape or Vin de France classification; the unlabelled links invite a stronger association than authority supports."
+          "reason": "They are distant producer worlds reached through broad shared material or classification."
         }
       ]
     },
@@ -372,20 +361,20 @@
     "profile:domaine-labet": {
       "A": [
         {
-          "candidates": ["profile:chardonnay", "profile:savagnin", "profile:france", "profile:jura"],
-          "reason": "Core grapes and containing geography orient Domaine Labet."
+          "candidates": ["profile:chardonnay", "profile:savagnin", "profile:france", "profile:jura", "profile:cotes-du-jura"],
+          "reason": "Core grapes, containing geography, and a governing appellation orient Domaine Labet."
         }
       ],
       "C": [
         {
           "candidates": ["profile:domaine-de-la-tournelle", "profile:domaine-de-saint-pierre-jura", "profile:hiyu-wine-farm"],
-          "reason": "The Jura producers and the Hiyu practice/grape overlap are defensible rabbit holes with more specificity than a grape alone."
+          "reason": "The Jura producers and the Hiyu practice/grape overlap are defensible rabbit holes."
         }
       ],
       "D": [
         {
           "candidates": ["profile:domaine-louis-michel-fils", "profile:scar-of-the-sea"],
-          "reason": "They appear only through Chardonnay-bearing wines in unrelated regions, so the shared broad grape is insufficient producer-page salience."
+          "reason": "They appear only through Chardonnay-bearing wines in unrelated regions."
         }
       ]
     },
@@ -417,7 +406,7 @@
       "E": [
         {
           "candidates": ["profile:bodegas-muga", "profile:clos-du-tue-boeuf", "profile:le-grand-clere"],
-          "reason": "The shared Garnacha/Vin de France path creates a conspicuous producer adjacency with no documented professional, regional, or site relationship."
+          "reason": "Broad shared-grape or Vin de France paths create conspicuous producer adjacency without a documented relationship."
         }
       ]
     },
@@ -431,7 +420,7 @@
       "D": [
         {
           "candidates": ["profile:chateau-auvernier", "profile:hiyu-wine-farm", "profile:wasenhaus"],
-          "reason": "They are unrelated producers reached through a shared broad grape; meanwhile Riesling, the producer's central grape, is not surfaced because it is not an anchor/component target under current projection."
+          "reason": "They are unrelated producers reached through a shared broad grape."
         }
       ]
     },
@@ -451,7 +440,7 @@
       "D": [
         {
           "candidates": ["profile:clos-apalta", "profile:jonata"],
-          "reason": "They are reached only through Cabernet Sauvignon-bearing wines in different regions; the broad grape does not explain Burgess."
+          "reason": "They are reached only through Cabernet Sauvignon-bearing wines in different regions."
         }
       ]
     },
@@ -495,7 +484,7 @@
       "E": [
         {
           "candidates": ["profile:domaine-houillon", "profile:domaine-lampyres", "profile:le-grand-clere", "profile:prieure-saint-jean-de-bebian", "profile:vindiou"],
-          "reason": "Every producer is reached only because a represented wine is classified Vin de France; the national classification is far too broad to imply useful producer adjacency."
+          "reason": "Every producer is reached only through the broad Vin de France classification."
         }
       ]
     }

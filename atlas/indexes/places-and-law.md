@@ -23,16 +23,17 @@ Country-specific regions and appellations are nested beneath countries; landscap
 
 - [Apalta Valley](../countries/chile/regions/apalta-valley.md) — `node` / `stub`
 - [Azores](../countries/portugal/regions/azores.md) — `node` / `stub`
-- [Beaujolais](../countries/france/regions/beaujolais.md) — `node` / `stub`
+- [Beaujolais](../countries/france/regions/beaujolais.md) — `baseline` / `published`
 - [Bizkaia](../countries/spain/regions/bizkaia.md) — `baseline` / `published`
+- [Burgundy](../countries/france/regions/burgundy.md) — `baseline` / `published`
 - [Béarn](../countries/france/regions/bearn.md) — `baseline` / `published`
 - [California](../countries/united-states/regions/california.md) — `node` / `stub`
 - [Colchagua Valley](../countries/chile/regions/colchagua-valley.md) — `node` / `stub`
 - [Combe de Savoie](../countries/france/regions/combe-de-savoie.md) — `node` / `stub`
 - [Contra Costa County](../countries/united-states/regions/contra-costa-county.md) — `node` / `stub`
-- [Jura](../countries/france/regions/jura.md) — `node` / `stub`
+- [Jura](../countries/france/regions/jura.md) — `deep` / `published`
 - [Lima Valley](../countries/portugal/regions/lima-valley.md) — `node` / `stub`
-- [Loire Valley](../countries/france/regions/loire-valley.md) — `node` / `stub`
+- [Loire Valley](../countries/france/regions/loire-valley.md) — `baseline` / `published`
 - [Madeira Archipelago](../countries/portugal/regions/madeira-archipelago.md) — `node` / `stub`
 - [Mosel](../countries/germany/regions/mosel.md) — `node` / `stub`
 - [Penedès](../countries/spain/regions/penedes.md) — `node` / `stub`
@@ -51,19 +52,25 @@ Country-specific regions and appellations are nested beneath countries; landscap
 ### Human Reference surfaces
 
 - [Apalta](../countries/chile/appellations/apalta.md) — `node` / `stub`
-- [Arbois AOP](../countries/france/appellations/arbois.md) — `node` / `stub`
+- [Arbois AOP](../countries/france/appellations/arbois.md) — `baseline` / `published`
 - [Ballard Canyon AVA](../countries/united-states/appellations/ballard-canyon-ava.md) — `node` / `stub`
 - [Bizkaiko Txakolina](../countries/spain/appellations/bizkaiko-txakolina.md) — `baseline` / `published`
+- [Bourgogne Côte d’Or](../countries/france/appellations/bourgogne-cote-d-or.md) — `baseline` / `published`
 - [Brunello di Montalcino DOCG](../countries/italy/appellations/brunello-di-montalcino.md) — `node` / `stub`
 - [Chablis Grand Cru AOP](../countries/france/appellations/chablis-grand-cru.md) — `node` / `stub`
+- [Château-Chalon AOP](../countries/france/appellations/chateau-chalon.md) — `baseline` / `published`
 - [Columbia Gorge AVA](../countries/united-states/appellations/columbia-gorge-ava.md) — `node` / `stub`
 - [Cornas AOP](../countries/france/appellations/cornas.md) — `node` / `stub`
+- [Crémant du Jura AOP](../countries/france/appellations/cremant-du-jura.md) — `baseline` / `published`
 - [Côte-Rôtie](../countries/france/appellations/cote-rotie.md) — `node` / `stub`
+- [Côtes du Jura AOP](../countries/france/appellations/cotes-du-jura.md) — `baseline` / `published`
 - [Côtes du Rhône AOP](../countries/france/appellations/cotes-du-rhone.md) — `node` / `stub`
 - [Irouléguy](../countries/france/appellations/irouleguy.md) — `baseline` / `published`
 - [Jurançon](../countries/france/appellations/jurancon.md) — `baseline` / `published`
+- [L’Etoile AOP](../countries/france/appellations/l-etoile.md) — `baseline` / `published`
+- [Macvin du Jura AOP](../countries/france/appellations/macvin-du-jura.md) — `baseline` / `published`
 - [Madeirense DOP](../countries/portugal/appellations/madeirense-dop.md) — `node` / `stub`
-- [Morgon AOP](../countries/france/appellations/morgon.md) — `node` / `stub`
+- [Morgon AOP](../countries/france/appellations/morgon.md) — `baseline` / `published`
 - [Napa Valley AVA](../countries/united-states/appellations/napa-valley-ava.md) — `node` / `stub`
 - [Pacherenc du Vic-Bilh](../countries/france/appellations/pacherenc-du-vic-bilh.md) — `baseline` / `published`
 - [Palette AOP](../countries/france/appellations/palette.md) — `node` / `stub`
@@ -76,7 +83,7 @@ Country-specific regions and appellations are nested beneath countries; landscap
 - [St. Helena AVA](../countries/united-states/appellations/st-helena-ava.md) — `node` / `stub`
 - [Vin de Savoie Apremont](../countries/france/appellations/vin-de-savoie-apremont.md) — `node` / `stub`
 - [Vino de la Tierra de Liébana](../countries/spain/appellations/vino-de-la-tierra-de-liebana.md) — `node` / `stub`
-- [Vouvray AOP](../countries/france/appellations/vouvray.md) — `node` / `stub`
+- [Vouvray AOP](../countries/france/appellations/vouvray.md) — `baseline` / `published`
 - [Wachau DAC](../countries/austria/appellations/wachau-dac.md) — `node` / `stub`
 
 ## Landscapes

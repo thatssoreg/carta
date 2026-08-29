@@ -11,6 +11,7 @@
     "igpAreas": "./data/france-appellations-igp.geojson",
     "wineRegions": "./data/france-wine-regions.geojson",
     "searchIndex": "./data/search-index.json",
+    "atlasGuides": "./data/atlas-guides.json",
     "provenance": "./data/provenance.json"
   },
   "countries": {
