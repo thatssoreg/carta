@@ -1,0 +1,17 @@
+{"id":"appellation:cotes-du-jura","layer":"reference","name":"Côtes du Jura AOP","status":"active","type":"appellation"}
+{"id":"appellation:chateau-chalon","layer":"reference","name":"Château-Chalon AOP","status":"active","type":"appellation"}
+{"id":"appellation:l-etoile","layer":"reference","name":"L’Etoile AOP","status":"active","type":"appellation"}
+{"id":"appellation:cremant-du-jura","layer":"reference","name":"Crémant du Jura AOP","status":"active","type":"appellation"}
+{"id":"appellation:macvin-du-jura","layer":"reference","name":"Macvin du Jura AOP","status":"active","type":"appellation"}
+{"id":"appellation:bourgogne","layer":"reference","name":"Bourgogne AOC","status":"active","type":"appellation"}
+{"id":"appellation:bourgogne-cote-d-or","layer":"reference","name":"Bourgogne Côte d’Or","status":"active","summary":"A geographic denomination within Bourgogne AOC, represented separately because INAO publishes a distinct geographical-complement surface.","type":"appellation"}
+{"id":"appellation:beaujolais","layer":"reference","name":"Beaujolais AOC","status":"active","type":"appellation"}
+{"id":"appellation:fleurie","layer":"reference","name":"Fleurie AOC","status":"active","type":"appellation"}
+{"id":"appellation:moulin-a-vent","layer":"reference","name":"Moulin-à-Vent AOC","status":"active","type":"appellation"}
+{"id":"appellation:anjou","layer":"reference","name":"Anjou AOP","status":"active","type":"appellation"}
+{"id":"appellation:chinon","layer":"reference","name":"Chinon AOP","status":"active","type":"appellation"}
+{"id":"appellation:muscadet","layer":"reference","name":"Muscadet AOP","status":"active","type":"appellation"}
+{"id":"appellation:sancerre","layer":"reference","name":"Sancerre AOP","status":"active","type":"appellation"}
+{"alternate_names":[{"kind":"local","language":"fr","name":"Ploussard","jurisdiction":"Jura"}],"id":"grape:poulsard","layer":"reference","name":"Poulsard","status":"active","type":"grape"}
+{"id":"grape:trousseau","layer":"reference","name":"Trousseau","status":"active","type":"grape"}
+{"id":"grape:melon-de-bourgogne","layer":"reference","name":"Melon de Bourgogne","status":"active","type":"grape"}

@@ -70,10 +70,10 @@ Current legal and historical authority: INAO. Producer anchors draw on specialis
 
 This section is generated from governed profile dispositions, editorial anchors, and supported graph relationships. It is not a hand-maintained second knowledge graph.
 
+- [Béarn](../regions/bearn.md) — region; baseline reference
 - [France](../README.md) — country; baseline reference
 - [Gros Manseng](../../../grapes/gros-manseng.md) — grape; baseline reference
 - [Petit Manseng](../../../grapes/petit-manseng.md) — grape; baseline reference
-- [Béarn](../regions/bearn.md) — region; baseline reference
 - [Petit Courbu](../../../grapes/petit-courbu.md) — grape; baseline reference
 - [Pyrenean Atlantic](../../../ecosystems/pyrenean-atlantic.md) — ecosystem; baseline reference
 
@@ -100,6 +100,7 @@ This section is generated from CARTA machine authority. Edit the governed record
 
 **Representative anchors**
 
+- `place:bearn`
 - `grape:petit-manseng`
 - `grape:gros-manseng`
 - `producer:domaine-cauhape`
@@ -114,21 +115,27 @@ This section is generated from CARTA machine authority. Edit the governed record
 
 | Claim | Layer / observed | Status | Confidence | Sources |
 |---|---|---|---|---|
+| `claim:jurancon-commune-count-10` | `reference / 2026-08-29` | `supported` | `high` | `source:inao-jurancon` |
 | `claim:jurancon-country` | `reference / —` | `supported` | `high` | `source:inao-jurancon` |
+| `claim:jurancon-guide-orientation-10` | `reference / 2026-08-29` | `supported` | `high` | `source:inao-jurancon` |
 | `claim:jurancon-manseng-core-grapes` | `reference / —` | `supported` | `high` | `source:inao-jurancon` |
+| `claim:jurancon-member-vineyard-area-10` | `reference / 2026-08-29` | `supported` | `high` | `source:jurancon-winegrowers` |
+| `claim:jurancon-physical-place-10` | `reference / 2026-08-29` | `supported` | `high` | `source:inao-jurancon` |
 | `claim:jurancon-representative-producers` | `reference / —` | `supported` | `medium` | `source:wsg-southwest-producer-guide` |
+| `claim:jurancon-style-picture-10` | `reference / 2026-08-29` | `supported` | `high` | `source:inao-jurancon` |
 | `claim:jurancon-terrain-law` | `reference / —` | `supported` | `high` | `source:inao-jurancon` |
 
 ### Sources
 
 - `source:inao-aires-geographiques-siqo-2026-08-24` — Délimitation des aires-géographiques des SIQO — 2026-08-24 snapshot
 - `source:inao-jurancon` — Jurançon
+- `source:jurancon-winegrowers` — Vins de Jurançon — association des vignerons
 - `source:wsg-southwest-producer-guide` — Producer Guide - South-West
 
 </details>
 
 ### Open questions
 
-- Acquire official geometry
-- Deepen current stylistic producer anchors
+- Deepen current stylistic producer anchors from first-party sources
+- Add vineyard-scale geometry only when authoritative
 <!-- END GENERATED CARTA PROVENANCE -->

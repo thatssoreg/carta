@@ -10,7 +10,9 @@ The machine graph and generated relationships below provide the current orientat
 This section is generated from governed profile dispositions, editorial anchors, and supported graph relationships. It is not a hand-maintained second knowledge graph.
 
 - [Aligoté](../grapes/aligote.md) — grape; navigation node
+- [Burgundy](../countries/france/regions/burgundy.md) — region; baseline reference
 - [France](../countries/france/README.md) — country; baseline reference
+- [Bourgogne Côte d’Or](../countries/france/appellations/bourgogne-cote-d-or.md) — appellation; baseline reference
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->

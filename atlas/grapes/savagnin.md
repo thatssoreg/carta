@@ -11,9 +11,13 @@ This section is generated from governed profile dispositions, editorial anchors,
 
 - [Domaine de la Tournelle](../producers/domaine-de-la-tournelle.md) — producer; navigation node
 - [Domaine Labet](../producers/domaine-labet.md) — producer; navigation node
-- [Jura](../countries/france/regions/jura.md) — region; navigation node
+- [Arbois AOP](../countries/france/appellations/arbois.md) — appellation; baseline reference
+- [Jura](../countries/france/regions/jura.md) — region; deep reference
+- [Château-Chalon AOP](../countries/france/appellations/chateau-chalon.md) — appellation; baseline reference
+- [Côtes du Jura AOP](../countries/france/appellations/cotes-du-jura.md) — appellation; baseline reference
+- [L’Etoile AOP](../countries/france/appellations/l-etoile.md) — appellation; baseline reference
+- [Macvin du Jura AOP](../countries/france/appellations/macvin-du-jura.md) — appellation; baseline reference
 - [Domaine de Saint Pierre / Château Renard](../producers/domaine-de-saint-pierre-jura.md) — producer; baseline reference
-- [Arbois AOP](../countries/france/appellations/arbois.md) — appellation; navigation node
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->
@@ -37,12 +41,14 @@ This section is generated from CARTA machine authority. Edit the governed record
 | Claim | Layer / observed | Status | Confidence | Sources |
 |---|---|---|---|---|
 | `claim:chateau-renard-2020-chardonnay-savagnin` | `reference / —` | `provisional` | `medium` | `source:saint-pierre-chateau-renard-2020` |
+| `claim:jura-savagnin-share-2023-10` | `reference / 2023-12-31` | `supported` | `high` | `source:civj-jura-key-figures-2024` |
 | `claim:labet-fleur-savagnin` | `reference / 2026-08-18` | `supported` | `high` | `source:jura-vins-domaine-labet` |
 | `claim:petit-manseng-savagnin` | `reference / —` | `supported` | `high` | `source:plantgrape-petit-manseng` |
 | `claim:tournelle-fleur-identity` | `reference / —` | `supported` | `high` | `source:tournelle-fleur-fr`, `source:tournelle-fleur-en` |
 
 ### Sources
 
+- `source:civj-jura-key-figures-2024` — Le vignoble du Jura en quelques chiffres
 - `source:jura-vins-domaine-labet` — Domaine Labet
 - `source:plantgrape-petit-manseng` — Petit Manseng
 - `source:saint-pierre-chateau-renard-2020` — Arbois Château Renard Saint-Pierre 2020

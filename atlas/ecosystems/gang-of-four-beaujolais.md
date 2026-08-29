@@ -45,10 +45,10 @@ independent producer profiles for Foillard, Breton and Thévenet · direct evide
 
 This section is generated from governed profile dispositions, editorial anchors, and supported graph relationships. It is not a hand-maintained second knowledge graph.
 
-- [Beaujolais](../countries/france/regions/beaujolais.md) — region; navigation node
+- [Beaujolais](../countries/france/regions/beaujolais.md) — region; baseline reference
 - [France](../countries/france/README.md) — country; baseline reference
 - [Gamay noir à jus blanc](../grapes/gamay-noir-a-jus-blanc.md) — grape; navigation node
-- [Morgon AOP](../countries/france/appellations/morgon.md) — appellation; navigation node
+- [Morgon AOP](../countries/france/appellations/morgon.md) — appellation; baseline reference
 - [Domaine Marcel Lapierre](../producers/domaine-marcel-lapierre.md) — producer; baseline reference
 <!-- END GENERATED CARTA NAVIGATION -->
 

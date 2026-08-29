@@ -108,6 +108,7 @@ This section is generated from governed profile dispositions, editorial anchors,
 
 - [Alfredo Egia](../producers/alfredo-egia.md) — producer; baseline reference
 - [Bizkaiko Txakolina](../countries/spain/appellations/bizkaiko-txakolina.md) — appellation; baseline reference
+- [Béarn](../countries/france/regions/bearn.md) — region; baseline reference
 - [Imanol Garay](../producers/imanol-garay.md) — producer; baseline reference
 - [Jurançon](../countries/france/appellations/jurancon.md) — appellation; baseline reference
 - [Petit Courbu](../grapes/petit-courbu.md) — grape; baseline reference

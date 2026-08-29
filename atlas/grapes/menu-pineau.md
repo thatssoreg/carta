@@ -11,7 +11,7 @@ This section is generated from governed profile dispositions, editorial anchors,
 
 - [Clos du Tue-Boeuf](../producers/clos-du-tue-boeuf.md) — producer; navigation node
 - [France](../countries/france/README.md) — country; baseline reference
-- [Loire Valley](../countries/france/regions/loire-valley.md) — region; navigation node
+- [Loire Valley](../countries/france/regions/loire-valley.md) — region; baseline reference
 - [Vin de France](../classifications/vin-de-france.md) — classification; navigation node
 <!-- END GENERATED CARTA NAVIGATION -->
 

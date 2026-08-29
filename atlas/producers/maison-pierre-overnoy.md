@@ -11,7 +11,7 @@ This section is generated from governed profile dispositions, editorial anchors,
 
 - [Aurélien & Charlotte Houillon](domaine-houillon.md) — producer; navigation node
 - [France](../countries/france/README.md) — country; baseline reference
-- [Jura](../countries/france/regions/jura.md) — region; navigation node
+- [Jura](../countries/france/regions/jura.md) — region; deep reference
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->

@@ -27,7 +27,7 @@ This section is generated from governed profile dispositions, editorial anchors,
 
 - [Menu Pineau / Orbois](../grapes/menu-pineau.md) — grape; navigation node
 - [Vin de France](../classifications/vin-de-france.md) — classification; navigation node
-- [Loire Valley](../countries/france/regions/loire-valley.md) — region; navigation node
+- [Loire Valley](../countries/france/regions/loire-valley.md) — region; baseline reference
 - [France](../countries/france/README.md) — country; baseline reference
 
 ### Deliberately deferred anchors

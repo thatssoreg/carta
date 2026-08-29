@@ -475,7 +475,7 @@ button {
   top: 14px;
   right: 14px;
   bottom: 14px;
-  width: min(390px, calc(100vw - 28px));
+  width: min(460px, calc(100vw - 28px));
   overflow: hidden;
   border: 1px solid var(--line);
   border-radius: 4px;
@@ -643,6 +643,211 @@ button {
   margin-top: 24px;
   padding: 12px;
   background: #f4efe6;
+}
+
+.detail-loading {
+  margin: 40px 0;
+  color: var(--ink-muted);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1rem;
+}
+
+.guide-context {
+  margin: -5px 0 12px;
+  color: var(--ink-muted);
+  font-size: 0.69rem;
+}
+
+.guide-lede {
+  margin: 0 0 16px;
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.03rem;
+  line-height: 1.5;
+}
+
+.fact-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 7px;
+}
+
+.fact-card {
+  display: flex;
+  min-height: 94px;
+  flex-direction: column;
+  padding: 12px;
+  border: 1px solid var(--line);
+  background: #faf7f0;
+}
+
+.fact-card strong {
+  color: var(--wine-dark);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.35rem;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.fact-card span {
+  margin-top: 8px;
+  font-size: 0.7rem;
+  font-weight: 720;
+  line-height: 1.25;
+}
+
+.fact-card small {
+  margin-top: auto;
+  padding-top: 7px;
+  color: var(--ink-muted);
+  font-size: 0.6rem;
+}
+
+.share-bars {
+  display: grid;
+  gap: 11px;
+}
+
+.share-row > div:first-child {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 5px;
+  font-size: 0.71rem;
+}
+
+.share-row strong {
+  color: var(--wine-dark);
+  font-size: 0.7rem;
+}
+
+.share-track {
+  height: 6px;
+  overflow: hidden;
+  border-radius: 99px;
+  background: #e7dfd3;
+}
+
+.share-track i {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--wine), #b46f62);
+}
+
+.measure-note {
+  margin-top: 11px !important;
+  font-size: 0.63rem !important;
+  line-height: 1.4 !important;
+}
+
+.explore-links {
+  display: grid;
+  gap: 5px;
+}
+
+.explore-links a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 9px 10px;
+  border: 1px solid var(--line);
+  color: var(--ink);
+  font-size: 0.71rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.explore-links a:hover {
+  border-color: var(--wine);
+  color: var(--wine);
+}
+
+.overlap-section > p {
+  margin-bottom: 10px;
+}
+
+.detail-disclosure {
+  margin-top: 20px;
+  border-top: 1px solid var(--line);
+}
+
+.detail-disclosure summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 13px 0;
+  color: var(--ink);
+  font-size: 0.7rem;
+  font-weight: 760;
+  cursor: pointer;
+}
+
+.detail-disclosure > p {
+  margin: 0 0 13px;
+  color: var(--ink-muted);
+  font-size: 0.72rem;
+  line-height: 1.5;
+}
+
+.guide-sources {
+  display: grid;
+  gap: 8px;
+  margin: 0 0 15px;
+  padding: 0;
+  list-style: none;
+}
+
+.guide-sources li {
+  display: grid;
+  gap: 2px;
+  padding-left: 10px;
+  border-left: 2px solid var(--ochre);
+}
+
+.guide-sources a {
+  color: var(--wine);
+  font-size: 0.7rem;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.guide-sources small {
+  color: var(--ink-muted);
+  font-size: 0.6rem;
+  line-height: 1.35;
+}
+
+.technical-disclosure dl {
+  display: grid;
+  gap: 8px;
+  margin: 0 0 15px;
+}
+
+.technical-disclosure dl > div {
+  display: grid;
+  grid-template-columns: 90px 1fr;
+  gap: 10px;
+}
+
+.technical-disclosure dt {
+  color: var(--ink-muted);
+  font-size: 0.62rem;
+}
+
+.technical-disclosure dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+  font-size: 0.66rem;
+  line-height: 1.4;
+}
+
+.technical-disclosure code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.62rem;
 }
 
 .map-status {
@@ -905,7 +1110,7 @@ button {
     bottom: 8px;
     left: 8px;
     width: auto;
-    height: min(54vh, 455px);
+    height: min(60vh, 540px);
     transform: translateY(calc(100% + 20px));
   }
 

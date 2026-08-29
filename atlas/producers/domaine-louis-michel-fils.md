@@ -67,6 +67,7 @@ Primary CARTA source records include Louis Michel & Fils' current first-party si
 
 This section is generated from governed profile dispositions, editorial anchors, and supported graph relationships. It is not a hand-maintained second knowledge graph.
 
+- [Burgundy](../countries/france/regions/burgundy.md) — region; baseline reference
 - [Chablis Grand Cru AOP](../countries/france/appellations/chablis-grand-cru.md) — appellation; navigation node
 - [Chardonnay](../grapes/chardonnay.md) — grape; navigation node
 - [France](../countries/france/README.md) — country; baseline reference

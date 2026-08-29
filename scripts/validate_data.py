@@ -345,6 +345,59 @@ def validate_authored_contracts(
     for claim in data["claims"]:
         validate_temporal_interval(claim)
         observed_at = claim.get("observed_at")
+        quantity = claim.get("quantity")
+        if quantity:
+            if not observed_at:
+                raise SystemExit(f"{claim['id']}: quantitative claim requires observed_at")
+            if claim["status"] != "supported":
+                raise SystemExit(
+                    f"{claim['id']}: learner-facing quantitative claim must be supported"
+                )
+            if quantity["unit"] == "percent":
+                if not 0 <= quantity["value"] <= 100:
+                    raise SystemExit(
+                        f"{claim['id']}: percentage must be between 0 and 100"
+                    )
+                if not quantity.get("denominator"):
+                    raise SystemExit(
+                        f"{claim['id']}: percentage requires an explicit denominator"
+                    )
+            elif quantity.get("denominator"):
+                raise SystemExit(
+                    f"{claim['id']}: denominator is reserved for percentage claims"
+                )
+            if quantity["value"] < 0:
+                raise SystemExit(f"{claim['id']}: quantity cannot be negative")
+            expected_units = {
+                "vineyard_area": "ha",
+                "area_in_production": "ha",
+                "claimed_vineyard_area": "ha",
+                "member_vineyard_area": "ha",
+                "grape_share": "percent",
+                "wine_color_share": "percent",
+                "production_tier_share": "percent",
+                "appellation_count": "count",
+                "commune_count": "count",
+                "geographic_length": "km",
+            }
+            expected_unit = expected_units[quantity["measure"]]
+            if quantity["unit"] != expected_unit:
+                raise SystemExit(
+                    f"{claim['id']}: {quantity['measure']} requires unit {expected_unit}"
+                )
+            dimension_ref = quantity.get("dimension_ref")
+            if dimension_ref and dimension_ref not in ids["entities"]:
+                raise SystemExit(
+                    f"{claim['id']}: missing quantity dimension {dimension_ref}"
+                )
+            if quantity["measure"] == "grape_share" and not dimension_ref:
+                raise SystemExit(
+                    f"{claim['id']}: grape_share requires dimension_ref"
+                )
+            if quantity["measure"] in {"wine_color_share", "production_tier_share"} and not quantity.get("dimension_label"):
+                raise SystemExit(
+                    f"{claim['id']}: {quantity['measure']} requires dimension_label"
+                )
         if claim["layer"] == "frontier" and not observed_at:
             raise SystemExit(f"{claim['id']}: Frontier claim requires observed_at")
         if claim["claim_type"] in {"market", "availability", "price"} and not observed_at:
@@ -364,6 +417,26 @@ def validate_authored_contracts(
             raise SystemExit(
                 f"{claim['id']}: perishable temporal language requires observed_at"
             )
+
+    quantitative_keys: dict[tuple, str] = {}
+    for claim in data["claims"]:
+        quantity = claim.get("quantity")
+        if not quantity or claim["status"] != "supported":
+            continue
+        key = (
+            claim["subject_ref"],
+            quantity["measure"],
+            quantity.get("dimension_ref"),
+            quantity.get("dimension_label"),
+            claim.get("observed_at"),
+            quantity["scope"],
+        )
+        previous = quantitative_keys.get(key)
+        if previous:
+            raise SystemExit(
+                f"{claim['id']}: contradictory duplicate quantitative key also used by {previous}"
+            )
+        quantitative_keys[key] = claim["id"]
 
 
 def validate_profile_path(profile: dict) -> None:

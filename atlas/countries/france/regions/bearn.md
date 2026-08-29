@@ -69,12 +69,18 @@ Dry expressions, organic/biodynamic farming, renewed attention to local grapes, 
 
 This section is generated from governed profile dispositions, editorial anchors, and supported graph relationships. It is not a hand-maintained second knowledge graph.
 
+- [Jurançon](../appellations/jurancon.md) — appellation; baseline reference
 - [France](../README.md) — country; baseline reference
 - [Gros Manseng](../../../grapes/gros-manseng.md) — grape; baseline reference
-- [Jurançon](../appellations/jurancon.md) — appellation; baseline reference
 - [Pacherenc du Vic-Bilh](../appellations/pacherenc-du-vic-bilh.md) — appellation; baseline reference
 - [Petit Courbu](../../../grapes/petit-courbu.md) — grape; baseline reference
 - [Petit Manseng](../../../grapes/petit-manseng.md) — grape; baseline reference
+- [Pyrenean Atlantic](../../../ecosystems/pyrenean-atlantic.md) — ecosystem; baseline reference
+
+### Deliberately deferred anchors
+
+- **Camin Larredya** — machine authority only; no reader-facing target
+- **Domaine de Souch** — machine authority only; no reader-facing target
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->
@@ -90,6 +96,7 @@ This section is generated from CARTA machine authority. Edit the governed record
 
 - `place:bearn`
 - `appellation:bearn`
+- `appellation:jurancon`
 
 **Representative anchors**
 
@@ -98,6 +105,8 @@ This section is generated from CARTA machine authority. Edit the governed record
 - `grape:petit-manseng`
 - `grape:gros-manseng`
 - `grape:petit-courbu`
+- `producer:camin-larredya`
+- `producer:domaine-de-souch`
 
 <details>
 <summary>Machine claims and sources</summary>
@@ -107,16 +116,30 @@ This section is generated from CARTA machine authority. Edit the governed record
 | Claim | Layer / observed | Status | Confidence | Sources |
 |---|---|---|---|---|
 | `claim:bearn-history` | `reference / —` | `supported` | `high` | `source:inao-bearn` |
+| `claim:bearn-world-orientation-10` | `reference / 2026-08-29` | `supported` | `high` | `source:inao-jurancon` |
+| `claim:bearn-world-significance-10` | `reference / 2026-08-29` | `supported` | `high` | `source:inao-jurancon` |
+| `claim:jurancon-commune-count-10` | `reference / 2026-08-29` | `supported` | `high` | `source:inao-jurancon` |
+| `claim:jurancon-country` | `reference / —` | `supported` | `high` | `source:inao-jurancon` |
+| `claim:jurancon-guide-orientation-10` | `reference / 2026-08-29` | `supported` | `high` | `source:inao-jurancon` |
+| `claim:jurancon-manseng-core-grapes` | `reference / —` | `supported` | `high` | `source:inao-jurancon` |
+| `claim:jurancon-member-vineyard-area-10` | `reference / 2026-08-29` | `supported` | `high` | `source:jurancon-winegrowers` |
+| `claim:jurancon-physical-place-10` | `reference / 2026-08-29` | `supported` | `high` | `source:inao-jurancon` |
+| `claim:jurancon-representative-producers` | `reference / —` | `supported` | `medium` | `source:wsg-southwest-producer-guide` |
+| `claim:jurancon-style-picture-10` | `reference / 2026-08-29` | `supported` | `high` | `source:inao-jurancon` |
+| `claim:jurancon-terrain-law` | `reference / —` | `supported` | `high` | `source:inao-jurancon` |
 
 ### Sources
 
 - `source:inao-aires-geographiques-siqo-2026-08-24` — Délimitation des aires-géographiques des SIQO — 2026-08-24 snapshot
 - `source:inao-bearn` — Béarn blanc and cahier des charges
+- `source:inao-jurancon` — Jurançon
+- `source:jurancon-winegrowers` — Vins de Jurançon — association des vignerons
+- `source:wsg-southwest-producer-guide` — Producer Guide - South-West
 
 </details>
 
 ### Open questions
 
-- Deepen historical/cultural Béarn independently from legal Béarn AOP
+- Deepen historical and cultural Béarn independently from legal Béarn AOP
 - Acquire watershed and geology layers in GIS
 <!-- END GENERATED CARTA PROVENANCE -->

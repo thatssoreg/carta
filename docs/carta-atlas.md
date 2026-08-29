@@ -12,7 +12,7 @@ The working product slice follows this path:
 
 **world → France → governed wine-region orientation → sourced appellation area → feature detail → Human Reference**
 
-The initial world is an ordinary OpenFreeMap Liberty basemap with a small Natural Earth interaction layer. Entering France lazy-loads the default INAO AOC/AOP geography and four defensible governed region anchors derived from mapped child appellations. IGP remains a separate, off-by-default layer. Search covers every rendered INAO denomination and the governed region anchors.
+The initial world is an ordinary OpenFreeMap Liberty basemap with a small Natural Earth interaction layer. Entering France lazy-loads the default INAO AOC/AOP geography and five defensible governed region anchors derived from mapped child appellations. IGP remains a separate, off-by-default layer. Search covers every rendered INAO denomination and the governed region anchors.
 
 The app distinguishes three things throughout:
 
@@ -51,12 +51,23 @@ Run 01 measured the generated assets after topology-preserving simplification an
 | Asset | Records | Bytes | Delivery |
 |---|---:|---:|---|
 | Natural Earth countries | 258 | 2,214,567 | initial interaction layer |
-| INAO AOC/AOP | 1,320 | 7,852,898 | loaded on France entry |
+| INAO AOC/AOP | 1,320 | 7,853,848 | loaded on France entry |
 | INAO IGP | 165 | 2,699,715 | loaded only when enabled |
-| Governed region anchors | 4 | 3,080 | loaded on France entry |
-| Search index | 1,482 | 956,127 | loaded on first useful search |
+| Governed region anchors | 5 | 4,281 | loaded on France entry |
+| Search index | 1,483 | 957,518 | loaded on first useful search |
+| Learner-guide projection | 27 entity routes | 158,276 | loaded on first place selection |
 
 The split GeoJSON delivery is responsive in the tested desktop and phone flows and keeps IDs and feature-level click behavior simple. PMTiles would add complexity without solving an observed Run 01 problem, so it remains a measured future option rather than a default dependency. The manifests are the authoritative place for current sizes and checksums if later regeneration changes these values.
+
+## Run 02 learner-guide and quantity contract
+
+The Jura, Burgundy, Loire Valley, Beaujolais, and Béarn/Jurançon worlds add a learner-facing projection at `atlas-app/public/data/atlas-guides.json`. The build script generates it from claims, entities, profiles, and sources. It is not an authored content store.
+
+Every projected sentence and measurement carries its originating `claim_id` and source IDs. Quantities live on the existing claim record in a small `quantity` object with a measure, numeric value, unit, explicit scope, observation date, and—where a percentage is used—its denominator. Grape shares also carry a governed grape entity reference. Optional `atlas_presentation` metadata selects and orders claims for a learner section; it does not restate the fact.
+
+The validator rejects undated quantities, percentages outside zero to 100, percentages without denominators, missing grape dimensions, and duplicate supported measures with the same subject/date/scope/dimension key. Atlas validation then proves that every projected value, statement, subject, source, and URL still matches machine authority. The browser reads the numeric fields directly and never parses a number from prose.
+
+Region profiles can provide a guide for mapped child appellations that do not yet merit their own Human Reference page. This is a presentation alias only: the selected map feature retains its own CARTA identity in the technical details, and a primary appellation profile always takes precedence.
 
 ## Human experience
 

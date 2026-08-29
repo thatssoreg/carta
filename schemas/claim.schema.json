@@ -41,6 +41,47 @@
     "time_precision": {"enum": ["day", "month", "year", "range", "unknown"]},
     "jurisdiction": {"type": "string"},
     "scope_notes": {"type": "string"},
+    "quantity": {
+      "description": "Optional machine-readable measurement carried by the sourced claim. The prose statement remains the human-readable assertion; consumers must use these fields rather than parsing prose.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["measure", "value", "unit", "scope"],
+      "properties": {
+        "measure": {
+          "enum": [
+            "vineyard_area", "area_in_production", "claimed_vineyard_area",
+            "member_vineyard_area", "grape_share", "wine_color_share", "production_tier_share",
+            "appellation_count", "commune_count", "geographic_length"
+          ]
+        },
+        "value": {"type": "number"},
+        "unit": {"enum": ["ha", "percent", "count", "km"]},
+        "scope": {"type": "string", "minLength": 1},
+        "denominator": {"type": "string", "minLength": 1},
+        "dimension_ref": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_-]*:[a-z0-9][a-z0-9._-]*$"
+        },
+        "dimension_label": {"type": "string", "minLength": 1}
+      }
+    },
+    "atlas_presentation": {
+      "description": "Learner-facing projection metadata; it selects and orders governed claims without creating another fact layer.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["section", "order"],
+      "properties": {
+        "section": {
+          "enum": [
+            "orientation", "why_it_matters", "wine_picture", "physical_place",
+            "hierarchy", "map_meaning", "quick_fact"
+          ]
+        },
+        "order": {"type": "integer", "minimum": 0},
+        "label": {"type": "string", "minLength": 1},
+        "emphasis": {"enum": ["standard", "lead"]}
+      }
+    },
     "resolution_needed": {"type": "string"},
     "supersedes": {
       "type": "array",

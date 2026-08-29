@@ -50,22 +50,22 @@ That does not make the border irrelevant. It means CARTA needs to show which rel
 
 This section is generated from governed profile dispositions, editorial anchors, and supported graph relationships. It is not a hand-maintained second knowledge graph.
 
+- [Béarn](regions/bearn.md) — region; baseline reference
 - [Jurançon](appellations/jurancon.md) — appellation; baseline reference
 - [Richard Leroy](../../producers/richard-leroy.md) — producer; baseline reference
-- [Béarn](regions/bearn.md) — region; baseline reference
 - [Irouléguy](appellations/irouleguy.md) — appellation; baseline reference
 - [Pacherenc du Vic-Bilh](appellations/pacherenc-du-vic-bilh.md) — appellation; baseline reference
-- [Beaujolais](regions/beaujolais.md) — region; navigation node
+- [Beaujolais](regions/beaujolais.md) — region; baseline reference
+- [Burgundy](regions/burgundy.md) — region; baseline reference
 - [Cornas AOP](appellations/cornas.md) — appellation; navigation node
 - [Côte-Rôtie](appellations/cote-rotie.md) — appellation; navigation node
 - [Côtes du Rhône AOP](appellations/cotes-du-rhone.md) — appellation; navigation node
-- [Jura](regions/jura.md) — region; navigation node
-- [Loire Valley](regions/loire-valley.md) — region; navigation node
+- [Jura](regions/jura.md) — region; deep reference
+- [Loire Valley](regions/loire-valley.md) — region; baseline reference
 - [Palette AOP](appellations/palette.md) — appellation; navigation node
 - [Savoie](regions/savoie.md) — region; navigation node
-- [Arbois AOP](appellations/arbois.md) — appellation; navigation node
-- [Combe de Savoie](regions/combe-de-savoie.md) — region; navigation node
-- [Morgon AOP](appellations/morgon.md) — appellation; navigation node
+- [Arbois AOP](appellations/arbois.md) — appellation; baseline reference
+- [Bourgogne Côte d’Or](appellations/bourgogne-cote-d-or.md) — appellation; baseline reference
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->
@@ -97,6 +97,8 @@ This section is generated from CARTA machine authority. Edit the governed record
 | Claim | Layer / observed | Status | Confidence | Sources |
 |---|---|---|---|---|
 | `claim:arbois-aop` | `reference / 2026-08-18` | `supported` | `high` | `source:inao-arbois` |
+| `claim:bearn-world-orientation-10` | `reference / 2026-08-29` | `supported` | `high` | `source:inao-jurancon` |
+| `claim:burgundy-world-orientation-10` | `reference / 2024-09-01` | `supported` | `high` | `source:bivb-burgundy-key-figures-2024` |
 | `claim:chambeyron-site` | `reference / —` | `supported` | `high` | `source:sacred-thirst-chambeyron`, `source:wine-trust-chambeyron` |
 | `claim:chevillard-location` | `reference / —` | `supported` | `high` | `source:chevillard-domaine` |
 | `claim:cornas-aop-geography` | `reference / —` | `supported` | `high` | `source:inao-cornas` |
@@ -112,6 +114,7 @@ This section is generated from CARTA machine authority. Edit the governed record
 
 ### Sources
 
+- `source:bivb-burgundy-key-figures-2024` — Bourgogne wines — key figures 2024
 - `source:chevillard-domaine` — Le domaine | Domaine de Chevillard
 - `source:dressner-tue-boeuf` — Clos du Tue-Boeuf Producer Profile
 - `source:inao-arbois` — Arbois blanc

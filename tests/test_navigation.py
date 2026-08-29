@@ -317,9 +317,9 @@ class NavigationPolicyTest(unittest.TestCase):
             ROOT / "audits/run-10-human-reference-navigation-ratings.json"
         )
         current = evaluate_models(self.report, ratings)["A_current"]
-        self.assertEqual(current["ab_retained"], 109, current)
+        self.assertEqual(current["ab_retained"], 133, current)
         self.assertEqual(current["retained_ratings"]["B"], 6, current)
-        self.assertEqual(current["de_removed"], 72, current)
+        self.assertEqual(current["de_removed"], 66, current)
         self.assertNotIn("D", current["retained_ratings"], current)
         self.assertNotIn("E", current["retained_ratings"], current)
         self.assertNotIn("A", current["removed_links_by_rating"], current)

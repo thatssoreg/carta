@@ -28,6 +28,7 @@ Governed grape profiles, including honest stubs, are listed here.
 - [Gros Manseng](../grapes/gros-manseng.md) — `baseline` / `published`
 - [Jacquère](../grapes/jacquere.md) — `node` / `stub`
 - [Loureiro](../grapes/loureiro.md) — `node` / `stub`
+- [Melon de Bourgogne](../grapes/melon-de-bourgogne.md) — `baseline` / `published`
 - [Mencía](../grapes/mencia.md) — `node` / `stub`
 - [Menu Pineau / Orbois](../grapes/menu-pineau.md) — `node` / `stub`
 - [Mondeuse](../grapes/mondeuse.md) — `node` / `stub`
@@ -35,6 +36,7 @@ Governed grape profiles, including honest stubs, are listed here.
 - [Palomino Fino](../grapes/palomino-fino.md) — `node` / `stub`
 - [Petit Courbu](../grapes/petit-courbu.md) — `baseline` / `published`
 - [Petit Manseng](../grapes/petit-manseng.md) — `baseline` / `published`
+- [Poulsard / Ploussard](../grapes/poulsard.md) — `baseline` / `published`
 - [Raffiat de Moncade](../grapes/raffiat-de-moncade.md) — `node` / `stub`
 - [Riesling](../grapes/riesling.md) — `node` / `stub`
 - [Sangiovese](../grapes/sangiovese.md) — `node` / `stub`
@@ -42,6 +44,7 @@ Governed grape profiles, including honest stubs, are listed here.
 - [Syrah](../grapes/syrah.md) — `node` / `stub`
 - [Tempranillo](../grapes/tempranillo.md) — `node` / `stub`
 - [Trincadeira](../grapes/trincadeira.md) — `node` / `stub`
+- [Trousseau](../grapes/trousseau.md) — `baseline` / `published`
 - [Viura](../grapes/viura.md) — `node` / `stub`
 
 ### Explicit machine-only dispositions
