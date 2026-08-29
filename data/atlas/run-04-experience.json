@@ -1,0 +1,614 @@
+{
+  "version": 2,
+  "release": "atlas-run-04-make-it-sing",
+  "entry_points": [
+    {
+      "claim_ids": ["claim:jura-world-significance-10"],
+      "id": "entry:jura-accent",
+      "kicker": "The accent is recognizable. The tells can lie.",
+      "subject_id": "place:jura",
+      "title": "Learn to recognize Jura without reducing it to a stereotype"
+    },
+    {
+      "claim_ids": ["claim:savagnin-grape-not-method-11"],
+      "id": "entry:savagnin-not-style",
+      "kicker": "One grape, several cellar paths",
+      "subject_id": "grape:savagnin",
+      "title": "Savagnin is a grape, not a style"
+    },
+    {
+      "claim_ids": ["claim:jura-appellation-hierarchy-10"],
+      "id": "entry:jura-overlaps",
+      "kicker": "The outlines are telling different truths",
+      "subject_id": "appellation:arbois",
+      "title": "Why do Jura's wine areas overlap?"
+    },
+    {
+      "claim_ids": ["claim:savagnin-palomino-affinity-12"],
+      "id": "entry:same-energy",
+      "kicker": "Same Energy · film yeast, different worlds",
+      "subject_id": "grape:palomino-fino",
+      "title": "Leave Jura without losing the thread"
+    }
+  ],
+  "featured_world_ids": [
+    "place:jura",
+    "place:burgundy",
+    "place:loire-valley",
+    "place:beaujolais",
+    "place:bearn"
+  ],
+  "producer_ids": [
+    "producer:domaine-de-la-tournelle",
+    "producer:domaine-labet",
+    "producer:maison-pierre-overnoy",
+    "producer:domaine-de-saint-pierre-jura"
+  ],
+  "native_subject_ids": [
+    "place:jura",
+    "place:burgundy",
+    "place:loire-valley",
+    "place:beaujolais",
+    "place:bearn",
+    "place:pupillin",
+    "place:arbois",
+    "place:rotalier",
+    "place:mathenay",
+    "appellation:arbois",
+    "appellation:cotes-du-jura",
+    "appellation:chateau-chalon",
+    "appellation:l-etoile",
+    "appellation:cremant-du-jura",
+    "appellation:macvin-du-jura",
+    "appellation:jurancon",
+    "grape:savagnin",
+    "grape:chardonnay",
+    "grape:poulsard",
+    "grape:trousseau",
+    "grape:pinot-noir",
+    "grape:petit-manseng",
+    "grape:palomino-fino",
+    "producer:domaine-de-la-tournelle",
+    "producer:domaine-labet",
+    "producer:maison-pierre-overnoy",
+    "producer:domaine-de-saint-pierre-jura",
+    "project:soleras-del-pacifico",
+    "person:emmanuel-houillon",
+    "person:pierre-overnoy",
+    "wine:domaine-de-la-tournelle-fleur-de-savagnin",
+    "wine:domaine-labet-fleur-de-savagnin",
+    "wine:domaine-labet-chardonnay-du-hasard",
+    "wine:domaine-labet-la-bardette-chardonnay",
+    "wine:chateau-renard",
+    "wine:flor-of-evangelho",
+    "practice:ouillage",
+    "practice:sous-voile-aging"
+  ],
+  "editorial": {
+    "legend": [
+      {
+        "id": "rabbit-hole",
+        "label": "Rabbit Hole",
+        "symbol": "↝",
+        "meaning": "An unexpected connection worth following."
+      },
+      {
+        "id": "tell",
+        "label": "The Tell",
+        "symbol": "◉",
+        "meaning": "A clue that helps recognition, never proof on its own."
+      },
+      {
+        "id": "iykyk",
+        "label": "IYKYK",
+        "symbol": "⌁",
+        "meaning": "Insider context made useful without gatekeeping."
+      },
+      {
+        "id": "same-energy",
+        "label": "Same Energy",
+        "symbol": "≈",
+        "meaning": "A defensible affinity, not a claim that two things are identical."
+      }
+    ],
+    "glossary": {
+      "elevage": {
+        "claim_ids": ["claim:tournelle-fleur-elevage-range"],
+        "definition": "The raising of a wine between fermentation and bottling: time, vessel, topping and other cellar choices all live inside it.",
+        "matters": "Here it separates time in barrel from bottle age.",
+        "term": "élevage"
+      },
+      "flor": {
+        "claim_ids": ["claim:flor-evangelho-process", "claim:savagnin-palomino-affinity-12"],
+        "definition": "A film-forming yeast layer that develops on a wine's surface under the right cellar conditions.",
+        "explore_target_id": "wine:flor-of-evangelho",
+        "matters": "It can shape aroma and structure more strongly than the grape name does.",
+        "term": "flor"
+      },
+      "marl": {
+        "claim_ids": ["claim:labet-fleur-savagnin", "claim:tournelle-fleur-identity"],
+        "definition": "A clay-rich calcareous rock or sediment; Jura growers often distinguish its bands, ages and colors.",
+        "matters": "It is useful site context, not a flavor guarantee.",
+        "term": "marl"
+      },
+      "mistelle": {
+        "claim_ids": ["claim:jura-world-significance-10", "claim:jura-wine-picture-10"],
+        "definition": "A sweet wine made by adding spirit to grape must before or during early fermentation.",
+        "explore_target_id": "appellation:macvin-du-jura",
+        "matters": "Macvin belongs to this family; it is not another name for vin jaune.",
+        "term": "mistelle"
+      },
+      "ouille": {
+        "claim_ids": ["claim:labet-white-ouillage", "claim:tournelle-fleur-identity"],
+        "definition": "Topped up: the barrel is refilled as wine evaporates, keeping headspace and oxygen contact low.",
+        "explore_target_id": "practice:ouillage",
+        "matters": "It is the most useful word for avoiding the idea that every Jura white is oxidative.",
+        "term": "ouillé"
+      },
+      "sous-voile": {
+        "claim_ids": ["claim:labet-hasard-sous-voile", "claim:savagnin-grape-not-method-11"],
+        "definition": "Under a yeast veil: wine ages without regular topping while a film-forming yeast layer develops on its surface.",
+        "explore_target_id": "practice:sous-voile-aging",
+        "matters": "This is biological ageing, not simple neglect and not a grape flavor.",
+        "term": "sous voile"
+      },
+      "voile": {
+        "claim_ids": ["claim:labet-white-ouillage", "claim:labet-hasard-sous-voile"],
+        "definition": "Literally ‘veil’: the film of yeast that can form over wine in a partly filled vessel.",
+        "explore_target_id": "practice:sous-voile-aging",
+        "matters": "The veil creates a biological pathway distinct from ordinary oxygen exposure.",
+        "term": "voile"
+      }
+    },
+    "subjects": {
+      "place:jura": {
+        "accent": {
+          "claim_ids": ["claim:jura-world-significance-10", "claim:savagnin-grape-not-method-11"],
+          "intro": "Jura has one of wine's most recognizable accents. The useful skill is not memorizing a flavor; it is learning which clues travel, why they work, and where they fail.",
+          "tells": [
+            {
+              "claim_ids": ["claim:savagnin-grape-not-method-11", "claim:jura-savagnin-share-2023-10"],
+              "clue": "A strong clue because Savagnin is unusually central here.",
+              "correction": "The grape name does not tell you whether the wine was topped, raised under a veil, made sparkling, or headed toward vin jaune.",
+              "id": "savagnin",
+              "target_id": "grape:savagnin",
+              "title": "Savagnin",
+              "why": "CIVJ reports Savagnin at 25% of Jura's grape distribution, and the region gives it several distinct cellar lives."
+            },
+            {
+              "claim_ids": ["claim:labet-hasard-sous-voile", "claim:tournelle-fleur-identity"],
+              "clue": "Walnut, spice and a {{term:voile|voile}} register can feel unmistakably Jura.",
+              "correction": "A topped Jura white may avoid that register completely. Region, grape and cellar method are three different answers.",
+              "id": "oxygen",
+              "target_id": "practice:sous-voile-aging",
+              "title": "The oxygen clue",
+              "why": "CARTA documents both {{term:sous-voile|sous voile}} Chardonnay and deliberately {{term:ouille|ouillé}} Savagnin in the same regional world."
+            },
+            {
+              "claim_ids": ["claim:pupillin-commune-jura-11", "claim:overnoy-pupillin-base-11"],
+              "clue": "Pupillin is a village name that carries unusual recognition in wine culture.",
+              "correction": "It is a place and an appellation qualifier—not a producer, quality tier, or guarantee of one house style.",
+              "id": "pupillin",
+              "target_id": "place:pupillin",
+              "title": "Pupillin on the label",
+              "why": "The commune is a real production context near Arbois and the base associated with Maison Pierre Overnoy / Emmanuel Houillon."
+            }
+          ],
+          "title": "Recognizable. Never one-note."
+        },
+        "claim_ids": ["claim:jura-world-orientation-10", "claim:jura-world-significance-10"],
+        "featured_connections": [
+          {
+            "action": "Explore",
+            "claim_ids": ["claim:savagnin-grape-not-method-11"],
+            "reason": "The grape that makes Jura's cellar choices easiest to see—and easiest to confuse.",
+            "signal": "tell",
+            "target_id": "grape:savagnin"
+          },
+          {
+            "action": "Meet",
+            "claim_ids": ["claim:tournelle-founded-1991-fleur-1994", "claim:tournelle-fleur-identity"],
+            "reason": "An Arbois producer whose topped Savagnin makes the region's style fork concrete.",
+            "signal": "rabbit-hole",
+            "target_id": "producer:domaine-de-la-tournelle"
+          },
+          {
+            "action": "Read the territory",
+            "claim_ids": ["claim:arbois-guide-orientation-10", "claim:jura-appellation-hierarchy-10"],
+            "reason": "A geographic AOP where still-wine origins meet Jura's overlapping categories.",
+            "signal": "rabbit-hole",
+            "target_id": "appellation:arbois"
+          }
+        ],
+        "hero_kicker": "One small region · several ways to be wrong about it",
+        "lenses": [
+          {
+            "claim_ids": ["claim:overnoy-us-access-context-12"],
+            "id": "scarcity",
+            "signal": "iykyk",
+            "text": "Overnoy's US importer reports fewer than 400 bottles a year for the entire country. That explains allocation pressure. It does not make scarcity a quality score—or an allocated bottle the best way to learn Jura.",
+            "title": "Scarcity is context, not a ranking"
+          },
+          {
+            "claim_ids": ["claim:jura-appellation-hierarchy-10", "claim:jura-wine-picture-10"],
+            "id": "rules",
+            "text": "Geographic AOPs, sparkling rules and {{term:mistelle|mistelle}} can occupy the same regional map while answering different legal questions.",
+            "title": "Rules describe categories, not cultural importance"
+          }
+        ],
+        "map_reaction": {
+          "area_subject_ids": ["appellation:arbois", "appellation:cotes-du-jura", "appellation:chateau-chalon", "appellation:l-etoile", "appellation:cremant-du-jura", "appellation:macvin-du-jura"],
+          "producer_ids": ["producer:domaine-de-la-tournelle", "producer:domaine-labet", "producer:maison-pierre-overnoy", "producer:domaine-de-saint-pierre-jura"]
+        },
+        "surprises": [
+          {
+            "claim_ids": ["claim:petit-manseng-savagnin"],
+            "reveal": "This rabbit hole leaves Jura for the western Pyrenees through a surprising genetic neighbor.",
+            "target_id": "grape:petit-manseng"
+          },
+          {
+            "claim_ids": ["claim:savagnin-palomino-affinity-12"],
+            "reveal": "Same Energy: film yeast is the bridge; the grape and wine culture are not.",
+            "target_id": "grape:palomino-fino"
+          }
+        ],
+        "thesis": "Jura has a strong accent because grape, place, law and cellar choice stay visibly entangled. Learn the tells—then learn why each one can mislead."
+      },
+      "grape:savagnin": {
+        "affinities": [
+          {
+            "claim_ids": ["claim:petit-manseng-savagnin", "claim:petit-manseng-origin-traits"],
+            "reason": "A documented close relative with tiny berries and unusually strong acid retention, living in a very different climate problem.",
+            "signal": "rabbit-hole",
+            "target_id": "grape:petit-manseng"
+          },
+          {
+            "claim_ids": ["claim:savagnin-palomino-affinity-12"],
+            "reason": "Another grape whose culture can be transformed by film yeast. Same Energy; different structure, law and geography.",
+            "signal": "same-energy",
+            "target_id": "grape:palomino-fino"
+          },
+          {
+            "claim_ids": ["claim:chardonnay-jura-burgundy-contrast-12", "claim:labet-hasard-sous-voile"],
+            "reason": "Jura's white co-tenant: the same cellar fork can make Chardonnay feel closer than a flavor comparison would.",
+            "signal": "same-energy",
+            "target_id": "grape:chardonnay"
+          }
+        ],
+        "claim_ids": ["claim:savagnin-grape-not-method-11"],
+        "featured_connections": [
+          {
+            "action": "Meet",
+            "claim_ids": ["claim:tournelle-fleur-identity"],
+            "reason": "A producer route into deliberately topped, non-oxidative Savagnin.",
+            "signal": "tell",
+            "target_id": "producer:domaine-de-la-tournelle"
+          },
+          {
+            "action": "Follow the family resemblance",
+            "claim_ids": ["claim:petit-manseng-savagnin"],
+            "reason": "A genetic road from Jura toward the western Pyrenees—with no pretend parentage claim.",
+            "signal": "rabbit-hole",
+            "target_id": "grape:petit-manseng"
+          },
+          {
+            "action": "Meet the lineage",
+            "claim_ids": ["claim:overnoy-transmission-11", "claim:overnoy-jura-grapes-11"],
+            "reason": "Pupillin, Savagnin and a human handoff that matters more than the cult market around it.",
+            "signal": "iykyk",
+            "target_id": "producer:maison-pierre-overnoy"
+          }
+        ],
+        "hero_kicker": "A grape with more than one ending",
+        "lenses": [
+          {
+            "claim_ids": ["claim:savagnin-nature-synonym-11"],
+            "id": "nature",
+            "signal": "iykyk",
+            "text": "Naturé is an official French synonym for Savagnin. On an older Jura label, the word is grape language—not proof of a natural-wine method.",
+            "title": "Naturé does not settle how it was made"
+          }
+        ],
+        "map_reaction": {
+          "area_subject_ids": ["appellation:arbois", "appellation:cotes-du-jura", "appellation:chateau-chalon", "appellation:l-etoile", "appellation:cremant-du-jura"],
+          "producer_ids": ["producer:domaine-de-la-tournelle", "producer:domaine-labet", "producer:maison-pierre-overnoy"]
+        },
+        "style_paths": [
+          {
+            "claim_ids": ["claim:tournelle-fleur-identity", "claim:labet-white-ouillage"],
+            "name": "{{term:ouille|Ouillé}}",
+            "note": "The vessel is kept full. Expect the grape and site to remain easier to hear than a veil signature.",
+            "target_id": "wine:domaine-de-la-tournelle-fleur-de-savagnin"
+          },
+          {
+            "claim_ids": ["claim:savagnin-grape-not-method-11", "claim:labet-hasard-sous-voile"],
+            "name": "{{term:sous-voile|Sous voile}}",
+            "note": "A yeast veil changes the wine biologically. The register is real; treating it as Savagnin's default flavor is the mistake.",
+            "target_id": "practice:sous-voile-aging"
+          },
+          {
+            "claim_ids": ["claim:chateau-chalon-guide-orientation-10", "claim:jura-wine-picture-10"],
+            "name": "Vin jaune",
+            "note": "A legally defined Savagnin pathway with its own ageing framework—not shorthand for every untopped Jura white.",
+            "target_id": "appellation:chateau-chalon"
+          }
+        ],
+        "surprises": [
+          {
+            "claim_ids": ["claim:savagnin-palomino-affinity-12"],
+            "reveal": "Same Energy, different universe: follow film yeast from Jura toward Palomino.",
+            "target_id": "grape:palomino-fino"
+          },
+          {
+            "claim_ids": ["claim:petit-manseng-savagnin"],
+            "reveal": "This is not a tasting analogy. It is a genetic road toward the Pyrenees.",
+            "target_id": "grape:petit-manseng"
+          }
+        ],
+        "thesis": "Savagnin is the clue, not the conclusion. The decisive question is what happened during {{term:elevage|élevage}}."
+      },
+      "grape:chardonnay": {
+        "claim_ids": ["claim:chardonnay-jura-burgundy-contrast-12"],
+        "featured_connections": [
+          {
+            "action": "Compare",
+            "claim_ids": ["claim:jura-chardonnay-share-2023-10", "claim:labet-hasard-sous-voile"],
+            "reason": "Jura makes Chardonnay a cellar-choice lesson: topped, under veil, blended and sparkling routes coexist.",
+            "signal": "same-energy",
+            "target_id": "place:jura"
+          },
+          {
+            "action": "Compare",
+            "claim_ids": ["claim:burgundy-chardonnay-share-2024-10"],
+            "reason": "The grape's other cultural machine: a much larger hierarchy of place and classification.",
+            "signal": "same-energy",
+            "target_id": "place:burgundy"
+          },
+          {
+            "action": "Meet",
+            "claim_ids": ["claim:labet-hasard-sous-voile", "claim:labet-bardette-2022"],
+            "reason": "One producer world where site-specific and sous-voile Chardonnay can be read side by side.",
+            "signal": "rabbit-hole",
+            "target_id": "producer:domaine-labet"
+          }
+        ],
+        "hero_kicker": "Plastic grape · local culture",
+        "map_reaction": {
+          "area_subject_ids": ["appellation:arbois", "appellation:cotes-du-jura"],
+          "producer_ids": ["producer:domaine-labet", "producer:maison-pierre-overnoy", "producer:domaine-de-saint-pierre-jura"]
+        },
+        "thesis": "Same grape. Different cultural machine. Burgundy and Jura both center Chardonnay; the comparison becomes useful when you stop expecting one regional script."
+      },
+      "producer:domaine-de-la-tournelle": {
+        "claim_ids": ["claim:tournelle-founded-1991-fleur-1994", "claim:tournelle-fleur-identity"],
+        "featured_connections": [
+          {
+            "action": "Taste the decision",
+            "claim_ids": ["claim:tournelle-fleur-identity"],
+            "reason": "The bottle-level proof that Savagnin can be deliberately topped and non-oxidative.",
+            "signal": "tell",
+            "target_id": "wine:domaine-de-la-tournelle-fleur-de-savagnin"
+          },
+          {
+            "action": "Explore the grape",
+            "claim_ids": ["claim:tournelle-fleur-identity", "claim:savagnin-grape-not-method-11"],
+            "reason": "Move from one wine to the grape's wider set of cellar paths.",
+            "signal": "rabbit-hole",
+            "target_id": "grape:savagnin"
+          },
+          {
+            "action": "Read the territory",
+            "claim_ids": ["claim:tournelle-arbois-base-11", "claim:arbois-guide-orientation-10"],
+            "reason": "The domaine's Arbois base opens the legal and geographic layer behind the bottle.",
+            "signal": "rabbit-hole",
+            "target_id": "appellation:arbois"
+          }
+        ],
+        "hero_kicker": "Arbois · a cellar decision made legible",
+        "map_reaction": {
+          "area_subject_ids": ["appellation:arbois"],
+          "producer_ids": ["producer:domaine-de-la-tournelle"]
+        },
+        "thesis": "Évelyne and Pascal Clairet's domaine makes a useful teaching move: Fleur de Savagnin has been a topped expression since the 1990s, so the grape never has to stand in for oxidation."
+      },
+      "producer:domaine-labet": {
+        "claim_ids": ["claim:labet-estate-identity", "claim:labet-white-ouillage", "claim:labet-hasard-sous-voile"],
+        "featured_connections": [
+          {
+            "action": "Compare the fork",
+            "claim_ids": ["claim:labet-white-ouillage", "claim:labet-hasard-sous-voile"],
+            "reason": "A Chardonnay route under veil beside a domaine known for topped whites.",
+            "signal": "tell",
+            "target_id": "wine:domaine-labet-chardonnay-du-hasard"
+          },
+          {
+            "action": "Explore",
+            "claim_ids": ["claim:labet-fleur-savagnin"],
+            "reason": "A multi-parcel Savagnin route that refuses the single-vineyard assumption.",
+            "signal": "rabbit-hole",
+            "target_id": "grape:savagnin"
+          },
+          {
+            "action": "Compare",
+            "claim_ids": ["claim:chardonnay-jura-burgundy-contrast-12"],
+            "reason": "Chardonnay becomes a site and cellar instrument rather than a generic white-grape card.",
+            "signal": "same-energy",
+            "target_id": "grape:chardonnay"
+          }
+        ],
+        "hero_kicker": "Rotalier · parcels before mythology",
+        "map_reaction": {
+          "area_subject_ids": ["appellation:cotes-du-jura"],
+          "producer_ids": ["producer:domaine-labet"]
+        },
+        "thesis": "Domaine Labet is most useful as a parcel-and-process laboratory: topped whites, a documented sous-voile Chardonnay, and a family estate spread across 45 parcels."
+      },
+      "producer:maison-pierre-overnoy": {
+        "claim_ids": ["claim:overnoy-transmission-11", "claim:overnoy-label-code-12", "claim:overnoy-us-access-context-12"],
+        "featured_connections": [
+          {
+            "action": "Meet",
+            "claim_ids": ["claim:emmanuel-overnoy-mentorship-12"],
+            "reason": "The current maker's apprenticeship and 2001 handoff turn ‘influence’ into a human chronology.",
+            "signal": "rabbit-hole",
+            "target_id": "person:emmanuel-houillon"
+          },
+          {
+            "action": "Meet",
+            "claim_ids": ["claim:pierre-overnoy-estate-history-12"],
+            "reason": "The earlier chapter: family vines, a 1968 start, and a handoff that kept the elder present.",
+            "signal": "rabbit-hole",
+            "target_id": "person:pierre-overnoy"
+          },
+          {
+            "action": "Explore",
+            "claim_ids": ["claim:overnoy-jura-grapes-11", "claim:savagnin-grape-not-method-11"],
+            "reason": "Leave the cult object behind and return to the grape and its several possible endings.",
+            "signal": "tell",
+            "target_id": "grape:savagnin"
+          }
+        ],
+        "hero_kicker": "Pupillin · a house, people, and a handoff",
+        "lenses": [
+          {
+            "claim_ids": ["claim:overnoy-label-code-12"],
+            "id": "wax",
+            "signal": "iykyk",
+            "text": "Most regular cuvées share a front label. Wax color, bottle size and the small bottling date are practical identity clues—not a collecting game.",
+            "title": "Read the wax, then read the wine"
+          },
+          {
+            "claim_ids": ["claim:overnoy-us-access-context-12"],
+            "id": "access",
+            "signal": "iykyk",
+            "text": "Extreme US allocation pressure is real and market-specific. It explains why the bottle becomes a status signal; it does not make that bottle necessary for learning the work.",
+            "title": "Scarcity can crowd out the lesson"
+          }
+        ],
+        "map_reaction": {
+          "area_subject_ids": ["appellation:arbois"],
+          "producer_ids": ["producer:maison-pierre-overnoy"]
+        },
+        "thesis": "Read the handoff, not the hype. Pierre Overnoy and Emmanuel Houillon matter as a story of work, transmission and patience before they matter as scarce labels."
+      },
+      "person:emmanuel-houillon": {
+        "claim_ids": ["claim:emmanuel-overnoy-mentorship-12"],
+        "featured_connections": [
+          {
+            "action": "Follow the lineage",
+            "claim_ids": ["claim:emmanuel-overnoy-mentorship-12", "claim:pierre-overnoy-estate-history-12"],
+            "reason": "An apprenticeship that became a long working relationship and an estate handoff.",
+            "signal": "rabbit-hole",
+            "target_id": "person:pierre-overnoy"
+          },
+          {
+            "action": "Enter the house",
+            "claim_ids": ["claim:overnoy-transmission-11"],
+            "reason": "Return from the person to the producer world the handoff shaped.",
+            "signal": "rabbit-hole",
+            "target_id": "producer:maison-pierre-overnoy"
+          }
+        ],
+        "hero_kicker": "Maker · apprentice · successor",
+        "thesis": "Emmanuel Houillon's route into wine is unusually legible: apprenticeship in 1990, full-time work from 1997, and responsibility for the estate from 2001."
+      },
+      "person:pierre-overnoy": {
+        "claim_ids": ["claim:pierre-overnoy-estate-history-12"],
+        "featured_connections": [
+          {
+            "action": "Follow the handoff",
+            "claim_ids": ["claim:emmanuel-overnoy-mentorship-12"],
+            "reason": "The next chapter is a person, not a brand transition.",
+            "signal": "rabbit-hole",
+            "target_id": "person:emmanuel-houillon"
+          }
+        ],
+        "hero_kicker": "Vigneron · teacher · continuing elder",
+        "thesis": "Pierre Overnoy's useful Atlas story is bounded: family vines from 1968, a long working relationship with Emmanuel Houillon, and a 2001 handoff."
+      },
+      "grape:palomino-fino": {
+        "claim_ids": ["claim:savagnin-palomino-affinity-12", "claim:listrao-palomino-name"],
+        "featured_connections": [
+          {
+            "action": "See it in a wine",
+            "claim_ids": ["claim:flor-evangelho-process"],
+            "reason": "A single-vineyard Palomino Fino raised through a fino-style solera under flor in Contra Costa.",
+            "signal": "same-energy",
+            "target_id": "wine:flor-of-evangelho"
+          },
+          {
+            "action": "Return to Jura",
+            "claim_ids": ["claim:savagnin-palomino-affinity-12"],
+            "reason": "The bridge is film yeast; everything else deserves to remain different.",
+            "signal": "same-energy",
+            "target_id": "grape:savagnin"
+          }
+        ],
+        "hero_kicker": "Same Energy · different universe",
+        "thesis": "Palomino is not ‘like Savagnin’ in the abstract. The useful affinity is narrower: {{term:flor|flor}} and {{term:voile|voile}} can make yeast biology the loudest voice in two distinct wine cultures."
+      },
+      "wine:flor-of-evangelho": {
+        "claim_ids": ["claim:flor-evangelho-process", "claim:evangelho-site"],
+        "featured_connections": [
+          {
+            "action": "Explore the grape",
+            "claim_ids": ["claim:flor-evangelho-process", "claim:listrao-palomino-name"],
+            "reason": "Move from one California solera wine into Palomino's wider naming and place world.",
+            "signal": "rabbit-hole",
+            "target_id": "grape:palomino-fino"
+          },
+          {
+            "action": "Meet the project",
+            "claim_ids": ["claim:soleras-project-identity", "claim:flor-evangelho-process"],
+            "reason": "The producer project behind the solera, vineyard choice and flor pathway.",
+            "signal": "rabbit-hole",
+            "target_id": "project:soleras-del-pacifico"
+          }
+        ],
+        "hero_kicker": "A specific expression · Contra Costa",
+        "thesis": "The Flor of Evangelho turns an analogy into a bottle: Palomino Fino, an old Contra Costa site, light fortification, fractional blending and ageing under flor."
+      },
+      "project:soleras-del-pacifico": {
+        "claim_ids": ["claim:soleras-project-identity", "claim:flor-evangelho-process"],
+        "featured_connections": [
+          {
+            "action": "Open the wine",
+            "claim_ids": ["claim:flor-evangelho-process"],
+            "reason": "The project becomes concrete in its Palomino Fino solera wine.",
+            "signal": "rabbit-hole",
+            "target_id": "wine:flor-of-evangelho"
+          },
+          {
+            "action": "Explore the grape",
+            "claim_ids": ["claim:listrao-palomino-name", "claim:flor-evangelho-process"],
+            "reason": "Follow Palomino beyond one project and one regional name.",
+            "signal": "same-energy",
+            "target_id": "grape:palomino-fino"
+          }
+        ],
+        "hero_kicker": "Wine project · a California flor experiment",
+        "thesis": "Soleras del Pacífico is a project-shaped subject: a maker, an old Contra Costa planting and a solera practice converging in one wine."
+      },
+      "practice:ouillage": {
+        "claim_ids": ["claim:labet-white-ouillage", "claim:tournelle-fleur-identity"],
+        "hero_kicker": "Helpful vernacular",
+        "thesis": "{{term:ouille|Ouillé}} means topped up. In Jura it is the word that keeps grape identity from being confused with an oxidative cellar path."
+      },
+      "practice:sous-voile-aging": {
+        "claim_ids": ["claim:labet-hasard-sous-voile", "claim:savagnin-grape-not-method-11"],
+        "hero_kicker": "Helpful vernacular",
+        "thesis": "{{term:sous-voile|Sous voile}} is a biological ageing pathway under a yeast veil. It is not shorthand for every Jura white—or for simple oxidation."
+      },
+      "wine:domaine-de-la-tournelle-fleur-de-savagnin": {
+        "claim_ids": ["claim:tournelle-fleur-identity", "claim:tournelle-fleur-elevage-range"],
+        "hero_kicker": "A specific expression · topped Savagnin",
+        "thesis": "One wine that corrects a regional shortcut: 100% Savagnin, grey {{term:marl|marl}}, deliberately {{term:ouille|ouillé}} and non-oxidative."
+      },
+      "wine:domaine-labet-chardonnay-du-hasard": {
+        "claim_ids": ["claim:labet-hasard-sous-voile"],
+        "hero_kicker": "A specific expression · Chardonnay under veil",
+        "thesis": "A useful false friend: the grape is Chardonnay, while the most recognizable signal comes from 36–48 months {{term:sous-voile|sous voile}}."
+      }
+    }
+  }
+}

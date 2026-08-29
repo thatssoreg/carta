@@ -120,7 +120,7 @@ class AtlasContractTest(unittest.TestCase):
         self.assertTrue(expected.issubset(set(jura["component_entity_ids"])))
         self.assertGreaterEqual(len(jura["sources"]), 5)
 
-    def test_run_03_native_jura_rabbit_hole_is_projected(self):
+    def test_run_04_native_jura_rabbit_hole_is_projected(self):
         subjects = json.loads(
             (ROOT / "atlas-app/public/data/atlas-subjects.json").read_text()
         )["subjects"]
@@ -161,6 +161,81 @@ class AtlasContractTest(unittest.TestCase):
         self.assertEqual(
             subjects["appellation:jurancon"]["map_target"]["kind"], "bounds"
         )
+
+    def test_run_04_editorial_signals_tells_and_terms_are_governed(self):
+        editorial = json.loads(
+            (ROOT / "atlas-app/public/data/atlas-editorial.json").read_text()
+        )
+        self.assertEqual(
+            editorial["generated_from"], "data/atlas/run-04-experience.json"
+        )
+        self.assertEqual(
+            {item["id"] for item in editorial["legend"]},
+            {"rabbit-hole", "tell", "iykyk", "same-energy"},
+        )
+        self.assertEqual(
+            set(editorial["glossary"]),
+            {"elevage", "flor", "marl", "mistelle", "ouille", "sous-voile", "voile"},
+        )
+        jura = editorial["subjects"]["place:jura"]
+        self.assertEqual(len(jura["accent"]["tells"]), 3)
+        for tell in jura["accent"]["tells"]:
+            self.assertTrue(tell["clue"])
+            self.assertTrue(tell["why"])
+            self.assertTrue(tell["correction"])
+            self.assertIn(tell["target_id"], json.loads(
+                (ROOT / "atlas-app/public/data/atlas-subjects.json").read_text()
+            )["subjects"])
+            for claim_id in tell["claim_ids"]:
+                self.assertIn(claim_id, editorial["claim_support"])
+
+    def test_run_04_keep_wandering_routes_are_explained_and_live(self):
+        editorial = json.loads(
+            (ROOT / "atlas-app/public/data/atlas-editorial.json").read_text()
+        )
+        subjects = json.loads(
+            (ROOT / "atlas-app/public/data/atlas-subjects.json").read_text()
+        )["subjects"]
+        for subject_id, teaching in editorial["subjects"].items():
+            direct = {item["target_id"] for item in subjects[subject_id]["connections"]}
+            featured = teaching.get("featured_connections", [])
+            self.assertLessEqual(len(featured), 3)
+            for route in featured:
+                self.assertIn(route["target_id"], subjects)
+                self.assertTrue(route["reason"])
+                self.assertTrue(route["claim_ids"])
+                if route["target_id"] not in direct:
+                    self.assertEqual(route["signal"], "same-energy")
+            for surprise in teaching.get("surprises", []):
+                self.assertIn(surprise["target_id"], subjects)
+
+    def test_savagnin_and_chardonnay_have_distinct_teaching_grammars(self):
+        editorial = json.loads(
+            (ROOT / "atlas-app/public/data/atlas-editorial.json").read_text()
+        )["subjects"]
+        savagnin = editorial["grape:savagnin"]
+        self.assertEqual(len(savagnin["style_paths"]), 3)
+        self.assertEqual(
+            {item["signal"] for item in savagnin["affinities"]},
+            {"rabbit-hole", "same-energy"},
+        )
+        self.assertIn(
+            "Same grape. Different cultural machine.",
+            editorial["grape:chardonnay"]["thesis"],
+        )
+
+    def test_run_04_ui_contract_has_back_close_trail_and_active_map_reactions(self):
+        html = (ROOT / "atlas-app/index.html").read_text()
+        main = (ROOT / "atlas-app/src/main.js").read_text()
+        self.assertIn("data-back-detail", html)
+        self.assertIn("data-close-detail", html)
+        self.assertIn("Your rabbit hole", html)
+        self.assertIn("history.back()", main)
+        self.assertIn("state.geographicSubjectId === subject.entity_id", main)
+        self.assertIn("subject-areas-fill", main)
+        self.assertIn("subject-producer-halos", main)
+        self.assertNotIn("A useful way into the places, people, bottles", main)
+        self.assertNotIn("Where next?", main)
 
     def test_producer_points_are_production_bases_with_honest_precision(self):
         points = json.loads(

@@ -172,7 +172,13 @@
         </aside>
 
         <aside class="detail-panel" aria-label="Map feature details" aria-hidden="true" data-detail-panel>
-          <button class="detail-panel__close icon-button" type="button" aria-label="Close feature details" data-close-detail>×</button>
+          <div class="detail-panel__controls">
+            <button class="detail-panel__back" type="button" hidden data-back-detail>
+              <span aria-hidden="true">←</span>
+              <span data-back-label>Back</span>
+            </button>
+            <button class="detail-panel__close icon-button" type="button" aria-label="Close feature details" data-close-detail>×</button>
+          </div>
           <div class="detail-panel__content" data-detail-content></div>
         </aside>
 

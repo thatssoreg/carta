@@ -52,6 +52,17 @@ def read_jsonl(paths: Iterable[Path]) -> list[dict[str, Any]]:
     return records
 
 
+def nested_values(value: Any, key: str) -> Iterable[Any]:
+    if isinstance(value, dict):
+        for nested_key, nested_value in value.items():
+            if nested_key == key:
+                yield nested_value
+            yield from nested_values(nested_value, key)
+    elif isinstance(value, list):
+        for item in value:
+            yield from nested_values(item, key)
+
+
 def sha256_path(path: Path) -> str:
     digest = hashlib.sha256()
     with path.open("rb") as handle:
@@ -111,7 +122,7 @@ def load_authority() -> dict[str, Any]:
 def validate_native_experience(authority: dict[str, Any]) -> dict[str, Any]:
     value = read_json(PUBLIC_DATA_DIR / "atlas-subjects.json")
     expected_inputs = [
-        "data/atlas/run-03-experience.json",
+        "data/atlas/run-04-experience.json",
         "data/claims/*.jsonl",
         "data/entities/*.jsonl",
         "data/geography/assertions/*.jsonl",
@@ -135,14 +146,19 @@ def validate_native_experience(authority: dict[str, Any]) -> dict[str, Any]:
         "appellation:macvin-du-jura",
         "grape:savagnin",
         "grape:petit-manseng",
+        "grape:palomino-fino",
         "producer:domaine-de-la-tournelle",
         "producer:domaine-labet",
         "producer:maison-pierre-overnoy",
         "producer:domaine-de-saint-pierre-jura",
+        "project:soleras-del-pacifico",
+        "person:emmanuel-houillon",
+        "person:pierre-overnoy",
+        "wine:flor-of-evangelho",
         "appellation:jurancon",
     }
     if not required.issubset(subjects):
-        fail("atlas-subjects.json: missing required Run 03 native subjects")
+        fail("atlas-subjects.json: missing required Run 04 native subjects")
 
     for entity_id, subject in subjects.items():
         entity = authority["entities"].get(entity_id)
@@ -198,10 +214,10 @@ def validate_native_experience(authority: dict[str, Any]) -> dict[str, Any]:
             fail(f"atlas-subjects.json:{entity_id}: source projection incomplete")
 
     entries = read_json(PUBLIC_DATA_DIR / "atlas-entry-points.json")
-    if entries.get("generated_from") != "data/atlas/run-03-experience.json":
+    if entries.get("generated_from") != "data/atlas/run-04-experience.json":
         fail("atlas-entry-points.json: experience config lineage is stale")
     if len(entries.get("entry_points", [])) < 4:
-        fail("atlas-entry-points.json: expected restrained Run 03 entry set")
+        fail("atlas-entry-points.json: expected restrained Run 04 entry set")
     entry_ids: set[str] = set()
     for entry in entries["entry_points"]:
         if entry["id"] in entry_ids:
@@ -229,6 +245,104 @@ def validate_native_experience(authority: dict[str, Any]) -> dict[str, Any]:
         "subject_count": len(subjects),
         "entry_count": len(entries["entry_points"]),
     }
+
+
+def validate_editorial_experience(
+    authority: dict[str, Any], subjects: dict[str, Any]
+) -> int:
+    value = read_json(PUBLIC_DATA_DIR / "atlas-editorial.json")
+    if value.get("generated_from") != "data/atlas/run-04-experience.json":
+        fail("atlas-editorial.json: experience config lineage is stale")
+    if value.get("release") != "atlas-run-04-make-it-sing":
+        fail("atlas-editorial.json: Run 04 release marker is stale")
+    legend = value.get("legend", [])
+    if {item.get("id") for item in legend} != {
+        "rabbit-hole",
+        "tell",
+        "iykyk",
+        "same-energy",
+    } or len(legend) != 4:
+        fail("atlas-editorial.json: four-signal legend is incomplete")
+    glossary = value.get("glossary", {})
+    if set(glossary) != {
+        "elevage",
+        "flor",
+        "marl",
+        "mistelle",
+        "ouille",
+        "sous-voile",
+        "voile",
+    }:
+        fail("atlas-editorial.json: learner glossary is incomplete")
+    for term_id, term in glossary.items():
+        if not term.get("definition") or not term.get("matters"):
+            fail(f"atlas-editorial.json:{term_id}: definition is incomplete")
+        target_id = term.get("explore_target_id")
+        if target_id and target_id not in subjects:
+            fail(f"atlas-editorial.json:{term_id}: dead glossary route")
+
+    configured_subjects = value.get("subjects", {})
+    if not isinstance(configured_subjects, dict) or not configured_subjects:
+        fail("atlas-editorial.json: expected subject-specific editorial grammars")
+    if not set(configured_subjects).issubset(subjects):
+        fail("atlas-editorial.json: editorial subject is not native")
+    jura = configured_subjects.get("place:jura", {})
+    if len(jura.get("accent", {}).get("tells", [])) != 3:
+        fail("atlas-editorial.json: Jura must teach exactly three bounded tells")
+    if len(jura.get("featured_connections", [])) != 3:
+        fail("atlas-editorial.json: Jura Keep wandering set must contain three routes")
+    savagnin = configured_subjects.get("grape:savagnin", {})
+    if len(savagnin.get("style_paths", [])) < 3 or not savagnin.get("affinities"):
+        fail("atlas-editorial.json: Savagnin grammar lacks style paths or affinities")
+    chardonnay = configured_subjects.get("grape:chardonnay", {})
+    if "Different cultural machine" not in chardonnay.get("thesis", ""):
+        fail("atlas-editorial.json: Chardonnay cultural contrast is missing")
+
+    projected_claim_ids: set[str] = set()
+    for claim_list in nested_values(value, "claim_ids"):
+        if isinstance(claim_list, list):
+            projected_claim_ids.update(claim_list)
+    support = value.get("claim_support", {})
+    if set(support) != projected_claim_ids:
+        fail("atlas-editorial.json: claim support projection is incomplete or stale")
+    for claim_id, projected in support.items():
+        claim = authority["claims"].get(claim_id)
+        if not claim or claim["status"] not in {"supported", "contested"}:
+            fail(f"atlas-editorial.json: invalid claim {claim_id}")
+        if projected.get("statement") != claim["statement"]:
+            fail(f"atlas-editorial.json:{claim_id}: statement drifted")
+        source_ids = [item["source_id"] for item in claim["source_refs"]]
+        if projected.get("source_ids") != source_ids:
+            fail(f"atlas-editorial.json:{claim_id}: source lineage drifted")
+        if [item.get("source_id") for item in projected.get("sources", [])] != source_ids:
+            fail(f"atlas-editorial.json:{claim_id}: source metadata drifted")
+
+    for subject_id, editorial in configured_subjects.items():
+        direct_targets = {
+            connection["target_id"] for connection in subjects[subject_id]["connections"]
+        }
+        featured = editorial.get("featured_connections", [])
+        if len(featured) > 3:
+            fail(f"atlas-editorial.json:{subject_id}: too many featured routes")
+        for connection in featured:
+            target_id = connection.get("target_id")
+            if target_id not in subjects:
+                fail(f"atlas-editorial.json:{subject_id}: dead featured route")
+            if not connection.get("reason") or not connection.get("claim_ids"):
+                fail(f"atlas-editorial.json:{subject_id}: unexplained featured route")
+            if target_id not in direct_targets and connection.get("signal") != "same-energy":
+                fail(f"atlas-editorial.json:{subject_id}: route is not graph-derived")
+        for target_id in nested_values(editorial, "target_id"):
+            if target_id not in subjects:
+                fail(f"atlas-editorial.json:{subject_id}: dead learner route {target_id}")
+        reaction = editorial.get("map_reaction", {})
+        for area_id in reaction.get("area_subject_ids", []):
+            if not subjects[area_id].get("map_target"):
+                fail(f"atlas-editorial.json:{subject_id}: unmappable active area")
+        for producer_id in reaction.get("producer_ids", []):
+            if not subjects[producer_id].get("map_target"):
+                fail(f"atlas-editorial.json:{subject_id}: unmappable active producer")
+    return len(configured_subjects)
 
 
 def validate_atlas_guides(authority: dict[str, Any]) -> int:
@@ -462,6 +576,9 @@ def validate_atlas() -> dict[str, Any]:
     mappings = load_and_validate_mappings(manifests, authority)
     atlas_guide_count = validate_atlas_guides(authority)
     native_experience = validate_native_experience(authority)
+    editorial_subject_count = validate_editorial_experience(
+        authority, native_experience["subjects"]
+    )
 
     world = validate_geojson(
         PUBLIC_DATA_DIR / "world-countries.geojson",
@@ -736,6 +853,7 @@ def validate_atlas() -> dict[str, Any]:
         "search_records": len(search),
         "atlas_guides": atlas_guide_count,
         "native_subjects": native_experience["subject_count"],
+        "editorial_subjects": editorial_subject_count,
         "entry_points": native_experience["entry_count"],
         "producer_points": len(producers["features"]),
     }
