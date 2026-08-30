@@ -31,7 +31,7 @@ MANIFEST_DIR = ROOT / "data/geography/datasets"
 MAPPING_DIR = ROOT / "data/geography/external-id-mappings"
 PUBLIC_DATA_DIR = ROOT / "atlas-app/public/data"
 GEOMETRY_METADATA_PATH = ROOT / "data/geography/geometry/atlas-france-inao.jsonl"
-EXPERIENCE_CONFIG_PATH = ROOT / "data/atlas/run-04-experience.json"
+EXPERIENCE_CONFIG_PATH = ROOT / "data/atlas/run-05-jura-final-cut.json"
 PRODUCER_BASES_SOURCE_PATH = (
     ROOT / "data/geography/producer-bases/run-11-jura-producers.geojson"
 )
@@ -1114,7 +1114,7 @@ def build_atlas_subjects(
 
     return {
         "generated_from": [
-            "data/atlas/run-04-experience.json",
+            "data/atlas/run-05-jura-final-cut.json",
             "data/claims/*.jsonl",
             "data/entities/*.jsonl",
             "data/geography/assertions/*.jsonl",
@@ -1177,7 +1177,7 @@ def build_entry_points(
             }
         )
     return {
-        "generated_from": "data/atlas/run-04-experience.json",
+        "generated_from": "data/atlas/run-05-jura-final-cut.json",
         "entry_points": entries,
         "featured_worlds": featured_worlds,
     }
@@ -1212,14 +1212,14 @@ def nested_strings(value: Any) -> Iterable[str]:
 def build_atlas_editorial(
     experience: dict[str, Any], subjects: dict[str, Any]
 ) -> dict[str, Any]:
-    """Validate and project the Run 04 teaching and interaction layer.
+    """Validate and project the Run 05 teaching and interaction layer.
 
     Authored copy remains explicitly editorial. Every factual teaching device names
     governed claims, while every action target resolves to a native subject.
     """
     editorial = experience.get("editorial")
     if not editorial:
-        raise SystemExit("Run 04 experience config is missing its editorial layer")
+        raise SystemExit("Run 05 experience config is missing its editorial layer")
     claims = {
         record["id"]: record
         for record in read_jsonl((ROOT / "data/claims").glob("*.jsonl"))
@@ -1230,40 +1230,39 @@ def build_atlas_editorial(
     }
     native_ids = set(subjects)
     legend_ids = [item["id"] for item in editorial.get("legend", [])]
-    if len(legend_ids) != 4 or len(set(legend_ids)) != 4:
-        raise SystemExit("Run 04 legend must define exactly four unique signals")
-    required_signals = {"rabbit-hole", "tell", "iykyk", "same-energy"}
-    if set(legend_ids) != required_signals:
-        raise SystemExit("Run 04 legend is missing a required teaching signal")
+    visible_signals = {"iykyk", "same-energy"}
+    if len(legend_ids) != len(set(legend_ids)) or set(legend_ids) != visible_signals:
+        raise SystemExit("Run 05 legend must contain only the two useful visible signals")
+    route_signals = {"rabbit-hole", "tell", "iykyk", "same-energy"}
 
     configured_subjects = editorial.get("subjects", {})
     missing_subjects = sorted(set(configured_subjects) - native_ids)
     if missing_subjects:
         raise SystemExit(
-            "Run 04 editorial subjects are not native: " + ", ".join(missing_subjects)
+            "Run 05 editorial subjects are not native: " + ", ".join(missing_subjects)
         )
 
     claim_ids: set[str] = set()
     for value in nested_values(editorial, "claim_ids"):
         if not isinstance(value, list) or not value:
-            raise SystemExit("Run 04 claim_ids fields must be non-empty arrays")
+            raise SystemExit("Run 05 claim_ids fields must be non-empty arrays")
         claim_ids.update(value)
     for claim_id in sorted(claim_ids):
         claim = claims.get(claim_id)
         if not claim or claim["status"] not in {"supported", "contested"}:
-            raise SystemExit(f"Run 04 editorial claim is not usable: {claim_id}")
+            raise SystemExit(f"Run 05 editorial claim is not usable: {claim_id}")
 
     glossary = editorial.get("glossary", {})
     for copy in nested_strings(editorial):
         for term_id in TERM_TOKEN_RE.findall(copy):
             if term_id not in glossary:
-                raise SystemExit(f"Run 04 copy references unknown term: {term_id}")
+                raise SystemExit(f"Run 05 copy references unknown term: {term_id}")
     for term_id, term in glossary.items():
         if not term.get("definition") or not term.get("matters"):
-            raise SystemExit(f"Run 04 glossary entry is incomplete: {term_id}")
+            raise SystemExit(f"Run 05 glossary entry is incomplete: {term_id}")
         target_id = term.get("explore_target_id")
         if target_id and target_id not in native_ids:
-            raise SystemExit(f"Run 04 glossary target is not native: {target_id}")
+            raise SystemExit(f"Run 05 glossary target is not native: {target_id}")
 
     for subject_id, configured in configured_subjects.items():
         direct_targets = {
@@ -1279,7 +1278,7 @@ def build_atlas_editorial(
             if not connection.get("reason") or not connection.get("claim_ids"):
                 raise SystemExit(f"{subject_id}: featured route lacks reason or evidence")
             signal = connection.get("signal")
-            if signal not in required_signals:
+            if signal not in route_signals:
                 raise SystemExit(f"{subject_id}: unknown signal {signal}")
             # Same Energy is an explicitly sourced editorial comparison rather than
             # a false Reference relationship. All other recommendations must be
@@ -1291,15 +1290,17 @@ def build_atlas_editorial(
         for target_id in nested_values(configured, "target_id"):
             if target_id not in native_ids:
                 raise SystemExit(f"{subject_id}: dead editorial target {target_id}")
-        reaction = configured.get("map_reaction", {})
-        for area_id in reaction.get("area_subject_ids", []):
-            area = subjects.get(area_id)
-            if not area or area["kind"] != "appellation" or not area.get("map_target"):
-                raise SystemExit(f"{subject_id}: invalid active map area {area_id}")
-        for producer_id in reaction.get("producer_ids", []):
-            producer = subjects.get(producer_id)
-            if not producer or producer["kind"] != "producer" or not producer.get("map_target"):
-                raise SystemExit(f"{subject_id}: invalid active map producer {producer_id}")
+        reactions = [configured.get("map_reaction", {})]
+        reactions.extend(configured.get("pillar_map_reactions", {}).values())
+        for reaction in reactions:
+            for area_id in reaction.get("area_subject_ids", []):
+                area = subjects.get(area_id)
+                if not area or area["kind"] != "appellation" or not area.get("map_target"):
+                    raise SystemExit(f"{subject_id}: invalid active map area {area_id}")
+            for producer_id in reaction.get("producer_ids", []):
+                producer = subjects.get(producer_id)
+                if not producer or producer["kind"] != "producer" or not producer.get("map_target"):
+                    raise SystemExit(f"{subject_id}: invalid active map producer {producer_id}")
 
     claim_support = {}
     for claim_id in sorted(claim_ids):
@@ -1321,11 +1322,11 @@ def build_atlas_editorial(
             ],
         }
     return {
-        "generated_from": "data/atlas/run-04-experience.json",
+        "generated_from": "data/atlas/run-05-jura-final-cut.json",
         "release": experience.get("release"),
         "projection_contract": (
             "Authored teaching copy is editorial, not Reference authority. Every factual "
-            "tell, definition, lens, affinity, surprise, and recommendation carries "
+            "definition, lens, affinity, signal, and recommendation carries "
             "governed claim IDs; every action resolves to a native subject."
         ),
         "legend": editorial["legend"],

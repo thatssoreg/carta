@@ -1,18 +1,18 @@
 :root {
   color-scheme: light;
-  --paper: #f2eee5;
+  --paper: #f3eee5;
   --paper-strong: #fffdf8;
-  --ink: #18251f;
-  --ink-muted: #5b665f;
-  --line: rgba(24, 37, 31, 0.18);
-  --line-strong: rgba(24, 37, 31, 0.34);
-  --wine: #7f2f3f;
-  --wine-dark: #5d2130;
-  --moss: #304e42;
-  --ochre: #b48468;
-  --focus: #e4975f;
-  --shadow: 0 18px 52px rgba(26, 36, 31, 0.18);
-  --soft-shadow: 0 8px 28px rgba(26, 36, 31, 0.12);
+  --ink: #211f1c;
+  --ink-muted: #68615b;
+  --line: rgba(33, 31, 28, 0.16);
+  --line-strong: rgba(33, 31, 28, 0.32);
+  --wine: #7b293b;
+  --wine-dark: #551a29;
+  --moss: #59645e;
+  --ochre: #7b293b;
+  --focus: #7b293b;
+  --shadow: 0 18px 52px rgba(33, 31, 28, 0.16);
+  --soft-shadow: 0 8px 28px rgba(33, 31, 28, 0.1);
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -846,21 +846,6 @@ button {
   overflow: hidden;
   border: 1px solid var(--line);
   background: #faf7f0;
-}
-
-.connection-card--surprise {
-  border-color: rgba(127, 47, 63, 0.55);
-  background: linear-gradient(135deg, #f9eee9, #f4f0e7);
-}
-
-.connection-surprise {
-  margin: 0;
-  padding: 7px 11px 0;
-  color: var(--wine);
-  font-size: 0.55rem;
-  font-weight: 850;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
 }
 
 .connection-subject {
@@ -1741,7 +1726,7 @@ button {
   }
 }
 
-/* Run 04 · subject-specific learning grammars */
+/* Subject-specific learning grammars */
 
 .detail-panel {
   width: min(520px, calc(100vw - 28px));
@@ -2147,150 +2132,11 @@ button {
   cursor: pointer;
 }
 
-.accent-section {
-  margin: 24px -9px 8px;
-  padding: 24px 20px;
-  border-radius: 18px 18px 4px 4px;
-  background: #263f35;
-  color: #f8f2e8;
-}
-
-.accent-section > h3 {
-  margin: 0 0 9px;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 1.7rem;
-  font-weight: 500;
-}
-
-.accent-section > p:not(.section-kicker) {
-  margin: 0 0 18px;
-  color: rgba(248, 242, 232, 0.8);
-  font-size: 0.76rem;
-  line-height: 1.55;
-}
-
-.accent-section .section-kicker { color: #e8c471; }
-
-.tell-list {
-  display: grid;
-  gap: 8px;
-}
-
-.tell-card {
-  border: 1px solid rgba(248, 242, 232, 0.18);
-  background: rgba(255, 255, 255, 0.055);
-}
-
-.tell-card summary {
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  align-items: start;
-  gap: 10px;
-  padding: 13px;
-  list-style: none;
-  cursor: pointer;
-}
-
-.tell-card summary::-webkit-details-marker,
-.region-chapter summary::-webkit-details-marker { display: none; }
-
-.tell-card summary > span:nth-child(2) {
-  display: grid;
-  gap: 4px;
-}
-
-.tell-card summary b {
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 1rem;
-  font-weight: 500;
-}
-
-.tell-card summary small {
-  color: rgba(248, 242, 232, 0.68);
-  font-size: 0.62rem;
-  line-height: 1.4;
-}
-
-.tell-card summary i,
-.region-chapter summary i {
-  font-style: normal;
-  transition: transform 150ms ease;
-}
-
-.tell-card[open] summary i,
-.region-chapter[open] summary i { transform: rotate(45deg); }
-
-.tell-card > div {
-  padding: 0 13px 14px 50px;
-}
-
-.tell-card > div p {
-  margin: 0 0 11px;
-  color: rgba(248, 242, 232, 0.78);
-  font-size: 0.68rem;
-  line-height: 1.48;
-}
-
-.tell-card > div strong {
-  display: block;
-  margin-bottom: 3px;
-  color: #e8c471;
-  font-size: 0.54rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-.tell-card > div button {
-  padding: 0;
-  border: 0;
-  background: transparent;
-  color: #f1d58f;
-  font-size: 0.62rem;
-  font-weight: 800;
-  cursor: pointer;
-}
-
-.region-chapter {
-  margin: 0 -1px;
-  border-bottom: 1px solid var(--line);
-  scroll-margin-top: 55px;
-}
-
-.region-chapter > summary {
-  display: grid;
-  grid-template-columns: 32px 1fr auto;
-  align-items: center;
-  gap: 8px;
-  padding: 17px 3px;
-  list-style: none;
-  cursor: pointer;
-}
-
-.region-chapter > summary span {
-  color: var(--wine);
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 0.75rem;
-}
-
-.region-chapter > summary strong {
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 1.12rem;
-  font-weight: 500;
-}
-
-.region-chapter > div {
-  padding: 0 3px 20px 40px;
-}
-
 .regulation-panel {
   margin-top: 18px;
   padding: 19px;
   border: 1px solid rgba(69, 93, 104, 0.34);
   background: repeating-linear-gradient(135deg, #f1f3f2 0 16px, #edf0ef 16px 17px);
-}
-
-.region-chapter.regulation-panel {
-  padding: 0 17px;
 }
 
 .regulation-note {
@@ -2311,7 +2157,6 @@ button {
 .style-paths > h3,
 .affinity-section > h3,
 .wandering-section > h3,
-.surprise-engine > h3,
 .territory-section > h3,
 .human-ledger > h3,
 .wine-expression > h3,
@@ -2561,7 +2406,7 @@ button {
   color: #fffaf0;
 }
 
-.wandering-section .section-kicker { color: #e8c471; }
+.wandering-section .section-kicker { color: var(--wine); }
 
 .wandering-list {
   display: grid;
@@ -2582,12 +2427,6 @@ button {
   cursor: pointer;
 }
 
-.wandering-index {
-  color: #e8c471;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 0.73rem;
-}
-
 .wandering-copy {
   display: grid;
   gap: 6px;
@@ -2603,12 +2442,6 @@ button {
   color: rgba(255, 250, 240, 0.66);
   font-size: 0.62rem;
   line-height: 1.45;
-}
-
-.wandering-arrow {
-  align-self: center;
-  color: #e8c471;
-  font-size: 1rem;
 }
 
 .more-connections {
@@ -2656,50 +2489,6 @@ button {
 .connection-groups button small { grid-column: 1; color: var(--ink-muted); font-size: 0.58rem; line-height: 1.35; }
 .connection-groups button b { grid-column: 2; grid-row: 1 / span 2; align-self: center; color: var(--wine); }
 
-.surprise-engine {
-  position: relative;
-  overflow: hidden;
-  margin: 26px 0;
-  padding: 20px;
-  border: 1px solid rgba(127, 47, 63, 0.25);
-  background: radial-gradient(circle at 100% 0, rgba(228, 151, 95, 0.2), transparent 38%), #faf3e9;
-}
-
-.surprise-engine > p:not(.section-kicker) {
-  max-width: 78%;
-  color: var(--ink-muted);
-  font-size: 0.68rem;
-  line-height: 1.45;
-}
-
-.surprise-engine > button,
-.surprise-reveal button {
-  padding: 9px 12px;
-  border: 1px solid var(--wine);
-  background: transparent;
-  color: var(--wine);
-  font-size: 0.63rem;
-  font-weight: 800;
-  cursor: pointer;
-}
-
-.surprise-engine > button:hover,
-.surprise-reveal button:hover { background: var(--wine); color: white; }
-
-.surprise-reveal {
-  display: grid;
-  gap: 8px;
-  margin-top: 15px;
-  padding: 15px;
-  border-left: 3px solid var(--wine);
-  background: rgba(255, 253, 248, 0.75);
-}
-
-.surprise-reveal[hidden] { display: none; }
-.surprise-reveal strong { font-family: Georgia, "Times New Roman", serif; font-size: 1.08rem; font-weight: 500; }
-.surprise-reveal p { margin: 0; color: var(--ink-muted); font-size: 0.66rem; line-height: 1.48; }
-.surprise-reveal button { width: max-content; }
-
 @media (max-width: 720px) {
   .detail-panel {
     width: auto;
@@ -2734,10 +2523,6 @@ button {
     padding-left: 14px;
   }
 
-  .region-chapter > div {
-    padding-left: 3px;
-  }
-
   .signal-legend > div { grid-template-columns: 1fr; }
 
   .cultural-machines > div { grid-template-columns: 1fr; }
@@ -2753,7 +2538,6 @@ button {
   }
 
   .wandering-section,
-  .accent-section,
   .culture-panel {
     margin-right: -5px;
     margin-left: -5px;
@@ -2761,5 +2545,820 @@ button {
 
   .detail-panel__back {
     max-width: calc(100% - 48px);
+  }
+}
+
+/* Run 05 · Jura Final Cut */
+
+.detail-panel {
+  width: min(570px, calc(100vw - 28px));
+  border-color: var(--line-strong);
+  border-radius: 3px;
+  background: rgba(255, 253, 248, 0.985);
+}
+
+.detail-panel__controls {
+  min-height: 58px;
+  padding: 11px 16px;
+  background: linear-gradient(var(--paper-strong) 58%, rgba(255, 253, 248, 0));
+}
+
+.detail-panel__back {
+  min-height: 36px;
+  border-radius: 3px;
+  color: var(--wine);
+  box-shadow: none;
+}
+
+.detail-panel__back:hover {
+  border-color: var(--wine);
+  background: var(--wine);
+}
+
+.detail-panel__content {
+  padding: 60px 32px 48px;
+}
+
+.subject-card,
+.subject-card--place,
+.subject-card--appellation,
+.subject-card--grape,
+.subject-card--producer,
+.subject-card--person,
+.subject-card--project,
+.subject-card--wine,
+.subject-card--practice {
+  --subject-accent: var(--wine);
+  --subject-soft: var(--paper);
+  --subject-deep: var(--ink);
+}
+
+.subject-hero,
+.subject-card--place .subject-hero,
+.subject-card--appellation .subject-hero,
+.subject-card--grape .subject-hero,
+.subject-card--producer .subject-hero,
+.subject-card--person .subject-hero,
+.subject-card--project .subject-hero,
+.subject-card--wine .subject-hero,
+.subject-card--practice .subject-hero {
+  margin: -60px -32px 0;
+  padding: 78px 32px 26px;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  background-color: var(--paper-strong);
+  background-image: linear-gradient(155deg, rgba(123, 41, 59, 0.045), transparent 48%);
+  box-shadow: none;
+}
+
+.subject-card--producer .subject-hero,
+.subject-card--person .subject-hero,
+.subject-card--project .subject-hero {
+  padding-right: 114px;
+}
+
+.subject-hero .detail-eyebrow,
+.section-kicker {
+  color: var(--wine);
+}
+
+.subject-hero h2 {
+  max-width: 96%;
+  color: var(--ink);
+}
+
+.subject-hero .guide-lede {
+  max-width: 48ch;
+  color: var(--ink);
+  font-size: 1.04rem;
+  line-height: 1.54;
+}
+
+.subject-place,
+.current-location {
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  background: rgba(255, 253, 248, 0.74);
+  color: var(--ink);
+}
+
+.subject-monogram {
+  border-color: rgba(123, 41, 59, 0.34);
+  border-radius: 50%;
+  background: var(--paper-strong);
+  color: var(--wine-dark);
+}
+
+.map-action {
+  border-color: var(--wine);
+  color: var(--wine);
+}
+
+.map-action:hover {
+  background: var(--wine);
+}
+
+.signal-legend {
+  border-top-color: var(--line);
+}
+
+.signal-legend p {
+  border-color: var(--line);
+  background: transparent;
+}
+
+.signal {
+  border-radius: 3px;
+  color: var(--wine);
+}
+
+.signal--iykyk {
+  color: var(--wine);
+}
+
+.signal--same-energy {
+  color: var(--moss);
+}
+
+.inline-term__trigger sup {
+  border-radius: 3px;
+}
+
+.inline-term__popover {
+  border-color: var(--line-strong);
+  border-radius: 3px;
+}
+
+.chapter-nav {
+  top: -1px;
+  gap: 0;
+  margin: 0 -32px;
+  padding: 0 24px;
+  border-top: 1px solid var(--line);
+  background: rgba(255, 253, 248, 0.97);
+}
+
+.chapter-nav button {
+  min-height: 44px;
+  padding: 0 10px;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  border-radius: 0;
+  color: var(--ink-muted);
+  font-size: 0.58rem;
+  letter-spacing: 0.015em;
+}
+
+.chapter-nav button:hover,
+.chapter-nav button.is-active {
+  border-bottom-color: var(--wine);
+  color: var(--wine-dark);
+}
+
+.jura-hero-facts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0;
+  max-width: 430px;
+  margin: 20px 0 0;
+  border: 1px solid var(--line);
+  background: rgba(255, 253, 248, 0.62);
+}
+
+.jura-hero-facts > div {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 3px 10px;
+  padding: 12px 14px;
+}
+
+.jura-hero-facts > div + div {
+  border-left: 1px solid var(--line);
+}
+
+.jura-hero-facts dt {
+  align-self: end;
+  color: var(--ink-muted);
+  font-size: 0.58rem;
+  font-weight: 760;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.jura-hero-facts dd {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  align-self: center;
+  margin: 0;
+  color: var(--wine-dark);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.2rem;
+}
+
+.jura-hero-facts small {
+  color: var(--ink-muted);
+  font-size: 0.56rem;
+  line-height: 1.3;
+}
+
+.jura-pillars {
+  margin: 0;
+}
+
+.jura-pillar {
+  border-bottom: 1px solid var(--line-strong);
+  scroll-margin-top: 46px;
+}
+
+.jura-pillar > summary {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 16px;
+  min-height: 72px;
+  padding: 14px 0;
+  list-style: none;
+  cursor: pointer;
+}
+
+.jura-pillar > summary::-webkit-details-marker {
+  display: none;
+}
+
+.jura-pillar > summary > span {
+  display: grid;
+  gap: 3px;
+}
+
+.jura-pillar > summary small {
+  color: var(--ink-muted);
+  font-size: 0.56rem;
+  font-weight: 680;
+  letter-spacing: 0.055em;
+  text-transform: uppercase;
+}
+
+.jura-pillar > summary strong {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.28rem;
+  font-weight: 500;
+  letter-spacing: -0.015em;
+}
+
+.jura-pillar > summary i {
+  color: var(--wine);
+  font-size: 1rem;
+  font-style: normal;
+  transition: transform 150ms ease;
+}
+
+.jura-pillar[open] > summary i {
+  transform: rotate(180deg);
+}
+
+.jura-pillar__body {
+  padding: 2px 0 34px;
+}
+
+.jura-pillar-lede {
+  max-width: 61ch;
+  margin: 0 0 20px;
+  color: var(--ink-muted);
+  font-size: 0.76rem;
+  line-height: 1.58;
+}
+
+.jura-place-story {
+  margin-bottom: 22px;
+  padding: 18px 20px;
+  border-left: 3px solid var(--wine);
+  background: rgba(123, 41, 59, 0.045);
+}
+
+.jura-place-story h4 {
+  margin: 0 0 8px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+.jura-place-story > p:not(.section-kicker) {
+  margin: 0;
+  color: var(--ink-muted);
+  font-size: 0.73rem;
+  line-height: 1.55;
+}
+
+.jura-place-story button {
+  min-height: 40px;
+  margin-top: 15px;
+  padding: 0 12px;
+  border: 1px solid var(--wine);
+  background: transparent;
+  color: var(--wine);
+  font-size: 0.65rem;
+  font-weight: 780;
+  cursor: pointer;
+}
+
+.jura-place-story button:hover {
+  background: var(--wine);
+  color: white;
+}
+
+.jura-pillar .claim-section {
+  margin-top: 18px;
+  padding-top: 15px;
+}
+
+.jura-grape-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.jura-grape-card {
+  display: flex;
+  min-width: 0;
+  min-height: 192px;
+  flex-direction: column;
+  padding: 16px;
+  border: 1px solid var(--line);
+  background: var(--paper-strong);
+}
+
+.jura-grape-card.is-primary {
+  border-top: 3px solid var(--wine);
+}
+
+.jura-grape-card > div {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  color: var(--ink-muted);
+}
+
+.jura-grape-card > div span {
+  color: var(--wine-dark);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.18rem;
+}
+
+.jura-grape-card > div small {
+  font-size: 0.53rem;
+  text-align: right;
+}
+
+.jura-grape-card h4 {
+  margin: 18px 0 7px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.jura-grape-card p {
+  margin: 0;
+  color: var(--ink-muted);
+  font-size: 0.66rem;
+  line-height: 1.48;
+}
+
+.jura-grape-card > button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  min-height: 38px;
+  margin-top: auto;
+  padding: 12px 0 0;
+  border: 0;
+  border-top: 1px solid var(--line);
+  background: transparent;
+  color: var(--wine);
+  font-size: 0.63rem;
+  font-weight: 780;
+  text-align: left;
+  cursor: pointer;
+}
+
+.jura-people-grid {
+  display: grid;
+  gap: 12px;
+}
+
+.jura-person-card {
+  padding: 18px;
+  border: 1px solid var(--line);
+  background: var(--paper-strong);
+}
+
+.jura-person-card > header {
+  display: grid;
+  grid-template-columns: 46px 1fr;
+  align-items: center;
+  gap: 12px;
+}
+
+.jura-person-card > header > span {
+  display: grid;
+  width: 46px;
+  height: 46px;
+  place-items: center;
+  border: 1px solid rgba(123, 41, 59, 0.34);
+  border-radius: 50%;
+  color: var(--wine-dark);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
+.jura-person-card header small {
+  display: block;
+  margin-bottom: 3px;
+  color: var(--wine);
+  font-size: 0.56rem;
+  font-weight: 760;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.jura-person-card h4 {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.1rem;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.jura-person-card > p {
+  margin: 14px 0 12px;
+  color: var(--ink-muted);
+  font-size: 0.7rem;
+  line-height: 1.52;
+}
+
+.jura-person-card ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.jura-person-card li {
+  padding: 4px 7px;
+  border: 1px solid var(--line);
+  color: var(--ink-muted);
+  font-size: 0.55rem;
+}
+
+.jura-person-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+}
+
+.jura-person-actions button {
+  min-height: 40px;
+  padding: 0 12px;
+  border: 1px solid var(--wine);
+  background: transparent;
+  color: var(--wine);
+  font-size: 0.62rem;
+  font-weight: 780;
+  cursor: pointer;
+}
+
+.jura-person-actions button:first-child,
+.jura-person-actions button:hover {
+  background: var(--wine);
+  color: white;
+}
+
+.culture-panel,
+.regulation-panel {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+
+.culture-panel > div {
+  gap: 0;
+  border-top: 1px solid var(--line);
+}
+
+.culture-panel article {
+  padding: 17px 0;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  background: transparent;
+}
+
+.culture-panel article p {
+  color: var(--ink-muted);
+}
+
+.jura-rule-intro {
+  margin-bottom: 22px;
+  padding: 17px 18px;
+  border: 1px solid var(--line);
+  background: rgba(123, 41, 59, 0.04);
+}
+
+.jura-rule-intro p {
+  margin: 0;
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 0.96rem;
+  line-height: 1.55;
+}
+
+.jura-rule-groups {
+  display: grid;
+  gap: 20px;
+}
+
+.jura-rule-groups > section {
+  display: grid;
+  grid-template-columns: minmax(145px, 0.75fr) minmax(0, 1.25fr);
+  gap: 18px;
+  padding-top: 17px;
+  border-top: 1px solid var(--line-strong);
+}
+
+.jura-rule-groups h4,
+.jura-area-scale h4 {
+  margin: 0 0 6px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.08rem;
+  font-weight: 500;
+}
+
+.jura-rule-groups header p {
+  margin: 0;
+  color: var(--ink-muted);
+  font-size: 0.62rem;
+  line-height: 1.45;
+}
+
+.jura-rule-groups section > div {
+  display: grid;
+  gap: 5px;
+}
+
+.jura-rule-groups button {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 2px 10px;
+  min-height: 48px;
+  padding: 8px 10px;
+  border: 1px solid var(--line);
+  background: var(--paper-strong);
+  text-align: left;
+  cursor: pointer;
+}
+
+.jura-rule-groups button span {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 0.92rem;
+}
+
+.jura-rule-groups button small {
+  color: var(--ink-muted);
+  font-size: 0.55rem;
+}
+
+.jura-rule-groups button b {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  align-self: center;
+  color: var(--wine);
+}
+
+.jura-rule-groups button:hover {
+  border-color: var(--wine);
+}
+
+.jura-area-scale {
+  margin-top: 24px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line-strong);
+}
+
+.jura-area-scale > div {
+  display: grid;
+  gap: 8px;
+  margin-top: 13px;
+}
+
+.jura-area-scale > div > div {
+  display: grid;
+  grid-template-columns: 120px minmax(0, 1fr) 54px;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.61rem;
+}
+
+.jura-area-scale i {
+  position: relative;
+  display: block;
+  height: 5px;
+  background: #e4ddd4;
+}
+
+.jura-area-scale i::after {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: var(--area-share);
+  background: var(--wine);
+  content: "";
+}
+
+.jura-area-scale strong {
+  color: var(--wine-dark);
+  font-size: 0.6rem;
+  text-align: right;
+}
+
+.jura-area-scale > p {
+  margin: 10px 0 0;
+  color: var(--ink-muted);
+  font-size: 0.56rem;
+}
+
+.style-paths > div > article,
+.affinity-section > div > article,
+.cultural-machines article,
+.cultural-machines article:last-child {
+  border-color: var(--line);
+  background: var(--paper-strong);
+}
+
+.style-paths article > span,
+.style-paths article > button,
+.cultural-machines article span,
+.cultural-machines article:last-child span {
+  color: var(--wine);
+}
+
+.style-paths article > button,
+.affinity-section article > button {
+  border-color: var(--wine);
+  border-radius: 3px;
+  color: var(--wine);
+}
+
+.affinity-section > div > article {
+  border-left-color: var(--moss);
+}
+
+.cultural-machines__evidence {
+  border-left-color: var(--wine);
+  background: var(--paper);
+}
+
+.human-ledger,
+.wine-expression,
+.word-study {
+  margin-right: 0;
+  margin-left: 0;
+  padding: 0;
+  border: 0;
+  border-top: 1px solid var(--line);
+  background: transparent;
+  box-shadow: none;
+}
+
+.word-study > p:not(.section-kicker) {
+  color: var(--ink);
+}
+
+.route-ledger button:hover span,
+.route-ledger b {
+  color: var(--wine);
+}
+
+.wandering-section {
+  margin: 34px 0 0;
+  padding: 23px 0 0;
+  border-top: 2px solid var(--ink);
+  background: transparent;
+  color: var(--ink);
+}
+
+.wandering-section .section-kicker {
+  color: var(--wine);
+}
+
+.wandering-list {
+  border-top-color: var(--line);
+}
+
+.wandering-list > button {
+  grid-template-columns: minmax(0, 1fr) auto;
+  min-height: 84px;
+  padding: 15px 0;
+  border-bottom-color: var(--line);
+  color: var(--ink);
+}
+
+.wandering-copy small {
+  color: var(--ink-muted);
+}
+
+.wandering-action {
+  align-self: center;
+  color: var(--wine);
+  font-size: 0.61rem;
+  font-weight: 790;
+  white-space: nowrap;
+}
+
+.more-connections > summary {
+  background: var(--paper);
+}
+
+@media (max-width: 720px) {
+  .detail-panel {
+    height: min(78vh, 720px);
+  }
+
+  .detail-panel__content {
+    padding: 56px 18px 32px;
+  }
+
+  .subject-hero,
+  .subject-card--place .subject-hero,
+  .subject-card--appellation .subject-hero,
+  .subject-card--grape .subject-hero,
+  .subject-card--producer .subject-hero,
+  .subject-card--person .subject-hero,
+  .subject-card--project .subject-hero,
+  .subject-card--wine .subject-hero,
+  .subject-card--practice .subject-hero {
+    margin: -56px -18px 0;
+    padding: 73px 18px 22px;
+  }
+
+  .subject-card--producer .subject-hero,
+  .subject-card--person .subject-hero,
+  .subject-card--project .subject-hero {
+    padding-right: 84px;
+  }
+
+  .subject-hero .guide-lede {
+    font-size: 0.94rem;
+  }
+
+  .jura-hero-facts {
+    grid-template-columns: 1fr;
+  }
+
+  .jura-hero-facts > div + div {
+    border-top: 1px solid var(--line);
+    border-left: 0;
+  }
+
+  .chapter-nav {
+    display: none;
+  }
+
+  .jura-pillar {
+    scroll-margin-top: 46px;
+  }
+
+  .jura-pillar > summary {
+    min-height: 74px;
+  }
+
+  .jura-grape-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .jura-grape-card {
+    min-height: 176px;
+  }
+
+  .jura-person-actions button,
+  .jura-place-story button {
+    min-height: 44px;
+  }
+
+  .jura-rule-groups > section {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .jura-area-scale > div > div {
+    grid-template-columns: 94px minmax(0, 1fr) 48px;
+  }
+
+  .wandering-list > button {
+    min-height: 92px;
   }
 }
