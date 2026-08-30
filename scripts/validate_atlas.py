@@ -122,7 +122,7 @@ def load_authority() -> dict[str, Any]:
 def validate_native_experience(authority: dict[str, Any]) -> dict[str, Any]:
     value = read_json(PUBLIC_DATA_DIR / "atlas-subjects.json")
     expected_inputs = [
-        "data/atlas/run-04-experience.json",
+        "data/atlas/run-05-jura-final-cut.json",
         "data/claims/*.jsonl",
         "data/entities/*.jsonl",
         "data/geography/assertions/*.jsonl",
@@ -158,7 +158,7 @@ def validate_native_experience(authority: dict[str, Any]) -> dict[str, Any]:
         "appellation:jurancon",
     }
     if not required.issubset(subjects):
-        fail("atlas-subjects.json: missing required Run 04 native subjects")
+        fail("atlas-subjects.json: missing required Run 05 native subjects")
 
     for entity_id, subject in subjects.items():
         entity = authority["entities"].get(entity_id)
@@ -214,10 +214,10 @@ def validate_native_experience(authority: dict[str, Any]) -> dict[str, Any]:
             fail(f"atlas-subjects.json:{entity_id}: source projection incomplete")
 
     entries = read_json(PUBLIC_DATA_DIR / "atlas-entry-points.json")
-    if entries.get("generated_from") != "data/atlas/run-04-experience.json":
+    if entries.get("generated_from") != "data/atlas/run-05-jura-final-cut.json":
         fail("atlas-entry-points.json: experience config lineage is stale")
     if len(entries.get("entry_points", [])) < 4:
-        fail("atlas-entry-points.json: expected restrained Run 04 entry set")
+        fail("atlas-entry-points.json: expected restrained Run 05 entry set")
     entry_ids: set[str] = set()
     for entry in entries["entry_points"]:
         if entry["id"] in entry_ids:
@@ -251,18 +251,16 @@ def validate_editorial_experience(
     authority: dict[str, Any], subjects: dict[str, Any]
 ) -> int:
     value = read_json(PUBLIC_DATA_DIR / "atlas-editorial.json")
-    if value.get("generated_from") != "data/atlas/run-04-experience.json":
+    if value.get("generated_from") != "data/atlas/run-05-jura-final-cut.json":
         fail("atlas-editorial.json: experience config lineage is stale")
-    if value.get("release") != "atlas-run-04-make-it-sing":
-        fail("atlas-editorial.json: Run 04 release marker is stale")
+    if value.get("release") != "atlas-run-05-jura-final-cut":
+        fail("atlas-editorial.json: Run 05 release marker is stale")
     legend = value.get("legend", [])
     if {item.get("id") for item in legend} != {
-        "rabbit-hole",
-        "tell",
         "iykyk",
         "same-energy",
-    } or len(legend) != 4:
-        fail("atlas-editorial.json: four-signal legend is incomplete")
+    } or len(legend) != 2:
+        fail("atlas-editorial.json: visible signal key is not restrained")
     glossary = value.get("glossary", {})
     if set(glossary) != {
         "elevage",
@@ -287,8 +285,16 @@ def validate_editorial_experience(
     if not set(configured_subjects).issubset(subjects):
         fail("atlas-editorial.json: editorial subject is not native")
     jura = configured_subjects.get("place:jura", {})
-    if len(jura.get("accent", {}).get("tells", [])) != 3:
-        fail("atlas-editorial.json: Jura must teach exactly three bounded tells")
+    if jura.get("accent") or any(nested_values(configured_subjects, "surprises")):
+        fail("atlas-editorial.json: removed tells or Surprise me data remains")
+    if len(jura.get("hero_facts", [])) != 2:
+        fail("atlas-editorial.json: Jura opening needs two high-value facts")
+    if len(jura.get("people", [])) != 4:
+        fail("atlas-editorial.json: Jura People pillar must feature four producers")
+    if set(jura.get("pillar_map_reactions", {})) != {
+        "place", "grapes", "people", "culture", "rules"
+    }:
+        fail("atlas-editorial.json: Jura pillar map reactions are incomplete")
     if len(jura.get("featured_connections", [])) != 3:
         fail("atlas-editorial.json: Jura Keep wandering set must contain three routes")
     savagnin = configured_subjects.get("grape:savagnin", {})
@@ -335,13 +341,15 @@ def validate_editorial_experience(
         for target_id in nested_values(editorial, "target_id"):
             if target_id not in subjects:
                 fail(f"atlas-editorial.json:{subject_id}: dead learner route {target_id}")
-        reaction = editorial.get("map_reaction", {})
-        for area_id in reaction.get("area_subject_ids", []):
-            if not subjects[area_id].get("map_target"):
-                fail(f"atlas-editorial.json:{subject_id}: unmappable active area")
-        for producer_id in reaction.get("producer_ids", []):
-            if not subjects[producer_id].get("map_target"):
-                fail(f"atlas-editorial.json:{subject_id}: unmappable active producer")
+        reactions = [editorial.get("map_reaction", {})]
+        reactions.extend(editorial.get("pillar_map_reactions", {}).values())
+        for reaction in reactions:
+            for area_id in reaction.get("area_subject_ids", []):
+                if not subjects[area_id].get("map_target"):
+                    fail(f"atlas-editorial.json:{subject_id}: unmappable active area")
+            for producer_id in reaction.get("producer_ids", []):
+                if not subjects[producer_id].get("map_target"):
+                    fail(f"atlas-editorial.json:{subject_id}: unmappable active producer")
     return len(configured_subjects)
 
 

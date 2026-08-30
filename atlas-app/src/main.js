@@ -68,9 +68,9 @@ const state = {
   activeOverlapRecords: [],
   activeMapSelection: null,
   geographicSubjectId: null,
+  activeJuraPillar: "place",
   inspectMode: false,
   sourcesRendered: false,
-  surpriseTurns: {},
   trail: readStoredTrail(),
 };
 
@@ -175,7 +175,7 @@ function addFranceLayers() {
     filter: ["!=", ["get", "feature_type"], "geographical_complement"],
     layout: { visibility: elements.aocToggle.checked ? "visible" : "none" },
     paint: {
-      "fill-color": ["case", ["==", ["get", "governance_status"], "governed"], "#7f2f3f", "#b48468"],
+      "fill-color": ["case", ["==", ["get", "governance_status"], "governed"], "#7f2f3f", "#8f756f"],
       "fill-opacity": ["interpolate", ["linear"], ["zoom"], 5.15, 0.16, 8, 0.27, 11, 0.36],
       "fill-outline-color": "rgba(97, 35, 49, 0.45)",
     },
@@ -208,7 +208,7 @@ function addFranceLayers() {
     source: "aoc-areas",
     minzoom: 4.7,
     filter: ["==", ["get", "source_feature_id"], "__none__"],
-    paint: { "fill-color": "#d6a447", "fill-opacity": 0.3 },
+    paint: { "fill-color": "#c8a6aa", "fill-opacity": 0.34 },
   }, beforeId);
   map.addLayer({
     id: "subject-areas-line",
@@ -283,7 +283,7 @@ function addFranceLayers() {
       "text-padding": 8,
       "text-allow-overlap": true,
     },
-    paint: { "text-color": "#304e42", "text-halo-color": "#fffdf8", "text-halo-width": 2 },
+    paint: { "text-color": "#18251f", "text-halo-color": "#fffdf8", "text-halo-width": 2 },
   });
 
   const producerVisibility = elements.producersToggle.checked ? "visible" : "none";
@@ -295,7 +295,7 @@ function addFranceLayers() {
     filter: ["has", "point_count"],
     layout: { visibility: producerVisibility },
     paint: {
-      "circle-color": "#304e42",
+      "circle-color": "#25312c",
       "circle-radius": ["step", ["get", "point_count"], 13, 4, 17, 10, 21],
       "circle-stroke-color": "#fffdf8",
       "circle-stroke-width": 2,
@@ -325,7 +325,7 @@ function addFranceLayers() {
     layout: { visibility: producerVisibility },
     paint: {
       "circle-radius": ["interpolate", ["linear"], ["zoom"], 8.1, 5.5, 12, 8],
-      "circle-color": "#304e42",
+      "circle-color": "#25312c",
       "circle-stroke-color": "#fffdf8",
       "circle-stroke-width": 2.2,
     },
@@ -359,7 +359,7 @@ function addFranceLayers() {
       "text-max-width": 12,
       "text-optional": true,
     },
-    paint: { "text-color": "#213b32", "text-halo-color": "#fffdf8", "text-halo-width": 1.7 },
+    paint: { "text-color": "#18251f", "text-halo-color": "#fffdf8", "text-halo-width": 1.7 },
   });
   map.addLayer({
     id: "subject-producer-halos",
@@ -369,9 +369,9 @@ function addFranceLayers() {
     filter: ["==", ["get", "carta_entity_id"], "__none__"],
     paint: {
       "circle-radius": ["interpolate", ["linear"], ["zoom"], 5.6, 8, 12, 15],
-      "circle-color": "#f2c95e",
-      "circle-opacity": 0.76,
-      "circle-stroke-color": "#5a2334",
+      "circle-color": "#fffdf8",
+      "circle-opacity": 0.9,
+      "circle-stroke-color": "#7f2f3f",
       "circle-stroke-width": 2.4,
     },
   }, beforeId);
@@ -390,7 +390,7 @@ function addFranceLayers() {
       "text-max-width": 12,
       "text-allow-overlap": false,
     },
-    paint: { "text-color": "#44202b", "text-halo-color": "#fffdf8", "text-halo-width": 2 },
+    paint: { "text-color": "#5d2130", "text-halo-color": "#fffdf8", "text-halo-width": 2 },
   });
 }
 
@@ -513,8 +513,8 @@ function propertyMatchFilter(property, values) {
     : ["==", ["get", property], "__none__"];
 }
 
-function subjectMapReaction(subject) {
-  const configured = state.editorial?.subjects?.[subject?.entity_id]?.map_reaction || {};
+function subjectMapReaction(subject, configuredOverride = null) {
+  const configured = configuredOverride || state.editorial?.subjects?.[subject?.entity_id]?.map_reaction || {};
   const areaSubjectIds = [...(configured.area_subject_ids || [])];
   const producerIds = [...(configured.producer_ids || [])];
   if (subject?.kind === "appellation" && subject.map_target && !areaSubjectIds.includes(subject.entity_id)) {
@@ -541,9 +541,9 @@ function subjectMapReaction(subject) {
   return { areaFeatureIds, producerIds: [...new Set(producerIds)] };
 }
 
-function applySubjectMapReaction(subject = null) {
+function applySubjectMapReaction(subject = null, configuredOverride = null) {
   if (!state.franceLoaded) return;
-  const reaction = subject ? subjectMapReaction(subject) : { areaFeatureIds: [], producerIds: [] };
+  const reaction = subject ? subjectMapReaction(subject, configuredOverride) : { areaFeatureIds: [], producerIds: [] };
   const areaFilter = propertyMatchFilter("source_feature_id", reaction.areaFeatureIds);
   const producerFilter = propertyMatchFilter("carta_entity_id", reaction.producerIds);
   if (map.getLayer("subject-areas-fill")) map.setFilter("subject-areas-fill", areaFilter);
@@ -569,6 +569,50 @@ function applySubjectMapReaction(subject = null) {
   if (map.getLayer("producer-clusters")) {
     map.setPaintProperty("producer-clusters", "circle-opacity", reaction.producerIds.length ? 0.35 : 0.94);
   }
+}
+
+function activateJuraPillar(pillarId, { manageDetails = true, scroll = true, syncHistory = true } = {}) {
+  const jura = state.subjects?.["place:jura"];
+  const editorial = state.editorial?.subjects?.["place:jura"];
+  const reaction = editorial?.pillar_map_reactions?.[pillarId];
+  if (!jura || !reaction) return;
+  state.activeJuraPillar = pillarId;
+  elements.detailContent.querySelectorAll("[data-jura-pillar-target]").forEach((button) => {
+    const active = button.dataset.juraPillarTarget === pillarId;
+    button.classList.toggle("is-active", active);
+    button.setAttribute("aria-current", active ? "true" : "false");
+  });
+  const target = elements.detailContent.querySelector(`[data-jura-pillar="${CSS.escape(pillarId)}"]`);
+  if (target && manageDetails) {
+    const mobile = window.matchMedia("(max-width: 720px)").matches;
+    if (mobile) {
+      elements.detailContent.querySelectorAll(".jura-pillar").forEach((pillar) => {
+        pillar.open = pillar === target;
+      });
+    } else {
+      target.open = true;
+    }
+  }
+  if (target && scroll) {
+    target.scrollIntoView({ behavior: prefersReducedMotion() ? "auto" : "smooth", block: "start" });
+  }
+  applySubjectMapReaction(jura, reaction);
+  const currentStep = state.trail[state.trail.length - 1];
+  if (currentStep?.subjectId === "place:jura") {
+    currentStep.juraPillar = pillarId;
+    saveTrail();
+  }
+  if (syncHistory && state.activeSubjectId === "place:jura" && history.state?.subjectId === "place:jura") {
+    history.replaceState({ ...history.state, juraPillar: pillarId }, "", `${location.pathname}${location.search}${jura.route}`);
+  }
+  const labels = {
+    place: "Jura · the four geographic AOPs are emphasized",
+    grapes: "Jura · grapes, places, and teaching producers",
+    people: "Jura · producer bases are emphasized",
+    culture: "Jura · one documented lineage in context",
+    rules: "Jura · six overlapping AOP outlines",
+  };
+  setStatus(labels[pillarId] || "Jura · explore the map and guide together");
 }
 
 function hideDiscovery() {
@@ -719,6 +763,7 @@ function signalMarkup(signalId, { compact = false } = {}) {
 }
 
 function legendMarkup() {
+  if (!state.editorial?.legend?.length) return "";
   return `<details class="signal-legend"><summary>How to read the signals</summary><div>${state.editorial.legend.map((signal) => `
     <p>${signalMarkup(signal.id, { compact: true })}<span>${escapeHtml(signal.meaning)}</span></p>`).join("")}</div></details>`;
 }
@@ -738,10 +783,10 @@ function connectionNote(connection) {
     WITHIN_APPELLATION: "Read the regulatory territory around this place.",
     MENTORED_BY: connection.direction === "outbound" ? "Part of the lineage: follow who taught whom." : "See how this knowledge moved to the next person.",
     WORKED_WITH: "A human collaboration that shaped the work.",
-    PROFILE_COMPONENT: "A governed chapter inside this subject's wider guide.",
-    EXPLORE: "A representative route selected by CARTA's guide graph.",
+    PROFILE_COMPONENT: "A focused way to continue this subject.",
+    EXPLORE: "See what this subject adds to the story.",
   };
-  return labels[connection.predicate] || "A supported relationship in CARTA's knowledge graph.";
+  return labels[connection.predicate] || "Follow the relationship and see what changes.";
 }
 
 function exploreVerb(kind) {
@@ -800,13 +845,12 @@ function connectionsMarkup(subject) {
   }, {});
   return `
     ${featured.length ? `<section class="detail-section wandering-section">
-      <p class="section-kicker">Editorial picks · graph-informed</p>
+      <p class="section-kicker">Three considered next moves</p>
       <h3>Keep wandering</h3>
-      <div class="wandering-list">${featured.map((item, index) => `
+      <div class="wandering-list">${featured.map((item) => `
         <button type="button" data-explore-subject="${escapeHtml(item.target_id)}">
-          <span class="wandering-index">0${index + 1}</span>
-          <span class="wandering-copy">${signalMarkup(item.signal, { compact: true })}<strong>${escapeHtml(item.target.display_name)}</strong><small>${richText(item.reason)}</small></span>
-          <span class="wandering-arrow" aria-hidden="true">↗</span>
+          <span class="wandering-copy"><strong>${escapeHtml(item.target.display_name)}</strong><small>${richText(item.reason)}</small></span>
+          <span class="wandering-action">${escapeHtml(item.action || exploreVerb(item.target.kind))} <span aria-hidden="true">→</span></span>
         </button>`).join("")}</div>
     </section>` : ""}
     ${more.length ? `<details class="more-connections detail-disclosure"><summary>More connections <span>${more.length}</span></summary>
@@ -888,22 +932,8 @@ function routeButtons(subject, kinds, limit = 8) {
 function lensesMarkup(editorial) {
   const lenses = editorial.lenses || [];
   if (!lenses.length) return "";
-  return `<section class="culture-panel detail-section"><p class="section-kicker">Culture, not a legal tier</p><h3>What insiders notice</h3><div>${lenses.map((lens) => `
+  return `<section class="culture-panel detail-section"><p class="section-kicker">Context worth keeping</p><h3>What insiders notice</h3><div>${lenses.map((lens) => `
     <article>${lens.signal ? signalMarkup(lens.signal) : ""}<h4>${escapeHtml(lens.title)}</h4><p>${richText(lens.text)}</p></article>`).join("")}</div></section>`;
-}
-
-function accentMarkup(editorial) {
-  const accent = editorial.accent;
-  if (!accent) return "";
-  return `<section class="accent-section" id="chapter-accent" data-chapter="accent">
-    <p class="section-kicker">Jura's accent</p>
-    <h3>${escapeHtml(accent.title)}</h3>
-    <p>${richText(accent.intro)}</p>
-    <div class="tell-list">${accent.tells.map((tell, index) => `<details class="tell-card" ${index === 0 ? "open" : ""}>
-      <summary>${signalMarkup("tell", { compact: true })}<span><b>${escapeHtml(tell.title)}</b><small>${richText(tell.clue)}</small></span><i aria-hidden="true">+</i></summary>
-      <div><p><strong>Why the clue works</strong>${richText(tell.why)}</p><p><strong>Where it misleads</strong>${richText(tell.correction)}</p><button type="button" data-explore-subject="${escapeHtml(tell.target_id)}">Follow the clue →</button></div>
-    </details>`).join("")}</div>
-  </section>`;
 }
 
 function stylePathsMarkup(editorial) {
@@ -914,49 +944,116 @@ function stylePathsMarkup(editorial) {
 
 function affinitiesMarkup(editorial) {
   if (!editorial.affinities?.length) return "";
-  return `<section class="affinity-section detail-section"><p class="section-kicker">People Also Like · editorial graph</p><h3>Kinship, mechanism, and Same Energy</h3><p class="affinity-intro">These are teachable bridges, not an algorithmic popularity list.</p><div>${editorial.affinities.map((item) => {
+  return `<section class="affinity-section detail-section"><p class="section-kicker">Connections worth following</p><h3>Kinship, mechanism, and Same Energy</h3><p class="affinity-intro">Each route names the specific resemblance—and keeps the differences visible.</p><div>${editorial.affinities.map((item) => {
     const target = state.subjects[item.target_id];
     return `<article>${signalMarkup(item.signal, { compact: true })}<strong>${escapeHtml(target.display_name)}</strong><small>${richText(item.reason)}</small><button type="button" aria-label="Explore ${escapeHtml(target.display_name)}" data-explore-subject="${escapeHtml(item.target_id)}">→</button></article>`;
   }).join("")}</div></section>`;
 }
 
-function surpriseCandidates(subject, editorial) {
-  if (editorial.surprises?.length) return editorial.surprises;
-  const ranked = [...subject.connections].sort((a, b) => {
-    const priority = { GENETICALLY_CLOSE_TO: 0, MENTORED_BY: 1, USES_PRACTICE: 2, MADE_FROM: 3, TRADITIONAL_IN: 4 };
-    return (priority[a.predicate] ?? 8) - (priority[b.predicate] ?? 8) || a.target_name.localeCompare(b.target_name);
-  });
-  return ranked.slice(0, 3).map((connection) => ({
-    target_id: connection.target_id,
-    reveal: connectionNote(connection),
-  }));
+function juraHeroFactsMarkup(editorial) {
+  const facts = editorial.hero_facts || [];
+  if (!facts.length) return "";
+  return `<dl class="jura-hero-facts">${facts.map((fact) => `<div><dt>${escapeHtml(fact.label)}</dt><dd>${escapeHtml(fact.value)}</dd><small>${escapeHtml(fact.note)}</small></div>`).join("")}</dl>`;
 }
 
-function surpriseMarkup(subject, editorial) {
-  const candidates = surpriseCandidates(subject, editorial);
-  if (!candidates.length) return "";
-  return `<section class="surprise-engine detail-section" data-surprise-engine>
-    <p class="section-kicker">A context-aware detour</p><h3>Surprise me</h3>
-    <p>One considered turn from this subject—never a random bottle roulette.</p>
-    <button type="button" data-surprise-subject="${escapeHtml(subject.entity_id)}">Reveal a good detour <span aria-hidden="true">✦</span></button>
-    <div class="surprise-reveal" aria-live="polite" hidden data-surprise-reveal></div>
-  </section>`;
+function juraPillarMarkup(id, title, intro, content, { open = false } = {}) {
+  return `<details class="jura-pillar" id="jura-pillar-${escapeHtml(id)}" data-jura-pillar="${escapeHtml(id)}" ${open ? "open" : ""}>
+    <summary data-jura-pillar-summary="${escapeHtml(id)}"><span><small>${escapeHtml(intro)}</small><strong>${title}</strong></span><i aria-hidden="true">⌄</i></summary>
+    <div class="jura-pillar__body">${content}</div>
+  </details>`;
+}
+
+function juraGrapesMarkup(editorial) {
+  return `<div class="jura-grape-grid">${(editorial.grape_cards || []).map((card, index) => {
+    const grape = state.subjects[card.target_id];
+    if (!grape) return "";
+    return `<article class="jura-grape-card ${index < 2 ? "is-primary" : ""}">
+      <div><span>${escapeHtml(card.share)}</span><small>of reported grape mix</small></div>
+      <h4>${escapeHtml(grape.display_name)}</h4>
+      <p>${richText(card.copy)}</p>
+      <button type="button" data-explore-subject="${escapeHtml(card.target_id)}">Explore ${escapeHtml(grape.display_name)} <span aria-hidden="true">→</span></button>
+    </article>`;
+  }).join("")}</div>`;
+}
+
+function juraPeopleMarkup(editorial) {
+  return `<div class="jura-people-grid">${(editorial.people || []).map((person) => {
+    const producer = state.subjects[person.target_id];
+    if (!producer) return "";
+    const mark = producer.display_name.split(/\s+/).filter((word) => word.length > 2).slice(0, 2).map((word) => word[0]).join("");
+    return `<article class="jura-person-card">
+      <header><span aria-hidden="true">${escapeHtml(mark)}</span><div><small>${escapeHtml(person.base)}</small><h4>${escapeHtml(producer.display_name)}</h4></div></header>
+      <p>${escapeHtml(person.reason)}</p>
+      <ul aria-label="Key grapes, wines, and practices">${person.cues.map((cue) => `<li>${escapeHtml(cue)}</li>`).join("")}</ul>
+      <div class="jura-person-actions">
+        <button type="button" data-explore-subject="${escapeHtml(person.target_id)}">Explore</button>
+        <button type="button" data-go-to-subject="${escapeHtml(person.target_id)}">Show on map <span aria-hidden="true">↗</span></button>
+      </div>
+    </article>`;
+  }).join("")}</div>`;
+}
+
+function juraAreaScaleMarkup(guide) {
+  const allowed = new Set([
+    "appellation:arbois",
+    "appellation:l-etoile",
+    "appellation:chateau-chalon",
+    "appellation:cremant-du-jura",
+    "appellation:macvin-du-jura",
+  ]);
+  const quantities = (guide?.quantities || []).filter((item) => allowed.has(item.subject_ref) && item.quantity?.measure === "claimed_vineyard_area");
+  if (!quantities.length) return "";
+  const max = Math.max(...quantities.map((item) => item.quantity.value));
+  return `<section class="jura-area-scale"><header><p class="section-kicker">Scale, in context</p><h4>Reported claimed area</h4></header><div>${quantities.map((item) => `<div><span>${escapeHtml(item.label)}</span><i aria-hidden="true" style="--area-share:${Math.max(5, (item.quantity.value / max) * 100)}%"></i><strong>${escapeHtml(formatQuantity(item.quantity))}</strong></div>`).join("")}</div><p>2023 revendication basis. Overlapping category areas are not additive.</p></section>`;
+}
+
+function juraRulesMarkup(subject, guide, overlaps, ruleClaims) {
+  const groups = [
+    {
+      label: "Geographic AOPs",
+      note: "Four origins. Select one to isolate its outline and open its native guide.",
+      ids: ["appellation:arbois", "appellation:cotes-du-jura", "appellation:l-etoile", "appellation:chateau-chalon"],
+    },
+    {
+      label: "Overlapping wine categories",
+      note: "These can occupy the same ground while governing different methods and wine types.",
+      ids: ["appellation:cremant-du-jura", "appellation:macvin-du-jura"],
+    },
+  ];
+  const intro = richText("Jura's six AOPs do not form a simple ladder. The map makes the distinction visible: four name geographic origins; two overlap the region while governing sparkling wine or {{term:mistelle|mistelle}}.");
+  return `<section class="jura-rule-intro"><p>${intro}</p></section>
+    <div class="jura-rule-groups">${groups.map((group) => `<section><header><h4>${escapeHtml(group.label)}</h4><p>${escapeHtml(group.note)}</p></header><div>${group.ids.map((id) => {
+      const target = state.subjects[id];
+      return `<button type="button" data-go-to-subject="${escapeHtml(id)}"><span>${escapeHtml(target.display_name)}</span><small>Highlight on map</small><b aria-hidden="true">↗</b></button>`;
+    }).join("")}</div></section>`).join("")}</div>
+    ${juraAreaScaleMarkup(guide)}
+    ${claimsMarkup(subject, ruleClaims)}
+    ${overlapMarkup(overlaps)}`;
 }
 
 function juraPlaceMarkup(subject, guide, overlaps, editorial, lead, claims) {
-  const landClaims = claims.filter((claim) => ["geography", "climate", "geology"].includes(claim.claim_type)).slice(0, 3);
-  const wineClaims = claims.filter((claim) => ["cellar", "viticulture", "other"].includes(claim.claim_type)).slice(0, 4);
-  const ruleClaims = claims.filter((claim) => ["legal", "classification"].includes(claim.claim_type)).slice(0, 4);
+  const landClaims = [lead, ...claims.filter((claim) => ["geography", "climate", "geology"].includes(claim.claim_type))].filter(Boolean).slice(0, 3);
+  const ruleClaims = claims.filter((claim) => ["legal", "classification"].includes(claim.claim_type)).slice(0, 3);
+  const place = `<section class="jura-place-story"><p class="section-kicker">The map is part of the lesson</p><h4>A narrow foothill vineyard, not one uniform site</h4><p>Read Jura north to south along the western edge of the mountains. The active outlines separate geographic origins from categories that can share the same ground.</p><button type="button" data-jura-map-reaction="place">Emphasize the geographic AOPs</button></section>${claimsMarkup(subject, landClaims)}`;
+  const grapes = `<p class="jura-pillar-lede">Five principal grapes share a compact region. The two largest shares lead to radically different lessons; the smaller three complete the picture without being reduced to tasting stereotypes.</p>${juraGrapesMarkup(editorial)}`;
+  const people = `<p class="jura-pillar-lede">Facts do not animate a region. These four producers make place, grapes, farming, cellar work and lineage concrete—without pretending to rank the region.</p>${juraPeopleMarkup(editorial)}`;
+  const culture = `<p class="jura-pillar-lede">Jura's cultural pull is easiest to understand through transmission and access, not hype. Two bounded ideas earn their place here.</p>${lensesMarkup(editorial)}`;
+  const rules = juraRulesMarkup(subject, guide, overlaps, ruleClaims);
   return `
-    <nav class="chapter-nav" aria-label="Jura guide chapters">
-      <button type="button" data-chapter-target="accent">Accent</button><button type="button" data-chapter-target="land">Land</button><button type="button" data-chapter-target="grapes">Grapes</button><button type="button" data-chapter-target="rules">Rules</button><button type="button" data-chapter-target="people">People</button>
+    <nav class="chapter-nav" aria-label="Jura guide sections">
+      <button type="button" class="is-active" aria-current="true" data-jura-pillar-target="place">The Place</button>
+      <button type="button" aria-current="false" data-jura-pillar-target="grapes">The Grapes &amp; Wines</button>
+      <button type="button" aria-current="false" data-jura-pillar-target="people">The People</button>
+      <button type="button" aria-current="false" data-jura-pillar-target="culture">The Culture</button>
+      <button type="button" aria-current="false" data-jura-pillar-target="rules">The Rules</button>
     </nav>
-    ${accentMarkup(editorial)}
-    <details class="region-chapter" id="chapter-land" data-chapter="land" open><summary><span>01</span><strong>Land &amp; scale</strong><i aria-hidden="true">+</i></summary><div>${claimsMarkup(subject, landClaims.length ? landClaims : [lead].filter(Boolean))}</div></details>
-    <details class="region-chapter" id="chapter-grapes" data-chapter="grapes" open><summary><span>02</span><strong>The grape chorus</strong><i aria-hidden="true">+</i></summary><div><p>Five principal grapes share a compact region, but none supplies a complete regional flavor code.</p>${routeButtons(subject, ["grape"], 6)}</div></details>
-    <details class="region-chapter regulation-panel" id="chapter-rules" data-chapter="rules" open><summary><span>03</span><strong>Territory &amp; regulation</strong><i aria-hidden="true">+</i></summary><div><p class="regulation-note">A sober layer: these names govern origin, category, and method. They do not rank cultural importance.</p>${guideFactsMarkup(guide)}${claimsMarkup(subject, ruleClaims)}${routeButtons(subject, ["appellation"], 8)}${overlapMarkup(overlaps)}</div></details>
-    <details class="region-chapter" id="chapter-people" data-chapter="people" open><summary><span>04</span><strong>People, cellars &amp; bottles</strong><i aria-hidden="true">+</i></summary><div>${claimsMarkup(subject, wineClaims)}${routeButtons(subject, ["producer", "person", "wine"], 10)}</div></details>
-    ${lensesMarkup(editorial)}`;
+    <div class="jura-pillars">
+      ${juraPillarMarkup("place", "The Place", "Geography · scale · physical setting", place, { open: true })}
+      ${juraPillarMarkup("grapes", "The Grapes &amp; Wines", "Five grapes · several cellar paths", grapes, { open: true })}
+      ${juraPillarMarkup("people", "The People", "Four producers · four ways into Jura", people, { open: true })}
+      ${juraPillarMarkup("culture", "The Culture", "Lineage · access · useful insider context", culture, { open: true })}
+      ${juraPillarMarkup("rules", "The Rules", "Four origins · two overlapping categories", rules, { open: true })}
+    </div>`;
 }
 
 function grapeMarkup(subject, editorial, claims) {
@@ -979,7 +1076,8 @@ function appellationMarkup(subject, guide, overlaps, claims) {
 }
 
 function humanMarkup(subject, editorial, claims) {
-  return `<section class="human-ledger detail-section"><p class="section-kicker">A human subject</p><h3>Work, place, transmission</h3>${claimsMarkup(subject, claims.slice(0, 6))}${routeButtons(subject, ["person", "producer", "project", "place"], 8)}</section>${lensesMarkup(editorial)}`;
+  const producer = subject.kind === "producer";
+  return `<section class="human-ledger detail-section"><p class="section-kicker">${producer ? "Producer dossier" : "A human subject"}</p><h3>${producer ? "What this producer makes legible" : "Work, place, transmission"}</h3>${claimsMarkup(subject, claims.slice(0, 6))}${routeButtons(subject, ["person", "producer", "project", "place", "grape", "wine", "practice", "appellation"], 8)}</section>${lensesMarkup(editorial)}`;
 }
 
 function wineMarkup(subject, claims) {
@@ -998,8 +1096,9 @@ function subjectCardMarkup(subject, guide = null, overlaps = []) {
   const placement = producerPlacement(subject);
   const thesis = editorial.thesis || lead?.statement || "Follow the supported relationships that make this subject legible.";
   const monogram = subject.display_name.split(/\s+/).filter((word) => word.length > 2).slice(0, 2).map((word) => word[0]).join("");
+  const isJura = subject.entity_id === "place:jura";
   let body = "";
-  if (subject.entity_id === "place:jura") body = juraPlaceMarkup(subject, guide, overlaps, editorial, lead, claims);
+  if (isJura) body = juraPlaceMarkup(subject, guide, overlaps, editorial, lead, claims);
   else if (subject.kind === "place") body = `${guideFactsMarkup(guide)}${claimsMarkup(subject, claims.slice(0, 6))}${routeButtons(subject, ["appellation", "grape", "producer"], 10)}`;
   else if (subject.kind === "appellation") body = appellationMarkup(subject, guide, overlaps, claims);
   else if (subject.kind === "grape") body = grapeMarkup(subject, editorial, claims);
@@ -1007,7 +1106,7 @@ function subjectCardMarkup(subject, guide = null, overlaps = []) {
   else if (subject.kind === "wine") body = wineMarkup(subject, claims);
   else if (subject.kind === "practice") body = practiceMarkup(subject, editorial, claims);
   else body = claimsMarkup(subject, claims.slice(0, 6));
-  return `<article class="subject-card subject-card--${escapeHtml(subject.kind)} ${subject.entity_id === "place:jura" ? "subject-card--jura" : ""}">
+  return `<article class="subject-card subject-card--${escapeHtml(subject.kind)} ${isJura ? "subject-card--jura" : ""}">
     ${returnToSavagninMarkup()}
     <header class="subject-hero">
       ${["producer", "person", "project"].includes(subject.kind) ? `<span class="subject-monogram" aria-hidden="true">${escapeHtml(monogram)}</span>` : ""}
@@ -1015,18 +1114,13 @@ function subjectCardMarkup(subject, guide = null, overlaps = []) {
       <h2>${escapeHtml(subject.display_name)}</h2>
       ${placement ? `<p class="subject-place">${escapeHtml(placement)}</p>` : ""}
       <p class="guide-lede">${richText(thesis)}</p>
+      ${isJura ? juraHeroFactsMarkup(editorial) : ""}
       ${mapActionMarkup(subject)}
-      ${legendMarkup()}
+      ${isJura ? "" : legendMarkup()}
     </header>
     ${body}
-    ${surpriseMarkup(subject, editorial)}
     ${connectionsMarkup(subject)}
     ${sourcesMarkup(subject.sources)}
-    <details class="detail-disclosure technical-disclosure"><summary>Technical details</summary><dl>
-      <div><dt>CARTA identity</dt><dd><code>${escapeHtml(subject.entity_id)}</code></dd></div>
-      <div><dt>Route</dt><dd><code>${escapeHtml(subject.route)}</code></dd></div>
-      ${subject.location ? `<div><dt>Map precision</dt><dd>${escapeHtml(subject.location.precision)}</dd></div>` : ""}
-    </dl></details>
   </article>`;
 }
 
@@ -1042,20 +1136,15 @@ function mapCoverageMarkup(record, overlaps = []) {
     <p class="guide-lede">The map has reliable official coverage here. A fuller story can grow later; for now, use the shape to orient yourself and compare the wine areas around it.</p>
     <button class="secondary-action" type="button" data-go-to-record="${escapeHtml(record.id)}">Go to this area</button>
     ${overlapMarkup(overlaps)}
-    <details class="detail-disclosure"><summary>What this shape means</summary><p>${escapeHtml(sourceMeaning)}</p></details>
-    <details class="detail-disclosure technical-disclosure"><summary>Technical details</summary><dl>
-      <div><dt>Representation</dt><dd>${escapeHtml(record.representation_label || record.representation_type || "Sourced map feature")}</dd></div>
-      <div><dt>Map source</dt><dd>${escapeHtml(isRegion ? "CARTA derivation from mapped INAO child areas" : "INAO SIQO geographical areas")}</dd></div>
-      ${record.carta_entity_id ? `<div><dt>CARTA identity</dt><dd><code>${escapeHtml(record.carta_entity_id)}</code></dd></div>` : ""}
-    </dl></details>`;
+    <details class="detail-disclosure"><summary>What this shape means</summary><p>${escapeHtml(sourceMeaning)}</p></details>`;
 }
 
 function renderPanelMarkup(markup) {
   elements.detailContent.innerHTML = markup;
   elements.detailContent.scrollTop = 0;
   const mobile = window.matchMedia("(max-width: 720px)").matches;
-  elements.detailContent.querySelectorAll(".region-chapter").forEach((chapter) => {
-    chapter.open = !mobile;
+  elements.detailContent.querySelectorAll(".jura-pillar").forEach((pillar) => {
+    pillar.open = !mobile || pillar.dataset.juraPillar === "place";
   });
 }
 
@@ -1083,6 +1172,7 @@ function recordTrail(subject, { moved = false } = {}) {
     contextMapTarget: geographic?.map_target || null,
     selection: state.activeMapSelection,
     geographicSubjectId: state.geographicSubjectId,
+    juraPillar: subject.entity_id === "place:jura" ? state.activeJuraPillar : null,
   };
   if (last?.subjectId === step.subjectId) state.trail[state.trail.length - 1] = step;
   else state.trail.push(step);
@@ -1106,6 +1196,7 @@ function historyStateFor(subject, fromSubjectId = history.state?.fromSubjectId |
     viewport: captureViewport(),
     selection: state.activeMapSelection,
     geographicSubjectId: state.geographicSubjectId,
+    juraPillar: subject.entity_id === "place:jura" ? state.activeJuraPillar : null,
     panelOpen: true,
   };
 }
@@ -1199,6 +1290,9 @@ async function navigateSubject(entityId, {
       moved = await moveToMapTarget(subject);
     }
     applySubjectMapReaction(subject);
+    if (subject.entity_id === "place:jura") {
+      activateJuraPillar(restore?.juraPillar || "place", { manageDetails: true, scroll: false, syncHistory: false });
+    }
     if (addTrail) recordTrail(subject, { moved });
     else renderTrail();
     setHistory(subject, historyMode, previousSubjectId);
@@ -1626,28 +1720,23 @@ elements.detailContent.addEventListener("click", async (event) => {
     termTrigger.setAttribute("aria-expanded", String(opening));
     return;
   }
-  const chapter = event.target.closest("[data-chapter-target]");
-  if (chapter) {
-    const target = elements.detailContent.querySelector(`[data-chapter="${CSS.escape(chapter.dataset.chapterTarget)}"]`);
-    if (target) {
-      if (target.tagName === "DETAILS") target.open = true;
-      target.scrollIntoView({ behavior: prefersReducedMotion() ? "auto" : "smooth", block: "start" });
-    }
+  const pillar = event.target.closest("[data-jura-pillar-target]");
+  if (pillar) {
+    activateJuraPillar(pillar.dataset.juraPillarTarget);
     return;
   }
-  const surprise = event.target.closest("[data-surprise-subject]");
-  if (surprise) {
-    const subject = state.subjects[surprise.dataset.surpriseSubject];
-    const editorial = subjectEditorial(subject);
-    const candidates = surpriseCandidates(subject, editorial);
-    const turn = state.surpriseTurns[subject.entity_id] || 0;
-    state.surpriseTurns[subject.entity_id] = turn + 1;
-    const candidate = candidates[turn % candidates.length];
-    const target = state.subjects[candidate.target_id];
-    const signal = editorial.affinities?.find((item) => item.target_id === candidate.target_id)?.signal || "rabbit-hole";
-    const reveal = surprise.closest("[data-surprise-engine]").querySelector("[data-surprise-reveal]");
-    reveal.innerHTML = `${signalMarkup(signal)}<strong>${escapeHtml(target.display_name)}</strong><p>${richText(candidate.reveal)}</p><button type="button" data-explore-subject="${escapeHtml(target.entity_id)}">Follow this detour →</button>`;
-    reveal.hidden = false;
+  const pillarSummary = event.target.closest("[data-jura-pillar-summary]");
+  if (pillarSummary) {
+    const details = pillarSummary.closest(".jura-pillar");
+    if (!details.open && window.matchMedia("(max-width: 720px)").matches) {
+      elements.detailContent.querySelectorAll(".jura-pillar[open]").forEach((item) => { item.open = false; });
+    }
+    activateJuraPillar(pillarSummary.dataset.juraPillarSummary, { manageDetails: false, scroll: false });
+    return;
+  }
+  const mapReaction = event.target.closest("[data-jura-map-reaction]");
+  if (mapReaction) {
+    activateJuraPillar(mapReaction.dataset.juraMapReaction, { manageDetails: false, scroll: false });
     return;
   }
   const explore = event.target.closest("[data-explore-subject]");

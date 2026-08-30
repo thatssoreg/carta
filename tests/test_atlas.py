@@ -162,34 +162,40 @@ class AtlasContractTest(unittest.TestCase):
             subjects["appellation:jurancon"]["map_target"]["kind"], "bounds"
         )
 
-    def test_run_04_editorial_signals_tells_and_terms_are_governed(self):
+    def test_run_05_editorial_pillars_signals_and_terms_are_governed(self):
         editorial = json.loads(
             (ROOT / "atlas-app/public/data/atlas-editorial.json").read_text()
         )
         self.assertEqual(
-            editorial["generated_from"], "data/atlas/run-04-experience.json"
+            editorial["generated_from"], "data/atlas/run-05-jura-final-cut.json"
         )
         self.assertEqual(
             {item["id"] for item in editorial["legend"]},
-            {"rabbit-hole", "tell", "iykyk", "same-energy"},
+            {"iykyk", "same-energy"},
         )
         self.assertEqual(
             set(editorial["glossary"]),
             {"elevage", "flor", "marl", "mistelle", "ouille", "sous-voile", "voile"},
         )
         jura = editorial["subjects"]["place:jura"]
-        self.assertEqual(len(jura["accent"]["tells"]), 3)
-        for tell in jura["accent"]["tells"]:
-            self.assertTrue(tell["clue"])
-            self.assertTrue(tell["why"])
-            self.assertTrue(tell["correction"])
-            self.assertIn(tell["target_id"], json.loads(
+        self.assertNotIn("accent", jura)
+        self.assertEqual(len(jura["hero_facts"]), 2)
+        self.assertEqual(len(jura["people"]), 4)
+        self.assertEqual(
+            set(jura["pillar_map_reactions"]),
+            {"place", "grapes", "people", "culture", "rules"},
+        )
+        subjects = json.loads(
                 (ROOT / "atlas-app/public/data/atlas-subjects.json").read_text()
-            )["subjects"])
-            for claim_id in tell["claim_ids"]:
+            )["subjects"]
+        for person in jura["people"]:
+            self.assertIn(person["target_id"], subjects)
+            self.assertEqual(subjects[person["target_id"]]["kind"], "producer")
+            self.assertTrue(subjects[person["target_id"]]["map_target"])
+            for claim_id in person["claim_ids"]:
                 self.assertIn(claim_id, editorial["claim_support"])
 
-    def test_run_04_keep_wandering_routes_are_explained_and_live(self):
+    def test_run_05_keep_wandering_routes_are_explained_and_live(self):
         editorial = json.loads(
             (ROOT / "atlas-app/public/data/atlas-editorial.json").read_text()
         )
@@ -206,8 +212,7 @@ class AtlasContractTest(unittest.TestCase):
                 self.assertTrue(route["claim_ids"])
                 if route["target_id"] not in direct:
                     self.assertEqual(route["signal"], "same-energy")
-            for surprise in teaching.get("surprises", []):
-                self.assertIn(surprise["target_id"], subjects)
+            self.assertNotIn("surprises", teaching)
 
     def test_savagnin_and_chardonnay_have_distinct_teaching_grammars(self):
         editorial = json.loads(
@@ -224,7 +229,7 @@ class AtlasContractTest(unittest.TestCase):
             editorial["grape:chardonnay"]["thesis"],
         )
 
-    def test_run_04_ui_contract_has_back_close_trail_and_active_map_reactions(self):
+    def test_run_05_ui_contract_has_back_close_trail_and_active_map_reactions(self):
         html = (ROOT / "atlas-app/index.html").read_text()
         main = (ROOT / "atlas-app/src/main.js").read_text()
         self.assertIn("data-back-detail", html)
@@ -234,6 +239,14 @@ class AtlasContractTest(unittest.TestCase):
         self.assertIn("state.geographicSubjectId === subject.entity_id", main)
         self.assertIn("subject-areas-fill", main)
         self.assertIn("subject-producer-halos", main)
+        self.assertIn("The Place", main)
+        self.assertIn("The Grapes &amp; Wines", main)
+        self.assertIn("The People", main)
+        self.assertIn("The Culture", main)
+        self.assertIn("The Rules", main)
+        self.assertNotIn("Surprise me", main)
+        self.assertNotIn("data-surprise-subject", main)
+        self.assertNotIn("A representative route selected by CARTA", main)
         self.assertNotIn("A useful way into the places, people, bottles", main)
         self.assertNotIn("Where next?", main)
 

@@ -1,13 +1,13 @@
 {
-  "version": 2,
-  "release": "atlas-run-04-make-it-sing",
+  "version": 3,
+  "release": "atlas-run-05-jura-final-cut",
   "entry_points": [
     {
-      "claim_ids": ["claim:jura-world-significance-10"],
+      "claim_ids": ["claim:jura-world-significance-10", "claim:jura-vineyard-area-2023-10"],
       "id": "entry:jura-accent",
-      "kicker": "The accent is recognizable. The tells can lie.",
+      "kicker": "A tiny region with more than one answer",
       "subject_id": "place:jura",
-      "title": "Learn to recognize Jura without reducing it to a stereotype"
+      "title": "See why 2,100 hectares can hold an entire wine world"
     },
     {
       "claim_ids": ["claim:savagnin-grape-not-method-11"],
@@ -87,18 +87,6 @@
   "editorial": {
     "legend": [
       {
-        "id": "rabbit-hole",
-        "label": "Rabbit Hole",
-        "symbol": "↝",
-        "meaning": "An unexpected connection worth following."
-      },
-      {
-        "id": "tell",
-        "label": "The Tell",
-        "symbol": "◉",
-        "meaning": "A clue that helps recognition, never proof on its own."
-      },
-      {
         "id": "iykyk",
         "label": "IYKYK",
         "symbol": "⌁",
@@ -162,41 +150,17 @@
     },
     "subjects": {
       "place:jura": {
-        "accent": {
-          "claim_ids": ["claim:jura-world-significance-10", "claim:savagnin-grape-not-method-11"],
-          "intro": "Jura has one of wine's most recognizable accents. The useful skill is not memorizing a flavor; it is learning which clues travel, why they work, and where they fail.",
-          "tells": [
-            {
-              "claim_ids": ["claim:savagnin-grape-not-method-11", "claim:jura-savagnin-share-2023-10"],
-              "clue": "A strong clue because Savagnin is unusually central here.",
-              "correction": "The grape name does not tell you whether the wine was topped, raised under a veil, made sparkling, or headed toward vin jaune.",
-              "id": "savagnin",
-              "target_id": "grape:savagnin",
-              "title": "Savagnin",
-              "why": "CIVJ reports Savagnin at 25% of Jura's grape distribution, and the region gives it several distinct cellar lives."
-            },
-            {
-              "claim_ids": ["claim:labet-hasard-sous-voile", "claim:tournelle-fleur-identity"],
-              "clue": "Walnut, spice and a {{term:voile|voile}} register can feel unmistakably Jura.",
-              "correction": "A topped Jura white may avoid that register completely. Region, grape and cellar method are three different answers.",
-              "id": "oxygen",
-              "target_id": "practice:sous-voile-aging",
-              "title": "The oxygen clue",
-              "why": "CARTA documents both {{term:sous-voile|sous voile}} Chardonnay and deliberately {{term:ouille|ouillé}} Savagnin in the same regional world."
-            },
-            {
-              "claim_ids": ["claim:pupillin-commune-jura-11", "claim:overnoy-pupillin-base-11"],
-              "clue": "Pupillin is a village name that carries unusual recognition in wine culture.",
-              "correction": "It is a place and an appellation qualifier—not a producer, quality tier, or guarantee of one house style.",
-              "id": "pupillin",
-              "target_id": "place:pupillin",
-              "title": "Pupillin on the label",
-              "why": "The commune is a real production context near Arbois and the base associated with Maison Pierre Overnoy / Emmanuel Houillon."
-            }
-          ],
-          "title": "Recognizable. Never one-note."
-        },
-        "claim_ids": ["claim:jura-world-orientation-10", "claim:jura-world-significance-10"],
+        "claim_ids": [
+          "claim:jura-world-orientation-10",
+          "claim:jura-world-significance-10",
+          "claim:jura-vineyard-area-2023-10",
+          "claim:jura-appellation-hierarchy-10",
+          "claim:jura-chardonnay-share-2023-10",
+          "claim:jura-savagnin-share-2023-10",
+          "claim:jura-poulsard-share-2023-10",
+          "claim:jura-pinot-noir-share-2023-10",
+          "claim:jura-trousseau-share-2023-10"
+        ],
         "featured_connections": [
           {
             "action": "Explore",
@@ -220,39 +184,126 @@
             "target_id": "appellation:arbois"
           }
         ],
-        "hero_kicker": "One small region · several ways to be wrong about it",
+        "grape_cards": [
+          {
+            "claim_ids": ["claim:jura-chardonnay-share-2023-10", "claim:chardonnay-jura-burgundy-contrast-12"],
+            "copy": "The familiar grape becomes a Jura lesson in cellar choice: topped, under veil, blended or sparkling.",
+            "share": "43%",
+            "target_id": "grape:chardonnay"
+          },
+          {
+            "claim_ids": ["claim:jura-savagnin-share-2023-10", "claim:savagnin-grape-not-method-11"],
+            "copy": "The grape name is only the beginning; {{term:ouille|ouillé}}, {{term:sous-voile|sous voile}} and vin jaune lead to different wines.",
+            "share": "25%",
+            "target_id": "grape:savagnin"
+          },
+          {
+            "claim_ids": ["claim:jura-poulsard-share-2023-10"],
+            "copy": "Poulsard—locally also Ploussard—accounts for 11% of the reported grape mix.",
+            "share": "11%",
+            "target_id": "grape:poulsard"
+          },
+          {
+            "claim_ids": ["claim:jura-trousseau-share-2023-10"],
+            "copy": "One of Jura's three red grapes, and the smallest reported share among the principal five.",
+            "share": "8%",
+            "target_id": "grape:trousseau"
+          },
+          {
+            "claim_ids": ["claim:jura-pinot-noir-share-2023-10"],
+            "copy": "Pinot Noir is a reminder that Jura's red-wine picture is not only local grape names.",
+            "share": "11%",
+            "target_id": "grape:pinot-noir"
+          }
+        ],
+        "hero_facts": [
+          {
+            "claim_ids": ["claim:jura-vineyard-area-2023-10"],
+            "label": "Vineyard",
+            "note": "2023 revendication basis",
+            "value": "2,100 ha"
+          },
+          {
+            "claim_ids": ["claim:jura-appellation-hierarchy-10"],
+            "label": "Wine AOPs",
+            "note": "four origins · two overlapping categories",
+            "value": "6"
+          }
+        ],
+        "hero_kicker": "Eastern France · a compact world model",
         "lenses": [
+          {
+            "claim_ids": ["claim:overnoy-transmission-11", "claim:emmanuel-overnoy-mentorship-12"],
+            "id": "lineage",
+            "signal": "iykyk",
+            "text": "Pierre Overnoy and Emmanuel Houillon are most useful as a chronology of apprenticeship, shared work and succession. Read the transmission before the trophy bottle.",
+            "title": "Influence is a human chain"
+          },
           {
             "claim_ids": ["claim:overnoy-us-access-context-12"],
             "id": "scarcity",
             "signal": "iykyk",
             "text": "Overnoy's US importer reports fewer than 400 bottles a year for the entire country. That explains allocation pressure. It does not make scarcity a quality score—or an allocated bottle the best way to learn Jura.",
             "title": "Scarcity is context, not a ranking"
-          },
-          {
-            "claim_ids": ["claim:jura-appellation-hierarchy-10", "claim:jura-wine-picture-10"],
-            "id": "rules",
-            "text": "Geographic AOPs, sparkling rules and {{term:mistelle|mistelle}} can occupy the same regional map while answering different legal questions.",
-            "title": "Rules describe categories, not cultural importance"
           }
         ],
         "map_reaction": {
           "area_subject_ids": ["appellation:arbois", "appellation:cotes-du-jura", "appellation:chateau-chalon", "appellation:l-etoile", "appellation:cremant-du-jura", "appellation:macvin-du-jura"],
-          "producer_ids": ["producer:domaine-de-la-tournelle", "producer:domaine-labet", "producer:maison-pierre-overnoy", "producer:domaine-de-saint-pierre-jura"]
+          "producer_ids": []
         },
-        "surprises": [
+        "people": [
           {
-            "claim_ids": ["claim:petit-manseng-savagnin"],
-            "reveal": "This rabbit hole leaves Jura for the western Pyrenees through a surprising genetic neighbor.",
-            "target_id": "grape:petit-manseng"
+            "base": "Arbois",
+            "claim_ids": ["claim:tournelle-founded-1991-fleur-1994", "claim:tournelle-arbois-base-11", "claim:tournelle-fleur-identity"],
+            "cues": ["Savagnin", "ouillé", "Fleur de Savagnin"],
+            "reason": "Évelyne and Pascal Clairet make one cellar decision unusually legible: their Fleur de Savagnin has been deliberately topped since the 1990s.",
+            "target_id": "producer:domaine-de-la-tournelle"
           },
           {
-            "claim_ids": ["claim:savagnin-palomino-affinity-12"],
-            "reveal": "Same Energy: film yeast is the bridge; the grape and wine culture are not.",
-            "target_id": "grape:palomino-fino"
+            "base": "Rotalier · southern Jura",
+            "claim_ids": ["claim:labet-estate-identity", "claim:labet-family", "claim:labet-white-ouillage", "claim:labet-hasard-sous-voile"],
+            "cues": ["45 parcels", "Chardonnay", "topped + sous voile"],
+            "reason": "A family estate that turns parcels and cellar paths into a comparative lesson instead of a single house style.",
+            "target_id": "producer:domaine-labet"
+          },
+          {
+            "base": "Pupillin",
+            "claim_ids": ["claim:overnoy-transmission-11", "claim:overnoy-pupillin-base-11", "claim:overnoy-jura-grapes-11"],
+            "cues": ["lineage", "four Jura grapes", "house-label literacy"],
+            "reason": "Pierre Overnoy and Emmanuel Houillon explain Jura through apprenticeship, continuity and a working handoff—not through scarcity alone.",
+            "target_id": "producer:maison-pierre-overnoy"
+          },
+          {
+            "base": "Mathenay · approximate base",
+            "claim_ids": ["claim:saint-pierre-jura-identity", "claim:saint-pierre-current-organic-certification", "claim:chateau-renard-wine-identity"],
+            "cues": ["Fabrice Dodane", "organic certification", "Château Renard"],
+            "reason": "Fabrice Dodane's estate adds a contemporary Mathenay perspective and a useful reminder that a recurring wine can change composition by vintage.",
+            "target_id": "producer:domaine-de-saint-pierre-jura"
           }
         ],
-        "thesis": "Jura has a strong accent because grape, place, law and cellar choice stay visibly entangled. Learn the tells—then learn why each one can mislead."
+        "pillar_map_reactions": {
+          "culture": {
+            "area_subject_ids": ["appellation:arbois"],
+            "producer_ids": ["producer:maison-pierre-overnoy"]
+          },
+          "grapes": {
+            "area_subject_ids": ["appellation:arbois", "appellation:cotes-du-jura", "appellation:chateau-chalon", "appellation:l-etoile"],
+            "producer_ids": ["producer:domaine-de-la-tournelle", "producer:domaine-labet", "producer:maison-pierre-overnoy", "producer:domaine-de-saint-pierre-jura"]
+          },
+          "people": {
+            "area_subject_ids": ["appellation:arbois", "appellation:cotes-du-jura"],
+            "producer_ids": ["producer:domaine-de-la-tournelle", "producer:domaine-labet", "producer:maison-pierre-overnoy", "producer:domaine-de-saint-pierre-jura"]
+          },
+          "place": {
+            "area_subject_ids": ["appellation:arbois", "appellation:cotes-du-jura", "appellation:chateau-chalon", "appellation:l-etoile"],
+            "producer_ids": []
+          },
+          "rules": {
+            "area_subject_ids": ["appellation:arbois", "appellation:cotes-du-jura", "appellation:chateau-chalon", "appellation:l-etoile", "appellation:cremant-du-jura", "appellation:macvin-du-jura"],
+            "producer_ids": []
+          }
+        },
+        "thesis": "Jura's 2,100 hectares make a useful argument: a region is not one taste. Five grapes, several cellar paths and six overlapping AOPs keep turning the same small strip of eastern France into different answers."
       },
       "grape:savagnin": {
         "affinities": [
@@ -331,18 +382,6 @@
             "name": "Vin jaune",
             "note": "A legally defined Savagnin pathway with its own ageing framework—not shorthand for every untopped Jura white.",
             "target_id": "appellation:chateau-chalon"
-          }
-        ],
-        "surprises": [
-          {
-            "claim_ids": ["claim:savagnin-palomino-affinity-12"],
-            "reveal": "Same Energy, different universe: follow film yeast from Jura toward Palomino.",
-            "target_id": "grape:palomino-fino"
-          },
-          {
-            "claim_ids": ["claim:petit-manseng-savagnin"],
-            "reveal": "This is not a tasting analogy. It is a genetic road toward the Pyrenees.",
-            "target_id": "grape:petit-manseng"
           }
         ],
         "thesis": "Savagnin is the clue, not the conclusion. The decisive question is what happened during {{term:elevage|élevage}}."
@@ -442,6 +481,38 @@
           "producer_ids": ["producer:domaine-labet"]
         },
         "thesis": "Domaine Labet is most useful as a parcel-and-process laboratory: topped whites, a documented sous-voile Chardonnay, and a family estate spread across 45 parcels."
+      },
+      "producer:domaine-de-saint-pierre-jura": {
+        "claim_ids": ["claim:saint-pierre-jura-identity", "claim:saint-pierre-current-organic-certification", "claim:chateau-renard-wine-identity"],
+        "featured_connections": [
+          {
+            "action": "Read the wine",
+            "claim_ids": ["claim:chateau-renard-wine-identity", "claim:chateau-renard-2018-chardonnay"],
+            "reason": "A recurring Arbois white whose documented composition changes by vintage—a useful check on fixed bottle assumptions.",
+            "signal": "rabbit-hole",
+            "target_id": "wine:chateau-renard"
+          },
+          {
+            "action": "Read the territory",
+            "claim_ids": ["claim:chateau-renard-wine-identity", "claim:arbois-aop"],
+            "reason": "Follow Château Renard outward to the geographic AOP that classifies it.",
+            "signal": "rabbit-hole",
+            "target_id": "appellation:arbois"
+          },
+          {
+            "action": "Explore the grape",
+            "claim_ids": ["claim:chateau-renard-2018-chardonnay"],
+            "reason": "Use the documented 2018 bottling as one specific route into Jura Chardonnay.",
+            "signal": "rabbit-hole",
+            "target_id": "grape:chardonnay"
+          }
+        ],
+        "hero_kicker": "Mathenay · a contemporary estate in motion",
+        "map_reaction": {
+          "area_subject_ids": ["appellation:arbois"],
+          "producer_ids": ["producer:domaine-de-saint-pierre-jura"]
+        },
+        "thesis": "Fabrice Dodane's Domaine de Saint Pierre adds a contemporary Mathenay perspective: certified organic farming and a recurring Arbois white whose composition needs to be read vintage by vintage."
       },
       "producer:maison-pierre-overnoy": {
         "claim_ids": ["claim:overnoy-transmission-11", "claim:overnoy-label-code-12", "claim:overnoy-us-access-context-12"],
