@@ -1,0 +1,62 @@
+{
+  "extends": "data/atlas/run-06-bearn-jurancon-world.json",
+  "version": 5,
+  "release": "atlas-run-07-editorial-foundation",
+  "editorial": {
+    "subjects": {
+      "place:jura": {
+        "place_story": {
+          "kicker": "The map is part of the lesson",
+          "title": "A narrow foothill vineyard, not one uniform site",
+          "text": "Read Jura north to south along the western edge of the mountains. The active outlines separate geographic origins from categories that can share the same ground.",
+          "button": "Emphasize the geographic AOPs"
+        },
+        "pillar_copy": {
+          "place": {
+            "intro": "Western escarpment · a narrow strip · shared ground",
+            "lede": "One compact strip of eastern France, read north to south, carrying more than one wine geography at a time."
+          },
+          "grapes": {
+            "intro": "Five grapes · several cellar paths",
+            "lede": "Five principal grapes share a compact region. The two largest shares lead to radically different lessons; the smaller three complete the picture without being reduced to tasting stereotypes."
+          },
+          "people": {
+            "intro": "Four producers · four ways into the world",
+            "lede": "These producers are not a ranking. Facts do not animate a region: these four make place, grapes, farming, cellar work and lineage concrete."
+          },
+          "culture": {
+            "intro": "Lineage · access · useful insider context",
+            "lede": "Jura's cultural pull is easiest to understand through transmission and access, not hype. Two bounded ideas earn their place here."
+          },
+          "rules": {
+            "intro": "Origins · categories · legal paths",
+            "lede": "Rules distinguish origins, categories and methods that can share ground."
+          }
+        },
+        "rules": {
+          "intro": "Jura's six AOPs do not form a simple ladder. The map makes the distinction visible: four name geographic origins; two overlap the region while governing sparkling wine or {{term:mistelle|mistelle}}.",
+          "groups": [
+            {
+              "label": "Geographic AOPs",
+              "note": "Four origins. Select one to isolate its outline and open its native guide.",
+              "ids": [
+                "appellation:arbois",
+                "appellation:cotes-du-jura",
+                "appellation:l-etoile",
+                "appellation:chateau-chalon"
+              ]
+            },
+            {
+              "label": "Overlapping wine categories",
+              "note": "These can occupy the same ground while governing different methods and wine types.",
+              "ids": [
+                "appellation:cremant-du-jura",
+                "appellation:macvin-du-jura"
+              ]
+            }
+          ]
+        }
+      }
+    }
+  }
+}

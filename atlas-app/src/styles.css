@@ -1425,6 +1425,71 @@ button {
   line-height: 1.5;
 }
 
+/* About Atlas shares the Sources overlay furniture: reachable, never imposed. */
+.about-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin: 0 0 22px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--wine);
+  font: inherit;
+  font-size: 0.92rem;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  border-bottom: 1px solid currentColor;
+}
+
+.about-link:hover,
+.about-link:focus-visible {
+  opacity: 0.74;
+}
+
+.about-dialog {
+  width: min(680px, calc(100vw - 36px));
+}
+
+.about-dialog__body {
+  max-width: 640px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.02rem;
+  line-height: 1.62;
+  color: var(--ink-muted);
+}
+
+.about-dialog__body h3 {
+  margin: 0 0 16px;
+  font-size: 1.32rem;
+  line-height: 1.24;
+  color: var(--ink);
+}
+
+.about-dialog__body p {
+  margin: 0 0 16px;
+}
+
+.about-dialog__acronym {
+  margin: 26px 0 22px;
+  padding: 18px 20px;
+  border-left: 2px solid var(--line-strong);
+  background: var(--paper);
+}
+
+.about-dialog__acronym h4 {
+  margin: 0 0 10px;
+  font-family: inherit;
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.about-dialog__acronym p:last-child {
+  margin-bottom: 0;
+}
+
 .source-cards {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));

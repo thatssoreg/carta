@@ -23,6 +23,7 @@ PUBLIC_DATA_DIR = ROOT / "atlas-app/public/data"
 EXPERIENCE_LINEAGE = [
     "data/atlas/run-05-jura-final-cut.json",
     "data/atlas/run-06-bearn-jurancon-world.json",
+    "data/atlas/run-07-editorial-foundation.json",
 ]
 
 INAO_DATASET_ID = "spatial-dataset:inao-aires-geographiques-siqo-2026-08-24"
@@ -232,7 +233,7 @@ def validate_native_experience(authority: dict[str, Any]) -> dict[str, Any]:
     entries = read_json(PUBLIC_DATA_DIR / "atlas-entry-points.json")
     if entries.get("generated_from") != EXPERIENCE_LINEAGE:
         fail("atlas-entry-points.json: experience config lineage is stale")
-    if entries.get("release") != "atlas-run-06-bearn-jurancon-world":
+    if entries.get("release") != "atlas-run-07-editorial-foundation":
         fail("atlas-entry-points.json: Run 06 release marker is stale")
     if len(entries.get("entry_points", [])) < 4:
         fail("atlas-entry-points.json: expected restrained Run 06 entry set")
@@ -271,7 +272,7 @@ def validate_editorial_experience(
     value = read_json(PUBLIC_DATA_DIR / "atlas-editorial.json")
     if value.get("generated_from") != EXPERIENCE_LINEAGE:
         fail("atlas-editorial.json: experience config lineage is stale")
-    if value.get("release") != "atlas-run-06-bearn-jurancon-world":
+    if value.get("release") != "atlas-run-07-editorial-foundation":
         fail("atlas-editorial.json: Run 06 release marker is stale")
     legend = value.get("legend", [])
     if {item.get("id") for item in legend} != {
@@ -340,6 +341,28 @@ def validate_editorial_experience(
         for signal in nested_values(bearn, "signal")
     ):
         fail("atlas-editorial.json: Béarn invents a sensory Tell")
+    # No world may borrow another world's voice: each regional world carries its
+    # own pillar copy, Place story and rule grammar, or it does not ship.
+    for subject_id, editorial in configured_subjects.items():
+        if not editorial.get("regional_world"):
+            continue
+        pillar_copy = editorial.get("pillar_copy", {})
+        if set(pillar_copy) != {"place", "grapes", "people", "culture", "rules"}:
+            fail(f"atlas-editorial.json:{subject_id}: world is missing pillar copy")
+        for pillar, pillar_text in pillar_copy.items():
+            if not pillar_text.get("intro") or not pillar_text.get("lede"):
+                fail(f"atlas-editorial.json:{subject_id}: {pillar} copy is incomplete")
+        place_story = editorial.get("place_story", {})
+        if not all(place_story.get(key) for key in ("kicker", "title", "text", "button")):
+            fail(f"atlas-editorial.json:{subject_id}: world has no Place story")
+        rules = editorial.get("rules", {})
+        if not rules.get("intro") or not rules.get("groups"):
+            fail(f"atlas-editorial.json:{subject_id}: world has no rule grammar")
+        for group in rules["groups"]:
+            for area_id in group.get("ids", []):
+                if area_id not in subjects:
+                    fail(f"atlas-editorial.json:{subject_id}: dead rule-group area {area_id}")
+
     priority = value.get("map_click_priority", {})
     if priority.get("appellation:jurancon", 999) >= priority.get("appellation:bearn", 999):
         fail("atlas-editorial.json: Jurançon must outrank overlapping Béarn on click")

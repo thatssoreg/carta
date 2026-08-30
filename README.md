@@ -90,6 +90,7 @@ For the technical model, read:
 - [Ontology](docs/ontology.md)
 - [Evidence policy](docs/evidence-policy.md)
 - [Human Reference projection](docs/atlas-projection.md)
+- [Atlas editorial foundation](docs/atlas-editorial-foundation.md)
 - [Reference profile schema](schemas/reference-profile.schema.json)
 
 ## Current state
