@@ -27,15 +27,17 @@ jobs:
         run: |
           python - <<'PY'
           from pathlib import Path
+          import re
 
           path = Path('atlas-app/src/main.js')
           text = path.read_text()
-          old = '''  const primaryFeature = unique[0];
-          const primaryRecord = records.find((record) => record.source_denomination_id === primaryFeature.properties.source_denomination_id)
-            || records.find((record) => record.id === primaryFeature.properties.source_feature_id)
-            || records[0];
-          '''
-          new = '''  const primaryFeature = unique[0];
+          pattern = re.compile(
+              r'  const primaryFeature = unique\[0\];\n'
+              r'  const primaryRecord = records\.find\(\(record\) => record\.source_denomination_id === primaryFeature\.properties\.source_denomination_id\)\n'
+              r'    \|\| records\.find\(\(record\) => record\.id === primaryFeature\.properties\.source_feature_id\)\n'
+              r'    \|\| records\[0\];'
+          )
+          replacement = '''  const primaryFeature = unique[0];
           // Jura's Crémant and Macvin AOPs intentionally overlap the geographic-origin AOPs.
           // On an ordinary map click, prefer a geographic origin when one covers the same point;
           // keep the overlapping category AOPs in `records` so the panel still explains them.
@@ -51,11 +53,11 @@ jobs:
           const primaryRecord = preferredGeographicRecord
             || records.find((record) => record.source_denomination_id === primaryFeature.properties.source_denomination_id)
             || records.find((record) => record.id === primaryFeature.properties.source_feature_id)
-            || records[0];
-          '''
-          if old not in text:
-              raise SystemExit('Expected handleMapClick selection block not found')
-          path.write_text(text.replace(old, new, 1))
+            || records[0];'''
+          updated, count = pattern.subn(replacement, text, count=1)
+          if count != 1:
+              raise SystemExit(f'Expected one handleMapClick selection block, found {count}')
+          path.write_text(updated)
           PY
       - name: Validate
         run: |
