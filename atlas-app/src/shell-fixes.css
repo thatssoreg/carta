@@ -1,0 +1,37 @@
+/* Shared Atlas detail-shell stabilization.
+ * Keep full-bleed editorial treatments inside the panel and prevent section
+ * navigation from covering content while the reader scrolls.
+ */
+
+.detail-panel .detail-panel__content {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  overflow-x: hidden !important;
+  overscroll-behavior-x: none;
+}
+
+.detail-panel .detail-panel__content > *,
+.detail-panel .subject-card,
+.detail-panel .jura-pillars,
+.detail-panel .jura-pillar,
+.detail-panel .jura-pillar__body,
+.detail-panel .detail-section,
+.detail-panel .jura-place-story,
+.detail-panel .jura-grape-grid,
+.detail-panel .jura-people-grid,
+.detail-panel .jura-rule-groups {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.detail-panel .chapter-nav {
+  position: relative !important;
+  top: auto !important;
+  z-index: 1;
+  backdrop-filter: none;
+}
+
+.detail-panel .jura-pillar {
+  scroll-margin-top: 12px;
+}
