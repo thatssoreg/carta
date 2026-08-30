@@ -3063,6 +3063,85 @@ button {
   color: var(--ink-muted);
 }
 
+.culture-panel article > button {
+  min-height: 36px;
+  margin-top: 12px;
+  padding: 0 10px;
+  border: 1px solid var(--wine);
+  background: transparent;
+  color: var(--wine);
+  font-size: 0.61rem;
+  font-weight: 780;
+  cursor: pointer;
+}
+
+.regional-person-who,
+.regional-person-explains {
+  margin-bottom: 0 !important;
+  padding-top: 10px;
+  border-top: 1px solid var(--line);
+}
+
+.regional-person-who strong,
+.regional-person-explains strong {
+  display: block;
+  margin-bottom: 3px;
+  color: var(--wine);
+  font-size: 0.54rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.regional-style-comparison {
+  margin: 0 0 22px;
+  padding: 18px;
+  border: 1px solid var(--line-strong);
+  background: rgba(123, 41, 59, 0.04);
+}
+
+.regional-style-comparison h4 {
+  margin: 0 0 13px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.08rem;
+  font-weight: 500;
+}
+
+.regional-style-comparison > div {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 7px;
+}
+
+.regional-style-comparison article {
+  display: grid;
+  gap: 5px;
+  padding: 11px;
+  border: 1px solid var(--line);
+  background: var(--paper-strong);
+}
+
+.regional-style-comparison article strong {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 0.86rem;
+  font-weight: 500;
+}
+
+.regional-style-comparison article b {
+  color: var(--wine-dark);
+  font-size: 0.75rem;
+}
+
+.regional-style-comparison article small,
+.regional-style-comparison > p {
+  color: var(--ink-muted);
+  font-size: 0.56rem;
+  line-height: 1.4;
+}
+
+.regional-style-comparison > p {
+  margin: 11px 0 0;
+}
+
 .jura-rule-intro {
   margin-bottom: 22px;
   padding: 17px 18px;
@@ -3352,6 +3431,10 @@ button {
   .jura-rule-groups > section {
     grid-template-columns: 1fr;
     gap: 10px;
+  }
+
+  .regional-style-comparison > div {
+    grid-template-columns: 1fr;
   }
 
   .jura-area-scale > div > div {

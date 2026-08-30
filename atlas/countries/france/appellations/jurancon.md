@@ -115,6 +115,10 @@ This section is generated from CARTA machine authority. Edit the governed record
 
 | Claim | Layer / observed | Status | Confidence | Sources |
 |---|---|---|---|---|
+| `claim:jurancon-2025-foothill-ripening-06` | `reference / 2026-08-30` | `supported` | `high` | `source:jurancon-cdc-2025` |
+| `claim:jurancon-2025-grape-rules-06` | `reference / 2026-08-30` | `supported` | `high` | `source:jurancon-cdc-2025` |
+| `claim:jurancon-2025-harvest-paths-06` | `reference / 2026-08-30` | `supported` | `high` | `source:jurancon-cdc-2025` |
+| `claim:jurancon-2025-style-paths-06` | `reference / 2026-08-30` | `supported` | `high` | `source:jurancon-cdc-2025` |
 | `claim:jurancon-commune-count-10` | `reference / 2026-08-29` | `supported` | `high` | `source:inao-jurancon` |
 | `claim:jurancon-country` | `reference / —` | `supported` | `high` | `source:inao-jurancon` |
 | `claim:jurancon-guide-orientation-10` | `reference / 2026-08-29` | `supported` | `high` | `source:inao-jurancon` |
@@ -129,6 +133,7 @@ This section is generated from CARTA machine authority. Edit the governed record
 
 - `source:inao-aires-geographiques-siqo-2026-08-24` — Délimitation des aires-géographiques des SIQO — 2026-08-24 snapshot
 - `source:inao-jurancon` — Jurançon
+- `source:jurancon-cdc-2025` — Cahier des charges de l’appellation d’origine contrôlée Jurançon
 - `source:jurancon-winegrowers` — Vins de Jurançon — association des vignerons
 - `source:wsg-southwest-producer-guide` — Producer Guide - South-West
 

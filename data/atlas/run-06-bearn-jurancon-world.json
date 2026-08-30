@@ -1,0 +1,216 @@
+{
+  "extends": "data/atlas/run-05-jura-final-cut.json",
+  "version": 4,
+  "release": "atlas-run-06-bearn-jurancon-world",
+  "entry_points": [
+    {
+      "claim_ids": ["claim:bearn-world-significance-10", "claim:jurancon-2025-foothill-ripening-06"],
+      "id": "entry:bearn-ripeness-freshness",
+      "kicker": "Atlantic rain · mountain wind · patient fruit",
+      "subject_id": "place:bearn",
+      "title": "How can ripeness and freshness rise together?"
+    },
+    {
+      "claim_ids": ["claim:jurancon-2025-style-paths-06", "claim:jurancon-2025-harvest-paths-06"],
+      "id": "entry:jurancon-three-paths",
+      "kicker": "One geography · three legal endings",
+      "subject_id": "appellation:jurancon",
+      "title": "Read Jurançon sec, sweet and late harvest side by side"
+    },
+    {
+      "claim_ids": ["claim:petit-manseng-origin-traits", "claim:petit-manseng-savagnin"],
+      "id": "entry:petit-manseng-bridge",
+      "kicker": "Tiny berries · serious acidity · an unexpected relative",
+      "subject_id": "grape:petit-manseng",
+      "title": "Follow Petit Manseng from Jurançon back to Savagnin"
+    },
+    {
+      "claim_ids": ["claim:jurancon-2025-grape-rules-06"],
+      "id": "entry:jurancon-grape-boundaries",
+      "kicker": "Principal, accessory, and outside the rule",
+      "subject_id": "place:bearn",
+      "title": "Five local grapes are not five interchangeable names"
+    }
+  ],
+  "featured_world_ids": ["place:bearn", "place:jura", "place:burgundy", "place:loire-valley", "place:beaujolais"],
+  "producer_ids": [
+    "producer:domaine-de-la-tournelle",
+    "producer:domaine-labet",
+    "producer:maison-pierre-overnoy",
+    "producer:domaine-de-saint-pierre-jura",
+    "producer:camin-larredya",
+    "producer:domaine-cauhape",
+    "producer:clos-uroulat",
+    "producer:domaine-de-souch"
+  ],
+  "native_subject_ids": [
+    "place:jura", "place:burgundy", "place:loire-valley", "place:beaujolais", "place:bearn",
+    "place:pupillin", "place:arbois", "place:rotalier", "place:mathenay",
+    "appellation:arbois", "appellation:cotes-du-jura", "appellation:chateau-chalon", "appellation:l-etoile", "appellation:cremant-du-jura", "appellation:macvin-du-jura",
+    "appellation:jurancon", "appellation:bearn", "appellation:pacherenc-du-vic-bilh", "appellation:irouleguy",
+    "grape:savagnin", "grape:chardonnay", "grape:poulsard", "grape:trousseau", "grape:pinot-noir", "grape:petit-manseng", "grape:gros-manseng", "grape:petit-courbu", "grape:courbu", "grape:raffiat-de-moncade", "grape:palomino-fino",
+    "producer:domaine-de-la-tournelle", "producer:domaine-labet", "producer:maison-pierre-overnoy", "producer:domaine-de-saint-pierre-jura",
+    "producer:camin-larredya", "producer:domaine-cauhape", "producer:clos-uroulat", "producer:domaine-de-souch", "producer:imanol-garay", "producer:alfredo-egia-wine",
+    "project:soleras-del-pacifico", "person:emmanuel-houillon", "person:pierre-overnoy", "person:imanol-garay", "person:alfredo-egia",
+    "wine:domaine-de-la-tournelle-fleur-de-savagnin", "wine:domaine-labet-fleur-de-savagnin", "wine:domaine-labet-chardonnay-du-hasard", "wine:domaine-labet-la-bardette-chardonnay", "wine:chateau-renard", "wine:flor-of-evangelho",
+    "practice:ouillage", "practice:sous-voile-aging"
+  ],
+  "editorial": {
+    "map_click_priority": {
+      "appellation:jurancon": 10,
+      "appellation:arbois": 20,
+      "appellation:cotes-du-jura": 21,
+      "appellation:chateau-chalon": 22,
+      "appellation:l-etoile": 23,
+      "appellation:bearn": 40,
+      "appellation:cremant-du-jura": 80,
+      "appellation:macvin-du-jura": 81
+    },
+    "context_returns": [
+      {
+        "label": "Back to Savagnin in Jura",
+        "return_subject_id": "grape:savagnin",
+        "when_geographic_subject_ids": ["place:jura", "appellation:arbois", "appellation:cotes-du-jura", "appellation:chateau-chalon", "appellation:l-etoile"]
+      },
+      {
+        "label": "Back to Petit Manseng in Jurançon",
+        "return_subject_id": "grape:petit-manseng",
+        "when_geographic_subject_ids": ["place:bearn", "appellation:jurancon", "appellation:bearn"]
+      }
+    ],
+    "glossary": {
+      "foehn": {
+        "claim_ids": ["claim:jurancon-2025-foothill-ripening-06"],
+        "definition": "A warm, dry downslope wind. In Jurançon it can interrupt the wet Atlantic pattern during the long autumn ripening season.",
+        "matters": "It helps explain concentration and drying conditions without pretending the foothills are generally arid.",
+        "term": "foehn"
+      },
+      "passerillage": {
+        "claim_ids": ["claim:jurancon-2025-harvest-paths-06"],
+        "definition": "Concentration as grapes lose water and shrivel, usually while remaining on the vine in this Jurançon context.",
+        "explore_target_id": "appellation:jurancon",
+        "matters": "It is a ripening and concentration path, not another word for botrytis.",
+        "term": "passerillage"
+      },
+      "sec": {
+        "claim_ids": ["claim:jurancon-2025-style-paths-06"],
+        "definition": "Dry. In this appellation the word is part of the legal name Jurançon sec and corresponds to a maximum fermentable-sugar threshold.",
+        "explore_target_id": "appellation:jurancon",
+        "matters": "A bottle labeled only Jurançon is not the dry category.",
+        "term": "sec"
+      },
+      "tries-successives": {
+        "claim_ids": ["claim:jurancon-2025-harvest-paths-06"],
+        "definition": "Successive picking passes through the vineyard, selecting fruit as it reaches the intended maturity or concentration.",
+        "explore_target_id": "appellation:jurancon",
+        "matters": "The current rule requires this repeated selection for Jurançon other than the sec path.",
+        "term": "tries successives"
+      },
+      "vendanges-tardives": {
+        "claim_ids": ["claim:jurancon-2025-style-paths-06", "claim:jurancon-2025-harvest-paths-06", "claim:jurancon-2025-grape-rules-06"],
+        "definition": "Late harvest, used here as a regulated Jurançon mention with its own grape, harvest-date and sugar requirements.",
+        "explore_target_id": "appellation:jurancon",
+        "matters": "It is a narrower legal path than simply harvesting ripe fruit late.",
+        "term": "vendanges tardives"
+      }
+    },
+    "subjects": {
+      "place:jura": {
+        "regional_world": true
+      },
+      "place:bearn": {
+        "regional_world": true,
+        "claim_ids": [
+          "claim:bearn-world-orientation-10", "claim:bearn-world-significance-10", "claim:jurancon-physical-place-10", "claim:jurancon-style-picture-10",
+          "claim:jurancon-commune-count-10", "claim:jurancon-member-vineyard-area-10", "claim:jurancon-2025-style-paths-06", "claim:jurancon-2025-grape-rules-06", "claim:jurancon-2025-harvest-paths-06", "claim:jurancon-2025-foothill-ripening-06"
+        ],
+        "hero_kicker": "Western Pyrenean foothills · ripeness without surrender",
+        "thesis": "Here, ripeness is not the opposite of freshness. Rain-heavy Atlantic foothills, a drying autumn {{term:foehn|foehn}} and late, thick-skinned local grapes let growers choose dry, sweet or late-harvest paths without giving up acidity.",
+        "hero_facts": [
+          {"claim_ids": ["claim:jurancon-commune-count-10"], "label": "Jurançon area", "note": "the legal production-area commune list", "value": "25 communes"},
+          {"claim_ids": ["claim:jurancon-member-vineyard-area-10"], "label": "Member vineyards", "note": "association scope · not total AOP area", "value": "620 ha"}
+        ],
+        "place_story": {
+          "button": "Emphasize Jurançon inside Béarn",
+          "kicker": "The map is part of the lesson",
+          "text": "Béarn is the cultural foothill world; Béarn AOP and Jurançon are legal wine areas. The active outlines keep those meanings separate and deliberately prioritize Jurançon when its shape overlaps the broader Béarn layer.",
+          "title": "A cultural world is not an appellation polygon"
+        },
+        "pillar_copy": {
+          "place": {"intro": "Foothills · Atlantic rain · autumn foehn", "lede": "Read the physical problem first: a wet oceanic climate, steep foothill slopes and a warm drying wind during a long autumn."},
+          "grapes": {"intro": "Two principal grapes · several local companions", "lede": "Petit and Gros Manseng are separate cultivars, not size grades. The accessory grapes matter too—and Raffiat de Moncade belongs to the wider Béarn vocabulary without entering the current Jurançon list."},
+          "people": {"intro": "Four producers · four teaching jobs", "lede": "These producers are not a ranking. Together they make terraces, local grapes, dry-to-sweet range and estate scale concrete."},
+          "culture": {"intro": "Foothill patience · cross-border exchange", "lede": "Jurançon culture is bigger than sweetness: patient harvest work sits beside a living French–Basque network of farming, mentorship and collaboration."},
+          "rules": {"intro": "One geography · three legal endings", "lede": "The rulebook clarifies what the landscape alone cannot: label words, grape roles, picking passes and fermentable-sugar thresholds."}
+        },
+        "grape_cards": [
+          {"claim_ids": ["claim:petit-manseng-origin-traits", "claim:jurancon-2025-grape-rules-06"], "copy": "Tiny berries can accumulate sugar while holding unusually high acidity. That capacity supports several wine paths; it does not make every Petit Manseng sweet.", "metric": "Principal", "metric_label": "late · tiny berries", "primary": true, "target_id": "grape:petit-manseng"},
+          {"claim_ids": ["claim:gros-manseng-origin-traits", "claim:jurancon-2025-grape-rules-06"], "copy": "A distinct, vigorous Pyrenean cultivar with fruit that can stay on the vine for sweet wine—and a major working role in dry blends.", "metric": "Principal", "metric_label": "separate cultivar", "primary": true, "target_id": "grape:gros-manseng"},
+          {"claim_ids": ["claim:petit-courbu-identity", "claim:jurancon-2025-grape-rules-06"], "copy": "A distinct accessory variety. Its Bizkaia legal-name connection is useful border literacy, not permission to collapse it into Courbu.", "metric": "Accessory", "metric_label": "Petit Courbu", "target_id": "grape:petit-courbu"},
+          {"claim_ids": ["claim:courbu-hondarrabi-zuri", "claim:jurancon-2025-grape-rules-06"], "copy": "Courbu is separately named in the Jurançon accessory list. It is not a long form of Petit Courbu.", "metric": "Accessory", "metric_label": "Courbu", "target_id": "grape:courbu"},
+          {"claim_ids": ["claim:raffiat-parentage", "claim:jurancon-2025-grape-rules-06"], "copy": "A useful wider Béarn and Pyrenean rabbit hole, but not one of the varieties permitted by the current Jurançon specification.", "metric": "Wider Béarn", "metric_label": "outside Jurançon 2025", "target_id": "grape:raffiat-de-moncade"}
+        ],
+        "style_comparison": [
+          {"claim_ids": ["claim:jurancon-2025-style-paths-06", "claim:jurancon-2025-harvest-paths-06"], "detail": "Dry · successive picking passes are not mandatory", "label": "Jurançon {{term:sec|sec}}", "value": "≤ 4 g/L"},
+          {"claim_ids": ["claim:jurancon-2025-style-paths-06", "claim:jurancon-2025-harvest-paths-06"], "detail": "Sweet · hand picked in {{term:tries-successives|successive passes}}", "label": "Jurançon", "value": "> 40 g/L"},
+          {"claim_ids": ["claim:jurancon-2025-style-paths-06", "claim:jurancon-2025-harvest-paths-06", "claim:jurancon-2025-grape-rules-06"], "detail": "Manseng only · no earlier than 2 November", "label": "{{term:vendanges-tardives|Vendanges tardives}}", "value": "> 55 g/L"}
+        ],
+        "people": [
+          {"base": "Jurançon · Chapelle de Rousse", "claim_ids": ["claim:camin-larredya-base-06", "claim:camin-larredya-current-world-06", "claim:camin-larredya-grapes"], "cues": ["terraces", "Petit + Gros Manseng", "estate vs purchased fruit"], "explains": "How terraces and a four-grape estate mix become a working dry-and-sweet vocabulary.", "reason": "A certified-organic estate whose terrace scope and grape mix are unusually legible in first-party material.", "target_id": "producer:camin-larredya", "who": "Jean-Marc Grussaute and the Camin Larredya estate"},
+          {"base": "Monein · approximate map point", "claim_ids": ["claim:cauhape-base-range-06"], "cues": ["southeast slopes", "up to 400 m", "dry + sweet range"], "explains": "How one long-standing estate makes the appellation’s altitude and stylistic range visible.", "reason": "A broad Monein estate range that puts dry and sweet Jurançon under one producer roof.", "target_id": "producer:domaine-cauhape", "who": "Henri Ramonteu’s Domaine Cauhapé"},
+          {"base": "Monein · Quartier Trouilh", "claim_ids": ["claim:clos-uroulat-base-range-06", "claim:jurancon-representative-producers"], "cues": ["three dry", "one tender", "two sweet"], "explains": "How a public-facing range can teach gradations instead of a dry/sweet binary.", "reason": "A compact range whose current visitor listing makes several sweetness positions immediately comparable.", "target_id": "producer:clos-uroulat", "who": "Charles and Marie Hours’ Clos Uroulat"},
+          {"base": "Laroin", "claim_ids": ["claim:souch-base-grapes-06", "claim:jurancon-representative-producers"], "cues": ["7 ha", "organic farming", "Petit + Gros Manseng + Courbu"], "explains": "How a small estate links the local grape set to patient manual work.", "reason": "A small Laroin estate that keeps scale, grape material and farming practice in the same frame.", "target_id": "producer:domaine-de-souch", "who": "The Hégoburu family’s Domaine de Souch"}
+        ],
+        "lenses": [
+          {"claim_ids": ["claim:jurancon-2025-harvest-paths-06", "claim:jurancon-2025-foothill-ripening-06"], "id": "patience", "signal": "iykyk", "text": "The insider cue is not a flavor note. It is the work pattern: long autumn exposure, hand harvest, repeated passes and {{term:passerillage|passerillage}} where the fruit and rules call for it.", "title": "Patience is a farming verb"},
+          {"claim_ids": ["claim:alfredo-imanol-mentorship", "claim:imanol-current-practice", "claim:alfredo-range-anchors"], "id": "border-network", "signal": "iykyk", "target_id": "producer:imanol-garay", "text": "Imanol Garay and Alfredo Egia make the French–Basque edge visible as a network of work, mentorship and collaboration. Their relevance is cultural; it does not relocate their vineyards into Jurançon.", "title": "The border is a working network"}
+        ],
+        "rules": {
+          "groups": [
+            {"ids": ["appellation:jurancon", "appellation:bearn"], "label": "Core map distinction", "note": "Jurançon and Béarn AOP can overlap. A map click prioritizes the more specific Jurançon lesson while keeping both records visible."},
+            {"ids": ["appellation:pacherenc-du-vic-bilh", "appellation:irouleguy"], "label": "Useful neighboring comparisons", "note": "Nearby Manseng and western-Pyrenean routes that clarify what Jurançon shares—and what remains locally specific."}
+          ],
+          "intro": "Jurançon’s legal names describe wine paths, not separate landscapes. {{term:sec|Sec}}, unqualified Jurançon and {{term:vendanges-tardives|vendanges tardives}} sit inside one geographic production area with different thresholds and harvest conditions."
+        },
+        "featured_connections": [
+          {"action": "Read the rules", "claim_ids": ["claim:jurancon-2025-style-paths-06", "claim:jurancon-2025-harvest-paths-06"], "reason": "One map area becomes three clearly named white-wine paths.", "signal": "rabbit-hole", "target_id": "appellation:jurancon"},
+          {"action": "Explore the grape", "claim_ids": ["claim:petit-manseng-origin-traits", "claim:petit-manseng-savagnin"], "reason": "Tiny berries, high acid retention and an unexpected genetic route back toward Jura.", "signal": "rabbit-hole", "target_id": "grape:petit-manseng"},
+          {"action": "Meet", "claim_ids": ["claim:camin-larredya-base-06", "claim:camin-larredya-current-world-06"], "reason": "A terrace estate where place, grape mix and production scope stay visible.", "signal": "rabbit-hole", "target_id": "producer:camin-larredya"}
+        ],
+        "map_reaction": {"area_subject_ids": ["appellation:jurancon", "appellation:bearn"], "producer_ids": []},
+        "pillar_map_reactions": {
+          "place": {"area_subject_ids": ["appellation:jurancon", "appellation:bearn"], "producer_ids": []},
+          "grapes": {"area_subject_ids": ["appellation:jurancon"], "producer_ids": ["producer:camin-larredya", "producer:domaine-cauhape", "producer:clos-uroulat", "producer:domaine-de-souch"]},
+          "people": {"area_subject_ids": ["appellation:jurancon"], "producer_ids": ["producer:camin-larredya", "producer:domaine-cauhape", "producer:clos-uroulat", "producer:domaine-de-souch"]},
+          "culture": {"area_subject_ids": ["appellation:jurancon", "appellation:irouleguy"], "producer_ids": ["producer:camin-larredya", "producer:domaine-de-souch"]},
+          "rules": {"area_subject_ids": ["appellation:jurancon", "appellation:bearn", "appellation:pacherenc-du-vic-bilh", "appellation:irouleguy"], "producer_ids": []}
+        }
+      },
+      "grape:petit-manseng": {
+        "claim_ids": ["claim:petit-manseng-origin-traits", "claim:petit-manseng-savagnin", "claim:jurancon-2025-style-paths-06", "claim:jurancon-2025-grape-rules-06"],
+        "hero_kicker": "A grape with sugar capacity—not a sweetness guarantee",
+        "thesis": "Petit Manseng’s tiny berries can hold very high acidity while concentrating sugar. The grape creates possibility; the harvest and fermentation path decide whether the bottle says {{term:sec|sec}}, Jurançon or {{term:vendanges-tardives|vendanges tardives}}.",
+        "style_paths": [
+          {"claim_ids": ["claim:jurancon-2025-style-paths-06"], "name": "Jurançon {{term:sec|sec}}", "note": "Dry is a legal path with a maximum fermentable-sugar threshold—not evidence that Gros Manseng did all the work.", "target_id": "appellation:jurancon"},
+          {"claim_ids": ["claim:jurancon-2025-style-paths-06", "claim:jurancon-2025-harvest-paths-06"], "name": "Jurançon", "note": "Sweet wine from the same geography, with hand harvest and successive picking passes shaping the route.", "target_id": "appellation:jurancon"},
+          {"claim_ids": ["claim:jurancon-2025-style-paths-06", "claim:jurancon-2025-grape-rules-06", "claim:jurancon-2025-harvest-paths-06"], "name": "{{term:vendanges-tardives|Vendanges tardives}}", "note": "A narrower Manseng-only late-harvest mention with a later date and higher sugar floor.", "target_id": "appellation:jurancon"}
+        ],
+        "affinities": [
+          {"claim_ids": ["claim:petit-manseng-savagnin"], "reason": "A documented close genetic relationship, carefully bounded short of parentage.", "signal": "rabbit-hole", "target_id": "grape:savagnin"},
+          {"claim_ids": ["claim:gros-manseng-origin-traits", "claim:jurancon-2025-grape-rules-06"], "reason": "A separate Manseng cultivar sharing the principal legal role, not the large-berry version of the same grape.", "signal": "same-energy", "target_id": "grape:gros-manseng"},
+          {"claim_ids": ["claim:petit-courbu-identity", "claim:jurancon-2025-grape-rules-06"], "reason": "An accessory local grape that sharpens the difference between a regional mix and a two-grape monoculture.", "signal": "rabbit-hole", "target_id": "grape:petit-courbu"}
+        ],
+        "featured_connections": [
+          {"action": "Read the territory", "claim_ids": ["claim:jurancon-2025-style-paths-06"], "reason": "The legal map where this grape can take dry, sweet and late-harvest paths.", "signal": "rabbit-hole", "target_id": "appellation:jurancon"},
+          {"action": "Follow the family resemblance", "claim_ids": ["claim:petit-manseng-savagnin"], "reason": "A real genetic bridge to Savagnin without inventing parentage.", "signal": "rabbit-hole", "target_id": "grape:savagnin"},
+          {"action": "Meet", "claim_ids": ["claim:camin-larredya-grapes", "claim:camin-larredya-current-world-06"], "reason": "See Petit Manseng inside a four-grape terrace estate rather than as an isolated varietal idea.", "signal": "rabbit-hole", "target_id": "producer:camin-larredya"}
+        ],
+        "map_reaction": {"area_subject_ids": ["appellation:jurancon", "appellation:pacherenc-du-vic-bilh"], "producer_ids": ["producer:camin-larredya", "producer:domaine-cauhape", "producer:clos-uroulat", "producer:domaine-de-souch"]}
+      },
+      "producer:camin-larredya": {"claim_ids": ["claim:camin-larredya-base-06", "claim:camin-larredya-current-world-06", "claim:camin-larredya-grapes"], "hero_kicker": "Jurançon · terraces and a four-grape estate mix", "map_reaction": {"area_subject_ids": ["appellation:jurancon"], "producer_ids": ["producer:camin-larredya"]}, "thesis": "Camin Larredya makes scope visible: a 9.5-hectare certified-organic estate, four hectares of terraces, a local four-grape mix—and separately identified purchased fruit rather than one blurred domaine story."},
+      "producer:domaine-cauhape": {"claim_ids": ["claim:cauhape-base-range-06"], "hero_kicker": "Monein · slope, altitude and stylistic range", "map_reaction": {"area_subject_ids": ["appellation:jurancon"], "producer_ids": ["producer:domaine-cauhape"]}, "thesis": "Domaine Cauhapé is a scale-and-range anchor: southeast-facing Monein slopes rising toward 400 metres, with dry and sweet wines held in the same estate frame."},
+      "producer:clos-uroulat": {"claim_ids": ["claim:clos-uroulat-base-range-06"], "hero_kicker": "Monein · more than a binary", "map_reaction": {"area_subject_ids": ["appellation:jurancon"], "producer_ids": ["producer:clos-uroulat"]}, "thesis": "Clos Uroulat’s current visitor range makes a useful correction: Jurançon can be read across dry, tender and sweet positions instead of as a single binary switch."},
+      "producer:domaine-de-souch": {"claim_ids": ["claim:souch-base-grapes-06"], "hero_kicker": "Laroin · small scale and patient work", "map_reaction": {"area_subject_ids": ["appellation:jurancon"], "producer_ids": ["producer:domaine-de-souch"]}, "thesis": "Domaine de Souch brings the world down to human scale: seven hectares, three local grapes, organic farming, biodynamic principles and manual harvest."}
+    }
+  }
+}

@@ -118,6 +118,13 @@ This section is generated from CARTA machine authority. Edit the governed record
 | `claim:bearn-history` | `reference / —` | `supported` | `high` | `source:inao-bearn` |
 | `claim:bearn-world-orientation-10` | `reference / 2026-08-29` | `supported` | `high` | `source:inao-jurancon` |
 | `claim:bearn-world-significance-10` | `reference / 2026-08-29` | `supported` | `high` | `source:inao-jurancon` |
+| `claim:camin-larredya-base-06` | `reference / 2026-08-30` | `supported` | `high` | `source:camin-larredya-contact-06`, `source:api-adresse-gouv-fr` |
+| `claim:cauhape-base-range-06` | `reference / 2026-08-30` | `supported` | `high` | `source:cauhape-domain-06` |
+| `claim:clos-uroulat-base-range-06` | `reference / 2026-08-30` | `supported` | `high` | `source:clos-uroulat-contact-06`, `source:tourisme64-clos-uroulat-06` |
+| `claim:jurancon-2025-foothill-ripening-06` | `reference / 2026-08-30` | `supported` | `high` | `source:jurancon-cdc-2025` |
+| `claim:jurancon-2025-grape-rules-06` | `reference / 2026-08-30` | `supported` | `high` | `source:jurancon-cdc-2025` |
+| `claim:jurancon-2025-harvest-paths-06` | `reference / 2026-08-30` | `supported` | `high` | `source:jurancon-cdc-2025` |
+| `claim:jurancon-2025-style-paths-06` | `reference / 2026-08-30` | `supported` | `high` | `source:jurancon-cdc-2025` |
 | `claim:jurancon-commune-count-10` | `reference / 2026-08-29` | `supported` | `high` | `source:inao-jurancon` |
 | `claim:jurancon-country` | `reference / —` | `supported` | `high` | `source:inao-jurancon` |
 | `claim:jurancon-guide-orientation-10` | `reference / 2026-08-29` | `supported` | `high` | `source:inao-jurancon` |
@@ -127,13 +134,21 @@ This section is generated from CARTA machine authority. Edit the governed record
 | `claim:jurancon-representative-producers` | `reference / —` | `supported` | `medium` | `source:wsg-southwest-producer-guide` |
 | `claim:jurancon-style-picture-10` | `reference / 2026-08-29` | `supported` | `high` | `source:inao-jurancon` |
 | `claim:jurancon-terrain-law` | `reference / —` | `supported` | `high` | `source:inao-jurancon` |
+| `claim:souch-base-grapes-06` | `reference / 2026-08-30` | `supported` | `high` | `source:vignerons-jurancon-souch-06`, `source:api-adresse-gouv-fr` |
 
 ### Sources
 
+- `source:api-adresse-gouv-fr` — API Adresse
+- `source:camin-larredya-contact-06` — Nous contacter — Camin Larredya
+- `source:cauhape-domain-06` — Le domaine — Domaine Cauhapé
+- `source:clos-uroulat-contact-06` — Contact — Clos Uroulat
 - `source:inao-aires-geographiques-siqo-2026-08-24` — Délimitation des aires-géographiques des SIQO — 2026-08-24 snapshot
 - `source:inao-bearn` — Béarn blanc and cahier des charges
 - `source:inao-jurancon` — Jurançon
+- `source:jurancon-cdc-2025` — Cahier des charges de l’appellation d’origine contrôlée Jurançon
 - `source:jurancon-winegrowers` — Vins de Jurançon — association des vignerons
+- `source:tourisme64-clos-uroulat-06` — Clos Uroulat — Monein
+- `source:vignerons-jurancon-souch-06` — Domaine de Souch — Vignerons du Jurançon
 - `source:wsg-southwest-producer-guide` — Producer Guide - South-West
 
 </details>

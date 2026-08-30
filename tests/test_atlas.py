@@ -6,6 +6,10 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
+EXPERIENCE_LINEAGE = [
+    "data/atlas/run-05-jura-final-cut.json",
+    "data/atlas/run-06-bearn-jurancon-world.json",
+]
 
 
 class AtlasContractTest(unittest.TestCase):
@@ -120,7 +124,7 @@ class AtlasContractTest(unittest.TestCase):
         self.assertTrue(expected.issubset(set(jura["component_entity_ids"])))
         self.assertGreaterEqual(len(jura["sources"]), 5)
 
-    def test_run_04_native_jura_rabbit_hole_is_projected(self):
+    def test_jura_and_bearn_rabbit_hole_is_projected_both_ways(self):
         subjects = json.loads(
             (ROOT / "atlas-app/public/data/atlas-subjects.json").read_text()
         )["subjects"]
@@ -139,6 +143,16 @@ class AtlasContractTest(unittest.TestCase):
             "grape:savagnin",
             "grape:petit-manseng",
             "appellation:jurancon",
+            "place:bearn",
+            "appellation:bearn",
+            "grape:gros-manseng",
+            "grape:petit-courbu",
+            "grape:courbu",
+            "grape:raffiat-de-moncade",
+            "producer:camin-larredya",
+            "producer:domaine-cauhape",
+            "producer:clos-uroulat",
+            "producer:domaine-de-souch",
         }
         self.assertTrue(required.issubset(subjects))
 
@@ -159,23 +173,32 @@ class AtlasContractTest(unittest.TestCase):
         }
         self.assertTrue(petit_manseng_targets["appellation:jurancon"]["has_map_target"])
         self.assertEqual(
+            petit_manseng_targets["grape:savagnin"]["predicate"],
+            "GENETICALLY_CLOSE_TO",
+        )
+        self.assertEqual(
             subjects["appellation:jurancon"]["map_target"]["kind"], "bounds"
         )
 
-    def test_run_05_editorial_pillars_signals_and_terms_are_governed(self):
+    def test_run_06_editorial_pillars_signals_and_terms_are_governed(self):
         editorial = json.loads(
             (ROOT / "atlas-app/public/data/atlas-editorial.json").read_text()
         )
         self.assertEqual(
-            editorial["generated_from"], "data/atlas/run-05-jura-final-cut.json"
+            editorial["generated_from"], EXPERIENCE_LINEAGE
         )
+        self.assertEqual(editorial["release"], "atlas-run-06-bearn-jurancon-world")
         self.assertEqual(
             {item["id"] for item in editorial["legend"]},
             {"iykyk", "same-energy"},
         )
         self.assertEqual(
             set(editorial["glossary"]),
-            {"elevage", "flor", "marl", "mistelle", "ouille", "sous-voile", "voile"},
+            {
+                "elevage", "flor", "foehn", "marl", "mistelle", "ouille",
+                "passerillage", "sec", "sous-voile", "tries-successives",
+                "vendanges-tardives", "voile",
+            },
         )
         jura = editorial["subjects"]["place:jura"]
         self.assertNotIn("accent", jura)
@@ -195,7 +218,27 @@ class AtlasContractTest(unittest.TestCase):
             for claim_id in person["claim_ids"]:
                 self.assertIn(claim_id, editorial["claim_support"])
 
-    def test_run_05_keep_wandering_routes_are_explained_and_live(self):
+        bearn = editorial["subjects"]["place:bearn"]
+        self.assertTrue(jura["regional_world"])
+        self.assertTrue(bearn["regional_world"])
+        self.assertEqual(len(bearn["hero_facts"]), 2)
+        self.assertEqual(len(bearn["grape_cards"]), 5)
+        self.assertEqual(len(bearn["style_comparison"]), 3)
+        self.assertEqual(len(bearn["people"]), 4)
+        self.assertEqual(
+            set(bearn["pillar_map_reactions"]),
+            {"place", "grapes", "people", "culture", "rules"},
+        )
+        self.assertNotIn(
+            "tell",
+            {route.get("signal") for route in bearn.get("featured_connections", [])},
+        )
+        metrics = {card["target_id"]: card["metric"] for card in bearn["grape_cards"]}
+        self.assertEqual(metrics["grape:petit-manseng"], "Principal")
+        self.assertEqual(metrics["grape:gros-manseng"], "Principal")
+        self.assertEqual(metrics["grape:raffiat-de-moncade"], "Wider Béarn")
+
+    def test_keep_wandering_routes_are_explained_and_live(self):
         editorial = json.loads(
             (ROOT / "atlas-app/public/data/atlas-editorial.json").read_text()
         )
@@ -229,7 +272,7 @@ class AtlasContractTest(unittest.TestCase):
             editorial["grape:chardonnay"]["thesis"],
         )
 
-    def test_run_05_ui_contract_has_back_close_trail_and_active_map_reactions(self):
+    def test_regional_ui_contract_has_back_close_trail_and_active_map_reactions(self):
         html = (ROOT / "atlas-app/index.html").read_text()
         main = (ROOT / "atlas-app/src/main.js").read_text()
         self.assertIn("data-back-detail", html)
@@ -244,6 +287,10 @@ class AtlasContractTest(unittest.TestCase):
         self.assertIn("The People", main)
         self.assertIn("The Culture", main)
         self.assertIn("The Rules", main)
+        self.assertIn("activateRegionalPillar", main)
+        self.assertIn("map_click_priority", main)
+        self.assertNotIn("activeJuraPillar", main)
+        self.assertNotIn("activateJuraPillar", main)
         self.assertNotIn("Surprise me", main)
         self.assertNotIn("data-surprise-subject", main)
         self.assertNotIn("A representative route selected by CARTA", main)
@@ -252,9 +299,9 @@ class AtlasContractTest(unittest.TestCase):
 
     def test_producer_points_are_production_bases_with_honest_precision(self):
         points = json.loads(
-            (ROOT / "atlas-app/public/data/jura-producers.geojson").read_text()
+            (ROOT / "atlas-app/public/data/atlas-producers.geojson").read_text()
         )["features"]
-        self.assertEqual(len(points), 4)
+        self.assertEqual(len(points), 8)
         by_entity = {
             feature["properties"]["carta_entity_id"]: feature
             for feature in points
@@ -267,6 +314,21 @@ class AtlasContractTest(unittest.TestCase):
             "Approximate location",
             by_entity["producer:domaine-de-saint-pierre-jura"]["properties"]["placement_note"],
         )
+        self.assertEqual(
+            by_entity["producer:domaine-cauhape"]["properties"]["precision"],
+            "approximate",
+        )
+        self.assertIn(
+            "Approximate location",
+            by_entity["producer:domaine-cauhape"]["properties"]["placement_note"],
+        )
+        for entity_id in (
+            "producer:camin-larredya",
+            "producer:domaine-cauhape",
+            "producer:clos-uroulat",
+            "producer:domaine-de-souch",
+        ):
+            self.assertIn(entity_id, by_entity)
         for feature in points:
             properties = feature["properties"]
             self.assertEqual(feature["geometry"]["type"], "Point")
@@ -280,6 +342,8 @@ class AtlasContractTest(unittest.TestCase):
         )
         self.assertEqual(len(entries["entry_points"]), 4)
         self.assertEqual(len(entries["featured_worlds"]), 5)
+        self.assertEqual(entries["generated_from"], EXPERIENCE_LINEAGE)
+        self.assertEqual(entries["release"], "atlas-run-06-bearn-jurancon-world")
         claims = {}
         for path in sorted((ROOT / "data/claims").glob("*.jsonl")):
             for line in path.read_text().splitlines():
@@ -294,6 +358,13 @@ class AtlasContractTest(unittest.TestCase):
                     projected["source_ids"],
                     [source["source_id"] for source in claim["source_refs"]],
                 )
+
+    def test_run_06_generalization_assessment_is_committed(self):
+        assessment = ROOT / "audits/run-06-bearn-jurancon-generalization-assessment.md"
+        self.assertTrue(assessment.is_file())
+        copy = assessment.read_text()
+        self.assertIn("What transferred cleanly?", copy)
+        self.assertIn("No sensory Tell", copy)
 
 
 if __name__ == "__main__":
