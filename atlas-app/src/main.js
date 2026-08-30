@@ -1545,9 +1545,22 @@ async function handleMapClick(event) {
   const unique = [...new Map(features.map((feature) => [feature.properties.source_denomination_id || feature.properties.source_feature_id, feature])).values()];
   const records = (await Promise.all(unique.map((feature) => searchRecordForFeature(feature)))).filter(Boolean);
   const primaryFeature = unique[0];
-  const primaryRecord = records.find((record) => record.source_denomination_id === primaryFeature.properties.source_denomination_id)
-    || records.find((record) => record.id === primaryFeature.properties.source_feature_id)
-    || records[0];
+// Jura's Crémant and Macvin AOPs intentionally overlap the geographic-origin AOPs.
+// On an ordinary map click, prefer a geographic origin when one covers the same point;
+// keep the overlapping category AOPs in `records` so the panel still explains them.
+const juraOverlappingCategoryIds = new Set([
+  "appellation:cremant-du-jura",
+  "appellation:macvin-du-jura",
+]);
+const preferredGeographicRecord = records.find((record) =>
+  record.result_type === "aoc_appellation"
+  && record.carta_entity_id
+  && !juraOverlappingCategoryIds.has(record.carta_entity_id)
+);
+const primaryRecord = preferredGeographicRecord
+  || records.find((record) => record.source_denomination_id === primaryFeature.properties.source_denomination_id)
+  || records.find((record) => record.id === primaryFeature.properties.source_feature_id)
+  || records[0];
   if (!primaryRecord) return;
   if (primaryRecord.carta_entity_id && state.subjects?.[primaryRecord.carta_entity_id]) {
     await navigateSubject(primaryRecord.carta_entity_id, { moveMap: true, overlaps: records });
