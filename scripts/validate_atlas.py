@@ -20,6 +20,10 @@ ROOT = Path(__file__).resolve().parents[1]
 MANIFEST_DIR = ROOT / "data/geography/datasets"
 MAPPING_DIR = ROOT / "data/geography/external-id-mappings"
 PUBLIC_DATA_DIR = ROOT / "atlas-app/public/data"
+EXPERIENCE_LINEAGE = [
+    "data/atlas/run-05-jura-final-cut.json",
+    "data/atlas/run-06-bearn-jurancon-world.json",
+]
 
 INAO_DATASET_ID = "spatial-dataset:inao-aires-geographiques-siqo-2026-08-24"
 NATURAL_EARTH_DATASET_ID = "spatial-dataset:natural-earth-admin-0-countries-5.1.1"
@@ -122,7 +126,7 @@ def load_authority() -> dict[str, Any]:
 def validate_native_experience(authority: dict[str, Any]) -> dict[str, Any]:
     value = read_json(PUBLIC_DATA_DIR / "atlas-subjects.json")
     expected_inputs = [
-        "data/atlas/run-05-jura-final-cut.json",
+        *EXPERIENCE_LINEAGE,
         "data/claims/*.jsonl",
         "data/entities/*.jsonl",
         "data/geography/assertions/*.jsonl",
@@ -156,9 +160,21 @@ def validate_native_experience(authority: dict[str, Any]) -> dict[str, Any]:
         "person:pierre-overnoy",
         "wine:flor-of-evangelho",
         "appellation:jurancon",
+        "place:bearn",
+        "appellation:bearn",
+        "appellation:pacherenc-du-vic-bilh",
+        "appellation:irouleguy",
+        "grape:gros-manseng",
+        "grape:petit-courbu",
+        "grape:courbu",
+        "grape:raffiat-de-moncade",
+        "producer:camin-larredya",
+        "producer:domaine-cauhape",
+        "producer:clos-uroulat",
+        "producer:domaine-de-souch",
     }
     if not required.issubset(subjects):
-        fail("atlas-subjects.json: missing required Run 05 native subjects")
+        fail("atlas-subjects.json: missing required Run 06 native subjects")
 
     for entity_id, subject in subjects.items():
         entity = authority["entities"].get(entity_id)
@@ -214,10 +230,12 @@ def validate_native_experience(authority: dict[str, Any]) -> dict[str, Any]:
             fail(f"atlas-subjects.json:{entity_id}: source projection incomplete")
 
     entries = read_json(PUBLIC_DATA_DIR / "atlas-entry-points.json")
-    if entries.get("generated_from") != "data/atlas/run-05-jura-final-cut.json":
+    if entries.get("generated_from") != EXPERIENCE_LINEAGE:
         fail("atlas-entry-points.json: experience config lineage is stale")
+    if entries.get("release") != "atlas-run-06-bearn-jurancon-world":
+        fail("atlas-entry-points.json: Run 06 release marker is stale")
     if len(entries.get("entry_points", [])) < 4:
-        fail("atlas-entry-points.json: expected restrained Run 05 entry set")
+        fail("atlas-entry-points.json: expected restrained Run 06 entry set")
     entry_ids: set[str] = set()
     for entry in entries["entry_points"]:
         if entry["id"] in entry_ids:
@@ -251,10 +269,10 @@ def validate_editorial_experience(
     authority: dict[str, Any], subjects: dict[str, Any]
 ) -> int:
     value = read_json(PUBLIC_DATA_DIR / "atlas-editorial.json")
-    if value.get("generated_from") != "data/atlas/run-05-jura-final-cut.json":
+    if value.get("generated_from") != EXPERIENCE_LINEAGE:
         fail("atlas-editorial.json: experience config lineage is stale")
-    if value.get("release") != "atlas-run-05-jura-final-cut":
-        fail("atlas-editorial.json: Run 05 release marker is stale")
+    if value.get("release") != "atlas-run-06-bearn-jurancon-world":
+        fail("atlas-editorial.json: Run 06 release marker is stale")
     legend = value.get("legend", [])
     if {item.get("id") for item in legend} != {
         "iykyk",
@@ -265,10 +283,15 @@ def validate_editorial_experience(
     if set(glossary) != {
         "elevage",
         "flor",
+        "foehn",
         "marl",
         "mistelle",
         "ouille",
+        "passerillage",
+        "sec",
         "sous-voile",
+        "tries-successives",
+        "vendanges-tardives",
         "voile",
     }:
         fail("atlas-editorial.json: learner glossary is incomplete")
@@ -297,6 +320,32 @@ def validate_editorial_experience(
         fail("atlas-editorial.json: Jura pillar map reactions are incomplete")
     if len(jura.get("featured_connections", [])) != 3:
         fail("atlas-editorial.json: Jura Keep wandering set must contain three routes")
+    bearn = configured_subjects.get("place:bearn", {})
+    if not jura.get("regional_world") or not bearn.get("regional_world"):
+        fail("atlas-editorial.json: Jura and Béarn must share the regional-world contract")
+    if len(bearn.get("hero_facts", [])) != 2:
+        fail("atlas-editorial.json: Béarn opening needs two high-value facts")
+    if len(bearn.get("grape_cards", [])) != 5:
+        fail("atlas-editorial.json: Béarn grape grammar must distinguish five cards")
+    if len(bearn.get("style_comparison", [])) != 3:
+        fail("atlas-editorial.json: Béarn dry/sweet comparison is incomplete")
+    if len(bearn.get("people", [])) != 4:
+        fail("atlas-editorial.json: Béarn People pillar must feature four producers")
+    if set(bearn.get("pillar_map_reactions", {})) != {
+        "place", "grapes", "people", "culture", "rules"
+    }:
+        fail("atlas-editorial.json: Béarn pillar map reactions are incomplete")
+    if any(
+        signal == "tell"
+        for signal in nested_values(bearn, "signal")
+    ):
+        fail("atlas-editorial.json: Béarn invents a sensory Tell")
+    priority = value.get("map_click_priority", {})
+    if priority.get("appellation:jurancon", 999) >= priority.get("appellation:bearn", 999):
+        fail("atlas-editorial.json: Jurançon must outrank overlapping Béarn on click")
+    for context_return in value.get("context_returns", []):
+        if context_return.get("return_subject_id") not in subjects:
+            fail("atlas-editorial.json: dead reciprocal context return")
     savagnin = configured_subjects.get("grape:savagnin", {})
     if len(savagnin.get("style_paths", [])) < 3 or not savagnin.get("affinities"):
         fail("atlas-editorial.json: Savagnin grammar lacks style paths or affinities")
@@ -660,7 +709,7 @@ def validate_atlas() -> dict[str, Any]:
         },
     )
     producers = validate_geojson(
-        PUBLIC_DATA_DIR / "jura-producers.geojson",
+        PUBLIC_DATA_DIR / "atlas-producers.geojson",
         {"Point"},
         {
             "source_feature_id",

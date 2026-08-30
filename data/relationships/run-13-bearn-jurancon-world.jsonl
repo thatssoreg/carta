@@ -1,0 +1,4 @@
+{"claim_ids":["claim:camin-larredya-base-06"],"id":"rel:camin-larredya-located-bearn-06","layer":"reference","object_id":"place:bearn","predicate":"LOCATED_IN","status":"supported","subject_id":"producer:camin-larredya"}
+{"claim_ids":["claim:cauhape-base-range-06"],"id":"rel:cauhape-located-bearn-06","layer":"reference","object_id":"place:bearn","predicate":"LOCATED_IN","status":"supported","subject_id":"producer:domaine-cauhape"}
+{"claim_ids":["claim:clos-uroulat-base-range-06"],"id":"rel:clos-uroulat-located-bearn-06","layer":"reference","object_id":"place:bearn","predicate":"LOCATED_IN","status":"supported","subject_id":"producer:clos-uroulat"}
+{"claim_ids":["claim:souch-base-grapes-06"],"id":"rel:souch-located-bearn-06","layer":"reference","object_id":"place:bearn","predicate":"LOCATED_IN","status":"supported","subject_id":"producer:domaine-de-souch"}

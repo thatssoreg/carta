@@ -31,10 +31,12 @@ MANIFEST_DIR = ROOT / "data/geography/datasets"
 MAPPING_DIR = ROOT / "data/geography/external-id-mappings"
 PUBLIC_DATA_DIR = ROOT / "atlas-app/public/data"
 GEOMETRY_METADATA_PATH = ROOT / "data/geography/geometry/atlas-france-inao.jsonl"
-EXPERIENCE_CONFIG_PATH = ROOT / "data/atlas/run-05-jura-final-cut.json"
-PRODUCER_BASES_SOURCE_PATH = (
-    ROOT / "data/geography/producer-bases/run-11-jura-producers.geojson"
-)
+EXPERIENCE_CONFIG_PATH = ROOT / "data/atlas/run-06-bearn-jurancon-world.json"
+EXPERIENCE_LINEAGE = [
+    "data/atlas/run-05-jura-final-cut.json",
+    "data/atlas/run-06-bearn-jurancon-world.json",
+]
+PRODUCER_BASES_SOURCE_DIR = ROOT / "data/geography/producer-bases"
 
 INAO_DATASET_ID = "spatial-dataset:inao-aires-geographiques-siqo-2026-08-24"
 NATURAL_EARTH_DATASET_ID = "spatial-dataset:natural-earth-admin-0-countries-5.1.1"
@@ -49,6 +51,29 @@ ARTIFACT_LIMITS = {
 
 def read_json(path: Path) -> Any:
     return json.loads(path.read_text())
+
+
+def deep_merge(base: Any, overlay: Any) -> Any:
+    """Merge a small release overlay without duplicating the prior finished world."""
+    if isinstance(base, dict) and isinstance(overlay, dict):
+        merged = dict(base)
+        for key, value in overlay.items():
+            if key == "extends":
+                continue
+            merged[key] = deep_merge(merged[key], value) if key in merged else value
+        return merged
+    return overlay
+
+
+def load_experience_config() -> dict[str, Any]:
+    overlay = read_json(EXPERIENCE_CONFIG_PATH)
+    extends = overlay.get("extends")
+    if not extends:
+        return overlay
+    base_path = (ROOT / extends).resolve()
+    if ROOT not in base_path.parents:
+        raise SystemExit("experience overlay extends a path outside the repository")
+    return deep_merge(read_json(base_path), overlay)
 
 
 def read_jsonl(paths: Iterable[Path]) -> list[dict[str, Any]]:
@@ -561,8 +586,14 @@ def build_producer_points(
     assertions = read_jsonl(
         (ROOT / "data/geography/assertions").glob("*.jsonl")
     )
-    raw = read_json(PRODUCER_BASES_SOURCE_PATH)
-    raw_by_id = {feature["id"]: feature for feature in raw["features"]}
+    raw_by_ref: dict[tuple[str, str], dict[str, Any]] = {}
+    for source_path in sorted(PRODUCER_BASES_SOURCE_DIR.glob("*.geojson")):
+        relative = source_path.relative_to(ROOT).as_posix()
+        for feature in read_json(source_path)["features"]:
+            key = (relative, feature["id"])
+            if key in raw_by_ref:
+                raise SystemExit(f"duplicate producer source feature: {relative}#{feature['id']}")
+            raw_by_ref[key] = feature
     features: list[dict[str, Any]] = []
 
     for entity_id in experience["producer_ids"]:
@@ -592,9 +623,10 @@ def build_producer_points(
         if marker not in geometry_record["geometry_ref"]:
             raise SystemExit(f"{geometry_record['id']}: missing source feature selector")
         relative, raw_feature_id = geometry_record["geometry_ref"].split(marker, 1)
-        if (ROOT / relative).resolve() != PRODUCER_BASES_SOURCE_PATH.resolve():
+        source_path = (ROOT / relative).resolve()
+        if PRODUCER_BASES_SOURCE_DIR.resolve() not in source_path.parents:
             raise SystemExit(f"{geometry_record['id']}: unexpected producer point source")
-        source_feature = raw_by_id.get(raw_feature_id)
+        source_feature = raw_by_ref.get((relative, raw_feature_id))
         if not source_feature:
             raise SystemExit(f"{geometry_record['id']}: source point does not exist")
         if source_feature["properties"]["entity_id"] != entity_id:
@@ -1114,7 +1146,7 @@ def build_atlas_subjects(
 
     return {
         "generated_from": [
-            "data/atlas/run-05-jura-final-cut.json",
+            *EXPERIENCE_LINEAGE,
             "data/claims/*.jsonl",
             "data/entities/*.jsonl",
             "data/geography/assertions/*.jsonl",
@@ -1177,7 +1209,8 @@ def build_entry_points(
             }
         )
     return {
-        "generated_from": "data/atlas/run-05-jura-final-cut.json",
+        "generated_from": EXPERIENCE_LINEAGE,
+        "release": experience.get("release"),
         "entry_points": entries,
         "featured_worlds": featured_worlds,
     }
@@ -1212,14 +1245,14 @@ def nested_strings(value: Any) -> Iterable[str]:
 def build_atlas_editorial(
     experience: dict[str, Any], subjects: dict[str, Any]
 ) -> dict[str, Any]:
-    """Validate and project the Run 05 teaching and interaction layer.
+    """Validate and project the current teaching and interaction layer.
 
     Authored copy remains explicitly editorial. Every factual teaching device names
     governed claims, while every action target resolves to a native subject.
     """
     editorial = experience.get("editorial")
     if not editorial:
-        raise SystemExit("Run 05 experience config is missing its editorial layer")
+        raise SystemExit("Atlas experience config is missing its editorial layer")
     claims = {
         record["id"]: record
         for record in read_jsonl((ROOT / "data/claims").glob("*.jsonl"))
@@ -1232,37 +1265,37 @@ def build_atlas_editorial(
     legend_ids = [item["id"] for item in editorial.get("legend", [])]
     visible_signals = {"iykyk", "same-energy"}
     if len(legend_ids) != len(set(legend_ids)) or set(legend_ids) != visible_signals:
-        raise SystemExit("Run 05 legend must contain only the two useful visible signals")
+        raise SystemExit("Atlas legend must contain only the two useful visible signals")
     route_signals = {"rabbit-hole", "tell", "iykyk", "same-energy"}
 
     configured_subjects = editorial.get("subjects", {})
     missing_subjects = sorted(set(configured_subjects) - native_ids)
     if missing_subjects:
         raise SystemExit(
-            "Run 05 editorial subjects are not native: " + ", ".join(missing_subjects)
+            "Atlas editorial subjects are not native: " + ", ".join(missing_subjects)
         )
 
     claim_ids: set[str] = set()
     for value in nested_values(editorial, "claim_ids"):
         if not isinstance(value, list) or not value:
-            raise SystemExit("Run 05 claim_ids fields must be non-empty arrays")
+            raise SystemExit("Atlas claim_ids fields must be non-empty arrays")
         claim_ids.update(value)
     for claim_id in sorted(claim_ids):
         claim = claims.get(claim_id)
         if not claim or claim["status"] not in {"supported", "contested"}:
-            raise SystemExit(f"Run 05 editorial claim is not usable: {claim_id}")
+            raise SystemExit(f"Atlas editorial claim is not usable: {claim_id}")
 
     glossary = editorial.get("glossary", {})
     for copy in nested_strings(editorial):
         for term_id in TERM_TOKEN_RE.findall(copy):
             if term_id not in glossary:
-                raise SystemExit(f"Run 05 copy references unknown term: {term_id}")
+                raise SystemExit(f"Atlas copy references unknown term: {term_id}")
     for term_id, term in glossary.items():
         if not term.get("definition") or not term.get("matters"):
-            raise SystemExit(f"Run 05 glossary entry is incomplete: {term_id}")
+            raise SystemExit(f"Atlas glossary entry is incomplete: {term_id}")
         target_id = term.get("explore_target_id")
         if target_id and target_id not in native_ids:
-            raise SystemExit(f"Run 05 glossary target is not native: {target_id}")
+            raise SystemExit(f"Atlas glossary target is not native: {target_id}")
 
     for subject_id, configured in configured_subjects.items():
         direct_targets = {
@@ -1322,7 +1355,7 @@ def build_atlas_editorial(
             ],
         }
     return {
-        "generated_from": "data/atlas/run-05-jura-final-cut.json",
+        "generated_from": EXPERIENCE_LINEAGE,
         "release": experience.get("release"),
         "projection_contract": (
             "Authored teaching copy is editorial, not Reference authority. Every factual "
@@ -1331,6 +1364,8 @@ def build_atlas_editorial(
         ),
         "legend": editorial["legend"],
         "glossary": editorial["glossary"],
+        "map_click_priority": editorial.get("map_click_priority", {}),
+        "context_returns": editorial.get("context_returns", []),
         "subjects": {key: configured_subjects[key] for key in sorted(configured_subjects)},
         "claim_support": claim_support,
     }
@@ -1529,7 +1564,7 @@ def main() -> None:
     geographic_search = build_search_index(groups, region_labels)
     geometry_records = build_geometry_metadata(linkage["features_by_entity"])
     atlas_guides = build_atlas_guides(profile_paths)
-    experience = read_json(EXPERIENCE_CONFIG_PATH)
+    experience = load_experience_config()
     producer_points = build_producer_points(experience)
     atlas_subjects = build_atlas_subjects(
         experience, geographic_search, producer_points
@@ -1547,7 +1582,7 @@ def main() -> None:
     subject_path = PUBLIC_DATA_DIR / "atlas-subjects.json"
     entry_path = PUBLIC_DATA_DIR / "atlas-entry-points.json"
     editorial_path = PUBLIC_DATA_DIR / "atlas-editorial.json"
-    producer_path = PUBLIC_DATA_DIR / "jura-producers.geojson"
+    producer_path = PUBLIC_DATA_DIR / "atlas-producers.geojson"
 
     write_json(world_path, world)
     write_json(aoc_path, {"type": "FeatureCollection", "features": groups["AOC"]})

@@ -15,7 +15,7 @@
     "atlasSubjects": "./data/atlas-subjects.json",
     "atlasEditorial": "./data/atlas-editorial.json",
     "entryPoints": "./data/atlas-entry-points.json",
-    "producerPoints": "./data/jura-producers.geojson",
+    "producerPoints": "./data/atlas-producers.geojson",
     "provenance": "./data/provenance.json"
   },
   "countries": {
