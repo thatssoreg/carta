@@ -1,0 +1,75 @@
+name: Patch Jura click priority
+
+on:
+  push:
+    branches:
+      - atlas-fix-jura-click-priority
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    if: ${{ !contains(github.event.head_commit.message, '[atlas-click-fix]') }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: atlas-fix-jura-click-priority
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Apply focused click-selection patch
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          path = Path('atlas-app/src/main.js')
+          text = path.read_text()
+          old = '''  const primaryFeature = unique[0];
+          const primaryRecord = records.find((record) => record.source_denomination_id === primaryFeature.properties.source_denomination_id)
+            || records.find((record) => record.id === primaryFeature.properties.source_feature_id)
+            || records[0];
+          '''
+          new = '''  const primaryFeature = unique[0];
+          // Jura's Crémant and Macvin AOPs intentionally overlap the geographic-origin AOPs.
+          // On an ordinary map click, prefer a geographic origin when one covers the same point;
+          // keep the overlapping category AOPs in `records` so the panel still explains them.
+          const juraOverlappingCategoryIds = new Set([
+            "appellation:cremant-du-jura",
+            "appellation:macvin-du-jura",
+          ]);
+          const preferredGeographicRecord = records.find((record) =>
+            record.result_type === "aoc_appellation"
+            && record.carta_entity_id
+            && !juraOverlappingCategoryIds.has(record.carta_entity_id)
+          );
+          const primaryRecord = preferredGeographicRecord
+            || records.find((record) => record.source_denomination_id === primaryFeature.properties.source_denomination_id)
+            || records.find((record) => record.id === primaryFeature.properties.source_feature_id)
+            || records[0];
+          '''
+          if old not in text:
+              raise SystemExit('Expected handleMapClick selection block not found')
+          path.write_text(text.replace(old, new, 1))
+          PY
+      - name: Validate
+        run: |
+          python -m py_compile scripts/validate_data.py scripts/audit_navigation.py scripts/build_atlas.py scripts/validate_atlas.py tests/test_navigation.py tests/test_atlas.py
+          python scripts/validate_data.py
+          python -m unittest discover -s tests -v
+          python scripts/validate_atlas.py
+          npm ci --prefix atlas-app
+          npm run build --prefix atlas-app
+      - name: Commit patch and remove temporary workflow
+        run: |
+          rm .github/workflows/patch-jura-click-priority.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add atlas-app/src/main.js .github/workflows/patch-jura-click-priority.yml
+          git commit -m "Prefer geographic Jura AOPs on map click [atlas-click-fix]"
+          git push origin HEAD:atlas-fix-jura-click-priority
