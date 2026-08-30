@@ -34,6 +34,7 @@ jobs:
           scripts/validate_data.py
           scripts/audit_navigation.py
           scripts/build_atlas.py
+          scripts/build_terrain.py
           scripts/validate_atlas.py
           tests/test_navigation.py
           tests/test_atlas.py

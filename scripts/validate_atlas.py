@@ -29,8 +29,11 @@ EXPERIENCE_LINEAGE = [
 INAO_DATASET_ID = "spatial-dataset:inao-aires-geographiques-siqo-2026-08-24"
 NATURAL_EARTH_DATASET_ID = "spatial-dataset:natural-earth-admin-0-countries-5.1.1"
 OPENFREEMAP_DATASET_ID = "spatial-dataset:openfreemap-liberty-runtime"
+TERRAIN_DATASET_ID = "spatial-dataset:copernicus-dem-glo30-2022-05-09"
 
-RAW_GIS_SUFFIXES = {".zip", ".7z", ".shp", ".dbf", ".shx", ".gpkg"}
+# Raw environmental rasters are pinned by checksum in the ignored build cache and
+# never committed, exactly like the raw vector archives beside them.
+RAW_GIS_SUFFIXES = {".zip", ".7z", ".shp", ".dbf", ".shx", ".gpkg", ".tif", ".tiff"}
 
 
 def fail(message: str) -> None:
@@ -504,10 +507,43 @@ def load_and_validate_manifests(authority: dict[str, Any]) -> dict[str, dict[str
         if orders != list(range(1, len(orders) + 1)):
             fail(f"{manifest_id}: transformation order must be contiguous from 1")
         by_id[manifest_id] = manifest
-    required = {INAO_DATASET_ID, NATURAL_EARTH_DATASET_ID, OPENFREEMAP_DATASET_ID}
+    required = {
+        INAO_DATASET_ID,
+        NATURAL_EARTH_DATASET_ID,
+        OPENFREEMAP_DATASET_ID,
+        TERRAIN_DATASET_ID,
+    }
     if not required.issubset(by_id):
         fail("missing required active Atlas manifest(s): " + ", ".join(sorted(required - by_id.keys())))
     return by_id
+
+
+def validate_artifact_lineage(manifests: dict[str, dict[str, Any]]) -> int:
+    """Every declared `derived_from` reference must resolve to something real.
+
+    A derived environmental product that cannot name its parents is exactly the
+    opaque generated file the terrain contract forbids.
+    """
+    resolved = 0
+    for manifest in manifests.values():
+        artifact_paths = {artifact["path"] for artifact in manifest["derived_artifacts"]}
+        for dataset_id in manifest.get("derived_from", []):
+            if dataset_id not in manifests:
+                fail(f"{manifest['id']}: derived_from references unknown dataset {dataset_id}")
+            resolved += 1
+        for artifact in manifest["derived_artifacts"]:
+            lineage = artifact.get("derived_from")
+            if artifact.get("product_class") and not lineage:
+                fail(f"{artifact['path']}: derived artifact declares a tier without lineage")
+            for reference in lineage or []:
+                if reference in manifests:
+                    resolved += 1
+                    continue
+                if reference in artifact_paths and reference != artifact["path"]:
+                    resolved += 1
+                    continue
+                fail(f"{artifact['path']}: derived_from does not resolve: {reference}")
+    return resolved
 
 
 def validate_artifacts(manifests: dict[str, dict[str, Any]]) -> None:
@@ -649,10 +685,164 @@ def validate_profile_link(
         fail(f"{label}: governed Human Reference path was omitted")
 
 
+def validate_terrain(
+    manifests: dict[str, dict[str, Any]], authority: dict[str, Any]
+) -> dict[str, Any]:
+    """Prove the terrain foundation without trusting the build script's word for it."""
+    manifest = manifests[TERRAIN_DATASET_ID]
+
+    if manifest.get("product_class") != "source_observation":
+        fail("terrain: the elevation model must be registered as a source observation")
+    if manifest["retrieval_status"] != "acquired":
+        fail("terrain: the elevation model must be an acquired dataset")
+    for field in ("measurement", "geographic_extent", "source_files", "refresh_policy"):
+        if not manifest.get(field):
+            fail(f"terrain: manifest is missing required environmental field {field}")
+    measurement = manifest["measurement"]
+    for field in ("variable", "unit", "native_resolution", "scale_limitations"):
+        if not measurement.get(field):
+            fail(f"terrain: measurement.{field} is required for an environmental dataset")
+    if not measurement.get("vertical_reference"):
+        fail("terrain: an elevation dataset must state its vertical reference system")
+    if not measurement.get("uncertainty"):
+        fail("terrain: an elevation dataset must state its published uncertainty")
+    if not manifest["transformations"]:
+        fail("terrain: derived assets exist with no recorded processing recipe")
+
+    artifacts = {artifact["path"]: artifact for artifact in manifest["derived_artifacts"]}
+    expected = {
+        "atlas-app/public/data/atlas-terrain-hillshade.png",
+        "atlas-app/public/data/atlas-terrain-contours.geojson",
+        "atlas-app/public/data/atlas-terrain.json",
+    }
+    if set(artifacts) != expected:
+        fail("terrain: derived artifact set does not match the committed terrain assets")
+    for path, artifact in artifacts.items():
+        if artifact.get("product_class") != "derived_spatial_product":
+            fail(f"{path}: terrain assets must be registered as derived spatial products")
+        if TERRAIN_DATASET_ID not in artifact.get("derived_from", []):
+            fail(f"{path}: terrain asset does not resolve back to its source observation")
+
+    hillshade_artifact = artifacts["atlas-app/public/data/atlas-terrain-hillshade.png"]
+    hillshade_path = ROOT / hillshade_artifact["path"]
+    header = hillshade_path.read_bytes()[:24]
+    if header[:8] != b"\x89PNG\r\n\x1a\n" or header[12:16] != b"IHDR":
+        fail("terrain: the shaded-relief asset is not a PNG")
+    width = int.from_bytes(header[16:20], "big")
+    height = int.from_bytes(header[20:24], "big")
+    if (width, height) != (
+        hillshade_artifact.get("pixel_width"),
+        hillshade_artifact.get("pixel_height"),
+    ):
+        fail("terrain: shaded-relief pixel dimensions do not match the manifest")
+
+    descriptor = read_json(PUBLIC_DATA_DIR / "atlas-terrain.json")
+    if descriptor.get("source_dataset_id") != TERRAIN_DATASET_ID:
+        fail("atlas-terrain.json: descriptor is not bound to the registered elevation dataset")
+    if descriptor.get("product_class") != "derived_spatial_product":
+        fail("atlas-terrain.json: descriptor must declare its tier")
+    if descriptor.get("attribution") != manifest["license"]["attribution_text"]:
+        fail("atlas-terrain.json: required licence attribution is missing or stale")
+    if descriptor.get("recipe") != manifest["transformations"]:
+        fail("atlas-terrain.json: published recipe and manifest transformations disagree")
+
+    clip = next(
+        (
+            step["parameters"]["clip_bbox_epsg4326"]
+            for step in manifest["transformations"]
+            if "clip_bbox_epsg4326" in step["parameters"]
+        ),
+        None,
+    )
+    if clip != descriptor["proof_extent"]["bbox_epsg4326"]:
+        fail("atlas-terrain.json: proof extent and recorded clip extent disagree")
+
+    hillshade = descriptor["hillshade"]
+    if (hillshade["pixel_width"], hillshade["pixel_height"]) != (width, height):
+        fail("atlas-terrain.json: declared image size does not match the PNG")
+    west, south, east, north = hillshade["image_bbox_epsg4326"]
+    if hillshade["image_coordinates"] != [
+        [west, north],
+        [east, north],
+        [east, south],
+        [west, south],
+    ]:
+        fail("atlas-terrain.json: image placement corners do not match the image extent")
+    if not (west <= clip[0] and south <= clip[1] and east >= clip[2] and north >= clip[3]):
+        fail("atlas-terrain.json: the rendered image does not cover the proof extent")
+
+    contours = validate_geojson(
+        PUBLIC_DATA_DIR / "atlas-terrain-contours.geojson",
+        {"LineString"},
+        {
+            "source_feature_id",
+            "elevation_metres",
+            "contour_class",
+            "feature_type",
+            "representation_type",
+            "representation_label",
+            "source_dataset_id",
+        },
+    )
+    interval = descriptor["contours"]["interval_metres"]
+    index_interval = descriptor["contours"]["index_interval_metres"]
+    if descriptor["contours"]["feature_count"] != len(contours["features"]):
+        fail("atlas-terrain.json: contour count does not match the contour asset")
+    for feature in contours["features"]:
+        properties = feature["properties"]
+        label = feature["id"]
+        elevation = properties["elevation_metres"]
+        if not isinstance(elevation, int) or elevation % interval:
+            fail(f"{label}: contour elevation is not on the declared interval")
+        expected_class = "index" if elevation % index_interval == 0 else "intermediate"
+        if properties["contour_class"] != expected_class:
+            fail(f"{label}: contour class disagrees with the index interval")
+        if properties["source_dataset_id"] != TERRAIN_DATASET_ID:
+            fail(f"{label}: contour is not attributed to the registered elevation dataset")
+        if properties["feature_type"] != "elevation_contour":
+            fail(f"{label}: contour meaning drifted")
+        # Terrain is context. It never becomes a CARTA identity or a reading route.
+        if properties.get("carta_entity_id") or properties.get("human_reference_path"):
+            fail(f"{label}: terrain features must not claim a CARTA identity")
+
+    for record in authority["geometry"].values():
+        if TERRAIN_DATASET_ID in record.get("source_ids", []):
+            fail("terrain: elevation data must not be used as CARTA geometry authority")
+
+    config = read_json(ROOT / "atlas-app/src/atlas-config.json")
+    zoom = config["semanticZoom"]
+    thresholds = [
+        zoom["terrainMin"],
+        zoom["terrainFull"],
+        zoom["terrainFadeOut"],
+        zoom["terrainMax"],
+    ]
+    if thresholds != sorted(thresholds):
+        fail("atlas config: terrain zoom thresholds are not ordered")
+    if not (
+        zoom["terrainMin"] < zoom["contourIndexMin"] < zoom["contourIntermediateMin"]
+        < zoom["contourMax"]
+    ):
+        fail("atlas config: contour zoom thresholds are not ordered under terrain")
+    if zoom["terrainMax"] > zoom["contourMax"]:
+        fail("atlas config: relief must not outlive the contours it belongs to")
+    if config["defaultLayers"].get("terrain") is not True:
+        fail("atlas config: relief is expected on by default inside its extent")
+
+    return {
+        "terrain_artifacts": len(artifacts),
+        "terrain_contours": len(contours["features"]),
+        "terrain_source_files": len(manifest["source_files"]),
+        "terrain_bytes": sum(artifact["bytes"] for artifact in artifacts.values()),
+    }
+
+
 def validate_atlas() -> dict[str, Any]:
     authority = load_authority()
     manifests = load_and_validate_manifests(authority)
     validate_artifacts(manifests)
+    lineage_references = validate_artifact_lineage(manifests)
+    terrain = validate_terrain(manifests, authority)
     mappings = load_and_validate_mappings(manifests, authority)
     atlas_guide_count = validate_atlas_guides(authority)
     native_experience = validate_native_experience(authority)
@@ -879,7 +1069,7 @@ def validate_atlas() -> dict[str, Any]:
 
     provenance = read_json(PUBLIC_DATA_DIR / "provenance.json")
     provenance_ids = {record["id"] for record in provenance.get("datasets", [])}
-    if provenance_ids != {INAO_DATASET_ID, NATURAL_EARTH_DATASET_ID, OPENFREEMAP_DATASET_ID}:
+    if provenance_ids != set(manifests):
         fail("provenance.json: active dataset set is stale")
     if provenance.get("generated_from") != "data/geography/datasets/":
         fail("provenance.json: provenance must be generated from dataset manifests")
@@ -896,8 +1086,9 @@ def validate_atlas() -> dict[str, Any]:
         "aocAreas": True,
         "igpAreas": False,
         "wineRegions": True,
+        "terrain": True,
     }:
-        fail("atlas config: expected AOC-default, IGP-off layer policy")
+        fail("atlas config: expected AOC-default, IGP-off, relief-on layer policy")
     for label, relative in config.get("data", {}).items():
         if not relative.startswith("./data/"):
             fail(f"atlas config:{label}: data path must resolve inside public/data")
@@ -936,6 +1127,8 @@ def validate_atlas() -> dict[str, Any]:
         "editorial_subjects": editorial_subject_count,
         "entry_points": native_experience["entry_count"],
         "producer_points": len(producers["features"]),
+        "artifact_lineage_references": lineage_references,
+        **terrain,
     }
 
 

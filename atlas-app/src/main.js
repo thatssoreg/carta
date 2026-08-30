@@ -11,6 +11,7 @@ const AOC_LAYERS = ["aoc-complements-fill", "aoc-areas-fill"];
 const REGION_LAYERS = ["wine-region-labels", "wine-region-halos"];
 const PRODUCER_LAYERS = ["producer-clusters", "producer-cluster-count", "producer-points", "producer-labels"];
 const SUBJECT_REACTION_LAYERS = ["subject-areas-fill", "subject-areas-line", "subject-producer-halos", "subject-producer-labels"];
+const TERRAIN_LAYERS = ["terrain-hillshade", "terrain-contours-index", "terrain-contours-intermediate"];
 
 const elements = {
   intro: document.querySelector(".map-intro"),
@@ -26,6 +27,7 @@ const elements = {
   igpToggle: document.querySelector("[data-layer-igp]"),
   regionsToggle: document.querySelector("[data-layer-regions]"),
   producersToggle: document.querySelector("[data-layer-producers]"),
+  terrainToggle: document.querySelector("[data-layer-terrain]"),
   guidesButton: document.querySelector("[data-guides-button]"),
   discoveryPanel: document.querySelector("[data-discovery-panel]"),
   discoveryContent: document.querySelector("[data-discovery-content]"),
@@ -57,6 +59,9 @@ const state = {
   context: "world",
   franceLoaded: false,
   igpLoaded: false,
+  terrain: null,
+  terrainLoaded: false,
+  terrainUnavailable: false,
   searchIndex: null,
   atlasGuides: null,
   subjects: null,
@@ -395,6 +400,130 @@ function addFranceLayers() {
   });
 }
 
+function terrainInsertionPoint() {
+  // Relief sits directly above the basemap and below every wine layer, so
+  // appellation shapes, producer points and labels always win the eye.
+  for (const layerId of ["aoc-areas-fill", "subject-areas-fill", "wine-region-halos"]) {
+    if (map.getLayer(layerId)) return layerId;
+  }
+  return getLabelInsertionPoint();
+}
+
+async function loadTerrainDescriptor() {
+  if (state.terrain || state.terrainUnavailable) return state.terrain;
+  try {
+    const response = await fetch(config.data.terrain);
+    if (!response.ok) throw new Error(`Terrain descriptor request failed (${response.status})`);
+    state.terrain = await response.json();
+  } catch (error) {
+    // Relief is context. Losing it must never cost the reader the wine map.
+    console.error(error);
+    state.terrainUnavailable = true;
+  }
+  return state.terrain;
+}
+
+function terrainCoversView() {
+  const terrain = state.terrain;
+  if (!terrain) return false;
+  const zoom = map.getZoom();
+  if (zoom < config.semanticZoom.terrainMin || zoom > config.semanticZoom.contourMax) return false;
+  const [west, south, east, north] = terrain.proof_extent.bbox_epsg4326;
+  const view = map.getBounds();
+  return view.getWest() <= east && view.getEast() >= west
+    && view.getSouth() <= north && view.getNorth() >= south;
+}
+
+function addTerrainLayers(terrain) {
+  const zoom = config.semanticZoom;
+  const visibility = elements.terrainToggle.checked ? "visible" : "none";
+  const beforeId = terrainInsertionPoint();
+
+  map.addSource("terrain-hillshade", {
+    type: "image",
+    url: config.data.terrainHillshade,
+    coordinates: terrain.hillshade.image_coordinates,
+  });
+  map.addSource("terrain-contours", {
+    type: "geojson",
+    data: config.data.terrainContours,
+    attribution: terrain.attribution,
+  });
+
+  map.addLayer({
+    id: "terrain-hillshade",
+    type: "raster",
+    source: "terrain-hillshade",
+    minzoom: zoom.terrainMin,
+    maxzoom: zoom.terrainMax,
+    layout: { visibility },
+    paint: {
+      "raster-opacity": ["interpolate", ["linear"], ["zoom"],
+        zoom.terrainMin, 0,
+        zoom.terrainFull, 1,
+        zoom.terrainFadeOut, 1,
+        zoom.terrainMax, 0],
+      "raster-fade-duration": 260,
+      "raster-resampling": "linear",
+    },
+  }, beforeId);
+
+  map.addLayer({
+    id: "terrain-contours-index",
+    type: "line",
+    source: "terrain-contours",
+    filter: ["==", ["get", "contour_class"], "index"],
+    minzoom: zoom.contourIndexMin,
+    maxzoom: zoom.contourMax,
+    layout: { visibility, "line-cap": "round", "line-join": "round" },
+    paint: {
+      "line-color": "#8a7a63",
+      "line-width": ["interpolate", ["linear"], ["zoom"], 8.2, 0.5, 12, 0.95],
+      "line-opacity": ["interpolate", ["linear"], ["zoom"],
+        zoom.contourIndexMin, 0,
+        zoom.contourIndexMin + 0.7, 0.4,
+        zoom.contourMax - 0.6, 0.4,
+        zoom.contourMax, 0],
+    },
+  }, beforeId);
+
+  map.addLayer({
+    id: "terrain-contours-intermediate",
+    type: "line",
+    source: "terrain-contours",
+    filter: ["==", ["get", "contour_class"], "intermediate"],
+    minzoom: zoom.contourIntermediateMin,
+    maxzoom: zoom.contourMax,
+    layout: { visibility, "line-cap": "round", "line-join": "round" },
+    paint: {
+      "line-color": "#9c8d78",
+      "line-width": ["interpolate", ["linear"], ["zoom"], 9.9, 0.35, 12, 0.6],
+      "line-opacity": ["interpolate", ["linear"], ["zoom"],
+        zoom.contourIntermediateMin, 0,
+        zoom.contourIntermediateMin + 0.7, 0.3,
+        zoom.contourMax - 0.6, 0.3,
+        zoom.contourMax, 0],
+    },
+  }, beforeId);
+}
+
+async function ensureTerrainLayers({ force = false } = {}) {
+  if (state.terrainLoaded || state.terrainUnavailable) return;
+  const terrain = await loadTerrainDescriptor();
+  if (!terrain) return;
+  if (!force && !terrainCoversView()) return;
+  // Two map events can await the descriptor at once; adding the sources twice
+  // would throw. Everything below this guard runs synchronously.
+  if (state.terrainLoaded || map.getSource("terrain-hillshade")) return;
+  try {
+    addTerrainLayers(terrain);
+    state.terrainLoaded = true;
+  } catch (error) {
+    console.error(error);
+    state.terrainUnavailable = true;
+  }
+}
+
 async function ensureFranceData() {
   await mapReady;
   if (state.franceLoaded) return;
@@ -402,6 +531,7 @@ async function ensureFranceData() {
   addFranceLayers();
   state.franceLoaded = true;
   setStatus("France · five featured wine worlds · official AOC map");
+  ensureTerrainLayers();
 }
 
 async function ensureIgpData() {
@@ -1639,6 +1769,11 @@ map.on("load", () => {
   setStatus("World ready · select France to begin");
 });
 map.on("click", handleMapClick);
+map.on("moveend", () => {
+  // The relief assets are only fetched once the reader is somewhere they mean
+  // something, so a France overview never pays for the Béarn terrain.
+  if (elements.terrainToggle.checked) ensureTerrainLayers();
+});
 map.on("mousemove", (event) => {
   if (state.inspectMode) return;
   const layers = state.context === "world"
@@ -1702,6 +1837,10 @@ elements.regionsToggle.addEventListener("change", async () => {
 elements.producersToggle.addEventListener("change", async () => {
   await enterFrance({ fit: state.context !== "france", reveal: false });
   setLayerVisibility([...PRODUCER_LAYERS, "producer-selection", "subject-producer-halos", "subject-producer-labels"], elements.producersToggle.checked);
+});
+elements.terrainToggle.addEventListener("change", async () => {
+  if (elements.terrainToggle.checked) await ensureTerrainLayers({ force: true });
+  setLayerVisibility(TERRAIN_LAYERS, elements.terrainToggle.checked);
 });
 
 elements.inspectButton.addEventListener("click", async () => {
