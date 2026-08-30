@@ -6,6 +6,8 @@ It should feel familiar before it feels novel: a person can begin with the world
 
 The goal is not to make another decorative wine map. The goal is to make wine geography easier to understand while letting CARTA's deeper spatial, temporal, relational, legal, terroir, and ampelographic knowledge become visible when it is useful.
 
+This document decides what Atlas *is*. The [Atlas editorial foundation](atlas-editorial-foundation.md) decides what Atlas *says*: its thesis, its voice, the registers a reader must be able to tell apart, and the rule that every regional world argues its own case rather than inheriting another world's copy. Learner-facing copy and every new regional world are governed there, and the checklist in its final section runs before a world ships.
+
 ## France-first v0.1
 
 The working product slice follows this path:

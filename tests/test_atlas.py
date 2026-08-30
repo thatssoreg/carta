@@ -9,6 +9,7 @@ ROOT = Path(__file__).resolve().parents[1]
 EXPERIENCE_LINEAGE = [
     "data/atlas/run-05-jura-final-cut.json",
     "data/atlas/run-06-bearn-jurancon-world.json",
+    "data/atlas/run-07-editorial-foundation.json",
 ]
 
 
@@ -187,7 +188,7 @@ class AtlasContractTest(unittest.TestCase):
         self.assertEqual(
             editorial["generated_from"], EXPERIENCE_LINEAGE
         )
-        self.assertEqual(editorial["release"], "atlas-run-06-bearn-jurancon-world")
+        self.assertEqual(editorial["release"], "atlas-run-07-editorial-foundation")
         self.assertEqual(
             {item["id"] for item in editorial["legend"]},
             {"iykyk", "same-energy"},
@@ -343,7 +344,7 @@ class AtlasContractTest(unittest.TestCase):
         self.assertEqual(len(entries["entry_points"]), 4)
         self.assertEqual(len(entries["featured_worlds"]), 5)
         self.assertEqual(entries["generated_from"], EXPERIENCE_LINEAGE)
-        self.assertEqual(entries["release"], "atlas-run-06-bearn-jurancon-world")
+        self.assertEqual(entries["release"], "atlas-run-07-editorial-foundation")
         claims = {}
         for path in sorted((ROOT / "data/claims").glob("*.jsonl")):
             for line in path.read_text().splitlines():
@@ -358,6 +359,102 @@ class AtlasContractTest(unittest.TestCase):
                     projected["source_ids"],
                     [source["source_id"] for source in claim["source_refs"]],
                 )
+
+    def test_no_world_inherits_another_worlds_voice(self):
+        """Run 07: each regional world authors its own copy; the app holds none."""
+        editorial = json.loads(
+            (ROOT / "atlas-app/public/data/atlas-editorial.json").read_text()
+        )
+        worlds = {
+            subject_id: configured
+            for subject_id, configured in editorial["subjects"].items()
+            if configured.get("regional_world")
+        }
+        self.assertEqual(set(worlds), {"place:jura", "place:bearn"})
+        for subject_id, world in worlds.items():
+            self.assertEqual(
+                set(world["pillar_copy"]),
+                {"place", "grapes", "people", "culture", "rules"},
+                subject_id,
+            )
+            for pillar, copy in world["pillar_copy"].items():
+                self.assertTrue(copy.get("intro"), f"{subject_id}:{pillar}")
+                self.assertTrue(copy.get("lede"), f"{subject_id}:{pillar}")
+            for key in ("kicker", "title", "text", "button"):
+                self.assertTrue(world["place_story"].get(key), f"{subject_id}:{key}")
+            self.assertTrue(world["rules"].get("intro"), subject_id)
+            self.assertTrue(world["rules"].get("groups"), subject_id)
+
+        # No world's copy may be duplicated as another world's default.
+        def pillar_text(world):
+            return {
+                copy["lede"] for copy in world["pillar_copy"].values()
+            } | {world["place_story"]["text"], world["rules"]["intro"]}
+
+        jura_copy = pillar_text(worlds["place:jura"])
+        bearn_copy = pillar_text(worlds["place:bearn"])
+        self.assertFalse(jura_copy & bearn_copy)
+
+        # The application ships no regional prose of its own.
+        app = (ROOT / "atlas-app/src/main.js").read_text()
+        for sentence in sorted(jura_copy | bearn_copy):
+            self.assertNotIn(sentence, app)
+        # The retired Jura defaults must never return as any world's fallback.
+        for retired in (
+            "Five principal grapes share a compact region",
+            "Jura's cultural pull is easiest to understand",
+            "Five grapes \u00b7 several cellar paths",
+            "Jura's six AOPs do not form a simple ladder",
+            "A narrow foothill vineyard, not one uniform site",
+        ):
+            self.assertNotIn(retired, app, retired)
+
+    def test_learner_copy_stays_out_of_project_vocabulary(self):
+        """Run 07: Atlas never explains its own architecture to a learner."""
+        app = (ROOT / "atlas-app/src/main.js").read_text()
+        shell = (ROOT / "atlas-app/index.html").read_text()
+        forbidden = (
+            "machine authority",
+            "Human Reference",
+            "STRATA",
+            "profile maturity",
+            "governance status",
+            "projection contract",
+            "roadmap",
+            "A fuller story can grow later",
+            "Why this is interesting",
+            "Three considered next moves",
+            "Good places to begin",
+        )
+        for phrase in forbidden:
+            self.assertNotIn(phrase, app, phrase)
+            self.assertNotIn(phrase, shell, phrase)
+
+    def test_about_atlas_panel_carries_the_worldview(self):
+        """Run 07: About Atlas is reachable from Sources, not the primary nav."""
+        shell = (ROOT / "atlas-app/index.html").read_text()
+        app = (ROOT / "atlas-app/src/main.js").read_text()
+        self.assertIn("data-about-dialog", shell)
+        self.assertIn("A geographic way into wine.", shell)
+        self.assertIn("Cartography, Ampelography, Relationships, Time, Access.", shell)
+        # Expanded exactly once, and never promoted into the header actions.
+        self.assertEqual(shell.count("Cartography, Ampelography"), 1)
+        header = shell.split('<section class="map-stage"')[0]
+        self.assertNotIn("data-about", header)
+        self.assertIn("data-open-about", app)
+
+    def test_editorial_foundation_is_repository_doctrine(self):
+        """Run 07: the foundation is committed and cross-linked, not a loose file."""
+        foundation = ROOT / "docs/atlas-editorial-foundation.md"
+        self.assertTrue(foundation.is_file())
+        copy = foundation.read_text()
+        self.assertIn("Questions Worth Following", copy)
+        for companion in ("README.md", "docs/carta-atlas.md"):
+            self.assertIn(
+                "atlas-editorial-foundation.md",
+                (ROOT / companion).read_text(),
+                companion,
+            )
 
     def test_run_06_generalization_assessment_is_committed(self):
         assessment = ROOT / "audits/run-06-bearn-jurancon-generalization-assessment.md"

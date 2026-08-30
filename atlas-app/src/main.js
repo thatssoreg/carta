@@ -40,6 +40,7 @@ const elements = {
   inspectButton: document.querySelector("[data-inspect-button]"),
   sourcesDialog: document.querySelector("[data-sources-dialog]"),
   sourcesContent: document.querySelector("[data-sources-content]"),
+  aboutDialog: document.querySelector("[data-about-dialog]"),
   toast: document.querySelector("[data-toast]"),
 };
 
@@ -840,7 +841,7 @@ function connectionsMarkup(subject) {
   }, {});
   return `
     ${featured.length ? `<section class="detail-section wandering-section">
-      <p class="section-kicker">Three considered next moves</p>
+      <p class="section-kicker">Where this goes next</p>
       <h3>Keep wandering</h3>
       <div class="wandering-list">${featured.map((item) => `
         <button type="button" data-explore-subject="${escapeHtml(item.target_id)}">
@@ -1019,25 +1020,15 @@ function regionalStyleComparisonMarkup(editorial) {
 }
 
 function regionalRulesMarkup(subject, guide, overlaps, editorial, ruleClaims) {
-  const fallbackGroups = [
-    {
-      label: "Geographic AOPs",
-      note: "Four origins. Select one to isolate its outline and open its native guide.",
-      ids: ["appellation:arbois", "appellation:cotes-du-jura", "appellation:l-etoile", "appellation:chateau-chalon"],
-    },
-    {
-      label: "Overlapping wine categories",
-      note: "These can occupy the same ground while governing different methods and wine types.",
-      ids: ["appellation:cremant-du-jura", "appellation:macvin-du-jura"],
-    },
-  ];
-  const groups = editorial.rules?.groups || fallbackGroups;
-  const intro = richText(editorial.rules?.intro || "Jura's six AOPs do not form a simple ladder. The map makes the distinction visible: four name geographic origins; two overlap the region while governing sparkling wine or {{term:mistelle|mistelle}}.");
-  return `<section class="jura-rule-intro"><p>${intro}</p></section>
-    <div class="jura-rule-groups">${groups.map((group) => `<section><header><h4>${escapeHtml(group.label)}</h4><p>${escapeHtml(group.note)}</p></header><div>${group.ids.map((id) => {
+  // A world's rule grammar is authored per world. Nothing is substituted from
+  // another region: a world with no rule groups of its own shows none.
+  const groups = editorial.rules?.groups || [];
+  const intro = editorial.rules?.intro ? `<section class="jura-rule-intro"><p>${richText(editorial.rules.intro)}</p></section>` : "";
+  return `${intro}
+    ${groups.length ? `<div class="jura-rule-groups">${groups.map((group) => `<section><header><h4>${escapeHtml(group.label)}</h4><p>${escapeHtml(group.note)}</p></header><div>${group.ids.filter((id) => state.subjects[id]).map((id) => {
       const target = state.subjects[id];
       return `<button type="button" data-go-to-subject="${escapeHtml(id)}"><span>${escapeHtml(target.display_name)}</span><small>Highlight on map</small><b aria-hidden="true">↗</b></button>`;
-    }).join("")}</div></section>`).join("")}</div>
+    }).join("")}</div></section>`).join("")}</div>` : ""}
     ${subject.entity_id === "place:jura" ? regionalAreaScaleMarkup(guide) : ""}
     ${claimsMarkup(subject, ruleClaims)}
     ${overlapMarkup(overlaps)}`;
@@ -1046,14 +1037,16 @@ function regionalRulesMarkup(subject, guide, overlaps, editorial, ruleClaims) {
 function regionalPlaceMarkup(subject, guide, overlaps, editorial, lead, claims) {
   const landClaims = [lead, ...claims.filter((claim) => ["geography", "climate", "geology"].includes(claim.claim_type))].filter(Boolean).slice(0, 3);
   const ruleClaims = claims.filter((claim) => ["legal", "classification"].includes(claim.claim_type)).slice(0, 3);
-  const fallbackStory = { kicker: "The map is part of the lesson", title: "A narrow foothill vineyard, not one uniform site", text: "Read Jura north to south along the western edge of the mountains. The active outlines separate geographic origins from categories that can share the same ground.", button: "Emphasize the geographic AOPs" };
-  const story = editorial.place_story || fallbackStory;
+  const story = editorial.place_story;
   const copy = editorial.pillar_copy || {};
-  const place = `<section class="jura-place-story"><p class="section-kicker">${escapeHtml(story.kicker)}</p><h4>${escapeHtml(story.title)}</h4><p>${richText(story.text)}</p><button type="button" data-region-map-reaction="place">${escapeHtml(story.button)}</button></section>${claimsMarkup(subject, landClaims)}`;
-  const grapes = `<p class="jura-pillar-lede">${escapeHtml(copy.grapes?.lede || "Five principal grapes share a compact region. The two largest shares lead to radically different lessons; the smaller three complete the picture without being reduced to tasting stereotypes.")}</p>${regionalStyleComparisonMarkup(editorial)}${regionalGrapesMarkup(editorial)}`;
-  const people = `<p class="jura-pillar-lede">${escapeHtml(copy.people?.lede || "Facts do not animate a region. These four producers make place, grapes, farming, cellar work and lineage concrete—without pretending to rank the region.")}</p>${regionalPeopleMarkup(editorial)}`;
-  const culture = `<p class="jura-pillar-lede">${escapeHtml(copy.culture?.lede || "Jura's cultural pull is easiest to understand through transmission and access, not hype. Two bounded ideas earn their place here.")}</p>${lensesMarkup(editorial)}`;
-  const rules = `<p class="jura-pillar-lede">${escapeHtml(copy.rules?.lede || "Rules distinguish origins, categories and methods that can share ground.")}</p>${regionalRulesMarkup(subject, guide, overlaps, editorial, ruleClaims)}`;
+  // Each world speaks for itself. A pillar with no authored lede stays thin
+  // rather than borrowing another region's sentence as a default.
+  const lede = (pillar) => (copy[pillar]?.lede ? `<p class="jura-pillar-lede">${escapeHtml(copy[pillar].lede)}</p>` : "");
+  const place = `${story ? `<section class="jura-place-story"><p class="section-kicker">${escapeHtml(story.kicker)}</p><h4>${escapeHtml(story.title)}</h4><p>${richText(story.text)}</p><button type="button" data-region-map-reaction="place">${escapeHtml(story.button)}</button></section>` : ""}${claimsMarkup(subject, landClaims)}`;
+  const grapes = `${lede("grapes")}${regionalStyleComparisonMarkup(editorial)}${regionalGrapesMarkup(editorial)}`;
+  const people = `${lede("people")}${regionalPeopleMarkup(editorial)}`;
+  const culture = `${lede("culture")}${lensesMarkup(editorial)}`;
+  const rules = `${lede("rules")}${regionalRulesMarkup(subject, guide, overlaps, editorial, ruleClaims)}`;
   return `
     <nav class="chapter-nav" aria-label="${escapeHtml(subject.display_name)} guide sections">
       <button type="button" class="is-active" aria-current="true" data-region-pillar-target="place">The Place</button>
@@ -1064,9 +1057,9 @@ function regionalPlaceMarkup(subject, guide, overlaps, editorial, lead, claims) 
     </nav>
     <div class="jura-pillars">
       ${regionalPillarMarkup("place", "The Place", copy.place?.intro || "Geography · scale · physical setting", place, { open: true })}
-      ${regionalPillarMarkup("grapes", "The Grapes &amp; Wines", copy.grapes?.intro || "Five grapes · several cellar paths", grapes, { open: true })}
-      ${regionalPillarMarkup("people", "The People", copy.people?.intro || "Four producers · four ways into the world", people, { open: true })}
-      ${regionalPillarMarkup("culture", "The Culture", copy.culture?.intro || "Lineage · access · useful insider context", culture, { open: true })}
+      ${regionalPillarMarkup("grapes", "The Grapes &amp; Wines", copy.grapes?.intro || "Grapes · wines · cellar paths", grapes, { open: true })}
+      ${regionalPillarMarkup("people", "The People", copy.people?.intro || "Producers · ways into the world", people, { open: true })}
+      ${regionalPillarMarkup("culture", "The Culture", copy.culture?.intro || "Transmission · access · context", culture, { open: true })}
       ${regionalPillarMarkup("rules", "The Rules", copy.rules?.intro || "Origins · categories · legal paths", rules, { open: true })}
     </div>`;
 }
@@ -1109,7 +1102,7 @@ function subjectCardMarkup(subject, guide = null, overlaps = []) {
   const quantitativeClaimIds = new Set((guide?.quantities || []).map((item) => item.claim_id));
   const claims = subject.claims.filter((claim) => claim !== lead && !quantitativeClaimIds.has(claim.claim_id));
   const placement = producerPlacement(subject);
-  const thesis = editorial.thesis || lead?.statement || "Follow the supported relationships that make this subject legible.";
+  const thesis = editorial.thesis || lead?.statement || "Follow the connections out of this subject and see where they land.";
   const monogram = subject.display_name.split(/\s+/).filter((word) => word.length > 2).slice(0, 2).map((word) => word[0]).join("");
   const isRegionalWorld = Boolean(editorial.regional_world);
   let body = "";
@@ -1148,7 +1141,7 @@ function mapCoverageMarkup(record, overlaps = []) {
   return `
     <p class="detail-eyebrow">${escapeHtml(designation)}</p>
     <h2>${escapeHtml(record.name)}</h2>
-    <p class="guide-lede">The map has reliable official coverage here. A fuller story can grow later; for now, use the shape to orient yourself and compare the wine areas around it.</p>
+    <p class="guide-lede">This outline is the official production area — its legal shape, drawn by the rules. What grows inside it, and who farms it, is a separate question. Compare it with the areas it touches.</p>
     <button class="secondary-action" type="button" data-go-to-record="${escapeHtml(record.id)}">Go to this area</button>
     ${overlapMarkup(overlaps)}
     <details class="detail-disclosure"><summary>What this shape means</summary><p>${escapeHtml(sourceMeaning)}</p></details>`;
@@ -1350,7 +1343,7 @@ async function showDiscovery() {
     elements.discoveryPanel.hidden = false;
     elements.guidesButton.setAttribute("aria-expanded", "true");
   } catch {
-    showToast("Starting points could not load. Search and the map remain available.");
+    showToast("The questions could not load. Search and the map remain available.");
   }
 }
 
@@ -1510,11 +1503,11 @@ async function inspectPoint(event) {
   openPanel(`
     <p class="detail-eyebrow">What am I looking at?</p>
     <h2>${regionalWorld ? `A point in ${escapeHtml(regionalWorld.subject.display_name)}’s wine world` : "A point on the wine map"}</h2>
-    <p class="guide-lede">${regionalWorld ? "The map can place legal areas, producer bases and regional teaching context together without pretending they mean the same thing." : "Here is what the visible sourced geography can say about the point you chose."}</p>
+    <p class="guide-lede">${regionalWorld ? "A legal outline, a producer's base and the region's own argument can all meet at one point. They are three different kinds of statement, and this panel keeps them apart." : "What the visible wine areas can tell you about this exact point."}</p>
     <section class="detail-section"><h3>Wine areas covering this point</h3>${areasMarkup}</section>
     ${grapesMarkup}
     ${producersMarkup}
-    ${regionalWorld ? `<section class="detail-section inspection-why"><h3>Why this is interesting</h3><p>${escapeHtml(regionalWorld.editorial.thesis.replace(/\{\{term:[^|]+\|([^}]+)\}\}/g, "$1"))}</p></section>` : ""}
+    ${regionalWorld ? `<section class="detail-section inspection-why"><h3>What this point is arguing about</h3><p>${richText(regionalWorld.editorial.thesis)}</p></section>` : ""}
     <details class="detail-disclosure technical-disclosure"><summary>Point details</summary><p>Selected at ${event.lngLat.lat.toFixed(4)}, ${event.lngLat.lng.toFixed(4)}. This click is a map query, not a municipality claim.</p></details>`);
 }
 
@@ -1595,7 +1588,8 @@ async function renderSources() {
     if (!response.ok) throw new Error("Provenance request failed");
     const provenance = await response.json();
     elements.sourcesContent.innerHTML = `
-      <p class="sources-lede">The street map, official wine-area shapes, and CARTA's wine stories have different jobs. Keeping those jobs visible is how the Atlas stays honest.</p>
+      <p class="sources-lede">The street map, official wine-area shapes, and Atlas's wine stories have different jobs. Keeping those jobs visible is how the Atlas stays honest.</p>
+      <button class="about-link" type="button" data-open-about>What Atlas is for <span aria-hidden="true">→</span></button>
       <div class="source-cards">${provenance.datasets.map((dataset) => `
         <article class="source-card">
           <p class="source-class">${escapeHtml(dataset.authority_class.replaceAll("_", " "))}</p>
@@ -1825,6 +1819,18 @@ document.querySelector("[data-sources-button]").addEventListener("click", async 
   elements.sourcesDialog.showModal();
 });
 document.querySelector("[data-close-sources]").addEventListener("click", () => elements.sourcesDialog.close());
+elements.sourcesContent.addEventListener("click", (event) => {
+  if (!event.target.closest("[data-open-about]")) return;
+  elements.sourcesDialog.close();
+  elements.aboutDialog.showModal();
+});
+document.querySelector("[data-close-about]").addEventListener("click", () => elements.aboutDialog.close());
+document.querySelector("[data-open-sources-from-about]").addEventListener("click", async () => {
+  elements.aboutDialog.close();
+  await renderSources();
+  elements.sourcesDialog.showModal();
+});
+elements.aboutDialog.addEventListener("click", (event) => { if (event.target === elements.aboutDialog) elements.aboutDialog.close(); });
 elements.sourcesDialog.addEventListener("click", (event) => { if (event.target === elements.sourcesDialog) elements.sourcesDialog.close(); });
 
 window.addEventListener("popstate", async (event) => {

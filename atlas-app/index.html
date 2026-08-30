@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="CARTA Atlas connects ordinary geography to sourced wine knowledge."
+      content="A geographic way into wine. Start with the ground, then follow the relationships that connect places, grapes and the people who farm them."
     />
     <meta name="theme-color" content="#f4f0e8" />
     <link rel="stylesheet" href="/src/shell-fixes.css" />
@@ -59,7 +59,7 @@
               <path d="M5 4.5h10.5A3.5 3.5 0 0 1 19 8v11.5H8.5A3.5 3.5 0 0 1 5 16V4.5Z"></path>
               <path d="M5 16a3.5 3.5 0 0 1 3.5-3.5H19"></path>
             </svg>
-            <span>Start here</span>
+            <span>Questions</span>
           </button>
           <button class="header-action rabbit-action" type="button" aria-expanded="false" data-rabbit-button>
             <svg aria-hidden="true" viewBox="0 0 24 24" width="16" height="16">
@@ -87,15 +87,16 @@
         </div>
       </header>
 
-      <section class="map-stage" aria-label="Interactive CARTA map">
-        <div id="map" role="application" aria-label="CARTA world and France wine map"></div>
+      <section class="map-stage" aria-label="Interactive wine map">
+        <div id="map" role="application" aria-label="World and France wine map"></div>
 
         <section class="map-intro" aria-labelledby="map-intro-title">
           <p class="eyebrow">A geographic way into wine</p>
           <h1 id="map-intro-title">Start with the world.<br />Then follow the wine.</h1>
           <p>
-            CARTA keeps cities, rivers, borders, and coasts in view while sourced wine
-            geography appears at the scale where it becomes useful.
+            Cities, rivers and coastlines stay where they are. Wine geography arrives
+            when you get close enough for it to mean something — and then keeps going,
+            past the borders that wine law asks you to treat as fixed.
           </p>
           <button class="primary-action" type="button" data-explore-france>
             Explore France
@@ -152,10 +153,10 @@
         <section class="discovery-panel" aria-labelledby="discovery-title" hidden data-discovery-panel>
           <div class="panel-heading-row">
             <div>
-              <p class="panel-kicker">Good places to begin</p>
+              <p class="panel-kicker">Questions Worth Following</p>
               <h2 id="discovery-title">Pick up the thread</h2>
             </div>
-            <button class="icon-button" type="button" aria-label="Close starting points" data-close-discovery>×</button>
+            <button class="icon-button" type="button" aria-label="Close questions worth following" data-close-discovery>×</button>
           </div>
           <div data-discovery-content></div>
         </section>
@@ -168,7 +169,7 @@
             </div>
             <button class="icon-button" type="button" aria-label="Close rabbit hole" data-close-rabbit>×</button>
           </div>
-          <p class="rabbit-intro">A little trail of what caught your attention. Pick any step to return to its map view.</p>
+          <p class="rabbit-intro">What caught your attention, in order. Pick any step to return to its map view.</p>
           <ol class="rabbit-trail" data-rabbit-trail></ol>
         </aside>
 
@@ -208,6 +209,55 @@
       </div>
       <div class="sources-dialog__body" data-sources-content>
         <p>Loading the committed provenance manifests…</p>
+      </div>
+    </dialog>
+
+    <dialog class="sources-dialog about-dialog" data-about-dialog>
+      <div class="sources-dialog__header">
+        <div>
+          <p class="panel-kicker">What this is for</p>
+          <h2>About Atlas</h2>
+        </div>
+        <button class="icon-button" type="button" aria-label="Close about" data-close-about>×</button>
+      </div>
+      <div class="sources-dialog__body about-dialog__body">
+        <h3>A geographic way into wine.</h3>
+        <p>
+          Most wine education starts with a list to memorize: regions, grapes,
+          classifications, the styles that count as classic. Atlas starts with the
+          ground instead, and treats the list as the result of something.
+        </p>
+        <p>
+          Because it usually is. A style that looks permanent normally has a date on
+          it — a law written in 1975, a vineyard replanted after a war, a wind that
+          used to arrive later in the year, a grower who ignored the accepted answer
+          and turned out to be right. Grapes move. People cross borders that wine law
+          treats as settled. Climates change while the labels stay the same.
+        </p>
+        <p>
+          So Atlas begins with the world, then follows the relationships outward: from
+          a place to its grapes, from a grape to its relatives, from a producer to the
+          people who taught them, and from any of those to somewhere you did not
+          expect to end up.
+        </p>
+        <p>
+          Everything stated as fact here comes from a source you can inspect. Where the
+          record is thin or contested, Atlas says so rather than smoothing it over. The
+          open questions are part of the subject.
+        </p>
+        <section class="about-dialog__acronym">
+          <h4>CARTA</h4>
+          <p><strong>Cartography, Ampelography, Relationships, Time, Access.</strong></p>
+          <p>
+            Where a wine comes from. What the plant actually is. Who is connected to
+            whom, and how. When each of those things changed. And whether you can get
+            near the bottle.
+          </p>
+        </section>
+        <button class="secondary-action" type="button" data-open-sources-from-about>
+          See where the evidence comes from
+          <span aria-hidden="true">→</span>
+        </button>
       </div>
     </dialog>
 

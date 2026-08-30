@@ -15,15 +15,24 @@ from collections import defaultdict
 from pathlib import Path
 from typing import Any, Iterable
 
+GEOSPATIAL_IMPORT_ERROR: ImportError | None = None
+
 try:
     import geopandas as gpd
     import pandas as pd
     from shapely import make_valid, union_all
     from shapely.geometry import GeometryCollection, MultiPolygon, Polygon, mapping, shape
 except ImportError as exc:  # pragma: no cover - exercised by clean validation environments
-    raise SystemExit(
-        "Install Atlas build dependencies: python -m pip install -r requirements-atlas.txt"
-    ) from exc
+    # Deferred so that copy-only projections (scripts/project_editorial.py) can
+    # reuse this module without the GIS stack. Geometry work still refuses to run.
+    GEOSPATIAL_IMPORT_ERROR = exc
+
+
+def require_geospatial() -> None:
+    if GEOSPATIAL_IMPORT_ERROR is not None:
+        raise SystemExit(
+            "Install Atlas build dependencies: python -m pip install -r requirements-atlas.txt"
+        ) from GEOSPATIAL_IMPORT_ERROR
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -31,10 +40,11 @@ MANIFEST_DIR = ROOT / "data/geography/datasets"
 MAPPING_DIR = ROOT / "data/geography/external-id-mappings"
 PUBLIC_DATA_DIR = ROOT / "atlas-app/public/data"
 GEOMETRY_METADATA_PATH = ROOT / "data/geography/geometry/atlas-france-inao.jsonl"
-EXPERIENCE_CONFIG_PATH = ROOT / "data/atlas/run-06-bearn-jurancon-world.json"
+EXPERIENCE_CONFIG_PATH = ROOT / "data/atlas/run-07-editorial-foundation.json"
 EXPERIENCE_LINEAGE = [
     "data/atlas/run-05-jura-final-cut.json",
     "data/atlas/run-06-bearn-jurancon-world.json",
+    "data/atlas/run-07-editorial-foundation.json",
 ]
 PRODUCER_BASES_SOURCE_DIR = ROOT / "data/geography/producer-bases"
 
@@ -66,14 +76,31 @@ def deep_merge(base: Any, overlay: Any) -> Any:
 
 
 def load_experience_config() -> dict[str, Any]:
-    overlay = read_json(EXPERIENCE_CONFIG_PATH)
-    extends = overlay.get("extends")
-    if not extends:
-        return overlay
-    base_path = (ROOT / extends).resolve()
-    if ROOT not in base_path.parents:
-        raise SystemExit("experience overlay extends a path outside the repository")
-    return deep_merge(read_json(base_path), overlay)
+    """Resolve the full `extends` chain so every prior run stays in force.
+
+    Each release overlay states only what it changes. Merging the whole chain
+    oldest-first keeps finished worlds intact instead of silently dropping the
+    releases below the newest overlay.
+    """
+    chain: list[Path] = []
+    seen: set[Path] = set()
+    path = EXPERIENCE_CONFIG_PATH
+    while True:
+        resolved = path.resolve()
+        if ROOT not in resolved.parents:
+            raise SystemExit("experience overlay extends a path outside the repository")
+        if resolved in seen:
+            raise SystemExit("experience overlay chain is circular")
+        seen.add(resolved)
+        chain.append(resolved)
+        extends = read_json(resolved).get("extends")
+        if not extends:
+            break
+        path = ROOT / extends
+    merged: dict[str, Any] = {}
+    for resolved in reversed(chain):
+        merged = deep_merge(merged, read_json(resolved))
+    return merged
 
 
 def read_jsonl(paths: Iterable[Path]) -> list[dict[str, Any]]:
@@ -1297,6 +1324,33 @@ def build_atlas_editorial(
         if target_id and target_id not in native_ids:
             raise SystemExit(f"Atlas glossary target is not native: {target_id}")
 
+    # Every regional world states its own argument. No world may inherit another
+    # world's voice as an application default, so the pillar grammar, the Place
+    # story and the rule groups are required of each world here rather than
+    # filled in downstream.
+    required_pillars = {"place", "grapes", "people", "culture", "rules"}
+    for subject_id, configured in configured_subjects.items():
+        if not configured.get("regional_world"):
+            continue
+        pillar_copy = configured.get("pillar_copy", {})
+        if set(pillar_copy) != required_pillars:
+            raise SystemExit(f"{subject_id}: regional world needs copy for every pillar")
+        for pillar, pillar_text in pillar_copy.items():
+            if not pillar_text.get("intro") or not pillar_text.get("lede"):
+                raise SystemExit(f"{subject_id}: {pillar} pillar copy is incomplete")
+        place_story = configured.get("place_story", {})
+        if not all(place_story.get(key) for key in ("kicker", "title", "text", "button")):
+            raise SystemExit(f"{subject_id}: regional world needs its own Place story")
+        rule_groups = configured.get("rules", {}).get("groups")
+        if not configured.get("rules", {}).get("intro") or not rule_groups:
+            raise SystemExit(f"{subject_id}: regional world needs its own rule grammar")
+        for group in rule_groups:
+            if not group.get("label") or not group.get("note") or not group.get("ids"):
+                raise SystemExit(f"{subject_id}: rule group is incomplete")
+            for area_id in group["ids"]:
+                if area_id not in native_ids:
+                    raise SystemExit(f"{subject_id}: dead rule-group area {area_id}")
+
     for subject_id, configured in configured_subjects.items():
         direct_targets = {
             connection["target_id"] for connection in subjects[subject_id]["connections"]
@@ -1536,6 +1590,7 @@ def main() -> None:
     )
     args = parser.parse_args()
 
+    require_geospatial()
     manifests = load_manifests()
     supplied = parse_source_archives(args.source_archive)
     cache_dir = args.cache_dir.resolve()
