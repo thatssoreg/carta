@@ -18,6 +18,7 @@ Human Reference profiles are organized for readers and may compose multiple prod
 - [Casa Coste Piane](../producers/casa-coste-piane.md) — `node` / `stub`
 - [Caves du Château d'Auvernier](../producers/chateau-auvernier.md) — `node` / `stub`
 - [Château Simone](../producers/chateau-simone.md) — `baseline` / `published`
+- [Château Thivin](../producers/chateau-thivin.md) — `baseline` / `published`
 - [Clos Apalta / Domaines Bournet-Lapostolle](../producers/clos-apalta.md) — `baseline` / `published`
 - [Clos du Tue-Boeuf](../producers/clos-du-tue-boeuf.md) — `node` / `stub`
 - [Companhia de Vinhos dos Profetas e dos Villões](../producers/companhia-vinhos-profetas-villoes.md) — `node` / `stub`
@@ -28,8 +29,10 @@ Human Reference profiles are organized for readers and may compose multiple prod
 - [Domaine Christiane Chambeyron-Manin](../producers/domaine-christiane-chambeyron-manin.md) — `baseline` / `published`
 - [Domaine de Chevillard](../producers/domaine-de-chevillard.md) — `baseline` / `published`
 - [Domaine de la Bergerie / Clos de la Bergerie](../producers/domaine-de-la-bergerie-anjou.md) — `node` / `stub`
+- [Domaine de la Grand’Cour](../producers/domaine-de-la-grand-cour.md) — `baseline` / `published`
 - [Domaine de la Tournelle](../producers/domaine-de-la-tournelle.md) — `node` / `stub`
 - [Domaine de Saint Pierre / Château Renard](../producers/domaine-de-saint-pierre-jura.md) — `baseline` / `published`
+- [Domaine des Terres Dorées](../producers/domaine-des-terres-dorees.md) — `baseline` / `published`
 - [Domaine Huet](../producers/domaine-huet.md) — `baseline` / `published`
 - [Domaine Labet](../producers/domaine-labet.md) — `node` / `stub`
 - [Domaine Lampyres / Harvest Moon](../producers/domaine-lampyres.md) — `node` / `stub`
@@ -42,6 +45,7 @@ Human Reference profiles are organized for readers and may compose multiple prod
 - [Hiyu Wine Farm](../producers/hiyu-wine-farm.md) — `baseline` / `published`
 - [Hofgut Falkenstein](../producers/hofgut-falkenstein.md) — `baseline` / `published`
 - [Imanol Garay](../producers/imanol-garay.md) — `baseline` / `published`
+- [Jean Foillard](../producers/jean-foillard.md) — `baseline` / `published`
 - [JONATA](../producers/jonata.md) — `node` / `stub`
 - [Louis Michel & Fils](../producers/domaine-louis-michel-fils.md) — `baseline` / `published`
 - [Maison Pierre Overnoy / Emmanuel Houillon](../producers/maison-pierre-overnoy.md) — `node` / `stub`
@@ -78,6 +82,12 @@ Human Reference profiles are organized for readers and may compose multiple prod
 - **Domaine de Souch** — `node` / `machine_only`
 - **Domaines Bournet-Lapostolle Chile SpA** — `node` / `machine_only`
 - **Familia Fernández Rivera** — `node` / `machine_only`
+
+## Person profiles
+
+### Human Reference surfaces
+
+- [Jules Chauvet](../people/jules-chauvet.md) — `baseline` / `published`
 
 <!-- END GENERATED CARTA INDEX -->
 

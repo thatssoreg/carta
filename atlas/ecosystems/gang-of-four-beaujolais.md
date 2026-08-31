@@ -46,10 +46,13 @@ independent producer profiles for Foillard, Breton and Thévenet · direct evide
 This section is generated from governed profile dispositions, editorial anchors, and supported graph relationships. It is not a hand-maintained second knowledge graph.
 
 - [Beaujolais](../countries/france/regions/beaujolais.md) — region; baseline reference
-- [France](../countries/france/README.md) — country; baseline reference
-- [Gamay noir à jus blanc](../grapes/gamay-noir-a-jus-blanc.md) — grape; navigation node
 - [Morgon AOP](../countries/france/appellations/morgon.md) — appellation; baseline reference
+- [France](../countries/france/README.md) — country; baseline reference
+- [Gamay noir à jus blanc](../grapes/gamay-noir-a-jus-blanc.md) — grape; baseline reference
 - [Domaine Marcel Lapierre](../producers/domaine-marcel-lapierre.md) — producer; baseline reference
+- [Jean Foillard](../producers/jean-foillard.md) — producer; baseline reference
+- [Jules Chauvet](../people/jules-chauvet.md) — person; baseline reference
+- [Carbonic, semi-carbonic, and whole-cluster fermentation](../practices/carbonic-maceration.md) — practice; baseline reference
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->
@@ -83,12 +86,18 @@ This section is generated from CARTA machine authority. Edit the governed record
 
 | Claim | Layer / observed | Status | Confidence | Sources |
 |---|---|---|---|---|
+| `claim:chauvet-carbonic-inventor-rejected-15` | `reference / —` | `rejected` | `high` | `source:chauvet-carbonic-1963` |
+| `claim:chauvet-technical-research-15` | `reference / —` | `supported` | `high` | `source:chauvet-carbonic-1963`, `source:lapierre-domaine` |
+| `claim:foillard-chauvet-influence-15` | `reference / —` | `supported` | `medium` | `source:kermit-gang-of-four` |
+| `claim:foillard-producer-identity-15` | `reference / 2026-08-30` | `supported` | `high` | `source:kermit-gang-of-four` |
 | `claim:gang-of-four-beaujolais-community` | `reference / —` | `supported` | `high` | `source:kermit-gang-of-four` |
+| `claim:gang-of-four-blanket-mentorship-rejected-15` | `reference / —` | `rejected` | `high` | `source:kermit-gang-of-four`, `source:lapierre-domaine` |
 | `claim:lapierre-chauvet-guidance` | `reference / —` | `supported` | `high` | `source:lapierre-domaine` |
 | `claim:marcel-lapierre-1950-2010` | `reference / —` | `supported` | `high` | `source:lapierre-domaine` |
 
 ### Sources
 
+- `source:chauvet-carbonic-1963` — Évolution des acides maliques et lactiques dans la vinification par macération carbonique de la vendange
 - `source:kermit-gang-of-four` — Jean Foillard — Côte du Py / Beaujolais context
 - `source:lapierre-domaine` — The Domaine Marcel Lapierre
 
@@ -99,4 +108,6 @@ This section is generated from CARTA machine authority. Edit the governed record
 - Deepen each producer independently rather than treating the community shorthand as complete biography
 - Research additional direct person-to-person relationships only where evidence supports them
 - Separate Kermit Lynch's naming role from the producers' own descriptions of their relationships
+- `claim:chauvet-carbonic-inventor-rejected-15` — Describe Chauvet as a researcher and transmission figure unless independent historical evidence establishes a narrower invention claim.
+- `claim:gang-of-four-blanket-mentorship-rejected-15` — Add bilateral mentorship only from direct evidence; retain group membership and narrower influence relationships separately.
 <!-- END GENERATED CARTA PROVENANCE -->

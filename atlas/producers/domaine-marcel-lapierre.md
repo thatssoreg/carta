@@ -48,9 +48,9 @@ The sulfur story requires precision. The estate says it works as far as possible
 
 ## Geography and GIS status
 
-CARTA anchors the estate at Villié-Morgon and Morgon within Beaujolais. INAO provides current geographic documentation and mapping resources for the appellation.
+CARTA anchors the estate at its first-party address, **588 rue Rabelais, Villié-Morgon**, using the official French address geocoder. This is explicitly a production-base point. It does not represent the domaine’s Morgon or Beaujolais parcels.
 
-No approximate winery coordinate, Côte du Py point, or hand-drawn parcel polygon from Run 03F-A was accepted.
+INAO provides current geographic documentation and mapping resources for Morgon. Côte du Py remains a named site without a hand-drawn parcel polygon, and Py hill remains a separate physical feature.
 
 ## Run 03F-A corrections
 
@@ -79,11 +79,14 @@ Primary CARTA sources are Domaine Marcel Lapierre's current estate and viticultu
 
 This section is generated from governed profile dispositions, editorial anchors, and supported graph relationships. It is not a hand-maintained second knowledge graph.
 
+- [Gang of Four (Beaujolais)](../ecosystems/gang-of-four-beaujolais.md) — ecosystem; baseline reference
+- [Jules Chauvet](../people/jules-chauvet.md) — person; baseline reference
 - [Beaujolais](../countries/france/regions/beaujolais.md) — region; baseline reference
-- [Gamay noir à jus blanc](../grapes/gamay-noir-a-jus-blanc.md) — grape; navigation node
+- [Carbonic, semi-carbonic, and whole-cluster fermentation](../practices/carbonic-maceration.md) — practice; baseline reference
+- [Gamay noir à jus blanc](../grapes/gamay-noir-a-jus-blanc.md) — grape; baseline reference
 - [Morgon AOP](../countries/france/appellations/morgon.md) — appellation; baseline reference
 - [France](../countries/france/README.md) — country; baseline reference
-- [Gang of Four (Beaujolais)](../ecosystems/gang-of-four-beaujolais.md) — ecosystem; baseline reference
+- [Jean Foillard](jean-foillard.md) — producer; baseline reference
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->
@@ -110,6 +113,8 @@ This section is generated from CARTA machine authority. Edit the governed record
 - `grape:gamay-noir-a-jus-blanc`
 - `appellation:morgon`
 - `place:villie-morgon`
+- `practice:semi-carbonic-maceration`
+- `person:jules-chauvet`
 
 <details>
 <summary>Machine claims and sources</summary>
@@ -118,7 +123,11 @@ This section is generated from CARTA machine authority. Edit the governed record
 
 | Claim | Layer / observed | Status | Confidence | Sources |
 |---|---|---|---|---|
+| `claim:chauvet-carbonic-inventor-rejected-15` | `reference / —` | `rejected` | `high` | `source:chauvet-carbonic-1963` |
+| `claim:chauvet-technical-research-15` | `reference / —` | `supported` | `high` | `source:chauvet-carbonic-1963`, `source:lapierre-domaine` |
+| `claim:foillard-chauvet-influence-15` | `reference / —` | `supported` | `medium` | `source:kermit-gang-of-four` |
 | `claim:gang-of-four-beaujolais-community` | `reference / —` | `supported` | `high` | `source:kermit-gang-of-four` |
+| `claim:lapierre-base-15` | `reference / 2026-08-30` | `supported` | `high` | `source:lapierre-contact`, `source:api-adresse-gouv-fr` |
 | `claim:lapierre-cellar-current` | `reference / 2026-08-18` | `supported` | `high` | `source:lapierre-vinification` |
 | `claim:lapierre-chauvet-guidance` | `reference / —` | `supported` | `high` | `source:lapierre-domaine` |
 | `claim:lapierre-current-owners` | `reference / 2026-08-18` | `supported` | `high` | `source:lapierre-domaine` |
@@ -130,8 +139,11 @@ This section is generated from CARTA machine authority. Edit the governed record
 
 ### Sources
 
+- `source:api-adresse-gouv-fr` — API Adresse
+- `source:chauvet-carbonic-1963` — Évolution des acides maliques et lactiques dans la vinification par macération carbonique de la vendange
 - `source:inao-morgon` — Morgon ou Morgon cru du Beaujolais
 - `source:kermit-gang-of-four` — Jean Foillard — Côte du Py / Beaujolais context
+- `source:lapierre-contact` — Contactez-nous — Domaine Marcel Lapierre
 - `source:lapierre-domaine` — The Domaine Marcel Lapierre
 - `source:lapierre-vinification` — Viticulture and Vinification
 
@@ -141,5 +153,5 @@ This section is generated from CARTA machine authority. Edit the governed record
 
 - Acquire authoritative parcel-level geometry and clarify Lapierre holdings by Morgon climat
 - Separate current wine-level cellar protocols from estate-wide practice by vintage where useful
-- Research Foillard/Breton/Thévenet relationships only from direct evidence rather than 'Gang of Four' shorthand
+- `claim:chauvet-carbonic-inventor-rejected-15` — Describe Chauvet as a researcher and transmission figure unless independent historical evidence establishes a narrower invention claim.
 <!-- END GENERATED CARTA PROVENANCE -->

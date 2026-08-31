@@ -16,15 +16,15 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [Arbois AOP](../countries/france/appellations/arbois.md) — appellation; baseline reference
 - [Burgundy](../countries/france/regions/burgundy.md) — region; baseline reference
 - [Jura](../countries/france/regions/jura.md) — region; deep reference
+- [Beaujolais Villages mention](../classifications/beaujolais-villages-mention.md) — classification; baseline reference
 - [Bourgogne Côte d’Or](../countries/france/appellations/bourgogne-cote-d-or.md) — appellation; baseline reference
 - [Crémant du Jura AOP](../countries/france/appellations/cremant-du-jura.md) — appellation; baseline reference
 - [Côtes du Jura AOP](../countries/france/appellations/cotes-du-jura.md) — appellation; baseline reference
+- [Domaine des Terres Dorées](../producers/domaine-des-terres-dorees.md) — producer; baseline reference
 - [L’Etoile AOP](../countries/france/appellations/l-etoile.md) — appellation; baseline reference
 - [Macvin du Jura AOP](../countries/france/appellations/macvin-du-jura.md) — appellation; baseline reference
 - [Hiyu Wine Farm](../producers/hiyu-wine-farm.md) — producer; baseline reference
 - [Chablis Grand Cru AOP](../countries/france/appellations/chablis-grand-cru.md) — appellation; navigation node
-- [Columbia Gorge AVA](../countries/united-states/appellations/columbia-gorge-ava.md) — appellation; navigation node
-- [San Luis Obispo Coast AVA](../countries/united-states/appellations/san-luis-obispo-coast-ava.md) — appellation; navigation node
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->
@@ -49,6 +49,7 @@ This section is generated from CARTA machine authority. Edit the governed record
 |---|---|---|---|---|
 | `claim:bassi-chardonnay-wine` | `reference / 2026-08-18` | `supported` | `high` | `source:scar-trade`, `source:coeur-scar` |
 | `claim:beaujolais-chardonnay-share-2024-10` | `reference / 2024-01-01` | `supported` | `high` | `source:beaujolais-key-figures-2024` |
+| `claim:beaujolais-current-colors-grapes-15` | `reference / 2026-08-20` | `supported` | `high` | `source:beaujolais-cahier-2026` |
 | `claim:burgundy-chardonnay-share-2024-10` | `reference / 2024-09-01` | `supported` | `high` | `source:bivb-burgundy-key-figures-2024` |
 | `claim:chardonnay-jura-burgundy-contrast-12` | `reference / 2026-08-29` | `supported` | `high` | `source:bivb-burgundy-key-figures-2024`, `source:civj-jura-key-figures-2024`, `source:jura-vins-domaine-labet` |
 | `claim:chateau-renard-2018-chardonnay` | `reference / —` | `supported` | `high` | `source:saint-pierre-chateau-renard-2018` |
@@ -63,6 +64,7 @@ This section is generated from CARTA machine authority. Edit the governed record
 
 ### Sources
 
+- `source:beaujolais-cahier-2026` — Cahier des charges de l’appellation d’origine contrôlée Beaujolais
 - `source:beaujolais-key-figures-2024` — Carnet Beaujolais — chiffres clés 2024
 - `source:bivb-burgundy-key-figures-2024` — Bourgogne wines — key figures 2024
 - `source:civj-jura-key-figures-2024` — Le vignoble du Jura en quelques chiffres

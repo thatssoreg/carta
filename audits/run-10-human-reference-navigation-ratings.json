@@ -1,7 +1,7 @@
 {
   "metadata": {
     "sample_size": 28,
-    "basis": "Manual reader-salience review of every generated Human Reference link after the Run 02 five-France-world enrichment on 2026-08-29.",
+    "basis": "Manual reader-salience review of every generated Human Reference link after the Run 02 five-France-world enrichment on 2026-08-29, refreshed for the Run 15 Beaujolais authority additions on 2026-08-30.",
     "scale": {
       "A": "essential orientation",
       "B": "strong explanatory connection",
@@ -299,8 +299,8 @@
       ],
       "C": [
         {
-          "candidates": ["profile:domaine-de-saint-pierre-jura", "profile:domaine-labet", "profile:domaine-louis-michel-fils", "profile:scar-of-the-sea", "profile:hiyu-wine-farm", "profile:columbia-gorge-ava", "profile:san-luis-obispo-coast-ava"],
-          "reason": "The producers and their governing regions illuminate varied represented Chardonnay contexts."
+          "candidates": ["profile:domaine-de-saint-pierre-jura", "profile:domaine-labet", "profile:domaine-louis-michel-fils", "profile:scar-of-the-sea", "profile:hiyu-wine-farm", "profile:beaujolais-villages-mention", "profile:domaine-des-terres-dorees"],
+          "reason": "The producers and their governing regions illuminate varied represented Chardonnay contexts; the Beaujolais Villages mention and Terres Dorées additions are supported white-wine and producer contexts rather than generic regional adjacency."
         }
       ]
     },

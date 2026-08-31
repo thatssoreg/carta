@@ -40,11 +40,12 @@ MANIFEST_DIR = ROOT / "data/geography/datasets"
 MAPPING_DIR = ROOT / "data/geography/external-id-mappings"
 PUBLIC_DATA_DIR = ROOT / "atlas-app/public/data"
 GEOMETRY_METADATA_PATH = ROOT / "data/geography/geometry/atlas-france-inao.jsonl"
-EXPERIENCE_CONFIG_PATH = ROOT / "data/atlas/run-07-editorial-foundation.json"
+EXPERIENCE_CONFIG_PATH = ROOT / "data/atlas/run-08-beaujolais-canonical-ingestion.json"
 EXPERIENCE_LINEAGE = [
     "data/atlas/run-05-jura-final-cut.json",
     "data/atlas/run-06-bearn-jurancon-world.json",
     "data/atlas/run-07-editorial-foundation.json",
+    "data/atlas/run-08-beaujolais-canonical-ingestion.json",
 ]
 PRODUCER_BASES_SOURCE_DIR = ROOT / "data/geography/producer-bases"
 

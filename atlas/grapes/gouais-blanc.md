@@ -9,7 +9,9 @@ The machine graph and generated relationships below provide the current orientat
 
 This section is generated from governed profile dispositions, editorial anchors, and supported graph relationships. It is not a hand-maintained second knowledge graph.
 
+- [Gamay noir à jus blanc](gamay-noir-a-jus-blanc.md) — grape; baseline reference
 - [Raffiat de Moncade](raffiat-de-moncade.md) — grape; navigation node
+- [The 1395 Gamay ordinance](../historical-events/gamay-ordinance-1395.md) — historical_event; baseline reference
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->
@@ -32,10 +34,12 @@ This section is generated from CARTA machine authority. Edit the governed record
 
 | Claim | Layer / observed | Status | Confidence | Sources |
 |---|---|---|---|---|
+| `claim:gamay-parentage-15` | `reference / —` | `supported` | `high` | `source:gamay-parentage-science-1999` |
 | `claim:raffiat-parentage` | `reference / —` | `supported` | `high` | `source:plantgrape-raffiat` |
 
 ### Sources
 
+- `source:gamay-parentage-science-1999` — Historical Genetics: The Parentage of Chardonnay, Gamay, and Other Wine Grapes of Northeastern France
 - `source:plantgrape-raffiat` — Raffiat de Moncade
 
 </details>

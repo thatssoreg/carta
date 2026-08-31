@@ -10,6 +10,7 @@ EXPERIENCE_LINEAGE = [
     "data/atlas/run-05-jura-final-cut.json",
     "data/atlas/run-06-bearn-jurancon-world.json",
     "data/atlas/run-07-editorial-foundation.json",
+    "data/atlas/run-08-beaujolais-canonical-ingestion.json",
 ]
 
 
@@ -188,7 +189,9 @@ class AtlasContractTest(unittest.TestCase):
         self.assertEqual(
             editorial["generated_from"], EXPERIENCE_LINEAGE
         )
-        self.assertEqual(editorial["release"], "atlas-run-07-editorial-foundation")
+        self.assertEqual(
+            editorial["release"], "atlas-run-08-beaujolais-canonical-ingestion"
+        )
         self.assertEqual(
             {item["id"] for item in editorial["legend"]},
             {"iykyk", "same-energy"},
@@ -302,7 +305,7 @@ class AtlasContractTest(unittest.TestCase):
         points = json.loads(
             (ROOT / "atlas-app/public/data/atlas-producers.geojson").read_text()
         )["features"]
-        self.assertEqual(len(points), 8)
+        self.assertEqual(len(points), 13)
         by_entity = {
             feature["properties"]["carta_entity_id"]: feature
             for feature in points
@@ -328,6 +331,11 @@ class AtlasContractTest(unittest.TestCase):
             "producer:domaine-cauhape",
             "producer:clos-uroulat",
             "producer:domaine-de-souch",
+            "producer:domaine-marcel-lapierre",
+            "producer:jean-foillard",
+            "producer:chateau-thivin",
+            "producer:domaine-de-la-grand-cour",
+            "producer:domaine-des-terres-dorees",
         ):
             self.assertIn(entity_id, by_entity)
         for feature in points:
@@ -344,7 +352,9 @@ class AtlasContractTest(unittest.TestCase):
         self.assertEqual(len(entries["entry_points"]), 4)
         self.assertEqual(len(entries["featured_worlds"]), 5)
         self.assertEqual(entries["generated_from"], EXPERIENCE_LINEAGE)
-        self.assertEqual(entries["release"], "atlas-run-07-editorial-foundation")
+        self.assertEqual(
+            entries["release"], "atlas-run-08-beaujolais-canonical-ingestion"
+        )
         claims = {}
         for path in sorted((ROOT / "data/claims").glob("*.jsonl")):
             for line in path.read_text().splitlines():
