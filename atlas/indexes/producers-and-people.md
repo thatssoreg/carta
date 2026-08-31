@@ -20,24 +20,32 @@ Human Reference profiles are organized for readers and may compose multiple prod
 - [Château Simone](../producers/chateau-simone.md) — `baseline` / `published`
 - [Château Thivin](../producers/chateau-thivin.md) — `baseline` / `published`
 - [Clos Apalta / Domaines Bournet-Lapostolle](../producers/clos-apalta.md) — `baseline` / `published`
-- [Clos du Tue-Boeuf](../producers/clos-du-tue-boeuf.md) — `node` / `stub`
+- [Clos du Tue-Boeuf](../producers/clos-du-tue-boeuf.md) — `baseline` / `published`
+- [Clos Rougeard](../producers/clos-rougeard.md) — `baseline` / `published`
 - [Companhia de Vinhos dos Profetas e dos Villões](../producers/companhia-vinhos-profetas-villoes.md) — `node` / `stub`
 - [Condado de Haza / Alenza Gran Reserva](../producers/condado-de-haza.md) — `baseline` / `published`
 - [Corison Winery](../producers/corison-winery.md) — `node` / `stub`
 - [COS](../producers/cos.md) — `node` / `stub`
+- [Domaine Alexandre Bain](../producers/domaine-alexandre-bain.md) — `baseline` / `published`
 - [Domaine Carrel & Senger / Jongieux Blanc](../producers/domaine-carrel-senger.md) — `node` / `stub`
+- [Domaine Catherine et Pierre Breton](../producers/domaine-breton.md) — `node` / `stub`
 - [Domaine Christiane Chambeyron-Manin](../producers/domaine-christiane-chambeyron-manin.md) — `baseline` / `published`
+- [Domaine de Bellivière](../producers/domaine-de-belliviere.md) — `node` / `stub`
 - [Domaine de Chevillard](../producers/domaine-de-chevillard.md) — `baseline` / `published`
 - [Domaine de la Bergerie / Clos de la Bergerie](../producers/domaine-de-la-bergerie-anjou.md) — `node` / `stub`
 - [Domaine de la Grand’Cour](../producers/domaine-de-la-grand-cour.md) — `baseline` / `published`
 - [Domaine de la Tournelle](../producers/domaine-de-la-tournelle.md) — `node` / `stub`
 - [Domaine de Saint Pierre / Château Renard](../producers/domaine-de-saint-pierre-jura.md) — `baseline` / `published`
 - [Domaine des Terres Dorées](../producers/domaine-des-terres-dorees.md) — `baseline` / `published`
+- [Domaine du Collier](../producers/domaine-du-collier.md) — `node` / `stub`
 - [Domaine Huet](../producers/domaine-huet.md) — `baseline` / `published`
 - [Domaine Labet](../producers/domaine-labet.md) — `node` / `stub`
 - [Domaine Lampyres / Harvest Moon](../producers/domaine-lampyres.md) — `node` / `stub`
 - [Domaine Marcel Lapierre](../producers/domaine-marcel-lapierre.md) — `baseline` / `published`
+- [Domaine Mosse](../producers/domaine-mosse.md) — `node` / `stub`
 - [Domaine Numa Cornut / Bourgogne Aligoté](../producers/numa-cornut.md) — `node` / `stub`
+- [Domaine Pierre-Olivier Bonhomme](../producers/pierre-olivier-bonhomme.md) — `node` / `stub`
+- [Domaines Landron](../producers/domaines-landron.md) — `baseline` / `published`
 - [Eruptio](../producers/eruptio.md) — `node` / `stub`
 - [François Blanchard / Le Grand Cléré](../producers/le-grand-clere.md) — `node` / `stub`
 - [Goyo García Viadero](../producers/goyo-garcia-viadero.md) — `baseline` / `published`
@@ -47,6 +55,7 @@ Human Reference profiles are organized for readers and may compose multiple prod
 - [Imanol Garay](../producers/imanol-garay.md) — `baseline` / `published`
 - [Jean Foillard](../producers/jean-foillard.md) — `baseline` / `published`
 - [JONATA](../producers/jonata.md) — `node` / `stub`
+- [La Coulée de Serrant](../producers/coulee-de-serrant.md) — `baseline` / `published`
 - [Louis Michel & Fils](../producers/domaine-louis-michel-fils.md) — `baseline` / `published`
 - [Maison Pierre Overnoy / Emmanuel Houillon](../producers/maison-pierre-overnoy.md) — `node` / `stub`
 - [Matassa / Tom Lubbe](../producers/matassa.md) — `node` / `stub`

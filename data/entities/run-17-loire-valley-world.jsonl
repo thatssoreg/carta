@@ -1,0 +1,64 @@
+{"id":"place:pays-nantais","layer":"reference","name":"Pays Nantais","place_kind":"wine_region","status":"active","summary":"Western Loire wine component around Nantes and the lower Loire; an analytical wine place, not a standalone legal appellation.","type":"place"}
+{"id":"place:anjou-wine-region","layer":"reference","name":"Anjou wine region","place_kind":"wine_region","status":"active","summary":"An analytical Loire component centered on Anjou's schist country, Layon tributary and dry-to-sweet Chenin contexts.","type":"place"}
+{"id":"place:saumur-wine-region","layer":"reference","name":"Saumur wine region","place_kind":"wine_region","status":"active","summary":"An analytical Loire component centered on Saumur, tuffeau country, Cabernet Franc, Chenin and multiple wine forms.","type":"place"}
+{"id":"place:touraine-wine-region","layer":"reference","name":"Touraine wine region","place_kind":"wine_region","status":"active","summary":"An analytical Loire component spanning the middle Loire and tributary vineyards around Vouvray, Montlouis, Chinon and Cheverny.","type":"place"}
+{"id":"place:vallee-du-loir","layer":"reference","name":"Vallée du Loir","place_kind":"wine_region","status":"active","summary":"A visible tributary wine branch around the Loir, Jasnières and Coteaux du Loir; it is distinct from the Loire river itself.","type":"place"}
+{"id":"place:centre-loire","layer":"reference","name":"Centre-Loire","place_kind":"wine_region","status":"active","summary":"The eastern Loire wine component represented by its own interprofessional body; it is not modeled as an InterLoire subregion.","type":"place"}
+{"id":"geographic_feature:loire-river","layer":"reference","name":"Loire River","status":"active","type":"geographic_feature"}
+{"id":"geographic_feature:sevre-nantaise","layer":"reference","name":"Sèvre Nantaise","status":"active","type":"geographic_feature"}
+{"id":"geographic_feature:layon-river","layer":"reference","name":"Layon","status":"active","type":"geographic_feature"}
+{"id":"geographic_feature:vienne-river","layer":"reference","name":"Vienne","status":"active","type":"geographic_feature"}
+{"id":"geographic_feature:cher-river","layer":"reference","name":"Cher","status":"active","type":"geographic_feature"}
+{"id":"geographic_feature:loir-river","layer":"reference","name":"Loir","status":"active","type":"geographic_feature"}
+{"id":"appellation:muscadet-sevre-et-maine","layer":"reference","name":"Muscadet Sèvre et Maine AOP","status":"active","type":"appellation"}
+{"id":"appellation:savennieres","layer":"reference","name":"Savennières AOP","status":"active","type":"appellation"}
+{"id":"appellation:savennieres-roche-aux-moines","layer":"reference","name":"Savennières Roche aux Moines AOP","status":"active","type":"appellation"}
+{"id":"appellation:coulee-de-serrant","layer":"reference","name":"Coulée de Serrant AOP","status":"active","type":"appellation"}
+{"id":"appellation:saumur","layer":"reference","name":"Saumur AOP","status":"active","type":"appellation"}
+{"id":"appellation:saumur-champigny","layer":"reference","name":"Saumur-Champigny AOP","status":"active","type":"appellation"}
+{"id":"appellation:montlouis-sur-loire","layer":"reference","name":"Montlouis-sur-Loire AOP","status":"active","type":"appellation"}
+{"id":"appellation:cheverny","layer":"reference","name":"Cheverny AOP","status":"active","type":"appellation"}
+{"id":"appellation:cour-cheverny","layer":"reference","name":"Cour-Cheverny AOP","status":"active","type":"appellation"}
+{"id":"appellation:cremant-de-loire","layer":"reference","name":"Crémant de Loire AOP","status":"active","type":"appellation"}
+{"id":"appellation:coteaux-du-loir","layer":"reference","name":"Coteaux du Loir AOP","status":"active","type":"appellation"}
+{"id":"appellation:jasnieres","layer":"reference","name":"Jasnières AOP","status":"active","type":"appellation"}
+{"alternate_names":[{"kind":"legal","language":"fr","name":"Blanc Fumé de Pouilly","jurisdiction":"France"}],"id":"appellation:pouilly-fume","layer":"reference","name":"Pouilly-Fumé AOP","status":"active","type":"appellation"}
+{"id":"appellation:pouilly-sur-loire","layer":"reference","name":"Pouilly-sur-Loire AOP","status":"active","type":"appellation"}
+{"id":"appellation:igp-val-de-loire","layer":"reference","name":"Val de Loire IGP","status":"active","summary":"The current protected geographical indication; distinct from the analytical Loire Valley world and UNESCO's cultural-landscape property.","type":"appellation"}
+{"id":"grape:pineau-d-aunis","layer":"reference","name":"Pineau d’Aunis","status":"active","type":"grape"}
+{"id":"grape:grolleau","layer":"reference","name":"Grolleau","status":"active","type":"grape"}
+{"alternate_names":[{"kind":"synonym","language":"fr","name":"Malbec"}],"id":"grape:cot","layer":"reference","name":"Côt","status":"active","type":"grape"}
+{"id":"grape:romorantin","layer":"reference","name":"Romorantin","status":"active","type":"grape"}
+{"id":"grape:folle-blanche","layer":"reference","name":"Folle Blanche","status":"active","type":"grape"}
+{"id":"producer:domaines-landron","layer":"reference","name":"Domaines Landron","status":"active","tags":["loire","muscadet","pays-nantais"],"type":"producer"}
+{"id":"producer:coulee-de-serrant","layer":"reference","name":"La Coulée de Serrant","status":"active","tags":["loire","savennieres","chenin"],"type":"producer"}
+{"id":"producer:clos-rougeard","layer":"reference","name":"Clos Rougeard","status":"active","tags":["loire","saumur","saumur-champigny"],"type":"producer"}
+{"id":"producer:domaine-alexandre-bain","layer":"reference","name":"Domaine Alexandre Bain","status":"active","tags":["loire","centre-loire","pouilly"],"type":"producer"}
+{"id":"producer:pierre-olivier-bonhomme","layer":"reference","name":"Domaine Pierre-Olivier Bonhomme","status":"active","tags":["loire","touraine","negoce"],"type":"producer"}
+{"id":"producer:domaine-mosse","layer":"reference","name":"Domaine Mosse","status":"active","tags":["loire","anjou","family-succession"],"type":"producer"}
+{"id":"producer:domaine-du-collier","layer":"reference","name":"Domaine du Collier","status":"active","tags":["loire","saumur","foucault-lineage"],"type":"producer"}
+{"id":"producer:domaine-de-belliviere","layer":"reference","name":"Domaine de Bellivière","status":"active","tags":["loire","vallee-du-loir","jasnieres"],"type":"producer"}
+{"id":"producer:domaine-breton","layer":"reference","name":"Domaine Catherine et Pierre Breton","status":"active","tags":["loire","bourgueil","chinon"],"type":"producer"}
+{"id":"person:jo-landron","layer":"reference","name":"Jo Landron","status":"active","type":"person"}
+{"id":"person:nicolas-joly","layer":"reference","name":"Nicolas Joly","status":"active","type":"person"}
+{"id":"person:virginie-joly","layer":"reference","name":"Virginie Joly","status":"active","type":"person"}
+{"alternate_names":[{"kind":"local","name":"Charly Foucault"}],"id":"person:jean-louis-foucault","layer":"reference","name":"Jean-Louis Foucault","status":"historical","type":"person"}
+{"alternate_names":[{"kind":"local","name":"Nady Foucault"}],"id":"person:bernard-foucault","layer":"reference","name":"Bernard Foucault","status":"historical","type":"person"}
+{"id":"person:antoine-foucault","layer":"reference","name":"Antoine Foucault","status":"active","type":"person"}
+{"id":"person:alexandre-bain","layer":"reference","name":"Alexandre Bain","status":"active","type":"person"}
+{"id":"person:pierre-olivier-bonhomme","layer":"reference","name":"Pierre-Olivier Bonhomme","status":"active","type":"person"}
+{"id":"person:christian-chaussard","layer":"reference","name":"Christian Chaussard","status":"historical","type":"person"}
+{"id":"person:agnes-mosse","layer":"reference","name":"Agnès Mosse","status":"active","type":"person"}
+{"id":"person:rene-mosse","layer":"reference","name":"René Mosse","status":"active","type":"person"}
+{"id":"person:joseph-mosse","layer":"reference","name":"Joseph Mosse","status":"active","type":"person"}
+{"id":"person:sylvestre-mosse","layer":"reference","name":"Sylvestre Mosse","status":"active","type":"person"}
+{"id":"person:eric-nicolas","layer":"reference","name":"Éric Nicolas","status":"active","type":"person"}
+{"id":"person:christine-nicolas","layer":"reference","name":"Christine Nicolas","status":"active","type":"person"}
+{"id":"person:clement-nicolas","layer":"reference","name":"Clément Nicolas","status":"active","type":"person"}
+{"id":"person:laure-anne-nicolas","layer":"reference","name":"Laure-Anne Nicolas","status":"active","type":"person"}
+{"id":"person:catherine-breton","layer":"reference","name":"Catherine Breton","status":"active","type":"person"}
+{"id":"person:pierre-breton","layer":"reference","name":"Pierre Breton","status":"active","type":"person"}
+{"id":"institution:interloire","layer":"reference","name":"InterLoire","status":"active","summary":"The Loire wine interprofession whose published operating scope must not be silently expanded to all Centre-Loire vineyards.","type":"institution"}
+{"alternate_names":[{"kind":"synonym","name":"BIVC"}],"id":"institution:bivc","layer":"reference","name":"Bureau Interprofessionnel des Vins du Centre-Loire","status":"active","type":"institution"}
+{"id":"institution:renaissance-des-appellations","layer":"reference","name":"Renaissance des Appellations","status":"active","type":"institution"}
+{"id":"institution:bouygues-family","layer":"reference","name":"Bouygues family","status":"active","type":"institution"}

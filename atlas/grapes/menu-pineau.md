@@ -9,9 +9,9 @@ The machine graph and generated relationships below provide the current orientat
 
 This section is generated from governed profile dispositions, editorial anchors, and supported graph relationships. It is not a hand-maintained second knowledge graph.
 
-- [Clos du Tue-Boeuf](../producers/clos-du-tue-boeuf.md) — producer; navigation node
+- [Clos du Tue-Boeuf](../producers/clos-du-tue-boeuf.md) — producer; baseline reference
 - [France](../countries/france/README.md) — country; baseline reference
-- [Loire Valley](../countries/france/regions/loire-valley.md) — region; baseline reference
+- [Loire Valley](../countries/france/regions/loire-valley.md) — region; deep reference
 - [Vin de France](../classifications/vin-de-france.md) — classification; navigation node
 <!-- END GENERATED CARTA NAVIGATION -->
 

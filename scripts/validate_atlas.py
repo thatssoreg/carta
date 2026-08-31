@@ -26,6 +26,7 @@ EXPERIENCE_LINEAGE = [
     "data/atlas/run-07-editorial-foundation.json",
     "data/atlas/run-08-beaujolais-canonical-ingestion.json",
     "data/atlas/run-09-beaujolais-world.json",
+    "data/atlas/run-17-loire-valley-world.json",
 ]
 
 INAO_DATASET_ID = "spatial-dataset:inao-aires-geographiques-siqo-2026-08-24"
@@ -267,10 +268,10 @@ def validate_native_experience(authority: dict[str, Any]) -> dict[str, Any]:
     entries = read_json(PUBLIC_DATA_DIR / "atlas-entry-points.json")
     if entries.get("generated_from") != EXPERIENCE_LINEAGE:
         fail("atlas-entry-points.json: experience config lineage is stale")
-    if entries.get("release") != "atlas-run-09-beaujolais-world":
+    if entries.get("release") != "atlas-run-17-loire-valley-world":
         fail("atlas-entry-points.json: release marker is stale")
-    if len(entries.get("entry_points", [])) != 5:
-        fail("atlas-entry-points.json: Beaujolais needs five focused learner questions")
+    if len(entries.get("entry_points", [])) != 8:
+        fail("atlas-entry-points.json: Loire needs one core and seven supporting questions")
     entry_ids: set[str] = set()
     for entry in entries["entry_points"]:
         if entry["id"] in entry_ids:
@@ -306,7 +307,7 @@ def validate_editorial_experience(
     value = read_json(PUBLIC_DATA_DIR / "atlas-editorial.json")
     if value.get("generated_from") != EXPERIENCE_LINEAGE:
         fail("atlas-editorial.json: experience config lineage is stale")
-    if value.get("release") != "atlas-run-09-beaujolais-world":
+    if value.get("release") != "atlas-run-17-loire-valley-world":
         fail("atlas-editorial.json: release marker is stale")
     legend = value.get("legend", [])
     if {item.get("id") for item in legend} != {
@@ -361,8 +362,9 @@ def validate_editorial_experience(
         fail("atlas-editorial.json: Jura Keep wandering set must contain three routes")
     bearn = configured_subjects.get("place:bearn", {})
     beaujolais = configured_subjects.get("place:beaujolais", {})
-    if not all(world.get("regional_world") for world in (jura, bearn, beaujolais)):
-        fail("atlas-editorial.json: Jura, Béarn and Beaujolais must share the regional-world contract")
+    loire = configured_subjects.get("place:loire-valley", {})
+    if not all(world.get("regional_world") for world in (jura, bearn, beaujolais, loire)):
+        fail("atlas-editorial.json: Jura, Béarn, Beaujolais and Loire must share the regional-world contract")
     if len(bearn.get("hero_facts", [])) != 2:
         fail("atlas-editorial.json: Béarn opening needs two high-value facts")
     if len(bearn.get("grape_cards", [])) != 5:
@@ -396,6 +398,20 @@ def validate_editorial_experience(
         fail("atlas-editorial.json: Beaujolais invents a sensory Tell")
     if not beaujolais.get("then_now"):
         fail("atlas-editorial.json: Beaujolais must use Then / Now meaningfully")
+    if len(loire.get("hero_facts", [])) != 3:
+        fail("atlas-editorial.json: Loire opening needs three bounded facts")
+    if len(loire.get("grape_cards", [])) != 8:
+        fail("atlas-editorial.json: Loire grape grammar must distinguish eight routes")
+    if len(loire.get("people", [])) != 5:
+        fail("atlas-editorial.json: Loire People pillar must feature the five producer doors")
+    if len(loire.get("map_moments", [])) != 4:
+        fail("atlas-editorial.json: Loire needs four bounded map moments")
+    if set(loire.get("pillar_map_reactions", {})) != {
+        "place", "grapes", "people", "culture", "rules"
+    }:
+        fail("atlas-editorial.json: Loire pillar map reactions are incomplete")
+    if any(signal == "tell" for signal in nested_values(loire, "signal")):
+        fail("atlas-editorial.json: Loire invents a sensory Tell")
     # No world may borrow another world's voice: each regional world carries its
     # own pillar copy, Place story and rule grammar, or it does not ship.
     for subject_id, editorial in configured_subjects.items():
@@ -800,10 +816,12 @@ def validate_terrain(
     if descriptor.get("recipe") != manifest["transformations"]:
         fail("atlas-terrain.json: published recipe and manifest transformations disagree")
     terrains = descriptor.get("terrains", [])
-    if {terrain.get("id") for terrain in terrains} != {"bearn-jurancon", "beaujolais"}:
+    if {terrain.get("id") for terrain in terrains} != {
+        "bearn-jurancon", "beaujolais", "savennieres-layon", "sancerre"
+    }:
         fail("atlas-terrain.json: bounded terrain extent set is incomplete")
-    if len(manifest["source_files"]) != 8:
-        fail("terrain: source file set must contain six Pyrenean and two Beaujolais tiles")
+    if len(manifest["source_files"]) != 10:
+        fail("terrain: source file set must contain six Pyrenean, two Beaujolais and two Loire tiles")
 
     descriptor_path = "atlas-app/public/data/atlas-terrain.json"
     terrain_asset_paths = {
@@ -814,7 +832,7 @@ def validate_terrain(
     artifacts = {artifact["path"]: artifact for artifact in manifest["derived_artifacts"]}
     expected = terrain_asset_paths | {descriptor_path}
     if set(artifacts) != expected:
-        fail("terrain: derived artifact set does not match both bounded terrain extents")
+        fail("terrain: derived artifact set does not match the four bounded terrain extents")
     for path, artifact in artifacts.items():
         if artifact.get("product_class") != "derived_spatial_product":
             fail(f"{path}: terrain assets must be registered as derived spatial products")
@@ -1073,14 +1091,20 @@ def validate_atlas() -> dict[str, Any]:
         mapping for mapping in mappings if mapping["source_dataset_id"] == INAO_DATASET_ID
     ]
     for mapping in inao_mappings:
-        matches = source_ids.get(mapping["source_identifier"], [])
+        matches = [
+            feature
+            for feature in source_ids.get(mapping["source_identifier"], [])
+            if feature["properties"]["carta_entity_id"] == mapping["carta_entity_id"]
+        ]
         if len(matches) != 1:
             fail(
-                f"INAO {mapping['source_identifier']}: accepted mapping resolves to {len(matches)} features"
+                f"INAO {mapping['source_identifier']}: accepted mapping resolves to "
+                f"{len(matches)} governed features"
             )
         properties = matches[0]["properties"]
-        if properties["carta_entity_id"] != mapping["carta_entity_id"]:
-            fail(f"INAO {mapping['source_identifier']}: GeoJSON CARTA ID mismatch")
+        siblings = source_ids.get(mapping["source_identifier"], [])
+        if len(siblings) > 1 and properties["name"] != mapping["source_name"]:
+            fail(f"INAO {mapping['source_identifier']}: reused ID was not name-disambiguated")
 
     mapped_features = [
         feature for feature in all_wine_features if feature["properties"]["carta_entity_id"]

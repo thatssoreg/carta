@@ -1,0 +1,331 @@
+{
+  "extends": "data/atlas/run-09-beaujolais-world.json",
+  "version": 8,
+  "release": "atlas-run-17-loire-valley-world",
+  "entry_points": [
+    {
+      "claim_ids": ["claim:loire-analytical-scope-17", "claim:loire-physical-transitions-17"],
+      "id": "entry:loire-one-river-many-worlds",
+      "kicker": "One river · several wine worlds · the rules keep changing",
+      "subject_id": "place:loire-valley",
+      "title": "How can one river connect Muscadet, Savennières, Vouvray, Chinon, and Sancerre without making them versions of the same place?"
+    },
+    {
+      "claim_ids": ["claim:loire-tributary-network-17"],
+      "id": "entry:loire-river-tributaries",
+      "kicker": "Loire · Sèvre Nantaise · Layon · Vienne · Cher · Loir",
+      "subject_id": "geographic_feature:loire-river",
+      "title": "When does the river connect the map, and when does a tributary open another world?"
+    },
+    {
+      "claim_ids": ["claim:loire-human-lineages-17", "claim:bonhomme-lineage-17", "claim:mosse-influences-17"],
+      "id": "entry:loire-lineages-not-school",
+      "kicker": "Family · work · influence · collaboration · succession",
+      "subject_id": "producer:clos-du-tue-boeuf",
+      "title": "How can human transmission travel across the Loire without becoming one natural-wine school?"
+    },
+    {
+      "claim_ids": ["claim:loire-vdf-friction-17", "claim:bain-control-dispute-17"],
+      "id": "entry:loire-vdf-literacy",
+      "kicker": "Classification · bottle · vintage · cause",
+      "subject_id": "classification:vin-de-france",
+      "title": "What does Vin de France tell you—and what does it never prove by itself?"
+    },
+    {
+      "claim_ids": ["claim:vallee-du-loir-role-17"],
+      "id": "entry:loire-loir-branch",
+      "kicker": "One missing e · a whole tributary branch",
+      "subject_id": "place:vallee-du-loir",
+      "title": "Why does the Loir matter to a complete Loire wine world?"
+    },
+    {
+      "claim_ids": ["claim:loire-legal-layer-distinction-17"],
+      "id": "entry:loire-which-map",
+      "kicker": "AOP · IGP · interprofession · UNESCO · CARTA",
+      "subject_id": "place:loire-valley",
+      "title": "When someone says ‘Val de Loire,’ which map do they mean?"
+    },
+    {
+      "claim_ids": ["claim:vouvray-current-context", "claim:loire-world-significance-10"],
+      "id": "entry:loire-chenin-forms",
+      "kicker": "Dry · demi-sec · sweet · sparkling · one grape",
+      "subject_id": "appellation:vouvray",
+      "title": "How can Chenin produce dry, sweet, and sparkling wines without changing grape identity?"
+    },
+    {
+      "claim_ids": ["claim:muscadet-sevre-melon-17"],
+      "id": "entry:loire-sur-lie",
+      "kicker": "Legal mention · bounded meaning · no style shortcut",
+      "subject_id": "appellation:muscadet-sevre-et-maine",
+      "title": "What does ‘sur lie’ legally tell you in Muscadet, and what does it not tell you?"
+    }
+  ],
+  "featured_world_ids": ["place:loire-valley", "place:beaujolais", "place:jura", "place:bearn", "place:burgundy"],
+  "native_subject_ids": [
+    "place:jura", "place:burgundy", "place:loire-valley", "place:beaujolais", "place:bearn",
+    "place:pupillin", "place:arbois", "place:rotalier", "place:mathenay", "place:villie-morgon", "place:fleurie", "place:odenas", "place:charnay-rhone", "place:duchy-of-burgundy",
+    "appellation:arbois", "appellation:cotes-du-jura", "appellation:chateau-chalon", "appellation:l-etoile", "appellation:cremant-du-jura", "appellation:macvin-du-jura",
+    "appellation:jurancon", "appellation:bearn", "appellation:pacherenc-du-vic-bilh", "appellation:irouleguy",
+    "appellation:beaujolais", "classification:beaujolais-villages-mention", "appellation:brouilly", "appellation:chenas", "appellation:chiroubles", "appellation:cote-de-brouilly", "appellation:fleurie", "appellation:julienas", "appellation:morgon", "appellation:moulin-a-vent", "appellation:regnie", "appellation:saint-amour", "classification:beaujolais-primeur-nouveau",
+    "grape:savagnin", "grape:chardonnay", "grape:poulsard", "grape:trousseau", "grape:pinot-noir", "grape:petit-manseng", "grape:gros-manseng", "grape:petit-courbu", "grape:courbu", "grape:raffiat-de-moncade", "grape:palomino-fino", "grape:gamay-noir-a-jus-blanc", "grape:gouais-blanc",
+    "producer:domaine-de-la-tournelle", "producer:domaine-labet", "producer:maison-pierre-overnoy", "producer:domaine-de-saint-pierre-jura", "producer:camin-larredya", "producer:domaine-cauhape", "producer:clos-uroulat", "producer:domaine-de-souch", "producer:imanol-garay", "producer:alfredo-egia-wine", "producer:domaine-marcel-lapierre", "producer:jean-foillard", "producer:chateau-thivin", "producer:domaine-de-la-grand-cour", "producer:domaine-des-terres-dorees",
+    "project:soleras-del-pacifico", "person:emmanuel-houillon", "person:pierre-overnoy", "person:imanol-garay", "person:alfredo-egia", "person:jules-chauvet", "person:jean-foillard",
+    "wine:domaine-de-la-tournelle-fleur-de-savagnin", "wine:domaine-labet-fleur-de-savagnin", "wine:domaine-labet-chardonnay-du-hasard", "wine:domaine-labet-la-bardette-chardonnay", "wine:chateau-renard", "wine:flor-of-evangelho",
+    "practice:ouillage", "practice:sous-voile-aging", "practice:carbonic-maceration", "practice:semi-carbonic-maceration", "practice:whole-cluster-fermentation", "ecosystem:gang-of-four-beaujolais", "historical_event:gamay-ordinance-1395", "geographic_feature:mont-brouilly", "geographic_feature:py-hill", "vineyard:cote-du-py",
+    "place:pays-nantais", "place:anjou-wine-region", "place:saumur-wine-region", "place:touraine-wine-region", "place:vallee-du-loir", "place:centre-loire",
+    "geographic_feature:loire-river", "geographic_feature:sevre-nantaise", "geographic_feature:layon-river", "geographic_feature:vienne-river", "geographic_feature:cher-river", "geographic_feature:loir-river",
+    "appellation:muscadet", "appellation:muscadet-sevre-et-maine", "appellation:anjou", "appellation:coteaux-du-layon", "appellation:savennieres", "appellation:savennieres-roche-aux-moines", "appellation:coulee-de-serrant", "appellation:saumur", "appellation:saumur-champigny", "appellation:vouvray", "appellation:montlouis-sur-loire", "appellation:chinon", "appellation:cheverny", "appellation:cour-cheverny", "appellation:cremant-de-loire", "appellation:coteaux-du-loir", "appellation:jasnieres", "appellation:sancerre", "appellation:pouilly-fume", "appellation:pouilly-sur-loire", "appellation:igp-val-de-loire",
+    "classification:vin-de-france", "wine:le-brin-de-chevre", "grape:melon-de-bourgogne", "grape:chenin-blanc", "grape:cabernet-franc", "grape:sauvignon", "grape:pineau-d-aunis", "grape:grolleau", "grape:cot", "grape:romorantin", "grape:folle-blanche", "grape:menu-pineau", "grape:petit-meslier",
+    "producer:domaines-landron", "producer:coulee-de-serrant", "producer:clos-rougeard", "producer:domaine-alexandre-bain", "producer:clos-du-tue-boeuf", "producer:domaine-huet", "producer:richard-leroy", "producer:pierre-olivier-bonhomme", "producer:domaine-mosse", "producer:domaine-du-collier", "producer:domaine-de-belliviere", "producer:domaine-breton", "producer:domaine-de-la-bergerie-anjou", "producer:le-grand-clere",
+    "person:jo-landron", "person:nicolas-joly", "person:virginie-joly", "person:jean-louis-foucault", "person:bernard-foucault", "person:antoine-foucault", "person:alexandre-bain", "person:thierry-puzelat", "person:zoe-puzelat", "person:pierre-olivier-bonhomme", "person:christian-chaussard", "person:agnes-mosse", "person:rene-mosse", "person:joseph-mosse", "person:sylvestre-mosse", "person:eric-nicolas", "person:christine-nicolas", "person:clement-nicolas", "person:laure-anne-nicolas", "person:catherine-breton", "person:pierre-breton",
+    "institution:interloire", "institution:bivc", "institution:renaissance-des-appellations", "institution:bouygues-family"
+  ],
+  "producer_ids": [
+    "producer:domaine-de-la-tournelle", "producer:domaine-labet", "producer:maison-pierre-overnoy", "producer:domaine-de-saint-pierre-jura",
+    "producer:camin-larredya", "producer:domaine-cauhape", "producer:clos-uroulat", "producer:domaine-de-souch",
+    "producer:domaine-marcel-lapierre", "producer:jean-foillard", "producer:chateau-thivin", "producer:domaine-de-la-grand-cour", "producer:domaine-des-terres-dorees",
+    "producer:domaines-landron", "producer:coulee-de-serrant", "producer:clos-rougeard", "producer:clos-du-tue-boeuf", "producer:domaine-alexandre-bain", "producer:domaine-huet", "producer:richard-leroy", "producer:domaine-mosse", "producer:domaine-du-collier", "producer:domaine-de-belliviere"
+  ],
+  "editorial": {
+    "map_click_priority": {
+      "appellation:coulee-de-serrant": 4,
+      "appellation:savennieres-roche-aux-moines": 5,
+      "appellation:saumur-champigny": 7,
+      "appellation:muscadet-sevre-et-maine": 8,
+      "appellation:savennieres": 10,
+      "appellation:montlouis-sur-loire": 10,
+      "appellation:vouvray": 11,
+      "appellation:chinon": 11,
+      "appellation:cheverny": 11,
+      "appellation:cour-cheverny": 11,
+      "appellation:coteaux-du-loir": 11,
+      "appellation:jasnieres": 10,
+      "appellation:sancerre": 10,
+      "appellation:pouilly-fume": 10,
+      "appellation:pouilly-sur-loire": 10,
+      "appellation:saumur": 30,
+      "appellation:anjou": 40,
+      "appellation:muscadet": 50,
+      "appellation:cremant-de-loire": 120,
+      "appellation:igp-val-de-loire": 200
+    },
+    "subjects": {
+      "place:loire-valley": {
+        "regional_world": true,
+        "claim_ids": [
+          "claim:loire-analytical-scope-17", "claim:loire-component-places-17", "claim:loire-physical-transitions-17", "claim:loire-tributary-network-17", "claim:loire-human-lineages-17", "claim:loire-legal-layer-distinction-17", "claim:loire-current-legal-constellation-17", "claim:loire-vdf-friction-17", "claim:loire-interloire-area-2024-10", "claim:loire-cabernet-franc-share-2023-10", "claim:loire-chenin-share-2023-10", "claim:loire-melon-share-2023-10", "claim:loire-sauvignon-share-2023-10", "claim:loire-secondary-grapes-17"
+        ],
+        "hero_kicker": "One river · several wine worlds · no single natural-wine school",
+        "thesis": "One river provides continuity, not sameness. From Atlantic Muscadet to Savennières, Vouvray, Chinon and Sancerre, physical ground, legal origin, grape, wine form and producer history keep changing; the human equivalent is a set of overlapping family, work, advocacy, collaboration and succession lineages—not one Loire natural-wine origin story.",
+        "hero_facts": [
+          {"claim_ids": ["claim:loire-component-places-17"], "label": "Atlas structure", "note": "five main components · one tributary branch", "value": "5 + 1"},
+          {"claim_ids": ["claim:loire-interloire-area-2024-10"], "label": "InterLoire scope", "note": "not every Loire vineyard", "value": "42,000 ha"},
+          {"claim_ids": ["claim:loire-cabernet-franc-share-2023-10", "claim:loire-chenin-share-2023-10", "claim:loire-melon-share-2023-10", "claim:loire-sauvignon-share-2023-10"], "label": "Four main routes", "note": "shares use InterLoire's stated 2023 denominator", "value": "29 · 18 · 14 · 9%"}
+        ],
+        "place_story": {
+          "button": "Follow the river, then break the line",
+          "kicker": "The map is a sequence, not a carpet",
+          "text": "Start west at Muscadet, cross the Armorican-to-schist hinge around Anjou, separate Saumur's tuffeau country, read Vouvray and Montlouis across the river, branch north along the Loir, then reset at the hills of Centre-Loire. Regulatory outlines stay active; the analytical components and terrain are context, never substitute law.",
+          "title": "One corridor, six reading positions"
+        },
+        "map_moments": [
+          {"claim_ids": ["claim:pays-nantais-role-17", "claim:muscadet-sevre-melon-17"], "eyebrow": "Atlantic opening · Melon · nested origin", "subject_id": "place:pays-nantais", "text": "Begin with Muscadet and Muscadet Sèvre et Maine without turning the Pays Nantais into another appellation.", "title": "Pays Nantais"},
+          {"claim_ids": ["claim:anjou-role-17", "claim:savennieres-chenin-17"], "eyebrow": "Schist slopes · Layon · three Savennières identities", "subject_id": "appellation:savennieres", "text": "Use bounded relief around Savennières and the Layon, while Savennières, Roche aux Moines and Coulée de Serrant retain separate legal shapes.", "title": "Savennières / Layon"},
+          {"claim_ids": ["claim:vallee-du-loir-role-17"], "eyebrow": "Tributary branch · Jasnières · Coteaux du Loir", "subject_id": "place:vallee-du-loir", "text": "Move north to a branch that disappears when the Loire is treated as a single west-east stripe.", "title": "Vallée du Loir"},
+          {"claim_ids": ["claim:centre-loire-role-17", "claim:bain-control-dispute-17"], "eyebrow": "Eastern hills · distinct institution · legal friction", "subject_id": "place:centre-loire", "text": "Read Sancerre and Pouilly through their own legal origins and bounded terrain, then keep Bain's 2015–17 control case tied to its actual cause and dates.", "title": "Centre-Loire"}
+        ],
+        "pillar_copy": {
+          "place": {"intro": "Atlantic west · schist hinge · tuffeau middle · sedimentary east", "lede": "The Loire is the continuity line. Each component place interrupts any attempt to make the river a single terroir or legal boundary."},
+          "grapes": {"intro": "Melon · Chenin · Cabernet Franc · Sauvignon · a long second line", "lede": "Four major routes organize the corridor, while Pineau d’Aunis, Grolleau, Gamay, Côt, Romorantin, Folle Blanche and Menu Pineau keep the map plural."},
+          "people": {"intro": "Five doors · a larger ecology immediately behind them", "lede": "Landron, Joly, Clos Rougeard, Tue-Boeuf and Bain do five different teaching jobs. Huet, Leroy, Mosse, Collier, Bellivière, Breton and others prevent those doors from becoming a canon."},
+          "culture": {"intro": "Family · biodynamic advocacy · work lines · fairs · legal disputes", "lede": "Human networks jump across the river sequence. Shared geography, importer or subculture never proves mentorship, collaboration or one movement identity."},
+          "rules": {"intro": "AOP · mention · IGP · Vin de France · institutional scope", "lede": "Rules answer bounded legal questions. They do not map actual vines, certify quality, identify a natural-wine philosophy or turn UNESCO's landscape into a wine origin."}
+        },
+        "grape_cards": [
+          {"claim_ids": ["claim:loire-melon-share-2023-10", "claim:muscadet-sevre-melon-17"], "copy": "The western anchor: Melon makes Muscadet legible, while broad Muscadet, Muscadet Sèvre et Maine and the `sur lie` mention remain different legal questions.", "metric": "14%", "metric_label": "InterLoire guide's stated 2023 scope", "primary": true, "target_id": "grape:melon-de-bourgogne"},
+          {"claim_ids": ["claim:loire-chenin-share-2023-10", "claim:savennieres-chenin-17", "claim:touraine-role-17"], "copy": "Chenin crosses dry, sweet and sparkling forms from Anjou through Saumur and Vouvray/Montlouis, so the grape connects the map without flattening origin or wine form.", "metric": "18%", "metric_label": "InterLoire guide's stated 2023 scope", "primary": true, "target_id": "grape:chenin-blanc"},
+          {"claim_ids": ["claim:loire-cabernet-franc-share-2023-10", "claim:saumur-role-17", "claim:touraine-role-17"], "copy": "Cabernet Franc opens Saumur-Champigny and Chinon through separate legal and physical places, with Clos Rougeard and Breton providing different human routes.", "metric": "29%", "metric_label": "InterLoire guide's stated 2023 scope", "primary": true, "target_id": "grape:cabernet-franc"},
+          {"claim_ids": ["claim:loire-sauvignon-share-2023-10", "claim:centre-loire-role-17"], "copy": "Sauvignon crosses Touraine and Centre-Loire, but Sancerre, Pouilly-Fumé, Cheverny and producer-specific classification decisions remain separate.", "metric": "9%", "metric_label": "InterLoire guide's stated 2023 scope", "primary": true, "target_id": "grape:sauvignon"},
+          {"claim_ids": ["claim:loire-secondary-grapes-17", "claim:vallee-du-loir-role-17"], "copy": "A high-value route through the Loir branch and parts of Touraine; its presence is not a universal Loire permission.", "metric": "Loir branch", "metric_label": "governed occurrence route", "target_id": "grape:pineau-d-aunis"},
+          {"claim_ids": ["claim:loire-secondary-grapes-17"], "copy": "Anjou and Touraine red-wine diversity stays visible behind the four main regional routes.", "metric": "Second line", "metric_label": "governed occurrence route", "target_id": "grape:grolleau"},
+          {"claim_ids": ["claim:loire-secondary-grapes-17", "claim:touraine-role-17"], "copy": "Cour-Cheverny gives Romorantin a precise legal door; CARTA does not turn familiar origin legends into ampelographic fact.", "metric": "Cour-Cheverny", "metric_label": "specific legal route", "target_id": "grape:romorantin"},
+          {"claim_ids": ["claim:menu-pineau-orbois-name", "claim:loire-secondary-grapes-17"], "copy": "Menu Pineau—also governed here under its local Orbois name—opens Tue-Boeuf and bottle-specific Vin de France questions.", "metric": "Menu Pineau / Orbois", "metric_label": "governed name route", "target_id": "grape:menu-pineau"}
+        ],
+        "people": [
+          {"base": "La Haie-Fouassière · production base", "claim_ids": ["claim:landron-history-17", "claim:landron-base-17", "claim:muscadet-sevre-melon-17"], "cues": ["Muscadet", "soil work", "dated organic conversion", "lees and law kept separate"], "explains": "How a western family estate can teach farming change and Muscadet structure without becoming the origin of natural Muscadet.", "reason": "Landron opens the Atlantic west with a source-pinned chronology and a precise warning: estate practice is not an appellation rule.", "target_id": "producer:domaines-landron", "who": "Jo Landron and Domaines Landron"},
+          {"base": "Savennières · Roche aux Moines route", "claim_ids": ["claim:coulee-biodynamic-history-17", "claim:joly-founded-renaissance-17", "claim:coulee-base-17"], "cues": ["Chenin", "biodynamic conversion", "advocacy network", "belief kept attributed"], "explains": "How one estate can become an international movement node without making the movement equal to the estate or the region.", "reason": "Joly separates documented estate conversion and organizational founding from mythology about inventing biodynamics or defining natural wine.", "target_id": "producer:coulee-de-serrant", "who": "La Coulée de Serrant and Nicolas Joly"},
+          {"base": "Chacé · exact estate base", "claim_ids": ["claim:rougeard-history-ownership-17", "claim:rougeard-wine-routes-17", "claim:rougeard-base-17"], "cues": ["Foucault lineage", "Cabernet Franc", "Chenin", "2017 acquisition"], "explains": "What survives—and what must be re-dated—when a multigenerational benchmark changes ownership.", "reason": "Clos Rougeard makes family history, red/white Saumur routes and ownership discontinuity visible without assigning an automatic natural-wine label.", "target_id": "producer:clos-rougeard", "who": "Clos Rougeard across the Foucault-to-Bouygues transition"},
+          {"base": "Les Montils · municipality point", "claim_ids": ["claim:tue-boeuf-identity", "claim:tue-boeuf-base-17", "claim:bonhomme-lineage-17"], "cues": ["Cheverny", "Menu Pineau", "work line", "estate / purchased fruit"], "explains": "How transmission moves through family, seasonal work, partnership and négociant fruit while each predicate and production stream stays distinct.", "reason": "Tue-Boeuf is the community/transmission door the first five need; Huet remains the first major producer immediately behind it for Vouvray and Chenin forms.", "target_id": "producer:clos-du-tue-boeuf", "who": "Clos du Tue-Boeuf and the Puzelat work line"},
+          {"base": "Tracy-sur-Loire · Boisfleury", "claim_ids": ["claim:bain-control-dispute-17", "claim:bain-base-17", "claim:centre-loire-role-17"], "cues": ["Pouilly-Fumé", "mandatory control", "2015–17 court chronology", "classification precision"], "explains": "What an appellation conflict actually proves when cause, date, legal remedy and later labels are not collapsed.", "reason": "Bain is the eastern legal-literacy door and the correction to the viral claim that AOC rights were removed because a wine tasted too natural.", "target_id": "producer:domaine-alexandre-bain", "who": "Alexandre Bain and a bounded Pouilly-Fumé control dispute"}
+        ],
+        "lenses": [
+          {"claim_ids": ["claim:loire-analytical-scope-17", "claim:loire-legal-layer-distinction-17", "claim:centre-loire-role-17"], "id": "loire-scope-literacy", "signal": "iykyk", "target_id": "institution:bivc", "text": "InterLoire's published operating scope, BIVC's Centre-Loire scope, the Val de Loire IGP, UNESCO's cultural landscape and CARTA's analytical region are not interchangeable maps.", "title": "Every Loire number and boundary needs a denominator"},
+          {"claim_ids": ["claim:loire-human-lineages-17", "claim:bonhomme-lineage-17", "claim:mosse-influences-17"], "id": "loire-network-predicate-literacy", "signal": "iykyk", "target_id": "producer:pierre-olivier-bonhomme", "text": "Worked for, collaborated with, influenced by, family of, acquired by and succeeded by describe different transmissions. Shared geography or reputation creates none of them automatically.", "title": "A network becomes useful when its edges stay exact"}
+        ],
+        "then_now": {
+          "claim_ids": ["claim:bain-control-dispute-17", "claim:loire-vdf-friction-17"],
+          "intro": "A dated control dispute is not a timeless estate classification or a tasting myth.",
+          "now": {"label": "NOW · classification literacy", "text": "Read AOP or Vin de France on the actual wine and vintage; neither category proves a production philosophy."},
+          "then": {"label": "2015–17 · the documented case", "text": "Bain's habilitation dispute concerned required control, and the Dijon administrative court restored his rights in May 2017."},
+          "title": "Legal friction has a cause, a period and a remedy"
+        },
+        "rules": {
+          "groups": [
+            {"ids": ["appellation:muscadet", "appellation:muscadet-sevre-et-maine"], "label": "Pays Nantais origins", "note": "Broad Muscadet and Muscadet Sèvre et Maine are separate governed areas; `sur lie` is a legal mention, not another regional synonym."},
+            {"ids": ["appellation:anjou", "appellation:coteaux-du-layon", "appellation:savennieres", "appellation:savennieres-roche-aux-moines", "appellation:coulee-de-serrant"], "label": "Anjou and Savennières family", "note": "Overlapping or neighboring Chenin contexts retain separate regulatory identities; sweet, dry and producer stories do not merge their shapes."},
+            {"ids": ["appellation:saumur", "appellation:saumur-champigny"], "label": "Saumur origins", "note": "Saumur's multiple wine forms and Saumur-Champigny's red-wine identity belong to distinct legal readings inside the analytical Saumur component."},
+            {"ids": ["appellation:vouvray", "appellation:montlouis-sur-loire", "appellation:chinon", "appellation:cheverny", "appellation:cour-cheverny"], "label": "Touraine's separate origins", "note": "Opposite-bank Chenin, Cabernet Franc and Cheverny/Romorantin routes remain different legal places, not one middle-Loire appellation."},
+            {"ids": ["appellation:coteaux-du-loir", "appellation:jasnieres"], "label": "Vallée du Loir branch", "note": "Two legal origins keep the tributary branch visible; neither is a polygon for the whole analytical Vallée du Loir."},
+            {"ids": ["appellation:sancerre", "appellation:pouilly-fume", "appellation:pouilly-sur-loire"], "label": "Centre-Loire origins", "note": "Sancerre, Pouilly-Fumé and Pouilly-sur-Loire retain separate legal identities inside a distinct institutional and analytical component."},
+            {"ids": ["appellation:cremant-de-loire", "appellation:igp-val-de-loire"], "label": "Broad overlapping categories", "note": "Crémant de Loire and Val de Loire IGP cover broad legal geographies; they stay below more specific active origins in click priority and never define the CARTA region."}
+          ],
+          "intro": "The Loire is not a ladder. Read specific AOPs, broader overlapping categories and Vin de France as different legal questions; keep InterLoire, BIVC and UNESCO as separately scoped institutions or cultural geography, and never infer vineyard parcels from an INAO regulatory-area surface."
+        },
+        "featured_connections": [
+          {"action": "Follow the river", "claim_ids": ["claim:loire-tributary-network-17"], "reason": "The Loire supplies continuity while five tributaries reveal why the wine world cannot be one linear explanation.", "signal": "rabbit-hole", "target_id": "geographic_feature:loire-river"},
+          {"action": "Follow Chenin", "claim_ids": ["claim:loire-chenin-share-2023-10", "claim:savennieres-chenin-17", "claim:touraine-role-17"], "reason": "One grape crosses dry, sweet and sparkling forms, several geological families and separate legal origins.", "signal": "rabbit-hole", "target_id": "grape:chenin-blanc"},
+          {"action": "Take the tributary branch", "claim_ids": ["claim:vallee-du-loir-role-17", "claim:loire-secondary-grapes-17"], "reason": "Jasnières, Coteaux du Loir, Bellivière and Pineau d’Aunis prevent the regional route from becoming a main-stem-only canon.", "signal": "rabbit-hole", "target_id": "place:vallee-du-loir"}
+        ],
+        "map_view": {
+          "area_subject_ids": ["appellation:muscadet", "appellation:muscadet-sevre-et-maine", "appellation:anjou", "appellation:coteaux-du-layon", "appellation:savennieres", "appellation:savennieres-roche-aux-moines", "appellation:coulee-de-serrant", "appellation:saumur", "appellation:saumur-champigny", "appellation:vouvray", "appellation:montlouis-sur-loire", "appellation:chinon", "appellation:cheverny", "appellation:cour-cheverny", "appellation:cremant-de-loire", "appellation:coteaux-du-loir", "appellation:jasnieres", "appellation:sancerre", "appellation:pouilly-fume", "appellation:pouilly-sur-loire", "appellation:igp-val-de-loire"],
+          "bounds": [-1.75, 46.80, 3.35, 48.10],
+          "max_zoom": 8.4,
+          "producer_ids": ["producer:domaines-landron", "producer:coulee-de-serrant", "producer:clos-rougeard", "producer:clos-du-tue-boeuf", "producer:domaine-alexandre-bain", "producer:domaine-huet", "producer:richard-leroy", "producer:domaine-mosse", "producer:domaine-du-collier", "producer:domaine-de-belliviere"]
+        },
+        "pillar_map_reactions": {
+          "place": {"area_subject_ids": ["appellation:muscadet-sevre-et-maine", "appellation:savennieres", "appellation:saumur-champigny", "appellation:vouvray", "appellation:montlouis-sur-loire", "appellation:jasnieres", "appellation:sancerre", "appellation:pouilly-fume"], "producer_ids": []},
+          "grapes": {"area_subject_ids": ["appellation:muscadet-sevre-et-maine", "appellation:savennieres", "appellation:saumur-champigny", "appellation:vouvray", "appellation:chinon", "appellation:cour-cheverny", "appellation:jasnieres", "appellation:sancerre", "appellation:pouilly-fume"], "producer_ids": ["producer:domaines-landron", "producer:domaine-huet", "producer:clos-rougeard", "producer:domaine-de-belliviere"]},
+          "people": {"area_subject_ids": ["appellation:muscadet-sevre-et-maine", "appellation:coulee-de-serrant", "appellation:saumur-champigny", "appellation:cheverny", "appellation:pouilly-fume"], "producer_ids": ["producer:domaines-landron", "producer:coulee-de-serrant", "producer:clos-rougeard", "producer:clos-du-tue-boeuf", "producer:domaine-alexandre-bain"]},
+          "culture": {"area_subject_ids": ["appellation:savennieres", "appellation:saumur-champigny", "appellation:cheverny", "appellation:jasnieres", "appellation:pouilly-fume"], "producer_ids": ["producer:coulee-de-serrant", "producer:clos-rougeard", "producer:clos-du-tue-boeuf", "producer:domaine-alexandre-bain", "producer:richard-leroy", "producer:domaine-mosse", "producer:domaine-du-collier", "producer:domaine-de-belliviere"]},
+          "rules": {"area_subject_ids": ["appellation:muscadet", "appellation:muscadet-sevre-et-maine", "appellation:anjou", "appellation:coteaux-du-layon", "appellation:savennieres", "appellation:savennieres-roche-aux-moines", "appellation:coulee-de-serrant", "appellation:saumur", "appellation:saumur-champigny", "appellation:vouvray", "appellation:montlouis-sur-loire", "appellation:chinon", "appellation:cheverny", "appellation:cour-cheverny", "appellation:cremant-de-loire", "appellation:coteaux-du-loir", "appellation:jasnieres", "appellation:sancerre", "appellation:pouilly-fume", "appellation:pouilly-sur-loire", "appellation:igp-val-de-loire"], "producer_ids": []}
+        },
+        "map_reaction": {"area_subject_ids": ["appellation:muscadet-sevre-et-maine", "appellation:savennieres", "appellation:saumur-champigny", "appellation:vouvray", "appellation:chinon", "appellation:jasnieres", "appellation:sancerre", "appellation:pouilly-fume"], "producer_ids": ["producer:domaines-landron", "producer:coulee-de-serrant", "producer:clos-rougeard", "producer:clos-du-tue-boeuf", "producer:domaine-alexandre-bain"]}
+      },
+      "place:pays-nantais": {
+        "claim_ids": ["claim:pays-nantais-role-17", "claim:muscadet-sevre-melon-17", "claim:landron-history-17"],
+        "hero_kicker": "Atlantic west · Melon · nested Muscadet origins",
+        "thesis": "Pays Nantais is the western analytical component, not another appellation. Broad Muscadet, Muscadet Sèvre et Maine, the `sur lie` mention and Landron's estate history answer different questions.",
+        "map_view": {"area_subject_ids": ["appellation:muscadet", "appellation:muscadet-sevre-et-maine"], "bounds": [-1.75, 46.95, -0.95, 47.55], "max_zoom": 9.2, "producer_ids": ["producer:domaines-landron"]},
+        "map_reaction": {"area_subject_ids": ["appellation:muscadet", "appellation:muscadet-sevre-et-maine"], "producer_ids": ["producer:domaines-landron"]}
+      },
+      "place:anjou-wine-region": {
+        "claim_ids": ["claim:anjou-role-17", "claim:savennieres-chenin-17", "claim:mosse-history-succession-17", "claim:leroy-base-17"],
+        "hero_kicker": "Schist hinge · Layon · dry, sweet and VdF routes",
+        "thesis": "Anjou is where geology, wine form and legal classification visibly refuse one answer: Savennières, the Layon family, dry Chenin and producer-specific Vin de France routes overlap but do not merge.",
+        "map_view": {"area_subject_ids": ["appellation:anjou", "appellation:coteaux-du-layon", "appellation:savennieres", "appellation:savennieres-roche-aux-moines", "appellation:coulee-de-serrant"], "bounds": [-1.05, 46.95, -0.25, 47.65], "max_zoom": 9.2, "producer_ids": ["producer:coulee-de-serrant", "producer:richard-leroy", "producer:domaine-mosse"]},
+        "map_reaction": {"area_subject_ids": ["appellation:anjou", "appellation:coteaux-du-layon", "appellation:savennieres", "appellation:savennieres-roche-aux-moines", "appellation:coulee-de-serrant"], "producer_ids": ["producer:coulee-de-serrant", "producer:richard-leroy", "producer:domaine-mosse"]}
+      },
+      "place:saumur-wine-region": {
+        "claim_ids": ["claim:saumur-role-17", "claim:rougeard-history-ownership-17", "claim:rougeard-wine-routes-17", "claim:collier-lineage-17"],
+        "hero_kicker": "Tuffeau country · Cabernet Franc · Chenin · time",
+        "thesis": "Saumur deserves its own component: two core legal areas, two major grape routes and a human story in which Clos Rougeard's 2017 acquisition and Collier's family work line must stay distinct.",
+        "map_view": {"area_subject_ids": ["appellation:saumur", "appellation:saumur-champigny"], "bounds": [-0.45, 46.95, 0.35, 47.45], "max_zoom": 9.6, "producer_ids": ["producer:clos-rougeard", "producer:domaine-du-collier"]},
+        "map_reaction": {"area_subject_ids": ["appellation:saumur", "appellation:saumur-champigny"], "producer_ids": ["producer:clos-rougeard", "producer:domaine-du-collier"]}
+      },
+      "place:touraine-wine-region": {
+        "claim_ids": ["claim:touraine-role-17", "claim:tue-boeuf-identity", "claim:bonhomme-lineage-17", "claim:vouvray-guide-orientation-10"],
+        "hero_kicker": "Opposite banks · plural grapes · work and family routes",
+        "thesis": "Touraine is not a midpoint. Vouvray, Montlouis, Chinon, Cheverny and Cour-Cheverny keep legal place and grape roles separate, while Huet and Tue-Boeuf open different human explanations.",
+        "map_view": {"area_subject_ids": ["appellation:vouvray", "appellation:montlouis-sur-loire", "appellation:chinon", "appellation:cheverny", "appellation:cour-cheverny"], "bounds": [0.00, 46.90, 1.75, 47.75], "max_zoom": 8.8, "producer_ids": ["producer:clos-du-tue-boeuf", "producer:domaine-huet"]},
+        "map_reaction": {"area_subject_ids": ["appellation:vouvray", "appellation:montlouis-sur-loire", "appellation:chinon", "appellation:cheverny", "appellation:cour-cheverny"], "producer_ids": ["producer:clos-du-tue-boeuf", "producer:domaine-huet"]}
+      },
+      "place:vallee-du-loir": {
+        "claim_ids": ["claim:vallee-du-loir-role-17", "claim:belliviere-succession-17", "claim:loire-secondary-grapes-17"],
+        "hero_kicker": "Loir, not Loire · two AOPs · a succession route",
+        "thesis": "Jasnières, Coteaux du Loir, Pineau d’Aunis and Bellivière make the tributary branch structurally necessary. It is not filler between Touraine and the larger regional story.",
+        "map_view": {"area_subject_ids": ["appellation:coteaux-du-loir", "appellation:jasnieres"], "bounds": [0.20, 47.45, 1.10, 48.05], "max_zoom": 9.4, "producer_ids": ["producer:domaine-de-belliviere"]},
+        "map_reaction": {"area_subject_ids": ["appellation:coteaux-du-loir", "appellation:jasnieres"], "producer_ids": ["producer:domaine-de-belliviere"]}
+      },
+      "place:centre-loire": {
+        "claim_ids": ["claim:centre-loire-role-17", "claim:bain-control-dispute-17", "claim:bain-base-17"],
+        "hero_kicker": "Eastern hills · separate institution · precise legal friction",
+        "thesis": "Centre-Loire belongs in the learner-facing Loire world without becoming an InterLoire subregion. Sancerre and the two Pouilly origins remain separate, while the Bain case is dated and cause-specific.",
+        "map_view": {"area_subject_ids": ["appellation:sancerre", "appellation:pouilly-fume", "appellation:pouilly-sur-loire"], "bounds": [2.45, 47.05, 3.20, 47.65], "max_zoom": 9.4, "producer_ids": ["producer:domaine-alexandre-bain"]},
+        "map_reaction": {"area_subject_ids": ["appellation:sancerre", "appellation:pouilly-fume", "appellation:pouilly-sur-loire"], "producer_ids": ["producer:domaine-alexandre-bain"]}
+      },
+      "appellation:savennieres": {
+        "claim_ids": ["claim:savennieres-chenin-17", "claim:coulee-biodynamic-history-17"],
+        "hero_kicker": "One slope system · three legal identities · Chenin",
+        "thesis": "Savennières is read beside Roche aux Moines and Coulée de Serrant without merging their regulatory shapes or making the Joly estate the whole appellation.",
+        "map_reaction": {"area_subject_ids": ["appellation:savennieres", "appellation:savennieres-roche-aux-moines", "appellation:coulee-de-serrant"], "producer_ids": ["producer:coulee-de-serrant"]}
+      },
+      "geographic_feature:loire-river": {
+        "claim_ids": ["claim:loire-tributary-network-17", "claim:loire-physical-transitions-17"],
+        "hero_kicker": "Continuity line · not a universal explanation",
+        "thesis": "The Loire organizes the learner's route. The Sèvre Nantaise, Layon, Vienne, Cher and Loir interrupt it with other hydrological paths, while the physical and legal wine worlds continue changing.",
+        "featured_connections": [
+          {"action": "Return to the regional world", "claim_ids": ["claim:loire-analytical-scope-17", "claim:loire-tributary-network-17"], "reason": "Put hydrological orientation back beside legal geography, grapes and people.", "signal": "rabbit-hole", "target_id": "place:loire-valley"},
+          {"action": "Follow the Loir", "claim_ids": ["claim:loire-tributary-network-17", "claim:vallee-du-loir-role-17"], "reason": "One tributary branch changes the appellations, grapes and producer ecology in view.", "signal": "rabbit-hole", "target_id": "geographic_feature:loir-river"}
+        ]
+      },
+      "classification:vin-de-france": {
+        "claim_ids": ["claim:loire-vdf-friction-17", "claim:bain-control-dispute-17", "claim:brin-vin-de-france"],
+        "hero_kicker": "A legal classification · never a movement badge",
+        "thesis": "Vin de France can sit beside specific vineyard reality, producer experimentation, grape rules, cellar-location rules, control events or deliberate wine-by-wine choices. The label alone proves none of those causes and says nothing automatic about farming or cellar practice.",
+        "then_now": {
+          "claim_ids": ["claim:bain-control-dispute-17", "claim:loire-vdf-friction-17"],
+          "intro": "The same estate can have different legal stories by wine and period.",
+          "now": {"label": "NOW · how to read", "text": "Ask which wine, which vintage, which rule and which decision before telling an appellation-exit story."},
+          "then": {"label": "2015–17 · Bain", "text": "The documented dispute concerned required control and ended with a court restoration of AOC rights—not a ruling that the wine tasted too natural."},
+          "title": "Classification needs a cause and a date"
+        },
+        "featured_connections": [
+          {"action": "Read a bottle-specific case", "claim_ids": ["claim:brin-vin-de-france"], "reason": "Le Brin de Chèvre keeps classification attached to one wine rather than the whole producer identity.", "signal": "rabbit-hole", "target_id": "wine:le-brin-de-chevre"}
+        ]
+      },
+      "institution:renaissance-des-appellations": {
+        "claim_ids": ["claim:joly-founded-renaissance-17", "claim:coulee-biodynamic-history-17"],
+        "hero_kicker": "Founded 2001 · advocacy network · not a region",
+        "thesis": "Renaissance des Appellations turns Nicolas Joly's advocacy into a governed institutional edge. Membership can be authored only when the current entity and member record are pinned; philosophical resemblance is not membership.",
+        "featured_connections": [
+          {"action": "Meet the founding estate", "claim_ids": ["claim:joly-founded-renaissance-17", "claim:coulee-biodynamic-history-17"], "reason": "Separate the estate's dated conversion from the later international organization.", "signal": "rabbit-hole", "target_id": "producer:coulee-de-serrant"},
+          {"action": "Return to the regional world", "claim_ids": ["claim:loire-human-lineages-17"], "reason": "Place one advocacy network beside other family, work, ownership and legal lineages it does not contain.", "signal": "rabbit-hole", "target_id": "place:loire-valley"}
+        ]
+      },
+      "producer:domaines-landron": {
+        "claim_ids": ["claim:landron-history-17", "claim:landron-base-17", "claim:muscadet-sevre-melon-17"],
+        "hero_kicker": "Pays Nantais · farming change with dates",
+        "thesis": "Landron's first-party chronology makes a durable Muscadet door: family continuity, a 1987 soil-work turn, organic conversion from 1999 and later biodynamic certification. None becomes a Muscadet rule or an origin myth.",
+        "map_reaction": {"area_subject_ids": ["appellation:muscadet", "appellation:muscadet-sevre-et-maine"], "producer_ids": ["producer:domaines-landron"]}
+      },
+      "producer:coulee-de-serrant": {
+        "claim_ids": ["claim:coulee-biodynamic-history-17", "claim:joly-founded-renaissance-17", "claim:coulee-base-17", "claim:savennieres-chenin-17"],
+        "hero_kicker": "Savennières · estate conversion · movement node",
+        "thesis": "La Coulée de Serrant connects Chenin, a specific legal origin, a dated biodynamic conversion and the 2001 organization. Atlas keeps producer, appellation, advocacy and attributed philosophy as four different objects.",
+        "map_reaction": {"area_subject_ids": ["appellation:savennieres", "appellation:savennieres-roche-aux-moines", "appellation:coulee-de-serrant"], "producer_ids": ["producer:coulee-de-serrant"]}
+      },
+      "producer:clos-rougeard": {
+        "claim_ids": ["claim:rougeard-history-ownership-17", "claim:rougeard-wine-routes-17", "claim:rougeard-base-17", "claim:collier-lineage-17"],
+        "hero_kicker": "Saumur · family benchmark · ownership discontinuity",
+        "thesis": "Clos Rougeard links Cabernet Franc and Chenin to a long Foucault history, then marks a 2017 acquisition. Domaine du Collier is a family/work branch, not the same producer after succession.",
+        "then_now": {
+          "claim_ids": ["claim:rougeard-history-ownership-17"],
+          "intro": "A durable producer identity can cross a material ownership change.",
+          "now": {"label": "NOW · current estate", "text": "The Bouygues family has owned Clos Rougeard since 2017 and the estate presents a current team preserving its identity."},
+          "then": {"label": "THEN · Foucault family era", "text": "Eight generations culminated publicly in the Foucault brothers before the 2017 acquisition."},
+          "title": "Continuity is not unchanged ownership"
+        },
+        "map_reaction": {"area_subject_ids": ["appellation:saumur", "appellation:saumur-champigny"], "producer_ids": ["producer:clos-rougeard", "producer:domaine-du-collier"]}
+      },
+      "producer:clos-du-tue-boeuf": {
+        "claim_ids": ["claim:tue-boeuf-identity", "claim:tue-boeuf-base-17", "claim:bonhomme-lineage-17", "claim:menu-pineau-orbois-name", "claim:brin-vin-de-france"],
+        "hero_kicker": "Les Montils · transmission without a school",
+        "thesis": "Tue-Boeuf connects family estate, organic farming, purchased fruit, Menu Pineau and a documented work/partnership route through Pierre-Olivier Bonhomme. It does not turn producer practice into Touraine law or every bottle into Vin de France.",
+        "map_reaction": {"area_subject_ids": ["appellation:cheverny", "appellation:cour-cheverny"], "producer_ids": ["producer:clos-du-tue-boeuf"]}
+      },
+      "producer:domaine-alexandre-bain": {
+        "claim_ids": ["claim:bain-control-dispute-17", "claim:bain-base-17", "claim:centre-loire-role-17"],
+        "hero_kicker": "Pouilly · a control dispute, not a tasting legend",
+        "thesis": "Bain's 2015–17 case establishes a mandatory-control dispute and a court remedy. Farming philosophy may be relevant producer context, but it is not the proven legal cause and later classifications require separate wine/vintage evidence.",
+        "then_now": {
+          "claim_ids": ["claim:bain-control-dispute-17"],
+          "intro": "The claim is limited to the documented habilitation period.",
+          "now": {"label": "MAY 2017 · remedy", "text": "The Dijon administrative court restored Bain's AOC rights."},
+          "then": {"label": "SEPTEMBER 2015 · withdrawal", "text": "INAO withdrew habilitation on the stated basis of a required-control dispute."},
+          "title": "Two dates replace one viral myth"
+        },
+        "map_reaction": {"area_subject_ids": ["appellation:pouilly-fume", "appellation:pouilly-sur-loire", "appellation:sancerre"], "producer_ids": ["producer:domaine-alexandre-bain"]}
+      }
+    }
+  }
+}

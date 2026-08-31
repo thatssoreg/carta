@@ -16,7 +16,7 @@ The working product slice follows this path:
 
 **world → France → governed wine-region orientation → sourced appellation area → feature detail → Human Reference**
 
-The initial world is an ordinary OpenFreeMap Liberty basemap with a small Natural Earth interaction layer. Entering France lazy-loads the default INAO AOC/AOP geography and five defensible governed region anchors derived from mapped child appellations. IGP remains a separate, off-by-default layer. Search covers every rendered INAO denomination and the governed region anchors.
+The initial world is an ordinary OpenFreeMap Liberty basemap with a small Natural Earth interaction layer. Entering France lazy-loads the default INAO AOC/AOP geography, five regional-world anchors, and six Loire component anchors derived from mapped child appellations. IGP remains a separate, off-by-default layer. Search covers every rendered INAO denomination and the governed region anchors.
 
 The app distinguishes three things throughout:
 
@@ -68,7 +68,7 @@ The split GeoJSON delivery is responsive in the tested desktop and phone flows a
 
 ## Run 02 learner-guide and quantity contract
 
-The Jura, Burgundy, Loire Valley, Beaujolais, and Béarn/Jurançon worlds add a learner-facing projection at `atlas-app/public/data/atlas-guides.json`. Jura, Béarn/Jurançon, and Beaujolais are the three mature regional-world proofs. The build script generates the learner projection from claims, entities, profiles, and sources. It is not an authored content store.
+The Jura, Burgundy, Loire Valley, Beaujolais, and Béarn/Jurançon worlds add a learner-facing projection at `atlas-app/public/data/atlas-guides.json`. Jura, Béarn/Jurançon, Beaujolais, and Loire Valley are the four mature regional-world proofs. The build script generates the learner projection from claims, entities, profiles, and sources. It is not an authored content store.
 
 Every projected sentence and measurement carries its originating `claim_id` and source IDs. Quantities live on the existing claim record in a small `quantity` object with a measure, numeric value, unit, explicit scope, observation date, and—where a percentage is used—its denominator. Grape shares also carry a governed grape entity reference. Optional `atlas_presentation` metadata selects and orders claims for a learner section; it does not restate the fact.
 
@@ -101,7 +101,7 @@ This is a presentation rule, not a new authority layer. What appears at each zoo
 
 STRATA gives the Atlas its deeper structure:
 
-- **Space** — ordinary geography, wine regions, boundaries, containment, proximity, terrain, and mapped locations. Physical relief entered the Atlas in the Béarn / Jurançon terrain proof and now covers a second explicit Beaujolais proof through the same [terrain and environmental data contract](atlas-terrain-foundation.md).
+- **Space** — ordinary geography, wine regions, boundaries, containment, proximity, terrain, and mapped locations. Physical relief entered the Atlas in the Béarn / Jurançon terrain proof and now covers four explicit, discontinuous proofs: Béarn / Jurançon, Beaujolais, Savennières / Layon, and Sancerre / Pouilly-sur-Loire, all governed by the same [terrain and environmental data contract](atlas-terrain-foundation.md).
 - **Time** — historical boundaries, changing names and classifications, producer movement, plantings, and other dated geography.
 - **Relationships** — selected graph relationships that become meaningful when viewed spatially.
 - **Appellations** — legal wine geography and its nested or overlapping structures.

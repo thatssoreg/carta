@@ -9,9 +9,11 @@ The machine graph and generated relationships below provide the current orientat
 
 This section is generated from governed profile dispositions, editorial anchors, and supported graph relationships. It is not a hand-maintained second knowledge graph.
 
+- [Loire Valley](../countries/france/regions/loire-valley.md) — region; deep reference
 - [Vin de France](../classifications/vin-de-france.md) — classification; navigation node
-- [Loire Valley](../countries/france/regions/loire-valley.md) — region; baseline reference
 - [France](../countries/france/README.md) — country; baseline reference
+- [Touraine](../countries/france/regions/touraine.md) — region; baseline reference
+- [Vouvray AOP](../countries/france/appellations/vouvray.md) — appellation; baseline reference
 
 ### Deliberately deferred anchors
 

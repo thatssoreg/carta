@@ -19,12 +19,15 @@ Governed grape profiles, including honest stubs, are listed here.
 - [Chenin Blanc](../grapes/chenin-blanc.md) — `node` / `stub`
 - [Clairette](../grapes/clairette.md) — `node` / `stub`
 - [Courbu](../grapes/courbu.md) — `baseline` / `published`
+- [Côt](../grapes/cot.md) — `node` / `stub`
 - [Dureza](../grapes/dureza.md) — `node` / `stub`
 - [Folgasão](../grapes/folgasao.md) — `node` / `stub`
+- [Folle Blanche](../grapes/folle-blanche.md) — `node` / `stub`
 - [Gamay noir à jus blanc](../grapes/gamay-noir-a-jus-blanc.md) — `baseline` / `published`
 - [Glera](../grapes/glera.md) — `node` / `stub`
 - [Gouais blanc](../grapes/gouais-blanc.md) — `node` / `stub`
 - [Graciano](../grapes/graciano.md) — `node` / `stub`
+- [Grolleau](../grapes/grolleau.md) — `node` / `stub`
 - [Gros Manseng](../grapes/gros-manseng.md) — `baseline` / `published`
 - [Jacquère](../grapes/jacquere.md) — `node` / `stub`
 - [Loureiro](../grapes/loureiro.md) — `node` / `stub`
@@ -36,9 +39,11 @@ Governed grape profiles, including honest stubs, are listed here.
 - [Palomino Fino](../grapes/palomino-fino.md) — `node` / `stub`
 - [Petit Courbu](../grapes/petit-courbu.md) — `baseline` / `published`
 - [Petit Manseng](../grapes/petit-manseng.md) — `baseline` / `published`
+- [Pineau d’Aunis](../grapes/pineau-d-aunis.md) — `node` / `stub`
 - [Poulsard / Ploussard](../grapes/poulsard.md) — `baseline` / `published`
 - [Raffiat de Moncade](../grapes/raffiat-de-moncade.md) — `node` / `stub`
 - [Riesling](../grapes/riesling.md) — `node` / `stub`
+- [Romorantin](../grapes/romorantin.md) — `node` / `stub`
 - [Sangiovese](../grapes/sangiovese.md) — `node` / `stub`
 - [Savagnin](../grapes/savagnin.md) — `node` / `stub`
 - [Syrah](../grapes/syrah.md) — `node` / `stub`

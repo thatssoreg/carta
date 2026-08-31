@@ -87,7 +87,9 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [Chenin Blanc](../grapes/chenin-blanc.md) — grape; navigation node
 - [Imanol Garay](imanol-garay.md) — producer; baseline reference
 - [France](../countries/france/README.md) — country; baseline reference
+- [Anjou](../countries/france/regions/anjou.md) — region; baseline reference
 - [Pyrenean Atlantic](../ecosystems/pyrenean-atlantic.md) — ecosystem; baseline reference
+- [Loire Valley](../countries/france/regions/loire-valley.md) — region; deep reference
 - [Alfredo Egia](alfredo-egia.md) — producer; baseline reference
 <!-- END GENERATED CARTA NAVIGATION -->
 
@@ -122,6 +124,7 @@ This section is generated from CARTA machine authority. Edit the governed record
 | Claim | Layer / observed | Status | Confidence | Sources |
 |---|---|---|---|---|
 | `claim:imanol-richard-work` | `reference / —` | `supported` | `medium` | `source:buvons-imanol`, `source:beattie-imanol`, `source:sourceimports-alfredo-2022` |
+| `claim:leroy-base-17` | `reference / 2026-08-31` | `supported` | `medium` | `source:vinetrail-richard`, `source:api-adresse-gouv-fr` |
 | `claim:richard-leroy-cellar` | `reference / —` | `supported` | `high` | `source:winedoctor-richard-wines`, `source:vinetrail-richard` |
 | `claim:richard-leroy-estate-history` | `reference / —` | `supported` | `high` | `source:winedoctor-richard-2013`, `source:vinetrail-richard`, `source:rvf-richard-2025` |
 | `claim:richard-leroy-two-cuvees` | `reference / —` | `supported` | `high` | `source:vinetrail-richard`, `source:rvf-richard-2025` |
@@ -129,6 +132,7 @@ This section is generated from CARTA machine authority. Edit the governed record
 
 ### Sources
 
+- `source:api-adresse-gouv-fr` — API Adresse
 - `source:beattie-imanol` — Imanol Garay, Maslacq, Pyrénées-Atlantiques
 - `source:buvons-imanol` — Imanol Garay Ixilune Blanc
 - `source:rvf-richard-2025` — Domaine Richard Leroy

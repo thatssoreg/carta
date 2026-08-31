@@ -64,7 +64,8 @@ Primary CARTA source records include Domaine Huet's current first-party site, IN
 This section is generated from governed profile dispositions, editorial anchors, and supported graph relationships. It is not a hand-maintained second knowledge graph.
 
 - [Chenin Blanc](../grapes/chenin-blanc.md) — grape; navigation node
-- [Loire Valley](../countries/france/regions/loire-valley.md) — region; baseline reference
+- [Loire Valley](../countries/france/regions/loire-valley.md) — region; deep reference
+- [Touraine](../countries/france/regions/touraine.md) — region; baseline reference
 - [Vouvray AOP](../countries/france/appellations/vouvray.md) — appellation; baseline reference
 - [France](../countries/france/README.md) — country; baseline reference
 <!-- END GENERATED CARTA NAVIGATION -->
@@ -101,6 +102,7 @@ This section is generated from CARTA machine authority. Edit the governed record
 | Claim | Layer / observed | Status | Confidence | Sources |
 |---|---|---|---|---|
 | `claim:haut-lieu-brown-clay` | `reference / 2026-08-18` | `supported` | `high` | `source:huet-official` |
+| `claim:huet-base-17` | `reference / 2026-08-31` | `supported` | `high` | `source:huet-official`, `source:api-adresse-gouv-fr` |
 | `claim:huet-biodynamic-1988` | `reference / 2026-08-18` | `supported` | `high` | `source:huet-official` |
 | `claim:huet-founded-1928` | `reference / —` | `supported` | `high` | `source:huet-official` |
 | `claim:huet-haut-lieu-sec-identity` | `reference / —` | `supported` | `high` | `source:klwines-huet-haut-lieu-sec-2023`, `source:huet-official` |
@@ -110,6 +112,7 @@ This section is generated from CARTA machine authority. Edit the governed record
 
 ### Sources
 
+- `source:api-adresse-gouv-fr` — API Adresse
 - `source:huet-official` — Domaine Huet
 - `source:inao-vouvray` — Vouvray
 - `source:klwines-huet-haut-lieu-sec-2023` — 2023 Domaine Huët "Le Haut-Lieu" Vouvray Sec

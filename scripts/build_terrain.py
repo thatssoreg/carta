@@ -46,7 +46,7 @@ DEFAULT_SOURCE_DIR = ROOT / ".cache/atlas/terrain"
 
 TERRAIN_DATASET_ID = "spatial-dataset:copernicus-dem-glo30-2022-05-09"
 TERRAIN_MANIFEST_PATH = MANIFEST_DIR / "copernicus-dem-glo30-2022-05-09.json"
-TERRAIN_RELEASE = "atlas-run-09-beaujolais-world"
+TERRAIN_RELEASE = "atlas-run-17-loire-valley-world"
 
 # --- Bounded proof extents --------------------------------------------------
 # Each extent is presentation context, never a wine-region boundary. Source
@@ -87,6 +87,34 @@ TERRAIN_EXTENTS = (
         ),
         "hillshade_path": PUBLIC_DATA_DIR / "atlas-terrain-beaujolais-hillshade.png",
         "contour_path": PUBLIC_DATA_DIR / "atlas-terrain-beaujolais-contours.geojson",
+    },
+    {
+        "id": "savennieres-layon",
+        "label": "Savennières / Layon",
+        "bbox": (-0.85, 47.15, -0.35, 47.55),
+        "description": (
+            "A bounded Anjou terrain context spanning Savennières, the lower Layon "
+            "and the Loire-facing transition between them. It is not a wine boundary."
+        ),
+        "source_files": (
+            "Copernicus_DSM_COG_10_N47_00_W001_00_DEM.tif",
+        ),
+        "hillshade_path": PUBLIC_DATA_DIR / "atlas-terrain-savennieres-layon-hillshade.png",
+        "contour_path": PUBLIC_DATA_DIR / "atlas-terrain-savennieres-layon-contours.geojson",
+    },
+    {
+        "id": "sancerre",
+        "label": "Sancerre / Pouilly-sur-Loire",
+        "bbox": (2.55, 47.12, 2.99, 47.50),
+        "description": (
+            "A bounded Centre-Loire terrain context spanning Sancerre and the "
+            "Loire crossing toward Pouilly-sur-Loire. It is not a wine boundary."
+        ),
+        "source_files": (
+            "Copernicus_DSM_COG_10_N47_00_E002_00_DEM.tif",
+        ),
+        "hillshade_path": PUBLIC_DATA_DIR / "atlas-terrain-sancerre-hillshade.png",
+        "contour_path": PUBLIC_DATA_DIR / "atlas-terrain-sancerre-contours.geojson",
     },
 )
 SOURCE_CLIP_BUFFER_DEGREES = 0.05

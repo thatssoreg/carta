@@ -61,11 +61,11 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [Côte-Rôtie](appellations/cote-rotie.md) — appellation; navigation node
 - [Côtes du Rhône AOP](appellations/cotes-du-rhone.md) — appellation; navigation node
 - [Jura](regions/jura.md) — region; deep reference
-- [Loire Valley](regions/loire-valley.md) — region; baseline reference
+- [Loire Valley](regions/loire-valley.md) — region; deep reference
 - [Palette AOP](appellations/palette.md) — appellation; navigation node
 - [Savoie](regions/savoie.md) — region; navigation node
+- [Anjou](regions/anjou.md) — region; baseline reference
 - [Arbois AOP](appellations/arbois.md) — appellation; baseline reference
-- [Bourgogne Côte d’Or](appellations/bourgogne-cote-d-or.md) — appellation; baseline reference
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->
