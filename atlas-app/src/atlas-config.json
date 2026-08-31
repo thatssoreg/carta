@@ -16,7 +16,10 @@
     "atlasEditorial": "./data/atlas-editorial.json",
     "entryPoints": "./data/atlas-entry-points.json",
     "producerPoints": "./data/atlas-producers.geojson",
-    "provenance": "./data/provenance.json"
+    "provenance": "./data/provenance.json",
+    "terrain": "./data/atlas-terrain.json",
+    "terrainHillshade": "./data/atlas-terrain-hillshade.png",
+    "terrainContours": "./data/atlas-terrain-contours.geojson"
   },
   "countries": {
     "france": {
@@ -32,12 +35,20 @@
     "producerPointsMin": 8.1,
     "appellationFillMin": 5.15,
     "appellationOutlineMin": 5.8,
-    "appellationLabelMin": 8.6
+    "appellationLabelMin": 8.6,
+    "terrainMin": 6.2,
+    "terrainFull": 7.4,
+    "terrainFadeOut": 10.6,
+    "terrainMax": 11.8,
+    "contourIndexMin": 8.2,
+    "contourIntermediateMin": 9.9,
+    "contourMax": 12.4
   },
   "defaultLayers": {
     "aocAreas": true,
     "igpAreas": false,
-    "wineRegions": true
+    "wineRegions": true,
+    "terrain": true
   },
   "humanReference": {
     "repositoryBaseUrl": "https://github.com/thatssoreg/carta/blob/main/"

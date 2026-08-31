@@ -8,6 +8,8 @@ The goal is not to make another decorative wine map. The goal is to make wine ge
 
 This document decides what Atlas *is*. The [Atlas editorial foundation](atlas-editorial-foundation.md) decides what Atlas *says*: its thesis, its voice, the registers a reader must be able to tell apart, and the rule that every regional world argues its own case rather than inheriting another world's copy. Learner-facing copy and every new regional world are governed there, and the checklist in its final section runs before a world ships.
 
+The [Atlas terrain and environmental data contract](atlas-terrain-foundation.md) decides what Atlas is allowed to know about the ground: which elevation, relief and future environmental products may be registered, how each one keeps its provenance and its recipe, and the rule that terrain is context before it is interpretation. Physical relief never authorises a wine claim on its own.
+
 ## France-first v0.1
 
 The working product slice follows this path:
@@ -41,10 +43,13 @@ To regenerate those assets from the checksummed upstream snapshots:
 ```bash
 python -m pip install -r requirements-atlas.txt
 python scripts/build_atlas.py
+python scripts/build_terrain.py
 python scripts/validate_atlas.py
 ```
 
-The generator downloads into an ignored local cache unless archives are supplied with `--source-archive DATASET_ID=/absolute/path.zip`. Raw source archives are never committed. Dataset manifests, transformation parameters, checksums, licenses, derived-artifact metadata, and geographic meaning live in [`data/geography/datasets/`](../data/geography/datasets/); accepted external-ID reconciliation lives in [`data/geography/external-id-mappings/`](../data/geography/external-id-mappings/).
+`build_atlas.py` regenerates the wine geography and the learner projections. `build_terrain.py` regenerates the shaded relief and contours from the pinned elevation tiles in `.cache/atlas/terrain/`, under the [terrain and environmental data contract](atlas-terrain-foundation.md). Both write `provenance.json` from every registered manifest, so either can be run alone.
+
+The generator downloads into an ignored local cache unless archives are supplied with `--source-archive DATASET_ID=/absolute/path.zip`. Raw source archives and raw elevation rasters are never committed. Dataset manifests, transformation parameters, checksums, licenses, derived-artifact metadata, and geographic meaning live in [`data/geography/datasets/`](../data/geography/datasets/); accepted external-ID reconciliation lives in [`data/geography/external-id-mappings/`](../data/geography/external-id-mappings/).
 
 ### Browser-delivery decision
 
@@ -96,7 +101,7 @@ This is a presentation rule, not a new authority layer. What appears at each zoo
 
 STRATA gives the Atlas its deeper structure:
 
-- **Space** — ordinary geography, wine regions, boundaries, containment, proximity, terrain, and mapped locations.
+- **Space** — ordinary geography, wine regions, boundaries, containment, proximity, terrain, and mapped locations. Physical relief entered the Atlas in the Béarn / Jurançon terrain proof and is governed by the [terrain and environmental data contract](atlas-terrain-foundation.md).
 - **Time** — historical boundaries, changing names and classifications, producer movement, plantings, and other dated geography.
 - **Relationships** — selected graph relationships that become meaningful when viewed spatially.
 - **Appellations** — legal wine geography and its nested or overlapping structures.

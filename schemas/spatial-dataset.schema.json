@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://carta.local/schemas/spatial-dataset.schema.json",
-  "title": "CARTA Spatial Dataset Manifest v0.1",
+  "title": "CARTA Spatial Dataset Manifest v0.2",
   "type": "object",
   "additionalProperties": false,
   "required": [
@@ -38,7 +38,7 @@
     "dataset_url": {"type": "string", "format": "uri"},
     "resource_url": {"type": "string", "format": "uri"},
     "resource_id": {"type": ["string", "null"]},
-    "retrieval_status": {"enum": ["acquired", "runtime_service"]},
+    "retrieval_status": {"enum": ["acquired", "runtime_service", "derived_in_repository"]},
     "license": {
       "type": "object",
       "additionalProperties": false,
@@ -108,11 +108,73 @@
           "bytes": {"type": "integer", "minimum": 1},
           "feature_count": {"type": "integer", "minimum": 0},
           "record_count": {"type": "integer", "minimum": 0},
-          "role": {"type": "string", "minLength": 1}
+          "role": {"type": "string", "minLength": 1},
+          "product_class": {"enum": ["derived_spatial_product", "modeled_environmental_product"]},
+          "derived_from": {
+            "description": "Spatial dataset IDs and/or sibling derived-artifact paths this artifact was produced from.",
+            "type": "array",
+            "minItems": 1,
+            "items": {"type": "string", "minLength": 1}
+          },
+          "pixel_width": {"type": "integer", "minimum": 1},
+          "pixel_height": {"type": "integer", "minimum": 1}
         }
       }
     },
-    "notes": {"type": "string"}
+    "notes": {"type": "string"},
+    "product_class": {
+      "description": "Which tier of the CARTA environmental-data contract this dataset occupies. Interpretive wine knowledge is deliberately not expressible here: it lives in data/claims/ under the evidence policy. See docs/atlas-terrain-foundation.md.",
+      "enum": ["source_observation", "derived_spatial_product", "modeled_environmental_product"]
+    },
+    "derived_from": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"type": "string", "pattern": "^spatial-dataset:[a-z0-9][a-z0-9._-]*$"}
+    },
+    "measurement": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["variable", "unit", "native_resolution", "scale_limitations"],
+      "properties": {
+        "variable": {"type": "string", "minLength": 1},
+        "unit": {"type": "string", "minLength": 1},
+        "vertical_reference": {"type": ["string", "null"]},
+        "native_resolution": {"type": "string", "minLength": 1},
+        "uncertainty": {"type": ["string", "null"]},
+        "scale_limitations": {"type": "string", "minLength": 1}
+      }
+    },
+    "geographic_extent": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["bbox_epsg4326", "description"],
+      "properties": {
+        "bbox_epsg4326": {
+          "type": "array",
+          "minItems": 4,
+          "maxItems": 4,
+          "items": {"type": "number"}
+        },
+        "description": {"type": "string", "minLength": 1}
+      }
+    },
+    "source_files": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name", "resource_url", "sha256", "bytes"],
+        "properties": {
+          "name": {"type": "string", "minLength": 1},
+          "resource_url": {"type": "string", "format": "uri"},
+          "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+          "bytes": {"type": "integer", "minimum": 1},
+          "notes": {"type": "string"}
+        }
+      }
+    },
+    "refresh_policy": {"type": "string", "minLength": 1}
   },
   "allOf": [
     {
@@ -121,10 +183,22 @@
         "required": ["retrieval_status"]
       },
       "then": {
-        "properties": {
-          "checksum_algorithm": {"const": "sha256"},
-          "checksum": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
-        }
+        "anyOf": [
+          {
+            "required": ["checksum"],
+            "properties": {
+              "checksum_algorithm": {"const": "sha256"},
+              "checksum": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+            }
+          },
+          {
+            "required": ["source_files"],
+            "properties": {
+              "checksum_algorithm": {"type": "null"},
+              "checksum": {"type": "null"}
+            }
+          }
+        ]
       },
       "else": {
         "properties": {
@@ -132,6 +206,15 @@
           "checksum": {"type": "null"}
         }
       }
+    },
+    {
+      "if": {
+        "properties": {
+          "product_class": {"enum": ["derived_spatial_product", "modeled_environmental_product"]}
+        },
+        "required": ["product_class"]
+      },
+      "then": {"required": ["derived_from"]}
     }
   ]
 }

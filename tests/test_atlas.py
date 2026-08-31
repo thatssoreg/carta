@@ -456,6 +456,167 @@ class AtlasContractTest(unittest.TestCase):
                 companion,
             )
 
+    def test_terrain_is_registered_as_a_governed_source_observation(self):
+        """Run 08: relief exists because a pinned, licensed dataset exists."""
+        manifest = json.loads(
+            (
+                ROOT / "data/geography/datasets/copernicus-dem-glo30-2022-05-09.json"
+            ).read_text()
+        )
+        self.assertEqual(manifest["product_class"], "source_observation")
+        self.assertEqual(manifest["retrieval_status"], "acquired")
+        self.assertEqual(len(manifest["source_files"]), 6)
+        for entry in manifest["source_files"]:
+            self.assertRegex(entry["sha256"], r"^[a-f0-9]{64}$")
+            self.assertTrue(entry["resource_url"].startswith("https://"))
+        self.assertIn("EGM2008", manifest["measurement"]["vertical_reference"])
+        self.assertIn("LE90", manifest["measurement"]["uncertainty"])
+        self.assertTrue(manifest["measurement"]["scale_limitations"])
+        self.assertTrue(manifest["refresh_policy"])
+        self.assertEqual(
+            manifest["license"]["redistribution"], "permitted_with_attribution"
+        )
+        self.assertIn("Copernicus WorldDEM-30", manifest["license"]["attribution_text"])
+        # The raw elevation model is pinned, never committed.
+        tracked = subprocess.run(
+            ["git", "ls-files"], cwd=ROOT, check=True, capture_output=True, text=True
+        ).stdout.splitlines()
+        self.assertFalse([path for path in tracked if path.endswith((".tif", ".tiff"))])
+
+    def test_every_public_terrain_asset_traces_back_to_source_and_recipe(self):
+        self.assertEqual(self.summary["terrain_artifacts"], 3)
+        self.assertEqual(self.summary["terrain_source_files"], 6)
+        self.assertGreater(self.summary["terrain_contours"], 0)
+        descriptor = json.loads(
+            (ROOT / "atlas-app/public/data/atlas-terrain.json").read_text()
+        )
+        manifest = json.loads(
+            (
+                ROOT / "data/geography/datasets/copernicus-dem-glo30-2022-05-09.json"
+            ).read_text()
+        )
+        self.assertEqual(descriptor["recipe"], manifest["transformations"])
+        operations = [step["operation"] for step in descriptor["recipe"]]
+        self.assertEqual(operations[0], "verify_pinned_source_files")
+        self.assertIn("hillshade_horn", operations)
+        self.assertIn("contour_elevation_surface", operations)
+        self.assertEqual(
+            descriptor["attribution"], manifest["license"]["attribution_text"]
+        )
+        paths = {artifact["path"] for artifact in manifest["derived_artifacts"]}
+        self.assertEqual(
+            paths,
+            {
+                "atlas-app/public/data/atlas-terrain-hillshade.png",
+                "atlas-app/public/data/atlas-terrain-contours.geojson",
+                "atlas-app/public/data/atlas-terrain.json",
+            },
+        )
+
+    def test_terrain_adds_no_machine_authority_and_no_wine_claim(self):
+        """Run 08: a picture of the ground never becomes a CARTA identity or claim."""
+        schema = json.loads((ROOT / "schemas/spatial-dataset.schema.json").read_text())
+        # The contract's fourth tier is deliberately not expressible as a dataset.
+        self.assertEqual(
+            set(schema["properties"]["product_class"]["enum"]),
+            {
+                "source_observation",
+                "derived_spatial_product",
+                "modeled_environmental_product",
+            },
+        )
+        contours = json.loads(
+            (ROOT / "atlas-app/public/data/atlas-terrain-contours.geojson").read_text()
+        )["features"]
+        for feature in contours:
+            properties = feature["properties"]
+            self.assertNotIn("carta_entity_id", properties)
+            self.assertNotIn("human_reference_path", properties)
+            self.assertEqual(properties["feature_type"], "elevation_contour")
+        search = json.loads(
+            (ROOT / "atlas-app/public/data/search-index.json").read_text()
+        )
+        self.assertFalse([record for record in search if "terrain" in record["id"]])
+        subjects = json.loads(
+            (ROOT / "atlas-app/public/data/atlas-subjects.json").read_text()
+        )["subjects"]
+        self.assertFalse([key for key in subjects if "terrain" in key])
+        # The elevation dataset is evidence for a picture, never for a wine fact.
+        for directory in ("data/entities", "data/claims", "data/relationships",
+                          "data/geography/assertions", "data/geography/geometry"):
+            for path in sorted((ROOT / directory).glob("*.jsonl")):
+                body = path.read_text()
+                self.assertNotIn("copernicus", body.casefold(), path.name)
+                self.assertNotIn("glo30", body.casefold(), path.name)
+
+    def test_relief_stays_subordinate_to_wine_geography(self):
+        main = (ROOT / "atlas-app/src/main.js").read_text()
+        config = json.loads((ROOT / "atlas-app/src/atlas-config.json").read_text())
+        zoom = config["semanticZoom"]
+        # Relief is inserted beneath the wine layers, never above them.
+        self.assertIn("terrainInsertionPoint", main)
+        self.assertIn('"aoc-areas-fill", "subject-areas-fill", "wine-region-halos"', main)
+        # Relief arrives at regional scale and leaves before it becomes texture.
+        self.assertLess(zoom["terrainMin"], zoom["terrainFull"])
+        self.assertLessEqual(zoom["terrainFull"], 8.0)
+        self.assertLess(zoom["terrainFadeOut"], zoom["terrainMax"])
+        self.assertLessEqual(zoom["terrainMax"], 12.0)
+        # Contours are sparse first, detailed only when a reader is reading landform.
+        self.assertGreater(zoom["contourIndexMin"], zoom["terrainMin"])
+        self.assertGreater(zoom["contourIntermediateMin"], zoom["contourIndexMin"])
+        descriptor = json.loads(
+            (ROOT / "atlas-app/public/data/atlas-terrain.json").read_text()
+        )
+        self.assertEqual(descriptor["contours"]["interval_metres"], 100)
+        self.assertEqual(descriptor["contours"]["index_interval_metres"], 500)
+        # Terrain takes no part in selection, inspection or routing.
+        for handler in ("handleMapClick", "inspectPoint"):
+            self.assertIn(handler, main)
+        self.assertNotIn('"terrain-hillshade", "producer', main)
+        self.assertNotIn("data-go-to-terrain", main)
+
+    def test_atlas_survives_without_terrain(self):
+        """Run 08: relief is context, so losing it must not cost the wine map."""
+        main = (ROOT / "atlas-app/src/main.js").read_text()
+        self.assertIn("state.terrainUnavailable", main)
+        self.assertIn("terrainCoversView", main)
+        # The terrain descriptor is fetched outside the required experience payload.
+        experience = main.split("async function loadExperience()")[1].split("\n}")[0]
+        self.assertNotIn("config.data.terrain", experience)
+
+    def test_relief_control_is_learner_facing(self):
+        shell = (ROOT / "atlas-app/index.html").read_text()
+        self.assertIn("data-layer-terrain", shell)
+        self.assertIn("<strong>Relief</strong>", shell)
+        for machine_word in ("hillshade", "DEM", "raster", "Copernicus", "EPSG"):
+            self.assertNotIn(machine_word, shell, machine_word)
+
+    def test_terrain_foundation_is_repository_doctrine(self):
+        foundation = ROOT / "docs/atlas-terrain-foundation.md"
+        self.assertTrue(foundation.is_file())
+        copy = foundation.read_text()
+        self.assertIn("Terrain is context before it is interpretation", copy)
+        for tier in (
+            "Source observations",
+            "Derived spatial products",
+            "Modeled environmental products",
+            "Interpretive wine knowledge claims",
+        ):
+            self.assertIn(tier, copy)
+        for companion in ("README.md", "docs/carta-atlas.md"):
+            self.assertIn(
+                "atlas-terrain-foundation.md",
+                (ROOT / companion).read_text(),
+                companion,
+            )
+
+    def test_run_08_terrain_audit_is_committed(self):
+        audit = ROOT / "audits/run-08-atlas-terrain-foundation.md"
+        self.assertTrue(audit.is_file())
+        copy = audit.read_text()
+        self.assertIn("Copernicus DEM GLO-30", copy)
+        self.assertIn("What was deliberately left out", copy)
+
     def test_run_06_generalization_assessment_is_committed(self):
         assessment = ROOT / "audits/run-06-bearn-jurancon-generalization-assessment.md"
         self.assertTrue(assessment.is_file())

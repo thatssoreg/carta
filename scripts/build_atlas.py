@@ -1543,24 +1543,47 @@ def update_manifest(path: Path, artifacts: list[dict[str, Any]]) -> dict[str, An
     return manifest
 
 
+PROVENANCE_OPTIONAL_FIELDS = (
+    "product_class",
+    "derived_from",
+    "measurement",
+    "geographic_extent",
+    "refresh_policy",
+)
+
+
+def provenance_dataset(manifest: dict[str, Any]) -> dict[str, Any]:
+    record = {
+        "id": manifest["id"],
+        "dataset_title": manifest["dataset_title"],
+        "publisher": manifest["publisher"],
+        "dataset_url": manifest["dataset_url"],
+        "resource_url": manifest["resource_url"],
+        "source_release_date": manifest["source_release_date"],
+        "retrieved_at": manifest["retrieved_at"],
+        "geographic_meaning": manifest["geographic_meaning"],
+        "authority_class": manifest["authority_class"],
+        "license": manifest["license"],
+        "transformations": manifest["transformations"],
+        "derived_artifacts": manifest["derived_artifacts"],
+    }
+    for field in PROVENANCE_OPTIONAL_FIELDS:
+        if field in manifest:
+            record[field] = manifest[field]
+    return record
+
+
 def build_provenance(manifests: list[dict[str, Any]], statistics: dict[str, Any]) -> dict[str, Any]:
+    """Project every registered spatial dataset manifest, not a hardcoded subset.
+
+    Reading the manifest directory keeps `build_atlas.py` and `build_terrain.py`
+    producing the same provenance document, so adding an environmental dataset
+    never requires a second provenance surface beside this one.
+    """
     return {
         "generated_from": "data/geography/datasets/",
         "datasets": [
-            {
-                "id": manifest["id"],
-                "dataset_title": manifest["dataset_title"],
-                "publisher": manifest["publisher"],
-                "dataset_url": manifest["dataset_url"],
-                "resource_url": manifest["resource_url"],
-                "source_release_date": manifest["source_release_date"],
-                "retrieved_at": manifest["retrieved_at"],
-                "geographic_meaning": manifest["geographic_meaning"],
-                "authority_class": manifest["authority_class"],
-                "license": manifest["license"],
-                "transformations": manifest["transformations"],
-                "derived_artifacts": manifest["derived_artifacts"],
-            }
+            provenance_dataset(manifest)
             for manifest in sorted(manifests, key=lambda item: item["id"])
         ],
         "inao_reconciliation": statistics,
@@ -1568,7 +1591,8 @@ def build_provenance(manifests: list[dict[str, Any]], statistics: dict[str, Any]
             "Wine-region labels are derived CARTA orientation points, not statutory polygons.",
             "INAO areas are cartographic representations of regulatory geographical areas, not parcel eligibility or actual vineyard land.",
             "Eligible communes, approved viticultural parcels, actual vineyard land, cadastral parcels, and lieux-dits remain distinct concepts.",
-            "External sourced geography may be displayed without becoming a native CARTA guide or subject."
+            "External sourced geography may be displayed without becoming a native CARTA guide or subject.",
+            "Terrain is context before it is interpretation: relief, slope or elevation shown on the map never authorises a claim about grape growing, ripening, drainage, climate or wine quality."
         ]
     }
 
@@ -1694,14 +1718,15 @@ def main() -> None:
         MANIFEST_DIR / "inao-aires-geographiques-siqo-2026-08-24.json",
         inao_artifacts,
     )
-    updated_openfreemap = read_json(
-        MANIFEST_DIR / "openfreemap-liberty-runtime.json"
-    )
+    # Re-read every manifest so registered environmental datasets (terrain and
+    # anything that follows it) stay in provenance without a second code path.
+    all_manifests = [read_json(path) for path in sorted(MANIFEST_DIR.glob("*.json"))]
+    by_id = {manifest["id"]: manifest for manifest in all_manifests}
+    by_id[updated_inao["id"]] = updated_inao
+    by_id[updated_natural["id"]] = updated_natural
     write_json(
         PUBLIC_DATA_DIR / "provenance.json",
-        build_provenance(
-            [updated_inao, updated_natural, updated_openfreemap], inao_stats
-        ),
+        build_provenance(list(by_id.values()), inao_stats),
     )
 
     print(

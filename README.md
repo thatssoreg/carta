@@ -91,6 +91,7 @@ For the technical model, read:
 - [Evidence policy](docs/evidence-policy.md)
 - [Human Reference projection](docs/atlas-projection.md)
 - [Atlas editorial foundation](docs/atlas-editorial-foundation.md)
+- [Atlas terrain and environmental data](docs/atlas-terrain-foundation.md)
 - [Reference profile schema](schemas/reference-profile.schema.json)
 
 ## Current state
