@@ -11,7 +11,6 @@ const AOC_LAYERS = ["aoc-complements-fill", "aoc-areas-fill"];
 const REGION_LAYERS = ["wine-region-labels", "wine-region-halos"];
 const PRODUCER_LAYERS = ["producer-clusters", "producer-cluster-count", "producer-points", "producer-labels"];
 const SUBJECT_REACTION_LAYERS = ["subject-areas-fill", "subject-areas-line", "subject-producer-halos", "subject-producer-labels"];
-const TERRAIN_LAYERS = ["terrain-hillshade", "terrain-contours-index", "terrain-contours-intermediate"];
 
 const elements = {
   intro: document.querySelector(".map-intro"),
@@ -60,8 +59,9 @@ const state = {
   franceLoaded: false,
   igpLoaded: false,
   terrain: null,
-  terrainLoaded: false,
-  terrainUnavailable: false,
+  terrainLoaded: new Set(),
+  terrainUnavailable: new Set(),
+  terrainDescriptorUnavailable: false,
   searchIndex: null,
   atlasGuides: null,
   subjects: null,
@@ -410,7 +410,7 @@ function terrainInsertionPoint() {
 }
 
 async function loadTerrainDescriptor() {
-  if (state.terrain || state.terrainUnavailable) return state.terrain;
+  if (state.terrain || state.terrainDescriptorUnavailable) return state.terrain;
   try {
     const response = await fetch(config.data.terrain);
     if (!response.ok) throw new Error(`Terrain descriptor request failed (${response.status})`);
@@ -418,13 +418,24 @@ async function loadTerrainDescriptor() {
   } catch (error) {
     // Relief is context. Losing it must never cost the reader the wine map.
     console.error(error);
-    state.terrainUnavailable = true;
+    state.terrainDescriptorUnavailable = true;
   }
   return state.terrain;
 }
 
-function terrainCoversView() {
-  const terrain = state.terrain;
+function terrainLayerIds(terrainId) {
+  return [
+    `terrain-${terrainId}-hillshade`,
+    `terrain-${terrainId}-contours-index`,
+    `terrain-${terrainId}-contours-intermediate`,
+  ];
+}
+
+function loadedTerrainLayerIds() {
+  return [...state.terrainLoaded].flatMap(terrainLayerIds);
+}
+
+function terrainCoversView(terrain) {
   if (!terrain) return false;
   const zoom = map.getZoom();
   if (zoom < config.semanticZoom.terrainMin || zoom > config.semanticZoom.contourMax) return false;
@@ -438,22 +449,25 @@ function addTerrainLayers(terrain) {
   const zoom = config.semanticZoom;
   const visibility = elements.terrainToggle.checked ? "visible" : "none";
   const beforeId = terrainInsertionPoint();
+  const sourceHillshade = `terrain-${terrain.id}-hillshade`;
+  const sourceContours = `terrain-${terrain.id}-contours`;
+  const [hillshadeLayer, indexLayer, intermediateLayer] = terrainLayerIds(terrain.id);
 
-  map.addSource("terrain-hillshade", {
+  map.addSource(sourceHillshade, {
     type: "image",
-    url: config.data.terrainHillshade,
+    url: terrain.hillshade.path,
     coordinates: terrain.hillshade.image_coordinates,
   });
-  map.addSource("terrain-contours", {
+  map.addSource(sourceContours, {
     type: "geojson",
-    data: config.data.terrainContours,
-    attribution: terrain.attribution,
+    data: terrain.contours.path,
+    attribution: state.terrain.attribution,
   });
 
   map.addLayer({
-    id: "terrain-hillshade",
+    id: hillshadeLayer,
     type: "raster",
-    source: "terrain-hillshade",
+    source: sourceHillshade,
     minzoom: zoom.terrainMin,
     maxzoom: zoom.terrainMax,
     layout: { visibility },
@@ -469,9 +483,9 @@ function addTerrainLayers(terrain) {
   }, beforeId);
 
   map.addLayer({
-    id: "terrain-contours-index",
+    id: indexLayer,
     type: "line",
-    source: "terrain-contours",
+    source: sourceContours,
     filter: ["==", ["get", "contour_class"], "index"],
     minzoom: zoom.contourIndexMin,
     maxzoom: zoom.contourMax,
@@ -488,9 +502,9 @@ function addTerrainLayers(terrain) {
   }, beforeId);
 
   map.addLayer({
-    id: "terrain-contours-intermediate",
+    id: intermediateLayer,
     type: "line",
-    source: "terrain-contours",
+    source: sourceContours,
     filter: ["==", ["get", "contour_class"], "intermediate"],
     minzoom: zoom.contourIntermediateMin,
     maxzoom: zoom.contourMax,
@@ -507,20 +521,25 @@ function addTerrainLayers(terrain) {
   }, beforeId);
 }
 
-async function ensureTerrainLayers({ force = false } = {}) {
-  if (state.terrainLoaded || state.terrainUnavailable) return;
-  const terrain = await loadTerrainDescriptor();
-  if (!terrain) return;
-  if (!force && !terrainCoversView()) return;
-  // Two map events can await the descriptor at once; adding the sources twice
-  // would throw. Everything below this guard runs synchronously.
-  if (state.terrainLoaded || map.getSource("terrain-hillshade")) return;
-  try {
-    addTerrainLayers(terrain);
-    state.terrainLoaded = true;
-  } catch (error) {
-    console.error(error);
-    state.terrainUnavailable = true;
+async function ensureTerrainLayers() {
+  const descriptor = await loadTerrainDescriptor();
+  if (!descriptor) return;
+  for (const terrain of descriptor.terrains || []) {
+    if (state.terrainLoaded.has(terrain.id) || state.terrainUnavailable.has(terrain.id)) continue;
+    if (!terrainCoversView(terrain)) continue;
+    // Two map events can await the descriptor at once. Source presence is the
+    // synchronous guard that prevents duplicate additions after either resumes.
+    if (map.getSource(`terrain-${terrain.id}-hillshade`)) {
+      state.terrainLoaded.add(terrain.id);
+      continue;
+    }
+    try {
+      addTerrainLayers(terrain);
+      state.terrainLoaded.add(terrain.id);
+    } catch (error) {
+      console.error(error);
+      state.terrainUnavailable.add(terrain.id);
+    }
   }
 }
 
@@ -648,7 +667,7 @@ function subjectMapReaction(subject, configuredOverride = null) {
   const configured = configuredOverride || state.editorial?.subjects?.[subject?.entity_id]?.map_reaction || {};
   const areaSubjectIds = [...(configured.area_subject_ids || [])];
   const producerIds = [...(configured.producer_ids || [])];
-  if (subject?.kind === "appellation" && subject.map_target && !areaSubjectIds.includes(subject.entity_id)) {
+  if (["appellation", "classification"].includes(subject?.kind) && subject.map_target && !areaSubjectIds.includes(subject.entity_id)) {
     areaSubjectIds.unshift(subject.entity_id);
   }
   if (subject?.kind === "producer" && subject.map_target && !producerIds.includes(subject.entity_id)) {
@@ -974,7 +993,7 @@ function connectionsMarkup(subject) {
       <p class="section-kicker">Where this goes next</p>
       <h3>Keep wandering</h3>
       <div class="wandering-list">${featured.map((item) => `
-        <button type="button" data-explore-subject="${escapeHtml(item.target_id)}">
+        <button type="button" ${item.move_map ? "data-go-to-subject" : "data-explore-subject"}="${escapeHtml(item.target_id)}">
           <span class="wandering-copy"><strong>${escapeHtml(item.target.display_name)}</strong><small>${richText(item.reason)}</small></span>
           <span class="wandering-action">${escapeHtml(item.action || exploreVerb(item.target.kind))} <span aria-hidden="true">→</span></span>
         </button>`).join("")}</div>
@@ -1033,8 +1052,36 @@ function subjectLead(subject) {
   return subject.claims.find((claim) => claim.claim_id === subject.lead_claim_id) || subject.claims[0] || null;
 }
 
+function subjectMapTarget(subject) {
+  if (subject?.map_target) return subject.map_target;
+  const view = subject ? subjectEditorial(subject).map_view : null;
+  if (!view) return null;
+  const areaFeatureIds = (view.area_subject_ids || []).flatMap((entityId) => (
+    state.subjects?.[entityId]?.map_target?.map_feature_ids || []
+  ));
+  if (view.bounds) {
+    return {
+      kind: "bounds",
+      bounds: view.bounds,
+      max_zoom: view.max_zoom || 10.6,
+      map_feature_ids: [...new Set(areaFeatureIds)],
+      producer_ids: view.producer_ids || [],
+    };
+  }
+  if (view.center) {
+    return {
+      kind: "point",
+      center: view.center,
+      zoom: view.zoom || 10.2,
+      map_feature_ids: [...new Set(areaFeatureIds)],
+      producer_ids: view.producer_ids || [],
+    };
+  }
+  return null;
+}
+
 function mapActionMarkup(subject) {
-  if (!subject.map_target) return "";
+  if (!subjectMapTarget(subject)) return "";
   if (state.geographicSubjectId === subject.entity_id) {
     return `<p class="current-location"><span aria-hidden="true">◎</span> You are exploring ${escapeHtml(subject.display_name.replace(/ AOP$/, ""))} on the map</p>`;
   }
@@ -1067,10 +1114,64 @@ function lensesMarkup(editorial) {
     <article>${lens.signal ? signalMarkup(lens.signal) : ""}<h4>${escapeHtml(lens.title)}</h4><p>${richText(lens.text)}</p>${lens.target_id && state.subjects[lens.target_id] ? `<button type="button" data-explore-subject="${escapeHtml(lens.target_id)}">Explore ${escapeHtml(state.subjects[lens.target_id].display_name)} <span aria-hidden="true">→</span></button>` : ""}</article>`).join("")}</div></section>`;
 }
 
+function thenNowMarkup(editorial) {
+  const comparison = editorial.then_now;
+  if (!comparison?.then || !comparison?.now) return "";
+  return `<section class="then-now detail-section">
+    <p class="section-kicker">Then / Now</p>
+    <h3>${escapeHtml(comparison.title)}</h3>
+    ${comparison.intro ? `<p class="then-now__intro">${richText(comparison.intro)}</p>` : ""}
+    <div>
+      <article><small>${escapeHtml(comparison.then.label)}</small><p>${richText(comparison.then.text)}</p></article>
+      <article><small>${escapeHtml(comparison.now.label)}</small><p>${richText(comparison.now.text)}</p></article>
+    </div>
+  </section>`;
+}
+
+function timelineMarkup(editorial) {
+  if (!editorial.timeline?.length) return "";
+  return `<section class="subject-timeline detail-section">
+    <p class="section-kicker">Time is part of the evidence</p>
+    <h3>Read the chronology</h3>
+    <ol>${editorial.timeline.map((item) => `<li><time>${escapeHtml(item.label)}</time><p>${richText(item.text)}</p></li>`).join("")}</ol>
+  </section>`;
+}
+
+function comparisonMarkup(editorial) {
+  if (!editorial.comparison?.length) return "";
+  return `<section class="method-comparison detail-section">
+    <p class="section-kicker">Related terms · separate evidence</p>
+    <h3>Do not collapse the mechanism</h3>
+    <div>${editorial.comparison.map((item) => `<article><small>${escapeHtml(item.label)}</small><strong>${escapeHtml(item.value)}</strong><p>${richText(item.detail)}</p></article>`).join("")}</div>
+  </section>`;
+}
+
+function practiceExamplesMarkup(editorial) {
+  if (!editorial.practice_examples?.length) return "";
+  return `<section class="practice-examples detail-section">
+    <p class="section-kicker">Producer-specific evidence</p>
+    <h3>Three records, not one regional recipe</h3>
+    <div>${editorial.practice_examples.map((item) => `<article><strong>${escapeHtml(item.label)}</strong><p>${richText(item.text)}</p><button type="button" data-explore-subject="${escapeHtml(item.target_id)}">Explore <span aria-hidden="true">→</span></button></article>`).join("")}</div>
+  </section>`;
+}
+
 function stylePathsMarkup(editorial) {
   if (!editorial.style_paths?.length) return "";
   return `<section class="style-paths detail-section"><p class="section-kicker">One grape · several cellar paths</p><h3>The fork is the point</h3><div>${editorial.style_paths.map((path, index) => `
     <article><span>0${index + 1}</span><div><strong>${richText(path.name)}</strong><small>${richText(path.note)}</small></div><button type="button" aria-label="Explore ${escapeHtml(state.subjects[path.target_id].display_name)}" data-explore-subject="${escapeHtml(path.target_id)}">↗</button></article>`).join("")}</div></section>`;
+}
+
+function regionalMapMomentsMarkup(editorial) {
+  if (!editorial.map_moments?.length) return "";
+  return `<section class="regional-map-moments detail-section">
+    <p class="section-kicker">Terrain moments</p>
+    <h4>Read physical context beside wine geography</h4>
+    <div>${editorial.map_moments.map((moment) => {
+      const target = state.subjects[moment.subject_id];
+      if (!target) return "";
+      return `<article><small>${escapeHtml(moment.eyebrow)}</small><strong>${escapeHtml(moment.title)}</strong><p>${richText(moment.text)}</p><div><button type="button" data-explore-subject="${escapeHtml(moment.subject_id)}">Explore</button><button type="button" data-go-to-subject="${escapeHtml(moment.subject_id)}">Go there <span aria-hidden="true">↗</span></button></div></article>`;
+    }).join("")}</div>
+  </section>`;
 }
 
 function affinitiesMarkup(editorial) {
@@ -1129,18 +1230,14 @@ function regionalPeopleMarkup(editorial) {
   }).join("")}</div>`;
 }
 
-function regionalAreaScaleMarkup(guide) {
-  const allowed = new Set([
-    "appellation:arbois",
-    "appellation:l-etoile",
-    "appellation:chateau-chalon",
-    "appellation:cremant-du-jura",
-    "appellation:macvin-du-jura",
-  ]);
-  const quantities = (guide?.quantities || []).filter((item) => allowed.has(item.subject_ref) && item.quantity?.measure === "claimed_vineyard_area");
+function regionalAreaScaleMarkup(guide, editorial) {
+  const comparison = editorial.area_comparison;
+  if (!comparison?.subject_ids?.length) return "";
+  const allowed = new Set(comparison.subject_ids);
+  const quantities = (guide?.quantities || []).filter((item) => allowed.has(item.subject_ref) && item.quantity?.measure === comparison.claim_measure);
   if (!quantities.length) return "";
   const max = Math.max(...quantities.map((item) => item.quantity.value));
-  return `<section class="jura-area-scale"><header><p class="section-kicker">Scale, in context</p><h4>Reported claimed area</h4></header><div>${quantities.map((item) => `<div><span>${escapeHtml(item.label)}</span><i aria-hidden="true" style="--area-share:${Math.max(5, (item.quantity.value / max) * 100)}%"></i><strong>${escapeHtml(formatQuantity(item.quantity))}</strong></div>`).join("")}</div><p>2023 revendication basis. Overlapping category areas are not additive.</p></section>`;
+  return `<section class="jura-area-scale"><header><p class="section-kicker">${escapeHtml(comparison.kicker)}</p><h4>${escapeHtml(comparison.title)}</h4></header><div>${quantities.map((item) => `<div><span>${escapeHtml(item.label)}</span><i aria-hidden="true" style="--area-share:${Math.max(5, (item.quantity.value / max) * 100)}%"></i><strong>${escapeHtml(formatQuantity(item.quantity))}</strong></div>`).join("")}</div><p>${escapeHtml(comparison.note)}</p></section>`;
 }
 
 function regionalStyleComparisonMarkup(editorial) {
@@ -1159,7 +1256,7 @@ function regionalRulesMarkup(subject, guide, overlaps, editorial, ruleClaims) {
       const target = state.subjects[id];
       return `<button type="button" data-go-to-subject="${escapeHtml(id)}"><span>${escapeHtml(target.display_name)}</span><small>Highlight on map</small><b aria-hidden="true">↗</b></button>`;
     }).join("")}</div></section>`).join("")}</div>` : ""}
-    ${subject.entity_id === "place:jura" ? regionalAreaScaleMarkup(guide) : ""}
+    ${regionalAreaScaleMarkup(guide, editorial)}
     ${claimsMarkup(subject, ruleClaims)}
     ${overlapMarkup(overlaps)}`;
 }
@@ -1172,10 +1269,10 @@ function regionalPlaceMarkup(subject, guide, overlaps, editorial, lead, claims) 
   // Each world speaks for itself. A pillar with no authored lede stays thin
   // rather than borrowing another region's sentence as a default.
   const lede = (pillar) => (copy[pillar]?.lede ? `<p class="jura-pillar-lede">${escapeHtml(copy[pillar].lede)}</p>` : "");
-  const place = `${story ? `<section class="jura-place-story"><p class="section-kicker">${escapeHtml(story.kicker)}</p><h4>${escapeHtml(story.title)}</h4><p>${richText(story.text)}</p><button type="button" data-region-map-reaction="place">${escapeHtml(story.button)}</button></section>` : ""}${claimsMarkup(subject, landClaims)}`;
+  const place = `${story ? `<section class="jura-place-story"><p class="section-kicker">${escapeHtml(story.kicker)}</p><h4>${escapeHtml(story.title)}</h4><p>${richText(story.text)}</p><button type="button" data-region-map-reaction="place">${escapeHtml(story.button)}</button></section>` : ""}${regionalMapMomentsMarkup(editorial)}${claimsMarkup(subject, landClaims)}`;
   const grapes = `${lede("grapes")}${regionalStyleComparisonMarkup(editorial)}${regionalGrapesMarkup(editorial)}`;
   const people = `${lede("people")}${regionalPeopleMarkup(editorial)}`;
-  const culture = `${lede("culture")}${lensesMarkup(editorial)}`;
+  const culture = `${lede("culture")}${thenNowMarkup(editorial)}${timelineMarkup(editorial)}${lensesMarkup(editorial)}`;
   const rules = `${lede("rules")}${regionalRulesMarkup(subject, guide, overlaps, editorial, ruleClaims)}`;
   return `
     <nav class="chapter-nav" aria-label="${escapeHtml(subject.display_name)} guide sections">
@@ -1215,7 +1312,7 @@ function appellationMarkup(subject, guide, overlaps, claims) {
 
 function humanMarkup(subject, editorial, claims) {
   const producer = subject.kind === "producer";
-  return `<section class="human-ledger detail-section"><p class="section-kicker">${producer ? "Producer dossier" : "A human subject"}</p><h3>${producer ? "What this producer makes legible" : "Work, place, transmission"}</h3>${claimsMarkup(subject, claims.slice(0, 6))}${routeButtons(subject, ["person", "producer", "project", "place", "grape", "wine", "practice", "appellation"], 8)}</section>${lensesMarkup(editorial)}`;
+  return `<section class="human-ledger detail-section"><p class="section-kicker">${producer ? "Producer dossier" : "A human subject"}</p><h3>${producer ? "What this producer makes legible" : "Work, place, transmission"}</h3>${claimsMarkup(subject, claims.slice(0, 6))}${routeButtons(subject, ["person", "producer", "project", "place", "grape", "wine", "practice", "appellation"], 8)}</section>${thenNowMarkup(editorial)}${lensesMarkup(editorial)}`;
 }
 
 function wineMarkup(subject, claims) {
@@ -1223,7 +1320,11 @@ function wineMarkup(subject, claims) {
 }
 
 function practiceMarkup(subject, editorial, claims) {
-  return `<section class="word-study detail-section"><p class="section-kicker">Helpful vernacular</p><h3>A word that prevents a shortcut</h3><p>${richText(editorial.thesis || subjectLead(subject)?.statement || "")}</p>${routeButtons(subject, ["wine", "producer", "grape"], 7)}${claimsMarkup(subject, claims.slice(0, 3))}</section>`;
+  return `${comparisonMarkup(editorial)}${practiceExamplesMarkup(editorial)}<section class="word-study detail-section"><p class="section-kicker">Helpful vernacular</p><h3>A word that prevents a shortcut</h3><p>${richText(editorial.thesis || subjectLead(subject)?.statement || "")}</p>${routeButtons(subject, ["wine", "producer", "grape", "practice"], 7)}${claimsMarkup(subject, claims.slice(0, 4))}</section>`;
+}
+
+function timeMarkup(subject, editorial, claims) {
+  return `${thenNowMarkup(editorial)}${timelineMarkup(editorial)}${claimsMarkup(subject, claims.slice(0, 5), { heading: "What the record supports" })}${routeButtons(subject, ["place", "appellation", "grape", "producer", "practice"], 8)}`;
 }
 
 function subjectCardMarkup(subject, guide = null, overlaps = []) {
@@ -1243,6 +1344,7 @@ function subjectCardMarkup(subject, guide = null, overlaps = []) {
   else if (["producer", "person", "project"].includes(subject.kind)) body = humanMarkup(subject, editorial, claims);
   else if (subject.kind === "wine") body = wineMarkup(subject, claims);
   else if (subject.kind === "practice") body = practiceMarkup(subject, editorial, claims);
+  else if (["classification", "historical_event"].includes(subject.kind)) body = timeMarkup(subject, editorial, claims);
   else body = claimsMarkup(subject, claims.slice(0, 6));
   return `<article class="subject-card subject-card--${escapeHtml(subject.kind)} ${isRegionalWorld ? "subject-card--regional-world" : ""}">
     ${contextReturnMarkup()}
@@ -1306,8 +1408,8 @@ function recordTrail(subject, { moved = false } = {}) {
     label: subject.display_name,
     route: subject.route,
     viewport: captureViewport(),
-    mapTarget: moved ? subject.map_target : null,
-    contextMapTarget: geographic?.map_target || null,
+    mapTarget: moved ? subjectMapTarget(subject) : null,
+    contextMapTarget: geographic ? subjectMapTarget(geographic) : null,
     selection: state.activeMapSelection,
     geographicSubjectId: state.geographicSubjectId,
     regionPillar: state.editorial?.subjects?.[subject.entity_id]?.regional_world ? state.activeRegionPillar : null,
@@ -1353,13 +1455,16 @@ function updateBackButton(currentState = history.state) {
 }
 
 async function moveToMapTarget(subject, { selection = null } = {}) {
-  const target = subject.map_target;
+  const target = subjectMapTarget(subject);
   if (!target) return false;
   await enterFrance({ fit: false, reveal: false });
   state.geographicSubjectId = subject.entity_id;
+  const targetSelection = selection || {
+    areaFeatureIds: (target.map_feature_ids || []).filter((id) => id.startsWith("inao-")),
+    producerEntityId: target.producer_ids?.[0] || (target.kind === "point" && subject.kind === "producer" ? subject.entity_id : null),
+  };
   if (target.kind === "bounds") {
-    const areaFeatureIds = target.map_feature_ids.filter((id) => id.startsWith("inao-"));
-    applyMapSelection(selection || { areaFeatureIds, producerEntityId: null });
+    applyMapSelection(targetSelection);
     const duration = transitionDuration(900);
     await animateMap(() => map.fitBounds(target.bounds, {
       padding: panelPadding(),
@@ -1368,7 +1473,7 @@ async function moveToMapTarget(subject, { selection = null } = {}) {
       essential: true,
     }), duration);
   } else if (target.kind === "point") {
-    applyMapSelection(selection || { areaFeatureIds: [], producerEntityId: subject.entity_id });
+    applyMapSelection(targetSelection);
     const duration = transitionDuration(900);
     await animateMap(() => map.flyTo({
       center: target.center,
@@ -1408,7 +1513,7 @@ async function navigateSubject(entityId, {
     state.activeOverlapRecords = overlaps;
     if (restore?.geographicSubjectId) {
       state.geographicSubjectId = restore.geographicSubjectId;
-    } else if (moveMap && subject.map_target) {
+    } else if (moveMap && subjectMapTarget(subject)) {
       state.geographicSubjectId = subject.entity_id;
     }
     const guide = state.atlasGuides[entityId] || null;
@@ -1417,7 +1522,7 @@ async function navigateSubject(entityId, {
     const restoredGeographic = restore?.geographicSubjectId
       ? state.subjects[restore.geographicSubjectId]
       : null;
-    if (restore && restoredGeographic?.map_target) {
+    if (restore && restoredGeographic && subjectMapTarget(restoredGeographic)) {
       moved = await moveToMapTarget(restoredGeographic, { selection: restore.selection || null });
     } else if (restore?.mapTarget) {
       moved = await moveToMapTarget(subject, { selection: restore.selection || null });
@@ -1755,7 +1860,7 @@ async function bootstrapRoute() {
     const restore = history.state?.subjectId === entityId ? history.state : null;
     await enterFrance({ fit: !restore?.viewport, reveal: false });
     await navigateSubject(entityId, {
-      moveMap: Boolean(!restore && state.subjects[entityId].map_target),
+      moveMap: Boolean(!restore && subjectMapTarget(state.subjects[entityId])),
       historyMode: "replace",
       addTrail: !state.trail.some((step) => step.subjectId === entityId),
       restore,
@@ -1839,8 +1944,8 @@ elements.producersToggle.addEventListener("change", async () => {
   setLayerVisibility([...PRODUCER_LAYERS, "producer-selection", "subject-producer-halos", "subject-producer-labels"], elements.producersToggle.checked);
 });
 elements.terrainToggle.addEventListener("change", async () => {
-  if (elements.terrainToggle.checked) await ensureTerrainLayers({ force: true });
-  setLayerVisibility(TERRAIN_LAYERS, elements.terrainToggle.checked);
+  if (elements.terrainToggle.checked) await ensureTerrainLayers();
+  setLayerVisibility(loadedTerrainLayerIds(), elements.terrainToggle.checked);
 });
 
 elements.inspectButton.addEventListener("click", async () => {
@@ -1869,7 +1974,7 @@ elements.discoveryContent.addEventListener("click", (event) => {
   const entry = event.target.closest("[data-entry-subject]");
   if (entry) {
     const subject = state.subjects[entry.dataset.entrySubject];
-    const moveMap = ["place", "appellation"].includes(subject.kind) && Boolean(subject.map_target);
+    const moveMap = Boolean(subjectMapTarget(subject));
     navigateSubject(subject.entity_id, { moveMap });
   }
 });
@@ -1923,6 +2028,7 @@ elements.detailContent.addEventListener("click", async (event) => {
     const guide = state.atlasGuides[subject.entity_id] || null;
     renderPanelMarkup(subjectCardMarkup(subject, guide, state.activeOverlapRecords));
     applySubjectMapReaction(subject);
+    updateContextLabel();
     updateBackButton();
     return;
   }

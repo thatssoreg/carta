@@ -36,7 +36,7 @@ For complete coverage, use the generated Human Reference indexes for [grapes](at
 
 ## CARTA Atlas
 
-**[CARTA Atlas](docs/carta-atlas.md)** is the geographic projection of the same system: a conventional, legible world and country map that progressively reveals wine regions, appellations, and their evidence-backed geography. The France-first v0.1 lives in [`atlas-app/`](atlas-app/), with search, semantic zoom, source details, governed identity states, and links back to Human Reference.
+**[CARTA Atlas](docs/carta-atlas.md)** is the geographic projection of the same system: a conventional, legible world and country map that progressively reveals wine regions, appellations, and their evidence-backed geography. The France-first v0.1 lives in [`atlas-app/`](atlas-app/), with finished Jura, Béarn / Jurançon, and Beaujolais regional worlds, two bounded terrain proofs, search, semantic zoom, source details, governed identity states, and links back to Human Reference.
 
 The Atlas is meant to teach ordinary geography and wine geography together. Cities, rivers, mountains, coasts, political borders, and terrain remain useful context rather than disappearing beneath wine-specific layers. Semantic zoom controls what becomes visible as a reader moves from world to country to region to appellation and, where the evidence supports it, site scale.
 

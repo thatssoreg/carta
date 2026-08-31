@@ -113,7 +113,9 @@ This section is generated from CARTA machine authority. Edit the governed record
 | `claim:beaujolais-gamay-share-2024-10` | `reference / 2024-01-01` | `supported` | `high` | `source:beaujolais-key-figures-2024` |
 | `claim:beaujolais-geology-10` | `reference / 2020-09-21` | `supported` | `high` | `source:beaujolais-terroirs` |
 | `claim:beaujolais-hierarchy-10` | `reference / 2024-01-01` | `supported` | `high` | `source:beaujolais-key-figures-2024` |
+| `claim:beaujolais-north-south-geology-16` | `reference / 2026-08-20` | `supported` | `high` | `source:beaujolais-cahier-2026`, `source:beaujolais-terroirs` |
 | `claim:beaujolais-nouveau-history-15` | `reference / 2026-08-20` | `supported` | `high` | `source:beaujolais-cahier-2026` |
+| `claim:beaujolais-physical-corridor-16` | `reference / 2026-08-20` | `supported` | `high` | `source:beaujolais-cahier-2026` |
 | `claim:beaujolais-primeur-current-15` | `reference / 2026-08-20` | `supported` | `high` | `source:beaujolais-cahier-2026` |
 | `claim:beaujolais-red-share-2024-10` | `reference / 2024-01-01` | `supported` | `high` | `source:beaujolais-key-figures-2024` |
 | `claim:beaujolais-rose-share-2024-10` | `reference / 2024-01-01` | `supported` | `high` | `source:beaujolais-key-figures-2024` |

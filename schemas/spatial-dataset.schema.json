@@ -155,7 +155,27 @@
           "maxItems": 4,
           "items": {"type": "number"}
         },
-        "description": {"type": "string", "minLength": 1}
+        "description": {"type": "string", "minLength": 1},
+        "regions": {
+          "description": "Optional explicit components when the source coverage is discontinuous; bbox_epsg4326 remains the outer envelope.",
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "bbox_epsg4326", "description"],
+            "properties": {
+              "id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$"},
+              "bbox_epsg4326": {
+                "type": "array",
+                "minItems": 4,
+                "maxItems": 4,
+                "items": {"type": "number"}
+              },
+              "description": {"type": "string", "minLength": 1}
+            }
+          }
+        }
       }
     },
     "source_files": {

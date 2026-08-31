@@ -3335,6 +3335,148 @@ button {
   font-size: 0.56rem;
 }
 
+.regional-map-moments,
+.then-now,
+.subject-timeline,
+.method-comparison,
+.practice-examples {
+  margin: 22px 0;
+  padding: 18px;
+  border: 1px solid var(--line-strong);
+  background: rgba(123, 41, 59, 0.035);
+}
+
+.regional-map-moments h4,
+.then-now h3,
+.subject-timeline h3,
+.method-comparison h3,
+.practice-examples h3 {
+  margin: 0 0 14px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.08rem;
+  font-weight: 500;
+}
+
+.regional-map-moments > div,
+.method-comparison > div,
+.practice-examples > div {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.regional-map-moments article,
+.method-comparison article,
+.practice-examples article,
+.then-now article {
+  padding: 13px;
+  border: 1px solid var(--line);
+  background: var(--paper-strong);
+}
+
+.regional-map-moments article > small,
+.method-comparison article > small,
+.then-now article > small {
+  display: block;
+  margin-bottom: 7px;
+  color: var(--wine);
+  font-size: 0.52rem;
+  font-weight: 780;
+  letter-spacing: 0.055em;
+  text-transform: uppercase;
+}
+
+.regional-map-moments article > strong,
+.method-comparison article > strong,
+.practice-examples article > strong {
+  display: block;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 0.91rem;
+  font-weight: 500;
+  line-height: 1.25;
+}
+
+.regional-map-moments article > p,
+.method-comparison article > p,
+.practice-examples article > p,
+.then-now article > p {
+  margin: 8px 0 0;
+  color: var(--ink-muted);
+  font-size: 0.62rem;
+  line-height: 1.48;
+}
+
+.regional-map-moments article > div {
+  display: flex;
+  gap: 6px;
+  margin-top: 12px;
+}
+
+.regional-map-moments button,
+.practice-examples button {
+  min-height: 38px;
+  padding: 0 10px;
+  border: 1px solid var(--wine);
+  background: transparent;
+  color: var(--wine);
+  font-size: 0.59rem;
+  font-weight: 780;
+  cursor: pointer;
+}
+
+.regional-map-moments button:last-child,
+.regional-map-moments button:hover,
+.practice-examples button:hover {
+  background: var(--wine);
+  color: white;
+}
+
+.then-now__intro {
+  margin: -5px 0 13px;
+  color: var(--ink-muted);
+  font-size: 0.61rem;
+  line-height: 1.45;
+}
+
+.then-now > div {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.subject-timeline ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.subject-timeline li {
+  display: grid;
+  grid-template-columns: 105px minmax(0, 1fr);
+  gap: 14px;
+  padding: 12px 0;
+  border-top: 1px solid var(--line);
+}
+
+.subject-timeline time {
+  color: var(--wine);
+  font-size: 0.58rem;
+  font-weight: 780;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.subject-timeline li p {
+  margin: 0;
+  color: var(--ink-muted);
+  font-size: 0.64rem;
+  line-height: 1.48;
+}
+
+.practice-examples button {
+  margin-top: 12px;
+}
+
 .style-paths > div > article,
 .affinity-section > div > article,
 .cultural-machines article,
@@ -3502,11 +3644,46 @@ button {
     grid-template-columns: 1fr;
   }
 
+  .regional-map-moments > div,
+  .method-comparison > div,
+  .practice-examples > div,
+  .then-now > div {
+    grid-template-columns: 1fr;
+  }
+
+  .regional-map-moments button,
+  .practice-examples button {
+    min-height: 44px;
+  }
+
+  .subject-timeline li {
+    grid-template-columns: 82px minmax(0, 1fr);
+    gap: 10px;
+  }
+
   .jura-area-scale > div > div {
     grid-template-columns: 94px minmax(0, 1fr) 48px;
   }
 
   .wandering-list > button {
     min-height: 92px;
+  }
+}
+
+/* A contextual return sits before the hero. The hero normally pulls upward
+   beneath the fixed panel controls; in this state that same pull would paint
+   over the return action. */
+.return-context + .subject-hero {
+  margin-top: 0;
+  padding-top: 26px;
+}
+
+@media (max-width: 720px) {
+  .return-context {
+    min-height: 44px;
+  }
+
+  .return-context + .subject-hero {
+    padding-top: 22px;
   }
 }

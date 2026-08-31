@@ -25,6 +25,7 @@ EXPERIENCE_LINEAGE = [
     "data/atlas/run-06-bearn-jurancon-world.json",
     "data/atlas/run-07-editorial-foundation.json",
     "data/atlas/run-08-beaujolais-canonical-ingestion.json",
+    "data/atlas/run-09-beaujolais-world.json",
 ]
 
 INAO_DATASET_ID = "spatial-dataset:inao-aires-geographiques-siqo-2026-08-24"
@@ -197,6 +198,13 @@ def validate_native_experience(authority: dict[str, Any]) -> dict[str, Any]:
         "producer:domaine-des-terres-dorees",
         "person:jules-chauvet",
         "practice:carbonic-maceration",
+        "practice:semi-carbonic-maceration",
+        "practice:whole-cluster-fermentation",
+        "ecosystem:gang-of-four-beaujolais",
+        "geographic_feature:mont-brouilly",
+        "geographic_feature:py-hill",
+        "vineyard:cote-du-py",
+        "place:charnay-rhone",
         "historical_event:gamay-ordinance-1395",
         "classification:beaujolais-primeur-nouveau",
     }
@@ -259,10 +267,10 @@ def validate_native_experience(authority: dict[str, Any]) -> dict[str, Any]:
     entries = read_json(PUBLIC_DATA_DIR / "atlas-entry-points.json")
     if entries.get("generated_from") != EXPERIENCE_LINEAGE:
         fail("atlas-entry-points.json: experience config lineage is stale")
-    if entries.get("release") != "atlas-run-08-beaujolais-canonical-ingestion":
+    if entries.get("release") != "atlas-run-09-beaujolais-world":
         fail("atlas-entry-points.json: release marker is stale")
-    if len(entries.get("entry_points", [])) < 4:
-        fail("atlas-entry-points.json: expected restrained Run 06 entry set")
+    if len(entries.get("entry_points", [])) != 5:
+        fail("atlas-entry-points.json: Beaujolais needs five focused learner questions")
     entry_ids: set[str] = set()
     for entry in entries["entry_points"]:
         if entry["id"] in entry_ids:
@@ -298,7 +306,7 @@ def validate_editorial_experience(
     value = read_json(PUBLIC_DATA_DIR / "atlas-editorial.json")
     if value.get("generated_from") != EXPERIENCE_LINEAGE:
         fail("atlas-editorial.json: experience config lineage is stale")
-    if value.get("release") != "atlas-run-08-beaujolais-canonical-ingestion":
+    if value.get("release") != "atlas-run-09-beaujolais-world":
         fail("atlas-editorial.json: release marker is stale")
     legend = value.get("legend", [])
     if {item.get("id") for item in legend} != {
@@ -320,6 +328,10 @@ def validate_editorial_experience(
         "tries-successives",
         "vendanges-tardives",
         "voile",
+        "carbonic-maceration",
+        "semi-carbonic",
+        "whole-cluster",
+        "nouveau",
     }:
         fail("atlas-editorial.json: learner glossary is incomplete")
     for term_id, term in glossary.items():
@@ -348,8 +360,9 @@ def validate_editorial_experience(
     if len(jura.get("featured_connections", [])) != 3:
         fail("atlas-editorial.json: Jura Keep wandering set must contain three routes")
     bearn = configured_subjects.get("place:bearn", {})
-    if not jura.get("regional_world") or not bearn.get("regional_world"):
-        fail("atlas-editorial.json: Jura and Béarn must share the regional-world contract")
+    beaujolais = configured_subjects.get("place:beaujolais", {})
+    if not all(world.get("regional_world") for world in (jura, bearn, beaujolais)):
+        fail("atlas-editorial.json: Jura, Béarn and Beaujolais must share the regional-world contract")
     if len(bearn.get("hero_facts", [])) != 2:
         fail("atlas-editorial.json: Béarn opening needs two high-value facts")
     if len(bearn.get("grape_cards", [])) != 5:
@@ -367,6 +380,22 @@ def validate_editorial_experience(
         for signal in nested_values(bearn, "signal")
     ):
         fail("atlas-editorial.json: Béarn invents a sensory Tell")
+    if len(beaujolais.get("hero_facts", [])) != 3:
+        fail("atlas-editorial.json: Beaujolais opening needs three bounded facts")
+    if len(beaujolais.get("grape_cards", [])) != 2:
+        fail("atlas-editorial.json: Beaujolais grape grammar needs Gamay and Chardonnay")
+    if len(beaujolais.get("people", [])) != 5:
+        fail("atlas-editorial.json: Beaujolais People pillar must feature five distinct producers")
+    if len(beaujolais.get("map_moments", [])) != 4:
+        fail("atlas-editorial.json: Beaujolais needs four bounded terrain moments")
+    if set(beaujolais.get("pillar_map_reactions", {})) != {
+        "place", "grapes", "people", "culture", "rules"
+    }:
+        fail("atlas-editorial.json: Beaujolais pillar map reactions are incomplete")
+    if any(signal == "tell" for signal in nested_values(beaujolais, "signal")):
+        fail("atlas-editorial.json: Beaujolais invents a sensory Tell")
+    if not beaujolais.get("then_now"):
+        fail("atlas-editorial.json: Beaujolais must use Then / Now meaningfully")
     # No world may borrow another world's voice: each regional world carries its
     # own pillar copy, Place story and rule grammar, or it does not ship.
     for subject_id, editorial in configured_subjects.items():
@@ -392,6 +421,18 @@ def validate_editorial_experience(
     priority = value.get("map_click_priority", {})
     if priority.get("appellation:jurancon", 999) >= priority.get("appellation:bearn", 999):
         fail("atlas-editorial.json: Jurançon must outrank overlapping Béarn on click")
+    crus = {
+        "appellation:brouilly", "appellation:cote-de-brouilly", "appellation:chenas",
+        "appellation:chiroubles", "appellation:fleurie", "appellation:julienas",
+        "appellation:morgon", "appellation:moulin-a-vent", "appellation:regnie",
+        "appellation:saint-amour",
+    }
+    if not all(
+        priority.get(cru, 999) < priority.get("classification:beaujolais-villages-mention", 999)
+        < priority.get("appellation:beaujolais", 999)
+        for cru in crus
+    ):
+        fail("atlas-editorial.json: cru > Villages mention > Beaujolais click priority drifted")
     for context_return in value.get("context_returns", []):
         if context_return.get("return_subject_id") not in subjects:
             fail("atlas-editorial.json: dead reciprocal context return")
@@ -448,6 +489,23 @@ def validate_editorial_experience(
             for producer_id in reaction.get("producer_ids", []):
                 if not subjects[producer_id].get("map_target"):
                     fail(f"atlas-editorial.json:{subject_id}: unmappable active producer")
+        map_view = editorial.get("map_view")
+        if map_view:
+            if bool(map_view.get("bounds")) == bool(map_view.get("center")):
+                fail(f"atlas-editorial.json:{subject_id}: malformed map view")
+            for area_id in map_view.get("area_subject_ids", []):
+                if area_id not in subjects or not subjects[area_id].get("map_target"):
+                    fail(f"atlas-editorial.json:{subject_id}: unmappable map-view area")
+            for producer_id in map_view.get("producer_ids", []):
+                if producer_id not in subjects or not subjects[producer_id].get("map_target"):
+                    fail(f"atlas-editorial.json:{subject_id}: unmappable map-view producer")
+        for moment in editorial.get("map_moments", []):
+            target_id = moment.get("subject_id")
+            target_editorial = configured_subjects.get(target_id, {})
+            if target_id not in subjects or not (
+                subjects[target_id].get("map_target") or target_editorial.get("map_view")
+            ):
+                fail(f"atlas-editorial.json:{subject_id}: dead terrain moment")
     return len(configured_subjects)
 
 
@@ -732,33 +790,6 @@ def validate_terrain(
     if not manifest["transformations"]:
         fail("terrain: derived assets exist with no recorded processing recipe")
 
-    artifacts = {artifact["path"]: artifact for artifact in manifest["derived_artifacts"]}
-    expected = {
-        "atlas-app/public/data/atlas-terrain-hillshade.png",
-        "atlas-app/public/data/atlas-terrain-contours.geojson",
-        "atlas-app/public/data/atlas-terrain.json",
-    }
-    if set(artifacts) != expected:
-        fail("terrain: derived artifact set does not match the committed terrain assets")
-    for path, artifact in artifacts.items():
-        if artifact.get("product_class") != "derived_spatial_product":
-            fail(f"{path}: terrain assets must be registered as derived spatial products")
-        if TERRAIN_DATASET_ID not in artifact.get("derived_from", []):
-            fail(f"{path}: terrain asset does not resolve back to its source observation")
-
-    hillshade_artifact = artifacts["atlas-app/public/data/atlas-terrain-hillshade.png"]
-    hillshade_path = ROOT / hillshade_artifact["path"]
-    header = hillshade_path.read_bytes()[:24]
-    if header[:8] != b"\x89PNG\r\n\x1a\n" or header[12:16] != b"IHDR":
-        fail("terrain: the shaded-relief asset is not a PNG")
-    width = int.from_bytes(header[16:20], "big")
-    height = int.from_bytes(header[20:24], "big")
-    if (width, height) != (
-        hillshade_artifact.get("pixel_width"),
-        hillshade_artifact.get("pixel_height"),
-    ):
-        fail("terrain: shaded-relief pixel dimensions do not match the manifest")
-
     descriptor = read_json(PUBLIC_DATA_DIR / "atlas-terrain.json")
     if descriptor.get("source_dataset_id") != TERRAIN_DATASET_ID:
         fail("atlas-terrain.json: descriptor is not bound to the registered elevation dataset")
@@ -768,65 +799,91 @@ def validate_terrain(
         fail("atlas-terrain.json: required licence attribution is missing or stale")
     if descriptor.get("recipe") != manifest["transformations"]:
         fail("atlas-terrain.json: published recipe and manifest transformations disagree")
+    terrains = descriptor.get("terrains", [])
+    if {terrain.get("id") for terrain in terrains} != {"bearn-jurancon", "beaujolais"}:
+        fail("atlas-terrain.json: bounded terrain extent set is incomplete")
+    if len(manifest["source_files"]) != 8:
+        fail("terrain: source file set must contain six Pyrenean and two Beaujolais tiles")
 
-    clip = next(
-        (
-            step["parameters"]["clip_bbox_epsg4326"]
-            for step in manifest["transformations"]
-            if "clip_bbox_epsg4326" in step["parameters"]
-        ),
-        None,
-    )
-    if clip != descriptor["proof_extent"]["bbox_epsg4326"]:
-        fail("atlas-terrain.json: proof extent and recorded clip extent disagree")
+    descriptor_path = "atlas-app/public/data/atlas-terrain.json"
+    terrain_asset_paths = {
+        f"atlas-app/public/{terrain[kind]['path'].removeprefix('./')}"
+        for terrain in terrains
+        for kind in ("hillshade", "contours")
+    }
+    artifacts = {artifact["path"]: artifact for artifact in manifest["derived_artifacts"]}
+    expected = terrain_asset_paths | {descriptor_path}
+    if set(artifacts) != expected:
+        fail("terrain: derived artifact set does not match both bounded terrain extents")
+    for path, artifact in artifacts.items():
+        if artifact.get("product_class") != "derived_spatial_product":
+            fail(f"{path}: terrain assets must be registered as derived spatial products")
+        if TERRAIN_DATASET_ID not in artifact.get("derived_from", []):
+            fail(f"{path}: terrain asset does not resolve back to its source observation")
 
-    hillshade = descriptor["hillshade"]
-    if (hillshade["pixel_width"], hillshade["pixel_height"]) != (width, height):
-        fail("atlas-terrain.json: declared image size does not match the PNG")
-    west, south, east, north = hillshade["image_bbox_epsg4326"]
-    if hillshade["image_coordinates"] != [
-        [west, north],
-        [east, north],
-        [east, south],
-        [west, south],
-    ]:
-        fail("atlas-terrain.json: image placement corners do not match the image extent")
-    if not (west <= clip[0] and south <= clip[1] and east >= clip[2] and north >= clip[3]):
-        fail("atlas-terrain.json: the rendered image does not cover the proof extent")
+    clips = {
+        step["parameters"].get("extent_id"): step["parameters"]["clip_bbox_epsg4326"]
+        for step in manifest["transformations"]
+        if "clip_bbox_epsg4326" in step["parameters"]
+    }
+    contour_count = 0
+    for terrain in terrains:
+        terrain_id = terrain["id"]
+        clip = clips.get(terrain_id)
+        if clip != terrain["proof_extent"]["bbox_epsg4326"]:
+            fail(f"atlas-terrain.json:{terrain_id}: proof extent and clip disagree")
 
-    contours = validate_geojson(
-        PUBLIC_DATA_DIR / "atlas-terrain-contours.geojson",
-        {"LineString"},
-        {
-            "source_feature_id",
-            "elevation_metres",
-            "contour_class",
-            "feature_type",
-            "representation_type",
-            "representation_label",
-            "source_dataset_id",
-        },
-    )
-    interval = descriptor["contours"]["interval_metres"]
-    index_interval = descriptor["contours"]["index_interval_metres"]
-    if descriptor["contours"]["feature_count"] != len(contours["features"]):
-        fail("atlas-terrain.json: contour count does not match the contour asset")
-    for feature in contours["features"]:
-        properties = feature["properties"]
-        label = feature["id"]
-        elevation = properties["elevation_metres"]
-        if not isinstance(elevation, int) or elevation % interval:
-            fail(f"{label}: contour elevation is not on the declared interval")
-        expected_class = "index" if elevation % index_interval == 0 else "intermediate"
-        if properties["contour_class"] != expected_class:
-            fail(f"{label}: contour class disagrees with the index interval")
-        if properties["source_dataset_id"] != TERRAIN_DATASET_ID:
-            fail(f"{label}: contour is not attributed to the registered elevation dataset")
-        if properties["feature_type"] != "elevation_contour":
-            fail(f"{label}: contour meaning drifted")
-        # Terrain is context. It never becomes a CARTA identity or a reading route.
-        if properties.get("carta_entity_id") or properties.get("human_reference_path"):
-            fail(f"{label}: terrain features must not claim a CARTA identity")
+        hillshade = terrain["hillshade"]
+        hillshade_artifact_path = f"atlas-app/public/{hillshade['path'].removeprefix('./')}"
+        hillshade_artifact = artifacts[hillshade_artifact_path]
+        header = (ROOT / hillshade_artifact_path).read_bytes()[:24]
+        if header[:8] != b"\x89PNG\r\n\x1a\n" or header[12:16] != b"IHDR":
+            fail(f"terrain:{terrain_id}: shaded-relief asset is not a PNG")
+        width = int.from_bytes(header[16:20], "big")
+        height = int.from_bytes(header[20:24], "big")
+        if (width, height) != (
+            hillshade_artifact.get("pixel_width"),
+            hillshade_artifact.get("pixel_height"),
+        ) or (hillshade["pixel_width"], hillshade["pixel_height"]) != (width, height):
+            fail(f"terrain:{terrain_id}: shaded-relief dimensions drifted")
+        west, south, east, north = hillshade["image_bbox_epsg4326"]
+        if hillshade["image_coordinates"] != [
+            [west, north], [east, north], [east, south], [west, south]
+        ]:
+            fail(f"terrain:{terrain_id}: image placement corners drifted")
+        if not (west <= clip[0] and south <= clip[1] and east >= clip[2] and north >= clip[3]):
+            fail(f"terrain:{terrain_id}: rendered image does not cover its proof extent")
+
+        contour_path = PUBLIC_DATA_DIR / Path(terrain["contours"]["path"]).name
+        contours = validate_geojson(
+            contour_path,
+            {"LineString"},
+            {
+                "source_feature_id", "elevation_metres", "contour_class",
+                "feature_type", "representation_type", "representation_label",
+                "source_dataset_id",
+            },
+        )
+        interval = terrain["contours"]["interval_metres"]
+        index_interval = terrain["contours"]["index_interval_metres"]
+        if terrain["contours"]["feature_count"] != len(contours["features"]):
+            fail(f"atlas-terrain.json:{terrain_id}: contour count drifted")
+        contour_count += len(contours["features"])
+        for feature in contours["features"]:
+            properties = feature["properties"]
+            label = feature["id"]
+            elevation = properties["elevation_metres"]
+            if not isinstance(elevation, int) or elevation % interval:
+                fail(f"{label}: contour elevation is not on the declared interval")
+            expected_class = "index" if elevation % index_interval == 0 else "intermediate"
+            if properties["contour_class"] != expected_class:
+                fail(f"{label}: contour class disagrees with the index interval")
+            if properties["source_dataset_id"] != TERRAIN_DATASET_ID:
+                fail(f"{label}: contour is not attributed to the registered elevation dataset")
+            if properties["feature_type"] != "elevation_contour":
+                fail(f"{label}: contour meaning drifted")
+            if properties.get("carta_entity_id") or properties.get("human_reference_path"):
+                fail(f"{label}: terrain features must not claim a CARTA identity")
 
     for record in authority["geometry"].values():
         if TERRAIN_DATASET_ID in record.get("source_ids", []):
@@ -854,7 +911,8 @@ def validate_terrain(
 
     return {
         "terrain_artifacts": len(artifacts),
-        "terrain_contours": len(contours["features"]),
+        "terrain_contours": contour_count,
+        "terrain_extents": len(terrains),
         "terrain_source_files": len(manifest["source_files"]),
         "terrain_bytes": sum(artifact["bytes"] for artifact in artifacts.values()),
     }

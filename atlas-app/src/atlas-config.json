@@ -17,9 +17,7 @@
     "entryPoints": "./data/atlas-entry-points.json",
     "producerPoints": "./data/atlas-producers.geojson",
     "provenance": "./data/provenance.json",
-    "terrain": "./data/atlas-terrain.json",
-    "terrainHillshade": "./data/atlas-terrain-hillshade.png",
-    "terrainContours": "./data/atlas-terrain-contours.geojson"
+    "terrain": "./data/atlas-terrain.json"
   },
   "countries": {
     "france": {

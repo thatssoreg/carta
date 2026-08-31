@@ -61,6 +61,7 @@ This section is generated from CARTA machine authority. Edit the governed record
 | `claim:lapierre-morgon-wine` | `reference / —` | `supported` | `high` | `source:lapierre-domaine`, `source:inao-morgon` |
 | `claim:morgon-aop` | `reference / —` | `supported` | `high` | `source:inao-morgon` |
 | `claim:morgon-guide-orientation-10` | `reference / 2024-01-01` | `supported` | `high` | `source:beaujolais-key-figures-2024`, `source:inao-morgon` |
+| `claim:py-hill-site-distinction-15` | `reference / —` | `supported` | `high` | `source:inao-morgon` |
 | `claim:terres-dorees-current-identity-15` | `reference / 2026-08-30` | `supported` | `high` | `source:terres-dorees-rhone-tourisme` |
 
 ### Sources

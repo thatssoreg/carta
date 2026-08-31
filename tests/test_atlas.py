@@ -11,6 +11,7 @@ EXPERIENCE_LINEAGE = [
     "data/atlas/run-06-bearn-jurancon-world.json",
     "data/atlas/run-07-editorial-foundation.json",
     "data/atlas/run-08-beaujolais-canonical-ingestion.json",
+    "data/atlas/run-09-beaujolais-world.json",
 ]
 
 
@@ -189,9 +190,7 @@ class AtlasContractTest(unittest.TestCase):
         self.assertEqual(
             editorial["generated_from"], EXPERIENCE_LINEAGE
         )
-        self.assertEqual(
-            editorial["release"], "atlas-run-08-beaujolais-canonical-ingestion"
-        )
+        self.assertEqual(editorial["release"], "atlas-run-09-beaujolais-world")
         self.assertEqual(
             {item["id"] for item in editorial["legend"]},
             {"iykyk", "same-energy"},
@@ -201,7 +200,8 @@ class AtlasContractTest(unittest.TestCase):
             {
                 "elevage", "flor", "foehn", "marl", "mistelle", "ouille",
                 "passerillage", "sec", "sous-voile", "tries-successives",
-                "vendanges-tardives", "voile",
+                "vendanges-tardives", "voile", "carbonic-maceration",
+                "semi-carbonic", "whole-cluster", "nouveau",
             },
         )
         jura = editorial["subjects"]["place:jura"]
@@ -349,11 +349,11 @@ class AtlasContractTest(unittest.TestCase):
         entries = json.loads(
             (ROOT / "atlas-app/public/data/atlas-entry-points.json").read_text()
         )
-        self.assertEqual(len(entries["entry_points"]), 4)
+        self.assertEqual(len(entries["entry_points"]), 5)
         self.assertEqual(len(entries["featured_worlds"]), 5)
         self.assertEqual(entries["generated_from"], EXPERIENCE_LINEAGE)
         self.assertEqual(
-            entries["release"], "atlas-run-08-beaujolais-canonical-ingestion"
+            entries["release"], "atlas-run-09-beaujolais-world"
         )
         claims = {}
         for path in sorted((ROOT / "data/claims").glob("*.jsonl")):
@@ -380,7 +380,7 @@ class AtlasContractTest(unittest.TestCase):
             for subject_id, configured in editorial["subjects"].items()
             if configured.get("regional_world")
         }
-        self.assertEqual(set(worlds), {"place:jura", "place:bearn"})
+        self.assertEqual(set(worlds), {"place:jura", "place:bearn", "place:beaujolais"})
         for subject_id, world in worlds.items():
             self.assertEqual(
                 set(world["pillar_copy"]),
@@ -403,11 +403,14 @@ class AtlasContractTest(unittest.TestCase):
 
         jura_copy = pillar_text(worlds["place:jura"])
         bearn_copy = pillar_text(worlds["place:bearn"])
+        beaujolais_copy = pillar_text(worlds["place:beaujolais"])
         self.assertFalse(jura_copy & bearn_copy)
+        self.assertFalse(jura_copy & beaujolais_copy)
+        self.assertFalse(bearn_copy & beaujolais_copy)
 
         # The application ships no regional prose of its own.
         app = (ROOT / "atlas-app/src/main.js").read_text()
-        for sentence in sorted(jura_copy | bearn_copy):
+        for sentence in sorted(jura_copy | bearn_copy | beaujolais_copy):
             self.assertNotIn(sentence, app)
         # The retired Jura defaults must never return as any world's fallback.
         for retired in (
@@ -418,6 +421,127 @@ class AtlasContractTest(unittest.TestCase):
             "A narrow foothill vineyard, not one uniform site",
         ):
             self.assertNotIn(retired, app, retired)
+
+    def test_beaujolais_is_a_finished_data_authored_regional_world(self):
+        editorial = json.loads(
+            (ROOT / "atlas-app/public/data/atlas-editorial.json").read_text()
+        )
+        subjects = json.loads(
+            (ROOT / "atlas-app/public/data/atlas-subjects.json").read_text()
+        )["subjects"]
+        world = editorial["subjects"]["place:beaujolais"]
+        self.assertTrue(world["regional_world"])
+        self.assertEqual(len(world["hero_facts"]), 3)
+        self.assertEqual(
+            {card["target_id"] for card in world["grape_cards"]},
+            {"grape:gamay-noir-a-jus-blanc", "grape:chardonnay"},
+        )
+        self.assertEqual(len(world["people"]), 5)
+        self.assertEqual(len({person["explains"] for person in world["people"]}), 5)
+        self.assertEqual(len(world["map_moments"]), 4)
+        for moment in world["map_moments"]:
+            self.assertIn(moment["subject_id"], subjects)
+            self.assertIn("map_view", editorial["subjects"][moment["subject_id"]])
+
+        app = (ROOT / "atlas-app/src/main.js").read_text()
+        self.assertNotIn('subject.entity_id === "place:beaujolais"', app)
+        self.assertIn("subjectMapTarget", app)
+        self.assertIn("regionalMapMomentsMarkup", app)
+        self.assertIn("thenNowMarkup", app)
+        current_map_action = app.split(
+            'const current = event.target.closest("[data-go-to-current]");', 1
+        )[1].split(
+            'const restore = event.target.closest("[data-restore-trail]");', 1
+        )[0]
+        self.assertIn("await moveToMapTarget(subject)", current_map_action)
+        self.assertIn("updateContextLabel()", current_map_action)
+        styles = (ROOT / "atlas-app/src/styles.css").read_text()
+        self.assertIn(".return-context + .subject-hero", styles)
+
+    def test_all_ten_crus_and_villages_follow_specificity_priority(self):
+        editorial = json.loads(
+            (ROOT / "atlas-app/public/data/atlas-editorial.json").read_text()
+        )
+        subjects = json.loads(
+            (ROOT / "atlas-app/public/data/atlas-subjects.json").read_text()
+        )["subjects"]
+        crus = {
+            "appellation:brouilly", "appellation:cote-de-brouilly",
+            "appellation:chenas", "appellation:chiroubles", "appellation:fleurie",
+            "appellation:julienas", "appellation:morgon",
+            "appellation:moulin-a-vent", "appellation:regnie",
+            "appellation:saint-amour",
+        }
+        priority = editorial["map_click_priority"]
+        for cru in crus:
+            self.assertEqual(subjects[cru]["map_target"]["kind"], "bounds")
+            self.assertLess(priority[cru], priority["classification:beaujolais-villages-mention"])
+        self.assertLess(
+            priority["classification:beaujolais-villages-mention"],
+            priority["appellation:beaujolais"],
+        )
+        rule_ids = {
+            entity_id
+            for group in editorial["subjects"]["place:beaujolais"]["rules"]["groups"]
+            for entity_id in group["ids"]
+        }
+        self.assertTrue(crus.issubset(rule_ids))
+
+    def test_beaujolais_time_cellar_and_burgundy_routes_stay_bounded(self):
+        editorial = json.loads(
+            (ROOT / "atlas-app/public/data/atlas-editorial.json").read_text()
+        )["subjects"]
+        nouveau = editorial["classification:beaujolais-primeur-nouveau"]
+        self.assertTrue(nouveau["then_now"])
+        self.assertGreaterEqual(len(nouveau["timeline"]), 5)
+        self.assertIn("different scopes", nouveau["then_now"]["intro"])
+
+        carbonic = editorial["practice:carbonic-maceration"]
+        self.assertEqual(
+            {item["label"] for item in carbonic["comparison"]},
+            {"Carbonic", "Semi-carbonic", "Whole cluster"},
+        )
+        self.assertEqual(
+            {item["target_id"] for item in carbonic["practice_examples"]},
+            {
+                "producer:domaine-marcel-lapierre",
+                "producer:domaine-de-la-grand-cour",
+                "producer:domaine-des-terres-dorees",
+            },
+        )
+
+        history = editorial["historical_event:gamay-ordinance-1395"]
+        burgundy_route = next(
+            item for item in history["featured_connections"]
+            if item["target_id"] == "place:burgundy"
+        )
+        self.assertTrue(burgundy_route["move_map"])
+        relationships = []
+        for path in sorted((ROOT / "data/relationships").glob("*.jsonl")):
+            relationships.extend(
+                json.loads(line) for line in path.read_text().splitlines() if line.strip()
+            )
+        self.assertFalse([
+            rel for rel in relationships
+            if {rel["subject_id"], rel["object_id"]}
+            == {"historical_event:gamay-ordinance-1395", "place:burgundy"}
+        ])
+
+    def test_terrain_assets_lazy_load_per_bounded_extent(self):
+        descriptor = json.loads(
+            (ROOT / "atlas-app/public/data/atlas-terrain.json").read_text()
+        )
+        by_id = {terrain["id"]: terrain for terrain in descriptor["terrains"]}
+        self.assertEqual(set(by_id), {"bearn-jurancon", "beaujolais"})
+        self.assertEqual(by_id["beaujolais"]["proof_extent"]["bbox_epsg4326"], [4.05, 45.55, 4.98, 46.48])
+        self.assertIn("beaujolais", by_id["beaujolais"]["hillshade"]["path"])
+        app = (ROOT / "atlas-app/src/main.js").read_text()
+        self.assertIn("for (const terrain of descriptor.terrains || [])", app)
+        self.assertIn("terrainCoversView(terrain)", app)
+        self.assertIn("state.terrainLoaded.has(terrain.id)", app)
+        config = json.loads((ROOT / "atlas-app/src/atlas-config.json").read_text())
+        self.assertNotIn("terrainHillshade", config["data"])
+        self.assertNotIn("terrainContours", config["data"])
 
     def test_learner_copy_stays_out_of_project_vocabulary(self):
         """Run 07: Atlas never explains its own architecture to a learner."""
@@ -475,7 +599,11 @@ class AtlasContractTest(unittest.TestCase):
         )
         self.assertEqual(manifest["product_class"], "source_observation")
         self.assertEqual(manifest["retrieval_status"], "acquired")
-        self.assertEqual(len(manifest["source_files"]), 6)
+        self.assertEqual(len(manifest["source_files"]), 8)
+        self.assertEqual(
+            {region["id"] for region in manifest["geographic_extent"]["regions"]},
+            {"bearn-jurancon", "beaujolais"},
+        )
         for entry in manifest["source_files"]:
             self.assertRegex(entry["sha256"], r"^[a-f0-9]{64}$")
             self.assertTrue(entry["resource_url"].startswith("https://"))
@@ -494,8 +622,9 @@ class AtlasContractTest(unittest.TestCase):
         self.assertFalse([path for path in tracked if path.endswith((".tif", ".tiff"))])
 
     def test_every_public_terrain_asset_traces_back_to_source_and_recipe(self):
-        self.assertEqual(self.summary["terrain_artifacts"], 3)
-        self.assertEqual(self.summary["terrain_source_files"], 6)
+        self.assertEqual(self.summary["terrain_artifacts"], 5)
+        self.assertEqual(self.summary["terrain_extents"], 2)
+        self.assertEqual(self.summary["terrain_source_files"], 8)
         self.assertGreater(self.summary["terrain_contours"], 0)
         descriptor = json.loads(
             (ROOT / "atlas-app/public/data/atlas-terrain.json").read_text()
@@ -519,6 +648,8 @@ class AtlasContractTest(unittest.TestCase):
             {
                 "atlas-app/public/data/atlas-terrain-hillshade.png",
                 "atlas-app/public/data/atlas-terrain-contours.geojson",
+                "atlas-app/public/data/atlas-terrain-beaujolais-hillshade.png",
+                "atlas-app/public/data/atlas-terrain-beaujolais-contours.geojson",
                 "atlas-app/public/data/atlas-terrain.json",
             },
         )
@@ -535,14 +666,13 @@ class AtlasContractTest(unittest.TestCase):
                 "modeled_environmental_product",
             },
         )
-        contours = json.loads(
-            (ROOT / "atlas-app/public/data/atlas-terrain-contours.geojson").read_text()
-        )["features"]
-        for feature in contours:
-            properties = feature["properties"]
-            self.assertNotIn("carta_entity_id", properties)
-            self.assertNotIn("human_reference_path", properties)
-            self.assertEqual(properties["feature_type"], "elevation_contour")
+        for name in ("atlas-terrain-contours.geojson", "atlas-terrain-beaujolais-contours.geojson"):
+            contours = json.loads((ROOT / "atlas-app/public/data" / name).read_text())["features"]
+            for feature in contours:
+                properties = feature["properties"]
+                self.assertNotIn("carta_entity_id", properties)
+                self.assertNotIn("human_reference_path", properties)
+                self.assertEqual(properties["feature_type"], "elevation_contour")
         search = json.loads(
             (ROOT / "atlas-app/public/data/search-index.json").read_text()
         )
@@ -577,8 +707,10 @@ class AtlasContractTest(unittest.TestCase):
         descriptor = json.loads(
             (ROOT / "atlas-app/public/data/atlas-terrain.json").read_text()
         )
-        self.assertEqual(descriptor["contours"]["interval_metres"], 100)
-        self.assertEqual(descriptor["contours"]["index_interval_metres"], 500)
+        self.assertEqual({terrain["id"] for terrain in descriptor["terrains"]}, {"bearn-jurancon", "beaujolais"})
+        for terrain in descriptor["terrains"]:
+            self.assertEqual(terrain["contours"]["interval_metres"], 100)
+            self.assertEqual(terrain["contours"]["index_interval_metres"], 500)
         # Terrain takes no part in selection, inspection or routing.
         for handler in ("handleMapClick", "inspectPoint"):
             self.assertIn(handler, main)

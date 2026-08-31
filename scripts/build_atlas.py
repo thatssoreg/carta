@@ -40,12 +40,13 @@ MANIFEST_DIR = ROOT / "data/geography/datasets"
 MAPPING_DIR = ROOT / "data/geography/external-id-mappings"
 PUBLIC_DATA_DIR = ROOT / "atlas-app/public/data"
 GEOMETRY_METADATA_PATH = ROOT / "data/geography/geometry/atlas-france-inao.jsonl"
-EXPERIENCE_CONFIG_PATH = ROOT / "data/atlas/run-08-beaujolais-canonical-ingestion.json"
+EXPERIENCE_CONFIG_PATH = ROOT / "data/atlas/run-09-beaujolais-world.json"
 EXPERIENCE_LINEAGE = [
     "data/atlas/run-05-jura-final-cut.json",
     "data/atlas/run-06-bearn-jurancon-world.json",
     "data/atlas/run-07-editorial-foundation.json",
     "data/atlas/run-08-beaujolais-canonical-ingestion.json",
+    "data/atlas/run-09-beaujolais-world.json",
 ]
 PRODUCER_BASES_SOURCE_DIR = ROOT / "data/geography/producer-bases"
 
@@ -1383,12 +1384,36 @@ def build_atlas_editorial(
         for reaction in reactions:
             for area_id in reaction.get("area_subject_ids", []):
                 area = subjects.get(area_id)
-                if not area or area["kind"] != "appellation" or not area.get("map_target"):
+                if not area or area["kind"] not in {"appellation", "classification"} or not area.get("map_target"):
                     raise SystemExit(f"{subject_id}: invalid active map area {area_id}")
             for producer_id in reaction.get("producer_ids", []):
                 producer = subjects.get(producer_id)
                 if not producer or producer["kind"] != "producer" or not producer.get("map_target"):
                     raise SystemExit(f"{subject_id}: invalid active map producer {producer_id}")
+        map_view = configured.get("map_view")
+        if map_view:
+            if bool(map_view.get("bounds")) == bool(map_view.get("center")):
+                raise SystemExit(f"{subject_id}: map view needs exactly one of bounds or center")
+            if map_view.get("bounds") and len(map_view["bounds"]) != 4:
+                raise SystemExit(f"{subject_id}: map-view bounds are incomplete")
+            if map_view.get("center") and len(map_view["center"]) != 2:
+                raise SystemExit(f"{subject_id}: map-view center is incomplete")
+            for area_id in map_view.get("area_subject_ids", []):
+                area = subjects.get(area_id)
+                if not area or area["kind"] not in {"appellation", "classification"} or not area.get("map_target"):
+                    raise SystemExit(f"{subject_id}: invalid map-view area {area_id}")
+            for producer_id in map_view.get("producer_ids", []):
+                producer = subjects.get(producer_id)
+                if not producer or producer["kind"] != "producer" or not producer.get("map_target"):
+                    raise SystemExit(f"{subject_id}: invalid map-view producer {producer_id}")
+        for moment in configured.get("map_moments", []):
+            target_id = moment.get("subject_id")
+            target_editorial = configured_subjects.get(target_id, {})
+            target = subjects.get(target_id)
+            if not target or not (target.get("map_target") or target_editorial.get("map_view")):
+                raise SystemExit(f"{subject_id}: terrain moment has no usable target {target_id}")
+            if not all(moment.get(key) for key in ("eyebrow", "title", "text", "claim_ids")):
+                raise SystemExit(f"{subject_id}: terrain moment is incomplete")
 
     claim_support = {}
     for claim_id in sorted(claim_ids):
