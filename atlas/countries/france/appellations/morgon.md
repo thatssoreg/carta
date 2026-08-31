@@ -24,7 +24,9 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [Beaujolais](../regions/beaujolais.md) — region; baseline reference
 - [Domaine Marcel Lapierre](../../../producers/domaine-marcel-lapierre.md) — producer; baseline reference
 - [France](../README.md) — country; baseline reference
-- [Gamay noir à jus blanc](../../../grapes/gamay-noir-a-jus-blanc.md) — grape; navigation node
+- [Gamay noir à jus blanc](../../../grapes/gamay-noir-a-jus-blanc.md) — grape; baseline reference
+- [Domaine des Terres Dorées](../../../producers/domaine-des-terres-dorees.md) — producer; baseline reference
+- [Jean Foillard](../../../producers/jean-foillard.md) — producer; baseline reference
 - [Gang of Four (Beaujolais)](../../../ecosystems/gang-of-four-beaujolais.md) — ecosystem; baseline reference
 <!-- END GENERATED CARTA NAVIGATION -->
 
@@ -55,20 +57,25 @@ This section is generated from CARTA machine authority. Edit the governed record
 
 | Claim | Layer / observed | Status | Confidence | Sources |
 |---|---|---|---|---|
+| `claim:foillard-producer-identity-15` | `reference / 2026-08-30` | `supported` | `high` | `source:kermit-gang-of-four` |
 | `claim:lapierre-morgon-wine` | `reference / —` | `supported` | `high` | `source:lapierre-domaine`, `source:inao-morgon` |
 | `claim:morgon-aop` | `reference / —` | `supported` | `high` | `source:inao-morgon` |
 | `claim:morgon-guide-orientation-10` | `reference / 2024-01-01` | `supported` | `high` | `source:beaujolais-key-figures-2024`, `source:inao-morgon` |
+| `claim:terres-dorees-current-identity-15` | `reference / 2026-08-30` | `supported` | `high` | `source:terres-dorees-rhone-tourisme` |
 
 ### Sources
 
 - `source:beaujolais-key-figures-2024` — Carnet Beaujolais — chiffres clés 2024
 - `source:inao-aires-geographiques-siqo-2026-08-24` — Délimitation des aires-géographiques des SIQO — 2026-08-24 snapshot
 - `source:inao-morgon` — Morgon ou Morgon cru du Beaujolais
+- `source:kermit-gang-of-four` — Jean Foillard — Côte du Py / Beaujolais context
 - `source:lapierre-domaine` — The Domaine Marcel Lapierre
+- `source:terres-dorees-rhone-tourisme` — Domaine des Terres Dorées à Charnay
 
 </details>
 
 ### Open questions
 
 - Add current official production-area and commune data from the latest appellation source
+- `claim:terres-dorees-current-identity-15` — Do not publish a total-hectare measure until the current source’s 57-hectare headline and 37 + 18 hectare subtotal are reconciled.
 <!-- END GENERATED CARTA PROVENANCE -->

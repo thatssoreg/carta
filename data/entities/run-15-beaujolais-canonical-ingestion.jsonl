@@ -1,0 +1,29 @@
+{"id":"appellation:brouilly","layer":"reference","name":"Brouilly AOP","status":"active","type":"appellation"}
+{"id":"appellation:chenas","layer":"reference","name":"Chénas AOP","status":"active","type":"appellation"}
+{"id":"appellation:chiroubles","layer":"reference","name":"Chiroubles AOP","status":"active","type":"appellation"}
+{"id":"appellation:cote-de-brouilly","layer":"reference","name":"Côte de Brouilly AOP","status":"active","type":"appellation"}
+{"id":"appellation:julienas","layer":"reference","name":"Juliénas AOP","status":"active","type":"appellation"}
+{"id":"appellation:regnie","layer":"reference","name":"Régnié AOP","status":"active","type":"appellation"}
+{"id":"appellation:saint-amour","layer":"reference","name":"Saint-Amour AOP","status":"active","type":"appellation"}
+{"id":"classification:beaujolais-villages-mention","layer":"reference","name":"Beaujolais Villages mention","status":"active","summary":"The governed Villages mention within the current Beaujolais specification; it is not modeled as a second standalone appellation.","type":"classification"}
+{"id":"classification:beaujolais-primeur-nouveau","layer":"reference","name":"Beaujolais primeur / nouveau mention","status":"active","summary":"The primeur or nouveau label mention available to qualifying red and rosé Beaujolais wines under the current specification.","type":"classification"}
+{"id":"producer:jean-foillard","layer":"reference","name":"Jean Foillard","status":"active","tags":["beaujolais","morgon","villie-morgon"],"type":"producer"}
+{"id":"producer:chateau-thivin","layer":"reference","name":"Château Thivin","status":"active","tags":["beaujolais","cote-de-brouilly","brouilly","odenas"],"type":"producer"}
+{"id":"producer:domaine-de-la-grand-cour","layer":"reference","name":"Domaine de la Grand’Cour","status":"active","tags":["beaujolais","fleurie","brouilly"],"type":"producer"}
+{"id":"producer:domaine-des-terres-dorees","layer":"reference","name":"Domaine des Terres Dorées","status":"active","tags":["beaujolais","charnay","pierres-dorees"],"type":"producer"}
+{"id":"person:jean-louis-dutraive","layer":"reference","name":"Jean-Louis Dutraive","status":"active","type":"person"}
+{"id":"person:jean-paul-brun","layer":"reference","name":"Jean-Paul Brun","status":"active","type":"person"}
+{"id":"institution:domaines-roger-zannier","layer":"reference","name":"Domaines Roger Zannier","status":"active","type":"institution"}
+{"id":"place:fleurie","layer":"reference","name":"Fleurie","place_kind":"municipality","status":"active","type":"place"}
+{"id":"place:odenas","layer":"reference","name":"Odenas","place_kind":"municipality","status":"active","type":"place"}
+{"id":"place:charnay-rhone","layer":"reference","name":"Charnay (Rhône)","place_kind":"municipality","status":"active","type":"place"}
+{"id":"place:duchy-of-burgundy","layer":"reference","name":"Duchy of Burgundy","place_kind":"historical_territory","status":"historical","type":"place"}
+{"id":"geographic_feature:mont-brouilly","layer":"reference","name":"Mont Brouilly","status":"active","summary":"A physical hill carrying the Côte de Brouilly slopes and surrounded more broadly by Brouilly; it is not itself an appellation or vineyard parcel.","type":"geographic_feature"}
+{"id":"geographic_feature:py-hill","layer":"reference","name":"Py hill","status":"active","summary":"The physical hill above Villié-Morgon associated with Morgon and Côte du Py; it is distinct from both the appellation and the named wine site.","type":"geographic_feature"}
+{"id":"vineyard:grandcour-fleurie","layer":"reference","name":"Grand’Cour","status":"active","summary":"A named Fleurie site described by Domaine de la Grand’Cour; no CARTA polygon is asserted.","type":"vineyard"}
+{"id":"vineyard:chapelle-des-bois-fleurie","layer":"reference","name":"Chapelle des Bois (Fleurie)","status":"active","summary":"A named Fleurie site described by Domaine de la Grand’Cour; no CARTA polygon is asserted.","type":"vineyard"}
+{"id":"vineyard:champagne-fleurie","layer":"reference","name":"Champagne (Fleurie)","status":"active","summary":"A named Fleurie site described by Domaine de la Grand’Cour; no CARTA polygon is asserted.","type":"vineyard"}
+{"id":"practice:carbonic-maceration","layer":"reference","name":"Carbonic maceration","status":"active","type":"practice"}
+{"id":"practice:semi-carbonic-maceration","layer":"reference","name":"Semi-carbonic maceration","status":"active","type":"practice"}
+{"id":"practice:whole-cluster-fermentation","layer":"reference","name":"Whole-cluster fermentation","status":"active","type":"practice"}
+{"id":"historical_event:gamay-ordinance-1395","layer":"reference","name":"1395 ducal Gamay ordinance","status":"historical","summary":"Philip the Bold’s attempt to prohibit Gamay in ducal territory; CARTA does not treat it as proof of a one-step migration into Beaujolais.","type":"historical_event"}

@@ -24,6 +24,7 @@ EXPERIENCE_LINEAGE = [
     "data/atlas/run-05-jura-final-cut.json",
     "data/atlas/run-06-bearn-jurancon-world.json",
     "data/atlas/run-07-editorial-foundation.json",
+    "data/atlas/run-08-beaujolais-canonical-ingestion.json",
 ]
 
 INAO_DATASET_ID = "spatial-dataset:inao-aires-geographiques-siqo-2026-08-24"
@@ -176,9 +177,31 @@ def validate_native_experience(authority: dict[str, Any]) -> dict[str, Any]:
         "producer:domaine-cauhape",
         "producer:clos-uroulat",
         "producer:domaine-de-souch",
+        "appellation:beaujolais",
+        "classification:beaujolais-villages-mention",
+        "appellation:brouilly",
+        "appellation:chenas",
+        "appellation:chiroubles",
+        "appellation:cote-de-brouilly",
+        "appellation:fleurie",
+        "appellation:julienas",
+        "appellation:morgon",
+        "appellation:moulin-a-vent",
+        "appellation:regnie",
+        "appellation:saint-amour",
+        "grape:gamay-noir-a-jus-blanc",
+        "producer:domaine-marcel-lapierre",
+        "producer:jean-foillard",
+        "producer:chateau-thivin",
+        "producer:domaine-de-la-grand-cour",
+        "producer:domaine-des-terres-dorees",
+        "person:jules-chauvet",
+        "practice:carbonic-maceration",
+        "historical_event:gamay-ordinance-1395",
+        "classification:beaujolais-primeur-nouveau",
     }
     if not required.issubset(subjects):
-        fail("atlas-subjects.json: missing required Run 06 native subjects")
+        fail("atlas-subjects.json: missing required native subjects")
 
     for entity_id, subject in subjects.items():
         entity = authority["entities"].get(entity_id)
@@ -236,8 +259,8 @@ def validate_native_experience(authority: dict[str, Any]) -> dict[str, Any]:
     entries = read_json(PUBLIC_DATA_DIR / "atlas-entry-points.json")
     if entries.get("generated_from") != EXPERIENCE_LINEAGE:
         fail("atlas-entry-points.json: experience config lineage is stale")
-    if entries.get("release") != "atlas-run-07-editorial-foundation":
-        fail("atlas-entry-points.json: Run 06 release marker is stale")
+    if entries.get("release") != "atlas-run-08-beaujolais-canonical-ingestion":
+        fail("atlas-entry-points.json: release marker is stale")
     if len(entries.get("entry_points", [])) < 4:
         fail("atlas-entry-points.json: expected restrained Run 06 entry set")
     entry_ids: set[str] = set()
@@ -275,8 +298,8 @@ def validate_editorial_experience(
     value = read_json(PUBLIC_DATA_DIR / "atlas-editorial.json")
     if value.get("generated_from") != EXPERIENCE_LINEAGE:
         fail("atlas-editorial.json: experience config lineage is stale")
-    if value.get("release") != "atlas-run-07-editorial-foundation":
-        fail("atlas-editorial.json: Run 06 release marker is stale")
+    if value.get("release") != "atlas-run-08-beaujolais-canonical-ingestion":
+        fail("atlas-editorial.json: release marker is stale")
     legend = value.get("legend", [])
     if {item.get("id") for item in legend} != {
         "iykyk",

@@ -36,6 +36,7 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [Aligoté](../../../grapes/aligote.md) — grape; navigation node
 - [Chardonnay](../../../grapes/chardonnay.md) — grape; navigation node
 - [Louis Michel & Fils](../../../producers/domaine-louis-michel-fils.md) — producer; baseline reference
+- [The 1395 Gamay ordinance](../../../historical-events/gamay-ordinance-1395.md) — historical_event; baseline reference
 
 ### Deliberately deferred anchors
 

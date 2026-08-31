@@ -99,12 +99,26 @@ Country-specific regions and appellations are nested beneath countries; landscap
 - [Gang of Four (Beaujolais)](../ecosystems/gang-of-four-beaujolais.md) — `baseline` / `published`
 - [Pyrenean Atlantic](../ecosystems/pyrenean-atlantic.md) — `baseline` / `published`
 
+## Practices
+
+### Human Reference surfaces
+
+- [Carbonic, semi-carbonic, and whole-cluster fermentation](../practices/carbonic-maceration.md) — `baseline` / `published`
+
 ## Classifications
 
 ### Human Reference surfaces
 
+- [Beaujolais primeur / nouveau](../classifications/beaujolais-primeur-nouveau.md) — `baseline` / `published`
+- [Beaujolais Villages mention](../classifications/beaujolais-villages-mention.md) — `baseline` / `published`
 - [Kabinett](../classifications/kabinett.md) — `node` / `stub`
 - [Vin de France](../classifications/vin-de-france.md) — `node` / `stub`
+
+## Historical events
+
+### Human Reference surfaces
+
+- [The 1395 Gamay ordinance](../historical-events/gamay-ordinance-1395.md) — `baseline` / `published`
 
 <!-- END GENERATED CARTA INDEX -->
 

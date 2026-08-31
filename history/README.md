@@ -7,6 +7,7 @@ These files are not knowledge authority and are not required to explore the Huma
 ## Retained material
 
 - [`research/run-01-pyrenean-atlantic/`](research/run-01-pyrenean-atlantic/) preserves the first deep-research handoff and its ingestion audit because the Pyrenean Atlantic ecosystem remains a useful example of how evidence became governed authority.
+- [`research/run-02-beaujolais/`](research/run-02-beaujolais/) preserves the Beaujolais regional-foundation research artifact and the canonical normalization audit that separates current law, dated statistics, accepted authority and deferred Atlas composition.
 - [`pilots/pyrenean-atlantic.md`](pilots/pyrenean-atlantic.md) preserves the original vertical-slice specification that stress-tested STRATA before the system expanded.
 
 Most completed run-by-run reconciliation and maintenance reports are intentionally absent from the active tree. Git history preserves that execution record without asking a first-time visitor to treat it as current documentation.

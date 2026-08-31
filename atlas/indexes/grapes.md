@@ -21,7 +21,7 @@ Governed grape profiles, including honest stubs, are listed here.
 - [Courbu](../grapes/courbu.md) — `baseline` / `published`
 - [Dureza](../grapes/dureza.md) — `node` / `stub`
 - [Folgasão](../grapes/folgasao.md) — `node` / `stub`
-- [Gamay noir à jus blanc](../grapes/gamay-noir-a-jus-blanc.md) — `node` / `stub`
+- [Gamay noir à jus blanc](../grapes/gamay-noir-a-jus-blanc.md) — `baseline` / `published`
 - [Glera](../grapes/glera.md) — `node` / `stub`
 - [Gouais blanc](../grapes/gouais-blanc.md) — `node` / `stub`
 - [Graciano](../grapes/graciano.md) — `node` / `stub`
