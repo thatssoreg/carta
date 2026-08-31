@@ -21,6 +21,7 @@ Country-specific regions and appellations are nested beneath countries; landscap
 
 ### Human Reference surfaces
 
+- [Anjou](../countries/france/regions/anjou.md) — `baseline` / `stub`
 - [Apalta Valley](../countries/chile/regions/apalta-valley.md) — `node` / `stub`
 - [Azores](../countries/portugal/regions/azores.md) — `node` / `stub`
 - [Beaujolais](../countries/france/regions/beaujolais.md) — `baseline` / `published`
@@ -28,14 +29,16 @@ Country-specific regions and appellations are nested beneath countries; landscap
 - [Burgundy](../countries/france/regions/burgundy.md) — `baseline` / `published`
 - [Béarn](../countries/france/regions/bearn.md) — `baseline` / `published`
 - [California](../countries/united-states/regions/california.md) — `node` / `stub`
+- [Centre-Loire](../countries/france/regions/centre-loire.md) — `baseline` / `stub`
 - [Colchagua Valley](../countries/chile/regions/colchagua-valley.md) — `node` / `stub`
 - [Combe de Savoie](../countries/france/regions/combe-de-savoie.md) — `node` / `stub`
 - [Contra Costa County](../countries/united-states/regions/contra-costa-county.md) — `node` / `stub`
 - [Jura](../countries/france/regions/jura.md) — `deep` / `published`
 - [Lima Valley](../countries/portugal/regions/lima-valley.md) — `node` / `stub`
-- [Loire Valley](../countries/france/regions/loire-valley.md) — `baseline` / `published`
+- [Loire Valley](../countries/france/regions/loire-valley.md) — `deep` / `published`
 - [Madeira Archipelago](../countries/portugal/regions/madeira-archipelago.md) — `node` / `stub`
 - [Mosel](../countries/germany/regions/mosel.md) — `node` / `stub`
+- [Pays Nantais](../countries/france/regions/pays-nantais.md) — `baseline` / `stub`
 - [Penedès](../countries/spain/regions/penedes.md) — `node` / `stub`
 - [Porto Santo](../countries/portugal/regions/porto-santo.md) — `node` / `stub`
 - [Rheinhessen](../countries/germany/regions/rheinhessen.md) — `node` / `stub`
@@ -43,8 +46,11 @@ Country-specific regions and appellations are nested beneath countries; landscap
 - [Rioja Alta](../countries/spain/regions/rioja-alta.md) — `node` / `stub`
 - [Saar](../countries/germany/regions/saar.md) — `node` / `stub`
 - [Santa Barbara County](../countries/united-states/regions/santa-barbara-county.md) — `node` / `stub`
+- [Saumur](../countries/france/regions/saumur.md) — `baseline` / `stub`
 - [Savoie](../countries/france/regions/savoie.md) — `node` / `stub`
+- [Touraine](../countries/france/regions/touraine.md) — `baseline` / `stub`
 - [Valle de Liébana](../countries/spain/regions/valle-de-liebana.md) — `node` / `stub`
+- [Vallée du Loir](../countries/france/regions/vallee-du-loir.md) — `baseline` / `stub`
 - [Wachau](../countries/austria/regions/wachau.md) — `node` / `stub`
 
 ## Appellations
@@ -98,6 +104,12 @@ Country-specific regions and appellations are nested beneath countries; landscap
 
 - [Gang of Four (Beaujolais)](../ecosystems/gang-of-four-beaujolais.md) — `baseline` / `published`
 - [Pyrenean Atlantic](../ecosystems/pyrenean-atlantic.md) — `baseline` / `published`
+
+## Institutions
+
+### Human Reference surfaces
+
+- [Renaissance des Appellations](../institutions/renaissance-des-appellations.md) — `node` / `stub`
 
 ## Practices
 

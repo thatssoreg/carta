@@ -15,8 +15,10 @@ Melon gives the western Loire a distinct material center and makes the region’
 
 This section is generated from governed profile dispositions, editorial anchors, and supported graph relationships. It is not a hand-maintained second knowledge graph.
 
+- [Pays Nantais](../countries/france/regions/pays-nantais.md) — region; baseline reference
 - [France](../countries/france/README.md) — country; baseline reference
-- [Loire Valley](../countries/france/regions/loire-valley.md) — region; baseline reference
+- [Loire Valley](../countries/france/regions/loire-valley.md) — region; deep reference
+- [Domaines Landron](../producers/domaines-landron.md) — producer; baseline reference
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->
@@ -45,9 +47,11 @@ This section is generated from CARTA machine authority. Edit the governed record
 | Claim | Layer / observed | Status | Confidence | Sources |
 |---|---|---|---|---|
 | `claim:loire-melon-share-2023-10` | `reference / 2023-12-31` | `supported` | `high` | `source:interloire-appellation-guide-2024` |
+| `claim:muscadet-sevre-melon-17` | `reference / 2026-08-24` | `supported` | `high` | `source:interloire-appellation-guide-2024`, `source:inao-aires-geographiques-siqo-2026-08-24` |
 
 ### Sources
 
+- `source:inao-aires-geographiques-siqo-2026-08-24` — Délimitation des aires-géographiques des SIQO — 2026-08-24 snapshot
 - `source:interloire-appellation-guide-2024` — Guide des appellations des vins du Val de Loire 2024
 
 </details>

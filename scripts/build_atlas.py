@@ -40,13 +40,14 @@ MANIFEST_DIR = ROOT / "data/geography/datasets"
 MAPPING_DIR = ROOT / "data/geography/external-id-mappings"
 PUBLIC_DATA_DIR = ROOT / "atlas-app/public/data"
 GEOMETRY_METADATA_PATH = ROOT / "data/geography/geometry/atlas-france-inao.jsonl"
-EXPERIENCE_CONFIG_PATH = ROOT / "data/atlas/run-09-beaujolais-world.json"
+EXPERIENCE_CONFIG_PATH = ROOT / "data/atlas/run-17-loire-valley-world.json"
 EXPERIENCE_LINEAGE = [
     "data/atlas/run-05-jura-final-cut.json",
     "data/atlas/run-06-bearn-jurancon-world.json",
     "data/atlas/run-07-editorial-foundation.json",
     "data/atlas/run-08-beaujolais-canonical-ingestion.json",
     "data/atlas/run-09-beaujolais-world.json",
+    "data/atlas/run-17-loire-valley-world.json",
 ]
 PRODUCER_BASES_SOURCE_DIR = ROOT / "data/geography/producer-bases"
 
@@ -280,6 +281,11 @@ def integer_string(value: Any) -> str:
     return str(int(value))
 
 
+def normalized_source_name(value: Any) -> str:
+    """Normalize only punctuation and spacing needed to disambiguate reused IDs."""
+    return " ".join(str(value).replace("’", "'").split()).casefold()
+
+
 def entity_profile_paths() -> dict[str, str]:
     profiles = read_jsonl((ROOT / "data/reference-profiles").glob("*.jsonl"))
     candidates: dict[str, list[tuple[int, str]]] = defaultdict(list)
@@ -393,6 +399,7 @@ def build_inao_features(
         frame["categorie"].fillna("").str.startswith("Vin")
         & frame["signe"].isin(["AOC", "IGP"])
     ].copy()
+    denomination_id_counts = frame["id_denom"].map(integer_string).value_counts()
     frame["source_fid"] = frame.index.astype(int)
     invalid_source = ~frame.geometry.is_valid
     repaired_fids = set(frame.loc[invalid_source, "source_fid"].tolist())
@@ -426,6 +433,16 @@ def build_inao_features(
             denom_id = integer_string(row.id_denom)
             app_id = integer_string(row.id_app)
             mapping_record = mappings.get(denom_id)
+            if (
+                mapping_record
+                and denomination_id_counts[denom_id] > 1
+                and normalized_source_name(row.denom)
+                != normalized_source_name(mapping_record["source_name"])
+            ):
+                # INAO can reuse one denomination ID for a base appellation and
+                # named complements. The mapping record's governed name selects
+                # exactly one object; sibling features stay external context.
+                mapping_record = None
             carta_entity_id = (
                 mapping_record["carta_entity_id"] if mapping_record else None
             )

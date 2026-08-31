@@ -6,44 +6,44 @@
   "dataset_url": "https://www.data.gouv.fr/datasets/delimitation-des-aires-geographiques-des-siqo",
   "derived_artifacts": [
     {
-      "bytes": 7854327,
+      "bytes": 7855188,
       "feature_count": 1320,
       "format": "GeoJSON",
       "path": "atlas-app/public/data/france-appellations-aoc.geojson",
       "role": "Default AOC/AOP regulatory geographical-area layer",
-      "sha256": "81caced634f9301a1fb24f496d1c44025efaadd4787863c9751c518d882232bc"
+      "sha256": "f2d17c2d199e816a57a34f33f422289b9dd517c5b1d331a9658aed5d4d8b5077"
     },
     {
-      "bytes": 2699715,
+      "bytes": 2699780,
       "feature_count": 165,
       "format": "GeoJSON",
       "path": "atlas-app/public/data/france-appellations-igp.geojson",
       "role": "Optional IGP regulatory geographical-area layer",
-      "sha256": "e1ea50a0cefe65f2ffa5ed7e9e5dcfc064e825c71c657441bb603fe383e55dd2"
+      "sha256": "8a1970ca3da0141fe36e02c5a7e7ee836bdc1106261aa4017eeba30a31832e8d"
     },
     {
-      "bytes": 4451,
-      "feature_count": 5,
+      "bytes": 10003,
+      "feature_count": 11,
       "format": "GeoJSON",
       "path": "atlas-app/public/data/france-wine-regions.geojson",
       "role": "Derived governed CARTA wine-region label anchors and camera bounds",
-      "sha256": "7068443be701a4cfc499cef3a4e2dca20f1bc7bfd8fccea17dce1c0c77ad4a02"
+      "sha256": "2b02d6dfc8e71ff71c6435e7482c74862c16b53da1fc25bbfc0ee48191af0793"
     },
     {
-      "bytes": 1030383,
+      "bytes": 1055304,
       "format": "JSON",
       "path": "atlas-app/public/data/search-index.json",
-      "record_count": 1544,
+      "record_count": 1608,
       "role": "Search records derived from rendered INAO features and governed region labels",
-      "sha256": "aafa78ea2afa472ec588abdcca9b9d5a35ad7e3f803a88999d33d0a4103473cb"
+      "sha256": "adf3bfa9d9382d9f7bdefdf8bebbcb0c7a675a4090efe552e1375325791cf2fd"
     },
     {
-      "bytes": 22777,
+      "bytes": 31353,
       "format": "JSONL",
       "path": "data/geography/geometry/atlas-france-inao.jsonl",
-      "record_count": 40,
+      "record_count": 55,
       "role": "CARTA geometry metadata for accepted INAO-to-CARTA mappings",
-      "sha256": "57841dc518f5c3cb50e2b6328e611348b65bc36382b0c86843090ba0161abca7"
+      "sha256": "387b906e4dfb93ced473fc5ef518bd5d8caa14737773da01a4bf3dbb6da66d2a"
     }
   ],
   "geographic_meaning": "INAO cartographic representation of the SIQO regulatory geographical area; informative GIS does not replace the legal cahier des charges and its commune list",

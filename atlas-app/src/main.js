@@ -287,7 +287,9 @@ function addFranceLayers() {
       "text-size": ["interpolate", ["linear"], ["zoom"], 4.3, 12, 7, 16],
       "text-letter-spacing": 0.07,
       "text-padding": 8,
-      "text-allow-overlap": true,
+      "text-allow-overlap": false,
+      "text-variable-anchor": ["top", "bottom", "left", "right"],
+      "text-radial-offset": 0.65,
     },
     paint: { "text-color": "#18251f", "text-halo-color": "#fffdf8", "text-halo-width": 2 },
   });

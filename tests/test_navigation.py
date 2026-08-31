@@ -316,6 +316,9 @@ class NavigationPolicyTest(unittest.TestCase):
         ratings = load_ratings(
             ROOT / "audits/run-10-human-reference-navigation-ratings.json"
         )
+        # The durable fixture itself defines the fixed Run 10 cohort. New
+        # governed profiles may enter a recomputed legacy top-16 without
+        # mutating the reviewed baseline used by this regression.
         current = evaluate_models(self.report, ratings)["A_current"]
         self.assertEqual(current["ab_retained"], 133, current)
         self.assertEqual(current["retained_ratings"]["B"], 6, current)
