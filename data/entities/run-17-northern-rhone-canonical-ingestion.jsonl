@@ -1,0 +1,105 @@
+{"alternate_names":[{"kind":"local","language":"fr","name":"Rhône septentrional"},{"kind":"trade","name":"Northern Rhône crus"}],"id":"place:northern-rhone","layer":"reference","name":"Northern Rhône","place_kind":"analytical_region","status":"active","summary":"An editorial and institutional grouping of the eight cru appellations between Vienne and Valence. It is not a delimited legal origin: every legal boundary in this corridor belongs to an individual appellation.","type":"place"}
+{"id":"geographic_feature:rhone-river","layer":"reference","name":"Rhône (river)","status":"active","summary":"The river whose corridor organises the northern crus. It is physical geography, not a wine boundary: the bank a vineyard sits on explains orientation, never legal origin.","type":"geographic_feature"}
+{"id":"geographic_feature:hermitage-hill","layer":"reference","name":"Hill of Hermitage","status":"active","summary":"The granite spur on the left bank at Tain-l'Hermitage. The hill is a landform; Hermitage AOC and Crozes-Hermitage AOC are legal areas that meet it differently.","type":"geographic_feature"}
+{"id":"geographic_feature:montagne-de-crussol","layer":"reference","name":"Montagne de Crussol","status":"active","summary":"The limestone relief above Saint-Péray, left standing by secondary-era deposits over the primary granite basement.","type":"geographic_feature"}
+{"id":"geographic_feature:chassis-terrace","layer":"reference","name":"Les Chassis terrace","status":"active","summary":"The lowest and most recent Quaternary terrace of southern Crozes-Hermitage, a triangle with its apex at Pont-de-l'Isère. It is a landform, not a delimited wine area.","type":"geographic_feature"}
+{"id":"place:condrieu","layer":"reference","name":"Condrieu","place_kind":"municipality","status":"active","type":"place"}
+{"id":"place:verin","layer":"reference","name":"Vérin","place_kind":"municipality","status":"active","type":"place"}
+{"id":"place:chavanay","layer":"reference","name":"Chavanay","place_kind":"municipality","status":"active","type":"place"}
+{"id":"place:tupin-et-semons","layer":"reference","name":"Tupin-et-Semons","place_kind":"municipality","status":"active","type":"place"}
+{"id":"place:mauves","layer":"reference","name":"Mauves","place_kind":"municipality","status":"active","type":"place"}
+{"id":"place:tain-l-hermitage","layer":"reference","name":"Tain-l'Hermitage","place_kind":"municipality","status":"active","type":"place"}
+{"id":"place:mercurol","layer":"reference","name":"Mercurol","place_kind":"municipality","status":"active","type":"place"}
+{"id":"place:gervans","layer":"reference","name":"Gervans","place_kind":"municipality","status":"active","type":"place"}
+{"id":"place:pont-de-l-isere","layer":"reference","name":"Pont-de-l'Isère","place_kind":"municipality","status":"active","type":"place"}
+{"id":"place:saint-peray","layer":"reference","name":"Saint-Péray","place_kind":"municipality","status":"active","type":"place"}
+{"id":"place:seyssuel","layer":"reference","name":"Seyssuel","place_kind":"municipality","status":"active","type":"place"}
+{"id":"place:arlebosc","layer":"reference","name":"Arlebosc","place_kind":"municipality","status":"active","type":"place"}
+{"alternate_names":[{"kind":"other","name":"Chaillots"}],"id":"vineyard:chaillot-cornas","layer":"reference","name":"Chaillot","status":"active","summary":"A named Cornas site recorded by specialist sources across several growers' holdings. CARTA holds no parcel geometry for it and does not treat the name as one undivided property.","type":"vineyard"}
+{"alternate_names":[{"kind":"other","name":"Geynale"},{"kind":"other","name":"Genale"}],"id":"vineyard:la-geynale-cornas","layer":"reference","name":"La Geynale","status":"active","summary":"A named site high on the Reynard slope in Cornas, associated with the Michel family and later with Vincent Paris.","type":"vineyard"}
+{"alternate_names":[{"kind":"other","name":"Reynards"}],"id":"vineyard:reynard-cornas","layer":"reference","name":"Reynard","status":"active","summary":"A named Cornas site worked by several growers. Old vines here moved between growers in the late twentieth century.","type":"vineyard"}
+{"id":"vineyard:coteau-de-vernon-condrieu","layer":"reference","name":"Coteau de Vernon","status":"active","summary":"The Condrieu site where the Vernay family's foundational Viognier planting sits and where terrace reconstruction was later completed.","type":"vineyard"}
+{"id":"appellation:condrieu","layer":"reference","name":"Condrieu AOP","status":"active","type":"appellation"}
+{"id":"appellation:chateau-grillet","layer":"reference","name":"Château-Grillet AOP","status":"active","type":"appellation"}
+{"id":"appellation:saint-joseph","layer":"reference","name":"Saint-Joseph AOP","status":"active","type":"appellation"}
+{"alternate_names":[{"kind":"legal","language":"fr","name":"Crozes-Ermitage"}],"id":"appellation:crozes-hermitage","layer":"reference","name":"Crozes-Hermitage AOP","status":"active","type":"appellation"}
+{"alternate_names":[{"kind":"legal","language":"fr","name":"Ermitage"},{"kind":"legal","language":"fr","name":"l'Hermitage"},{"kind":"legal","language":"fr","name":"l'Ermitage"}],"id":"appellation:hermitage","layer":"reference","name":"Hermitage AOP","status":"active","type":"appellation"}
+{"id":"appellation:saint-peray","layer":"reference","name":"Saint-Péray AOP","status":"active","type":"appellation"}
+{"id":"appellation:collines-rhodaniennes","layer":"reference","name":"Collines Rhodaniennes IGP","status":"active","summary":"The protected geographical indication that carries much of the corridor's non-cru wine, including the replanted Seyssuel vineyard. CARTA governs it as a legal category; its mapped area remains external context in this release.","type":"appellation"}
+{"id":"classification:hermitage-vin-de-paille","layer":"reference","name":"Hermitage vin de paille mention","status":"active","summary":"An optional mention within the Hermitage specification for white wines from dried grapes. It is a governed mention, not a separate appellation.","type":"classification"}
+{"id":"grape:viognier","layer":"reference","name":"Viognier","status":"active","type":"grape"}
+{"id":"grape:marsanne","layer":"reference","name":"Marsanne","status":"active","type":"grape"}
+{"id":"grape:roussanne","layer":"reference","name":"Roussanne","status":"active","type":"grape"}
+{"id":"practice:co-fermentation","layer":"reference","name":"Co-fermentation (grape-stage assemblage)","status":"active","summary":"Vinifying two or more varieties together from the grape stage rather than blending finished wines. Several Northern Rhône specifications describe this at the grape stage; it does not tell you what an individual producer did in a given vintage.","type":"practice"}
+{"id":"practice:traditional-method-sparkling","layer":"reference","name":"Traditional-method sparkling (second fermentation in bottle)","status":"active","summary":"A second fermentation carried out in the bottle the wine is sold in. It is a method, not a quality claim or a regional identity.","type":"practice"}
+{"id":"historical_event:saint-peray-sparkling-1828","layer":"reference","name":"Saint-Péray sparkling trials of 1828","status":"active","summary":"The systematic bottle-fermentation trials recorded by the Saint-Péray specification, which the appellation treats as the origin of its sparkling reputation.","type":"historical_event"}
+{"id":"institution:artemis-domaines","layer":"reference","name":"Artémis Domaines","status":"active","type":"institution"}
+{"id":"producer:domaine-georges-vernay","layer":"reference","name":"Domaine Georges Vernay","status":"active","type":"producer"}
+{"id":"producer:dard-et-ribo","layer":"reference","name":"Dard & Ribo","status":"active","type":"producer"}
+{"id":"producer:domaine-alain-voge","layer":"reference","name":"Domaine Alain Voge","status":"active","type":"producer"}
+{"id":"producer:domaine-robert-michel","layer":"reference","name":"Domaine Robert Michel","status":"historical","type":"producer"}
+{"id":"producer:domaine-noel-verset","layer":"reference","name":"Domaine Noël Verset","status":"historical","type":"producer"}
+{"id":"producer:domaine-auguste-clape","layer":"reference","name":"Domaine Auguste Clape","status":"active","type":"producer"}
+{"id":"producer:thierry-allemand","layer":"reference","name":"Thierry Allemand","status":"active","type":"producer"}
+{"id":"producer:domaine-vincent-paris","layer":"reference","name":"Domaine Vincent Paris","status":"active","type":"producer"}
+{"id":"producer:domaine-franck-balthazar","layer":"reference","name":"Domaine Franck Balthazar","status":"active","type":"producer"}
+{"id":"producer:domaine-du-tunnel","layer":"reference","name":"Domaine du Tunnel","status":"active","type":"producer"}
+{"id":"producer:domaine-jamet","layer":"reference","name":"Domaine Jamet","status":"active","type":"producer"}
+{"id":"producer:jean-michel-stephan","layer":"reference","name":"Jean-Michel Stéphan","status":"active","type":"producer"}
+{"id":"producer:domaine-andre-perret","layer":"reference","name":"Domaine André Perret","status":"active","type":"producer"}
+{"id":"producer:domaine-yves-cuilleron","layer":"reference","name":"Cave Yves Cuilleron","status":"active","type":"producer"}
+{"id":"producer:chateau-grillet","layer":"reference","name":"Château-Grillet (estate)","status":"active","type":"producer"}
+{"id":"producer:domaine-gonon","layer":"reference","name":"Domaine Pierre Gonon","status":"active","type":"producer"}
+{"id":"producer:domaine-bernard-gripa","layer":"reference","name":"Domaine Bernard Gripa","status":"active","type":"producer"}
+{"id":"producer:romaneaux-destezet","layer":"reference","name":"Domaine Romaneaux-Destezet","status":"active","type":"producer"}
+{"id":"producer:domaine-alain-graillot","layer":"reference","name":"Domaine Alain Graillot","status":"active","type":"producer"}
+{"id":"producer:domaine-laurent-fayolle","layer":"reference","name":"Domaine Laurent Fayolle","status":"active","type":"producer"}
+{"id":"producer:domaine-jean-louis-chave","layer":"reference","name":"Domaine Jean-Louis Chave","status":"active","type":"producer"}
+{"id":"producer:m-chapoutier","layer":"reference","name":"M. Chapoutier","status":"active","type":"producer"}
+{"id":"producer:paul-jaboulet-aine","layer":"reference","name":"Paul Jaboulet Aîné","status":"active","type":"producer"}
+{"id":"producer:e-guigal","layer":"reference","name":"E. Guigal","status":"active","type":"producer"}
+{"id":"project:les-vins-de-vienne","layer":"reference","name":"Les Vins de Vienne","status":"active","summary":"A collaborative project founded to replant the ancient Seyssuel vineyard north of Vienne. Its Seyssuel wines carry IGP Collines Rhodaniennes; the founders' own domaines remain separate producer identities.","type":"project"}
+{"id":"person:francis-vernay","layer":"reference","name":"Francis Vernay","status":"historical","type":"person"}
+{"id":"person:georges-vernay","layer":"reference","name":"Georges Vernay","status":"historical","type":"person"}
+{"id":"person:christine-vernay","layer":"reference","name":"Christine Vernay","status":"active","type":"person"}
+{"id":"person:rene-jean-dard","layer":"reference","name":"René-Jean Dard","status":"active","type":"person"}
+{"id":"person:francois-ribo","layer":"reference","name":"François Ribo","status":"active","type":"person"}
+{"id":"person:alain-voge","layer":"reference","name":"Alain Voge","status":"historical","type":"person"}
+{"id":"person:joseph-michel","layer":"reference","name":"Joseph Michel","status":"historical","type":"person"}
+{"id":"person:noel-verset","layer":"reference","name":"Noël Verset","status":"historical","type":"person"}
+{"id":"person:auguste-clape","layer":"reference","name":"Auguste Clape","status":"historical","type":"person"}
+{"id":"person:pierre-marie-clape","layer":"reference","name":"Pierre-Marie Clape","status":"active","type":"person"}
+{"id":"person:olivier-clape","layer":"reference","name":"Olivier Clape","status":"active","type":"person"}
+{"id":"person:thierry-allemand","layer":"reference","name":"Thierry Allemand","status":"active","type":"person"}
+{"id":"person:vincent-paris","layer":"reference","name":"Vincent Paris","status":"active","type":"person"}
+{"id":"person:franck-balthazar","layer":"reference","name":"Franck Balthazar","status":"active","type":"person"}
+{"id":"person:stephane-robert","layer":"reference","name":"Stéphane Robert","status":"active","type":"person"}
+{"id":"person:joseph-jamet","layer":"reference","name":"Joseph Jamet","status":"historical","type":"person"}
+{"id":"person:jean-michel-stephan","layer":"reference","name":"Jean-Michel Stéphan","status":"active","type":"person"}
+{"id":"person:andre-perret","layer":"reference","name":"André Perret","status":"active","type":"person"}
+{"id":"person:yves-cuilleron","layer":"reference","name":"Yves Cuilleron","status":"active","type":"person"}
+{"id":"person:pierre-gaillard","layer":"reference","name":"Pierre Gaillard","status":"active","type":"person"}
+{"id":"person:francois-villard","layer":"reference","name":"François Villard","status":"active","type":"person"}
+{"id":"person:pierre-gonon","layer":"reference","name":"Pierre Gonon","status":"historical","type":"person"}
+{"id":"person:raymond-trollat","layer":"reference","name":"Raymond Trollat","status":"historical","type":"person"}
+{"id":"person:bernard-gripa","layer":"reference","name":"Bernard Gripa","status":"historical","type":"person"}
+{"id":"person:fabrice-gripa","layer":"reference","name":"Fabrice Gripa","status":"active","type":"person"}
+{"id":"person:herve-souhaut","layer":"reference","name":"Hervé Souhaut","status":"active","type":"person"}
+{"id":"person:beatrice-souhaut","layer":"reference","name":"Béatrice Souhaut","status":"active","type":"person"}
+{"id":"person:alain-graillot","layer":"reference","name":"Alain Graillot","status":"historical","type":"person"}
+{"id":"person:maxime-graillot","layer":"reference","name":"Maxime Graillot","status":"active","type":"person"}
+{"id":"person:antoine-graillot","layer":"reference","name":"Antoine Graillot","status":"active","type":"person"}
+{"id":"person:laurent-fayolle","layer":"reference","name":"Laurent Fayolle","status":"active","type":"person"}
+{"id":"person:gerard-chave","layer":"reference","name":"Gérard Chave","status":"active","type":"person"}
+{"id":"person:etienne-guigal","layer":"reference","name":"Etienne Guigal","status":"historical","type":"person"}
+{"id":"person:marcel-guigal","layer":"reference","name":"Marcel Guigal","status":"active","type":"person"}
+{"id":"person:philippe-guigal","layer":"reference","name":"Philippe Guigal","status":"active","type":"person"}
+{"id":"person:michel-chapoutier","layer":"reference","name":"Michel Chapoutier","status":"active","type":"person"}
+{"id":"person:antoine-jaboulet","layer":"reference","name":"Antoine Jaboulet","status":"historical","type":"person"}
+{"id":"person:gerard-jaboulet","layer":"reference","name":"Gérard Jaboulet","status":"historical","type":"person"}
+{"id":"person:caroline-frey","layer":"reference","name":"Caroline Frey","status":"active","type":"person"}
+{"id":"person:louis-alexandre-faure","layer":"reference","name":"Louis-Alexandre Faure","status":"historical","type":"person"}
+{"id":"wine:voge-les-bulles-dalain","layer":"reference","name":"Domaine Alain Voge Saint-Péray Les Bulles d'Alain","status":"active","type":"wine"}
+{"id":"wine:voge-ongrie","layer":"reference","name":"Domaine Alain Voge Saint-Péray Ongrie","status":"active","type":"wine"}
+{"id":"wine:vernay-coteau-de-vernon","layer":"reference","name":"Domaine Georges Vernay Condrieu Coteau de Vernon","status":"active","type":"wine"}
+{"id":"wine:les-vins-de-vienne-sotanum","layer":"reference","name":"Les Vins de Vienne Sotanum","status":"active","type":"wine"}

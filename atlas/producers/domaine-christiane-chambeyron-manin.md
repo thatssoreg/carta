@@ -77,14 +77,25 @@ Côte Brune · Côte-Rôtie · Syrah / Sérine · Ampuis · Chambeyron family hi
 
 Primary CARTA source records include Sacred Thirst Selections, The Wine Trust, and INAO.
 
+## Why half a hectare earns a door
+
+In the [Northern Rhône](../countries/france/regions/northern-rhone.md) world this estate is one of five editorial doors, and it is there precisely because teaching value is not proportional to fame or hectares. One well-documented parcel on [Côte Brune](../countries/france/appellations/cote-rotie.md), one grape, one current steward and an unusually exact cellar sequence make the difference between a producer point and a vineyard obvious: CARTA knows the locality and does not know the parcel polygon, and says so.
+
+Read it against [Domaine Jamet](domaine-jamet.md), which blends twenty-five plots across seventeen lieux-dits under the same appellation name. The two estates are the opposite ends of what one legal origin can hold, and neither is the appellation.
+
+Sérine here is naming vocabulary attached to [Syrah](../grapes/syrah.md), not a second grape identity — the same discipline the region applies to *gore*, *chaillée* and every other piece of useful local terroir language.
+
 <!-- BEGIN GENERATED CARTA NAVIGATION -->
 ## Explore CARTA
 
 This section is generated from governed profile dispositions, editorial anchors, and supported graph relationships. It is not a hand-maintained second knowledge graph.
 
-- [Syrah](../grapes/syrah.md) — grape; navigation node
-- [Côte-Rôtie](../countries/france/appellations/cote-rotie.md) — appellation; navigation node
+- [Côte-Rôtie AOP](../countries/france/appellations/cote-rotie.md) — appellation; baseline reference
+- [Syrah](../grapes/syrah.md) — grape; baseline reference
+- [Domaine Jamet](domaine-jamet.md) — producer; navigation node
 - [France](../countries/france/README.md) — country; baseline reference
+- [Northern Rhône](../countries/france/regions/northern-rhone.md) — region; baseline reference
+- [Collines Rhodaniennes IGP](../countries/france/appellations/collines-rhodaniennes.md) — appellation; navigation node
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->
@@ -109,6 +120,9 @@ This section is generated from CARTA machine authority. Edit the governed record
 - `appellation:cote-rotie`
 - `grape:syrah`
 - `person:veronique-manin`
+- `place:ampuis`
+- `place:northern-rhone`
+- `producer:domaine-jamet`
 
 <details>
 <summary>Machine claims and sources</summary>

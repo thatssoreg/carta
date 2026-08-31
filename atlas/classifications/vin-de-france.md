@@ -19,7 +19,7 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [Vindiou / Cœur Fidèle](../producers/vindiou.md) — producer; navigation node
 - [Dureza](../grapes/dureza.md) — grape; navigation node
 - [Mourvèdre](../grapes/mourvedre.md) — grape; navigation node
-- [Syrah](../grapes/syrah.md) — grape; navigation node
+- [Syrah](../grapes/syrah.md) — grape; baseline reference
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->

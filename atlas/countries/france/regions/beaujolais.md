@@ -53,6 +53,8 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [Gang of Four (Beaujolais)](../../../ecosystems/gang-of-four-beaujolais.md) — ecosystem; baseline reference
 - [Jules Chauvet](../../../people/jules-chauvet.md) — person; baseline reference
 - [The 1395 Gamay ordinance](../../../historical-events/gamay-ordinance-1395.md) — historical_event; baseline reference
+- [Jean-Michel Stéphan](../../../producers/jean-michel-stephan.md) — producer; navigation node
+- [Les Vins de Vienne](../../../producers/les-vins-de-vienne.md) — producer; baseline reference
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->

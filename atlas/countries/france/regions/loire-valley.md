@@ -40,6 +40,7 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [Domaine de la Bergerie / Clos de la Bergerie](../../../producers/domaine-de-la-bergerie-anjou.md) — producer; navigation node
 - [François Blanchard / Le Grand Cléré](../../../producers/le-grand-clere.md) — producer; navigation node
 - [Menu Pineau / Orbois](../../../grapes/menu-pineau.md) — grape; navigation node
+- [Les Vins de Vienne](../../../producers/les-vins-de-vienne.md) — producer; baseline reference
 
 ### Deliberately deferred anchors
 

@@ -13,6 +13,7 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [Domaine Carrel & Senger / Jongieux Blanc](../../../producers/domaine-carrel-senger.md) — producer; navigation node
 - [Combe de Savoie](combe-de-savoie.md) — region; navigation node
 - [Domaine de Chevillard](../../../producers/domaine-de-chevillard.md) — producer; baseline reference
+- [Les Vins de Vienne](../../../producers/les-vins-de-vienne.md) — producer; baseline reference
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->

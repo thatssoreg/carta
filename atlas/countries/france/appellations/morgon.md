@@ -28,6 +28,7 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [Domaine des Terres Dorées](../../../producers/domaine-des-terres-dorees.md) — producer; baseline reference
 - [Jean Foillard](../../../producers/jean-foillard.md) — producer; baseline reference
 - [Gang of Four (Beaujolais)](../../../ecosystems/gang-of-four-beaujolais.md) — ecosystem; baseline reference
+- [Jean-Michel Stéphan](../../../producers/jean-michel-stephan.md) — producer; navigation node
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->

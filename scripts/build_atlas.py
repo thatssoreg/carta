@@ -40,14 +40,35 @@ MANIFEST_DIR = ROOT / "data/geography/datasets"
 MAPPING_DIR = ROOT / "data/geography/external-id-mappings"
 PUBLIC_DATA_DIR = ROOT / "atlas-app/public/data"
 GEOMETRY_METADATA_PATH = ROOT / "data/geography/geometry/atlas-france-inao.jsonl"
-EXPERIENCE_CONFIG_PATH = ROOT / "data/atlas/run-09-beaujolais-world.json"
-EXPERIENCE_LINEAGE = [
-    "data/atlas/run-05-jura-final-cut.json",
-    "data/atlas/run-06-bearn-jurancon-world.json",
-    "data/atlas/run-07-editorial-foundation.json",
-    "data/atlas/run-08-beaujolais-canonical-ingestion.json",
-    "data/atlas/run-09-beaujolais-world.json",
-]
+EXPERIENCE_CONFIG_PATH = ROOT / "data/atlas/run-11-northern-rhone-world.json"
+
+
+def experience_lineage(path: Path | None = None) -> list[str]:
+    """Resolve the release overlay chain oldest-first as repository paths.
+
+    Adding a regional world means adding an overlay, not editing a hardcoded
+    list in every consumer. Validation reads the same chain from the same
+    pointer, so the two cannot drift.
+    """
+    chain: list[str] = []
+    seen: set[Path] = set()
+    current = path or EXPERIENCE_CONFIG_PATH
+    while True:
+        resolved = current.resolve()
+        if ROOT not in resolved.parents:
+            raise SystemExit("experience overlay extends a path outside the repository")
+        if resolved in seen:
+            raise SystemExit("experience overlay chain is circular")
+        seen.add(resolved)
+        chain.append(resolved.relative_to(ROOT).as_posix())
+        extends = json.loads(resolved.read_text()).get("extends")
+        if not extends:
+            break
+        current = ROOT / extends
+    return list(reversed(chain))
+
+
+EXPERIENCE_LINEAGE = experience_lineage()
 PRODUCER_BASES_SOURCE_DIR = ROOT / "data/geography/producer-bases"
 
 INAO_DATASET_ID = "spatial-dataset:inao-aires-geographiques-siqo-2026-08-24"

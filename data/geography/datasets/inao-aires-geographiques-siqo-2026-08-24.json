@@ -6,12 +6,12 @@
   "dataset_url": "https://www.data.gouv.fr/datasets/delimitation-des-aires-geographiques-des-siqo",
   "derived_artifacts": [
     {
-      "bytes": 7854327,
+      "bytes": 7854721,
       "feature_count": 1320,
       "format": "GeoJSON",
       "path": "atlas-app/public/data/france-appellations-aoc.geojson",
       "role": "Default AOC/AOP regulatory geographical-area layer",
-      "sha256": "81caced634f9301a1fb24f496d1c44025efaadd4787863c9751c518d882232bc"
+      "sha256": "8b5f26321f7e5c10d5871016ac7a87d9303256fef084b310e4a6982b96029feb"
     },
     {
       "bytes": 2699715,
@@ -22,28 +22,28 @@
       "sha256": "e1ea50a0cefe65f2ffa5ed7e9e5dcfc064e825c71c657441bb603fe383e55dd2"
     },
     {
-      "bytes": 4451,
-      "feature_count": 5,
+      "bytes": 5425,
+      "feature_count": 6,
       "format": "GeoJSON",
       "path": "atlas-app/public/data/france-wine-regions.geojson",
       "role": "Derived governed CARTA wine-region label anchors and camera bounds",
-      "sha256": "7068443be701a4cfc499cef3a4e2dca20f1bc7bfd8fccea17dce1c0c77ad4a02"
+      "sha256": "6e5677788cb8d069b643655b64109e264af9e0e78949242c234c4a38ea202364"
     },
     {
-      "bytes": 1030383,
+      "bytes": 1066009,
       "format": "JSON",
       "path": "atlas-app/public/data/search-index.json",
-      "record_count": 1544,
+      "record_count": 1647,
       "role": "Search records derived from rendered INAO features and governed region labels",
-      "sha256": "aafa78ea2afa472ec588abdcca9b9d5a35ad7e3f803a88999d33d0a4103473cb"
+      "sha256": "9c565a2eecb7540e0c6ff0e4809ed145165e476f18227b794e6d55ba5c2ae854"
     },
     {
-      "bytes": 22777,
+      "bytes": 26201,
       "format": "JSONL",
       "path": "data/geography/geometry/atlas-france-inao.jsonl",
-      "record_count": 40,
+      "record_count": 46,
       "role": "CARTA geometry metadata for accepted INAO-to-CARTA mappings",
-      "sha256": "57841dc518f5c3cb50e2b6328e611348b65bc36382b0c86843090ba0161abca7"
+      "sha256": "ba15925b96f7147650ad9d44478877841fba5317292c3465fed7f7b6089687e9"
     }
   ],
   "geographic_meaning": "INAO cartographic representation of the SIQO regulatory geographical area; informative GIS does not replace the legal cahier des charges and its commune list",

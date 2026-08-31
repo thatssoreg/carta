@@ -6,6 +6,7 @@ import argparse
 import hashlib
 import json
 import subprocess
+import sys
 from collections import defaultdict
 from pathlib import Path
 from typing import Any, Iterable
@@ -20,13 +21,32 @@ ROOT = Path(__file__).resolve().parents[1]
 MANIFEST_DIR = ROOT / "data/geography/datasets"
 MAPPING_DIR = ROOT / "data/geography/external-id-mappings"
 PUBLIC_DATA_DIR = ROOT / "atlas-app/public/data"
-EXPERIENCE_LINEAGE = [
-    "data/atlas/run-05-jura-final-cut.json",
-    "data/atlas/run-06-bearn-jurancon-world.json",
-    "data/atlas/run-07-editorial-foundation.json",
-    "data/atlas/run-08-beaujolais-canonical-ingestion.json",
-    "data/atlas/run-09-beaujolais-world.json",
-]
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import build_atlas as builder  # noqa: E402  (shared release-chain resolution)
+
+# The release chain is read from the same pointer the build uses, so adding a
+# regional world never means editing a hardcoded list in two files that can
+# then disagree.
+EXPERIENCE_LINEAGE = builder.EXPERIENCE_LINEAGE
+EXPERIENCE_RELEASE = json.loads(
+    builder.EXPERIENCE_CONFIG_PATH.read_text()
+)["release"]
+# Worlds that shipped before the release chain became data-driven. Later worlds
+# add to this set; none may quietly remove one.
+FOUNDING_FRANCE_WORLDS = {
+    "place:jura",
+    "place:burgundy",
+    "place:loire-valley",
+    "place:beaujolais",
+    "place:bearn",
+}
+FOUNDING_LEARNER_GLOSSARY = {
+    "elevage", "flor", "foehn", "marl", "mistelle", "ouille", "passerillage",
+    "sec", "sous-voile", "tries-successives", "vendanges-tardives", "voile",
+    "carbonic-maceration", "semi-carbonic", "whole-cluster", "nouveau",
+}
+MINIMUM_ENTRY_POINTS = 5
 
 INAO_DATASET_ID = "spatial-dataset:inao-aires-geographiques-siqo-2026-08-24"
 NATURAL_EARTH_DATASET_ID = "spatial-dataset:natural-earth-admin-0-countries-5.1.1"
@@ -267,10 +287,10 @@ def validate_native_experience(authority: dict[str, Any]) -> dict[str, Any]:
     entries = read_json(PUBLIC_DATA_DIR / "atlas-entry-points.json")
     if entries.get("generated_from") != EXPERIENCE_LINEAGE:
         fail("atlas-entry-points.json: experience config lineage is stale")
-    if entries.get("release") != "atlas-run-09-beaujolais-world":
+    if entries.get("release") != EXPERIENCE_RELEASE:
         fail("atlas-entry-points.json: release marker is stale")
-    if len(entries.get("entry_points", [])) != 5:
-        fail("atlas-entry-points.json: Beaujolais needs five focused learner questions")
+    if len(entries.get("entry_points", [])) < MINIMUM_ENTRY_POINTS:
+        fail("atlas-entry-points.json: the arrival needs at least five focused learner questions")
     entry_ids: set[str] = set()
     for entry in entries["entry_points"]:
         if entry["id"] in entry_ids:
@@ -285,14 +305,10 @@ def validate_native_experience(authority: dict[str, Any]) -> dict[str, Any]:
             if projected["statement"] != claim["statement"]:
                 fail(f"atlas-entry-points.json:{projected['claim_id']}: statement drifted")
     featured_ids = {item["entity_id"] for item in entries.get("featured_worlds", [])}
-    if featured_ids != {
-        "place:jura",
-        "place:burgundy",
-        "place:loire-valley",
-        "place:beaujolais",
-        "place:bearn",
-    }:
-        fail("atlas-entry-points.json: five France worlds are not discoverable")
+    if not FOUNDING_FRANCE_WORLDS.issubset(featured_ids):
+        fail("atlas-entry-points.json: the founding France worlds are not discoverable")
+    if not featured_ids.issubset(subjects):
+        fail("atlas-entry-points.json: a featured world is not a native subject")
     return {
         "subjects": subjects,
         "subject_count": len(subjects),
@@ -306,7 +322,7 @@ def validate_editorial_experience(
     value = read_json(PUBLIC_DATA_DIR / "atlas-editorial.json")
     if value.get("generated_from") != EXPERIENCE_LINEAGE:
         fail("atlas-editorial.json: experience config lineage is stale")
-    if value.get("release") != "atlas-run-09-beaujolais-world":
+    if value.get("release") != EXPERIENCE_RELEASE:
         fail("atlas-editorial.json: release marker is stale")
     legend = value.get("legend", [])
     if {item.get("id") for item in legend} != {
@@ -315,24 +331,7 @@ def validate_editorial_experience(
     } or len(legend) != 2:
         fail("atlas-editorial.json: visible signal key is not restrained")
     glossary = value.get("glossary", {})
-    if set(glossary) != {
-        "elevage",
-        "flor",
-        "foehn",
-        "marl",
-        "mistelle",
-        "ouille",
-        "passerillage",
-        "sec",
-        "sous-voile",
-        "tries-successives",
-        "vendanges-tardives",
-        "voile",
-        "carbonic-maceration",
-        "semi-carbonic",
-        "whole-cluster",
-        "nouveau",
-    }:
+    if not FOUNDING_LEARNER_GLOSSARY.issubset(glossary):
         fail("atlas-editorial.json: learner glossary is incomplete")
     for term_id, term in glossary.items():
         if not term.get("definition") or not term.get("matters"):
