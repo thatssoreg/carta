@@ -2,7 +2,6 @@
 """Focused regression coverage for Human Reference navigation semantics."""
 from __future__ import annotations
 
-import copy
 import json
 import sys
 import unittest
@@ -317,15 +316,10 @@ class NavigationPolicyTest(unittest.TestCase):
         ratings = load_ratings(
             ROOT / "audits/run-10-human-reference-navigation-ratings.json"
         )
-        # The durable Run 10 fixture rates a fixed cohort. New governed profiles
-        # may legitimately enter the recomputed legacy top-16, so freeze only
-        # that baseline cohort while still evaluating today's production model.
-        report = copy.deepcopy(self.report)
-        for profile_id, candidate_ratings in ratings.items():
-            report["profiles"][profile_id]["model_displayed_ids"]["Run10_baseline"] = sorted(
-                candidate_ratings
-            )
-        current = evaluate_models(report, ratings)["A_current"]
+        # The durable fixture itself defines the fixed Run 10 cohort. New
+        # governed profiles may enter a recomputed legacy top-16 without
+        # mutating the reviewed baseline used by this regression.
+        current = evaluate_models(self.report, ratings)["A_current"]
         self.assertEqual(current["ab_retained"], 133, current)
         self.assertEqual(current["retained_ratings"]["B"], 6, current)
         self.assertEqual(current["de_removed"], 66, current)

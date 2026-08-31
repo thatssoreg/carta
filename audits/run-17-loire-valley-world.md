@@ -109,7 +109,7 @@ Generic changes only:
 2. reused external IDs can be name-disambiguated at ingestion;
 3. the terrain extent tuple grows from two to four proofs;
 4. region labels use collision-aware variable anchors;
-5. the navigation ratings test freezes its reviewed Run 10 cohort while evaluating today's model.
+5. navigation ratings evaluation treats the reviewed fixture as the immutable Run 10 cohort while evaluating today's model.
 
 No Loire-specific frontend branch, map component, terrain loader, search path, or authority type was introduced.
 
@@ -121,6 +121,7 @@ No Loire-specific frontend branch, map component, terrain loader, search path, o
 - SHA-256 comparison of every public data artifact after consecutive full regenerations — identical.
 - `python3 scripts/validate_atlas.py` — pass; 55 governed INAO features, 23 producer points, four terrain extents, nine terrain artifacts, eight questions.
 - `python3 scripts/audit_navigation.py --format json` — pass; 200 surfaced profiles, 984 displayed links, 1.5% displacement rate.
+- `python3 scripts/audit_navigation.py --ratings audits/run-10-human-reference-navigation-ratings.json --format json` — pass against the fixed 257-link Run 10 cohort.
 - `python3 -m unittest discover -s tests` — 46 tests, all pass.
 - `npm ci` — pass.
 - `npm --prefix atlas-app run build` — pass; Vite reports only the existing >500 kB bundle advisory.
