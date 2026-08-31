@@ -2,9 +2,34 @@
   "authority_class": "institutional_geographic_context",
   "checksum": null,
   "checksum_algorithm": null,
-  "dataset_title": "Copernicus DEM GLO-30 Public — western Pyrenean tile set",
+  "dataset_title": "Copernicus DEM GLO-30 Public — bounded western Pyrenean and Beaujolais tile sets",
   "dataset_url": "https://dataspace.copernicus.eu/explore-data/data-collections/copernicus-contributing-missions/collections-description/COP-DEM",
   "derived_artifacts": [
+    {
+      "bytes": 287304,
+      "derived_from": [
+        "spatial-dataset:copernicus-dem-glo30-2022-05-09"
+      ],
+      "feature_count": 213,
+      "format": "GeoJSON",
+      "path": "atlas-app/public/data/atlas-terrain-beaujolais-contours.geojson",
+      "product_class": "derived_spatial_product",
+      "role": "Beaujolais elevation contour lines",
+      "sha256": "a4512939094c6c20cb401fe0721abc50fd5681d8ccc10e541b40ba8f720affca"
+    },
+    {
+      "bytes": 340862,
+      "derived_from": [
+        "spatial-dataset:copernicus-dem-glo30-2022-05-09"
+      ],
+      "format": "PNG",
+      "path": "atlas-app/public/data/atlas-terrain-beaujolais-hillshade.png",
+      "pixel_height": 994,
+      "pixel_width": 691,
+      "product_class": "derived_spatial_product",
+      "role": "Beaujolais shaded-relief overlay",
+      "sha256": "f47da525a4675440b985ba03f735cbc8ca5c85084abdb539c0b349a93acb0da9"
+    },
     {
       "bytes": 1368060,
       "derived_from": [
@@ -18,7 +43,7 @@
       "sha256": "0c6b42947e09b128e48a0e3bcf6780189965fcf24e53485e951a78c73e073758"
     },
     {
-      "bytes": 860720,
+      "bytes": 857108,
       "derived_from": [
         "spatial-dataset:copernicus-dem-glo30-2022-05-09"
       ],
@@ -28,32 +53,56 @@
       "pixel_width": 1485,
       "product_class": "derived_spatial_product",
       "role": "Béarn / Jurançon shaded-relief overlay",
-      "sha256": "3fc9cffafd04afd14164d662f9c7a97564d51e6543fdef991eaa481d88cfe124"
+      "sha256": "cfdafe8823bfda507d88b45b64d517c4b6bfe0a45cf833f375d08398d0514d4b"
     },
     {
-      "bytes": 3683,
+      "bytes": 7035,
       "derived_from": [
         "spatial-dataset:copernicus-dem-glo30-2022-05-09",
         "atlas-app/public/data/atlas-terrain-hillshade.png",
-        "atlas-app/public/data/atlas-terrain-contours.geojson"
+        "atlas-app/public/data/atlas-terrain-contours.geojson",
+        "atlas-app/public/data/atlas-terrain-beaujolais-hillshade.png",
+        "atlas-app/public/data/atlas-terrain-beaujolais-contours.geojson"
       ],
       "format": "JSON",
       "path": "atlas-app/public/data/atlas-terrain.json",
       "product_class": "derived_spatial_product",
-      "role": "Terrain descriptor: extent, placement, intervals and attribution for the Atlas",
-      "sha256": "72ccad3716836508a5380635af948ded801046366b1d8a06c59f88b8f8635c20"
+      "role": "Terrain descriptor: bounded extents, placement, intervals and attribution for the Atlas",
+      "sha256": "e0371495638291bd65dfd77ca63bc6bf5db121b702cb856f6d6690f7999f1a85"
     }
   ],
   "geographic_extent": {
     "bbox_epsg4326": [
       -2.0,
       42.0,
-      1.0,
-      44.0
+      5.0,
+      47.0
     ],
-    "description": "Six pinned 1°×1° tiles covering the western Pyrenees, the Béarn foothills and the Adour basin. CARTA acquires only the tiles the Béarn / Jurançon proof needs; no France-wide elevation ingestion exists."
+    "description": "Outer envelope of two discontinuous pinned tile groups. CARTA has terrain only in the named western-Pyrenean and Beaujolais regions below; the intervening envelope has no acquired coverage and no France-wide elevation ingestion exists.",
+    "regions": [
+      {
+        "bbox_epsg4326": [
+          -2.0,
+          42.0,
+          1.0,
+          44.0
+        ],
+        "description": "Six pinned 1°×1° tiles covering the western Pyrenees, the Béarn foothills and the Adour basin.",
+        "id": "bearn-jurancon"
+      },
+      {
+        "bbox_epsg4326": [
+          4.0,
+          45.0,
+          5.0,
+          47.0
+        ],
+        "description": "Two pinned 1°×1° tiles covering the bounded Beaujolais proof and ordinary surrounding terrain context.",
+        "id": "beaujolais"
+      }
+    ]
   },
-  "geographic_meaning": "Digital surface model of the western Pyrenees: bare ground plus vegetation canopy and buildings as observed by TanDEM-X between 2011 and 2015. It is physical relief context for CARTA Atlas. It is not evidence about vineyard land, planted parcels, growing conditions, ripening, drainage, climate or wine quality.",
+  "geographic_meaning": "Digital surface model in two bounded terrain proofs: bare ground plus vegetation canopy and buildings as observed by TanDEM-X between 2011 and 2015. It is physical relief context for CARTA Atlas. It is not evidence about vineyard land, planted parcels, growing conditions, ripening, drainage, climate or wine quality.",
   "id": "spatial-dataset:copernicus-dem-glo30-2022-05-09",
   "license": {
     "attribution_text": "produced using Copernicus WorldDEM-30 © DLR e.V. 2010-2014 and © Airbus Defence and Space GmbH 2014-2018 provided under COPERNICUS by the European Union and ESA; all rights reserved. The organisations in charge of the Copernicus programme by law or by delegation do not incur any liability for any use of the Copernicus WorldDEM-30.",
@@ -64,9 +113,9 @@
     "url": "https://documentation.dataspace.copernicus.eu/APIs/SentinelHub/Data/DEM/resources/license/License-COPDEM-30.pdf"
   },
   "measurement": {
-    "native_resolution": "1 arc-second grid (3600×3600 samples per 1° tile); ≈30 m north–south and ≈23 m east–west at 43°N",
+    "native_resolution": "1 arc-second grid (3600×3600 samples per 1° tile); ≈30 m north–south and ≈21–23 m east–west across the acquired 42–47°N coverage",
     "scale_limitations": "Usable for regional relief reading down to roughly 1:50,000. It cannot resolve an individual vineyard parcel, a terrace, a wall or a row orientation, and as a surface model it carries tree canopy and building heights as if they were ground.",
-    "uncertainty": "Per-tile absolute vertical accuracy LE90 between 1.741 m and 1.971 m (LE68 1.468–1.642 m) as reported by the Copernicus tile accuracy masks; the programme specification is LE90 < 4 m vertical and CE90 < 6 m horizontal.",
+    "uncertainty": "The programme specification is LE90 < 4 m vertical and CE90 < 6 m horizontal. The six western-Pyrenean source entries retain their separately checked tile-mask figures; no tile-mask precision beyond the programme specification is asserted for the two Beaujolais files.",
     "unit": "metre",
     "variable": "surface_elevation",
     "vertical_reference": "EGM2008 geoid (EPSG:3855)"
@@ -74,7 +123,7 @@
   "notes": "Acquired from the AWS Open Data cloud-optimised mirror of COP-DEM_GLO-30-DGED. The mirror repackages the ESA delivery: it drops the shared east and south edge row and column (3601→3600 samples) and adds DEFLATE-compressed COG overviews. Every acquired file is pinned by SHA-256 in source_files, and each downloaded byte stream was additionally checked against the object ETag published by the mirror. The mirror does not publish an ESA release identifier, so this manifest pins the 2022-05-09 mirror snapshot rather than asserting a release number CARTA cannot verify.",
   "product_class": "source_observation",
   "publisher": "Copernicus programme — European Union and ESA (data © DLR e.V. and Airbus Defence and Space GmbH)",
-  "refresh_policy": "Pinned snapshot. CARTA re-acquires only when a Copernicus DEM release changes the western Pyrenean tiles, or when a proof needs an extent these six tiles do not cover. Terrain is context, not a live feed, so there is no scheduled refresh.",
+  "refresh_policy": "Pinned snapshot. CARTA re-acquires only when a Copernicus DEM release changes one of the eight governed files, or when an approved proof needs a bounded extent these two tile groups do not cover. Terrain is context, not a live feed, so there is no scheduled refresh.",
   "resource_id": "copernicus-dem-30m",
   "resource_url": "https://copernicus-dem-30m.s3.amazonaws.com/",
   "retrieval_status": "acquired",
@@ -122,6 +171,20 @@
       "notes": "Tile accuracy mask reports absolute vertical accuracy LE90 1.741 m and LE68 1.468 m against 658 ICESat control points.",
       "resource_url": "https://copernicus-dem-30m.s3.amazonaws.com/Copernicus_DSM_COG_10_N43_00_W002_00_DEM/Copernicus_DSM_COG_10_N43_00_W002_00_DEM.tif",
       "sha256": "444fdce878427b8b2c81f7345f11b9d8bab72254f0c7ad34d14ea77643e026c5"
+    },
+    {
+      "bytes": 43229419,
+      "name": "Copernicus_DSM_COG_10_N45_00_E004_00_DEM.tif",
+      "notes": "Pinned for the southern half of the bounded Beaujolais terrain proof; no separate tile-accuracy-mask value is asserted.",
+      "resource_url": "https://copernicus-dem-30m.s3.amazonaws.com/Copernicus_DSM_COG_10_N45_00_E004_00_DEM/Copernicus_DSM_COG_10_N45_00_E004_00_DEM.tif",
+      "sha256": "ccebea0a93d3ba6bfa3da64e1c309d7b80ba306ee8d1808ce9cbba7bd8b4c27f"
+    },
+    {
+      "bytes": 43469680,
+      "name": "Copernicus_DSM_COG_10_N46_00_E004_00_DEM.tif",
+      "notes": "Pinned for the northern half of the bounded Beaujolais terrain proof; no separate tile-accuracy-mask value is asserted.",
+      "resource_url": "https://copernicus-dem-30m.s3.amazonaws.com/Copernicus_DSM_COG_10_N46_00_E004_00_DEM/Copernicus_DSM_COG_10_N46_00_E004_00_DEM.tif",
+      "sha256": "d5efb23bfc44cba0d4b05b633786839b1614f0530491b96bba1868db2ea04f05"
     }
   ],
   "source_format": "Cloud Optimized GeoTIFF, float32, one file per 1°×1° tile",
@@ -133,7 +196,7 @@
       "order": 1,
       "parameters": {
         "algorithm": "sha256",
-        "file_count": 6,
+        "file_count": 8,
         "refuse_on_mismatch": true
       }
     },
@@ -148,7 +211,9 @@
           43.8
         ],
         "clip_buffer_degrees": 0.05,
-        "merge_resampling": "nearest"
+        "extent_id": "bearn-jurancon",
+        "merge_resampling": "nearest",
+        "source_file_count": 6
       }
     },
     {
@@ -156,6 +221,7 @@
       "order": 3,
       "parameters": {
         "effective_ground_resolution_metres": 109.3,
+        "extent_id": "bearn-jurancon",
         "grid_height": 1121,
         "grid_width": 1485,
         "pixel_size_metres": 150.0,
@@ -169,6 +235,7 @@
       "parameters": {
         "altitude_degrees": 45.0,
         "azimuth_degrees": 315.0,
+        "extent_id": "bearn-jurancon",
         "mercator_scale_correction": true,
         "z_factor": 1.0
       }
@@ -179,6 +246,7 @@
       "parameters": {
         "alpha_steps": 32,
         "edge_feather_fraction": 0.055,
+        "extent_id": "bearn-jurancon",
         "light_gamma": 1.3,
         "light_max_alpha": 0.07,
         "light_rgb": [
@@ -202,6 +270,86 @@
       "order": 6,
       "parameters": {
         "coordinate_decimals": 5,
+        "extent_id": "bearn-jurancon",
+        "index_interval_metres": 500,
+        "interval_metres": 100,
+        "minimum_length_metres_epsg3857": 2500.0,
+        "simplify_tolerance_metres_epsg3857": 140.0,
+        "smoothing": "3x3 binomial",
+        "smoothing_passes": 2
+      }
+    },
+    {
+      "operation": "mosaic_and_clip_source_observation",
+      "order": 7,
+      "parameters": {
+        "clip_bbox_epsg4326": [
+          4.05,
+          45.55,
+          4.98,
+          46.48
+        ],
+        "clip_buffer_degrees": 0.05,
+        "extent_id": "beaujolais",
+        "merge_resampling": "nearest",
+        "source_file_count": 2
+      }
+    },
+    {
+      "operation": "reproject_to_display_grid",
+      "order": 8,
+      "parameters": {
+        "effective_ground_resolution_metres": 104.2,
+        "extent_id": "beaujolais",
+        "grid_height": 994,
+        "grid_width": 691,
+        "pixel_size_metres": 150.0,
+        "resampling": "average",
+        "target_crs": "EPSG:3857"
+      }
+    },
+    {
+      "operation": "hillshade_horn",
+      "order": 9,
+      "parameters": {
+        "altitude_degrees": 45.0,
+        "azimuth_degrees": 315.0,
+        "extent_id": "beaujolais",
+        "mercator_scale_correction": true,
+        "z_factor": 1.0
+      }
+    },
+    {
+      "operation": "quantise_to_shadow_and_light_overlay",
+      "order": 10,
+      "parameters": {
+        "alpha_steps": 32,
+        "edge_feather_fraction": 0.055,
+        "extent_id": "beaujolais",
+        "light_gamma": 1.3,
+        "light_max_alpha": 0.07,
+        "light_rgb": [
+          255,
+          253,
+          248
+        ],
+        "output_format": "8-bit paletted PNG with per-index alpha",
+        "response_scale": 0.32,
+        "shadow_gamma": 0.62,
+        "shadow_max_alpha": 0.38,
+        "shadow_rgb": [
+          58,
+          51,
+          44
+        ]
+      }
+    },
+    {
+      "operation": "contour_elevation_surface",
+      "order": 11,
+      "parameters": {
+        "coordinate_decimals": 5,
+        "extent_id": "beaujolais",
         "index_interval_metres": 500,
         "interval_metres": 100,
         "minimum_length_metres_epsg3857": 2500.0,

@@ -67,6 +67,7 @@ This section is generated from CARTA machine authority. Edit the governed record
 |---|---|---|---|---|
 | `claim:terres-dorees-base-15` | `reference / 2026-08-30` | `supported` | `high` | `source:terres-dorees-rhone-tourisme`, `source:api-adresse-gouv-fr` |
 | `claim:terres-dorees-current-identity-15` | `reference / 2026-08-30` | `supported` | `high` | `source:terres-dorees-rhone-tourisme` |
+| `claim:terres-dorees-southern-chardonnay-16` | `reference / 2026-08-30` | `supported` | `medium` | `source:terres-dorees-rhone-tourisme` |
 | `claim:terres-dorees-transition-2024-15` | `reference / 2026-08-30` | `supported` | `high` | `source:zannier-terres-dorees-transition`, `source:terres-dorees-rhone-tourisme` |
 
 ### Sources

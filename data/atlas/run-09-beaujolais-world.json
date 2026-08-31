@@ -1,0 +1,360 @@
+{
+  "extends": "data/atlas/run-08-beaujolais-canonical-ingestion.json",
+  "version": 7,
+  "release": "atlas-run-09-beaujolais-world",
+  "entry_points": [
+    {
+      "claim_ids": ["claim:beaujolais-gamay-share-2024-10", "claim:beaujolais-north-south-geology-16"],
+      "id": "entry:beaujolais-one-grape-many-places",
+      "kicker": "96% Gamay · more reasons to look closely",
+      "subject_id": "place:beaujolais",
+      "title": "How can one grape make the map more important, not less?"
+    },
+    {
+      "claim_ids": ["claim:beaujolais-nouveau-history-15", "claim:beaujolais-primeur-current-15"],
+      "id": "entry:beaujolais-nouveau-time",
+      "kicker": "1951 · 1985 · a name larger than its share",
+      "subject_id": "classification:beaujolais-primeur-nouveau",
+      "title": "How did a wine released within weeks shape the whole region’s recognition?"
+    },
+    {
+      "claim_ids": ["claim:carbonic-maceration-definition-15", "claim:semi-carbonic-maceration-definition-15", "claim:whole-cluster-distinction-15"],
+      "id": "entry:beaujolais-carbonic-literacy",
+      "kicker": "Whole bunches · CO₂ · three different questions",
+      "subject_id": "practice:carbonic-maceration",
+      "title": "What does “carbonic” actually tell you about a Beaujolais?"
+    },
+    {
+      "claim_ids": ["claim:gamay-1395-ordinance-15"],
+      "id": "entry:gamay-1395-correction",
+      "kicker": "A ducal rule · a modern myth corrected",
+      "subject_id": "historical_event:gamay-ordinance-1395",
+      "title": "What did the 1395 Gamay ordinance change—and what did it not?"
+    },
+    {
+      "claim_ids": ["claim:mont-brouilly-physical-legal-distinction-15"],
+      "id": "entry:mont-brouilly-two-crus",
+      "kicker": "One physical hill · two legal origins",
+      "subject_id": "geographic_feature:mont-brouilly",
+      "title": "Why does one hill carry two cru names?"
+    }
+  ],
+  "featured_world_ids": ["place:beaujolais", "place:jura", "place:bearn", "place:burgundy", "place:loire-valley"],
+  "native_subject_ids": [
+    "place:jura", "place:burgundy", "place:loire-valley", "place:beaujolais", "place:bearn",
+    "place:pupillin", "place:arbois", "place:rotalier", "place:mathenay", "place:villie-morgon", "place:fleurie", "place:odenas", "place:charnay-rhone", "place:duchy-of-burgundy",
+    "appellation:arbois", "appellation:cotes-du-jura", "appellation:chateau-chalon", "appellation:l-etoile", "appellation:cremant-du-jura", "appellation:macvin-du-jura",
+    "appellation:jurancon", "appellation:bearn", "appellation:pacherenc-du-vic-bilh", "appellation:irouleguy",
+    "appellation:beaujolais", "classification:beaujolais-villages-mention", "appellation:brouilly", "appellation:chenas", "appellation:chiroubles", "appellation:cote-de-brouilly", "appellation:fleurie", "appellation:julienas", "appellation:morgon", "appellation:moulin-a-vent", "appellation:regnie", "appellation:saint-amour", "classification:beaujolais-primeur-nouveau",
+    "grape:savagnin", "grape:chardonnay", "grape:poulsard", "grape:trousseau", "grape:pinot-noir", "grape:petit-manseng", "grape:gros-manseng", "grape:petit-courbu", "grape:courbu", "grape:raffiat-de-moncade", "grape:palomino-fino", "grape:gamay-noir-a-jus-blanc", "grape:gouais-blanc",
+    "producer:domaine-de-la-tournelle", "producer:domaine-labet", "producer:maison-pierre-overnoy", "producer:domaine-de-saint-pierre-jura", "producer:camin-larredya", "producer:domaine-cauhape", "producer:clos-uroulat", "producer:domaine-de-souch", "producer:imanol-garay", "producer:alfredo-egia-wine",
+    "producer:domaine-marcel-lapierre", "producer:jean-foillard", "producer:chateau-thivin", "producer:domaine-de-la-grand-cour", "producer:domaine-des-terres-dorees",
+    "project:soleras-del-pacifico", "person:emmanuel-houillon", "person:pierre-overnoy", "person:imanol-garay", "person:alfredo-egia", "person:jules-chauvet", "person:jean-foillard",
+    "wine:domaine-de-la-tournelle-fleur-de-savagnin", "wine:domaine-labet-fleur-de-savagnin", "wine:domaine-labet-chardonnay-du-hasard", "wine:domaine-labet-la-bardette-chardonnay", "wine:chateau-renard", "wine:flor-of-evangelho",
+    "practice:ouillage", "practice:sous-voile-aging", "practice:carbonic-maceration", "practice:semi-carbonic-maceration", "practice:whole-cluster-fermentation",
+    "ecosystem:gang-of-four-beaujolais", "historical_event:gamay-ordinance-1395", "geographic_feature:mont-brouilly", "geographic_feature:py-hill", "vineyard:cote-du-py"
+  ],
+  "editorial": {
+    "map_click_priority": {
+      "appellation:cote-de-brouilly": 10,
+      "appellation:brouilly": 11,
+      "appellation:chenas": 12,
+      "appellation:chiroubles": 13,
+      "appellation:fleurie": 14,
+      "appellation:julienas": 15,
+      "appellation:morgon": 16,
+      "appellation:moulin-a-vent": 17,
+      "appellation:regnie": 18,
+      "appellation:saint-amour": 19,
+      "classification:beaujolais-villages-mention": 50,
+      "appellation:beaujolais": 90
+    },
+    "context_returns": [
+      {
+        "label": "Back to Savagnin in Jura",
+        "return_subject_id": "grape:savagnin",
+        "when_geographic_subject_ids": ["place:jura", "appellation:arbois", "appellation:cotes-du-jura", "appellation:chateau-chalon", "appellation:l-etoile"]
+      },
+      {
+        "label": "Back to Petit Manseng in Jurançon",
+        "return_subject_id": "grape:petit-manseng",
+        "when_geographic_subject_ids": ["place:bearn", "appellation:jurancon", "appellation:bearn"]
+      },
+      {
+        "label": "Back to Gamay in Beaujolais",
+        "return_subject_id": "grape:gamay-noir-a-jus-blanc",
+        "when_geographic_subject_ids": ["place:burgundy"]
+      }
+    ],
+    "glossary": {
+      "carbonic-maceration": {
+        "claim_ids": ["claim:carbonic-maceration-definition-15"],
+        "definition": "A process beginning with intact whole bunches in a closed, oxygen-excluding carbon-dioxide atmosphere, with intracellular metabolism before pressing and fermentation completion.",
+        "explore_target_id": "practice:carbonic-maceration",
+        "matters": "It is a mechanism, not an appellation rule or a complete cellar recipe.",
+        "term": "carbonic maceration"
+      },
+      "semi-carbonic": {
+        "claim_ids": ["claim:semi-carbonic-maceration-definition-15"],
+        "definition": "A related process in which ordinary fermentation of released juice can create carbon dioxide around intact berries in a whole-bunch vat.",
+        "explore_target_id": "practice:semi-carbonic-maceration",
+        "matters": "It does not require the same deliberately established external-CO₂ atmosphere as full carbonic maceration.",
+        "term": "semi-carbonic"
+      },
+      "whole-cluster": {
+        "claim_ids": ["claim:whole-cluster-distinction-15"],
+        "definition": "Fermentation that includes intact bunches and stems.",
+        "explore_target_id": "practice:whole-cluster-fermentation",
+        "matters": "Whole cluster describes grape handling; it does not prove that a ferment is carbonic or semi-carbonic.",
+        "term": "whole cluster"
+      },
+      "nouveau": {
+        "claim_ids": ["claim:beaujolais-nouveau-history-15", "claim:beaujolais-primeur-current-15"],
+        "definition": "A regulated early-release mention—also called primeur—currently available to qualifying red and rosé Beaujolais, not white.",
+        "explore_target_id": "classification:beaujolais-primeur-nouveau",
+        "matters": "It shaped global recognition without ever accounting for all Beaujolais production.",
+        "term": "nouveau / primeur"
+      }
+    },
+    "subjects": {
+      "place:jura": {
+        "area_comparison": {
+          "claim_measure": "claimed_vineyard_area",
+          "kicker": "Scale, in context",
+          "note": "2023 revendication basis. Overlapping category areas are not additive.",
+          "subject_ids": ["appellation:arbois", "appellation:l-etoile", "appellation:chateau-chalon", "appellation:cremant-du-jura", "appellation:macvin-du-jura"],
+          "title": "Reported claimed area"
+        }
+      },
+      "place:beaujolais": {
+        "regional_world": true,
+        "claim_ids": [
+          "claim:beaujolais-current-orientation-15", "claim:beaujolais-gamay-share-2024-10", "claim:beaujolais-chardonnay-share-2024-10", "claim:beaujolais-area-2024-10", "claim:beaujolais-physical-corridor-16", "claim:beaujolais-north-south-geology-16", "claim:beaujolais-geology-10", "claim:beaujolais-current-legal-structure-15", "claim:beaujolais-ten-crus-current-15", "claim:beaujolais-current-colors-grapes-15", "claim:beaujolais-semi-carbonic-tradition-not-rule-15"
+        ],
+        "hero_kicker": "One grape · many places · a reputation still moving",
+        "thesis": "Gamay accounts for 96% of the region’s 2024 grape distribution. That apparent sameness is the reason to look harder: broad Beaujolais, a Villages mention and ten crus cross different hills and geological families, while {{term:nouveau|Nouveau}} and several cellar paths keep changing what the same regional name can mean.",
+        "hero_facts": [
+          {"claim_ids": ["claim:beaujolais-gamay-share-2024-10"], "label": "Gamay", "note": "official 2024 grape distribution", "value": "96%"},
+          {"claim_ids": ["claim:beaujolais-chardonnay-share-2024-10"], "label": "Chardonnay", "note": "small in scale · structurally important", "value": "4%"},
+          {"claim_ids": ["claim:beaujolais-area-2024-10"], "label": "Claimed vineyard", "note": "2024 twelve-AOC reporting basis", "value": "11,771 ha"}
+        ],
+        "place_story": {
+          "button": "Show the wine corridor",
+          "kicker": "The map is the argument",
+          "text": "Read a long strip between higher western country and the Saône plain, then interrupt that regional view with Mont Brouilly, Py hill, neighboring Fleurie and Chiroubles, and the quieter southern country around Charnay. Terrain is physical context; the active wine outlines remain regulatory geography.",
+          "title": "One corridor, several kinds of place"
+        },
+        "map_moments": [
+          {"claim_ids": ["claim:mont-brouilly-physical-legal-distinction-15"], "eyebrow": "Physical hill · legal areas", "subject_id": "geographic_feature:mont-brouilly", "text": "See one hill beside Brouilly and Côte de Brouilly without turning any of them into vineyard parcels.", "title": "Mont Brouilly"},
+          {"claim_ids": ["claim:py-hill-site-distinction-15", "claim:morgon-aop"], "eyebrow": "Cru · hill · named site", "subject_id": "geographic_feature:py-hill", "text": "Hold Morgon, Py hill and Côte du Py apart while keeping Lapierre and Foillard as producer routes.", "title": "Morgon / Py"},
+          {"claim_ids": ["claim:beaujolais-physical-corridor-16"], "eyebrow": "Neighboring hill positions", "subject_id": "place:fleurie", "text": "Look at Fleurie and Chiroubles together without translating elevation into a wine-quality claim.", "title": "Fleurie / Chiroubles"},
+          {"claim_ids": ["claim:beaujolais-north-south-geology-16", "claim:terres-dorees-southern-chardonnay-16"], "eyebrow": "Southern route · quieter relief", "subject_id": "place:charnay-rhone", "text": "Move south for sedimentary context, Chardonnay and Terres Dorées—not a consolation prize after the crus.", "title": "Charnay / southern Beaujolais"}
+        ],
+        "pillar_copy": {
+          "place": {"intro": "A long corridor · hills west · Saône plain east", "lede": "One dominant grape crosses physical landforms, regulatory areas and geological families that do not line up as one simple map."},
+          "grapes": {"intro": "96% Gamay · 4% Chardonnay · more than one wine path", "lede": "The dominant grape is a controlled variable, not the answer. Chardonnay, white-wine law, Nouveau and cellar choice keep the regional picture open."},
+          "people": {"intro": "Five producers · five different teaching jobs", "lede": "This is not a ranking. Each producer opens a different intersection of place, technique, lineage, continuity or change."},
+          "culture": {"intro": "Early release · producer networks · reputations in motion", "lede": "Nouveau and the Gang of Four are consequential cultural mechanisms. Neither is a complete history, and one did not simply replace the other."},
+          "rules": {"intro": "One broad AOC · one mention · ten independent crus", "lede": "Legal names tell you origin and permitted production. They do not identify vineyard parcels, rank quality or prescribe one fermentation method."}
+        },
+        "grape_cards": [
+          {"claim_ids": ["claim:beaujolais-gamay-share-2024-10", "claim:gamay-parentage-15"], "copy": "Dominant in the 2024 distribution and genetically an offspring of Pinot and Gouais blanc. Its dominance makes place and process differences more visible, not less.", "metric": "96%", "metric_label": "2024 grape distribution", "primary": true, "target_id": "grape:gamay-noir-a-jus-blanc"},
+          {"claim_ids": ["claim:beaujolais-chardonnay-share-2024-10", "claim:beaujolais-current-colors-grapes-15", "claim:terres-dorees-southern-chardonnay-16"], "copy": "Small in regional share but legally decisive: current white Beaujolais is Chardonnay, and Charnay gives that fact a southern producer route.", "metric": "4%", "metric_label": "2024 grape distribution", "primary": true, "target_id": "grape:chardonnay"}
+        ],
+        "people": [
+          {"base": "Villié-Morgon · exact domaine base", "claim_ids": ["claim:lapierre-chauvet-guidance", "claim:lapierre-cellar-current", "claim:lapierre-current-owners", "claim:lapierre-base-15"], "cues": ["Chauvet guidance", "semi-carbonic", "selective sulfur", "family succession"], "explains": "How direct transmission, current cellar detail and a family handoff become one bounded Morgon story.", "reason": "Lapierre makes lineage precise without turning no-added-sulfur bottlings or semi-carbonic work into universal Beaujolais rules.", "target_id": "producer:domaine-marcel-lapierre", "who": "Marcel Lapierre’s domaine, now co-operated by Mathieu and Camille Lapierre"},
+          {"base": "Villié-Morgon · municipality point", "claim_ids": ["claim:foillard-producer-identity-15", "claim:foillard-chauvet-influence-15", "claim:foillard-base-15"], "cues": ["Morgon", "Côte du Py context", "influence—not invented mentorship"], "explains": "How a famous producer can remain an individual subject once the Gang of Four shorthand is unpacked.", "reason": "Foillard opens Morgon and Côte du Py while preserving the narrower evidence language around Chauvet’s influence.", "target_id": "producer:jean-foillard", "who": "Jean Foillard as a producer identity distinct from the person record"},
+          {"base": "Odenas · Mont Brouilly", "claim_ids": ["claim:thivin-identity-history-15", "claim:thivin-base-15", "claim:mont-brouilly-physical-legal-distinction-15"], "cues": ["family tenure since 1877", "Côte de Brouilly", "Brouilly", "physical hill"], "explains": "Why Beaujolais history and seriousness do not culminate in a natural-wine network.", "reason": "Thivin provides the human route through Mont Brouilly and two crus, with long continuity outside the Gang frame.", "target_id": "producer:chateau-thivin", "who": "The Geoffray family’s Château Thivin"},
+          {"base": "Fleurie · exact domaine base", "claim_ids": ["claim:grand-cour-history-sites-15", "claim:grand-cour-carbonic-practice-15", "claim:grand-cour-base-15"], "cues": ["whole bunches", "externally saturated CO₂", "named sites", "estate scope"], "explains": "A producer-specific carbonic protocol that stays separate from Fleurie law and from all-Beaujolais shorthand.", "reason": "Grand’Cour makes full carbonic conditions concrete while keeping named sites and a business-base point distinct from inferred holdings.", "target_id": "producer:domaine-de-la-grand-cour", "who": "Jean-Louis Dutraive and Domaine de la Grand’Cour"},
+          {"base": "Charnay · southern Beaujolais", "claim_ids": ["claim:terres-dorees-current-identity-15", "claim:terres-dorees-southern-chardonnay-16", "claim:terres-dorees-transition-2024-15", "claim:terres-dorees-base-15"], "cues": ["southern geography", "Chardonnay", "2024 operating transition", "unresolved acreage arithmetic"], "explains": "Why southern Beaujolais, white wine and current operational change belong in the regional center of gravity.", "reason": "Terres Dorées prevents the map from ending at the northern crus or the Gang of Four and models restraint around mutable current facts.", "target_id": "producer:domaine-des-terres-dorees", "who": "Domaine des Terres Dorées across a documented 2024 operating transition"}
+        ],
+        "lenses": [
+          {"claim_ids": ["claim:gang-of-four-beaujolais-community"], "id": "gang-of-four", "signal": "iykyk", "target_id": "ecosystem:gang-of-four-beaujolais", "text": "Kermit Lynch’s shorthand names Marcel Lapierre, Jean Foillard, Guy Breton and Jean-Paul Thévenet around Chauvet-associated methods. It identifies an informal community of practice—not a formal organization or proof of equal bilateral collaboration among every member.", "title": "The Gang of Four is a useful shorthand with limits"}
+        ],
+        "then_now": {
+          "claim_ids": ["claim:beaujolais-nouveau-history-15", "claim:beaujolais-primeur-current-15"],
+          "intro": "These are differently scoped observations, not a continuous statistical series.",
+          "now": {"label": "NOW · current rule", "text": "Primeur or nouveau remains a current regulated mention for red and rosé Beaujolais, not white."},
+          "then": {"label": "THEN · mid-1980s", "text": "The current specification recalls a peak near 500,000 hectolitres while also stating that primeur never exceeded half of total regional production."},
+          "title": "Nouveau changed scale without becoming the whole region"
+        },
+        "rules": {
+          "groups": [
+            {"ids": ["appellation:beaujolais", "classification:beaujolais-villages-mention"], "label": "Broad origin and governed mention", "note": "Beaujolais is the current appellation; Villages is a mention within that specification, not a fabricated second appellation."},
+            {"ids": ["appellation:brouilly", "appellation:cote-de-brouilly", "appellation:chenas", "appellation:chiroubles", "appellation:fleurie", "appellation:julienas", "appellation:morgon", "appellation:moulin-a-vent", "appellation:regnie", "appellation:saint-amour"], "label": "Ten independent crus", "note": "Each cru keeps its own regulatory geographic area. A cru click outranks broader overlapping Beaujolais context without erasing that context."}
+          ],
+          "intro": "The useful shorthand—Beaujolais, Villages, ten crus—needs one legal correction: Villages is now governed as a mention after Beaujolais. White Beaujolais is Chardonnay; primeur/nouveau can be red or rosé; none of these names mandates {{term:carbonic-maceration|carbonic maceration}}."
+        },
+        "featured_connections": [
+          {"action": "Explore the grape", "claim_ids": ["claim:beaujolais-gamay-share-2024-10", "claim:gamay-parentage-15"], "reason": "The dominant grape becomes a route through genetics, history, geography and cellar choice rather than a regional answer key.", "signal": "rabbit-hole", "target_id": "grape:gamay-noir-a-jus-blanc"},
+          {"action": "Follow the time story", "claim_ids": ["claim:beaujolais-nouveau-history-15", "claim:beaujolais-primeur-current-15"], "reason": "An early-release wine that altered regional recognition without ever equaling all regional output.", "signal": "rabbit-hole", "target_id": "classification:beaujolais-primeur-nouveau"},
+          {"action": "Read the hill", "claim_ids": ["claim:mont-brouilly-physical-legal-distinction-15"], "reason": "One physical landform beside two legal cru geographies makes the map’s layers immediately legible.", "signal": "rabbit-hole", "target_id": "geographic_feature:mont-brouilly"}
+        ],
+        "map_reaction": {"area_subject_ids": ["appellation:beaujolais", "classification:beaujolais-villages-mention", "appellation:brouilly", "appellation:cote-de-brouilly", "appellation:chenas", "appellation:chiroubles", "appellation:fleurie", "appellation:julienas", "appellation:morgon", "appellation:moulin-a-vent", "appellation:regnie", "appellation:saint-amour"], "producer_ids": []},
+        "pillar_map_reactions": {
+          "place": {"area_subject_ids": ["appellation:beaujolais", "classification:beaujolais-villages-mention", "appellation:brouilly", "appellation:cote-de-brouilly", "appellation:chiroubles", "appellation:fleurie", "appellation:morgon"], "producer_ids": []},
+          "grapes": {"area_subject_ids": ["appellation:beaujolais", "appellation:morgon", "appellation:fleurie"], "producer_ids": ["producer:domaine-marcel-lapierre", "producer:domaine-des-terres-dorees"]},
+          "people": {"area_subject_ids": ["appellation:beaujolais", "appellation:brouilly", "appellation:cote-de-brouilly", "appellation:fleurie", "appellation:morgon"], "producer_ids": ["producer:domaine-marcel-lapierre", "producer:jean-foillard", "producer:chateau-thivin", "producer:domaine-de-la-grand-cour", "producer:domaine-des-terres-dorees"]},
+          "culture": {"area_subject_ids": ["appellation:beaujolais", "appellation:morgon"], "producer_ids": ["producer:domaine-marcel-lapierre", "producer:jean-foillard"]},
+          "rules": {"area_subject_ids": ["appellation:beaujolais", "classification:beaujolais-villages-mention", "appellation:brouilly", "appellation:cote-de-brouilly", "appellation:chenas", "appellation:chiroubles", "appellation:fleurie", "appellation:julienas", "appellation:morgon", "appellation:moulin-a-vent", "appellation:regnie", "appellation:saint-amour"], "producer_ids": []}
+        }
+      },
+      "grape:gamay-noir-a-jus-blanc": {
+        "claim_ids": ["claim:beaujolais-gamay-share-2024-10", "claim:gamay-parentage-15", "claim:gamay-1395-ordinance-15", "claim:beaujolais-current-colors-grapes-15", "claim:beaujolais-semi-carbonic-tradition-not-rule-15"],
+        "hero_kicker": "One dominant grape · several legal, spatial and cellar lives",
+        "thesis": "Gamay’s 96% share in the 2024 regional distribution makes it the thread through Beaujolais, not the explanation for every wine. Follow it into ten crus, {{term:nouveau|Nouveau}}, the separate mechanics of {{term:carbonic-maceration|carbonic}} and {{term:semi-carbonic|semi-carbonic}} maceration, or a 1395 ducal ordinance whose modern myth is cleaner than the evidence.",
+        "featured_connections": [
+          {"action": "Follow the ordinance", "claim_ids": ["claim:gamay-1395-ordinance-15"], "reason": "A historical Burgundy route that corrects the one-step banishment story instead of repeating it.", "signal": "rabbit-hole", "target_id": "historical_event:gamay-ordinance-1395"},
+          {"action": "Read the mechanism", "claim_ids": ["claim:carbonic-maceration-definition-15", "claim:beaujolais-semi-carbonic-tradition-not-rule-15"], "reason": "Technique is a producer and process question, not the grape’s automatic fate.", "signal": "rabbit-hole", "target_id": "practice:carbonic-maceration"},
+          {"action": "Return to the world", "claim_ids": ["claim:beaujolais-gamay-share-2024-10", "claim:beaujolais-current-orientation-15"], "reason": "Put the grape back into the legal and geographic region that makes its dominance interesting.", "signal": "rabbit-hole", "target_id": "place:beaujolais"}
+        ],
+        "map_reaction": {"area_subject_ids": ["appellation:beaujolais", "classification:beaujolais-villages-mention", "appellation:brouilly", "appellation:cote-de-brouilly", "appellation:chenas", "appellation:chiroubles", "appellation:fleurie", "appellation:julienas", "appellation:morgon", "appellation:moulin-a-vent", "appellation:regnie", "appellation:saint-amour"], "producer_ids": []}
+      },
+      "classification:beaujolais-primeur-nouveau": {
+        "claim_ids": ["claim:beaujolais-nouveau-history-15", "claim:beaujolais-primeur-current-15"],
+        "hero_kicker": "Rules + Culture + Time",
+        "thesis": "{{term:nouveau|Nouveau}} is neither a regional punchline nor the whole region. Early-release trade predated 1951, regulation and a 1985 release convention magnified the category, and current law still gives the mention a bounded red-and-rosé role.",
+        "then_now": {
+          "claim_ids": ["claim:beaujolais-nouveau-history-15", "claim:beaujolais-primeur-current-15"],
+          "intro": "The observations use different scopes; Atlas does not calculate a synthetic decline rate.",
+          "now": {"label": "NOW · current legal role", "text": "The mention remains available to red and rosé Beaujolais and is not available to white Beaujolais."},
+          "then": {"label": "THEN · mid-1980s scale", "text": "The specification reports a peak near 500,000 hectolitres and also says primeur never exceeded half of total Beaujolais output."},
+          "title": "A powerful category was never the total output"
+        },
+        "timeline": [
+          {"claim_ids": ["claim:beaujolais-nouveau-history-15"], "label": "Before 1951", "text": "The current specification places an early-release trade tradition before the modern regulatory turn."},
+          {"claim_ids": ["claim:beaujolais-nouveau-history-15"], "label": "13 November 1951", "text": "A regulatory turning point formalized the early-release path described in the current specification."},
+          {"claim_ids": ["claim:beaujolais-nouveau-history-15"], "label": "1985", "text": "The third-Thursday release convention enters the chronology."},
+          {"claim_ids": ["claim:beaujolais-nouveau-history-15"], "label": "Mid-1980s", "text": "Reported scale approached 500,000 hectolitres, without ever exceeding half of regional production."},
+          {"claim_ids": ["claim:beaujolais-primeur-current-15"], "label": "Current rule", "text": "Primeur or nouveau can qualify for red and rosé Beaujolais, not white."}
+        ],
+        "featured_connections": [
+          {"action": "Explore the grape", "claim_ids": ["claim:beaujolais-gamay-share-2024-10"], "reason": "Move from a famous release mechanism back to the dominant grape’s wider regional life.", "signal": "rabbit-hole", "target_id": "grape:gamay-noir-a-jus-blanc"},
+          {"action": "Return to Beaujolais", "claim_ids": ["claim:beaujolais-current-orientation-15", "claim:beaujolais-nouveau-history-15"], "reason": "Place the time story beside the broad origin, Villages mention and ten crus it never replaced.", "signal": "rabbit-hole", "target_id": "place:beaujolais"}
+        ],
+        "map_reaction": {"area_subject_ids": ["appellation:beaujolais"], "producer_ids": []}
+      },
+      "practice:carbonic-maceration": {
+        "claim_ids": ["claim:carbonic-maceration-definition-15", "claim:semi-carbonic-maceration-definition-15", "claim:whole-cluster-distinction-15", "claim:beaujolais-semi-carbonic-tradition-not-rule-15", "claim:lapierre-cellar-current", "claim:grand-cour-carbonic-practice-15", "claim:terres-dorees-transition-2024-15"],
+        "hero_kicker": "A process word that says less than many drinkers think",
+        "thesis": "{{term:carbonic-maceration|Carbonic maceration}}, {{term:semi-carbonic|semi-carbonic maceration}} and {{term:whole-cluster|whole-cluster fermentation}} answer different questions. Added CO₂, intact bunches, yeast source, extraction, élevage and sulfur remain separate dimensions—and Beaujolais law does not impose one universal recipe.",
+        "comparison": [
+          {"claim_ids": ["claim:carbonic-maceration-definition-15"], "detail": "Intact whole bunches begin in a closed, oxygen-excluding CO₂ atmosphere; pressing and ordinary fermentation completion follow.", "label": "Carbonic", "value": "Atmosphere + intracellular phase"},
+          {"claim_ids": ["claim:semi-carbonic-maceration-definition-15"], "detail": "Fermenting juice in a whole-bunch vat can generate CO₂ around intact berries without a fully established external-CO₂ treatment.", "label": "Semi-carbonic", "value": "Yeast fermentation + some intracellular phase"},
+          {"claim_ids": ["claim:whole-cluster-distinction-15"], "detail": "Intact bunches and stems enter the vessel; that handling choice alone proves neither carbonic nor semi-carbonic fermentation.", "label": "Whole cluster", "value": "Fruit handling, not the whole mechanism"}
+        ],
+        "practice_examples": [
+          {"claim_ids": ["claim:lapierre-cellar-current"], "label": "Lapierre", "target_id": "producer:domaine-marcel-lapierre", "text": "Current first-party practice names semi-carbonic maceration, indigenous yeasts, barrel completion and selective—not universally absent—sulfur."},
+          {"claim_ids": ["claim:grand-cour-carbonic-practice-15"], "label": "Grand’Cour", "target_id": "producer:domaine-de-la-grand-cour", "text": "Current estate material explicitly describes uncrushed, undestemmed bunches in CO₂-saturated tanks: a producer-specific full-carbonic example."},
+          {"claim_ids": ["claim:terres-dorees-transition-2024-15"], "label": "Terres Dorées", "target_id": "producer:domaine-des-terres-dorees", "text": "A 2024 operating transition means any inherited cellar shorthand must be dated rather than silently projected onto the current operation."}
+        ],
+        "featured_connections": [
+          {"action": "Compare the related process", "claim_ids": ["claim:semi-carbonic-maceration-definition-15"], "reason": "See why a whole-bunch vat generating its own CO₂ is related to—but distinct from—full carbonic maceration.", "signal": "rabbit-hole", "target_id": "practice:semi-carbonic-maceration"},
+          {"action": "Separate the handling", "claim_ids": ["claim:whole-cluster-distinction-15"], "reason": "Intact bunches describe material entering the vessel, not the complete fermentation mechanism.", "signal": "rabbit-hole", "target_id": "practice:whole-cluster-fermentation"},
+          {"action": "Meet", "claim_ids": ["claim:grand-cour-carbonic-practice-15"], "reason": "A current producer protocol makes externally established CO₂ conditions concrete without universalizing them.", "signal": "rabbit-hole", "target_id": "producer:domaine-de-la-grand-cour"}
+        ],
+        "map_reaction": {"area_subject_ids": ["appellation:beaujolais", "appellation:fleurie", "appellation:morgon"], "producer_ids": ["producer:domaine-marcel-lapierre", "producer:domaine-de-la-grand-cour", "producer:domaine-des-terres-dorees"]}
+      },
+      "practice:semi-carbonic-maceration": {
+        "claim_ids": ["claim:semi-carbonic-maceration-definition-15", "claim:lapierre-cellar-current", "claim:beaujolais-semi-carbonic-tradition-not-rule-15"],
+        "hero_kicker": "Related to carbonic · not a synonym",
+        "thesis": "In a whole-bunch vat, ordinary fermentation of released juice can generate CO₂ around intact berries. That mixed mechanism differs from a fully established external-CO₂ treatment, and a regional tradition does not make it a universal legal requirement.",
+        "map_reaction": {"area_subject_ids": ["appellation:morgon", "appellation:beaujolais"], "producer_ids": ["producer:domaine-marcel-lapierre"]}
+      },
+      "practice:whole-cluster-fermentation": {
+        "claim_ids": ["claim:whole-cluster-distinction-15", "claim:grand-cour-carbonic-practice-15"],
+        "hero_kicker": "A handling choice · not a complete fermentation diagnosis",
+        "thesis": "Whole cluster means intact bunches and stems enter the fermenter. To call the process carbonic or semi-carbonic, you still need evidence about atmosphere and fermentation—not a guess from the stem decision.",
+        "map_reaction": {"area_subject_ids": ["appellation:fleurie", "appellation:morgon"], "producer_ids": ["producer:domaine-de-la-grand-cour", "producer:domaine-marcel-lapierre"]}
+      },
+      "historical_event:gamay-ordinance-1395": {
+        "claim_ids": ["claim:gamay-1395-ordinance-15"],
+        "hero_kicker": "Ducal Burgundy · 1395 · historically bounded",
+        "thesis": "Philip the Bold’s ordinance targeted Gamay in ducal Burgundy. It is evidence of historical wine and economic regulation—not a modern Burgundy boundary and not proof of a clean one-step migration into Beaujolais.",
+        "timeline": [
+          {"claim_ids": ["claim:gamay-1395-ordinance-15"], "label": "1395", "text": "A ducal ordinance targeted Gamay within its own historical territorial and economic context."},
+          {"claim_ids": ["claim:gamay-1395-ordinance-15"], "label": "What Atlas preserves", "text": "The event remains linked to Gamay and Burgundy without converting a medieval jurisdiction into a current regional polygon."},
+          {"claim_ids": ["claim:gamay-1395-ordinance-15"], "label": "What Atlas refuses", "text": "The ordinance alone does not document one simple migration from modern Burgundy into Beaujolais."}
+        ],
+        "featured_connections": [
+          {"action": "Return to the grape", "claim_ids": ["claim:gamay-1395-ordinance-15", "claim:gamay-parentage-15"], "reason": "Put one historical event back inside a longer grape history.", "signal": "rabbit-hole", "target_id": "grape:gamay-noir-a-jus-blanc"},
+          {"action": "Go there", "claim_ids": ["claim:gamay-1395-ordinance-15"], "move_map": true, "reason": "Move explicitly to present-day Burgundy while keeping the ducal event historically bounded.", "signal": "rabbit-hole", "target_id": "place:burgundy"},
+          {"action": "Return to Beaujolais", "claim_ids": ["claim:beaujolais-current-orientation-15"], "reason": "The modern regional world remains a separate geographic and legal subject.", "signal": "rabbit-hole", "target_id": "place:beaujolais"}
+        ]
+      },
+      "geographic_feature:mont-brouilly": {
+        "claim_ids": ["claim:mont-brouilly-physical-legal-distinction-15", "claim:thivin-identity-history-15"],
+        "hero_kicker": "Physical landform · not an appellation or vineyard",
+        "thesis": "Mont Brouilly is one hill. Côte de Brouilly occupies slopes on it; Brouilly is a separate surrounding cru area. The legal outlines are not vineyard-parcel maps, and Château Thivin supplies a human route without converting its base into holdings.",
+        "map_view": {"area_subject_ids": ["appellation:brouilly", "appellation:cote-de-brouilly"], "bounds": [4.55, 46.03, 4.76, 46.16], "max_zoom": 10.7, "producer_ids": ["producer:chateau-thivin"]},
+        "featured_connections": [
+          {"action": "Read the inner cru", "claim_ids": ["claim:mont-brouilly-physical-legal-distinction-15"], "reason": "Côte de Brouilly’s regulatory geography occupies slopes on the hill without becoming the hill itself.", "signal": "rabbit-hole", "target_id": "appellation:cote-de-brouilly"},
+          {"action": "Read the surrounding cru", "claim_ids": ["claim:mont-brouilly-physical-legal-distinction-15"], "reason": "Brouilly is a separate legal area around the landform, not another name for Côte de Brouilly.", "signal": "rabbit-hole", "target_id": "appellation:brouilly"}
+        ],
+        "map_reaction": {"area_subject_ids": ["appellation:brouilly", "appellation:cote-de-brouilly"], "producer_ids": ["producer:chateau-thivin"]}
+      },
+      "geographic_feature:py-hill": {
+        "claim_ids": ["claim:py-hill-site-distinction-15", "claim:morgon-aop", "claim:morgon-guide-orientation-10"],
+        "hero_kicker": "Hill · cru · named site: three different objects",
+        "thesis": "Py hill is a physical feature above Villié-Morgon. Morgon is the cru; Côte du Py is a named site identity within that context. Atlas has no Côte du Py polygon and no inferred producer-holdings map.",
+        "map_view": {"area_subject_ids": ["appellation:morgon"], "bounds": [4.60, 46.12, 4.75, 46.23], "max_zoom": 11.0, "producer_ids": ["producer:domaine-marcel-lapierre", "producer:jean-foillard"]},
+        "featured_connections": [
+          {"action": "Read the cru", "claim_ids": ["claim:morgon-aop", "claim:py-hill-site-distinction-15"], "reason": "Morgon is the regulatory area around Villié-Morgon and Py hill—not a synonym for Côte du Py.", "signal": "rabbit-hole", "target_id": "appellation:morgon"},
+          {"action": "Read the named site", "claim_ids": ["claim:py-hill-site-distinction-15"], "reason": "Côte du Py remains a site identity without fabricated parcel geometry.", "signal": "rabbit-hole", "target_id": "vineyard:cote-du-py"}
+        ],
+        "map_reaction": {"area_subject_ids": ["appellation:morgon"], "producer_ids": ["producer:domaine-marcel-lapierre", "producer:jean-foillard"]}
+      },
+      "place:fleurie": {
+        "claim_ids": ["claim:beaujolais-physical-corridor-16", "claim:grand-cour-base-15"],
+        "hero_kicker": "Neighboring hill positions · no elevation-to-taste shortcut",
+        "thesis": "Fleurie and Chiroubles sit close enough for one terrain view to make their neighboring hill positions legible. The view establishes physical context only; their legal outlines and producer records do the wine work.",
+        "map_view": {"area_subject_ids": ["appellation:fleurie", "appellation:chiroubles"], "bounds": [4.58, 46.14, 4.75, 46.25], "max_zoom": 10.4, "producer_ids": ["producer:domaine-de-la-grand-cour"]},
+        "map_reaction": {"area_subject_ids": ["appellation:fleurie", "appellation:chiroubles"], "producer_ids": ["producer:domaine-de-la-grand-cour"]}
+      },
+      "place:charnay-rhone": {
+        "claim_ids": ["claim:beaujolais-north-south-geology-16", "claim:terres-dorees-current-identity-15", "claim:terres-dorees-southern-chardonnay-16", "claim:terres-dorees-base-15"],
+        "hero_kicker": "Southern Beaujolais · sedimentary context · Chardonnay route",
+        "thesis": "Charnay provides a quieter southern map moment: younger sedimentary formations matter here, Chardonnay gains a specific producer route, and regional importance no longer looks synonymous with dramatic northern-cru relief.",
+        "map_view": {"area_subject_ids": ["appellation:beaujolais"], "bounds": [4.50, 45.80, 4.82, 46.00], "max_zoom": 10.3, "producer_ids": ["producer:domaine-des-terres-dorees"]},
+        "map_reaction": {"area_subject_ids": ["appellation:beaujolais"], "producer_ids": ["producer:domaine-des-terres-dorees"]}
+      },
+      "producer:domaine-marcel-lapierre": {
+        "claim_ids": ["claim:lapierre-estate-identity", "claim:lapierre-current-owners", "claim:lapierre-chauvet-guidance", "claim:lapierre-organic-certification", "claim:lapierre-cellar-current", "claim:lapierre-base-15"],
+        "hero_kicker": "Morgon · transmission, cellar precision and succession",
+        "thesis": "The useful Lapierre story is specific: Marcel’s documented 1981 turn under Jules Chauvet’s guidance, organic certification, current semi-carbonic work, selective sulfur use and a family operation now co-owned by Mathieu and Camille.",
+        "map_reaction": {"area_subject_ids": ["appellation:morgon"], "producer_ids": ["producer:domaine-marcel-lapierre"]}
+      },
+      "producer:jean-foillard": {
+        "claim_ids": ["claim:foillard-producer-identity-15", "claim:foillard-chauvet-influence-15", "claim:foillard-base-15"],
+        "hero_kicker": "Villié-Morgon · an individual beyond the shorthand",
+        "thesis": "Foillard’s Morgon and Côte du Py associations make a strong place route. The evidence supports Chauvet influence, not an invented formal mentorship, and the map point remains municipality-level orientation rather than vineyard holdings.",
+        "map_reaction": {"area_subject_ids": ["appellation:morgon", "appellation:fleurie"], "producer_ids": ["producer:jean-foillard"]}
+      },
+      "producer:chateau-thivin": {
+        "claim_ids": ["claim:thivin-identity-history-15", "claim:thivin-base-15", "claim:mont-brouilly-physical-legal-distinction-15"],
+        "hero_kicker": "Odenas · family continuity on the Mont Brouilly route",
+        "thesis": "Château Thivin makes Mont Brouilly human through Geoffray family tenure from 1877 and a current focus on Côte de Brouilly and Brouilly. It is essential precisely because Beaujolais history is larger than the natural-wine frame.",
+        "map_reaction": {"area_subject_ids": ["appellation:cote-de-brouilly", "appellation:brouilly"], "producer_ids": ["producer:chateau-thivin"]}
+      },
+      "producer:domaine-de-la-grand-cour": {
+        "claim_ids": ["claim:grand-cour-history-sites-15", "claim:grand-cour-carbonic-practice-15", "claim:grand-cour-base-15"],
+        "hero_kicker": "Fleurie · named sites and an explicit CO₂ protocol",
+        "thesis": "Grand’Cour makes producer specificity do the teaching: a Fleurie history across named sites and a current whole-bunch protocol in CO₂-saturated tanks. Neither the site names nor the cellar method become a regional universal.",
+        "map_reaction": {"area_subject_ids": ["appellation:fleurie", "appellation:brouilly"], "producer_ids": ["producer:domaine-de-la-grand-cour"]}
+      },
+      "producer:domaine-des-terres-dorees": {
+        "claim_ids": ["claim:terres-dorees-current-identity-15", "claim:terres-dorees-southern-chardonnay-16", "claim:terres-dorees-transition-2024-15", "claim:terres-dorees-base-15"],
+        "hero_kicker": "Charnay · southern Beaujolais in a live transition",
+        "thesis": "Terres Dorées holds together southern geography, a source-described Chardonnay area and a 2024 operating transition in which Jean-Paul Brun remains involved. Atlas preserves the source’s unresolved total-acreage arithmetic instead of manufacturing precision.",
+        "then_now": {
+          "claim_ids": ["claim:terres-dorees-transition-2024-15"],
+          "intro": "This is an operating-role transition, not evidence of a sale or retirement.",
+          "now": {"label": "NOW · announced transition", "text": "Domaines Roger Zannier holds operation and development, while the announcement keeps Brun involved in a five-year wine-focused transition."},
+          "then": {"label": "THEN · before harvest 2024", "text": "The domaine’s public identity centered on Jean-Paul Brun before the new operating arrangement began."},
+          "title": "A current producer identity can change without becoming a clean succession myth"
+        },
+        "map_reaction": {"area_subject_ids": ["appellation:beaujolais", "appellation:fleurie", "appellation:moulin-a-vent", "appellation:brouilly", "appellation:morgon"], "producer_ids": ["producer:domaine-des-terres-dorees"]}
+      }
+    }
+  }
+}
