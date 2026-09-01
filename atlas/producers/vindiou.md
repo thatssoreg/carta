@@ -12,7 +12,7 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [Dureza](../grapes/dureza.md) — grape; navigation node
 - [Vin de France](../classifications/vin-de-france.md) — classification; navigation node
 - [France](../countries/france/README.md) — country; baseline reference
-- [Syrah](../grapes/syrah.md) — grape; navigation node
+- [Syrah](../grapes/syrah.md) — grape; baseline reference
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->

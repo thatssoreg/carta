@@ -6,6 +6,7 @@ import argparse
 import hashlib
 import json
 import subprocess
+import sys
 from collections import defaultdict
 from pathlib import Path
 from typing import Any, Iterable
@@ -20,14 +21,58 @@ ROOT = Path(__file__).resolve().parents[1]
 MANIFEST_DIR = ROOT / "data/geography/datasets"
 MAPPING_DIR = ROOT / "data/geography/external-id-mappings"
 PUBLIC_DATA_DIR = ROOT / "atlas-app/public/data"
-EXPERIENCE_LINEAGE = [
-    "data/atlas/run-05-jura-final-cut.json",
-    "data/atlas/run-06-bearn-jurancon-world.json",
-    "data/atlas/run-07-editorial-foundation.json",
-    "data/atlas/run-08-beaujolais-canonical-ingestion.json",
-    "data/atlas/run-09-beaujolais-world.json",
-    "data/atlas/run-17-loire-valley-world.json",
-]
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import build_atlas as builder  # noqa: E402  (shared release-chain resolution)
+
+EXPERIENCE_LINEAGE = builder.EXPERIENCE_LINEAGE
+EXPERIENCE_RELEASE = json.loads(builder.EXPERIENCE_CONFIG_PATH.read_text())["release"]
+MATURE_FRANCE_WORLDS = {
+    "place:jura",
+    "place:bearn",
+    "place:beaujolais",
+    "place:loire-valley",
+    "place:northern-rhone",
+}
+FEATURED_FRANCE_WORLDS = MATURE_FRANCE_WORLDS | {"place:burgundy"}
+FOUNDING_LEARNER_GLOSSARY = {
+    "elevage", "flor", "foehn", "marl", "mistelle", "ouille", "passerillage",
+    "sec", "sous-voile", "tries-successives", "vendanges-tardives", "voile",
+    "carbonic-maceration", "semi-carbonic", "whole-cluster", "nouveau",
+}
+LOIRE_ENTRY_IDS = {
+    "entry:loire-one-river-many-worlds",
+    "entry:loire-river-tributaries",
+    "entry:loire-lineages-not-school",
+    "entry:loire-vdf-literacy",
+    "entry:loire-loir-branch",
+    "entry:loire-which-map",
+    "entry:loire-chenin-forms",
+    "entry:loire-sur-lie",
+}
+NORTHERN_RHONE_ENTRY_IDS = {
+    "entry:northern-rhone-what-passed",
+    "entry:cornas-commune-versus-cru",
+    "entry:condrieu-eight-hectares",
+    "entry:saint-peray-not-only-red",
+}
+NORTHERN_RHONE_CRUS = {
+    "appellation:cote-rotie",
+    "appellation:condrieu",
+    "appellation:chateau-grillet",
+    "appellation:saint-joseph",
+    "appellation:crozes-hermitage",
+    "appellation:hermitage",
+    "appellation:cornas",
+    "appellation:saint-peray",
+}
+NORTHERN_RHONE_PRODUCER_DOORS = {
+    "producer:guillaume-gilles",
+    "producer:domaine-georges-vernay",
+    "producer:dard-et-ribo",
+    "producer:domaine-christiane-chambeyron-manin",
+    "producer:domaine-alain-voge",
+}
 
 INAO_DATASET_ID = "spatial-dataset:inao-aires-geographiques-siqo-2026-08-24"
 NATURAL_EARTH_DATASET_ID = "spatial-dataset:natural-earth-admin-0-countries-5.1.1"
@@ -208,6 +253,13 @@ def validate_native_experience(authority: dict[str, Any]) -> dict[str, Any]:
         "place:charnay-rhone",
         "historical_event:gamay-ordinance-1395",
         "classification:beaujolais-primeur-nouveau",
+        "place:northern-rhone",
+        "grape:syrah",
+        "grape:viognier",
+        "grape:marsanne",
+        "grape:roussanne",
+        *NORTHERN_RHONE_CRUS,
+        *NORTHERN_RHONE_PRODUCER_DOORS,
     }
     if not required.issubset(subjects):
         fail("atlas-subjects.json: missing required native subjects")
@@ -268,10 +320,10 @@ def validate_native_experience(authority: dict[str, Any]) -> dict[str, Any]:
     entries = read_json(PUBLIC_DATA_DIR / "atlas-entry-points.json")
     if entries.get("generated_from") != EXPERIENCE_LINEAGE:
         fail("atlas-entry-points.json: experience config lineage is stale")
-    if entries.get("release") != "atlas-run-17-loire-valley-world":
+    if entries.get("release") != EXPERIENCE_RELEASE:
         fail("atlas-entry-points.json: release marker is stale")
-    if len(entries.get("entry_points", [])) != 8:
-        fail("atlas-entry-points.json: Loire needs one core and seven supporting questions")
+    if len(entries.get("entry_points", [])) != 12:
+        fail("atlas-entry-points.json: cumulative Loire and Northern Rhône arrival must have twelve questions")
     entry_ids: set[str] = set()
     for entry in entries["entry_points"]:
         if entry["id"] in entry_ids:
@@ -285,15 +337,15 @@ def validate_native_experience(authority: dict[str, Any]) -> dict[str, Any]:
                 fail(f"atlas-entry-points.json:{entry['id']}: invalid supporting claim")
             if projected["statement"] != claim["statement"]:
                 fail(f"atlas-entry-points.json:{projected['claim_id']}: statement drifted")
+    if not LOIRE_ENTRY_IDS.issubset(entry_ids):
+        fail("atlas-entry-points.json: one or more Loire learner questions regressed")
+    if not NORTHERN_RHONE_ENTRY_IDS.issubset(entry_ids):
+        fail("atlas-entry-points.json: one or more Northern Rhône learner questions regressed")
     featured_ids = {item["entity_id"] for item in entries.get("featured_worlds", [])}
-    if featured_ids != {
-        "place:jura",
-        "place:burgundy",
-        "place:loire-valley",
-        "place:beaujolais",
-        "place:bearn",
-    }:
-        fail("atlas-entry-points.json: five France worlds are not discoverable")
+    if featured_ids != FEATURED_FRANCE_WORLDS:
+        fail("atlas-entry-points.json: six intended France worlds are not discoverable")
+    if not featured_ids.issubset(subjects):
+        fail("atlas-entry-points.json: a featured world is not a native subject")
     return {
         "subjects": subjects,
         "subject_count": len(subjects),
@@ -307,7 +359,7 @@ def validate_editorial_experience(
     value = read_json(PUBLIC_DATA_DIR / "atlas-editorial.json")
     if value.get("generated_from") != EXPERIENCE_LINEAGE:
         fail("atlas-editorial.json: experience config lineage is stale")
-    if value.get("release") != "atlas-run-17-loire-valley-world":
+    if value.get("release") != EXPERIENCE_RELEASE:
         fail("atlas-editorial.json: release marker is stale")
     legend = value.get("legend", [])
     if {item.get("id") for item in legend} != {
@@ -316,24 +368,7 @@ def validate_editorial_experience(
     } or len(legend) != 2:
         fail("atlas-editorial.json: visible signal key is not restrained")
     glossary = value.get("glossary", {})
-    if set(glossary) != {
-        "elevage",
-        "flor",
-        "foehn",
-        "marl",
-        "mistelle",
-        "ouille",
-        "passerillage",
-        "sec",
-        "sous-voile",
-        "tries-successives",
-        "vendanges-tardives",
-        "voile",
-        "carbonic-maceration",
-        "semi-carbonic",
-        "whole-cluster",
-        "nouveau",
-    }:
+    if not FOUNDING_LEARNER_GLOSSARY.issubset(glossary):
         fail("atlas-editorial.json: learner glossary is incomplete")
     for term_id, term in glossary.items():
         if not term.get("definition") or not term.get("matters"):
@@ -363,8 +398,12 @@ def validate_editorial_experience(
     bearn = configured_subjects.get("place:bearn", {})
     beaujolais = configured_subjects.get("place:beaujolais", {})
     loire = configured_subjects.get("place:loire-valley", {})
-    if not all(world.get("regional_world") for world in (jura, bearn, beaujolais, loire)):
-        fail("atlas-editorial.json: Jura, Béarn, Beaujolais and Loire must share the regional-world contract")
+    northern_rhone = configured_subjects.get("place:northern-rhone", {})
+    if not all(
+        world.get("regional_world")
+        for world in (jura, bearn, beaujolais, loire, northern_rhone)
+    ):
+        fail("atlas-editorial.json: all five mature regional worlds must share the regional-world contract")
     if len(bearn.get("hero_facts", [])) != 2:
         fail("atlas-editorial.json: Béarn opening needs two high-value facts")
     if len(bearn.get("grape_cards", [])) != 5:
@@ -412,6 +451,33 @@ def validate_editorial_experience(
         fail("atlas-editorial.json: Loire pillar map reactions are incomplete")
     if any(signal == "tell" for signal in nested_values(loire, "signal")):
         fail("atlas-editorial.json: Loire invents a sensory Tell")
+    if len(northern_rhone.get("hero_facts", [])) != 3:
+        fail("atlas-editorial.json: Northern Rhône opening needs three bounded facts")
+    if len(northern_rhone.get("grape_cards", [])) != 4:
+        fail("atlas-editorial.json: Northern Rhône grape grammar must distinguish four routes")
+    if {
+        person.get("target_id") for person in northern_rhone.get("people", [])
+    } != NORTHERN_RHONE_PRODUCER_DOORS:
+        fail("atlas-editorial.json: Northern Rhône must retain its five editorial producer doors")
+    if len(northern_rhone.get("map_moments", [])) != 4:
+        fail("atlas-editorial.json: Northern Rhône needs four bounded map moments")
+    if set(northern_rhone.get("pillar_map_reactions", {})) != {
+        "place", "grapes", "people", "culture", "rules"
+    }:
+        fail("atlas-editorial.json: Northern Rhône pillar map reactions are incomplete")
+    if set(
+        northern_rhone.get("pillar_map_reactions", {})
+        .get("people", {})
+        .get("producer_ids", [])
+    ) != NORTHERN_RHONE_PRODUCER_DOORS:
+        fail("atlas-editorial.json: Northern Rhône People doors must all carry governed points")
+    if any(signal == "tell" for signal in nested_values(northern_rhone, "signal")):
+        fail("atlas-editorial.json: Northern Rhône invents a sensory Tell")
+    rule_groups = northern_rhone.get("rules", {}).get("groups", [])
+    if not rule_groups or set(rule_groups[0].get("ids", [])) != NORTHERN_RHONE_CRUS:
+        fail("atlas-editorial.json: Northern Rhône eight-cru legal spine drifted")
+    if not all(subjects.get(cru, {}).get("map_target") for cru in NORTHERN_RHONE_CRUS):
+        fail("atlas-editorial.json: a Northern Rhône cru lost governed map authority")
     # No world may borrow another world's voice: each regional world carries its
     # own pillar copy, Place story and rule grammar, or it does not ship.
     for subject_id, editorial in configured_subjects.items():
@@ -538,13 +604,7 @@ def validate_atlas_guides(authority: dict[str, Any]) -> int:
     guides = value.get("guides")
     if not isinstance(guides, dict) or not guides:
         fail("atlas-guides.json: expected non-empty guide mapping")
-    required = {
-        "place:jura",
-        "place:burgundy",
-        "place:loire-valley",
-        "place:beaujolais",
-        "place:bearn",
-    }
+    required = FEATURED_FRANCE_WORLDS
     if not required.issubset(guides):
         fail("atlas-guides.json: missing one or more required France worlds")
 
@@ -815,13 +875,16 @@ def validate_terrain(
         fail("atlas-terrain.json: required licence attribution is missing or stale")
     if descriptor.get("recipe") != manifest["transformations"]:
         fail("atlas-terrain.json: published recipe and manifest transformations disagree")
+    if descriptor.get("release") != EXPERIENCE_RELEASE:
+        fail("atlas-terrain.json: release marker is stale")
     terrains = descriptor.get("terrains", [])
     if {terrain.get("id") for terrain in terrains} != {
-        "bearn-jurancon", "beaujolais", "savennieres-layon", "sancerre"
+        "bearn-jurancon", "beaujolais", "savennieres-layon", "sancerre",
+        "northern-rhone",
     }:
         fail("atlas-terrain.json: bounded terrain extent set is incomplete")
-    if len(manifest["source_files"]) != 10:
-        fail("terrain: source file set must contain six Pyrenean, two Beaujolais and two Loire tiles")
+    if len(manifest["source_files"]) != 11:
+        fail("terrain: source file set must retain ten prior tiles and add one Northern Rhône tile")
 
     descriptor_path = "atlas-app/public/data/atlas-terrain.json"
     terrain_asset_paths = {
@@ -832,7 +895,7 @@ def validate_terrain(
     artifacts = {artifact["path"]: artifact for artifact in manifest["derived_artifacts"]}
     expected = terrain_asset_paths | {descriptor_path}
     if set(artifacts) != expected:
-        fail("terrain: derived artifact set does not match the four bounded terrain extents")
+        fail("terrain: derived artifact set does not match the five bounded terrain extents")
     for path, artifact in artifacts.items():
         if artifact.get("product_class") != "derived_spatial_product":
             fail(f"{path}: terrain assets must be registered as derived spatial products")

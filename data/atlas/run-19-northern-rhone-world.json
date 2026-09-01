@@ -1,0 +1,2719 @@
+{
+  "extends": "data/atlas/run-18-northern-rhone-canonical-ingestion.json",
+  "version": 10,
+  "release": "atlas-run-19-northern-rhone-world",
+  "entry_points": [
+    {
+      "claim_ids": [
+        "claim:loire-analytical-scope-17",
+        "claim:loire-physical-transitions-17"
+      ],
+      "id": "entry:loire-one-river-many-worlds",
+      "kicker": "One river · several wine worlds · the rules keep changing",
+      "subject_id": "place:loire-valley",
+      "title": "How can one river connect Muscadet, Savennières, Vouvray, Chinon, and Sancerre without making them versions of the same place?"
+    },
+    {
+      "claim_ids": [
+        "claim:loire-tributary-network-17"
+      ],
+      "id": "entry:loire-river-tributaries",
+      "kicker": "Loire · Sèvre Nantaise · Layon · Vienne · Cher · Loir",
+      "subject_id": "geographic_feature:loire-river",
+      "title": "When does the river connect the map, and when does a tributary open another world?"
+    },
+    {
+      "claim_ids": [
+        "claim:loire-human-lineages-17",
+        "claim:bonhomme-lineage-17",
+        "claim:mosse-influences-17"
+      ],
+      "id": "entry:loire-lineages-not-school",
+      "kicker": "Family · work · influence · collaboration · succession",
+      "subject_id": "producer:clos-du-tue-boeuf",
+      "title": "How can human transmission travel across the Loire without becoming one natural-wine school?"
+    },
+    {
+      "claim_ids": [
+        "claim:loire-vdf-friction-17",
+        "claim:bain-control-dispute-17"
+      ],
+      "id": "entry:loire-vdf-literacy",
+      "kicker": "Classification · bottle · vintage · cause",
+      "subject_id": "classification:vin-de-france",
+      "title": "What does Vin de France tell you—and what does it never prove by itself?"
+    },
+    {
+      "claim_ids": [
+        "claim:vallee-du-loir-role-17"
+      ],
+      "id": "entry:loire-loir-branch",
+      "kicker": "One missing e · a whole tributary branch",
+      "subject_id": "place:vallee-du-loir",
+      "title": "Why does the Loir matter to a complete Loire wine world?"
+    },
+    {
+      "claim_ids": [
+        "claim:loire-legal-layer-distinction-17"
+      ],
+      "id": "entry:loire-which-map",
+      "kicker": "AOP · IGP · interprofession · UNESCO · CARTA",
+      "subject_id": "place:loire-valley",
+      "title": "When someone says ‘Val de Loire,’ which map do they mean?"
+    },
+    {
+      "claim_ids": [
+        "claim:vouvray-current-context",
+        "claim:loire-world-significance-10"
+      ],
+      "id": "entry:loire-chenin-forms",
+      "kicker": "Dry · demi-sec · sweet · sparkling · one grape",
+      "subject_id": "appellation:vouvray",
+      "title": "How can Chenin produce dry, sweet, and sparkling wines without changing grape identity?"
+    },
+    {
+      "claim_ids": [
+        "claim:muscadet-sevre-melon-17"
+      ],
+      "id": "entry:loire-sur-lie",
+      "kicker": "Legal mention · bounded meaning · no style shortcut",
+      "subject_id": "appellation:muscadet-sevre-et-maine",
+      "title": "What does ‘sur lie’ legally tell you in Muscadet, and what does it not tell you?"
+    },
+    {
+      "claim_ids": [
+        "claim:michel-chaillot-lease-17",
+        "claim:paris-michel-family-work-17"
+      ],
+      "id": "entry:northern-rhone-what-passed",
+      "kicker": "Mentorship · employment · a lease · a cellar",
+      "subject_id": "place:northern-rhone",
+      "title": "What actually passed from one Cornas grower to the next?"
+    },
+    {
+      "claim_ids": [
+        "claim:cornas-syrah-only-17",
+        "claim:peyrouses-rouge-identity"
+      ],
+      "id": "entry:cornas-commune-versus-cru",
+      "kicker": "In Cornas · not Cornas",
+      "subject_id": "vineyard:les-peyrouses-cornas",
+      "title": "Why isn't a vineyard in the commune of Cornas a Cornas wine?"
+    },
+    {
+      "claim_ids": [
+        "claim:condrieu-contraction-recovery-17",
+        "claim:vernay-recovery-role-17"
+      ],
+      "id": "entry:condrieu-eight-hectares",
+      "kicker": "Eight hectares in 1965 · 140+ by 2010",
+      "subject_id": "appellation:condrieu",
+      "title": "How does an appellation almost disappear — and who brings it back?"
+    },
+    {
+      "claim_ids": [
+        "claim:saint-peray-still-and-sparkling-17",
+        "claim:cornas-syrah-only-17"
+      ],
+      "id": "entry:saint-peray-not-only-red",
+      "kicker": "Two neighbours · one granite basement · opposite rules",
+      "subject_id": "appellation:saint-peray",
+      "title": "Why is one cru red-only Syrah and the next white and sparkling?"
+    }
+  ],
+  "featured_world_ids": [
+    "place:loire-valley",
+    "place:beaujolais",
+    "place:jura",
+    "place:bearn",
+    "place:burgundy",
+    "place:northern-rhone"
+  ],
+  "editorial": {
+    "context_returns": [
+      {
+        "label": "Back to Savagnin in Jura",
+        "return_subject_id": "grape:savagnin",
+        "when_geographic_subject_ids": [
+          "place:jura",
+          "appellation:arbois",
+          "appellation:cotes-du-jura",
+          "appellation:chateau-chalon",
+          "appellation:l-etoile"
+        ]
+      },
+      {
+        "label": "Back to Petit Manseng in Jurançon",
+        "return_subject_id": "grape:petit-manseng",
+        "when_geographic_subject_ids": [
+          "place:bearn",
+          "appellation:jurancon",
+          "appellation:bearn"
+        ]
+      },
+      {
+        "label": "Back to Gamay in Beaujolais",
+        "return_subject_id": "grape:gamay-noir-a-jus-blanc",
+        "when_geographic_subject_ids": [
+          "place:burgundy"
+        ]
+      },
+      {
+        "label": "Back to Syrah in the Northern Rhône",
+        "return_subject_id": "grape:syrah",
+        "when_geographic_subject_ids": [
+          "place:northern-rhone",
+          "appellation:cornas",
+          "appellation:cote-rotie",
+          "appellation:hermitage",
+          "appellation:crozes-hermitage",
+          "appellation:saint-joseph"
+        ]
+      },
+      {
+        "label": "Back to the Northern Rhône corridor",
+        "return_subject_id": "place:northern-rhone",
+        "when_geographic_subject_ids": [
+          "place:beaujolais"
+        ]
+      }
+    ],
+    "glossary": {
+      "assemblage-des-raisins": {
+        "claim_ids": [
+          "claim:co-fermentation-definition-17"
+        ],
+        "definition": "Assembling permitted varieties as grapes, in the same proportion, rather than blending finished wines — the wording four Northern Rhône specifications use.",
+        "explore_target_id": "practice:co-fermentation",
+        "matters": "It governs when the varieties may meet. It never says whether a producer used the second variety at all.",
+        "term": "assemblage des raisins"
+      },
+      "encepagement": {
+        "claim_ids": [
+          "claim:cote-rotie-syrah-viognier-17",
+          "claim:saint-joseph-colours-grapes-17"
+        ],
+        "definition": "The variety mix planted across a holding, which is what the Northern Rhône's percentage rules actually govern.",
+        "matters": "An 80% or 90% Syrah floor describes the vineyard's planting, not the proportion of varieties in a finished bottle.",
+        "term": "encépagement"
+      },
+      "igp": {
+        "claim_ids": [
+          "claim:collines-rhodaniennes-role-17",
+          "claim:sotanum-igp-17"
+        ],
+        "definition": "Indication géographique protégée — a legal origin category broader than an appellation d'origine contrôlée.",
+        "explore_target_id": "appellation:collines-rhodaniennes",
+        "matters": "A wine's category tells you which rules it met, not how good the site is: Seyssuel's slopes sit among the crus and its wines are IGP.",
+        "term": "IGP"
+      },
+      "methode-traditionnelle": {
+        "claim_ids": [
+          "claim:saint-peray-still-and-sparkling-17",
+          "claim:voge-bulles-dalain-17"
+        ],
+        "definition": "A second fermentation carried out in the bottle the wine is sold in.",
+        "explore_target_id": "practice:traditional-method-sparkling",
+        "matters": "It is a method. It is not a quality claim, and in this corridor only one appellation's specification covers it.",
+        "term": "méthode traditionnelle"
+      },
+      "vin-de-paille": {
+        "claim_ids": [
+          "claim:hermitage-vin-de-paille-rules-17"
+        ],
+        "definition": "A wine from grapes dried after harvest; at Hermitage a governed optional mention requiring at least 45 days of drying, 170 g/L of natural sugar and a 15 hl/ha yield.",
+        "explore_target_id": "classification:hermitage-vin-de-paille",
+        "matters": "It is a mention inside one specification, not a separate appellation and not a general regional style.",
+        "term": "vin de paille"
+      }
+    },
+    "map_click_priority": {
+      "appellation:chateau-grillet": 5,
+      "appellation:condrieu": 12,
+      "appellation:cornas": 11,
+      "appellation:cote-rotie": 13,
+      "appellation:cotes-du-rhone": 90,
+      "appellation:crozes-hermitage": 16,
+      "appellation:hermitage": 10,
+      "appellation:saint-joseph": 15,
+      "appellation:saint-peray": 14
+    },
+    "subjects": {
+      "appellation:chateau-grillet": {
+        "claim_ids": [
+          "claim:chateau-grillet-recognition-17",
+          "claim:chateau-grillet-white-viognier-17",
+          "claim:chateau-grillet-inside-condrieu-landscape-17",
+          "claim:chateau-grillet-granite-17",
+          "claim:chateau-grillet-monopole-17"
+        ],
+        "featured_connections": [
+          {
+            "action": "Compare the neighbour",
+            "claim_ids": [
+              "claim:chateau-grillet-inside-condrieu-landscape-17",
+              "claim:condrieu-white-viognier-17"
+            ],
+            "reason": "Physical continuity has never implied legal identity: two independently delimited appellations share one hillside system and one grape.",
+            "signal": "rabbit-hole",
+            "target_id": "appellation:condrieu"
+          },
+          {
+            "action": "Separate the identities",
+            "claim_ids": [
+              "claim:chateau-grillet-monopole-17"
+            ],
+            "reason": "Appellation, estate, vineyard and owning company remain four things even when one party controls all four.",
+            "signal": "rabbit-hole",
+            "target_id": "producer:chateau-grillet"
+          }
+        ],
+        "hero_kicker": "3.5 hectares · its own rulebook since 1936",
+        "map_reaction": {
+          "area_subject_ids": [
+            "appellation:chateau-grillet",
+            "appellation:condrieu"
+          ],
+          "producer_ids": []
+        },
+        "thesis": "One specification says the vineyard is *inséré au cœur même* of the Condrieu vineyard; the INAO product surface places it just south. CARTA carries both and resolves neither — and in neither reading does Château-Grillet become part of Condrieu."
+      },
+      "appellation:collines-rhodaniennes": {
+        "claim_ids": [
+          "claim:collines-rhodaniennes-role-17",
+          "claim:sotanum-igp-17"
+        ],
+        "featured_connections": [
+          {
+            "action": "Read the frontier",
+            "claim_ids": [
+              "claim:vins-de-vienne-founding-17",
+              "claim:sotanum-igp-17"
+            ],
+            "reason": "Three cru producers replanting an ancient vineyard whose wines are still not cru wines, because no cru covers that ground.",
+            "signal": "rabbit-hole",
+            "target_id": "project:les-vins-de-vienne"
+          }
+        ],
+        "hero_kicker": "The corridor's legal home for everything the crus do not cover",
+        "thesis": "{{term:igp|IGP}} Collines Rhodaniennes carries the replanted Seyssuel vineyard and much else in the corridor. CARTA governs the category and leaves its mapped area as external context: the point is that a few kilometres on the map can mean a total change of legal category."
+      },
+      "appellation:condrieu": {
+        "claim_ids": [
+          "claim:condrieu-recognition-17",
+          "claim:condrieu-white-viognier-17",
+          "claim:condrieu-sweetness-range-17",
+          "claim:condrieu-communes-17",
+          "claim:condrieu-contraction-recovery-17"
+        ],
+        "featured_connections": [
+          {
+            "action": "Meet the recovery",
+            "claim_ids": [
+              "claim:vernay-recovery-role-17",
+              "claim:condrieu-contraction-recovery-17"
+            ],
+            "reason": "A documented leading role in rebuilding the hillsides, kept separate from the shorthand that makes one man the sole cause.",
+            "signal": "rabbit-hole",
+            "target_id": "producer:domaine-georges-vernay"
+          },
+          {
+            "action": "Step next door",
+            "claim_ids": [
+              "claim:chateau-grillet-inside-condrieu-landscape-17"
+            ],
+            "reason": "A 3.5-hectare appellation in the same landscape, independently delimited and not a Condrieu subzone.",
+            "signal": "rabbit-hole",
+            "target_id": "appellation:chateau-grillet"
+          },
+          {
+            "action": "Follow the grape",
+            "claim_ids": [
+              "claim:viognier-near-loss-17"
+            ],
+            "reason": "The variety's international spread begins from this near-disappearance, not from abundance.",
+            "signal": "rabbit-hole",
+            "target_id": "grape:viognier"
+          }
+        ],
+        "hero_kicker": "One grape · seven communes · eight hectares in 1965",
+        "map_reaction": {
+          "area_subject_ids": [
+            "appellation:condrieu",
+            "appellation:chateau-grillet",
+            "appellation:cote-rotie"
+          ],
+          "producer_ids": []
+        },
+        "thesis": "Condrieu is Viognier and nothing else, and it nearly stopped existing. The specification records phylloxera in 1893, then war and industrial employment draining the labour the terraces needed, before a long climb back past 140 hectares by 2010. Its {{term:sec|dryness}} is a tendency, not the legal definition."
+      },
+      "appellation:cornas": {
+        "claim_ids": [
+          "claim:cornas-recognition-17",
+          "claim:cornas-syrah-only-17",
+          "claim:cornas-granite-17",
+          "claim:cornas-first-domaine-bottling-1952-17"
+        ],
+        "featured_connections": [
+          {
+            "action": "Read the stress case",
+            "claim_ids": [
+              "claim:cornas-syrah-only-17",
+              "claim:peyrouses-rouge-identity"
+            ],
+            "reason": "An old-vine Syrah parcel on the flats in this commune, bottled as Côtes du Rhône, with its position against the delimited boundary honestly unknown.",
+            "signal": "rabbit-hole",
+            "target_id": "vineyard:les-peyrouses-cornas"
+          },
+          {
+            "action": "Follow the transfers",
+            "claim_ids": [
+              "claim:robert-michel-domaine-history-17",
+              "claim:michel-chaillot-lease-17"
+            ],
+            "reason": "Michel's parcels, cellar and knowledge moved in four different ways to three different growers.",
+            "signal": "rabbit-hole",
+            "target_id": "producer:domaine-robert-michel"
+          },
+          {
+            "action": "Cross one boundary",
+            "claim_ids": [
+              "claim:saint-peray-geology-17"
+            ],
+            "reason": "Granite continues south while colour, grapes and wine forms change completely.",
+            "signal": "rabbit-hole",
+            "target_id": "appellation:saint-peray"
+          }
+        ],
+        "hero_kicker": "One commune · one colour · one grape",
+        "map_reaction": {
+          "area_subject_ids": [
+            "appellation:cornas",
+            "appellation:saint-peray",
+            "appellation:cotes-du-rhone"
+          ],
+          "producer_ids": []
+        },
+        "thesis": "Cornas admits no accessory or white variety at all — the single-variety outlier among eight rulebooks. It is also where the corridor's sharpest legal trap sits: the appellation is delimited *within* a commune, so being in Cornas is not being Cornas."
+      },
+      "appellation:cote-rotie": {
+        "claim_ids": [
+          "claim:cote-rotie-recognition-17",
+          "claim:cote-rotie-red-only-17",
+          "claim:cote-rotie-syrah-viognier-17",
+          "claim:cote-rotie-communes-17"
+        ],
+        "featured_connections": [
+          {
+            "action": "Read the mechanism",
+            "claim_ids": [
+              "claim:co-fermentation-definition-17",
+              "claim:cote-rotie-syrah-viognier-17"
+            ],
+            "reason": "The rule governs when two varieties may meet, not whether any producer used the second one.",
+            "signal": "rabbit-hole",
+            "target_id": "practice:co-fermentation"
+          },
+          {
+            "action": "Go small",
+            "claim_ids": [
+              "claim:chambeyron-site"
+            ],
+            "reason": "Half a hectare on the Côte Brune, at the opposite end of the appellation from a seventeen-lieu-dit mosaic.",
+            "signal": "rabbit-hole",
+            "target_id": "producer:domaine-christiane-chambeyron-manin"
+          },
+          {
+            "action": "Go large",
+            "claim_ids": [
+              "claim:guigal-house-structure-17"
+            ],
+            "reason": "A house founded in 1946 that has since acquired several of its neighbours is part of this appellation's real ecology.",
+            "signal": "rabbit-hole",
+            "target_id": "producer:e-guigal"
+          }
+        ],
+        "hero_kicker": "Red only · and one white grape allowed in",
+        "map_reaction": {
+          "area_subject_ids": [
+            "appellation:cote-rotie",
+            "appellation:condrieu"
+          ],
+          "producer_ids": []
+        },
+        "thesis": "Syrah must be at least 80% of the {{term:encepagement|holding's planting}}, and Viognier may join it up to 20% of the vines — but only {{term:assemblage-des-raisins|assembled as grapes}}. A permission is not a practice: many Côte-Rôtie wines contain no Viognier at all."
+      },
+      "appellation:cotes-du-rhone": {
+        "claim_ids": [
+          "claim:northern-rhone-cotes-du-rhone-context-17",
+          "claim:cotes-du-rhone-aop"
+        ],
+        "featured_connections": [
+          {
+            "action": "Read the case",
+            "claim_ids": [
+              "claim:peyrouses-rouge-identity"
+            ],
+            "reason": "Old-vine Syrah from the flats in the commune of Cornas, bottled under this broader appellation.",
+            "signal": "rabbit-hole",
+            "target_id": "wine:guillaume-gilles-les-peyrouses-rouge"
+          }
+        ],
+        "hero_kicker": "The valley-long background the crus sit inside",
+        "map_reaction": {
+          "area_subject_ids": [
+            "appellation:cotes-du-rhone",
+            "appellation:cote-rotie",
+            "appellation:condrieu",
+            "appellation:chateau-grillet",
+            "appellation:saint-joseph",
+            "appellation:crozes-hermitage",
+            "appellation:hermitage",
+            "appellation:cornas",
+            "appellation:saint-peray"
+          ],
+          "producer_ids": []
+        },
+        "thesis": "Côtes du Rhône runs from the Vienne sector towards Avignon and overlaps the northern corridor. In this world its job is to explain how a vineyard can sit among the crus and still be sold under a broader name."
+      },
+      "appellation:crozes-hermitage": {
+        "claim_ids": [
+          "claim:crozes-hermitage-recognition-17",
+          "claim:crozes-hermitage-colours-grapes-17",
+          "claim:crozes-hermitage-communes-17",
+          "claim:crozes-hermitage-two-geologies-17",
+          "claim:crozes-hermitage-boundary-history-17",
+          "claim:crozes-hermitage-granite-crosses-river-17"
+        ],
+        "featured_connections": [
+          {
+            "action": "Read the terrace",
+            "claim_ids": [
+              "claim:chassis-terrace-17"
+            ],
+            "reason": "The lowest and youngest terrace, a triangle with its apex at Pont-de-l'Isère — a landform, not a delimited area.",
+            "signal": "rabbit-hole",
+            "target_id": "geographic_feature:chassis-terrace"
+          },
+          {
+            "action": "Go north",
+            "claim_ids": [
+              "claim:fayolle-gervans-17"
+            ],
+            "reason": "Gervans is granite hill country behind Hermitage, and it carries the same appellation name as the gravel plain.",
+            "signal": "rabbit-hole",
+            "target_id": "producer:domaine-laurent-fayolle"
+          },
+          {
+            "action": "Read the neighbour",
+            "claim_ids": [
+              "claim:hermitage-communes-17"
+            ],
+            "reason": "The commune named Crozes-Hermitage holds land in both appellations.",
+            "signal": "rabbit-hole",
+            "target_id": "appellation:hermitage"
+          }
+        ],
+        "hero_kicker": "Eleven communes · granite north · gravel terraces south",
+        "map_reaction": {
+          "area_subject_ids": [
+            "appellation:crozes-hermitage",
+            "appellation:hermitage"
+          ],
+          "producer_ids": []
+        },
+        "thesis": "The largest cru is the least uniform, and its own specification says so: granite de Tournon on northern slopes, Quaternary alpine terraces to the south and east, loess at Gervans and kaolin at Larnage. It is not blank space around a famous hill."
+      },
+      "appellation:hermitage": {
+        "claim_ids": [
+          "claim:hermitage-recognition-17",
+          "claim:hermitage-colours-grapes-17",
+          "claim:hermitage-communes-17",
+          "claim:hermitage-hill-landform-17"
+        ],
+        "featured_connections": [
+          {
+            "action": "Read the third form",
+            "claim_ids": [
+              "claim:hermitage-vin-de-paille-rules-17"
+            ],
+            "reason": "A governed mention with exact drying, richness and yield rules — not a separate appellation.",
+            "signal": "rabbit-hole",
+            "target_id": "classification:hermitage-vin-de-paille"
+          },
+          {
+            "action": "Read one structure",
+            "claim_ids": [
+              "claim:chave-multi-site-blend-17"
+            ],
+            "reason": "A domaine that rebuilds one blend from several sites each year, against a house that bottles named parcels.",
+            "signal": "rabbit-hole",
+            "target_id": "producer:domaine-jean-louis-chave"
+          },
+          {
+            "action": "Separate hill from law",
+            "claim_ids": [
+              "claim:hermitage-hill-landform-17"
+            ],
+            "reason": "The landform is one object; the appellation is another; the named sites growers talk about are a third.",
+            "signal": "rabbit-hole",
+            "target_id": "geographic_feature:hermitage-hill"
+          }
+        ],
+        "hero_kicker": "One hill · three communes · three ways of organising it",
+        "map_reaction": {
+          "area_subject_ids": [
+            "appellation:hermitage",
+            "appellation:crozes-hermitage"
+          ],
+          "producer_ids": []
+        },
+        "thesis": "Hermitage is red, white and — under a governed mention — {{term:vin-de-paille|vin de paille}}. Its three communes include one called Crozes-Hermitage, which is the cleanest demonstration in the corridor that a commune name cannot tell you which wine a parcel may make."
+      },
+      "appellation:saint-joseph": {
+        "claim_ids": [
+          "claim:saint-joseph-recognition-17",
+          "claim:saint-joseph-colours-grapes-17",
+          "claim:saint-joseph-corridor-17",
+          "claim:saint-joseph-boundary-history-17"
+        ],
+        "featured_connections": [
+          {
+            "action": "Read the spatial warning",
+            "claim_ids": [
+              "claim:souhaut-base-versus-vineyards-17"
+            ],
+            "reason": "A producer based at Arlebosc in the Ardèche, outside this appellation entirely, whose vines and wines include Saint-Joseph.",
+            "signal": "rabbit-hole",
+            "target_id": "producer:romaneaux-destezet"
+          },
+          {
+            "action": "Read the historic core",
+            "claim_ids": [
+              "claim:gonon-mauves-core-17"
+            ],
+            "reason": "Mauves, Tournon and Saint-Jean-de-Muzols are the 1956 heart of the appellation, and one cluster among several.",
+            "signal": "rabbit-hole",
+            "target_id": "producer:domaine-gonon"
+          },
+          {
+            "action": "Cross the river",
+            "claim_ids": [
+              "claim:crozes-hermitage-granite-crosses-river-17"
+            ],
+            "reason": "The granite of northern Crozes-Hermitage is the same formation exposed here at Tournon.",
+            "signal": "rabbit-hole",
+            "target_id": "appellation:crozes-hermitage"
+          }
+        ],
+        "hero_kicker": "26 communes · about 60 kilometres · one name",
+        "map_reaction": {
+          "area_subject_ids": [
+            "appellation:saint-joseph",
+            "appellation:condrieu",
+            "appellation:cornas"
+          ],
+          "producer_ids": []
+        },
+        "thesis": "Saint-Joseph is a corridor, not a côte. Created in 1956 on six communes around Tournon, expanded in 1969 by twenty more, then cut back by parcel revisions in 1994 and 2018 from about 6,800 to about 3,400 hectares. Today's outline is a made thing; the slopes did not move."
+      },
+      "appellation:saint-peray": {
+        "claim_ids": [
+          "claim:saint-peray-recognition-17",
+          "claim:saint-peray-still-and-sparkling-17",
+          "claim:saint-peray-sparkling-history-17",
+          "claim:saint-peray-geology-17",
+          "claim:saint-peray-2025-proposal-17"
+        ],
+        "featured_connections": [
+          {
+            "action": "Meet both traditions",
+            "claim_ids": [
+              "claim:voge-two-forms-17",
+              "claim:voge-ongrie-1984-17"
+            ],
+            "reason": "One estate holds a traditional-method sparkling wine and a barrel-vinified still cuvée created in 1984, when most Saint-Péray was still sparkling.",
+            "signal": "rabbit-hole",
+            "target_id": "producer:domaine-alain-voge"
+          },
+          {
+            "action": "Read the origin",
+            "claim_ids": [
+              "claim:saint-peray-1828-event-17"
+            ],
+            "reason": "The specification traces the sparkling reputation to trials on a hundred barrels in 1828, not to the 1829 date trade accounts prefer.",
+            "signal": "rabbit-hole",
+            "target_id": "historical_event:saint-peray-sparkling-1828"
+          },
+          {
+            "action": "Compare the neighbour",
+            "claim_ids": [
+              "claim:cornas-syrah-only-17"
+            ],
+            "reason": "The corridor's cleanest legal contrast happens across a boundary the rock does not notice.",
+            "signal": "rabbit-hole",
+            "target_id": "appellation:cornas"
+          }
+        ],
+        "hero_kicker": "White only · still and sparkling · next to Syrah-only Cornas",
+        "map_reaction": {
+          "area_subject_ids": [
+            "appellation:saint-peray",
+            "appellation:cornas"
+          ],
+          "producer_ids": []
+        },
+        "thesis": "Two neighbouring appellations share a granite basement. One is red Syrah and nothing else; the other is white Marsanne and Roussanne and may sparkle by {{term:methode-traditionnelle|second fermentation in bottle}}. Nothing in the ground explains that."
+      },
+      "classification:hermitage-vin-de-paille": {
+        "claim_ids": [
+          "claim:hermitage-vin-de-paille-rules-17",
+          "claim:hermitage-colours-grapes-17"
+        ],
+        "featured_connections": [
+          {
+            "action": "Return to the hill",
+            "claim_ids": [
+              "claim:hermitage-colours-grapes-17"
+            ],
+            "reason": "The mention lives inside the Hermitage specification and cannot be separated from it.",
+            "signal": "rabbit-hole",
+            "target_id": "appellation:hermitage"
+          }
+        ],
+        "hero_kicker": "A governed mention · not a second appellation",
+        "thesis": "White Hermitage may carry the {{term:vin-de-paille|vin de paille}} mention: grapes dried at least 45 days, a minimum natural richness of 170 g/L, and 15 hectolitres per hectare. A third legal wine form on one hill."
+      },
+      "geographic_feature:chassis-terrace": {
+        "claim_ids": [
+          "claim:chassis-terrace-17",
+          "claim:crozes-hermitage-two-geologies-17"
+        ],
+        "featured_connections": [
+          {
+            "action": "Read the appellation around it",
+            "claim_ids": [
+              "claim:crozes-hermitage-two-geologies-17"
+            ],
+            "reason": "The same legal name covers this terrace and the granite hills at Gervans.",
+            "signal": "rabbit-hole",
+            "target_id": "appellation:crozes-hermitage"
+          }
+        ],
+        "hero_kicker": "The corridor's answer to the heroic-slope stereotype",
+        "map_reaction": {
+          "area_subject_ids": [
+            "appellation:crozes-hermitage"
+          ],
+          "producer_ids": []
+        },
+        "thesis": "Les Chassis is the lowest and youngest of the Quaternary terraces, a triangle whose apex is at Pont-de-l'Isère, built from gravels carried down by alpine rivers. It is a landform inside a delimited area, and it is flat."
+      },
+      "geographic_feature:hermitage-hill": {
+        "claim_ids": [
+          "claim:hermitage-hill-landform-17"
+        ],
+        "featured_connections": [
+          {
+            "action": "Read the law on the hill",
+            "claim_ids": [
+              "claim:hermitage-hill-landform-17",
+              "claim:hermitage-communes-17"
+            ],
+            "reason": "The appellation occupies the hill's terraces without being the hill.",
+            "signal": "rabbit-hole",
+            "target_id": "appellation:hermitage"
+          }
+        ],
+        "hero_kicker": "A landform · not an appellation and not a parcel",
+        "map_reaction": {
+          "area_subject_ids": [
+            "appellation:hermitage",
+            "appellation:crozes-hermitage"
+          ],
+          "producer_ids": []
+        },
+        "thesis": "INAO describes a fragment of granitic massif separated from the Ardèche mountains by the Rhône, with south-facing terraced hillsides. Hermitage AOC and Crozes-Hermitage AOC are two legal areas that meet this one hill differently."
+      },
+      "geographic_feature:montagne-de-crussol": {
+        "claim_ids": [
+          "claim:crussol-limestone-17"
+        ],
+        "featured_connections": [
+          {
+            "action": "Read the appellation below",
+            "claim_ids": [
+              "claim:saint-peray-geology-17"
+            ],
+            "reason": "A white-only cru whose ground is more mixed than the Cornas granite immediately north of it.",
+            "signal": "rabbit-hole",
+            "target_id": "appellation:saint-peray"
+          }
+        ],
+        "hero_kicker": "Limestone left standing above a granite basement",
+        "map_reaction": {
+          "area_subject_ids": [
+            "appellation:saint-peray"
+          ],
+          "producer_ids": []
+        },
+        "thesis": "The Saint-Péray specification describes secondary deposits over a primary granitic basement, leaving the Crussol relief above the appellation and soils that mix calcareous, clay-limestone and granitic material. Description only: no flavour follows."
+      },
+      "geographic_feature:rhone-river": {
+        "claim_ids": [
+          "claim:rhone-river-corridor-17",
+          "claim:northern-rhone-corridor-banks-17"
+        ],
+        "featured_connections": [
+          {
+            "action": "Return to the corridor",
+            "claim_ids": [
+              "claim:northern-rhone-editorial-grouping-17"
+            ],
+            "reason": "The corridor is the only thing the eight crus share, and it is not a legal object.",
+            "signal": "rabbit-hole",
+            "target_id": "place:northern-rhone"
+          }
+        ],
+        "hero_kicker": "The spine · not the explanation",
+        "thesis": "The river decides which slopes face the sun and nothing else. Six crus sit on its right bank and two on its left, and that distinction breaks down as soon as you ask about landform, substrate or permitted grape. CARTA has not yet acquired a governed centreline, so the corridor is described rather than drawn."
+      },
+      "grape:marsanne": {
+        "claim_ids": [
+          "claim:marsanne-roussanne-pair-17",
+          "claim:marsanne-saint-joseph-share-17"
+        ],
+        "featured_connections": [
+          {
+            "action": "Follow it into bubbles",
+            "claim_ids": [
+              "claim:saint-peray-still-and-sparkling-17"
+            ],
+            "reason": "The corridor's only appellation whose specification covers sparkling wine.",
+            "signal": "rabbit-hole",
+            "target_id": "appellation:saint-peray"
+          },
+          {
+            "action": "Follow it into dried grapes",
+            "claim_ids": [
+              "claim:hermitage-vin-de-paille-rules-17"
+            ],
+            "reason": "A governed mention with 45 days of drying and a 15 hl/ha yield.",
+            "signal": "rabbit-hole",
+            "target_id": "classification:hermitage-vin-de-paille"
+          },
+          {
+            "action": "Meet both forms in one estate",
+            "claim_ids": [
+              "claim:voge-bulles-dalain-17",
+              "claim:voge-ongrie-1984-17"
+            ],
+            "reason": "100% Marsanne as brut nature méthode traditionnelle, and 100% Marsanne in oak.",
+            "signal": "rabbit-hole",
+            "target_id": "producer:domaine-alain-voge"
+          }
+        ],
+        "hero_kicker": "The reason the corridor is not only red",
+        "map_reaction": {
+          "area_subject_ids": [
+            "appellation:saint-peray",
+            "appellation:hermitage",
+            "appellation:saint-joseph",
+            "appellation:crozes-hermitage"
+          ],
+          "producer_ids": []
+        },
+        "thesis": "Marsanne is named in four white rules, admitted as an accessory in three reds, and carries two wine forms that exist nowhere else here: {{term:vin-de-paille|Hermitage vin de paille}} and sparkling Saint-Péray. Legal parity with Roussanne is not equal planting."
+      },
+      "grape:roussanne": {
+        "claim_ids": [
+          "claim:roussanne-pair-17",
+          "claim:marsanne-saint-joseph-share-17"
+        ],
+        "featured_connections": [
+          {
+            "action": "Read the pair",
+            "claim_ids": [
+              "claim:marsanne-saint-joseph-share-17"
+            ],
+            "reason": "Legal parity and planting share are two different facts, and CARTA does not read one from the other.",
+            "signal": "rabbit-hole",
+            "target_id": "grape:marsanne"
+          },
+          {
+            "action": "Follow it up the hill",
+            "claim_ids": [
+              "claim:hermitage-colours-grapes-17"
+            ],
+            "reason": "Named in the white rule, the vin de paille rule and the red accessory rule of one appellation.",
+            "signal": "rabbit-hole",
+            "target_id": "appellation:hermitage"
+          }
+        ],
+        "hero_kicker": "Named in every white rule · planted far less",
+        "map_reaction": {
+          "area_subject_ids": [
+            "appellation:saint-peray",
+            "appellation:hermitage",
+            "appellation:crozes-hermitage",
+            "appellation:saint-joseph"
+          ],
+          "producer_ids": []
+        },
+        "thesis": "Roussanne appears beside Marsanne in every white rule of the corridor and in three red rules. Where CARTA has a planting figure it points the other way: Marsanne is about 95% of Saint-Joseph's white plantings."
+      },
+      "grape:syrah": {
+        "claim_ids": [
+          "claim:syrah-northern-rhone-rules-17",
+          "claim:serine-terminology"
+        ],
+        "featured_connections": [
+          {
+            "action": "Go where it is compulsory",
+            "claim_ids": [
+              "claim:cornas-syrah-only-17"
+            ],
+            "reason": "The one cru whose specification names Syrah and nothing else.",
+            "signal": "rabbit-hole",
+            "target_id": "appellation:cornas"
+          },
+          {
+            "action": "Go where a white grape joins it",
+            "claim_ids": [
+              "claim:cote-rotie-syrah-viognier-17"
+            ],
+            "reason": "The only red cru that admits a white variety, and only assembled at the grape stage.",
+            "signal": "rabbit-hole",
+            "target_id": "appellation:cote-rotie"
+          },
+          {
+            "action": "Follow the ampelography",
+            "claim_ids": [
+              "claim:serine-terminology"
+            ],
+            "reason": "The one parentage relationship CARTA governs for Syrah; the rest waits for primary grape authority.",
+            "signal": "rabbit-hole",
+            "target_id": "grape:dureza"
+          }
+        ],
+        "hero_kicker": "One red grape · a different legal weight at every boundary",
+        "map_reaction": {
+          "area_subject_ids": [
+            "appellation:cornas",
+            "appellation:cote-rotie",
+            "appellation:hermitage",
+            "appellation:crozes-hermitage",
+            "appellation:saint-joseph"
+          ],
+          "producer_ids": []
+        },
+        "thesis": "Syrah is the only red variety permitted anywhere in the corridor, which makes it the cleanest way to feel eight rulebooks at once: sole variety in Cornas, 90% of the {{term:encepagement|planting}} in Saint-Joseph, 85% in Crozes-Hermitage and Hermitage, 80% in Côte-Rôtie. Sérine is local vocabulary attached to it, not a second grape."
+      },
+      "grape:viognier": {
+        "claim_ids": [
+          "claim:viognier-condrieu-exclusive-17",
+          "claim:viognier-near-loss-17"
+        ],
+        "featured_connections": [
+          {
+            "action": "Go to the home appellation",
+            "claim_ids": [
+              "claim:condrieu-white-viognier-17",
+              "claim:condrieu-contraction-recovery-17"
+            ],
+            "reason": "Seven communes, three departments, and one sentence of grape law.",
+            "signal": "rabbit-hole",
+            "target_id": "appellation:condrieu"
+          },
+          {
+            "action": "Read the accessory role",
+            "claim_ids": [
+              "claim:cote-rotie-syrah-viognier-17"
+            ],
+            "reason": "The one place a white grape may enter a Northern Rhône red, and only assembled as grapes.",
+            "signal": "rabbit-hole",
+            "target_id": "appellation:cote-rotie"
+          },
+          {
+            "action": "Meet the recovery",
+            "claim_ids": [
+              "claim:vernay-recovery-role-17"
+            ],
+            "reason": "A documented leading role in rebuilding the terraces, kept separate from sole causation.",
+            "signal": "rabbit-hole",
+            "target_id": "producer:domaine-georges-vernay"
+          }
+        ],
+        "hero_kicker": "Everything in two crus · an accessory in a third · absent from five",
+        "map_reaction": {
+          "area_subject_ids": [
+            "appellation:condrieu",
+            "appellation:chateau-grillet",
+            "appellation:cote-rotie"
+          ],
+          "producer_ids": []
+        },
+        "thesis": "Viognier's legal position is unusually stark, and its modern story starts from near-loss: the appellation that is made only from it was down to some eight hectares by 1965. Its international spread begins there."
+      },
+      "historical_event:saint-peray-sparkling-1828": {
+        "claim_ids": [
+          "claim:saint-peray-1828-event-17",
+          "claim:saint-peray-sparkling-history-17"
+        ],
+        "featured_connections": [
+          {
+            "action": "Return to the appellation",
+            "claim_ids": [
+              "claim:saint-peray-sparkling-history-17"
+            ],
+            "reason": "The reputation these trials began is why a white cru sits beside a red-only one.",
+            "signal": "rabbit-hole",
+            "target_id": "appellation:saint-peray"
+          }
+        ],
+        "hero_kicker": "1730 · 1828 · and a date the trade prefers",
+        "thesis": "The specification records a cellarmaster's bottle-fermentation experiment in 1730 and Louis-Alexandre Faure's systematic trials on a hundred barrels in 1828. Trade accounts commonly say 1829. CARTA carries the specification's date and does not merge the two."
+      },
+      "place:cornas": {
+        "claim_ids": [
+          "claim:cornas-aop-geography",
+          "claim:cornas-syrah-only-17"
+        ],
+        "featured_connections": [
+          {
+            "action": "Read the case",
+            "claim_ids": [
+              "claim:peyrouses-rouge-identity"
+            ],
+            "reason": "A parcel on the flats in this commune whose wine carries a different legal origin.",
+            "signal": "rabbit-hole",
+            "target_id": "vineyard:les-peyrouses-cornas"
+          },
+          {
+            "action": "Read the appellation",
+            "claim_ids": [
+              "claim:cornas-aop-geography"
+            ],
+            "reason": "One commune, one delimited area, and a boundary CARTA does not guess.",
+            "signal": "rabbit-hole",
+            "target_id": "appellation:cornas"
+          }
+        ],
+        "hero_kicker": "A commune · which is not the same thing as a cru",
+        "map_reaction": {
+          "area_subject_ids": [
+            "appellation:cornas"
+          ],
+          "producer_ids": []
+        },
+        "thesis": "The Cornas appellation is delimited within this commune. Being in the commune is therefore never evidence that a parcel is in the appellation — the corridor's most reusable lesson, and the reason Les Peyrouses is a Côtes du Rhône."
+      },
+      "place:northern-rhone": {
+        "claim_ids": [
+          "claim:northern-rhone-editorial-grouping-17",
+          "claim:northern-rhone-corridor-banks-17",
+          "claim:northern-rhone-decree-chronology-17",
+          "claim:northern-rhone-four-grapes-17",
+          "claim:northern-rhone-cru-count-17",
+          "claim:northern-rhone-cotes-du-rhone-context-17",
+          "claim:northern-rhone-map-meaning-17",
+          "claim:crozes-hermitage-granite-crosses-river-17"
+        ],
+        "featured_connections": [
+          {
+            "action": "Read the transfer network",
+            "claim_ids": [
+              "claim:cornas-syrah-only-17",
+              "claim:michel-chaillot-lease-17"
+            ],
+            "reason": "Cornas holds mentorship, employment, kinship, a lease, cellar access and vineyard purchase as six separate records instead of one lineage.",
+            "signal": "rabbit-hole",
+            "target_id": "appellation:cornas"
+          },
+          {
+            "action": "Follow the grape",
+            "claim_ids": [
+              "claim:syrah-northern-rhone-rules-17"
+            ],
+            "reason": "One red variety whose legal weight changes at every boundary is the cleanest way to feel eight rulebooks at once.",
+            "signal": "rabbit-hole",
+            "target_id": "grape:syrah"
+          },
+          {
+            "action": "Leave the red corridor",
+            "claim_ids": [
+              "claim:saint-peray-still-and-sparkling-17",
+              "claim:saint-peray-geology-17"
+            ],
+            "reason": "A white-only cru with a sparkling tradition, sharing a granite basement with Syrah-only Cornas, breaks the region's stereotype fastest.",
+            "signal": "rabbit-hole",
+            "target_id": "appellation:saint-peray"
+          }
+        ],
+        "grape_cards": [
+          {
+            "claim_ids": [
+              "claim:syrah-northern-rhone-rules-17",
+              "claim:northern-rhone-four-grapes-17"
+            ],
+            "copy": "The only red variety permitted anywhere in the corridor, and a different legal weight at every boundary: sole variety in Cornas, 90% in Saint-Joseph, 85% in Crozes-Hermitage and Hermitage, 80% in Côte-Rôtie.",
+            "metric": "5 of 8",
+            "metric_label": "crus whose red rules name it",
+            "primary": true,
+            "target_id": "grape:syrah"
+          },
+          {
+            "claim_ids": [
+              "claim:viognier-condrieu-exclusive-17",
+              "claim:viognier-near-loss-17"
+            ],
+            "copy": "Everything in Condrieu and Château-Grillet, an accessory grape in a Côte-Rôtie red, and absent from the other five rulebooks — after nearly disappearing from its own appellation.",
+            "metric": "2 of 8",
+            "metric_label": "crus made only from it",
+            "primary": true,
+            "target_id": "grape:viognier"
+          },
+          {
+            "claim_ids": [
+              "claim:marsanne-roussanne-pair-17",
+              "claim:marsanne-saint-joseph-share-17"
+            ],
+            "copy": "The corridor's principal white grape: named in four white rules, admitted as an accessory in three reds, and the basis of both Hermitage vin de paille and sparkling Saint-Péray.",
+            "metric": "4 of 8",
+            "metric_label": "crus whose white rules name it",
+            "primary": true,
+            "target_id": "grape:marsanne"
+          },
+          {
+            "claim_ids": [
+              "claim:roussanne-pair-17",
+              "claim:marsanne-saint-joseph-share-17"
+            ],
+            "copy": "Named in every white rule beside Marsanne and in three red rules — legal parity that planting figures do not match.",
+            "metric": "4 of 8",
+            "metric_label": "crus whose white rules name it",
+            "primary": false,
+            "target_id": "grape:roussanne"
+          }
+        ],
+        "hero_facts": [
+          {
+            "claim_ids": [
+              "claim:northern-rhone-cru-count-17"
+            ],
+            "label": "Cru appellations",
+            "note": "separately delimited · no Northern Rhône polygon exists",
+            "value": "8"
+          },
+          {
+            "claim_ids": [
+              "claim:northern-rhone-four-grapes-17"
+            ],
+            "label": "Principal grapes",
+            "note": "re-weighted by every specification",
+            "value": "4"
+          },
+          {
+            "claim_ids": [
+              "claim:northern-rhone-decree-chronology-17"
+            ],
+            "label": "Recognised",
+            "note": "1936 to 1956 · different dates froze different rules",
+            "value": "20 years"
+          }
+        ],
+        "hero_kicker": "Short river · long memory · different hands",
+        "lenses": [
+          {
+            "claim_ids": [
+              "claim:michel-chaillot-lease-17",
+              "claim:allemand-not-a-disciple-17",
+              "claim:paris-michel-family-work-17"
+            ],
+            "id": "no-cornas-school",
+            "signal": "iykyk",
+            "target_id": "appellation:cornas",
+            "text": "Michel mentored Gilles, employed him, leased him a parcel and lent him a cave. He was Vincent Paris's uncle and sold him vines. Allemand worked for two Michels and for Verset and is called “a disciple of no one's”. Six different relationships, and no organisation.",
+            "title": "There is no “Cornas school”"
+          },
+          {
+            "claim_ids": [
+              "claim:dard-natural-wine-position-17",
+              "claim:allemand-sulfur-17",
+              "claim:gilles-cellar-practice-17"
+            ],
+            "id": "natural-is-not-traditional",
+            "signal": "iykyk",
+            "target_id": "producer:dard-et-ribo",
+            "text": "René-Jean Dard says natural wine should be a tool, not a goal, and adds sulfur when a wine needs it. Allemand's importer calls him traditional while documenting minimal sulfur. Gilles is described the same way. Cellar practice and movement identity are different claims.",
+            "title": "Low sulfur is a practice, not a membership"
+          }
+        ],
+        "map_moments": [
+          {
+            "claim_ids": [
+              "claim:cornas-syrah-only-17",
+              "claim:saint-peray-geology-17"
+            ],
+            "eyebrow": "Neighbours · opposite rules",
+            "subject_id": "appellation:cornas",
+            "text": "Granite runs south out of Cornas into Saint-Péray while the permitted colour, grapes and wine forms change completely.",
+            "title": "Cornas / Saint-Péray"
+          },
+          {
+            "claim_ids": [
+              "claim:hermitage-communes-17",
+              "claim:hermitage-hill-landform-17"
+            ],
+            "eyebrow": "One hill · two appellations",
+            "subject_id": "appellation:hermitage",
+            "text": "The commune named Crozes-Hermitage holds land in both appellations. A commune name cannot tell you which wine a parcel may make.",
+            "title": "Hermitage / Crozes-Hermitage"
+          },
+          {
+            "claim_ids": [
+              "claim:chateau-grillet-inside-condrieu-landscape-17",
+              "claim:chateau-grillet-white-viognier-17"
+            ],
+            "eyebrow": "3.5 hectares · its own rulebook",
+            "subject_id": "appellation:chateau-grillet",
+            "text": "One specification says the vineyard is inserted into the heart of Condrieu; the product surface places it just south. Neither reading makes it part of Condrieu.",
+            "title": "Château-Grillet / Condrieu"
+          },
+          {
+            "claim_ids": [
+              "claim:saint-joseph-corridor-17",
+              "claim:saint-joseph-boundary-history-17"
+            ],
+            "eyebrow": "26 communes · 60 kilometres",
+            "subject_id": "appellation:saint-joseph",
+            "text": "One name stretched over a long sequence of different slopes, twice redrawn since 1956 while the slopes stayed put.",
+            "title": "Saint-Joseph corridor"
+          }
+        ],
+        "map_reaction": {
+          "area_subject_ids": [
+            "appellation:cote-rotie",
+            "appellation:condrieu",
+            "appellation:chateau-grillet",
+            "appellation:saint-joseph",
+            "appellation:crozes-hermitage",
+            "appellation:hermitage",
+            "appellation:cornas",
+            "appellation:saint-peray",
+            "appellation:cotes-du-rhone"
+          ],
+          "producer_ids": [
+            "producer:guillaume-gilles",
+            "producer:domaine-georges-vernay",
+            "producer:dard-et-ribo",
+            "producer:domaine-christiane-chambeyron-manin",
+            "producer:domaine-alain-voge"
+          ]
+        },
+        "people": [
+          {
+            "base": "Cornas · Les Rieux locality point",
+            "claim_ids": [
+              "claim:gilles-base-19",
+              "claim:michel-chaillot-lease-17",
+              "claim:gilles-cellar-practice-17",
+              "claim:gilles-robert-michel-mentorship",
+              "claim:peyrouses-rouge-identity"
+            ],
+            "cues": [
+              "mentorship",
+              "leased Chaillot parcel",
+              "cave access",
+              "Les Peyrouses"
+            ],
+            "explains": "How mentorship, employment, a land lease and access to a cellar stay four separate facts instead of collapsing into one succession story.",
+            "reason": "Gilles is the only door that combines transmission, the gap between physical location and bottle law, and existing CARTA maturity.",
+            "target_id": "producer:guillaume-gilles",
+            "who": "Guillaume Gilles, Robert Michel's protégé and Marcel Juge's grandson"
+          },
+          {
+            "base": "Condrieu · published domaine address",
+            "claim_ids": [
+              "claim:vernay-base-19",
+              "claim:vernay-estate-generations-17",
+              "claim:vernay-recovery-role-17",
+              "claim:vernay-organic-conversion-17"
+            ],
+            "cues": [
+              "Coteau de Vernon",
+              "eight hectares in 1965",
+              "1996 succession",
+              "attributed shorthand"
+            ],
+            "explains": "How a person can be pivotal to an appellation's survival without becoming its single cause.",
+            "reason": "Vernay connects the contraction, the advocacy, the estate continuity and the correction to “saved Viognier” in one place.",
+            "target_id": "producer:domaine-georges-vernay",
+            "who": "Four generations from Francis to Christine Vernay"
+          },
+          {
+            "base": "Mercurol-Veaunes · registered seat",
+            "claim_ids": [
+              "claim:dard-ribo-base-19",
+              "claim:dard-ribo-founding-17",
+              "claim:dard-ribo-tenure-17",
+              "claim:dard-ribo-farming-17",
+              "claim:dard-natural-wine-position-17"
+            ],
+            "cues": [
+              "1983 and 1984",
+              "rented parcels",
+              "three appellations",
+              "sulfur when needed"
+            ],
+            "explains": "What “natural” means when an early low-sulfur producer explicitly refuses the label as a goal.",
+            "reason": "Dard & Ribo hold rented tenure, multi-appellation farming and natural-wine history together, and correct the category from inside it.",
+            "target_id": "producer:dard-et-ribo",
+            "who": "René-Jean Dard and François Ribo"
+          },
+          {
+            "base": "Ampuis · registered seat, distinct from Côte Brune",
+            "claim_ids": [
+              "claim:chambeyron-manin-base-19",
+              "claim:chambeyron-site",
+              "claim:chambeyron-cellar",
+              "claim:chambeyron-identity",
+              "claim:serine-terminology"
+            ],
+            "cues": [
+              "0.5 hectare",
+              "whole cluster",
+              "concrete then oak",
+              "Sérine as vocabulary"
+            ],
+            "explains": "How much one well-documented parcel can teach, and why a locality is not a parcel polygon.",
+            "reason": "Teaching value is not proportional to fame or hectares, and this estate proves it against Jamet's seventeen lieux-dits.",
+            "target_id": "producer:domaine-christiane-chambeyron-manin",
+            "who": "Véronique Manin's micro-estate on the Côte Brune"
+          },
+          {
+            "base": "Cornas · published domaine address; wines cross into Saint-Péray",
+            "claim_ids": [
+              "claim:voge-base-19",
+              "claim:voge-two-forms-17",
+              "claim:voge-bulles-dalain-17",
+              "claim:voge-ongrie-1984-17"
+            ],
+            "cues": [
+              "méthode traditionnelle",
+              "Marsanne",
+              "1984 barrel work",
+              "cross-appellation"
+            ],
+            "explains": "Why a region stereotyped as Syrah country contains an appellation where one white grape supports two wine forms.",
+            "reason": "Voge opens the corridor's most underrepresented dimension — white, sparkling, time and crossover — without claiming to have invented still Saint-Péray.",
+            "target_id": "producer:domaine-alain-voge",
+            "who": "The estate that carries Alain Voge's name across two appellations"
+          }
+        ],
+        "pillar_copy": {
+          "culture": {
+            "intro": "Low sulfur · traditional practice · two different claims",
+            "lede": "Natural-wine history here is real and layered. Farming practice, cellar practice, historical reception and producer self-description stay four separate questions."
+          },
+          "grapes": {
+            "intro": "Syrah · Viognier · Marsanne · Roussanne",
+            "lede": "Four grapes are re-weighted by each specification rather than by geography. The same variety is compulsory in one cru and unmentioned in the next."
+          },
+          "people": {
+            "intro": "Five doors · one braided transfer network",
+            "lede": "This is not a ranking. Each door opens a different kind of thing that passed between people: mentorship, employment, a lease, a cellar, a name, a parcel."
+          },
+          "place": {
+            "intro": "One river · two banks · eight separate legal shapes",
+            "lede": "The corridor organises the world and explains almost nothing on its own: bank, landform, substrate and legal boundary refuse to line up."
+          },
+          "rules": {
+            "intro": "Eight rulebooks · one broad background · one frontier",
+            "lede": "Legal names tell you permitted origin, colour, grapes and wine form. They do not identify parcels, and municipal location never establishes eligibility."
+          }
+        },
+        "pillar_map_reactions": {
+          "culture": {
+            "area_subject_ids": [
+              "appellation:crozes-hermitage",
+              "appellation:saint-joseph",
+              "appellation:cote-rotie",
+              "appellation:cornas"
+            ],
+            "producer_ids": [
+              "producer:guillaume-gilles",
+              "producer:dard-et-ribo"
+            ]
+          },
+          "grapes": {
+            "area_subject_ids": [
+              "appellation:cornas",
+              "appellation:cote-rotie",
+              "appellation:condrieu",
+              "appellation:chateau-grillet",
+              "appellation:saint-peray",
+              "appellation:hermitage"
+            ],
+            "producer_ids": [
+              "producer:domaine-georges-vernay",
+              "producer:domaine-alain-voge"
+            ]
+          },
+          "people": {
+            "area_subject_ids": [
+              "appellation:cornas",
+              "appellation:condrieu",
+              "appellation:cote-rotie",
+              "appellation:crozes-hermitage",
+              "appellation:saint-peray"
+            ],
+            "producer_ids": [
+              "producer:guillaume-gilles",
+              "producer:domaine-georges-vernay",
+              "producer:dard-et-ribo",
+              "producer:domaine-christiane-chambeyron-manin",
+              "producer:domaine-alain-voge"
+            ]
+          },
+          "place": {
+            "area_subject_ids": [
+              "appellation:cote-rotie",
+              "appellation:condrieu",
+              "appellation:chateau-grillet",
+              "appellation:saint-joseph",
+              "appellation:crozes-hermitage",
+              "appellation:hermitage",
+              "appellation:cornas",
+              "appellation:saint-peray"
+            ],
+            "producer_ids": [
+              "producer:guillaume-gilles",
+              "producer:domaine-georges-vernay",
+              "producer:dard-et-ribo",
+              "producer:domaine-christiane-chambeyron-manin",
+              "producer:domaine-alain-voge"
+            ]
+          },
+          "rules": {
+            "area_subject_ids": [
+              "appellation:cote-rotie",
+              "appellation:condrieu",
+              "appellation:chateau-grillet",
+              "appellation:saint-joseph",
+              "appellation:crozes-hermitage",
+              "appellation:hermitage",
+              "appellation:cornas",
+              "appellation:saint-peray",
+              "appellation:cotes-du-rhone"
+            ],
+            "producer_ids": []
+          }
+        },
+        "place_story": {
+          "button": "Show the eight cru areas",
+          "kicker": "The map is eight arguments, not one",
+          "text": "Read the Rhône north to south from Vienne to Valence. Every active outline is one cru's own regulatory geographical area; there is no ninth, larger shape, because Northern Rhône is a name people use rather than a delimited origin. The bounded terrain proof adds relief for orientation only: it is neither a wine boundary nor a vineyard map.",
+          "title": "A corridor with no boundary of its own"
+        },
+        "regional_world": true,
+        "rules": {
+          "groups": [
+            {
+              "ids": [
+                "appellation:cote-rotie",
+                "appellation:condrieu",
+                "appellation:chateau-grillet",
+                "appellation:saint-joseph",
+                "appellation:crozes-hermitage",
+                "appellation:hermitage",
+                "appellation:cornas",
+                "appellation:saint-peray"
+              ],
+              "label": "Eight independent crus",
+              "note": "Each keeps its own regulatory geographical area, colours, grapes and wine forms. A cru click outranks the broader Rhône context without erasing it."
+            },
+            {
+              "ids": [
+                "appellation:cotes-du-rhone"
+              ],
+              "label": "The broader legal background",
+              "note": "Côtes du Rhône runs the length of the valley and overlaps the corridor. It is the legal home of fruit the crus do not cover — including Les Peyrouses, physically in the commune of Cornas."
+            }
+          ],
+          "intro": "Eight independent specifications, one broad regional background and one IGP frontier. None of them draws a Northern Rhône boundary, and none of them makes a commune name into an eligibility test. Where a red and a white grape meet, four of them govern {{term:assemblage-des-raisins|when the varieties may meet}} rather than what a producer chose."
+        },
+        "then_now": {
+          "claim_ids": [
+            "claim:saint-peray-sparkling-history-17",
+            "claim:saint-peray-still-and-sparkling-17",
+            "claim:voge-ongrie-1984-17"
+          ],
+          "intro": "Two differently scoped observations about the same appellation, not a continuous series.",
+          "now": {
+            "label": "NOW · current INAO figure",
+            "text": "Sparkling wine is roughly a tenth of Saint-Péray's volume, and barrel-vinified still wine — a departure when Alain Voge began it in 1984 — is now the appellation's larger share."
+          },
+          "then": {
+            "label": "THEN · 1828",
+            "text": "Louis-Alexandre Faure ran systematic bottle-fermentation trials on a hundred barrels, an innovation the specification calls unique in the Rhône valley at the time."
+          },
+          "title": "Saint-Péray changed which of its two wines it is known for"
+        },
+        "thesis": "The Northern Rhône becomes legible not through eight appellations or a handful of famous estates, but through repeated encounters among land, law, inheritance, employment, cellar access, vineyard transfer and individual interpretation. The same four grapes travel a short distance and enter radically different physical, legal and human worlds — and the corridor itself has no legal boundary at all."
+      },
+      "place:seyssuel": {
+        "claim_ids": [
+          "claim:vins-de-vienne-founding-17",
+          "claim:sotanum-igp-17"
+        ],
+        "featured_connections": [
+          {
+            "action": "Meet the project",
+            "claim_ids": [
+              "claim:vins-de-vienne-founding-17"
+            ],
+            "reason": "Three people each founded one project; the project farms here; the wines are classified elsewhere.",
+            "signal": "rabbit-hole",
+            "target_id": "project:les-vins-de-vienne"
+          }
+        ],
+        "hero_kicker": "North of Vienne · replanted from 1996",
+        "thesis": "An ancient right-bank vineyard sector replanted by three cru producers. It sits in the same corridor as the crus, on comparable slopes, and its wines are IGP. Cultural adjacency is not legal identity."
+      },
+      "practice:co-fermentation": {
+        "claim_ids": [
+          "claim:co-fermentation-definition-17",
+          "claim:cote-rotie-syrah-viognier-17"
+        ],
+        "featured_connections": [
+          {
+            "action": "Read the famous case",
+            "claim_ids": [
+              "claim:cote-rotie-syrah-viognier-17"
+            ],
+            "reason": "Up to 20% Viognier among the Syrah vines, and nothing in the rule about whether a given producer used it.",
+            "signal": "rabbit-hole",
+            "target_id": "appellation:cote-rotie"
+          }
+        ],
+        "hero_kicker": "A rule about when varieties meet · not about what anyone did",
+        "map_reaction": {
+          "area_subject_ids": [
+            "appellation:cote-rotie",
+            "appellation:saint-joseph",
+            "appellation:crozes-hermitage",
+            "appellation:hermitage"
+          ],
+          "producer_ids": []
+        },
+        "thesis": "Four specifications require wines made from both permitted colours to be {{term:assemblage-des-raisins|vinifiés par assemblage des raisins concernés}} — assembled as grapes, in the same proportion. Blending two finished wines is a different operation, and the rule does not govern it."
+      },
+      "practice:traditional-method-sparkling": {
+        "claim_ids": [
+          "claim:traditional-method-saint-peray-17"
+        ],
+        "featured_connections": [
+          {
+            "action": "Go to the only cru that uses it",
+            "claim_ids": [
+              "claim:saint-peray-still-and-sparkling-17"
+            ],
+            "reason": "Roughly a tenth of the appellation's volume, and the basis of its nineteenth-century reputation.",
+            "signal": "rabbit-hole",
+            "target_id": "appellation:saint-peray"
+          }
+        ],
+        "hero_kicker": "A method · not a quality claim",
+        "map_reaction": {
+          "area_subject_ids": [
+            "appellation:saint-peray"
+          ],
+          "producer_ids": []
+        },
+        "thesis": "A second fermentation carried out in the bottle the wine is sold in. In this corridor it matters because {{term:methode-traditionnelle|it}} is what makes Saint-Péray the only cru whose specification covers sparkling wine."
+      },
+      "producer:chateau-grillet": {
+        "claim_ids": [
+          "claim:chateau-grillet-monopole-17"
+        ],
+        "featured_connections": [
+          {
+            "action": "Read the appellation",
+            "claim_ids": [
+              "claim:chateau-grillet-recognition-17"
+            ],
+            "reason": "A legal origin recognised in 1936 that happens to have one producer.",
+            "signal": "rabbit-hole",
+            "target_id": "appellation:chateau-grillet"
+          },
+          {
+            "action": "Read the owner",
+            "claim_ids": [
+              "claim:chateau-grillet-monopole-17"
+            ],
+            "reason": "Ownership is a relationship with a date, not part of the estate's identity.",
+            "signal": "rabbit-hole",
+            "target_id": "institution:artemis-domaines"
+          }
+        ],
+        "hero_kicker": "Vérin · where four identities nearly coincide",
+        "map_reaction": {
+          "area_subject_ids": [
+            "appellation:chateau-grillet",
+            "appellation:condrieu"
+          ],
+          "producer_ids": []
+        },
+        "thesis": "Acquired by the Pinault family in 2011 and described by its owner as one of the very few French monopole AOCs. Appellation, estate, vineyard and owning company stay four identities in CARTA even when one party controls all four."
+      },
+      "producer:dard-et-ribo": {
+        "claim_ids": [
+          "claim:dard-ribo-founding-17",
+          "claim:dard-ribo-tenure-17",
+          "claim:dard-ribo-farming-17",
+          "claim:dard-ribo-cellar-17"
+        ],
+        "featured_connections": [
+          {
+            "action": "Read the patchwork",
+            "claim_ids": [
+              "claim:dard-ribo-tenure-17"
+            ],
+            "reason": "Parcels here, in Hermitage and in Saint-Joseph, most of them rented rather than owned.",
+            "signal": "rabbit-hole",
+            "target_id": "appellation:crozes-hermitage"
+          },
+          {
+            "action": "Read the exception",
+            "claim_ids": [
+              "claim:dard-ribo-cellar-17"
+            ],
+            "reason": "Whole bunches normally — and a destemmer when sunburn requires sorting.",
+            "signal": "rabbit-hole",
+            "target_id": "practice:whole-cluster-fermentation"
+          },
+          {
+            "action": "Read the position",
+            "claim_ids": [
+              "claim:dard-natural-wine-position-17"
+            ],
+            "reason": "Making natural wine “should not be a goal unto itself”, and sulfur goes in when a wine needs it.",
+            "signal": "rabbit-hole",
+            "target_id": "person:rene-jean-dard"
+          }
+        ],
+        "hero_kicker": "Mercurol · rented parcels across three appellations",
+        "map_reaction": {
+          "area_subject_ids": [
+            "appellation:crozes-hermitage",
+            "appellation:hermitage",
+            "appellation:saint-joseph"
+          ],
+          "producer_ids": []
+        },
+        "thesis": "A first vintage in 1983 and a “proper” beginning in 1984; a holding assembled by renting from owners; ploughing instead of herbicides from the mid-1980s and a deliberate refusal of certification as a logo. One cellar point could never stand for that graph."
+      },
+      "producer:domaine-alain-graillot": {
+        "claim_ids": [
+          "claim:graillot-founding-succession-17"
+        ],
+        "featured_connections": [
+          {
+            "action": "Read the ground",
+            "claim_ids": [
+              "claim:chassis-terrace-17"
+            ],
+            "reason": "Alpine gravels on the lowest terrace, and nothing about flavour follows from that.",
+            "signal": "rabbit-hole",
+            "target_id": "geographic_feature:chassis-terrace"
+          },
+          {
+            "action": "Return to the appellation",
+            "claim_ids": [
+              "claim:crozes-hermitage-two-geologies-17"
+            ],
+            "reason": "One name covering a gravel plain and a granite hill.",
+            "signal": "rabbit-hole",
+            "target_id": "appellation:crozes-hermitage"
+          }
+        ],
+        "hero_kicker": "Crozes-Hermitage · the terrace world made memorable",
+        "map_reaction": {
+          "area_subject_ids": [
+            "appellation:crozes-hermitage"
+          ],
+          "producer_ids": []
+        },
+        "thesis": "Alain Graillot came home to start his own domaine in 1985; his sons Maxime and Antoine have been in charge since 2008. He is why the flat southern half of the largest cru reads as a place rather than as leftover ground."
+      },
+      "producer:domaine-alain-voge": {
+        "claim_ids": [
+          "claim:voge-two-forms-17",
+          "claim:voge-bulles-dalain-17",
+          "claim:voge-ongrie-1984-17"
+        ],
+        "featured_connections": [
+          {
+            "action": "Read the appellation",
+            "claim_ids": [
+              "claim:saint-peray-still-and-sparkling-17"
+            ],
+            "reason": "White only, still and sparkling, immediately south of a cru that is red only.",
+            "signal": "rabbit-hole",
+            "target_id": "appellation:saint-peray"
+          },
+          {
+            "action": "Read the 1984 departure",
+            "claim_ids": [
+              "claim:voge-ongrie-1984-17"
+            ],
+            "reason": "Precursor of barrel work in Saint-Péray — not the inventor of still Saint-Péray, which already existed in tank.",
+            "signal": "rabbit-hole",
+            "target_id": "wine:voge-ongrie"
+          },
+          {
+            "action": "Read the tradition",
+            "claim_ids": [
+              "claim:saint-peray-1828-event-17"
+            ],
+            "reason": "The trials the specification treats as the origin of the appellation's sparkling reputation.",
+            "signal": "rabbit-hole",
+            "target_id": "historical_event:saint-peray-sparkling-1828"
+          }
+        ],
+        "hero_kicker": "Saint-Péray and Cornas · both of an appellation's wine forms",
+        "map_reaction": {
+          "area_subject_ids": [
+            "appellation:saint-peray",
+            "appellation:cornas"
+          ],
+          "producer_ids": []
+        },
+        "thesis": "Les Bulles d'Alain is 100% Marsanne, {{term:methode-traditionnelle|méthode traditionnelle}}, four years on lattes, presented as continuing the tradition that made the region's reputation from the 1830s. Ongrie, created in 1984, is the same grape in oak when most Saint-Péray was still sparkling and still wines were made in tank."
+      },
+      "producer:domaine-andre-perret": {
+        "claim_ids": [
+          "claim:perret-condrieu-development-17"
+        ],
+        "featured_connections": [
+          {
+            "action": "Return to the appellation",
+            "claim_ids": [
+              "claim:condrieu-contraction-recovery-17"
+            ],
+            "reason": "A recovery told through several growers instead of one.",
+            "signal": "rabbit-hole",
+            "target_id": "appellation:condrieu"
+          }
+        ],
+        "hero_kicker": "Chavanay · the generation after the rescue",
+        "map_reaction": {
+          "area_subject_ids": [
+            "appellation:condrieu",
+            "appellation:saint-joseph"
+          ],
+          "producer_ids": []
+        },
+        "thesis": "André Perret returned to plant vines and develop the Condrieu AOC in the 1980s, with a first estate vintage in 1983 and thirteen hectares today, of which 5.5 in Condrieu. He is the reason the recovery is not a single biography."
+      },
+      "producer:domaine-auguste-clape": {
+        "claim_ids": [
+          "claim:clape-estate-bottling-17",
+          "claim:clape-cellar-17"
+        ],
+        "featured_connections": [
+          {
+            "action": "Read the contested first",
+            "claim_ids": [
+              "claim:cornas-first-domaine-bottling-1952-17"
+            ],
+            "reason": "A founding story the corridor has never resolved, preserved rather than tidied.",
+            "signal": "rabbit-hole",
+            "target_id": "appellation:cornas"
+          },
+          {
+            "action": "Follow the vines",
+            "claim_ids": [
+              "claim:verset-vineyard-dispersal-17"
+            ],
+            "reason": "Century-old vines from Verset entered this domaine's palette of sites.",
+            "signal": "rabbit-hole",
+            "target_id": "producer:domaine-noel-verset"
+          }
+        ],
+        "hero_kicker": "Cornas · an independent traditional reference",
+        "map_reaction": {
+          "area_subject_ids": [
+            "appellation:cornas"
+          ],
+          "producer_ids": []
+        },
+        "thesis": "Credited by one importer as the village's first producer to bottle his own wine in 1957 — while the specification dates the first bottling for a private cellar to 1952 and another importer credits Joseph Michel in 1956. Three accounts, all kept."
+      },
+      "producer:domaine-bernard-gripa": {
+        "claim_ids": [
+          "claim:gripa-two-appellations-17"
+        ],
+        "featured_connections": [
+          {
+            "action": "Follow the white route",
+            "claim_ids": [
+              "claim:saint-peray-still-and-sparkling-17"
+            ],
+            "reason": "A Saint-Joseph family holding a stake in the corridor's white-only cru.",
+            "signal": "rabbit-hole",
+            "target_id": "appellation:saint-peray"
+          }
+        ],
+        "hero_kicker": "Mauves · one family across a red cru and a white one",
+        "map_reaction": {
+          "area_subject_ids": [
+            "appellation:saint-joseph",
+            "appellation:saint-peray"
+          ],
+          "producer_ids": []
+        },
+        "thesis": "A family recorded at Saint-Péray in the seventeenth century and at Mauves from around 1850, with Fabrice Gripa running the domaine since 2001 after his father Bernard, across Saint-Joseph and Saint-Péray. CARTA carries this at reference-guide fitness and says so."
+      },
+      "producer:domaine-christiane-chambeyron-manin": {
+        "claim_ids": [
+          "claim:chambeyron-identity",
+          "claim:chambeyron-site",
+          "claim:chambeyron-cellar",
+          "claim:chambeyron-farming",
+          "claim:serine-terminology"
+        ],
+        "featured_connections": [
+          {
+            "action": "Read the opposite scale",
+            "claim_ids": [
+              "claim:jamet-parcel-mosaic-17"
+            ],
+            "reason": "Twenty-five plots across seventeen lieux-dits under the same appellation name.",
+            "signal": "same-energy",
+            "target_id": "producer:domaine-jamet"
+          },
+          {
+            "action": "Return to the appellation",
+            "claim_ids": [
+              "claim:cote-rotie-communes-17"
+            ],
+            "reason": "One legal origin holding a micro-estate and a house that has bought its neighbours.",
+            "signal": "rabbit-hole",
+            "target_id": "appellation:cote-rotie"
+          },
+          {
+            "action": "Read the vocabulary",
+            "claim_ids": [
+              "claim:serine-terminology"
+            ],
+            "reason": "Sérine is a local selection and naming habit attached to Syrah, not a second grape identity.",
+            "signal": "rabbit-hole",
+            "target_id": "grape:syrah"
+          }
+        ],
+        "hero_kicker": "Ampuis · half a hectare on the Côte Brune",
+        "map_reaction": {
+          "area_subject_ids": [
+            "appellation:cote-rotie"
+          ],
+          "producer_ids": []
+        },
+        "thesis": "Teaching value is not proportional to fame or hectares. One parcel, one grape, one current steward and an unusually exact cellar sequence make the difference between a locality and a parcel polygon impossible to ignore."
+      },
+      "producer:domaine-du-tunnel": {
+        "claim_ids": [
+          "claim:tunnel-cross-appellation-17"
+        ],
+        "featured_connections": [
+          {
+            "action": "Return to the appellation",
+            "claim_ids": [
+              "claim:saint-peray-still-and-sparkling-17"
+            ],
+            "reason": "A cross-appellation estate is a different structure from a single-cru domaine.",
+            "signal": "rabbit-hole",
+            "target_id": "appellation:saint-peray"
+          }
+        ],
+        "hero_kicker": "Saint-Péray · a later estate built across four appellations",
+        "map_reaction": {
+          "area_subject_ids": [
+            "appellation:saint-peray",
+            "appellation:cornas",
+            "appellation:saint-joseph",
+            "appellation:condrieu"
+          ],
+          "producer_ids": []
+        },
+        "thesis": "Stéphane Robert created the domaine in 1994 with 2.5 hectares and now works Cornas, Saint-Péray and Saint-Joseph, adding Condrieu in 2013. Its name comes from a rehabilitated railway tunnel at the lieu-dit Barras."
+      },
+      "producer:domaine-franck-balthazar": {
+        "claim_ids": [
+          "claim:balthazar-verset-parcel-17"
+        ],
+        "featured_connections": [
+          {
+            "action": "Read the unresolved parcel",
+            "claim_ids": [
+              "claim:balthazar-verset-parcel-17"
+            ],
+            "reason": "A named site several growers appear in, with no geometry and no single planting date.",
+            "signal": "rabbit-hole",
+            "target_id": "vineyard:chaillot-cornas"
+          }
+        ],
+        "hero_kicker": "Cornas · one parcel, two planting dates",
+        "map_reaction": {
+          "area_subject_ids": [
+            "appellation:cornas"
+          ],
+          "producer_ids": []
+        },
+        "thesis": "Franck Balthazar left a textile factory in 2002, took a Chaillot planting from his uncle Noël Verset, and works older family vines in Mazards and La Côte. One source dates the Chaillot planting to 1912, the other to 1914 — CARTA records both rather than picking."
+      },
+      "producer:domaine-georges-vernay": {
+        "claim_ids": [
+          "claim:vernay-estate-generations-17",
+          "claim:vernay-recovery-role-17",
+          "claim:vernay-organic-conversion-17"
+        ],
+        "featured_connections": [
+          {
+            "action": "Read the second wave",
+            "claim_ids": [
+              "claim:perret-condrieu-development-17"
+            ],
+            "reason": "A grower who returned specifically to plant vines and develop the AOC in the 1980s.",
+            "signal": "rabbit-hole",
+            "target_id": "producer:domaine-andre-perret"
+          },
+          {
+            "action": "Read the continuity",
+            "claim_ids": [
+              "claim:vernay-organic-conversion-17"
+            ],
+            "reason": "The family's foundational Viognier planting, and the terraces Christine Vernay finished rebuilding.",
+            "signal": "rabbit-hole",
+            "target_id": "vineyard:coteau-de-vernon-condrieu"
+          },
+          {
+            "action": "Follow the grape",
+            "claim_ids": [
+              "claim:viognier-near-loss-17"
+            ],
+            "reason": "A variety whose international story begins from an eight-hectare low point.",
+            "signal": "rabbit-hole",
+            "target_id": "grape:viognier"
+          }
+        ],
+        "hero_kicker": "Condrieu · four generations across a near-disappearance",
+        "map_reaction": {
+          "area_subject_ids": [
+            "appellation:condrieu",
+            "appellation:cote-rotie",
+            "appellation:saint-joseph"
+          ],
+          "producer_ids": []
+        },
+        "thesis": "The Condrieu growers' organisation calls Georges Vernay the man who rebuilt the hillsides and rescued Viognier from obscurity. CARTA carries that leading role and keeps “saved Viognier” as attributed shorthand, because the same recovery contains Francis Vernay's planting, André Perret's 1980s work and Yves Cuilleron's generation."
+      },
+      "producer:domaine-gonon": {
+        "claim_ids": [
+          "claim:gonon-mauves-core-17",
+          "claim:gonon-farming-cellar-17"
+        ],
+        "featured_connections": [
+          {
+            "action": "Return to the corridor",
+            "claim_ids": [
+              "claim:saint-joseph-boundary-history-17"
+            ],
+            "reason": "The historic core is one cluster of a twenty-six-commune appellation, not its definition.",
+            "signal": "rabbit-hole",
+            "target_id": "appellation:saint-joseph"
+          }
+        ],
+        "hero_kicker": "Mauves · the 1956 heart of Saint-Joseph",
+        "map_reaction": {
+          "area_subject_ids": [
+            "appellation:saint-joseph"
+          ],
+          "producer_ids": []
+        },
+        "thesis": "One of the last old-school growers in the appellation's original area around Tournon, Mauves and Saint-Jean-de-Muzols, working organically, ploughing the steep slopes by horse, and holding Raymond Trollat's 1915 planting bought on his retirement."
+      },
+      "producer:domaine-jamet": {
+        "claim_ids": [
+          "claim:jamet-parcel-mosaic-17"
+        ],
+        "featured_connections": [
+          {
+            "action": "Read the other extreme",
+            "claim_ids": [
+              "claim:chambeyron-site"
+            ],
+            "reason": "One appellation, two opposite ways of assembling a wine from it.",
+            "signal": "same-energy",
+            "target_id": "producer:domaine-christiane-chambeyron-manin"
+          },
+          {
+            "action": "Return to the appellation",
+            "claim_ids": [
+              "claim:cote-rotie-communes-17"
+            ],
+            "reason": "Neither estate is the appellation, and neither scale is its definition.",
+            "signal": "rabbit-hole",
+            "target_id": "appellation:cote-rotie"
+          }
+        ],
+        "hero_kicker": "Côte-Rôtie · twenty-five plots, seventeen lieux-dits",
+        "map_reaction": {
+          "area_subject_ids": [
+            "appellation:cote-rotie"
+          ],
+          "producer_ids": []
+        },
+        "thesis": "The brothers took charge when their father Joseph retired in the mid-1980s and choose each year which of their sites enter the flagship wine. It is the parcel-mosaic answer to the same appellation that also holds a single half-hectare estate."
+      },
+      "producer:domaine-jean-louis-chave": {
+        "claim_ids": [
+          "claim:chave-multi-site-blend-17"
+        ],
+        "featured_connections": [
+          {
+            "action": "Read the other structure",
+            "claim_ids": [
+              "claim:chapoutier-parcel-selection-17"
+            ],
+            "reason": "Sélections Parcellaires since 1989 against a blend rebuilt annually.",
+            "signal": "same-energy",
+            "target_id": "producer:m-chapoutier"
+          },
+          {
+            "action": "Return to the hill",
+            "claim_ids": [
+              "claim:hermitage-communes-17"
+            ],
+            "reason": "Three communes, three producers, three ways of reading the same ground.",
+            "signal": "rabbit-hole",
+            "target_id": "appellation:hermitage"
+          }
+        ],
+        "hero_kicker": "Hermitage · one wine rebuilt from several sites each year",
+        "map_reaction": {
+          "area_subject_ids": [
+            "appellation:hermitage",
+            "appellation:saint-joseph"
+          ],
+          "producer_ids": []
+        },
+        "thesis": "“Bessards is our essential climat; you can't make a Grand Hermitage without it” — and the blend starts from zero every year. A multi-site domaine is one way of organising a hill; named-parcel bottling is another; neither is more traditional than the other."
+      },
+      "producer:domaine-laurent-fayolle": {
+        "claim_ids": [
+          "claim:fayolle-gervans-17"
+        ],
+        "featured_connections": [
+          {
+            "action": "Return to the appellation",
+            "claim_ids": [
+              "claim:crozes-hermitage-two-geologies-17"
+            ],
+            "reason": "Granite slopes and gravel terraces under one legal name.",
+            "signal": "rabbit-hole",
+            "target_id": "appellation:crozes-hermitage"
+          }
+        ],
+        "hero_kicker": "Gervans · northern Crozes-Hermitage is hill country",
+        "map_reaction": {
+          "area_subject_ids": [
+            "appellation:crozes-hermitage",
+            "appellation:hermitage",
+            "appellation:saint-peray"
+          ],
+          "producer_ids": []
+        },
+        "thesis": "Sixth generation at Gervans, taking control in 2002 when his father and uncle divided the family domaine, farming seven hectares in the granite hills behind the hill of Hermitage. The countercase to reading Crozes-Hermitage as a plain."
+      },
+      "producer:domaine-noel-verset": {
+        "claim_ids": [
+          "claim:verset-vineyard-dispersal-17",
+          "claim:verset-cellar-17"
+        ],
+        "featured_connections": [
+          {
+            "action": "Follow the family route",
+            "claim_ids": [
+              "claim:balthazar-verset-parcel-17"
+            ],
+            "reason": "A nephew, a Chaillots parcel, and two sources that give its planting date differently.",
+            "signal": "rabbit-hole",
+            "target_id": "producer:domaine-franck-balthazar"
+          },
+          {
+            "action": "Follow the site",
+            "claim_ids": [
+              "claim:verset-vineyard-dispersal-17"
+            ],
+            "reason": "Early-twentieth-century vines here changed hands within one working lifetime.",
+            "signal": "rabbit-hole",
+            "target_id": "vineyard:reynard-cornas"
+          }
+        ],
+        "hero_kicker": "Cornas · a holding that dispersed rather than passed",
+        "map_reaction": {
+          "area_subject_ids": [
+            "appellation:cornas"
+          ],
+          "producer_ids": []
+        },
+        "thesis": "Divestment from the late 1980s, the largest parcel sold in 2001, wine under his own name until 2006 — and vines that went to Thierry Allemand, to Clape and Courbis, and to his nephew Franck Balthazar. This is what a career ending looks like when nothing is inherited whole."
+      },
+      "producer:domaine-robert-michel": {
+        "claim_ids": [
+          "claim:robert-michel-domaine-history-17",
+          "claim:robert-michel-sites-17"
+        ],
+        "featured_connections": [
+          {
+            "action": "Follow the lease",
+            "claim_ids": [
+              "claim:michel-chaillot-lease-17"
+            ],
+            "reason": "A leased Chaillot parcel and the use of a cave — neither of them a sale.",
+            "signal": "rabbit-hole",
+            "target_id": "producer:guillaume-gilles"
+          },
+          {
+            "action": "Follow the family route",
+            "claim_ids": [
+              "claim:paris-michel-family-work-17"
+            ],
+            "reason": "An uncle, two shared vintages, and vines rented then purchased.",
+            "signal": "rabbit-hole",
+            "target_id": "producer:domaine-vincent-paris"
+          },
+          {
+            "action": "Follow the site",
+            "claim_ids": [
+              "claim:robert-michel-sites-17"
+            ],
+            "reason": "A sub-cru planted by his grandfather in 1910.",
+            "signal": "rabbit-hole",
+            "target_id": "vineyard:la-geynale-cornas"
+          }
+        ],
+        "hero_kicker": "Cornas · the hub the transfers run through",
+        "map_reaction": {
+          "area_subject_ids": [
+            "appellation:cornas"
+          ],
+          "producer_ids": []
+        },
+        "thesis": "More than four hundred years of family growing, a father who bottled at the domaine in 1956, a 1975 handover, growth from 1.5 to eight hectares, and a 2006 retirement after which the holding moved in several different ways to several different people."
+      },
+      "producer:domaine-vincent-paris": {
+        "claim_ids": [
+          "claim:paris-michel-family-work-17"
+        ],
+        "featured_connections": [
+          {
+            "action": "Follow the site",
+            "claim_ids": [
+              "claim:paris-michel-family-work-17"
+            ],
+            "reason": "Rented first, purchased later — the tenure history behind a contemporary producer's geography.",
+            "signal": "rabbit-hole",
+            "target_id": "vineyard:la-geynale-cornas"
+          }
+        ],
+        "hero_kicker": "Cornas · family plus work plus a purchase",
+        "map_reaction": {
+          "area_subject_ids": [
+            "appellation:cornas"
+          ],
+          "producer_ids": []
+        },
+        "thesis": "Robert Michel is Vincent Paris's uncle; Paris made his first two wines with him, inherited most of his vines from his grandfather, and rented and then purchased vines from his uncle including Geynale. Kinship and shared vinification are not mentorship, and CARTA does not add it."
+      },
+      "producer:domaine-yves-cuilleron": {
+        "claim_ids": [
+          "claim:cuilleron-scale-change-17"
+        ],
+        "featured_connections": [
+          {
+            "action": "Follow the frontier",
+            "claim_ids": [
+              "claim:vins-de-vienne-founding-17"
+            ],
+            "reason": "A founder's own domaine stays a separate identity from the project he started with two others.",
+            "signal": "rabbit-hole",
+            "target_id": "project:les-vins-de-vienne"
+          },
+          {
+            "action": "Return to the appellation",
+            "claim_ids": [
+              "claim:condrieu-contraction-recovery-17"
+            ],
+            "reason": "Part of the expansion generation that followed Condrieu's low point.",
+            "signal": "rabbit-hole",
+            "target_id": "appellation:condrieu"
+          }
+        ],
+        "hero_kicker": "Chavanay · 3.5 hectares in 1987, ninety today",
+        "map_reaction": {
+          "area_subject_ids": [
+            "appellation:condrieu",
+            "appellation:saint-joseph"
+          ],
+          "producer_ids": []
+        },
+        "thesis": "Taking over a small family domaine in 1987 and building it across six Northern Rhône AOCs plus IGP and Vin de France wines is its own kind of regional history — and the same person co-founded the Seyssuel project."
+      },
+      "producer:e-guigal": {
+        "claim_ids": [
+          "claim:guigal-house-structure-17"
+        ],
+        "featured_connections": [
+          {
+            "action": "Return to the appellation",
+            "claim_ids": [
+              "claim:cote-rotie-communes-17"
+            ],
+            "reason": "The same legal origin holds a half-hectare estate and a house that buys its neighbours.",
+            "signal": "rabbit-hole",
+            "target_id": "appellation:cote-rotie"
+          },
+          {
+            "action": "Follow the commercial route",
+            "claim_ids": [
+              "claim:condrieu-contraction-recovery-17"
+            ],
+            "reason": "Guigal is part of why Condrieu and Viognier became visible to a much larger market.",
+            "signal": "rabbit-hole",
+            "target_id": "appellation:condrieu"
+          }
+        ],
+        "hero_kicker": "Ampuis · scale as part of the real ecology",
+        "map_reaction": {
+          "area_subject_ids": [
+            "appellation:cote-rotie",
+            "appellation:condrieu"
+          ],
+          "producer_ids": []
+        },
+        "thesis": "Founded in 1946, managed by Marcel Guigal from 1961 when his father lost his sight, with Philippe Guigal as winemaker from 1997 — and a run of acquisitions including Vidal-Fleury, Grippat, de Vallouit and Bonserine plus its own cooperage. A corridor read only through tiny growers would be a false one."
+      },
+      "producer:guillaume-gilles": {
+        "claim_ids": [
+          "claim:gilles-producer-identity",
+          "claim:michel-chaillot-lease-17",
+          "claim:gilles-cellar-practice-17",
+          "claim:gilles-organic-current",
+          "claim:gilles-marcel-juge-family"
+        ],
+        "featured_connections": [
+          {
+            "action": "Read the lease",
+            "claim_ids": [
+              "claim:michel-chaillot-lease-17"
+            ],
+            "reason": "Farming under a source-described lease, with no ownership of parcel or cellar asserted.",
+            "signal": "rabbit-hole",
+            "target_id": "vineyard:chaillot-cornas"
+          },
+          {
+            "action": "Read the legal gap",
+            "claim_ids": [
+              "claim:peyrouses-rouge-identity"
+            ],
+            "reason": "The same producer's parcel on the flats in Cornas is bottled as Côtes du Rhône.",
+            "signal": "rabbit-hole",
+            "target_id": "vineyard:les-peyrouses-cornas"
+          },
+          {
+            "action": "Read the elder world",
+            "claim_ids": [
+              "claim:robert-michel-domaine-history-17"
+            ],
+            "reason": "Four centuries of Cornas growing, a 1975 handover and a 2006 retirement that dispersed the holding.",
+            "signal": "rabbit-hole",
+            "target_id": "producer:domaine-robert-michel"
+          }
+        ],
+        "hero_kicker": "Cornas · four different things passed from one grower to the next",
+        "map_reaction": {
+          "area_subject_ids": [
+            "appellation:cornas",
+            "appellation:cotes-du-rhone",
+            "appellation:saint-peray"
+          ],
+          "producer_ids": []
+        },
+        "thesis": "Robert Michel mentored Gilles, worked with him for six years, leased him a prime Chaillot parcel and made his cave available. Four facts, not one succession. Marcel Juge being his grandfather is a fifth, and it is not evidence that land moved."
+      },
+      "producer:jean-michel-stephan": {
+        "claim_ids": [
+          "claim:stephan-natural-practice-17",
+          "claim:stephan-beaujolais-route-17"
+        ],
+        "featured_connections": [
+          {
+            "action": "Follow the work route",
+            "claim_ids": [
+              "claim:stephan-beaujolais-route-17"
+            ],
+            "reason": "A real professional path between two CARTA worlds, unlike the meeting-based transmission stories around it.",
+            "signal": "rabbit-hole",
+            "target_id": "producer:domaine-des-terres-dorees"
+          },
+          {
+            "action": "Return to the appellation",
+            "claim_ids": [
+              "claim:cote-rotie-red-only-17"
+            ],
+            "reason": "The same legal origin holds a no-added-sulfite domaine and a négociant house.",
+            "signal": "rabbit-hole",
+            "target_id": "appellation:cote-rotie"
+          }
+        ],
+        "hero_kicker": "Tupin-Semons · a documented route out of Beaujolais",
+        "map_reaction": {
+          "area_subject_ids": [
+            "appellation:cote-rotie"
+          ],
+          "producer_ids": []
+        },
+        "thesis": "Stéphan established his domaine in Côte-Rôtie in 1991 after working at Jean-Paul Brun's Domaine des Terres Dorées, has added no sulfites since 1997, and replants by massale selection of Sérine. Trade sources call the work natural; no self-description was captured, and CARTA records the attribution as attribution."
+      },
+      "producer:m-chapoutier": {
+        "claim_ids": [
+          "claim:chapoutier-parcel-selection-17"
+        ],
+        "featured_connections": [
+          {
+            "action": "Return to the hill",
+            "claim_ids": [
+              "claim:hermitage-communes-17"
+            ],
+            "reason": "Named-parcel selection is a way of organising the hill, not a claim that one site is better.",
+            "signal": "rabbit-hole",
+            "target_id": "appellation:hermitage"
+          }
+        ],
+        "hero_kicker": "Tain-l'Hermitage · named parcels from 1989",
+        "map_reaction": {
+          "area_subject_ids": [
+            "appellation:hermitage"
+          ],
+          "producer_ids": []
+        },
+        "thesis": "A house dating itself to 1808, with the first Sélections Parcellaires in 1989 and biodynamic cultivation from 1990. A major estate bottling single parcels contradicts the idea that either practice belongs only to small growers."
+      },
+      "producer:paul-jaboulet-aine": {
+        "claim_ids": [
+          "claim:jaboulet-ownership-transition-17"
+        ],
+        "featured_connections": [
+          {
+            "action": "Return to the hill",
+            "claim_ids": [
+              "claim:hermitage-recognition-17"
+            ],
+            "reason": "Ownership transition is a third structural model beside the family domaine and the parcel selector.",
+            "signal": "rabbit-hole",
+            "target_id": "appellation:hermitage"
+          }
+        ],
+        "hero_kicker": "Tain-l'Hermitage · a house that survived its owners",
+        "map_reaction": {
+          "area_subject_ids": [
+            "appellation:hermitage",
+            "appellation:crozes-hermitage"
+          ],
+          "producer_ids": []
+        },
+        "thesis": "Founded on this hill in 1834, creator of Hermitage La Chapelle in 1961, led by Gérard Jaboulet from 1977 until his death in 1997, and passed to the Frey family in 2006 with Caroline Frey in charge. A historic identity outlived a change of owning family."
+      },
+      "producer:romaneaux-destezet": {
+        "claim_ids": [
+          "claim:souhaut-base-versus-vineyards-17",
+          "claim:souhaut-cellar-17"
+        ],
+        "featured_connections": [
+          {
+            "action": "Read the appellation",
+            "claim_ids": [
+              "claim:saint-joseph-corridor-17"
+            ],
+            "reason": "Twenty-six communes over sixty kilometres, none of which is Arlebosc.",
+            "signal": "rabbit-hole",
+            "target_id": "appellation:saint-joseph"
+          },
+          {
+            "action": "Read the practice",
+            "claim_ids": [
+              "claim:souhaut-cellar-17"
+            ],
+            "reason": "Whole bunches, spontaneous fermentation and about 25 mg/L of sulfur — an importer's description, not a self-description.",
+            "signal": "rabbit-hole",
+            "target_id": "practice:whole-cluster-fermentation"
+          }
+        ],
+        "hero_kicker": "Arlebosc, Ardèche · with vines in Saint-Joseph",
+        "map_reaction": {
+          "area_subject_ids": [
+            "appellation:saint-joseph"
+          ],
+          "producer_ids": []
+        },
+        "thesis": "The corridor's clearest producer-base-versus-vineyard case. Hervé and Béatrice Souhaut created the estate in 1993 at Arlebosc, in the hills above Saint-Joseph and outside it. A base point here would never be the location of the Saint-Joseph vines."
+      },
+      "producer:thierry-allemand": {
+        "claim_ids": [
+          "claim:allemand-work-history-17",
+          "claim:allemand-not-a-disciple-17",
+          "claim:allemand-sulfur-17"
+        ],
+        "featured_connections": [
+          {
+            "action": "Follow the vines",
+            "claim_ids": [
+              "claim:verset-vineyard-dispersal-17"
+            ],
+            "reason": "Verset began divesting in the late 1980s, and Reynard vines went to Allemand.",
+            "signal": "rabbit-hole",
+            "target_id": "producer:domaine-noel-verset"
+          },
+          {
+            "action": "Follow the employment",
+            "claim_ids": [
+              "claim:allemand-work-history-17"
+            ],
+            "reason": "Working for someone is not being mentored by them, and CARTA keeps the two apart.",
+            "signal": "rabbit-hole",
+            "target_id": "producer:domaine-robert-michel"
+          },
+          {
+            "action": "Return to the cru",
+            "claim_ids": [
+              "claim:allemand-sulfur-17"
+            ],
+            "reason": "Minimal sulfur inside a source-described traditional framework, in a single-variety appellation.",
+            "signal": "rabbit-hole",
+            "target_id": "appellation:cornas"
+          }
+        ],
+        "hero_kicker": "Cornas · worked for everyone, disciple of no one",
+        "map_reaction": {
+          "area_subject_ids": [
+            "appellation:cornas"
+          ],
+          "producer_ids": []
+        },
+        "thesis": "Day work for Joseph and then Robert Michel, night work helping Noël Verset, and old Reynard vines bought from him. The same importer that records all of it says he is “a disciple of no one's” — which is why CARTA records employment and shared work rather than mentorship."
+      },
+      "project:les-vins-de-vienne": {
+        "claim_ids": [
+          "claim:vins-de-vienne-founding-17",
+          "claim:sotanum-igp-17"
+        ],
+        "featured_connections": [
+          {
+            "action": "Read the legal home",
+            "claim_ids": [
+              "claim:sotanum-igp-17"
+            ],
+            "reason": "No cru appellation covers this ground, so quality has nothing to do with the category on the label.",
+            "signal": "rabbit-hole",
+            "target_id": "appellation:collines-rhodaniennes"
+          },
+          {
+            "action": "Read the place",
+            "claim_ids": [
+              "claim:vins-de-vienne-founding-17"
+            ],
+            "reason": "A replanted sector in the same corridor as the crus, and not a delimited wine area.",
+            "signal": "rabbit-hole",
+            "target_id": "place:seyssuel"
+          },
+          {
+            "action": "Meet a founder",
+            "claim_ids": [
+              "claim:cuilleron-scale-change-17"
+            ],
+            "reason": "The founders' own domaines stay separate producer identities from the project they started together.",
+            "signal": "rabbit-hole",
+            "target_id": "producer:domaine-yves-cuilleron"
+          }
+        ],
+        "hero_kicker": "Seyssuel · a frontier, not a ninth cru",
+        "thesis": "Three cru producers began replanting the old Seyssuel vineyard north of Vienne in 1996, first vintage 1998, twelve hectares of Syrah and Viognier. The wines are {{term:igp|IGP}} Collines Rhodaniennes. A few kilometres on the map, a total change of legal category."
+      },
+      "vineyard:chaillot-cornas": {
+        "claim_ids": [
+          "claim:michel-chaillot-lease-17",
+          "claim:balthazar-verset-parcel-17",
+          "claim:robert-michel-sites-17"
+        ],
+        "featured_connections": [
+          {
+            "action": "Read the lease",
+            "claim_ids": [
+              "claim:michel-chaillot-lease-17"
+            ],
+            "reason": "Michel leased a prime parcel here and provided his cave; neither is a transfer of ownership.",
+            "signal": "rabbit-hole",
+            "target_id": "producer:guillaume-gilles"
+          },
+          {
+            "action": "Read the other parcel",
+            "claim_ids": [
+              "claim:balthazar-verset-parcel-17"
+            ],
+            "reason": "A planting acquired from Noël Verset, whose date the two strongest sources give differently.",
+            "signal": "rabbit-hole",
+            "target_id": "producer:domaine-franck-balthazar"
+          }
+        ],
+        "hero_kicker": "One name · several growers · no parcel geometry",
+        "thesis": "Chaillot appears in the records of Robert Michel, Noël Verset, Guillaume Gilles and Franck Balthazar. CARTA holds it as a named site with no geometry and does not treat the name as one undivided holding — and it does not turn Michel's lease to Gilles into a sale."
+      },
+      "vineyard:coteau-de-vernon-condrieu": {
+        "claim_ids": [
+          "claim:vernay-estate-generations-17",
+          "claim:vernay-organic-conversion-17"
+        ],
+        "featured_connections": [
+          {
+            "action": "Meet the estate",
+            "claim_ids": [
+              "claim:vernay-estate-generations-17"
+            ],
+            "reason": "Four generations across a near-disappearance and a rebuilt hillside.",
+            "signal": "rabbit-hole",
+            "target_id": "producer:domaine-georges-vernay"
+          },
+          {
+            "action": "Return to the appellation",
+            "claim_ids": [
+              "claim:condrieu-communes-17"
+            ],
+            "reason": "A named site inside a delimited area, with no parcel geometry asserted.",
+            "signal": "rabbit-hole",
+            "target_id": "appellation:condrieu"
+          }
+        ],
+        "hero_kicker": "Where the family planting survived",
+        "map_reaction": {
+          "area_subject_ids": [
+            "appellation:condrieu"
+          ],
+          "producer_ids": []
+        },
+        "thesis": "Francis Vernay's foundational hectare of Viognier sits here, and Christine Vernay finished the reconstruction of its terraces. It is the physical continuity behind a recovery usually told as one man's story."
+      },
+      "vineyard:la-geynale-cornas": {
+        "claim_ids": [
+          "claim:robert-michel-sites-17",
+          "claim:paris-michel-family-work-17"
+        ],
+        "featured_connections": [
+          {
+            "action": "Follow the vines",
+            "claim_ids": [
+              "claim:paris-michel-family-work-17"
+            ],
+            "reason": "Rented first, purchased later — an asset history that explains a contemporary producer's geography.",
+            "signal": "rabbit-hole",
+            "target_id": "producer:domaine-vincent-paris"
+          }
+        ],
+        "hero_kicker": "A sub-cru high on the Reynard slope",
+        "thesis": "Planted by Robert Michel's grandfather in 1910 and worked by Michel until his retirement; vines here were rented and then bought by his nephew Vincent Paris. CARTA records farming and the sourced tenure history, not acquisition of the named site as a whole."
+      },
+      "vineyard:les-peyrouses-cornas": {
+        "claim_ids": [
+          "claim:peyrouses-rouge-identity",
+          "claim:cornas-aop-geography",
+          "claim:cornas-syrah-only-17"
+        ],
+        "featured_connections": [
+          {
+            "action": "Read the commune",
+            "claim_ids": [
+              "claim:cornas-aop-geography"
+            ],
+            "reason": "A commune contains a delimited area; it is not the delimited area.",
+            "signal": "rabbit-hole",
+            "target_id": "place:cornas"
+          },
+          {
+            "action": "Meet the grower",
+            "claim_ids": [
+              "claim:peyrouses-rouge-identity"
+            ],
+            "reason": "The same producer's Cornas, Côtes du Rhône and Saint-Péray wines make the distinction concrete.",
+            "signal": "rabbit-hole",
+            "target_id": "producer:guillaume-gilles"
+          }
+        ],
+        "hero_kicker": "In the commune of Cornas · bottled as Côtes du Rhône",
+        "map_reaction": {
+          "area_subject_ids": [
+            "appellation:cornas",
+            "appellation:cotes-du-rhone"
+          ],
+          "producer_ids": []
+        },
+        "thesis": "Old-vine Syrah from the flats in the commune of Cornas, sold under a broader appellation. CARTA records the physical locality, the legal designation, and the fact that it does not know where the parcel sits against the delimited boundary — and refuses to close that gap by guessing."
+      },
+      "vineyard:reynard-cornas": {
+        "claim_ids": [
+          "claim:allemand-work-history-17",
+          "claim:verset-vineyard-dispersal-17"
+        ],
+        "featured_connections": [
+          {
+            "action": "Read the transfer",
+            "claim_ids": [
+              "claim:allemand-work-history-17"
+            ],
+            "reason": "Employment with the Michels, night work with Verset, and a purchase of old vines — three separate records.",
+            "signal": "rabbit-hole",
+            "target_id": "producer:thierry-allemand"
+          }
+        ],
+        "hero_kicker": "Where old vines changed hands",
+        "thesis": "Robert Michel and Noël Verset both worked Reynard, and Verset sold Thierry Allemand vines here dating to the beginning of the twentieth century. A sale of vines inside a named site is not a sale of the site."
+      },
+      "wine:guillaume-gilles-les-peyrouses-rouge": {
+        "claim_ids": [
+          "claim:peyrouses-rouge-identity",
+          "claim:cotes-du-rhone-aop"
+        ],
+        "featured_connections": [
+          {
+            "action": "Read the designation",
+            "claim_ids": [
+              "claim:cotes-du-rhone-aop"
+            ],
+            "reason": "A valley-long appellation carrying fruit the crus do not cover.",
+            "signal": "rabbit-hole",
+            "target_id": "appellation:cotes-du-rhone"
+          },
+          {
+            "action": "Meet the grower",
+            "claim_ids": [
+              "claim:gilles-producer-identity"
+            ],
+            "reason": "The same producer also makes Cornas and Saint-Péray, which is what makes the contrast legible.",
+            "signal": "rabbit-hole",
+            "target_id": "producer:guillaume-gilles"
+          }
+        ],
+        "hero_kicker": "Syrah from Cornas · labelled Côtes du Rhône",
+        "map_reaction": {
+          "area_subject_ids": [
+            "appellation:cotes-du-rhone",
+            "appellation:cornas"
+          ],
+          "producer_ids": []
+        },
+        "thesis": "The bottle is where the distinction becomes unavoidable. Physical location, commune name and legal designation are three separate facts, and only the third is on the label."
+      },
+      "wine:les-vins-de-vienne-sotanum": {
+        "claim_ids": [
+          "claim:sotanum-igp-17"
+        ],
+        "featured_connections": [
+          {
+            "action": "Read the category",
+            "claim_ids": [
+              "claim:collines-rhodaniennes-role-17"
+            ],
+            "reason": "The corridor's legal home for everything the eight crus do not cover.",
+            "signal": "rabbit-hole",
+            "target_id": "appellation:collines-rhodaniennes"
+          }
+        ],
+        "hero_kicker": "Seyssuel Syrah · IGP Collines Rhodaniennes",
+        "thesis": "Sotanum is the frontier in one bottle: slopes in the same corridor as the crus, farmed by three cru producers, and a legal category that has nothing to do with either."
+      },
+      "wine:vernay-coteau-de-vernon": {
+        "claim_ids": [
+          "claim:vernay-estate-generations-17"
+        ],
+        "featured_connections": [
+          {
+            "action": "Meet the estate",
+            "claim_ids": [
+              "claim:vernay-organic-conversion-17"
+            ],
+            "reason": "Four generations across a near-disappearance, and the terraces rebuilt two generations after the first planting.",
+            "signal": "rabbit-hole",
+            "target_id": "producer:domaine-georges-vernay"
+          }
+        ],
+        "hero_kicker": "Condrieu · the cuvée that survived the low point",
+        "map_reaction": {
+          "area_subject_ids": [
+            "appellation:condrieu"
+          ],
+          "producer_ids": []
+        },
+        "thesis": "The estate's first Coteau de Vernon was released in 1940, from the site where Francis Vernay planted the family's foundational Viognier. It is the continuity behind a recovery usually told as a single biography."
+      },
+      "wine:voge-les-bulles-dalain": {
+        "claim_ids": [
+          "claim:voge-bulles-dalain-17"
+        ],
+        "featured_connections": [
+          {
+            "action": "Read the method",
+            "claim_ids": [
+              "claim:traditional-method-saint-peray-17"
+            ],
+            "reason": "A method, not a quality claim and not a regional identity.",
+            "signal": "rabbit-hole",
+            "target_id": "practice:traditional-method-sparkling"
+          }
+        ],
+        "hero_kicker": "100% Marsanne · brut nature · four years on lattes",
+        "map_reaction": {
+          "area_subject_ids": [
+            "appellation:saint-peray"
+          ],
+          "producer_ids": []
+        },
+        "thesis": "A {{term:methode-traditionnelle|second fermentation in bottle}} presented by the estate as perpetuating the Saint-Péray tradition that made the region's reputation from the 1830s."
+      },
+      "wine:voge-ongrie": {
+        "claim_ids": [
+          "claim:voge-ongrie-1984-17"
+        ],
+        "featured_connections": [
+          {
+            "action": "Meet the estate",
+            "claim_ids": [
+              "claim:voge-two-forms-17"
+            ],
+            "reason": "One estate holding the appellation's sparkling tradition and its still departure.",
+            "signal": "rabbit-hole",
+            "target_id": "producer:domaine-alain-voge"
+          }
+        ],
+        "hero_kicker": "1984 · 100% Marsanne · oak only",
+        "map_reaction": {
+          "area_subject_ids": [
+            "appellation:saint-peray"
+          ],
+          "producer_ids": []
+        },
+        "thesis": "Created when most Saint-Péray came from the traditional method and still wines were vinified in tank. The estate calls Alain Voge the precursor of barrel work here — a precursor inside a tradition, not the inventor of a wine that already existed."
+      }
+    }
+  }
+}

@@ -61,15 +61,43 @@ The core relationship is nearly the reverse: Michel's mentorship is strongly doc
 
 authoritative Les Peyrouses parcel geometry · Cornas AOP boundary overlay · Les Peyrouses red vintage cellar chronology · deeper Robert Michel and Marcel Juge references
 
+## Four different things passed from Robert Michel
+
+The Michel relationship is the [Northern Rhône](../countries/france/regions/northern-rhone.md)'s best worked example of why one word will not do. Rosenthal records that when Michel retired after the 2006 vintage he **leased** Gilles his prime parcel in the [Chaillot](../countries/france/appellations/cornas.md) vineyard and **provided his cave** for Gilles's use, and separately calls Gilles his protégé. Vine Trail dates the apprenticeship from 2000 and the working relationship to Michel's retirement.
+
+That is mentorship, employment, a tenure arrangement over land, and access to a cellar — four separate facts. CARTA records farming under a lease and use of a cave. It asserts no purchase, no inheritance and no transfer of ownership of either, because the sources describe none.
+
+Marcel Juge being Gilles's grandfather is a fifth, independent fact. It is not evidence of training, and it is not evidence that land moved: whatever passed through the Juge family waits for parcel-level evidence before CARTA records a land relationship.
+
+## Beside a network, not inside a school
+
+Gilles sits in a dense [Cornas](../countries/france/appellations/cornas.md) network of differently typed transfers — [Robert Michel](domaine-robert-michel.md), [Vincent Paris](domaine-vincent-paris.md), [Thierry Allemand](thierry-allemand.md), [Noël Verset](domaine-noel-verset.md), [Franck Balthazar](domaine-franck-balthazar.md), [Auguste Clape](domaine-auguste-clape.md). CARTA models the edges and refuses the collective noun: there is no governed "Cornas school", because the evidence supports a braided network of family, employment, mentorship, leases, cellar access and vineyard transfers instead.
+
+His portfolio also reaches [Saint-Péray](../countries/france/appellations/saint-peray.md), which keeps the Cornas door connected to the corridor's white-wine world without making him its narrator.
+
+Rosenthal's description of the cellar — eschewing the destemmer in virtually all cases, hand work in the vineyard, the grapes' own yeasts, old demi-muids, no fining or filtration — is a set of concrete practices. CARTA does not read traditional and low-intervention practice as membership of a natural-wine movement, and the source language is not self-description.
+
 <!-- BEGIN GENERATED CARTA NAVIGATION -->
 ## Explore CARTA
 
 This section is generated from governed profile dispositions, editorial anchors, and supported graph relationships. It is not a hand-maintained second knowledge graph.
 
+- [Cornas AOP](../countries/france/appellations/cornas.md) — appellation; baseline reference
+- [Domaine Robert Michel](domaine-robert-michel.md) — producer; navigation node
 - [Côtes du Rhône AOP](../countries/france/appellations/cotes-du-rhone.md) — appellation; navigation node
-- [Syrah](../grapes/syrah.md) — grape; navigation node
+- [Northern Rhône](../countries/france/regions/northern-rhone.md) — region; baseline reference
+- [Saint-Péray AOP](../countries/france/appellations/saint-peray.md) — appellation; baseline reference
+- [Syrah](../grapes/syrah.md) — grape; baseline reference
 - [France](../countries/france/README.md) — country; baseline reference
-- [Cornas AOP](../countries/france/appellations/cornas.md) — appellation; navigation node
+- [Domaine Jean-Louis Chave](domaine-jean-louis-chave.md) — producer; navigation node
+- [Domaine Franck Balthazar](domaine-franck-balthazar.md) — producer; navigation node
+- [Domaine Noël Verset](domaine-noel-verset.md) — producer; navigation node
+- [Domaine Vincent Paris](domaine-vincent-paris.md) — producer; navigation node
+- [Thierry Allemand](thierry-allemand.md) — producer; navigation node
+- [Château-Grillet AOP](../countries/france/appellations/chateau-grillet.md) — appellation; baseline reference
+- [Collines Rhodaniennes IGP](../countries/france/appellations/collines-rhodaniennes.md) — appellation; navigation node
+- [Condrieu AOP](../countries/france/appellations/condrieu.md) — appellation; baseline reference
+- [Crozes-Hermitage AOP](../countries/france/appellations/crozes-hermitage.md) — appellation; baseline reference
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->
@@ -89,15 +117,20 @@ This section is generated from CARTA machine authority. Edit the governed record
 - `person:marcel-juge`
 - `person:jean-louis-chave`
 - `vineyard:les-peyrouses-cornas`
+- `vineyard:chaillot-cornas`
 - `wine:guillaume-gilles-les-peyrouses-rouge`
 
 **Representative anchors**
 
 - `wine:guillaume-gilles-les-peyrouses-rouge`
 - `vineyard:les-peyrouses-cornas`
+- `vineyard:chaillot-cornas`
 - `grape:syrah`
 - `appellation:cotes-du-rhone`
 - `appellation:cornas`
+- `appellation:saint-peray`
+- `producer:domaine-robert-michel`
+- `place:northern-rhone`
 
 <details>
 <summary>Machine claims and sources</summary>
@@ -106,20 +139,40 @@ This section is generated from CARTA machine authority. Edit the governed record
 
 | Claim | Layer / observed | Status | Confidence | Sources |
 |---|---|---|---|---|
+| `claim:allemand-work-history-17` | `reference / —` | `supported` | `high` | `source:rarewine-allemand` |
+| `claim:balthazar-verset-parcel-17` | `reference / —` | `supported` | `high` | `source:rarewine-balthazar` |
+| `claim:chave-multi-site-blend-17` | `reference / 2026-08-31` | `supported` | `high` | `source:rarewine-chave` |
 | `claim:cornas-aop-geography` | `reference / —` | `supported` | `high` | `source:inao-cornas` |
+| `claim:cornas-syrah-only-17` | `reference / 2026-08-31` | `supported` | `high` | `source:cdc-cornas-pno-2023`, `source:inao-cornas` |
 | `claim:cotes-du-rhone-aop` | `reference / —` | `supported` | `high` | `source:inao-cotes-du-rhone` |
+| `claim:gilles-base-19` | `reference / 2026-08-31` | `supported` | `medium` | `source:rhone-crussol-guillaume-gilles`, `source:api-adresse-gouv-fr` |
+| `claim:gilles-cellar-practice-17` | `reference / 2026-08-31` | `supported` | `high` | `source:rosenthal-gilles` |
 | `claim:gilles-chave-work` | `reference / —` | `supported` | `high` | `source:vinetrail-guillaume-gilles` |
 | `claim:gilles-marcel-juge-family` | `reference / —` | `supported` | `high` | `source:vinetrail-guillaume-gilles` |
 | `claim:gilles-organic-current` | `reference / 2026-08-18` | `supported` | `high` | `source:vinetrail-guillaume-gilles` |
 | `claim:gilles-producer-identity` | `reference / —` | `supported` | `high` | `source:rosenthal-gilles`, `source:vinetrail-guillaume-gilles`, `source:aoc-cornas-producers` |
 | `claim:gilles-robert-michel-mentorship` | `reference / —` | `supported` | `high` | `source:rosenthal-gilles`, `source:vinetrail-guillaume-gilles` |
+| `claim:michel-chaillot-lease-17` | `reference / —` | `supported` | `high` | `source:rosenthal-gilles`, `source:vinetrail-guillaume-gilles` |
+| `claim:paris-michel-family-work-17` | `reference / —` | `supported` | `high` | `source:polaner-vincent-paris` |
 | `claim:peyrouses-rouge-identity` | `reference / —` | `supported` | `high` | `source:rosenthal-peyrouses-rouge`, `source:inao-cotes-du-rhone` |
+| `claim:robert-michel-domaine-history-17` | `reference / —` | `supported` | `high` | `source:rarewine-robert-michel` |
+| `claim:robert-michel-sites-17` | `reference / —` | `supported` | `high` | `source:rarewine-robert-michel` |
+| `claim:verset-vineyard-dispersal-17` | `reference / —` | `supported` | `high` | `source:rarewine-verset` |
 
 ### Sources
 
 - `source:aoc-cornas-producers` — Domains & Companies of AOC Cornas
+- `source:api-adresse-gouv-fr` — API Adresse
+- `source:cdc-cornas-pno-2023` — Cahier des charges de l'AOC « Cornas » — procédure nationale d'opposition
 - `source:inao-cornas` — Cornas
 - `source:inao-cotes-du-rhone` — Côtes du Rhône rouge
+- `source:polaner-vincent-paris` — Vincent Paris
+- `source:rarewine-allemand` — Allemand — Cornas
+- `source:rarewine-balthazar` — Franck Balthazar
+- `source:rarewine-chave` — Jean-Louis Chave
+- `source:rarewine-robert-michel` — Robert Michel — Cornas
+- `source:rarewine-verset` — The genius of Verset Cornas
+- `source:rhone-crussol-guillaume-gilles` — Domaine Guillaume Gilles
 - `source:rosenthal-gilles` — Guillaume Gilles | Northern Rhône
 - `source:rosenthal-peyrouses-rouge` — Les Peyrouses Côtes du Rhône Rouge
 - `source:vinetrail-guillaume-gilles` — Guillaume Gilles — Cornas
@@ -130,5 +183,7 @@ This section is generated from CARTA machine authority. Edit the governed record
 
 - Acquire authoritative parcel geometry to resolve Les Peyrouses against the Cornas AOP delimitation
 - Deepen Guillaume Gilles vintage-specific Les Peyrouses élevage without universalizing estate practice
-- Develop Robert Michel and Marcel Juge Human Reference only when their independent worlds are researched
+- Establish the current legal and temporal form of the Chaillot tenure and of access to Robert Michel's cave
+- Acquire parcel evidence for whatever passed through the Juge family before recording any land relationship
+- `claim:balthazar-verset-parcel-17` — Reconcile the Verset-to-Balthazar Chaillot parcel against parcel-level records before asserting a single planting date or a single parcel identity.
 <!-- END GENERATED CARTA PROVENANCE -->

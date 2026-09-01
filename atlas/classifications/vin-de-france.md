@@ -22,7 +22,7 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [Loire Valley](../countries/france/regions/loire-valley.md) — region; deep reference
 - [Dureza](../grapes/dureza.md) — grape; navigation node
 - [Mourvèdre](../grapes/mourvedre.md) — grape; navigation node
-- [Syrah](../grapes/syrah.md) — grape; navigation node
+- [Syrah](../grapes/syrah.md) — grape; baseline reference
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->

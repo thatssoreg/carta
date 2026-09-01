@@ -11,6 +11,7 @@ This section is generated from governed profile dispositions, editorial anchors,
 
 - [France](../README.md) — country; baseline reference
 - [Château Simone](../../../producers/chateau-simone.md) — producer; baseline reference
+- [Les Vins de Vienne](../../../producers/les-vins-de-vienne.md) — producer; baseline reference
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->

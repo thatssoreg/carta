@@ -731,7 +731,16 @@ def evaluate_models(
             # regression sample into a moving target.
             rated = set(candidate_ratings)
             baseline = rated
-            displayed = set(profile["model_displayed_ids"][model])
+            if model == "A_current":
+                # Evaluate today's policy against the fixed reviewed cohort,
+                # independent of later unrated profiles competing for the
+                # production top-16 cap. A rated link is retained when it is
+                # still eligible; cap churn is not a policy regression.
+                displayed = rated & {
+                    candidate["id"] for candidate in profile["candidates"]
+                }
+            else:
+                displayed = set(profile["model_displayed_ids"][model])
             links_changed += len(baseline - displayed)
             source_kind = profile["profile_kind"]
             for candidate_id, rating_record in candidate_ratings.items():

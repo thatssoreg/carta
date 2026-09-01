@@ -37,7 +37,10 @@ except ImportError as exc:  # pragma: no cover - exercised by clean validation e
     GEOSPATIAL_IMPORT_ERROR = exc
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from build_atlas import build_provenance  # noqa: E402  (shared provenance projection)
+from build_atlas import (  # noqa: E402  (shared release/provenance projection)
+    EXPERIENCE_CONFIG_PATH,
+    build_provenance,
+)
 
 ROOT = Path(__file__).resolve().parents[1]
 MANIFEST_DIR = ROOT / "data/geography/datasets"
@@ -46,7 +49,7 @@ DEFAULT_SOURCE_DIR = ROOT / ".cache/atlas/terrain"
 
 TERRAIN_DATASET_ID = "spatial-dataset:copernicus-dem-glo30-2022-05-09"
 TERRAIN_MANIFEST_PATH = MANIFEST_DIR / "copernicus-dem-glo30-2022-05-09.json"
-TERRAIN_RELEASE = "atlas-run-17-loire-valley-world"
+TERRAIN_RELEASE = json.loads(EXPERIENCE_CONFIG_PATH.read_text())["release"]
 
 # --- Bounded proof extents --------------------------------------------------
 # Each extent is presentation context, never a wine-region boundary. Source
@@ -115,6 +118,22 @@ TERRAIN_EXTENTS = (
         ),
         "hillshade_path": PUBLIC_DATA_DIR / "atlas-terrain-sancerre-hillshade.png",
         "contour_path": PUBLIC_DATA_DIR / "atlas-terrain-sancerre-contours.geojson",
+    },
+    {
+        "id": "northern-rhone",
+        "label": "Northern Rhône",
+        "bbox": (4.62, 44.86, 4.94, 45.60),
+        "description": (
+            "A bounded Northern Rhône corridor context from the Vienne sector "
+            "through Cornas and Saint-Péray. It shows physical relief and is not "
+            "a wine-region or vineyard boundary."
+        ),
+        "source_files": (
+            "Copernicus_DSM_COG_10_N44_00_E004_00_DEM.tif",
+            "Copernicus_DSM_COG_10_N45_00_E004_00_DEM.tif",
+        ),
+        "hillshade_path": PUBLIC_DATA_DIR / "atlas-terrain-northern-rhone-hillshade.png",
+        "contour_path": PUBLIC_DATA_DIR / "atlas-terrain-northern-rhone-contours.geojson",
     },
 )
 SOURCE_CLIP_BUFFER_DEGREES = 0.05
@@ -526,7 +545,13 @@ def transformations(grids: dict[str, dict[str, Any]]) -> list[dict[str, Any]]:
             "operation": "verify_pinned_source_files",
             "parameters": {
                 "algorithm": "sha256",
-                "file_count": sum(len(extent["source_files"]) for extent in TERRAIN_EXTENTS),
+                "file_count": len(
+                    {
+                        name
+                        for extent in TERRAIN_EXTENTS
+                        for name in extent["source_files"]
+                    }
+                ),
                 "refuse_on_mismatch": True,
             },
         }

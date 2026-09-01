@@ -1,0 +1,65 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "id": "northern-rhone-producer-gilles",
+      "properties": {
+        "source_feature_id": "northern-rhone-producer-gilles",
+        "entity_id": "producer:guillaume-gilles",
+        "name": "Domaine Guillaume Gilles",
+        "place_label": "Cornas · Les Rieux",
+        "precision": "locality"
+      },
+      "geometry": {"type": "Point", "coordinates": [4.822197, 44.962265]}
+    },
+    {
+      "type": "Feature",
+      "id": "northern-rhone-producer-vernay",
+      "properties": {
+        "source_feature_id": "northern-rhone-producer-vernay",
+        "entity_id": "producer:domaine-georges-vernay",
+        "name": "Domaine Georges Vernay",
+        "place_label": "Condrieu · 1 rue Nationale RD386",
+        "precision": "address"
+      },
+      "geometry": {"type": "Point", "coordinates": [4.771694, 45.465328]}
+    },
+    {
+      "type": "Feature",
+      "id": "northern-rhone-producer-dard-ribo",
+      "properties": {
+        "source_feature_id": "northern-rhone-producer-dard-ribo",
+        "entity_id": "producer:dard-et-ribo",
+        "name": "Dard & Ribo",
+        "place_label": "Mercurol-Veaunes · 480 chemin du Château",
+        "precision": "address"
+      },
+      "geometry": {"type": "Point", "coordinates": [4.869357, 45.075181]}
+    },
+    {
+      "type": "Feature",
+      "id": "northern-rhone-producer-chambeyron-manin",
+      "properties": {
+        "source_feature_id": "northern-rhone-producer-chambeyron-manin",
+        "entity_id": "producer:domaine-christiane-chambeyron-manin",
+        "name": "Domaine Christiane Chambeyron-Manin",
+        "place_label": "Ampuis · 23 rue de la Brocarde",
+        "precision": "address"
+      },
+      "geometry": {"type": "Point", "coordinates": [4.807981, 45.489604]}
+    },
+    {
+      "type": "Feature",
+      "id": "northern-rhone-producer-voge",
+      "properties": {
+        "source_feature_id": "northern-rhone-producer-voge",
+        "entity_id": "producer:domaine-alain-voge",
+        "name": "Domaine Alain Voge",
+        "place_label": "Cornas · 4 impasse de l'Équerre",
+        "precision": "address"
+      },
+      "geometry": {"type": "Point", "coordinates": [4.847684, 44.962659]}
+    }
+  ]
+}

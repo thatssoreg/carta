@@ -30,6 +30,7 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [Chardonnay](../grapes/chardonnay.md) — grape; navigation node
 - [France](../countries/france/README.md) — country; baseline reference
 - [Gamay noir à jus blanc](../grapes/gamay-noir-a-jus-blanc.md) — grape; baseline reference
+- [Jean-Michel Stéphan](jean-michel-stephan.md) — producer; navigation node
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->
@@ -65,6 +66,7 @@ This section is generated from CARTA machine authority. Edit the governed record
 
 | Claim | Layer / observed | Status | Confidence | Sources |
 |---|---|---|---|---|
+| `claim:stephan-beaujolais-route-17` | `reference / —` | `supported` | `high` | `source:idealwine-stephan` |
 | `claim:terres-dorees-base-15` | `reference / 2026-08-30` | `supported` | `high` | `source:terres-dorees-rhone-tourisme`, `source:api-adresse-gouv-fr` |
 | `claim:terres-dorees-current-identity-15` | `reference / 2026-08-30` | `supported` | `high` | `source:terres-dorees-rhone-tourisme` |
 | `claim:terres-dorees-southern-chardonnay-16` | `reference / 2026-08-30` | `supported` | `medium` | `source:terres-dorees-rhone-tourisme` |
@@ -73,6 +75,7 @@ This section is generated from CARTA machine authority. Edit the governed record
 ### Sources
 
 - `source:api-adresse-gouv-fr` — API Adresse
+- `source:idealwine-stephan` — Jean-Michel Stephan: outstanding, natural Côte-Rôtie
 - `source:terres-dorees-rhone-tourisme` — Domaine des Terres Dorées à Charnay
 - `source:zannier-terres-dorees-transition` — Les Domaines Roger Zannier investissent le Beaujolais
 

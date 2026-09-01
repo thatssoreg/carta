@@ -9,9 +9,10 @@ The machine graph and generated relationships below provide the current orientat
 
 This section is generated from governed profile dispositions, editorial anchors, and supported graph relationships. It is not a hand-maintained second knowledge graph.
 
-- [Syrah](../grapes/syrah.md) — grape; navigation node
+- [Syrah](../grapes/syrah.md) — grape; baseline reference
 - [California](../countries/united-states/regions/california.md) — region; navigation node
 - [United States](../countries/united-states/README.md) — country; navigation node
+- [Collines Rhodaniennes IGP](../countries/france/appellations/collines-rhodaniennes.md) — appellation; navigation node
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->

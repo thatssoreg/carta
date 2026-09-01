@@ -38,6 +38,7 @@ Country-specific regions and appellations are nested beneath countries; landscap
 - [Loire Valley](../countries/france/regions/loire-valley.md) — `deep` / `published`
 - [Madeira Archipelago](../countries/portugal/regions/madeira-archipelago.md) — `node` / `stub`
 - [Mosel](../countries/germany/regions/mosel.md) — `node` / `stub`
+- [Northern Rhône](../countries/france/regions/northern-rhone.md) — `baseline` / `published`
 - [Pays Nantais](../countries/france/regions/pays-nantais.md) — `baseline` / `stub`
 - [Penedès](../countries/spain/regions/penedes.md) — `node` / `stub`
 - [Porto Santo](../countries/portugal/regions/porto-santo.md) — `node` / `stub`
@@ -65,12 +66,17 @@ Country-specific regions and appellations are nested beneath countries; landscap
 - [Brunello di Montalcino DOCG](../countries/italy/appellations/brunello-di-montalcino.md) — `node` / `stub`
 - [Chablis Grand Cru AOP](../countries/france/appellations/chablis-grand-cru.md) — `node` / `stub`
 - [Château-Chalon AOP](../countries/france/appellations/chateau-chalon.md) — `baseline` / `published`
+- [Château-Grillet AOP](../countries/france/appellations/chateau-grillet.md) — `baseline` / `published`
+- [Collines Rhodaniennes IGP](../countries/france/appellations/collines-rhodaniennes.md) — `node` / `stub`
 - [Columbia Gorge AVA](../countries/united-states/appellations/columbia-gorge-ava.md) — `node` / `stub`
-- [Cornas AOP](../countries/france/appellations/cornas.md) — `node` / `stub`
+- [Condrieu AOP](../countries/france/appellations/condrieu.md) — `baseline` / `published`
+- [Cornas AOP](../countries/france/appellations/cornas.md) — `baseline` / `published`
+- [Crozes-Hermitage AOP](../countries/france/appellations/crozes-hermitage.md) — `baseline` / `published`
 - [Crémant du Jura AOP](../countries/france/appellations/cremant-du-jura.md) — `baseline` / `published`
-- [Côte-Rôtie](../countries/france/appellations/cote-rotie.md) — `node` / `stub`
+- [Côte-Rôtie AOP](../countries/france/appellations/cote-rotie.md) — `baseline` / `published`
 - [Côtes du Jura AOP](../countries/france/appellations/cotes-du-jura.md) — `baseline` / `published`
 - [Côtes du Rhône AOP](../countries/france/appellations/cotes-du-rhone.md) — `node` / `stub`
+- [Hermitage AOP](../countries/france/appellations/hermitage.md) — `baseline` / `published`
 - [Irouléguy](../countries/france/appellations/irouleguy.md) — `baseline` / `published`
 - [Jurançon](../countries/france/appellations/jurancon.md) — `baseline` / `published`
 - [L’Etoile AOP](../countries/france/appellations/l-etoile.md) — `baseline` / `published`
@@ -84,6 +90,8 @@ Country-specific regions and appellations are nested beneath countries; landscap
 - [Pico DOP](../countries/portugal/appellations/pico-dop.md) — `node` / `stub`
 - [Ribera del Duero DOP](../countries/spain/appellations/ribera-del-duero.md) — `node` / `stub`
 - [Rioja DOCa](../countries/spain/appellations/rioja.md) — `node` / `stub`
+- [Saint-Joseph AOP](../countries/france/appellations/saint-joseph.md) — `baseline` / `published`
+- [Saint-Péray AOP](../countries/france/appellations/saint-peray.md) — `baseline` / `published`
 - [San Luis Obispo Coast AVA](../countries/united-states/appellations/san-luis-obispo-coast-ava.md) — `node` / `stub`
 - [Santa Ynez Valley AVA](../countries/united-states/appellations/santa-ynez-valley-ava.md) — `node` / `stub`
 - [St. Helena AVA](../countries/united-states/appellations/st-helena-ava.md) — `node` / `stub`
@@ -116,6 +124,8 @@ Country-specific regions and appellations are nested beneath countries; landscap
 ### Human Reference surfaces
 
 - [Carbonic, semi-carbonic, and whole-cluster fermentation](../practices/carbonic-maceration.md) — `baseline` / `published`
+- [Co-fermentation and grape-stage assemblage](../practices/co-fermentation.md) — `baseline` / `published`
+- [Traditional-method sparkling wine](../practices/traditional-method-sparkling.md) — `node` / `stub`
 
 ## Classifications
 
@@ -123,6 +133,7 @@ Country-specific regions and appellations are nested beneath countries; landscap
 
 - [Beaujolais primeur / nouveau](../classifications/beaujolais-primeur-nouveau.md) — `baseline` / `published`
 - [Beaujolais Villages mention](../classifications/beaujolais-villages-mention.md) — `baseline` / `published`
+- [Hermitage vin de paille mention](../classifications/hermitage-vin-de-paille.md) — `baseline` / `published`
 - [Kabinett](../classifications/kabinett.md) — `node` / `stub`
 - [Vin de France](../classifications/vin-de-france.md) — `node` / `stub`
 
@@ -130,6 +141,7 @@ Country-specific regions and appellations are nested beneath countries; landscap
 
 ### Human Reference surfaces
 
+- [Saint-Péray sparkling trials of 1828](../historical-events/saint-peray-sparkling-1828.md) — `node` / `stub`
 - [The 1395 Gamay ordinance](../historical-events/gamay-ordinance-1395.md) — `baseline` / `published`
 
 <!-- END GENERATED CARTA INDEX -->
