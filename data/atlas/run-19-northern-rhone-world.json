@@ -1203,12 +1203,19 @@
             "appellation:saint-peray",
             "appellation:cotes-du-rhone"
           ],
-          "producer_ids": []
+          "producer_ids": [
+            "producer:guillaume-gilles",
+            "producer:domaine-georges-vernay",
+            "producer:dard-et-ribo",
+            "producer:domaine-christiane-chambeyron-manin",
+            "producer:domaine-alain-voge"
+          ]
         },
         "people": [
           {
-            "base": "Cornas · base coordinate not yet acquired",
+            "base": "Cornas · Les Rieux locality point",
             "claim_ids": [
+              "claim:gilles-base-19",
               "claim:michel-chaillot-lease-17",
               "claim:gilles-cellar-practice-17",
               "claim:gilles-robert-michel-mentorship",
@@ -1226,8 +1233,9 @@
             "who": "Guillaume Gilles, Robert Michel's protégé and Marcel Juge's grandson"
           },
           {
-            "base": "Condrieu · base coordinate not yet acquired",
+            "base": "Condrieu · published domaine address",
             "claim_ids": [
+              "claim:vernay-base-19",
               "claim:vernay-estate-generations-17",
               "claim:vernay-recovery-role-17",
               "claim:vernay-organic-conversion-17"
@@ -1244,8 +1252,9 @@
             "who": "Four generations from Francis to Christine Vernay"
           },
           {
-            "base": "Mercurol · base coordinate not yet acquired",
+            "base": "Mercurol-Veaunes · registered seat",
             "claim_ids": [
+              "claim:dard-ribo-base-19",
               "claim:dard-ribo-founding-17",
               "claim:dard-ribo-tenure-17",
               "claim:dard-ribo-farming-17",
@@ -1263,8 +1272,9 @@
             "who": "René-Jean Dard and François Ribo"
           },
           {
-            "base": "Ampuis · Côte Brune locality",
+            "base": "Ampuis · registered seat, distinct from Côte Brune",
             "claim_ids": [
+              "claim:chambeyron-manin-base-19",
               "claim:chambeyron-site",
               "claim:chambeyron-cellar",
               "claim:chambeyron-identity",
@@ -1282,8 +1292,9 @@
             "who": "Véronique Manin's micro-estate on the Côte Brune"
           },
           {
-            "base": "Cornas and Saint-Péray · base coordinate not yet acquired",
+            "base": "Cornas · published domaine address; wines cross into Saint-Péray",
             "claim_ids": [
+              "claim:voge-base-19",
               "claim:voge-two-forms-17",
               "claim:voge-bulles-dalain-17",
               "claim:voge-ongrie-1984-17"
@@ -1330,7 +1341,10 @@
               "appellation:cote-rotie",
               "appellation:cornas"
             ],
-            "producer_ids": []
+            "producer_ids": [
+              "producer:guillaume-gilles",
+              "producer:dard-et-ribo"
+            ]
           },
           "grapes": {
             "area_subject_ids": [
@@ -1341,7 +1355,10 @@
               "appellation:saint-peray",
               "appellation:hermitage"
             ],
-            "producer_ids": []
+            "producer_ids": [
+              "producer:domaine-georges-vernay",
+              "producer:domaine-alain-voge"
+            ]
           },
           "people": {
             "area_subject_ids": [
@@ -1351,7 +1368,13 @@
               "appellation:crozes-hermitage",
               "appellation:saint-peray"
             ],
-            "producer_ids": []
+            "producer_ids": [
+              "producer:guillaume-gilles",
+              "producer:domaine-georges-vernay",
+              "producer:dard-et-ribo",
+              "producer:domaine-christiane-chambeyron-manin",
+              "producer:domaine-alain-voge"
+            ]
           },
           "place": {
             "area_subject_ids": [
@@ -1364,7 +1387,13 @@
               "appellation:cornas",
               "appellation:saint-peray"
             ],
-            "producer_ids": []
+            "producer_ids": [
+              "producer:guillaume-gilles",
+              "producer:domaine-georges-vernay",
+              "producer:dard-et-ribo",
+              "producer:domaine-christiane-chambeyron-manin",
+              "producer:domaine-alain-voge"
+            ]
           },
           "rules": {
             "area_subject_ids": [
@@ -1384,7 +1413,7 @@
         "place_story": {
           "button": "Show the eight cru areas",
           "kicker": "The map is eight arguments, not one",
-          "text": "Read the Rhône north to south from Vienne to Valence. Every active outline is one cru's own regulatory geographical area; there is no ninth, larger shape, because Northern Rhône is a name people use rather than a delimited origin. CARTA has not yet acquired terrain for this corridor, so relief is deliberately absent here rather than approximated.",
+          "text": "Read the Rhône north to south from Vienne to Valence. Every active outline is one cru's own regulatory geographical area; there is no ninth, larger shape, because Northern Rhône is a name people use rather than a delimited origin. The bounded terrain proof adds relief for orientation only: it is neither a wine boundary nor a vineyard map.",
           "title": "A corridor with no boundary of its own"
         },
         "regional_world": true,

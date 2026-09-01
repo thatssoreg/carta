@@ -70,16 +70,19 @@ This section is generated from CARTA machine authority. Edit the governed record
 | Claim | Layer / observed | Status | Confidence | Sources |
 |---|---|---|---|---|
 | `claim:condrieu-white-viognier-17` | `reference / 2026-08-31` | `supported` | `high` | `source:cdc-condrieu-pno-2023`, `source:inao-condrieu` |
+| `claim:vernay-base-19` | `reference / 2026-08-31` | `supported` | `high` | `source:vernay-legal-address`, `source:api-adresse-gouv-fr` |
 | `claim:vernay-estate-generations-17` | `reference / —` | `supported` | `high` | `source:vernay-estate-history`, `source:syndicat-condrieu-vernay` |
 | `claim:vernay-organic-conversion-17` | `reference / 2026-08-31` | `supported` | `high` | `source:syndicat-condrieu-vernay` |
 | `claim:vernay-recovery-role-17` | `reference / —` | `supported` | `high` | `source:syndicat-condrieu-vernay`, `source:vernay-estate-history` |
 
 ### Sources
 
+- `source:api-adresse-gouv-fr` — API Adresse
 - `source:cdc-condrieu-pno-2023` — Cahier des charges de l'AOC « Condrieu » — procédure nationale d'opposition
 - `source:inao-condrieu` — Condrieu
 - `source:syndicat-condrieu-vernay` — Domaine Georges Vernay — Condrieu
 - `source:vernay-estate-history` — The Estate's History — Domaine Vernay
+- `source:vernay-legal-address` — Mentions légales — Domaine Georges Vernay
 
 </details>
 
@@ -87,5 +90,4 @@ This section is generated from CARTA machine authority. Edit the governed record
 
 - Add the estate's current generation beyond Christine Vernay only from a fit dated source
 - Acquire a dated hectare series for Condrieu so the recovery can be shown as a curve rather than two endpoints
-- Acquire a producer base coordinate from a fit source before placing the domaine on the map
 <!-- END GENERATED CARTA PROVENANCE -->

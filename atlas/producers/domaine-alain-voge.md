@@ -66,14 +66,17 @@ This section is generated from CARTA machine authority. Edit the governed record
 
 | Claim | Layer / observed | Status | Confidence | Sources |
 |---|---|---|---|---|
+| `claim:voge-base-19` | `reference / 2026-08-31` | `supported` | `high` | `source:voge-visit-address`, `source:api-adresse-gouv-fr` |
 | `claim:voge-bulles-dalain-17` | `reference / 2026-08-31` | `supported` | `high` | `source:voge-bulles-dalain` |
 | `claim:voge-ongrie-1984-17` | `reference / —` | `supported` | `high` | `source:voge-ongrie` |
 | `claim:voge-two-forms-17` | `reference / 2026-08-31` | `supported` | `high` | `source:voge-bulles-dalain`, `source:voge-ongrie` |
 
 ### Sources
 
+- `source:api-adresse-gouv-fr` — API Adresse
 - `source:voge-bulles-dalain` — AOC Saint-Péray — Les Bulles d'Alain
 - `source:voge-ongrie` — AOC Saint-Péray — Ongrie
+- `source:voge-visit-address` — Visites — Domaine Alain Voge
 
 </details>
 
@@ -81,5 +84,4 @@ This section is generated from CARTA machine authority. Edit the governed record
 
 - Acquire the estate's own founding chronology and current ownership from a first-party source
 - Add Cornas cuvée detail from first-party technical material rather than from retail listings
-- Acquire a producer base coordinate from a fit source before placing the domaine on the map
 <!-- END GENERATED CARTA PROVENANCE -->

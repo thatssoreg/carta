@@ -145,6 +145,7 @@ This section is generated from CARTA machine authority. Edit the governed record
 | `claim:cornas-aop-geography` | `reference / —` | `supported` | `high` | `source:inao-cornas` |
 | `claim:cornas-syrah-only-17` | `reference / 2026-08-31` | `supported` | `high` | `source:cdc-cornas-pno-2023`, `source:inao-cornas` |
 | `claim:cotes-du-rhone-aop` | `reference / —` | `supported` | `high` | `source:inao-cotes-du-rhone` |
+| `claim:gilles-base-19` | `reference / 2026-08-31` | `supported` | `medium` | `source:rhone-crussol-guillaume-gilles`, `source:api-adresse-gouv-fr` |
 | `claim:gilles-cellar-practice-17` | `reference / 2026-08-31` | `supported` | `high` | `source:rosenthal-gilles` |
 | `claim:gilles-chave-work` | `reference / —` | `supported` | `high` | `source:vinetrail-guillaume-gilles` |
 | `claim:gilles-marcel-juge-family` | `reference / —` | `supported` | `high` | `source:vinetrail-guillaume-gilles` |
@@ -161,6 +162,7 @@ This section is generated from CARTA machine authority. Edit the governed record
 ### Sources
 
 - `source:aoc-cornas-producers` — Domains & Companies of AOC Cornas
+- `source:api-adresse-gouv-fr` — API Adresse
 - `source:cdc-cornas-pno-2023` — Cahier des charges de l'AOC « Cornas » — procédure nationale d'opposition
 - `source:inao-cornas` — Cornas
 - `source:inao-cotes-du-rhone` — Côtes du Rhône rouge
@@ -170,6 +172,7 @@ This section is generated from CARTA machine authority. Edit the governed record
 - `source:rarewine-chave` — Jean-Louis Chave
 - `source:rarewine-robert-michel` — Robert Michel — Cornas
 - `source:rarewine-verset` — The genius of Verset Cornas
+- `source:rhone-crussol-guillaume-gilles` — Domaine Guillaume Gilles
 - `source:rosenthal-gilles` — Guillaume Gilles | Northern Rhône
 - `source:rosenthal-peyrouses-rouge` — Les Peyrouses Côtes du Rhône Rouge
 - `source:vinetrail-guillaume-gilles` — Guillaume Gilles — Cornas

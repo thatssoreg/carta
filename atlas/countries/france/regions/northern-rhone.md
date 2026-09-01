@@ -258,8 +258,6 @@ This section is generated from CARTA machine authority. Edit the governed record
 ### Open questions
 
 - Acquire a governed Rhône centreline and bank attribute before drawing the corridor's spine as geometry
-- Acquire producer base coordinates from fit sources so the People pillar can carry map points
-- Acquire bounded Copernicus DEM coverage for the Vienne–Valence corridor before claiming any terrain moment
 - Acquire BRGM or equivalent geological geometry before turning sourced substrate prose into a map layer
 - `claim:chateau-grillet-inside-condrieu-landscape-17` — Compare the two delimited areas against the INAO parcel delimitation before describing the physical relationship more precisely.
 - `claim:cornas-first-domaine-bottling-1952-17` — A dated primary or archival record naming the 1952 cellar would resolve the three accounts.

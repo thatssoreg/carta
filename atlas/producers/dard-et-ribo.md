@@ -76,6 +76,7 @@ This section is generated from CARTA machine authority. Edit the governed record
 | Claim | Layer / observed | Status | Confidence | Sources |
 |---|---|---|---|---|
 | `claim:dard-natural-wine-position-17` | `reference / 2026-08-31` | `supported` | `high` | `source:dressner-dard-interview`, `source:littlewine-dard-ribo` |
+| `claim:dard-ribo-base-19` | `reference / 2026-08-31` | `supported` | `high` | `source:annuaire-entreprises-dard-ribo`, `source:api-adresse-gouv-fr` |
 | `claim:dard-ribo-cellar-17` | `reference / 2026-08-31` | `supported` | `high` | `source:littlewine-dard-ribo` |
 | `claim:dard-ribo-farming-17` | `reference / 2026-08-31` | `supported` | `high` | `source:littlewine-dard-ribo` |
 | `claim:dard-ribo-founding-17` | `reference / —` | `supported` | `high` | `source:littlewine-dard-ribo` |
@@ -83,6 +84,8 @@ This section is generated from CARTA machine authority. Edit the governed record
 
 ### Sources
 
+- `source:annuaire-entreprises-dard-ribo` — DARD ET RIBO — Annuaire des Entreprises
+- `source:api-adresse-gouv-fr` — API Adresse
 - `source:dressner-dard-interview` — An Interview with René-Jean Dard of Dard and Ribo
 - `source:littlewine-dard-ribo` — Dard et Ribo — winemaker interview
 
@@ -92,5 +95,4 @@ This section is generated from CARTA machine authority. Edit the governed record
 
 - Separate owned from rented parcels wine by wine before mapping any of them
 - Date sulfur decisions by wine and vintage rather than describing an estate-wide regime
-- Acquire a producer base coordinate from a fit source before placing the domaine on the map
 <!-- END GENERATED CARTA PROVENANCE -->

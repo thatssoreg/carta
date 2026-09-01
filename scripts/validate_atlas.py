@@ -465,6 +465,12 @@ def validate_editorial_experience(
         "place", "grapes", "people", "culture", "rules"
     }:
         fail("atlas-editorial.json: Northern Rhône pillar map reactions are incomplete")
+    if set(
+        northern_rhone.get("pillar_map_reactions", {})
+        .get("people", {})
+        .get("producer_ids", [])
+    ) != NORTHERN_RHONE_PRODUCER_DOORS:
+        fail("atlas-editorial.json: Northern Rhône People doors must all carry governed points")
     if any(signal == "tell" for signal in nested_values(northern_rhone, "signal")):
         fail("atlas-editorial.json: Northern Rhône invents a sensory Tell")
     rule_groups = northern_rhone.get("rules", {}).get("groups", [])
@@ -869,13 +875,16 @@ def validate_terrain(
         fail("atlas-terrain.json: required licence attribution is missing or stale")
     if descriptor.get("recipe") != manifest["transformations"]:
         fail("atlas-terrain.json: published recipe and manifest transformations disagree")
+    if descriptor.get("release") != EXPERIENCE_RELEASE:
+        fail("atlas-terrain.json: release marker is stale")
     terrains = descriptor.get("terrains", [])
     if {terrain.get("id") for terrain in terrains} != {
-        "bearn-jurancon", "beaujolais", "savennieres-layon", "sancerre"
+        "bearn-jurancon", "beaujolais", "savennieres-layon", "sancerre",
+        "northern-rhone",
     }:
         fail("atlas-terrain.json: bounded terrain extent set is incomplete")
-    if len(manifest["source_files"]) != 10:
-        fail("terrain: source file set must contain six Pyrenean, two Beaujolais and two Loire tiles")
+    if len(manifest["source_files"]) != 11:
+        fail("terrain: source file set must retain ten prior tiles and add one Northern Rhône tile")
 
     descriptor_path = "atlas-app/public/data/atlas-terrain.json"
     terrain_asset_paths = {
@@ -886,7 +895,7 @@ def validate_terrain(
     artifacts = {artifact["path"]: artifact for artifact in manifest["derived_artifacts"]}
     expected = terrain_asset_paths | {descriptor_path}
     if set(artifacts) != expected:
-        fail("terrain: derived artifact set does not match the four bounded terrain extents")
+        fail("terrain: derived artifact set does not match the five bounded terrain extents")
     for path, artifact in artifacts.items():
         if artifact.get("product_class") != "derived_spatial_product":
             fail(f"{path}: terrain assets must be registered as derived spatial products")

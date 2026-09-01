@@ -304,7 +304,7 @@ class AtlasContractTest(unittest.TestCase):
         points = json.loads(
             (ROOT / "atlas-app/public/data/atlas-producers.geojson").read_text()
         )["features"]
-        self.assertEqual(len(points), 23)
+        self.assertEqual(len(points), 28)
         by_entity = {
             feature["properties"]["carta_entity_id"]: feature
             for feature in points
@@ -325,6 +325,21 @@ class AtlasContractTest(unittest.TestCase):
             "Approximate location",
             by_entity["producer:domaine-cauhape"]["properties"]["placement_note"],
         )
+        self.assertEqual(
+            by_entity["producer:guillaume-gilles"]["properties"]["precision"],
+            "locality",
+        )
+        self.assertIn(
+            "Production base",
+            by_entity["producer:guillaume-gilles"]["properties"]["placement_note"],
+        )
+        for entity_id in (
+            "producer:domaine-georges-vernay",
+            "producer:dard-et-ribo",
+            "producer:domaine-christiane-chambeyron-manin",
+            "producer:domaine-alain-voge",
+        ):
+            self.assertEqual(by_entity[entity_id]["properties"]["precision"], "address")
         for entity_id in (
             "producer:camin-larredya",
             "producer:domaine-cauhape",
@@ -582,11 +597,15 @@ class AtlasContractTest(unittest.TestCase):
         by_id = {terrain["id"]: terrain for terrain in descriptor["terrains"]}
         self.assertEqual(
             set(by_id),
-            {"bearn-jurancon", "beaujolais", "savennieres-layon", "sancerre"},
+            {
+                "bearn-jurancon", "beaujolais", "savennieres-layon", "sancerre",
+                "northern-rhone",
+            },
         )
         self.assertEqual(by_id["beaujolais"]["proof_extent"]["bbox_epsg4326"], [4.05, 45.55, 4.98, 46.48])
         self.assertEqual(by_id["savennieres-layon"]["proof_extent"]["bbox_epsg4326"], [-0.85, 47.15, -0.35, 47.55])
         self.assertEqual(by_id["sancerre"]["proof_extent"]["bbox_epsg4326"], [2.55, 47.12, 2.99, 47.5])
+        self.assertEqual(by_id["northern-rhone"]["proof_extent"]["bbox_epsg4326"], [4.62, 44.86, 4.94, 45.6])
         self.assertIn("beaujolais", by_id["beaujolais"]["hillshade"]["path"])
         app = (ROOT / "atlas-app/src/main.js").read_text()
         self.assertIn("for (const terrain of descriptor.terrains || [])", app)
@@ -652,10 +671,16 @@ class AtlasContractTest(unittest.TestCase):
         )
         self.assertEqual(manifest["product_class"], "source_observation")
         self.assertEqual(manifest["retrieval_status"], "acquired")
-        self.assertEqual(len(manifest["source_files"]), 10)
+        self.assertEqual(len(manifest["source_files"]), 11)
         self.assertEqual(
             {region["id"] for region in manifest["geographic_extent"]["regions"]},
-            {"bearn-jurancon", "beaujolais", "savennieres-layon", "sancerre"},
+            {
+                "bearn-jurancon",
+                "beaujolais",
+                "northern-rhone",
+                "savennieres-layon",
+                "sancerre",
+            },
         )
         for entry in manifest["source_files"]:
             self.assertRegex(entry["sha256"], r"^[a-f0-9]{64}$")
@@ -675,9 +700,9 @@ class AtlasContractTest(unittest.TestCase):
         self.assertFalse([path for path in tracked if path.endswith((".tif", ".tiff"))])
 
     def test_every_public_terrain_asset_traces_back_to_source_and_recipe(self):
-        self.assertEqual(self.summary["terrain_artifacts"], 9)
-        self.assertEqual(self.summary["terrain_extents"], 4)
-        self.assertEqual(self.summary["terrain_source_files"], 10)
+        self.assertEqual(self.summary["terrain_artifacts"], 11)
+        self.assertEqual(self.summary["terrain_extents"], 5)
+        self.assertEqual(self.summary["terrain_source_files"], 11)
         self.assertGreater(self.summary["terrain_contours"], 0)
         descriptor = json.loads(
             (ROOT / "atlas-app/public/data/atlas-terrain.json").read_text()
@@ -707,6 +732,8 @@ class AtlasContractTest(unittest.TestCase):
                 "atlas-app/public/data/atlas-terrain-savennieres-layon-contours.geojson",
                 "atlas-app/public/data/atlas-terrain-sancerre-hillshade.png",
                 "atlas-app/public/data/atlas-terrain-sancerre-contours.geojson",
+                "atlas-app/public/data/atlas-terrain-northern-rhone-hillshade.png",
+                "atlas-app/public/data/atlas-terrain-northern-rhone-contours.geojson",
                 "atlas-app/public/data/atlas-terrain.json",
             },
         )
@@ -771,7 +798,13 @@ class AtlasContractTest(unittest.TestCase):
         )
         self.assertEqual(
             {terrain["id"] for terrain in descriptor["terrains"]},
-            {"bearn-jurancon", "beaujolais", "savennieres-layon", "sancerre"},
+            {
+                "bearn-jurancon",
+                "beaujolais",
+                "northern-rhone",
+                "savennieres-layon",
+                "sancerre",
+            },
         )
         for terrain in descriptor["terrains"]:
             self.assertEqual(terrain["contours"]["interval_metres"], 100)

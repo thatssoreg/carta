@@ -135,12 +135,15 @@ This section is generated from CARTA machine authority. Edit the governed record
 | `claim:chambeyron-family-name` | `reference / —` | `supported` | `medium` | `source:wine-trust-chambeyron` |
 | `claim:chambeyron-farming` | `reference / —` | `supported` | `medium` | `source:wine-trust-chambeyron` |
 | `claim:chambeyron-identity` | `reference / 2026-08-18` | `supported` | `high` | `source:wine-trust-chambeyron` |
+| `claim:chambeyron-manin-base-19` | `reference / 2026-08-31` | `supported` | `high` | `source:annuaire-entreprises-chambeyron-manin`, `source:api-adresse-gouv-fr` |
 | `claim:chambeyron-site` | `reference / —` | `supported` | `high` | `source:sacred-thirst-chambeyron`, `source:wine-trust-chambeyron` |
 | `claim:chambeyron-syrah` | `reference / —` | `supported` | `high` | `source:sacred-thirst-chambeyron`, `source:wine-trust-chambeyron` |
 | `claim:chambeyron-vine-age` | `reference / 2026-08-18` | `supported` | `medium` | `source:sacred-thirst-chambeyron`, `source:wine-trust-chambeyron` |
 
 ### Sources
 
+- `source:annuaire-entreprises-chambeyron-manin` — CHAMBEYRON-MANIN — Annuaire des Entreprises
+- `source:api-adresse-gouv-fr` — API Adresse
 - `source:sacred-thirst-chambeyron` — Chambeyron-Manin
 - `source:wine-trust-chambeyron` — Chambeyron-Manin
 
