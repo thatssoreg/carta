@@ -56,9 +56,11 @@ def experience_lineage(path: Path | None = None) -> list[str]:
     while True:
         resolved = current.resolve()
         if ROOT not in resolved.parents:
-            raise SystemExit("experience overlay extends a path outside the repository")
+            raise SystemExit(
+                f"experience overlay extends a path outside the repository: {resolved}"
+            )
         if resolved in seen:
-            raise SystemExit("experience overlay chain is circular")
+            raise SystemExit(f"experience overlay chain is circular at: {resolved}")
         seen.add(resolved)
         chain.append(resolved.relative_to(ROOT).as_posix())
         extends = json.loads(resolved.read_text()).get("extends")
