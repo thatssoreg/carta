@@ -10,7 +10,7 @@ The machine graph and generated relationships below provide the current orientat
 This section is generated from governed profile dispositions, editorial anchors, and supported graph relationships. It is not a hand-maintained second knowledge graph.
 
 - [Vindiou / Cœur Fidèle](../producers/vindiou.md) — producer; navigation node
-- [Syrah](syrah.md) — grape; navigation node
+- [Syrah](syrah.md) — grape; baseline reference
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->

@@ -11,7 +11,7 @@ This section is generated from governed profile dispositions, editorial anchors,
 
 - [United States](../README.md) — country; navigation node
 - [Arnot-Roberts](../../../producers/arnot-roberts.md) — producer; baseline reference
-- [Syrah](../../../grapes/syrah.md) — grape; navigation node
+- [Syrah](../../../grapes/syrah.md) — grape; baseline reference
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->

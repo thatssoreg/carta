@@ -76,6 +76,7 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [Petit Courbu](../../../grapes/petit-courbu.md) — grape; baseline reference
 - [Petit Manseng](../../../grapes/petit-manseng.md) — grape; baseline reference
 - [Pyrenean Atlantic](../../../ecosystems/pyrenean-atlantic.md) — ecosystem; baseline reference
+- [Les Vins de Vienne](../../../producers/les-vins-de-vienne.md) — producer; baseline reference
 
 ### Deliberately deferred anchors
 

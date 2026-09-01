@@ -27,10 +27,11 @@ This section is generated from governed profile dispositions, editorial anchors,
 
 - [Ballard Canyon AVA](../countries/united-states/appellations/ballard-canyon-ava.md) — appellation; navigation node
 - [Cabernet Sauvignon](../grapes/cabernet-sauvignon.md) — grape; navigation node
-- [Syrah](../grapes/syrah.md) — grape; navigation node
+- [Syrah](../grapes/syrah.md) — grape; baseline reference
 - [Santa Barbara County](../countries/united-states/regions/santa-barbara-county.md) — region; navigation node
 - [Santa Ynez Valley AVA](../countries/united-states/appellations/santa-ynez-valley-ava.md) — appellation; navigation node
 - [United States](../countries/united-states/README.md) — country; navigation node
+- [Collines Rhodaniennes IGP](../countries/france/appellations/collines-rhodaniennes.md) — appellation; navigation node
 
 ### Deliberately deferred anchors
 

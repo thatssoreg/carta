@@ -29,6 +29,10 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [Carbonic, semi-carbonic, and whole-cluster fermentation](../practices/carbonic-maceration.md) — practice; baseline reference
 - [France](../countries/france/README.md) — country; baseline reference
 - [Gamay noir à jus blanc](../grapes/gamay-noir-a-jus-blanc.md) — grape; baseline reference
+- [Dard & Ribo](dard-et-ribo.md) — producer; baseline reference
+- [Domaine Alain Graillot](domaine-alain-graillot.md) — producer; navigation node
+- [Domaine Jamet](domaine-jamet.md) — producer; navigation node
+- [Domaine Romaneaux-Destezet](romaneaux-destezet.md) — producer; navigation node
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->

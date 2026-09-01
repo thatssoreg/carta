@@ -6,14 +6,17 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-EXPERIENCE_LINEAGE = [
-    "data/atlas/run-05-jura-final-cut.json",
-    "data/atlas/run-06-bearn-jurancon-world.json",
-    "data/atlas/run-07-editorial-foundation.json",
-    "data/atlas/run-08-beaujolais-canonical-ingestion.json",
-    "data/atlas/run-09-beaujolais-world.json",
-    "data/atlas/run-17-loire-valley-world.json",
-]
+sys.path.insert(0, str(ROOT / "scripts"))
+import build_atlas as builder  # noqa: E402
+
+EXPERIENCE_LINEAGE = builder.EXPERIENCE_LINEAGE
+EXPERIENCE_RELEASE = json.loads(builder.EXPERIENCE_CONFIG_PATH.read_text())["release"]
+FOUNDING_GLOSSARY = {
+    "elevage", "flor", "foehn", "marl", "mistelle", "ouille",
+    "passerillage", "sec", "sous-voile", "tries-successives",
+    "vendanges-tardives", "voile", "carbonic-maceration",
+    "semi-carbonic", "whole-cluster", "nouveau",
+}
 
 
 class AtlasContractTest(unittest.TestCase):
@@ -70,7 +73,7 @@ class AtlasContractTest(unittest.TestCase):
         self.assertTrue(
             {
                 "place:jura", "place:burgundy", "place:loire-valley",
-                "place:beaujolais", "place:bearn",
+                "place:beaujolais", "place:bearn", "place:northern-rhone",
                 "place:pays-nantais", "place:anjou-wine-region",
                 "place:saumur-wine-region", "place:touraine-wine-region",
                 "place:vallee-du-loir", "place:centre-loire",
@@ -100,6 +103,7 @@ class AtlasContractTest(unittest.TestCase):
             "place:loire-valley",
             "place:beaujolais",
             "place:bearn",
+            "place:northern-rhone",
         ):
             guide = guides[entity_id]
             self.assertTrue(guide["sections"])
@@ -193,20 +197,12 @@ class AtlasContractTest(unittest.TestCase):
         self.assertEqual(
             editorial["generated_from"], EXPERIENCE_LINEAGE
         )
-        self.assertEqual(editorial["release"], "atlas-run-17-loire-valley-world")
+        self.assertEqual(editorial["release"], EXPERIENCE_RELEASE)
         self.assertEqual(
             {item["id"] for item in editorial["legend"]},
             {"iykyk", "same-energy"},
         )
-        self.assertEqual(
-            set(editorial["glossary"]),
-            {
-                "elevage", "flor", "foehn", "marl", "mistelle", "ouille",
-                "passerillage", "sec", "sous-voile", "tries-successives",
-                "vendanges-tardives", "voile", "carbonic-maceration",
-                "semi-carbonic", "whole-cluster", "nouveau",
-            },
-        )
+        self.assertTrue(FOUNDING_GLOSSARY.issubset(editorial["glossary"]))
         jura = editorial["subjects"]["place:jura"]
         self.assertNotIn("accent", jura)
         self.assertEqual(len(jura["hero_facts"]), 2)
@@ -352,11 +348,11 @@ class AtlasContractTest(unittest.TestCase):
         entries = json.loads(
             (ROOT / "atlas-app/public/data/atlas-entry-points.json").read_text()
         )
-        self.assertEqual(len(entries["entry_points"]), 8)
-        self.assertEqual(len(entries["featured_worlds"]), 5)
+        self.assertEqual(len(entries["entry_points"]), 12)
+        self.assertEqual(len(entries["featured_worlds"]), 6)
         self.assertEqual(entries["generated_from"], EXPERIENCE_LINEAGE)
         self.assertEqual(
-            entries["release"], "atlas-run-17-loire-valley-world"
+            entries["release"], EXPERIENCE_RELEASE
         )
         claims = {}
         for path in sorted((ROOT / "data/claims").glob("*.jsonl")):
@@ -385,7 +381,10 @@ class AtlasContractTest(unittest.TestCase):
         }
         self.assertEqual(
             set(worlds),
-            {"place:jura", "place:bearn", "place:beaujolais", "place:loire-valley"},
+            {
+                "place:jura", "place:bearn", "place:beaujolais",
+                "place:loire-valley", "place:northern-rhone",
+            },
         )
         for subject_id, world in worlds.items():
             self.assertEqual(

@@ -11,10 +11,11 @@ This section is generated from governed profile dispositions, editorial anchors,
 
 - [Côtes du Rhône AOP](../countries/france/appellations/cotes-du-rhone.md) — appellation; navigation node
 - [Maison Pierre Overnoy / Emmanuel Houillon](maison-pierre-overnoy.md) — producer; navigation node
-- [Syrah](../grapes/syrah.md) — grape; navigation node
+- [Syrah](../grapes/syrah.md) — grape; baseline reference
 - [Vin de France](../classifications/vin-de-france.md) — classification; navigation node
 - [France](../countries/france/README.md) — country; baseline reference
 - [Renaud Bruyère & Adeline Houillon](bruyere-houillon.md) — producer; navigation node
+- [Collines Rhodaniennes IGP](../countries/france/appellations/collines-rhodaniennes.md) — appellation; navigation node
 
 ### Deliberately deferred anchors
 

@@ -12,7 +12,8 @@ This section is generated from governed profile dispositions, editorial anchors,
 - [France](../README.md) — country; baseline reference
 - [Aurélien & Charlotte Houillon](../../../producers/domaine-houillon.md) — producer; navigation node
 - [Guillaume Gilles / Les Peyrouses](../../../producers/guillaume-gilles.md) — producer; baseline reference
-- [Syrah](../../../grapes/syrah.md) — grape; navigation node
+- [Les Vins de Vienne](../../../producers/les-vins-de-vienne.md) — producer; baseline reference
+- [Syrah](../../../grapes/syrah.md) — grape; baseline reference
 <!-- END GENERATED CARTA NAVIGATION -->
 
 <!-- BEGIN GENERATED CARTA PROVENANCE -->
